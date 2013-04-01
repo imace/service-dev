@@ -1,0 +1,33 @@
+actdiag {
+
+ lane 4 {
+
+ Team_Stucutre [label = "Clear team structure"];
+
+ }
+
+ lane 5{
+
+ Process [label = "Refine process for production development"];
+
+ }
+ 
+ lane 6{
+
+ Roadmap [label = "Clear product-level roadmap for Cloud&Service"];
+ 
+  }
+
+ lane 7{
+
+ Competence [label = "Build full competencen team"];
+
+}
+
+ 
+
+ lane 8{
+
+ Delivery [label = "First Cloud feature delivery on product"]; }
+
+}

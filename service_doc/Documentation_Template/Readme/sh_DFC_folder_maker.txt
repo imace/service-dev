@@ -1,0 +1,45 @@
+mkdir 01_Requirement
+mkdir 01_Requirement/01_Req_MRD_From_Origin
+mkdir 01_Requirement/02_Req_PRD_From_Origin
+mkdir 01_Requirement/03_Req_PRD_For_Dev
+
+
+
+mkdir 02_Design
+mkdir 02_Design/01_Design_For_Blueprint
+mkdir 02_Design/02_Design_For_CoreVisual
+mkdir 02_Design/03_Design_For_Arch_Design
+mkdir 02_Design/04_Design_For_Module_Design
+
+
+mkdir 03_Development
+mkdir 03_Development/01_Dev_For_Backlog
+mkdir 03_Development/02_Dev_For_Plan
+mkdir 03_Development/03_Dev_For_Milestone_Summary
+
+
+
+mkdir 04_Verification
+mkdir 04_Verification/01_TestingPlan
+mkdir 04_Verification/02_TestingReport_For_Milestone
+mkdir 04_Verification/03_TestingReport_For_Integration
+mkdir 04_Verification/04_TestingReport_For_Performance
+
+
+mkdir 05_Release
+mkdir 05_Release/01_Release_For_Milestone
+mkdir 05_Release/01_Release_For_Dev
+
+
+mkdir 06_Preview
+mkdir 06_Preview/01_Preview_For_LUT
+
+mkdir 07_Operation
+mkdir 07_Operation/01_Operation_For_EndUser
+mkdir 07_Operation/01_Operation_For_ConImprovment
+
+touch readme.txt
+
+
+
+

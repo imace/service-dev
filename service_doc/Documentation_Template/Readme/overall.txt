@@ -1,0 +1,59 @@
+
+
+actdiag {
+ 
+ MRD -> PRD -> PRD_Dev -> Dev_Roadmap -> BluePrint -> CoreVisual -> Arch_Design;
+ Arch_Design -> Module_Design -> Dev_Plan -> Dev_Backlog -> MileStone;
+ MileStone -> TestPlan -> TestReport -> TestReport_For_Performance -> TestReport_For_Integration;
+ TestReport_For_Integration -> Release_for_MileStone_Version -> Release_for_Dev_Version ; 
+ Release_for_Dev_Version -> Preview_For_Dev_Version -> Operation_For_Dev_Version ;
+ 
+ lane Requirement {
+     MRD ;
+     PRD;
+	 PRD_Dev;
+	 Dev_Roadmap ;
+  }
+  
+ lane  Design {
+      BluePrint [label = "BluePrint"];
+	  CoreVisual ;
+	  Arch_Design ;
+	  Module_Design ;
+  }
+lane   Development {
+      Dev_Plan   ;
+	  Dev_Backlog ;
+	  MileStone ;
+  }
+  
+  
+lane   Verification {
+      TestPlan ; 
+	  TestReport ; 
+	  TestReport_For_Performance ;
+	  TestReport_For_Integration ;
+
+  }
+  
+lane   Delopy {
+      Release_for_MileStone_Version 
+      Release_for_Dev_Version 
+
+
+  }
+  
+  
+lane   Preview {
+     Preview_For_Dev_Version ;
+
+  }
+  
+lane   Operation {
+     Operation_For_Dev_Version ;
+
+  }
+  
+
+  
+}

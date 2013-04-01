@@ -1,0 +1,5 @@
+blockdiag {
+   Model_Part;
+   View_Part;
+   Controller_Part;
+}
