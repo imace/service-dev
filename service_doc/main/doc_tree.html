@@ -1,0 +1,104 @@
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Service-Dev-Doc-Tree</title>
+	<script type="text/javascript" src="_lib/jquery.js"></script>
+	<script type="text/javascript" src="_lib/jquery.cookie.js"></script>
+	<script type="text/javascript" src="_lib/jquery.hotkeys.js"></script>
+	<script type="text/javascript" src="_lib/jquery.jstree.js"></script>
+	<link type="text/css" rel="stylesheet" href="syntax/!style.css"/>
+	<script type="text/javascript" src="syntax/!script.js"></script>
+</head>
+<body id="demo_body">
+
+<div id="container">
+
+<h2 id="dhead">Service-Dev文档树</h2>
+
+<div id="description">
+<div id="demo3" class="demo" style="height:100%;">
+	<ul>
+		<li id="doc_root" class="jstree-open">
+			<a href="javascript: toggole('doc_root');">Service Doc</a>
+			<ul>
+				<li id="doc_1" class="jstree-open">
+					<a href="http://android-ci.cnbj.sonyericsson.net/job/Service_Dev_Doc_Nightly/lastSuccessfulBuild/artifact/service-dev/service_doc/Competence_For_Technical/build/html/index.html" target="doc_detail">Competence For Technical</a>
+				</li>
+				<li id="doc_2" class="jstree-open">
+					<a href=#">Documentation Template</a>
+					<ul>
+						<li id="doc_2-1" class="jstree-open">
+							<a href="#">Documentation For Client</a>
+							<ul>
+								<li id="doc_2-1-1" class="jstree-open">
+									<a href="#">02 Design</a>
+									<ul>
+										<li id="doc_2-1-1-1" class="jstree-open">
+											<a href="#">03 Design For Arch Design</a>
+											<ul>
+												<li id="doc_2-1-1-1-1">
+													<a href="http://android-ci.cnbj.sonyericsson.net/job/Service_Dev_Doc_Nightly/lastSuccessfulBuild/artifact/service-dev/service_doc/Documentation_Template/Documentation_For_Client/02_Design/03_Design_For_Arch_Design/01-Design-Arc-Design-1.0.0/build/html/index.html" target="doc_detail">01-Design-Arg-Design-1.0.0</a>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+	
+							</ul>
+						</li>
+						<li id="doc_2-2" class="jstree-open">
+							<a href="#">Readme</a>
+							<ul>
+								<li id="doc_2-2-1">
+									<a href="http://android-ci.cnbj.sonyericsson.net/job/Service_Dev_Doc_Nightly/lastSuccessfulBuild/artifact/service-dev/service_doc/Documentation_Template/Readme/doc_sample/build/html/index.html" target="doc_detail">doc sample</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li id="doc_3" class="jstree-open">
+					<a href="#">Process For Development</a>
+					<ul>
+						<li id="doc_3-1">
+							<a href="http://android-ci.cnbj.sonyericsson.net/job/Service_Dev_Doc_Nightly/lastSuccessfulBuild/artifact/service-dev/service_doc/Process_For_Development/Process_For_Client_1.0.0/build/html/index.html" target="doc_detail">Process For Client-1.0.0</a>
+						</li>
+						<li id="doc_3-2">
+							<a href="http://android-ci.cnbj.sonyericsson.net/job/Service_Dev_Doc_Nightly/lastSuccessfulBuild/artifact/service-dev/service_doc/Process_For_Development/Process_For_Service_1.0.0/build/html/index.html" target="doc_detail">Process For Service 1.0.0</a>
+						</li>
+					</ul>
+				</li>
+				<li id="doc_4" class="jstree-open">
+					<a href="#">Roadmap For Technical</a>
+					<ul>
+						<li id="doc_4-1">
+							<a href="http://android-ci.cnbj.sonyericsson.net/job/Service_Dev_Doc_Nightly/lastSuccessfulBuild/artifact/service-dev/service_doc/Roadmap_For_Technical/Roadmap_For_Technical_1.0.0/build/html/index.html" target="doc_detail">Roadmap For Technical 1.0.0</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<script type="text/javascript">
+$(function () {
+	$("#demo3")
+		.jstree({ "plugins" : ["themes","html_data"] })
+		// 1) if using the UI plugin bind to select_node
+		//.bind("select_node.jstree", function (event, data) { 
+			// `data.rslt.obj` is the jquery extended node that was clicked
+		//	alert(data.rslt.obj.attr("id"));
+		//})
+		// 2) if not using the UI plugin - the Anchor tags work as expected
+		//    so if the anchor has a HREF attirbute - the page will be changed
+		//    you can actually prevent the default, etc (normal jquery usage)
+		//.delegate("a", "click", function (event, data) { event.preventDefault(); })
+});
+
+</script>
+</div>
+
+</body>
+</html>
