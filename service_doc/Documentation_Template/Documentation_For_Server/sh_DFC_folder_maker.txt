@@ -1,0 +1,39 @@
+
+mkdir 01_Requirement # 从需求开始，对来自其它部门，或者所有人提供的关于产品的需求， 要求，对进行管理记录。
+mkdir 01_Requirement/01_Req_MRD_From_Origin # 产品的市场需求， 偏向最终用户，市场需要。
+mkdir 01_Requirement/02_Req_PRD_From_Origin # 产品的开发设计需求，功能，规格，性能，偏向技术层面描述。
+mkdir 01_Requirement/03_Req_PRD_For_Dev #如果02的文档，足够清楚，足够满足需要，不需要进行03的工作，否则，就需要整理一份，给开发团队的PRD文档
+
+
+mkdir 02_Design # 有了原始需求，就要开始进行设计
+mkdir 02_Design/01_Design_For_Blueprint #原始的功能设计，这个文档，大部分描述的如何从功能设计上如何满足，MRD， PRD
+mkdir 02_Design/02_Design_For_CoreVisual #这个可以认为是用户最终看到的界面效果图。
+mkdir 02_Design/03_Design_For_Arch_Design # 基于以上input，现在需要来进行架构设计，如何通过软件来满足以上的要求，并能团队式的开发。需要在架构中设计。
+mkdir 02_Design/04_Design_For_Module_Design # 有了架构设计，那么各位开发人员，需要进行负责模块的模块设计，这个部门，重在模块之间的接口，必须要跟架构设计中的模块要求一致。接口设计便于集成，这个模块是否可以边开发，边设计？是否有悖于Scrum？
+
+
+mkdir 03_Development # 准备工作继续，现在可以进入开发阶段
+mkdir 03_Development/01_Dev_For_Backlog # 对开发人员来讲，有一个任务清单，这些任务清单，需要开发人员，设计人员，以及需求人员一起来review。
+mkdir 03_Development/02_Dev_For_Plan # 对项目管理人员来讲，需要制定开发计划，Milestone版本，开发版本。
+mkdir 03_Development/03_Dev_For_Milestone_Summary # 开始开发后，对每个结束的Milestone，需要review，并记载GBA，Good， Bad， Action。
+
+
+
+mkdir 04_Verification # 开发的每个阶段输出，需要确保质量。
+mkdir 04_Verification/01_TestingPlan # 在开发之后，紧随着就是需要制定测试计划，版本号的规划。
+mkdir 04_Verification/02_TestingReport_For_Milestone # 对每个Milestone的测试。
+mkdir 04_Verification/03_TestingReport_For_Integration # 对每个大版本的集成测试。
+mkdir 04_Verification/04_TestingReport_For_Performance # 对每个大版本的性能测试。
+
+
+mkdir 05_Release #测试完毕后，就可以发布。
+mkdir 05_Release/01_Release_For_Milestone # 对每个Milestone的发步，需要记录到系统中。比如，代码的Tag。
+mkdir 05_Release/01_Release_For_Roadmap # 对整个产品，Roadmap的发布，意味着这个版本完成了MRD，PRD中的要求。
+
+
+mkdir 06_Preview #开发完毕，需要寻找模拟用户做预演
+mkdir 06_Preview/01_Preview_For_LUT #这里应该记录一些用户的反馈，开发团队，应该帮着记录或者寻找一些用户去记录。
+
+mkdir 07_Operation #对运营阶段的一些问题的思考和建议。
+mkdir 07_Operation/01_Operation_For_EndUser # 对运营阶段遇到的一些真实用户的问题，进行记录和跟踪，
+mkdir 07_Operation/01_Operation_For_ConImprovment #在开始下一个MRP，PRD开发之前，需要把这个阶段的，开发团队收集到的，跟最终用户最关键的信息，反馈给产品设计人员。
