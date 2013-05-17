@@ -1,0 +1,24 @@
+This is a shell script for backing up BITNAMI redmine application
+Only database file and uploaded files are backed up.
+
+To use this script please follow below steps:
+1. Open daily_backup script, check below variables:
+   REDMINE_DIR, BACKUP_DIR, BACKUP_TMP_DIR.
+   modify them if neccessary.
+2. run daily_backup once, check if backup is success;
+3. if step succeeds, go to terminal and run below command:
+    sudo crontab -e
+   an editor will pop up, add folowing command at the end of editor:
+   0 0 * * * cd /home/CORPUSERS/28850586/Downloads/redmine/bin && ./backup_run/daily_backup
+
+
+
+
+
+
+Reference:
+How to backup and update the BitNami Redmine Stack
+http://bitnami.org/article/how-to-backup-and-update-the-bitnami-redmine-stack
+http://www.redmine.org/projects/redmine/wiki/HowTo_Migrate_Redmine_to_a_new_server_to_a_new_Redmine_version
+HowTo keep in sync your git repository for redmine
+http://www.redmine.org/projects/redmine/wiki/HowTo_keep_in_sync_your_git_repository_for_redmine

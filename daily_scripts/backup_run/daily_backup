@@ -1,0 +1,32 @@
+#!/bin/sh
+
+#Redmine root dir, where apps,apach2, common, ruby folders locate.
+REDMINE_DIR=/opt/redmine-2.3.0-0/
+#Dir to where all backup data save.
+BACKUP_DIR=/home/RedmineWorkspace/redmine_backups
+#tmp folder to put backup data, will be deleted once backup is finished.
+BACKUP_TMP_DIR=Redmine_backup_`date +20%y%m%d_%H%M%S`
+#sub folders of BACKUP_TMP_DIR
+DATABASE_FOLDER=database
+FILE_FOLDER=files
+
+echo "Daily backup for Redmine starts"
+
+mkdir $BACKUP_TMP_DIR
+mkdir $BACKUP_TMP_DIR/$DATABASE_FOLDER
+mkdir $BACKUP_TMP_DIR/$FILE_FOLDER
+
+cd $REDMINE_DIR
+
+mysql/bin/mysqldump -u root -pzhu88jie bitnami_redmine > $BACKUP_TMP_DIR/$DATABASE_FOLDER/redmine_backup_`date +20%y%m%d_%H%M%S`.sql
+echo "database backed up!"
+
+cp apps/redmine/htdocs/files/* $BACKUP_TMP_DIR/$FILE_FOLDER
+echo "files backed up!"
+
+TAR_FILE_NAME=redmine-backup_`date +20%y%m%d_%H%M%S`.tar.gz
+tar -czvf $TAR_FILE_NAME $BACKUP_TMP_DIR
+mv $TAR_FILE_NAME $BACKUP_DIR
+echo "tarball created!"
+
+rm -rf $BACKUP_TMP_DIR

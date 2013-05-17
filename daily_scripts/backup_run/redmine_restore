@@ -1,0 +1,41 @@
+#!/bin/sh
+
+REDMINE_ROOT=`pwd`
+RESTORE_FILE=$1
+TMP_RESTORE_FOLDER=tmp_restore
+
+echo "Restore file: "[$RESTORE_FILE]
+
+mkdir $TMP_RESTORE_FOLDER
+cd $TMP_RESTORE_FOLDER
+tar -xf $RESTORE_FILE
+cd `ls`
+
+DATABASE_FOLDER=database
+DATABASE_FILE=`ls database`
+
+SAVED_FILE_FOLDER=files
+
+#restore mysql database
+$REDMINE_ROOT/mysql/bin/mysql -u root -p bitnami_redmine < $DATABASE_FOLDER/$DATABASE_FILE
+
+echo "db file:"$DATABASE_FOLDER/$DATABASE_FILE
+
+
+#copy saved files
+cp $SAVED_FILE_FOLDER/* $REDMINE_ROOT/apps/redmine/htdocs/files/
+
+echo $REDMINE_ROOT/apps/redmine/htdocs/files/
+
+cd $REDMINE_ROOT
+rm -rf $TMP_RESTORE_FOLDER
+
+
+
+help__()
+{
+    echo "This commend MUST be executed in BitNami Redmine root folder!"
+    echo "Usage:"
+    echo "   redmine-restore BACKUP_FILE_NAME"
+
+}
