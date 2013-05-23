@@ -1,0 +1,452 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google IO 2012</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/app.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<!-- <slide class="logoslide nobackground">
+  <article class="flexbox vcenter">
+    <span><img src="images/google_developers_logo.png"></span>
+  </article>
+</slide>
+ -->
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <hgroup class="auto-fadein">
+    <h1 data-config-title><!-- populated from slide_config.json --></h1>
+    <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+    <p data-config-presenter><!-- populated from slide_config.json --></p>
+  </hgroup>
+</slide>
+
+
+<slide  >
+  
+    <hgroup>
+      <h2>议题</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>产业角度分析FireFox</li>
+<li>平台角度分析FireFox</li>
+<li>应用角度分析FireFox</li>
+<li>Q&amp;A</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="image" >
+  
+    <hgroup>
+      <h2>产业角度分析FireFox</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>当前产业生态系统
+<img alt="Many kinds of devices." src="./images/firefox_os_slices_without_connection.png" /></p></article>
+ 
+</slide>
+
+<slide class="image" >
+  
+    <hgroup>
+      <h2>产业角度分析FireFox</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>当前产业生态系统
+<img alt="Many kinds of devices." src="./images/firefox_os_slices.png" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>产业角度分析FireFox</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>世界因为两个理由需要Firefox OS：</p>
+<p>一，它可以让运营商降低对Android和苹果的依赖，二者分别占30%的APP营收；</p>
+<p>二，它可以提供一种低成本方案让下一个20亿人进入互联网.</p>
+<p>(Note:它也可以帮助硬件制造商摆脱对Google的依赖)</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>平台角度分析FireFox</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>July 2011, Mozilla annouce: Boot to Gecko</li>
+<li>July 2012, B2G(Boot to Gecko) was rebranded as 'Firefox OS</li>
+<li>Feb  2013, Mozilla announced plans for global commercial roll-out of Firefox OS  GAEO</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="image" >
+  
+    <hgroup>
+      <h2>平台角度分析FireFox</h2>
+      <h3>Firefox 架构简介图</h3>
+    </hgroup>
+    <article ><p>大致分为三个层: 应用层，应用运行时层，系统底层</p>
+<p><img alt="Many kinds of devices." src="./images/FFOS_arch.jpg" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>平台角度分析FireFox</h2>
+      <h3>Firefox 架构详细图</h3>
+    </hgroup>
+    <article ><p><img src= "./images/FirefoxOS.png" width=400 height=600 ></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>平台角度分析FireFox</h2>
+      <h3>Firefox 平台架构特点</h3>
+    </hgroup>
+    <article ><ul>
+<li>重用Android资源</li>
+<li>重用服务商资源</li>
+<li>重用现有开发资源</li>
+<li>免费开源</li>
+</ul>
+<p><img alt="Many kinds of devices." src="./images/geeksphone.jpeg" /></p></article>
+ 
+</slide>
+
+<slide class="image" >
+  
+    <hgroup>
+      <h2>应用角度分析FireFox</h2>
+      <h3>3D 模式</h3>
+    </hgroup>
+    <article ><ul>
+<li>Design</li>
+<li>Development</li>
+<li>Distribution
+<img alt="Many kinds of devices." src="./images/product_process.png" /></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>应用角度分析FireFox</h2>
+      <h3>App Development</h3>
+    </hgroup>
+    <article ><ul>
+<li>OWA standard: Open Web apps</li>
+<li>Packaged vs. Hosted Apps </li>
+<li>Packed apps are essentially a zip file <ul>
+<li>HTML, CSS, JavaScript, images, manifest, etc.</li>
+</ul>
+</li>
+<li>
+<p>Hosted apps are run from a server at a given domain, just like a standard website</p>
+</li>
+<li>
+<p>Both app types require a valid manifest</p>
+</li>
+<li>HTML5, CSS, Javascript, JQuery Mobile, WEBApi, IndexDB. WebWorker, SVG.</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>应用角度分析FireFox</h2>
+      <h3>Packaged Manifest file</h3>
+    </hgroup>
+    <article ><p>类似AndroidManifest.xml
+<pre class="prettyprint" data-lang="json">
+    {
+        "version": "0.1",
+        "name": "Your App",
+        "description": "Your new awesome Open Web App",
+        "launch_path": "/index.html",
+        "icons": {
+            "16": "/img/icons/mortar-16.png",
+            "48": "/img/icons/mortar-48.png",
+        }
+        "installs_allowed_from": ["*"],
+        "locales": {
+            "es": {
+                "description": "Su nueva aplicación impresionante Open Web",
+                "developer": {
+                    "url": "http://yourawesomeapp.com"
+                }
+            },
+        },
+        "default_locale": "en",
+        "permissions": {
+            "systemXHR": {}
+        }
+    }
+</pre></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>应用角度分析FireFox</h2>
+      <h3>App Layout & Design</h3>
+    </hgroup>
+    <article ><p>类似Layout
+<pre class="prettyprint" data-lang="css">
+    /<em> The following are examples of different CSS media queries </em>/
+    /<em> Basic desktop/screen width sniff </em>/
+    @media only screen and (min-width : 1224px) {
+      /<em> styles </em>/
+    }
+    /<em> Traditional iPhone width </em>/
+    @media
+      only screen and (-webkit-min-device-pixel-ratio : 1.5),
+      only screen and (min-device-pixel-ratio : 1.5) {
+      /<em> styles </em>/
+    }
+    /<em> Device settings at different orientations </em>/
+    @media screen and (orientation:portrait) {
+      /<em> styles </em>/
+    }
+    @media screen and (orientation:landscape) {
+      /<em> styles </em>/
+    }
+</pre></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>应用角度分析FireFox</h2>
+      <h3>App Layout & Design</h3>
+    </hgroup>
+    <article ><p>类似Activity
+<pre class="prettyprint" data-lang="text"></p>
+<pre><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My App&lt;/title&gt;
+    &lt;meta name="description" content=""&gt;
+    &lt;meta name="viewport" content="width=device-width"&gt;
+    &lt;link rel="stylesheet" href="css/app.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- Write your application here --&gt;
+     &lt;script type="text/javascript" data-main="js/init.js" src="js/lib/require.js"&gt;
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>应用角度分析FireFox</h2>
+      <h3>Web API</h3>
+    </hgroup>
+    <article ><p>类似 Android Platform API
+<pre class="prettyprint" data-lang="javascript"></p>
+<pre><code>// If this device supports the vibrate API...
+if('vibrate' in navigator) {
+    // ... vibrate for a second
+    navigator.vibrate(1000);
+}
+</code></pre>
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>应用角度分析FireFox</h2>
+      <h3>App Offline</h3>
+    </hgroup>
+    <article ><ul>
+<li>Application cache<ul>
+<li>application cache, which stores resources for the app on the client system </li>
+</ul>
+</li>
+<li>Checking connectivity<ul>
+<li>listen for changes to, the window.navigator.onLine property. </li>
+<li>However, that value is not guaranteed to be accurate.</li>
+</ul>
+</li>
+<li>Local storage</li>
+<li>IndexedDB</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>应用角度分析FireFox</h2>
+      <h3>Media Apps</h3>
+    </hgroup>
+    <article ><ul>
+<li>Offline DB</li>
+<li>WebGL</li>
+<li>Canvas</li>
+<li>WebWorker</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>应用角度分析FireFox</h2>
+      <h3>Tools & Testing.</h3>
+    </hgroup>
+    <article ><ul>
+<li>Firefox OS Simulator</li>
+<li>Unit Testing<ul>
+<li>Unit tests are extremely valuable when testing on different devices and builds. </li>
+<li>jQuery's QUnit is a popular client-side testing utility, but you can use any set of testing tools you'd like.</li>
+</ul>
+</li>
+<li>Installing Firefox OS on a Device<ul>
+<li>Adb or other install tools.</li>
+<li>OTA portal</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>应用角度分析FireFox</h2>
+      <h3>Other tools</h3>
+    </hgroup>
+    <article ><ul>
+<li>App Generator<ul>
+<li>https://marketplace.firefox.com/developers/docs/app_generator</li>
+</ul>
+</li>
+<li>App Validator<ul>
+<li>https://marketplace.firefox.com/developers/validator</li>
+</ul>
+</li>
+<li>Firefox Developer tools<ul>
+<li>https://marketplace.firefox.com/developers/docs/dev_tools</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>应用角度分析FireFox</h2>
+      <h3>Marketplace Submission</h3>
+    </hgroup>
+    <article ><ul>
+<li>A manifest file for your app. </li>
+<li>Web hosting for the app (the Firefox OS Marketplace does not host apps). <ul>
+<li>See Publishing the app for more information.</li>
+</ul>
+</li>
+<li>Read and understand the Marketplace review criteria.</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Final</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Reference：</p>
+<ul>
+<li>https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS/Platform</li>
+<li>https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS/Platform/Apps_architecture</li>
+<li>https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS/Platform/Feature_support_chart</li>
+<li>https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS/Platform/Testing</li>
+</ul>
+<p>Q&amp;A</p></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Thank You!&gt;</h2>
+    <p>Important contact information goes here.</p>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    <!-- populated from slide_config.json -->
+  </p>
+</slide>
+
+<!-- <slide class="logoslide dark nobackground">
+  <article class="flexbox vcenter">
+    <span><img src="images/google_developers_logo_white.png"></span>
+  </article>
+</slide> -->
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

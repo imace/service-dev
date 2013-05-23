@@ -1,0 +1,19 @@
+@startuml
+(*)  -right-> "MRD"
+-right-> "PRD"
+
+-right-> "Design"
+
+-down-> "Developement"
+
+-left-> "Verification"
+
+-left-> "Preview"
+
+-left-> "Deploy"
+
+-left-> "Operation"
+
+-up-> "New Cycle"
+@enduml
+        
