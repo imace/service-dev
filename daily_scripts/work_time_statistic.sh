@@ -8,97 +8,347 @@ REPORT_FILE=$REPORT_DIR/index.html
 PATH="/opt/redmine-2.3.0-0/perl/bin:/opt/redmine-2.3.0-0/git/bin:/opt/redmine-2.3.0-0/sqlite/bin:/opt/redmine-2.3.0-0/ruby/bin:/opt/redmine-2.3.0-0/subversion/bin:/opt/redmine-2.3.0-0/php/bin:/opt/redmine-2.3.0-0/mysql/bin:/opt/redmine-2.3.0-0/apache2/bin:/opt/redmine-2.3.0-0/common/bin:$PATH"
 export PATH
 
-function getEstimatedTime()
+# Get the rows in projects table
+declare -a years=(2013 2013 2013 2013 2013 2013 2013 2013 2013 2014 2014 2014);
+declare -a months=(04 05 06 07 08 09 10 11 12 01 02 03)
+declare -a projects_names;
+declare -a projects_ids;
+declare -a monthly_rates;
+
+function convertToInt()
 {
-   start_year=$1;
-   start_month=$2;
-   end_year=$1;
-   end_month=$((10#${start_month}+1));
-   if [ $start_month -gt 12 ]
-   then
-      end_month=1;
-      end_year=$((10#${start_year}+1));
-   fi
-#   mysql -u root -p$MYSQL_PASSWD bitnami_redmine -e "select substr(sum(i.estimated_hours),1,instr(sum(i.estimated_hours),'.')+1) from issues as i, time_entries as t where t.spent_on >= '$start_year-$start_month-01' and t.spent_on < '$end_year-$end_month-01' and t.issue_id = i.id;" > $REPORT_DIR/temp
-#   cat $REPORT_DIR/temp
-#   echo "$start_year-$start_month-01 <-> $end_year-$end_month-01"
-   mysql -u root -p$MYSQL_PASSWD bitnami_redmine -e "select sum(i.estimated_hours) from issues as i, time_entries as t where t.spent_on >= '$start_year-$start_month-01' and t.spent_on < '$end_year-$end_month-01' and t.issue_id = i.id;" > $REPORT_DIR/temp
-#   cat $REPORT_DIR/temp
-   echo $(sed -n '2p' $REPORT_DIR/temp)|awk '{printf "%.1f\n",$0}';
+    echo $( echo $1|awk '{printf "%.0f\n",$0}')
 }
 
-function getSpentTime()
+function initProjects()
 {
-   start_year=$1;
-   start_month=$2;
-   end_year=$1;
-   end_month=$((10#${start_month}+1));
-   if [ $start_month -gt 12 ]
-   then
-      end_month=1;
-      end_year=$((10#${start_year}+1));
-   fi
-   mysql -u root -p$MYSQL_PASSWD bitnami_redmine -e "select sum(hours) from time_entries where spent_on >= '$start_year-$start_month-01' and spent_on < '$end_year-$end_month-01';" > $REPORT_DIR/temp
-#   cat $REPORT_DIR/temp
-#   mysql -u root -p$MYSQL_PASSWD bitnami_redmine -e "select substr(sum(hours),1,instr(sum(hours),'.')+1) from time_entries where spent_on >= '$start_year-$start_month-01' and spent_on < '$end_year-$end_month-01';" > $REPORT_DIR/temp
-#   cat $REPORT_DIR/temp
-   echo $(sed -n '2p' $REPORT_DIR/temp)|awk '{printf "%.1f\n",$0}';
+    mysql -u root -p$MYSQL_PASSWD -D bitnami_redmine -BN -e "select name, id from projects where status=1;" > $REPORT_DIR/temp;
+    projects_count=0;
+    while read xcoord ycoord
+    do
+        projects_names[$projects_count]=$xcoord;
+        projects_ids[$projects_count]=$ycoord;
+        # echo "name_$projects_count = ${projects_names[$projects_count]}";
+        # echo "id_$projects_count = ${projects_ids[$projects_count]}";
+        ((projects_count++));
+    done < $REPORT_DIR/temp
+    # echo $projects_count
 }
 
-est1304=`getEstimatedTime 2013 04`
-spt1304=`getSpentTime 2013 04`
-est1305=`getEstimatedTime 2013 05`
-spt1305=`getSpentTime 2013 05`
-est1306=`getEstimatedTime 2013 06`
-spt1306=`getSpentTime 2013 06`
-est1307=`getEstimatedTime 2013 07`
-spt1307=`getSpentTime 2013 07`
-est1308=`getEstimatedTime 2013 08`
-spt1308=`getSpentTime 2013 08`
-est1309=`getEstimatedTime 2013 09`
-spt1309=`getSpentTime 2013 09`
-est1310=`getEstimatedTime 2013 10`
-spt1310=`getSpentTime 2013 10`
-est1311=`getEstimatedTime 2013 11`
-spt1311=`getSpentTime 2013 11`
-est1312=`getEstimatedTime 2013 12`
-spt1312=`getSpentTime 2013 12`
-est1401=`getEstimatedTime 2014 01`
-spt1401=`getSpentTime 2014 01`
-est1402=`getEstimatedTime 2014 02`
-spt1402=`getSpentTime 2014 02`
-est1403=`getEstimatedTime 2014 03`
-spt1403=`getSpentTime 2014 03`
+function getEndDay()
+{	
+    start_year=$1;
+    start_month=$2;
+    end_year=$1;
+    end_month=$((10#${start_month}+1));
+      
+    if [ $start_month -eq 12 ];
+    then
+        end_month=1;
+        end_year=$((10#${start_year}+1));
+    fi
+}
+
+function getEstimatedtime()
+{
+	# echo "getEstimatedtime"
+    if [ $# -eq 1 ];then
+        time=$(echo $(mysql -u root -p$MYSQL_PASSWD -D bitnami_redmine -BN -e "select sum(i.estimated_hours) from issues as i, time_entries as t where t.issue_id = i.id and i.project_id = $1 and t.spent_on >= '2013-04-01' and t.spent_on < '2014-04-01';")|awk '{printf "%.1f\n",$0}');
+    elif [ $# -eq 2 ];then
+        getEndDay $1 $2 
+	    # echo "$start_year:$start_month - $end_year:$end_month"
+        time=$(echo $(mysql -u root -p$MYSQL_PASSWD -D bitnami_redmine -BN -e "select sum(i.estimated_hours) from issues as i, time_entries as t where t.spent_on >= '$start_year-$start_month-01' and t.spent_on < '$end_year-$end_month-01' and t.issue_id = i.id;")|awk '{printf "%.1f\n",$0}');
+    elif [ $# -eq 3 ];then
+        getEndDay $1 $2
+	    # echo "$start_year:$start_month - $end_year:$end_month"
+        time=$(echo $(mysql -u root -p$MYSQL_PASSWD -D bitnami_redmine -BN -e "select sum(i.estimated_hours) from issues as i, time_entries as t where t.spent_on >= '$start_year-$start_month-01' and t.spent_on < '$end_year-$end_month-01' and t.issue_id = i.id and i.project_id = $3;")|awk '{printf "%.1f\n",$0}');
+    fi
+    if [ $time = "0.0" ];then
+        echo "";
+    else
+        echo $time;
+    fi
+}
+
+function getSpenttime()
+{
+	# echo "getSpenttime"
+    if [ $# -eq 1 ];then
+        time=$(echo $(mysql -u root -p$MYSQL_PASSWD -D bitnami_redmine -BN -e "select sum(hours) from time_entries where project_id = $1 and spent_on >= '2013-04-01' and spent_on < '2014-04-01';")|awk '{printf "%.1f\n",$0}');
+    elif [ $# -eq 2 ];then
+        getEndDay $1 $2
+	    # echo "$start_year:$start_month - $end_year:$end_month"
+        time=$(echo $(mysql -u root -p$MYSQL_PASSWD -D bitnami_redmine -BN -e "select sum(hours) from time_entries where spent_on >= '$start_year-$start_month-01' and spent_on < '$end_year-$end_month-01';")|awk '{printf "%.1f\n",$0}');
+    elif [ $# -eq 3 ];then
+        getEndDay $1 $2
+	    # echo "$start_year:$start_month - $end_year:$end_month"
+        time=$(echo $(mysql -u root -p$MYSQL_PASSWD -D bitnami_redmine -BN -e "select sum(hours) from time_entries where spent_on >= '$start_year-$start_month-01' and spent_on < '$end_year-$end_month-01' and project_id = $3;")|awk '{printf "%.1f\n",$0}');
+    fi
+    if [ $time = "0.0" ];then
+        echo "";
+    else
+        echo $time;
+    fi
+}
+
+function getClosedEstimatedTime
+{
+    if [ $# -eq 1 ];then
+        time=$(echo $(mysql -u root -p$MYSQL_PASSWD -D bitnami_redmine -BN -e "select sum(i.estimated_hours) from issues as i, time_entries as t where t.issue_id = i.id and i.project_id = $1 and t.spent_on >= '2013-04-01' and t.spent_on < '2014-04-01' and (i.status_id=3 or i.status_id=5 or status_id=6);")|awk '{printf "%.1f\n",$0}');
+    elif [ $# -eq 2 ];then
+        getEndDay $1 $2
+            # echo "$start_year:$start_month - $end_year:$end_month"
+        time=$(echo $(mysql -u root -p$MYSQL_PASSWD -D bitnami_redmine -BN -e "select sum(i.estimated_hours) from issues as i, time_entries as t where t.spent_on >= '$start_year-$start_month-01' and t.spent_on < '$end_year-$end_month-01' and t.issue_id = i.id and (i.status_id=3 or i.status_id=5 or status_id=6);")|awk '{printf "%.1f\n",$0}');
+    elif [ $# -eq 3 ];then
+        getEndDay $1 $2
+            # echo "$start_year:$start_month - $end_year:$end_month"
+        time=$(echo $(mysql -u root -p$MYSQL_PASSWD -D bitnami_redmine -BN -e "select sum(i.estimated_hours) from issues as i, time_entries as t where t.spent_on >= '$start_year-$start_month-01' and t.spent_on < '$end_year-$end_month-01' and t.issue_id = i.id and i.project_id = $3 and (i.status_id=3 or i.status_id=5 or status_id=6);")|awk '{printf "%.1f\n",$0}');
+    fi
+    if [ $time = "0.0" ];then
+        echo "";
+    else
+        echo $time;
+    fi
+}
+
+function getClosedSpentTime
+{
+    # echo "getClolsedSpentTime"
+    if [ $# -eq 1 ];then
+        time=$(echo $(mysql -u root -p$MYSQL_PASSWD -D bitnami_redmine -BN -e "select sum(t.hours) from time_entries as t, issues as i where t.project_id = $1 and t.spent_on >= '2013-04-01' and t.spent_on < '2014-04-01' and t.issue_id = i.id and (i.status_id=3 or i.status_id=5 or status_id=6);")|awk '{printf "%.1f\n",$0}');
+    elif [ $# -eq 2 ];then
+        getEndDay $1 $2
+        # echo "$start_year:$start_month - $end_year:$end_month"
+        time=$(echo $(mysql -u root -p$MYSQL_PASSWD -D bitnami_redmine -BN -e "select sum(t.hours) from time_entries as t, issues as i where t.spent_on >= '$start_year-$start_month-01' and t.spent_on < '$end_year-$end_month-01' and t.issue_id = i.id and (i.status_id=3 or i.status_id=5 or status_id=6);")|awk '{printf "%.1f\n",$0}');
+    elif [ $# -eq 3 ];then
+        getEndDay $1 $2
+        # echo "$start_year:$start_month - $end_year:$end_month"
+        time=$(echo $(mysql -u root -p$MYSQL_PASSWD -D bitnami_redmine -BN -e "select sum(t.hours) from time_entries as t, issues as i where t.spent_on >= '$start_year-$start_month-01' and t.spent_on < '$end_year-$end_month-01' and i.project_id = $3 and t.issue_id = i.id and (i.status_id=3 or i.status_id=5 or status_id=6);")|awk '{printf "%.1f\n",$0}');
+    fi
+    if [ $time = "0.0" ];then
+        echo "";
+    else
+        echo $time;
+    fi
+
+}
+
+# Get project names and ids. There is an issue if the project name contains space 
+initProjects;
+
+# Start the generate the time report into a html file
+echo "" > $REPORT_FILE
+# echo "<link href=\"/redmine/stylesheets/application.css?1363725157\" media=\"all\" rel=\"stylesheet\" type=\"text/css\" />" >> $REPORT_FILE
+
+################################## Start Generate the table heads which are named as YY-MM ####################################
+echo "<h2> Service Dev Work Time Statisics in FY2013 </h2>" >> $REPORT_FILE
+echo "<div class=\"autoscroll\">" >> $REPORT_FILE
+echo "<table class=\"list\" id=\"time-report\">" >> $REPORT_FILE
+echo "<thead>" >> $REPORT_FILE
+echo "<tr>" >> $REPORT_FILE
+echo "  <th>Projects</th>" >> $REPORT_FILE
+num_months=${#months[@]}
+# echo "num_months=$num_months"
+for (( i=0; i < num_months; i++ )); do
+    echo "<th class=\"period\" width=\"8%\">${years[$i]}-${months[$i]}</th>" >> $REPORT_FILE
+done
+echo "  <th class=\"total\" width=\"8%\">Tobal</th>" >> $REPORT_FILE
+echo "</tr>" >> $REPORT_FILE
+echo "</thead>" >> $REPORT_FILE
+
+#Get the table body
+echo "<tbody>" >> $REPORT_FILE
+num_Pojects=$projects_count
+# echo "num_Porjects=$num_Pojects"
+for (( i=0; i < projects_count; i++ )); do
+    proj_spt_time=$(getSpenttime ${projects_ids[$i]})
+    # echo "proj_spt_time_$i = $proj_spt_time"
+    proj_est_time=$(getEstimatedtime ${projects_ids[$i]})
+    # echo "proj_est_time_$i = $proj_est_time"
+    if [ -z $proj_spt_time ];then
+       continue;
+    fi
+    if [ $(( i%2 )) -eq 0 ]; then
+        echo "<tr class=\"odd last-level\">" >> $REPORT_FILE
+    else
+        echo "<tr class=\"even last-level\">" >> $REPORT_FILE
+    fi;
+    
+    echo "" >> $REPORT_FILE
+    
+    echo "<td>${projects_names[$i]}</td>" >> $REPORT_FILE
+    for (( j=0; j < num_months; j++)); do
+        est_time=$(getEstimatedtime ${years[$j]} ${months[$j]} ${projects_ids[$i]})
+        # echo "est_time_$i_$j = $est_time"
+        spt_time=$(getSpenttime ${years[$j]} ${months[$j]} ${projects_ids[$i]})
+        # echo "spt_time_$i_$j = $spt_time"
+        if [ -z $est_time ] && [ -z $spt_time ];then
+           echo "    <td class=\"hours\"></td>" >> $REPORT_FILE
+        else
+            echo "    <td class=\"hours\"><span class=\"hours hours-int\">$spt_time</span><span class=\"hours hours-dec\">[$est_time]</span></td>" >> $REPORT_FILE
+        fi
+        
+    done
+    echo "  <td class=\"hours\"><span class=\"hours hours-int\">$proj_spt_time</span><span class=\"hours hours-dec\">[$proj_est_time]</span></td>" >> $REPORT_FILE
+    echo "</tr>" >> $REPORT_FILE
+done
+
+# Add the projects total times row by month
+echo "<tr class=\"total\">" >> $REPORT_FILE
+echo "<td>Total</td>" >> $REPORT_FILE
+for (( i=0; i < num_months; i++ )); do
+    monthly_spt_time=$(getSpenttime ${years[$i]} ${months[$i]});
+    # echo "monthly_spt_time_$i = $monthly_spt_time"
+    monthly_est_time=$(getEstimatedtime ${years[$i]} ${months[$i]});
+    # echo "monthly_est_time_$i = $monthly_est_time"
+
+    # Calculate the rate for each month
+    declare -i spt_int=$(convertToInt $monthly_spt_time)
+    declare -i est_int=$(convertToInt $monthly_est_time)
+    if [ $est_int == 0 ]; then
+        monthly_rates[$i]=0
+    else
+        monthly_rates[$i]=$(((est_int-spt_int)*100/est_int))
+    fi
+
+    if [ -z $monthly_spt_time ] && [ -z $monthly_est_time ]; then
+        echo "<td class=\"hours\"></td>" >> $REPORT_FILE;
+    else
+        echo "<td class=\"hours\"><span class=\"hours hours-int\">$monthly_spt_time</span><span class=\"hours hours-dec\">[$monthly_est_time]</span></td>" >> $REPORT_FILE
+    fi
+done
+
+#Add the projects rates row by month
+echo "<tr class=\"total\">" >> $REPORT_FILE
+echo "<td>Rates</td>" >> $REPORT_FILE
+for (( i=0; i < num_months; i++ )); do
+    if [ ${monthly_rates[$i]} = 0 ]; then
+        echo "<td class=\"hours\"></td>" >> $REPORT_FILE;
+    else
+        echo "<td class=\"hours\"><span class=\"hours hours-int\">${monthly_rates[$i]}%</span></td>" >> $REPORT_FILE
+    fi
+done
+
+echo "</tr>" >> $REPORT_FILE
+echo "</tbody>" >> $REPORT_FILE
+echo "</table>" >> $REPORT_FILE
+echo "</div>" >> $REPORT_FILE
+echo "<br>" >> $REPORT_FILE
+###############################################################################################################################
+
+############################# Generate the finished tasks work time report ####################################################
+
+echo "<h2> Service Dev Finished Work Time Statisics in FY2013 </h2>" >> $REPORT_FILE
+echo "<div class=\"autoscroll\">" >> $REPORT_FILE
+echo "<table class=\"list\" id=\"time-report-2\">" >> $REPORT_FILE
+# Generate the head of the table
+echo "<thead>" >> $REPORT_FILE
+echo "<tr>" >> $REPORT_FILE
+echo "  <th>Projects</th>" >> $REPORT_FILE
+
+for (( i=0; i < num_months; i++ )); do
+    echo "<th class=\"period\" width=\"8%\">${years[$i]}-${months[$i]}</th>" >> $REPORT_FILE
+done
+echo "  <th class=\"total\" width=\"8%\">Tobal</th>" >> $REPORT_FILE
+echo "</tr>" >> $REPORT_FILE
+echo "</thead>" >> $REPORT_FILE
+
+#Get the table body
+echo "<tbody>" >> $REPORT_FILE
 
 
+for (( i=0; i < projects_count; i++ )); do
+    proj_spt_time=$(getClosedSpentTime ${projects_ids[$i]})
+    # echo "proj_spt_time_$i = $proj_spt_time"
+    proj_est_time=$(getClosedEstimatedTime ${projects_ids[$i]})
+    # echo "proj_est_time_$i = $proj_est_time"
+    if [ -z $proj_spt_time ];then
+       continue;
+    fi
+    if [ $(( i%2 )) -eq 0 ]; then
+        echo "<tr class=\"odd last-level\">" >> $REPORT_FILE
+    else
+        echo "<tr class=\"even last-level\">" >> $REPORT_FILE
+    fi;
+    
+    echo "" >> $REPORT_FILE
+    
+    echo "<td>${projects_names[$i]}</td>" >> $REPORT_FILE
+    for (( j=0; j < num_months; j++)); do
+        est_time=$(getClosedEstimatedTime ${years[$j]} ${months[$j]} ${projects_ids[$i]})
+        # echo "est_time_$i_$j = $est_time"
+        spt_time=$(getClosedSpentTime ${years[$j]} ${months[$j]} ${projects_ids[$i]})
+        # echo "spt_time_$i_$j = $spt_time"
+        if [ -z $est_time ] && [ -z $spt_time ];then
+           echo "    <td class=\"hours\"></td>" >> $REPORT_FILE
+        else
+            echo "    <td class=\"hours\"><span class=\"hours hours-int\">$spt_time</span><span class=\"hours hours-dec\">[$est_time]</span></td>" >> $REPORT_FILE
+        fi
+        
+    done
+    echo "  <td class=\"hours\"><span class=\"hours hours-int\">$proj_spt_time</span><span class=\"hours hours-dec\">[$proj_est_time]</span></td>" >> $REPORT_FILE
+    echo "</tr>" >> $REPORT_FILE
+done
 
+# Add the projects total times row by month
+echo "<tr class=\"total\">" >> $REPORT_FILE
+echo "<td>Total</td>" >> $REPORT_FILE
+for (( i=0; i < num_months; i++ )); do
+    monthly_spt_time=$(getClosedSpentTime ${years[$i]} ${months[$i]});
+    # echo "monthly_spt_time_$i = $monthly_spt_time"
+    monthly_est_time=$(getClosedEstimatedTime ${years[$i]} ${months[$i]});
+    # echo "monthly_est_time_$i = $monthly_est_time"
 
-echo "<pre>" > $REPORT_FILE
-echo "********************************************************************" >> $REPORT_FILE
-echo "" >> $REPORT_FILE
-echo "                  Service Dev Work Time Statisics"  >> $REPORT_FILE
-echo "" >> $REPORT_FILE
-echo "********************************************************************" >> $REPORT_FILE
-echo "" >> $REPORT_FILE
-echo "month               2013.4    2013.5    2013.6    2013.7" >> $REPORT_FILE
-echo "--------------------------------------------------------------------" >> $REPORT_FILE
-echo "Estimation time     $est1304    $est1305    $est1306    $est1307" >> $REPORT_FILE
-echo "spent time          $spt1304    $spt1305    $spt1306    $spt1307" >> $REPORT_FILE
-echo "" >> $REPORT_FILE
-echo "month               2013.8    2013.9    2013.10    2013.11" >> $REPORT_FILE
-echo "--------------------------------------------------------------------" >> $REPORT_FILE
-echo "Estimation time     $est1308    $est1309    $est1310    $est1311" >> $REPORT_FILE
-echo "spent time          $spt1308    $spt1309    $spt1310    $spt1311" >> $REPORT_FILE
-echo "" >> $REPORT_FILE
-echo "month               2013.12    2014.1    2013.2    2013.3" >> $REPORT_FILE
-echo "--------------------------------------------------------------------" >> $REPORT_FILE
-echo "Estimation time     $est1312    $est1401    $est1402    $est1403" >> $REPORT_FILE
-echo "spent time          $spt1312    $spt1401    $spt1402    $spt1403" >> $REPORT_FILE
-echo "" >> $REPORT_FILE
-echo "" >> $REPORT_FILE
-echo "********************************************************************" >> $REPORT_FILE
-echo "" >> $REPORT_FILE
-echo "P.S.:" >> $REPORT_FILE
-echo "    Please connect Zhang, Bo5 if you need any support." >> $REPORT_FILE
-echo "</pre>" >> $REPORT_FILE
-exit 1;
+    # Calculate the rate for each month
+    declare -i spt_int=$(convertToInt $monthly_spt_time)
+    declare -i est_int=$(convertToInt $monthly_est_time)
+    if [ $est_int == 0 ]; then
+        monthly_rates[$i]=0
+    else
+        monthly_rates[$i]=$(((est_int-spt_int)*100/est_int))
+    fi
+
+    if [ -z $monthly_spt_time ] && [ -z $monthly_est_time ]; then
+        echo "<td class=\"hours\"></td>" >> $REPORT_FILE;
+    else
+        echo "<td class=\"hours\"><span class=\"hours hours-int\">$monthly_spt_time</span><span class=\"hours hours-dec\">[$monthly_est_time]</span></td>" >> $REPORT_FILE
+    fi
+done
+
+#Add the projects rates row by month
+echo "<tr class=\"total\">" >> $REPORT_FILE
+echo "<td>Rates</td>" >> $REPORT_FILE
+for (( i=0; i < num_months; i++ )); do
+    if [ ${monthly_rates[$i]} = 0 ]; then
+        echo "<td class=\"hours\"></td>" >> $REPORT_FILE;
+    else
+        echo "<td class=\"hours\"><span class=\"hours hours-int\">${monthly_rates[$i]}%</span></td>" >> $REPORT_FILE
+    fi
+done
+
+echo "</tr>" >> $REPORT_FILE
+echo "</tbody>" >> $REPORT_FILE
+echo "</table>" >> $REPORT_FILE
+echo "</div>" >> $REPORT_FILE
+echo "<br>" >> $REPORT_FILE
+###############################################################################################################################
+
+# Notes for the statistic table
+echo "<hr>" >> $REPORT_FILE
+ echo "<div>" >> $REPORT_FILE
+echo "P.S.: <br>" >> $REPORT_FILE
+echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The cell of the table means \"<font color=\"red\">Spent Time[Estimated Time] </font>\" <br>" >> $REPORT_FILE
+echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Rate is getted by <font color=\"red\"> (Estimated Time - Spent Time) / Estimated Time</font>. <br>" >> $REPORT_FILE
+echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please connect Zhang, Bo5 if you need any support. <br>" >> $REPORT_FILE
+echo "</div>" >> $REPORT_FILE
+
+# Export csv report for the statistic table
+:<<BLOCK
+echo "<p class=\"other-formats\">" >> $REPORT_FILE
+echo "Export" >> $REPORT_FILE 
+echo "<span>" >> $REPORT_FILE
+echo "<a class=\"csv\" rel=\"nofollow\" href=\"/redmine/time_entries/report.csv?columns=month&criteria%5B%5D=project&f%5B%5D=spent_on&f%5B%5D=&op%5Bspent_on%5D=%2A&utf8=%E2%9C%93\">CSV</a>" >> $REPORT_FILE
+echo "</span>" >> $REPORT_FILE
+echo "</p>" >> $REPORT_FILE
+BLOCK
+exit 1;:
