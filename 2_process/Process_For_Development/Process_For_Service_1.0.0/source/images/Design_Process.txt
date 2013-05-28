@@ -1,0 +1,19 @@
+@startuml
+
+
+(*) --> ===B1=== 
+--> "UI Design" 
+--> ===B2===
+
+===B1=== --> "Architecture Design" 
+--> ===B2===
+
+
+===B2=== --> "Development Plan"
+--> (*)
+
+(*) --> "Test Plan"
+--> (*)
+
+@enduml
+

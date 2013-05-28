@@ -25,46 +25,47 @@ Goal
 ****************************
 
 
-.. 解释这个文档中会涉及到的一些专业属于，如何让别人很容易文档中所描述的。
-
-
-
-
 Process Definition
 ********
 
-Role Players
+Process Overall
+=========
+
+.. image:: images/Design_Process.png
+
+Roles
 =========
 
 * Project Manager
 * UI Designer
 * System Architect
+* Tester
 
 Entry Criteria
 =========
 
-Inputs
+Inputs or triggers
 ---------
 
-Requirement Documentation
+Requirement Documentation Ready
 
 * MRD
 * PRD
+* User Stories
 
-Triggers
----------
-
-N/A
 
 Task -- UI Design
 =========
 
-Role Players
+Role
 ---------
 
 * UI Desinger
 
 Task Definition
+---------
+
+Validation
 ---------
 
 Outputs
@@ -74,10 +75,10 @@ Outputs
 * Core Visual
 * Icon
 
-Task -- Overall Design
+Task -- Architecture Design
 =========
 
-Role Players
+Role
 ---------
 
 * System Architect
@@ -85,28 +86,54 @@ Role Players
 Task Definition
 ---------
 
+Validation
+---------
+
 Outputs
 ---------
 
 * Overall Design Document
+* Module Design Docuement
+* Component Design Document
+
+Task -- Test Plan
+=========
+
+Role
+---------
+
+* Tester
+
+Task Definition
+---------
 
 Validation
-=========
-
-Checkpoints
 ---------
 
-Error Detection and Correction Processes
+Outputs
 ---------
 
-Controls
+* Test Plan
+* Test Case
+
+Task -- Development Plan
 =========
 
-Policies
+Role
 ---------
 
-Constraints
-=========
+* Project Manager
+
+Task Definition
+---------
+
+Validation
+---------
+
+Outputs
+---------
+
+* Development Plan Document
 
 
 Exit Criteria
