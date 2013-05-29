@@ -208,7 +208,7 @@ for (( i=0; i < num_months; i++ )); do
     if [ $est_int == 0 ]; then
         monthly_rates[$i]=0
     else
-        monthly_rates[$i]=$(((est_int-spt_int)*100/est_int))
+        monthly_rates[$i]=$(echo "scale=2; ($est_int-$spt_int)*100/$est_int"|bc)
     fi
 
     if [ -z $monthly_spt_time ] && [ -z $monthly_est_time ]; then
@@ -305,7 +305,7 @@ for (( i=0; i < num_months; i++ )); do
     if [ $est_int == 0 ]; then
         monthly_rates[$i]=0
     else
-        monthly_rates[$i]=$(((est_int-spt_int)*100/est_int))
+        monthly_rates[$i]=$(echo "scale=2; ($est_int-$spt_int)*100/$est_int"|bc)
     fi
 
     if [ -z $monthly_spt_time ] && [ -z $monthly_est_time ]; then
