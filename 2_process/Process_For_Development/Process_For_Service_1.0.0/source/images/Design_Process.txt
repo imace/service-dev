@@ -8,11 +8,10 @@
 ===B1=== --> "Architecture Design" 
 --> ===B2===
 
-
-===B2=== --> "Development Plan"
+(*) --> "Test Plan"
 --> (*)
 
-(*) --> "Test Plan"
+===B2=== --> "Development Plan"
 --> (*)
 
 @enduml
