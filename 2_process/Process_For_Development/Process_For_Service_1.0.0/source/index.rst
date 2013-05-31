@@ -17,9 +17,8 @@ Welcome to Doc_Sample's documentation!
    02_design.rst
    03_developement.rst
    04_verification.rst
-   05_release.rst
-   06_preview.rst
-   07_operation.rst
+   05_preview.rst
+   06_operation.rst
    
 
 

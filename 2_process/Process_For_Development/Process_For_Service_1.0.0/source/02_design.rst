@@ -5,154 +5,135 @@
    H3, =========
    H4. ---------
    
-
-
 Design
 ###################################################
 
+#. Process Flow
 
-Background
-****************************
+	.. image:: images/Design_Process.png
 
-.. 这个文档设计的背景，为何要设计这个文档，这个文档的来源基础，设计基础是什么之类的信息。
+#. Entry Criteria
 
-Glossary
-****************************
+	Requirement Documentation Ready
 
-.. 解释这个文档中会涉及到的一些专业属于，如何让别人很容易文档中所描述的。
+	* MRD
+	* PRD
+	* User Stories
 
-Goal
-****************************
+#. Exit Criteria
 
+	Design Documentation
 
-Process Definition
-********
-
-Process Overall
-=========
-
-.. image:: images/Design_Process.png
-
-Roles
-=========
-
-* Project Manager
-* UI Designer
-* System Architect
-* Tester
-
-Entry Criteria
-=========
-
-Inputs or triggers
----------
-
-Requirement Documentation Ready
-
-* MRD
-* PRD
-* User Stories
-
+	* Blue print
+	* Core visual
+	* Overall Arch Design
 
 Task -- UI Design
+********
+
+Target
 =========
 
 Role
----------
+=========
 
 * UI Desinger
 
-Task Definition
----------
+Inputs
+=========
+
+Excution
+=========
 
 Validation
----------
+=========
 
 Outputs
----------
+=========
 
 * Blue Print
 * Core Visual
 * Icon
 
 Task -- Architecture Design
+********
+
+Target
 =========
 
 Role
----------
+=========
 
 * System Architect
 
-Task Definition
----------
+Inputs
+=========
+
+Excution
+=========
 
 Validation
----------
+=========
 
 Outputs
----------
+=========
 
 * Overall Design Document
 * Module Design Docuement
 * Component Design Document
 
 Task -- Test Plan
+********
+
+Target
 =========
 
 Role
----------
+=========
 
 * Tester
 
-Task Definition
----------
+Inputs
+=========
+
+Excution
+=========
 
 Validation
----------
+=========
 
 Outputs
----------
+=========
 
 * Test Plan
 * Test Case
 
 Task -- Development Plan
+********
+
+Target
 =========
 
 Role
----------
+=========
 
 * Project Manager
 
-Task Definition
----------
+Inputs
+=========
+
+Excution
+=========
 
 Validation
----------
+=========
 
 Outputs
----------
+=========
 
 * Development Plan Document
 
 
-Exit Criteria
-=========
-
-Outputs
----------
-
-Design Documentation
-
-* Blue print
-* Core visual
-* Overall Arch Design
-
-Others
-****************************
-
-Summary
-****************************
 
 
 
