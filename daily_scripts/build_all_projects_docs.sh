@@ -4,12 +4,14 @@
 #
 #    Author : bo5.zhang@sonymobile.com
 
-TREE_HTML_FILE="./service_doc/main/doc_tree.html"
+TREE_HTML_FILE="service_doc/main/doc_tree.html"
+MAIN_HTML_FILE="service_doc/main/main.html"
 DOC_BUILD_PATH="/build/html/index.html"
+
+project_root=`pwd`
 
 function buildProjects()
 {
-	project_root=`pwd`
     projects_paths=`find -name Makefile -exec dirname {} \;`
 
     for path in $projects_paths;
@@ -65,7 +67,7 @@ function listCurrentDirectory()
         elif [ $res = 1 ];then
             local path="$cur_dir$DOC_BUILD_PATH"
             echo "<li id=\"$sub_id\">" >> $TREE_HTML_FILE
-            echo "<a href=\"$path\" target=\"doc_detail\">Document</a>" >> $TREE_HTML_FILE
+            echo "<a href=\"../../$path\" target=\"doc_detail\">Document</a>" >> $TREE_HTML_FILE
             echo "</li>" >> $TREE_HTML_FILE
             break;
         elif [ $res = 2 ]; then
@@ -130,8 +132,8 @@ function echoHtmlFoots()
 # Build all availble projects
 buildProjects
 
-full_path=`pwd`;
-TREE_HTML_FILE="$full_path/$TREE_HTML_FILE"
+TREE_HTML_FILE="$TREE_HTML_FILE"
+MAIN_HTML_FILE="$MAIN_HTML_FILE"
 
 echoHtmlHeads
 
@@ -148,7 +150,7 @@ do
         root_id="doc_$i"
         echo "<li id=\"$root_id\">" >> $TREE_HTML_FILE
         echo "<a href=\"#\">$file</a>" >> $TREE_HTML_FILE
-        listCurrentDirectory "$full_path/$file" $root_id ""
+        listCurrentDirectory "$file" $root_id ""
         echo "</li>" >> $TREE_HTML_FILE
     fi
 done
@@ -157,7 +159,11 @@ echo "</ul>" >> $TREE_HTML_FILE
 echoHtmlFoots
 
 # Create the soft link of our total documents projects
-ln -sf service_doc/main/main.html index.html
+cd $project_root
+if [ -f "index.html" ];then
+    rm "index.html"
+fi
+ln -s $MAIN_HTML_FILE index.html
 
 echo ""
 echo "******************************************************************"
