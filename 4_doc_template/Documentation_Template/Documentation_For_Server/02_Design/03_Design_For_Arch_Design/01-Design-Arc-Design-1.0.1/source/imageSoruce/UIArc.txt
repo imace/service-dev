@@ -1,0 +1,27 @@
+@startuml
+[Application] as app
+[BaseActivity] as base
+
+package "UI"{
+package "ViewManager"{
+[ViewPage] as view
+[FragmentPageAdapte]  as adapter
+}
+[HomeFragment] as home
+[RankdingFragment] as Ranking
+[FeaturedFragment] as Featured
+[DownLoadFragment] as Download
+[AppDailFragment] as AppDail
+[SearchFragment] as Search
+[FragementHelp] as help
+}
+app <-down-> base
+base <-down-> view
+home <-up-> view
+Ranking <-down-> view
+Featured <-left-> view
+Download <-right-> view
+Search <-left-> view 
+
+
+@enduml

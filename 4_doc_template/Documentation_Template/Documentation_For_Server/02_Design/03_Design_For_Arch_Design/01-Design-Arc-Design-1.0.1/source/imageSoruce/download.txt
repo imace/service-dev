@@ -1,0 +1,32 @@
+
+@startuml
+
+partition "更新下载应用队列"
+(*)-->"检查信息列表"
+if "是否有此下载信息" then
+-->[true]"更新下载信息"
+else
+-->[false]"插入下载信息"
+endif
+end partition
+
+partition "循环定时器"
+"启动下载服务"-->"定时器"
+if "是否到期" then
+-->[true]"取出下载的应用信息"
+-->"新建下载线程"
+-->"加入下载队列"
+-->"开始下载"
+-->[定时器循环]"定时器"
+endif
+end partition
+
+
+partition "信息列表" 
+"更新下载信息" --> "下载应用队列"
+"插入下载信息" --> "下载应用队列"
+"下载应用队列" --> "取出下载的应用信息"
+end partition
+
+
+@enduml

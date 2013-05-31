@@ -1,0 +1,41 @@
+@startuml
+ [UI] as ui
+ package "缓存"{
+ [缓存管理] as cachemanager	
+ [图片缓存] as piccache 
+ [应用数据缓存] as appcache
+ }
+ package "下载"{
+ [下载管理] as downloadMag
+ [下载数据缓存] as downloadcache 
+ }
+ [文件读写] as fileRW
+ [文件系统] as filesystem
+ [网络访问管理] as netMag
+ [异步数据加载] as asyData
+ [远程数据服务器] as webSer
+ [日志发送] as logSend
+ [业务逻辑处理] as logic
+ 
+ ui --> logic
+ logic <--> cachemanager
+ cachemanager <-left-> appcache
+ cachemanager <-left-> piccache
+ logic -up-> asyData
+ asyData -left-> ui
+ cachemanager --> netMag
+ netMag --> webSer
+ cachemanager <--> fileRW
+ logic --> logSend
+ logSend --> netMag
+ logic <--> downloadMag
+ downloadMag -left-> downloadcache
+ downloadMag --> fileRW
+ downloadMag --> netMag
+ fileRW <--> filesystem
+ 
+ title 组件视图
+ 
+ 
+ 
+@enduml
