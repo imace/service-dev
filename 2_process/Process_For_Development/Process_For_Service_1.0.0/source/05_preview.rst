@@ -8,19 +8,26 @@
 Preview
 ###################################################
 
-
 #. Process Flow
 
-	adgasdf
+	.. image:: images/Preview_Process.png
 
 #. Entry Criteria
 
+	Deploy Documentation Ready
+
+	* Deploy Guide
+	* DataBase Documents(Update parts)
+	* Feature list & Bug Fixed list 
+
 #. Exit Criteria
 
+	Release Applications
 
+	* New version application online
+	* Release notes documents
 
-
-Task -- Task 1
+Task -- Test Server Pre-Deploy
 ********
 
 Target
@@ -28,6 +35,8 @@ Target
 
 Role
 =========
+
+* Server Administrator
 
 Inputs
 =========
@@ -41,10 +50,51 @@ Validation
 Outputs
 =========
 
-Task -- Task 2
+* New version Application on Test Server
+
+* Production Deployment Plan
+
+Task -- Apply For Publish Online
 ********
 
+Target
+=========
+
 Role
+=========
+
+* Server Administrator
+
+Inputs
+=========
+
+Excution
+=========
+
+Validation
+=========
+
+* Project Manager
+
+Outputs
+=========
+
+* Overall Design Document
+* Module Design Docuement
+* Component Design Document
+
+Task -- Production Server Deploy
+********
+
+Target
+=========
+
+Role
+=========
+
+* Server Administrator
+
+Inputs
 =========
 
 Excution
@@ -55,6 +105,34 @@ Validation
 
 Outputs
 =========
+
+* New version application
+
+Task -- Publish Release Notes
+********
+
+Target
+=========
+
+Role
+=========
+
+* Project Manager
+
+Inputs
+=========
+
+Excution
+=========
+
+Validation
+=========
+
+Outputs
+=========
+
+* Release notes
+
 
 
 
