@@ -16,8 +16,10 @@ Preview
 
 	Deploy Documentation Ready
 
-	* Deploy Guide
-	* DataBase Documents(Update parts)
+    * Application deploy packages
+	* Deploy Guide(Optional)
+	* Deployment Steps
+	* Deployment Test Cases
 	* Feature list & Bug Fixed list 
 
 #. Exit Criteria
@@ -33,6 +35,11 @@ Task -- Test Server Pre-Deploy
 Target
 =========
 
+* Verify the SQL sequence used to update the database
+* Verify the new application delpoy steps
+* Check the deploy packages run well in new enviorment.
+* Update the latest applications on test server.
+
 Role
 =========
 
@@ -41,11 +48,24 @@ Role
 Inputs
 =========
 
+* Application deploy packages
+* Deploy Guide
+* DataBase Documents(Update parts)
+
+
+
 Excution
 =========
+#. Check the application running environment(Optional).
+#. Update the database(Optional).
+#. Deploy application packages.
+#. Normal check the new application deployment.
+#. Notify Developer to do sanity test of the new deployment.
 
 Validation
 =========
+
+* Sanity test on test server is OK.
 
 Outputs
 =========
@@ -59,35 +79,40 @@ Task -- Apply For Publish Online
 
 Target
 =========
+Confirm with Project Manager and others current changes needs to update to production server
 
 Role
 =========
 
-* Server Administrator
+* Project Manager
 
 Inputs
 =========
+* Deployment Steps
+* Deployment Test Cases
+* Production Deployment Plan
+* Application deploy packages
+
 
 Excution
 =========
+Send the applying email
 
 Validation
 =========
-
-* Project Manager
+NA
 
 Outputs
 =========
 
-* Overall Design Document
-* Module Design Docuement
-* Component Design Document
+* approvement email
 
 Task -- Production Server Deploy
 ********
 
 Target
 =========
+Upgrade our latest application on production server.
 
 Role
 =========
@@ -96,23 +121,35 @@ Role
 
 Inputs
 =========
+* Deployment Steps
+* Deployment Test Cases
+* Production Deployment Plan
+* Application deploy packages
+* approvement email
 
 Excution
 =========
+#. Check the application running environment(Optional).
+#. Update the database(Optional).
+#. Deploy application packages.
+#. Normal check the new application deployment.
+#. Take the sanity test via deployment test cases.
 
 Validation
 =========
+Deployment test is OK.
 
 Outputs
 =========
 
-* New version application
+* New version application on production server.
 
 Task -- Publish Release Notes
 ********
 
 Target
 =========
+Notify all the project memebers our upgraded application version codes, fixed bugs and new features.
 
 Role
 =========
@@ -121,12 +158,17 @@ Role
 
 Inputs
 =========
+* Production Deployment Plan
+* Feature list & Bug Fixed list 
 
 Excution
 =========
+#. send the release notes to project members via email
+#. Add the release notes in project system
 
 Validation
 =========
+NA
 
 Outputs
 =========
