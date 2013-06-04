@@ -1,0 +1,27 @@
+@startuml
+(*)-->"Update Test Cases"
+
+"Update Test Cases" -->===B2===
+
+===B2===-->"Performance Test"
+-->===B3===
+
+===B2===-->"Function Test" 
+-->===B3===
+
+
+===B3===--> if "Is Ok?" then
+-->[yes]"Acceptance Test"
+  if "Acceptance?" then
+  -->[yes](*)
+  else
+  -up->[no] "Bug Fix"
+  endif
+else
+-right->[no] "Bug Fix"
+-up->"Regression Test"
+-up->===B2===
+endif
+
+
+@enduml

@@ -11,16 +11,28 @@ Verifaction
 
 #. Process Flow
 
-	adgasdf
+	.. image::  images/Verification_Process.png
 
 #. Entry Criteria
+	Requirement Documentation Ready
 
+	* PRD
+	* User Stories
+	* Blue Print
+	* CoreVisual
+	* Test Plan
+	* Test Cases
+	
 #. Exit Criteria
 
+	Test Result Documentation
+
+	* Performance Test Report
+	* Funcation Test Report
+	* Acceptence Test Report
 
 
-
-Task -- Task 1
+Task -- Update Test Cases
 ********
 
 Target
@@ -41,7 +53,52 @@ Validation
 Outputs
 =========
 
-Task -- Task 2
+Task -- Function Test
+********
+
+Role
+=========
+
+Excution
+=========
+
+Validation
+=========
+
+Outputs
+=========
+
+Task -- Performance Test
+********
+
+Role
+=========
+
+Excution
+=========
+
+Validation
+=========
+
+Outputs
+=========
+
+Task -- Regression Test
+********
+
+Role
+=========
+
+Excution
+=========
+
+Validation
+=========
+
+Outputs
+=========
+
+Task -- Acceptance Test
 ********
 
 Role
