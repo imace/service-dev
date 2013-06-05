@@ -44,7 +44,7 @@ Role
 Inputs
 =========
 
-Excution
+Execution
 =========
 
 Validation
@@ -59,7 +59,7 @@ Task -- Function Test
 Role
 =========
 
-Excution
+Execution
 =========
 
 Validation
@@ -74,7 +74,7 @@ Task -- Performance Test
 Role
 =========
 
-Excution
+Execution
 =========
 
 Validation
@@ -89,7 +89,7 @@ Task -- Regression Test
 Role
 =========
 
-Excution
+Execution
 =========
 
 Validation
@@ -104,7 +104,7 @@ Task -- Acceptance Test
 Role
 =========
 
-Excution
+Execution
 =========
 
 Validation

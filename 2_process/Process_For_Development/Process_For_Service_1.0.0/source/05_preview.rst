@@ -54,7 +54,7 @@ Inputs
 
 
 
-Excution
+Execution
 =========
 #. Check the application running environment(Optional).
 #. Update the database(Optional).
@@ -94,7 +94,7 @@ Inputs
 * Application deploy packages
 
 
-Excution
+Execution
 =========
 Send the applying email
 
@@ -127,7 +127,7 @@ Inputs
 * Application deploy packages
 * approvement email
 
-Excution
+Execution
 =========
 #. Check the application running environment(Optional).
 #. Update the database(Optional).
@@ -161,7 +161,7 @@ Inputs
 * Production Deployment Plan
 * Feature list & Bug Fixed list 
 
-Excution
+Execution
 =========
 #. send the release notes to project members via email
 #. Add the release notes in project system

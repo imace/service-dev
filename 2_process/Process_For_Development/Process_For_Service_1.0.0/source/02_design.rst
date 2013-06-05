@@ -42,7 +42,9 @@ Role
 Inputs
 =========
 
-Excution
+* PRD
+
+Execution
 =========
 
 Validation
@@ -69,7 +71,10 @@ Role
 Inputs
 =========
 
-Excution
+* PRD
+* User Stories
+
+Execution
 =========
 
 Validation
@@ -79,8 +84,7 @@ Outputs
 =========
 
 * Overall Design Document
-* Module Design Docuement
-* Component Design Document
+* Database Design Docuement (Optional)
 
 Task -- Test Plan
 ********
@@ -96,7 +100,11 @@ Role
 Inputs
 =========
 
-Excution
+* PRD
+* Blue Print
+* Core Visual
+
+Execution
 =========
 
 Validation
@@ -122,7 +130,11 @@ Role
 Inputs
 =========
 
-Excution
+* PRD
+* User Stories
+* Overall Design Document
+
+Execution
 =========
 
 Validation
@@ -131,6 +143,7 @@ Validation
 Outputs
 =========
 
+* Task Breakdown List
 * Development Plan Document
 
 

@@ -32,7 +32,7 @@ Role
 Inputs
 =========
 
-Excution
+Execution
 =========
 
 Validation
@@ -47,7 +47,7 @@ Task -- Task 2
 Role
 =========
 
-Excution
+Execution
 =========
 
 Validation
