@@ -1,7 +1,7 @@
 @startuml
-(*)-->"Update Test Cases"
+(*)-->"Review and Update Test Cases"
 
-"Update Test Cases" -->===B2===
+"Review and Update Test Cases" -->===B2===
 
 ===B2===-->"Performance Test"
 -->===B3===
