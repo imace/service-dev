@@ -1,0 +1,25 @@
+@startuml
+actor "UID Engineer"
+actor "Project Manager"
+actor "CV Designer"
+-> "UID Engineer":PRD
+"UID Engineer" -> "Project Manager": Blue Print Draft
+create control "Review Meeting"
+"Project Manager" --> "Review Meeting"
+"Review Meeting" --> "UID Engineer": <<Comments>>
+activate "UID Engineer" 
+"UID Engineer" -> "Project Manager": Blue Print Spec
+"Project Manager" --> "Review Meeting"
+"Review Meeting" -> "CV Designer": Blue Print Spec
+activate "CV Designer" 
+"Review Meeting" --> "UID Engineer": <<NG>>
+"Review Meeting" -> : Blue Print Spec
+deactivate "UID Engineer" 
+"CV Designer" -> "Project Manager": Core Visual
+"Project Manager" --> "Review Meeting"
+"Review Meeting" --> "CV Designer": <<NG>>
+deactivate "CV Designer" 
+"Review Meeting" -> :Core Visual
+"CV Designer" -> "CV Designer": Core Visual
+"CV Designer" ->: Icons
+@enduml
