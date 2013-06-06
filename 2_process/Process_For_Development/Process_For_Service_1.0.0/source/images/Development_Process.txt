@@ -1,0 +1,17 @@
+@startuml
+
+(*) --> "Development Kick Off"
+--> ===B1=== 
+--> "Sprint Planning" 
+--> "Sprint Detail Design" 
+--> "Sprint Development" 
+--> "Sprint Test" 
+--> "Sprint Demo" 
+--> "Sprint Summary"  
+--> ===B2=== 
+--> ===B1=== 
+
+===B2=== --> "Development Release" 
+--> (*)
+
+@enduml
