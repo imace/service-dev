@@ -50,17 +50,22 @@ Inputs
 Execution
 =========
 
+.. image:: images/UI_Design_Execution.png
+
 #. TID Engineer design the blue print draft.
 #. TID Engineer share the blue brint draft to team members.
 #. Project manager organize team members review the blue print draft and book meeting to discuss our blue print if we need.
 #. TID Engineer update the blue print and give the blue print spec.
+#. Project manager orgaize team members reivew the blue print spec. TID Engineer need to to update the blue print spec if there is any comments.
 #. Core virsual designer design the core virsual via our blue print spec.
+#. Project manager orgaize team members reivew the core virsual. Core virsual designer need to to update the core virsual if there is any comments.
 #. Core virsual designer design icons via our core virsual.
 
 Validation
 =========
 
-* NA
+* Blue Print spec review passed.
+* Core Visual review passed.
 
 Outputs
 =========
