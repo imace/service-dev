@@ -33,11 +33,14 @@ Task -- UI Design
 
 Target
 =========
+* Let the project members know our product in view.
+* Direct developers developing our product.
 
 Role
 =========
 
-* UI Desinger
+* TID Engineer
+* Core Virsual Designer
 
 Inputs
 =========
@@ -47,8 +50,17 @@ Inputs
 Execution
 =========
 
+#. TID Engineer design the blue print draft.
+#. TID Engineer share the blue brint draft to team members.
+#. Project manager organize team members review the blue print draft and book meeting to discuss our blue print if we need.
+#. TID Engineer update the blue print and give the blue print spec.
+#. Core virsual designer design the core virsual via our blue print spec.
+#. Core virsual designer design icons via our core virsual.
+
 Validation
 =========
+
+* NA
 
 Outputs
 =========
