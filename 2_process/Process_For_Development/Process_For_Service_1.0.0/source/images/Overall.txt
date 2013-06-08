@@ -1,0 +1,70 @@
+@startuml
+
+partition Design
+(*) --> ===DESIGN_START=== 
+--> "UI Design" 
+--> ===DESIGN_END===
+
+===DESIGN_START=== --> "Architecture Design" 
+--> ===DESIGN_END===
+
+(*) --> "Test Case Design"
+--> "Test Plan"
+--> ===DESIGN_END===
+
+===DESIGN_END=== --> "Development Plan"
+--> ===PARTITION_DESIGN_END=== 
+end partition
+
+partition Development
+
+===PARTITION_DESIGN_END=== --> ===ITERATION_START=== 
+--> "Iteration Planning" 
+--> "Component Design" 
+--> "Coding" 
+--> "Testing"  
+--> "Issue Fix"  
+--> "Summary & Review" 
+--> ===ITERATION_END=== 
+--> ===ITERATION_START=== 
+
+===ITERATION_END=== --> "Development Release" 
+"Development Release" --> ===DEVELOP_END===
+end partition
+
+partition Verification
+===DEVELOP_END=== -->"Review and Update Test Cases (Optional)"
+
+"Review and Update Test Cases (Optional)" --> "Test Server Pre-Deploy"
+--> ===TEST_START===
+===TEST_START===-->"Performance Test"
+-->===TEST_END===
+
+===TEST_START===-->"Function Test" 
+-->===TEST_END===
+
+===TEST_END===--> if "Is Ok?" then
+-->[yes]"Acceptance Test"
+	if "Acceptance?" then
+		-->[yes] ===PREVIEW===
+	else
+		-up->[no] "Bug Fix"
+	endif
+else
+	-up->[no] "Bug Fix"
+	-up->"Regression Test"
+	-up->===TEST_START===
+endif
+
+end partition
+
+partition Preview
+===PREVIEW=== --> "Apply For Publish Online"
+"Apply For Publish Online" --> "Production Server Deploy"
+"Production Server Deploy" --> "Publish Release Notes"
+"Publish Release Notes" --> (*)
+
+end partition
+
+@enduml
+

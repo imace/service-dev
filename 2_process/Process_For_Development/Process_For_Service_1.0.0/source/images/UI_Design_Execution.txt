@@ -4,7 +4,7 @@ actor "Project Manager"
 actor "CV Designer"
 -> "UID Engineer":PRD
 "UID Engineer" -> "Project Manager": Blue Print Draft
-create control "Review Meeting"
+
 "Project Manager" --> "Review Meeting"
 "Review Meeting" --> "UID Engineer": <<Comments>>
 activate "UID Engineer" 
