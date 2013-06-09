@@ -5,11 +5,11 @@ partition Design
 --> "UI Design" 
 --> ===DESIGN_END===
 
-===DESIGN_START=== --> "Architecture Design" 
---> ===DESIGN_END===
+"UI Design" --> "Test Case Design *"
+--> "Test Plan *"
+--> ===PARTITION_DESIGN_END=== 
 
-(*) --> "Test Case Design"
---> "Test Plan"
+===DESIGN_START=== --> "Architecture Design" 
 --> ===DESIGN_END===
 
 ===DESIGN_END=== --> "Development Plan"
@@ -18,52 +18,67 @@ end partition
 
 partition Development
 
-===PARTITION_DESIGN_END=== --> ===ITERATION_START=== 
---> "Iteration Planning" 
---> "Component Design" 
---> "Coding" 
---> "Testing"  
+===PARTITION_DESIGN_END=== --> "Iteration Development Planning" 
+-up-> "Component Design" 
+-up-> "Coding" 
+partition Testing
+-right-> "Development Test Deploy"
+-down-> "Testing"
+end partition
 --> "Issue Fix"  
 --> "Summary & Review" 
---> ===ITERATION_END=== 
---> ===ITERATION_START=== 
-
-===ITERATION_END=== --> "Development Release" 
+--> if "Is it no more US needed to implement?" then
+		-->[yes] "Development Release" 
+	else
+		-->[no] "Iteration Development Planning"
+	endif
 "Development Release" --> ===DEVELOP_END===
 end partition
 
 partition Verification
-===DEVELOP_END=== -->"Review and Update Test Cases (Optional)"
-
-"Review and Update Test Cases (Optional)" --> "Test Server Pre-Deploy"
+===DEVELOP_END=== --> ===DEPLOY_START===
+--> "Update Test Cases(Optional)"
 --> ===TEST_START===
+
+===DEPLOY_START=== --> "Test Server Deploy"
+--> ===TEST_START===
+
 ===TEST_START===-->"Performance Test"
 -->===TEST_END===
 
 ===TEST_START===-->"Function Test" 
 -->===TEST_END===
 
-===TEST_END===--> if "Is Ok?" then
--->[yes]"Acceptance Test"
-	if "Acceptance?" then
-		-->[yes] ===PREVIEW===
+===TEST_START===-->"Regression Test(Optional)" 
+-->===TEST_END===
+
+===TEST_END===--> if "Is OK?" then
+		-->[yes]"Integration Meeting"
+		--> ===TEST_PARTITION_END===
 	else
-		-up->[no] "Bug Fix"
-	endif
-else
-	-up->[no] "Bug Fix"
-	-up->"Regression Test"
-	-up->===TEST_START===
+		-up->[no] ===TEST_START===
 endif
 
 end partition
 
 partition Preview
-===PREVIEW=== --> "Apply For Publish Online"
-"Apply For Publish Online" --> "Production Server Deploy"
-"Production Server Deploy" --> "Publish Release Notes"
-"Publish Release Notes" --> (*)
+===TEST_PARTITION_END=== --> ===PREVIEW_PARTITION_END===
+end partition
 
+partition Operation
+partition "Production Launch"
+===PREVIEW_PARTITION_END=== --> "Perpare Release Stuff"
+"Perpare Release Stuff" --> "Apply for Launch Request"
+"Apply for Launch Request" --> "Production Server Deploy"
+"Production Server Deploy" --> "Production Testing"
+"Production Testing" --> if "Is OK?" then
+		-->[yes] "Post-Launch Review Report"
+	else
+		-->[no]	Hotfix
+		-->"Perpare Release Stuff"
+	endif
+end partition
+"Post-Launch Review Report" --> (*)
 end partition
 
 @enduml
