@@ -18,25 +18,21 @@ end partition
 
 partition Development
 
+partition "Sub Design Part"
 ===PARTITION_DESIGN_END=== --> "Iteration Development Planning" 
--up-> "Component Design" 
--up-> "Coding" 
-partition Testing
--right-> "Development Test Deploy"
--down-> "Testing"
-end partition
---> "Issue Fix"  
---> "Summary & Review" 
---> if "Is it no more US needed to implement?" then
-		-->[yes] "Development Release" 
-	else
-		-->[no] "Iteration Development Planning"
-	endif
-"Development Release" --> ===DEVELOP_END===
+--> "Component Design"
 end partition
 
-partition Verification
-===DEVELOP_END=== --> ===DEPLOY_START===
+partition "Sub Development Part" 
+--> "Coding"
+--> "Development Server Deploy"
+--> "Test(Developer)"
+--> "Bugfix" as bugfix1
+--> "Iteration Development Release"
+end partition
+
+partition "Sub Testing Part"
+"Iteration Development Release" --> ===DEPLOY_START===
 --> "Update Test Cases(Optional)"
 --> ===TEST_START===
 
@@ -52,13 +48,30 @@ partition Verification
 ===TEST_START===-->"Regression Test(Optional)" 
 -->===TEST_END===
 
+end partition
 ===TEST_END===--> if "Is OK?" then
-		-->[yes]"Integration Meeting"
-		--> ===TEST_PARTITION_END===
+		-->[yes]"Summary & Review"
 	else
-		-up->[no] ===TEST_START===
-endif
+		-up->[no] bugfix1
+		--> ===TEST_START===
+	endif
+"Summary & Review"--> if "Is it no more US needed to implement?" then
+		-->[yes] "Development Release" 
+	else
+		-->[no] "Iteration Development Planning"
+	endif
+"Development Release" --> ===DEVELOP_END===
+end partition
 
+partition Verification
+===DEVELOP_END=== --> "Integration Test"
+--> if "Is OK?" then
+		-->[yes]"Integration Meeting"
+		-->===TEST_PARTITION_END===
+	else
+		-->[no] "Bugfix" as bugfix2
+		-->"Integration Test"
+	endif
 end partition
 
 partition Preview
