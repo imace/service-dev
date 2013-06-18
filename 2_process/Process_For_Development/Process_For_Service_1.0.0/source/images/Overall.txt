@@ -1,97 +1,38 @@
 @startuml
 
+partition Requirement
+(*) --> ===R===
+end partition
+
 partition Design
-(*) --> ===DESIGN_START=== 
---> "UI Design" 
---> ===DESIGN_END===
-
-"UI Design" --> "Test Case Design *"
---> "Test Plan *"
---> ===PARTITION_DESIGN_END=== 
-
-===DESIGN_START=== --> "Architecture Design" 
---> ===DESIGN_END===
-
-===DESIGN_END=== --> "Development Plan"
---> ===PARTITION_DESIGN_END=== 
+===R=== --> ===D===
 end partition
 
 partition Development
-
 partition "Sub Design Part"
-===PARTITION_DESIGN_END=== --> "Iteration Development Planning" 
---> "Component Design"
+===D=== --> ===SD===
 end partition
-
 partition "Sub Development Part" 
---> "Coding"
---> "Development Server Deploy"
---> "Test(Developer)"
---> "Bugfix" as bugfix1
---> "Iteration Development Release"
+===SD=== --> ===SP===
 end partition
-
 partition "Sub Testing Part"
-"Iteration Development Release" --> ===DEPLOY_START===
---> "Update Test Cases(Optional)"
---> ===TEST_START===
-
-===DEPLOY_START=== --> "Test Server Deploy"
---> ===TEST_START===
-
-===TEST_START===-->"Performance Test"
--->===TEST_END===
-
-===TEST_START===-->"Function Test" 
--->===TEST_END===
-
-===TEST_START===-->"Regression Test(Optional)" 
--->===TEST_END===
-
+===SP=== --> ===ST===
 end partition
-===TEST_END===--> if "Is OK?" then
-		-->[yes]"Summary & Review"
-	else
-		-up->[no] bugfix1
-		--> ===TEST_START===
-	endif
-"Summary & Review"--> if "Is it no more US needed to implement?" then
-		-->[yes] "Development Release" 
-	else
-		-->[no] "Iteration Development Planning"
-	endif
-"Development Release" --> ===DEVELOP_END===
 end partition
 
 partition Verification
-===DEVELOP_END=== --> "Integration Test"
---> if "Is OK?" then
-		-->[yes]"Integration Meeting"
-		-->===TEST_PARTITION_END===
-	else
-		-->[no] "Bugfix" as bugfix2
-		-->"Integration Test"
-	endif
+===ST=== --> ===SV===
 end partition
 
 partition Preview
-===TEST_PARTITION_END=== --> ===PREVIEW_PARTITION_END===
+===SV=== --> ===SPR===
 end partition
 
 partition Operation
 partition "Production Launch"
-===PREVIEW_PARTITION_END=== --> "Perpare Release Stuff"
-"Perpare Release Stuff" --> "Apply for Launch Request"
-"Apply for Launch Request" --> "Production Server Deploy"
-"Production Server Deploy" --> "Production Testing"
-"Production Testing" --> if "Is OK?" then
-		-->[yes] "Post-Launch Review Report"
-	else
-		-->[no]	Hotfix
-		-->"Perpare Release Stuff"
-	endif
+===SPR=== --> ===SPL===
 end partition
-"Post-Launch Review Report" --> (*)
+===SPL=== --> (*)
 end partition
 
 @enduml

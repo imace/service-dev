@@ -1,0 +1,128 @@
+@startuml
+
+[*] -down-> Requirement  
+
+state Requirement {
+
+[*] -down-> MRD
+
+MRD -down-> PRD
+--
+[*] -down-> Feasibility_Report
+
+}
+
+Requirement -down-> Design
+
+state Design {
+
+[*] -down-> BluePrint_Design
+
+BluePrint_Design -down-> CoreVisual_Design
+--
+[*] -down-> Architecture_Design
+
+Architecture_Design -down-> Module_Interface_Design
+--
+[*] -down-> TestCase_Design
+
+}
+
+Design -down-> Development
+
+state Development {
+
+[*] -down-> Project_KickOff_Meeting
+--
+[*] -down-> Sprint_Planning
+
+Sprint_Planning -down-> Sprint_Development
+
+Sprint_Development -down-> Sprint_Funtion_Test
+
+Sprint_Funtion_Test -down-> Sprint_Demo
+
+Sprint_Demo -down-> Sprint_Review
+
+--
+[*] -down-> Project_Release
+
+}
+
+Development -down-> Verification
+
+state Verification {
+
+[*] -down-> Unit_Test
+--
+[*] -down-> Function_Test
+
+Function_Test -down-> Integration_Test
+
+Integration_Test -down-> Regression_Test
+
+--
+
+[*] -down-> Performance_Test
+
+Performance_Test -down-> Load_Test
+
+Load_Test -down-> Stress_Testing
+
+--
+
+[*] -down-> Acceptance_Test
+
+--
+[*] -down-> Delivery_Test
+
+
+
+}
+
+Verification -down-> Preview
+
+state Preview {
+
+[*] -down-> Preview_Demo
+
+Preview_Demo -down-> Preview_LUT
+
+Preview_LUT -down-> Preview_Summary
+
+}
+
+Preview -down-> Deploy
+
+state Deploy {
+
+[*] -down-> Deploy_Pre_Checking
+
+Deploy_Pre_Checking -down-> Deploy_Env_Comparing
+
+Deploy_Env_Comparing -down-> Deploy_Launch
+
+Deploy_Launch -down-> Deploy_Post_Confirmation
+
+}
+
+Deploy -down-> Operation
+
+state Operation {
+
+[*] -down-> Operation_Launch
+
+Operation_Launch -down-> Operation_Auto_Monitor
+--
+[*] -down-> Operation_BizData_Collection
+
+Operation_BizData_Collection -down-> Operation_BizData_Anylasis
+--
+[*] -down-> Operation_Next_Preparation
+
+}
+
+Operation -down-> [*]
+
+
+@enduml

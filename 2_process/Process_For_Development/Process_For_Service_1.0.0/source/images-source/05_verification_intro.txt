@@ -1,0 +1,37 @@
+@startuml
+
+Development -down-> Verification  
+
+state Verification {
+
+[*] -down-> Unit_Test
+--
+[*] -down-> Function_Test
+
+Function_Test -down-> Integration_Test
+
+Integration_Test -down-> Regression_Test
+
+--
+
+[*] -down-> Performance_Test
+
+Performance_Test -down-> Load_Test
+
+Load_Test -down-> Stress_Testing
+
+--
+
+[*] -down-> Acceptance_Test
+
+--
+[*] -down-> Delivery_Test
+
+
+
+}
+
+Verification -down-> Preview
+
+
+@enduml

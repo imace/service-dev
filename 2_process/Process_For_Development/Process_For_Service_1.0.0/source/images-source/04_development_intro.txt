@@ -1,0 +1,30 @@
+@startuml
+
+Design -down-> Development  
+
+state Development {
+
+[*] -down-> Project_KickOff_Meeting
+--
+[*] -down-> Sprint_Planning
+
+Sprint_Planning -down-> Sprint_Development
+
+Sprint_Development -down-> Sprint_Funtion_Test
+
+Sprint_Funtion_Test -down-> Sprint_Demo
+
+Sprint_Demo -down-> Sprint_Review
+
+--
+[*] -down-> Bug_Fixing
+
+--
+[*] -down-> Project_Release
+
+}
+
+Development -down-> Verification
+
+
+@enduml

@@ -4,21 +4,24 @@
    contain the root `toctree` directive.
 
 Welcome to Doc_Sample's documentation!
-======================================
+=====================================================================
 
 
 
 .. toctree::
    :maxdepth: 2
    :numbered:
-   
-   00_overall.rst
-   01_requirement.rst
-   02_design.rst
-   03_developement.rst
-   04_verification.rst
-   05_preview.rst
-   06_operation.rst
+
+   01_overall.rst
+   02_requirement.rst
+   03_design.rst
+   04_developement.rst
+   05_verification.rst
+   06_preview.rst
+   07_deploy.rst
+   08_operation.rst
+   09_others.rst
+
    
 
 
