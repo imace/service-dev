@@ -18,7 +18,11 @@ Background
 
 .. The Service-Dev team is a new team foucses on service and cloud development and web application delivery.
 .. But there are no exist development process or practicable guideline in China local site to guide development on service area.
- 
+
+索尼移动一直致力于移动平台的软件开发和技术创新。但在移动互联网迅速发展的时代，服务器及云端的支持对移动应用越来越不可或缺。
+因此，服务器开发技术也越来越被重视，同时服务器应用开发流程也相应的需要被建立起来，用于指导软件开发。
+
+通过对公司已有开发流程进行的调查结果，并没有已存在的具有指导意义的、可实践的服务器软件开发流程。
 
 Goals
 ****************************
@@ -29,8 +33,46 @@ Goals
 .. We make this documents based on the best practices on developers,so we want to make this docs to describe
 .. how we can develop a service system, from ideas to real running service system.
 
+通过参考借鉴业界和公司内已有的软件开发流程，制定一个可执行的，具有指导意义的，端到端的服务器软件开发流程。
+
+
 Overall Picture for Process
 **************************************
+
+整体流程有如下说明
+
+#. 流程分为七个阶段：需求分析、设计、开发、测试、预演、部署、运营
+#. 流程为闭环的循环，在运营阶段收集新需求和市场反馈，用于新功能开发
+#. 需求分析、设计、开发、测试阶段借鉴现有开发流程
+#. 预演、部署、运营阶段为服务器开发流程特有
+
+需求分析::
+
+	通过与业务用户沟通或对业务统计数据的分析，对用户存在的新需求进行详细的分析和整理，并形成需求文档，为业务系统的改动和扩展提供输入。
+
+设计::
+	
+	设计阶段
+
+开发::
+	
+	大幅度
+
+测试::
+	
+	大幅度
+
+预演::
+	
+	大幅度
+
+部署::
+	
+	大幅度
+
+运营::
+	
+	大幅度
 
 .. image:: images/01_overall_pictures.png
 
