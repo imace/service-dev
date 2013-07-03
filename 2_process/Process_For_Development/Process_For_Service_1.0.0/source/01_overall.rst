@@ -54,49 +54,178 @@ Overall Picture for Process
 Intrudction of Phases
 **************************************
 
-Introduction of Requirement
+Requirement
 ===============================================================================
 
 .. image:: images/02_requirement_Intro.png
 
-.. #MRD
-.. #PRD
-.. #Feasibility Report
+MRD
+---------
+Market Requirement Document, 市场需求文档。 该文档是产品项目由“准备”阶段进入到“实施”阶段的第一文档，其作用就是“对年度产品中规划的某个产品进行市场层面的说明”，这个文档的质量好坏直接影响到产品项目的开展，并直接影响到公司产品战略意图的实现。
 
-Introduction of Design
+PRD
+---------
+Product Requirement Document，产品需求文档。该文档在产品项目中是一个“承上启下”的作用，“向上”是对MRD内容的继承和发展，“向下”是要把MRD中的内容技术化，向研发部门说明产品的功能和性能指标。
+
+Feasibility Report
+---------
+可行性研究报告。分析论证该项目活动是否切实可行而提出的一种书面材料，主要分析在技术上是否可以实现和如何才能取得最佳效益。
+
+Design
 ==================================================================================
 
 .. image:: images/03_design_Intro.png
 
-.. #Blueprint Design
-.. #Corevisual Design
+Blueprint Design
+---------
+交换设计文档，主要包括界面交互流程，每个界面的元素设计等等。
 
-Introduction of Development
+Corevisual Design
+---------
+根据Blueprint Design文档，对实际视觉效果的进一步设计。
+
+Architecture Design
+---------
+架构设计。根据需求进行架构设计，包括系统的外在的接口设计，内在的模块设计。为后续的详细设计和开发提供指导。
+
+Module Interface Design
+---------
+模块接口设计。主要对系统模块之间的接口进行设计，明确各个模块之间的关系。
+
+Test Case Design
+---------
+测试用例设计。根据需求设计测试用例，作为后续测试过程的输入。
+
+Development
 ===================================================================================
 
 .. image:: images/04_development_intro.png
 
+Project Kick Off Meeting
+---------
+项目启动会。在项目正式开始执行之前，召集项目所有相关人员，对项目的范围，进度，人员安排，风险等进行阐述。
 
+Sprint Planning
+---------
+Sprint规划。规划sprint的时间，任务。讨论并确定开发任务的详细设计。将所有的任务细分成粒度合适的子任务，并估算子任务的工作量。
 
-Introduction of Verification
+Sprint Development
+---------
+Sprint开发。开发并完成sprint中所有的任务。
+
+Sprint Function Test
+---------
+Sprint功能测试。对sprint中开发完成的功能进行测试，并产生问题列表。
+
+Sprint Demo
+---------
+Sprint演示。邀请相关人员，对sprint以完成的功能进行演示，并获取反馈。
+
+Sprint Review
+---------
+Sprint回顾。对sprint中的经验教训进行总结并形成文档，在后续的sprint中进行提高和拓展。
+
+Bug Fixing
+---------
+问题修复。对已发现的问题进行修复，以完善开发的功能。
+
+Sprint Release
+---------
+将sprint中完成的功能和项目成果发布出来。
+
+Verification
 ====================================================================================
 
 .. image:: images/05_verification_intro.png
 
+Unit Test
+---------
+单元测试。对软件中的最小可测试单元进行检查和验证。
 
-Introduction of Preview
+Function Test
+---------
+功能测试。对产品的各功能进行验证，根据功能测试用例，逐项测试，检查产品是否达到用户要求的功能。
+
+Integration Test
+---------
+集成测试。也叫组装测试或联合测试。在单元测试的基础上，将所有模块按照设计要求（如根据结构图〕组装成为子系统或系统，进行集成测试。
+
+Regression Test
+---------
+回归测试。修改了旧代码后，重新进行测试以确认修改没有引入新的错误或导致其他代码产生错误。
+
+Performance Test
+---------
+性能测试。通过自动化的测试工具模拟多种正常、峰值以及异常负载条件来对系统的各项性能指标进行测试。负载测试和压力测试都属于性能测试，两者可以结合进行。通过负载测试，确定在各种工作负载下系统的性能，目标是测试当负载逐渐增加时，系统各项性能指标的变化情况。压力测试是通过确定一个系统的瓶颈或者不能接收的性能点，来获得系统能提供的最大服务级别的测试。
+
+Acceptance Test
+---------
+验收测试。通过验收测试，以确定是否满足需求规范的要求。
+
+Delivery Test
+---------
+NA
+
+Preview
 ====================================================================================
 .. image:: images/06_preview_intro.png
 
+Preview Demo
+---------
+预演演示。在预演的环境上对所有功能进行演示，并收集反馈。
 
-Introduction of Deploy
+Preview LUT
+---------
+预演LUT。在预演环境上模拟最终用户，对功能进行测试，并收集反馈。
+
+Preview Summary
+---------
+预演总结。对预演演示和LUT的结果进行总结，并给出相应的行动列表。
+
+
+Deploy
 =====================================================================================
 .. image:: images/07_deploy_intro.png
 
+Deploy Pre Checking
+---------
+部署前检查。在部署前对相关因素进行检查，以确保部署没有问题。
 
-Introduction of Operation
+Deploy Env Comparing
+---------
+部署环境比较。对部署的环境和预演的环境进行比较，确定环境没有差异。或者有差异，但是不会对部署结果产生任何影响。
+
+Deploy Launch
+---------
+部署实施。
+
+Deploy Post Confirmation
+---------
+部署后确认。部署完后对部署结果做进一步确认没有任何问题。
+
+Operation
 =====================================================================================
 .. image:: images/08_operation_intro.png
+
+Operation Launch
+---------
+运营实施。实施运营。
+
+Operation Auto Monitor
+---------
+运营自动监控。自动监控运营状况，并产生运营相关数据。
+
+Operation BizData Collection
+---------
+运营商业数据收集。
+
+Operation BizData Anylasis
+---------
+运营商业数据分析。对运营的商业数据进行分析，发现运营问题。
+
+Operation Next Preparation
+---------
+运营下次准备。为接下来的运营做必要准备。
 
 Reference for overall sub taskes
 =====================================================================================
