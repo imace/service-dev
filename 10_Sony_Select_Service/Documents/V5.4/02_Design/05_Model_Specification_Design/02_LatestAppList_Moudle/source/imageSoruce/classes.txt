@@ -1,0 +1,100 @@
+@startuml
+
+title 获取新品列表类图
+
+package "PlayNowService" {
+  class ServiceApi{
+    +ProcessRequest()
+  }
+  class GetNewAppList{
+    +GetNewAppList()
+  }
+  ServiceApi -right--> GetNewAppList
+}
+
+package "PlayNowService.BLL" {
+  class PlayNowService.BLL.PN_AppInfo{
+    +GetNewAppList()
+    #GetListCache()
+    #TryAddCache()
+    #TryAddListCache()
+  }
+  class AppInfoListResult{
+    +ResultCode
+    +TotalCount
+    +AppInfoList
+  }
+  GetNewAppList --> PlayNowService.BLL.PN_AppInfo
+  PlayNowService.BLL.PN_AppInfo -left--> AppInfoListResult
+}
+
+package "PlayNowService.Model" {
+  class PlayNowService.Model.PN_AppInfo{
+    +id
+    +name
+    +packageName
+    +size
+    +description
+    +grade
+    +smallIcon
+    +largeIcon
+    +isFree
+    +price
+    +versionCode
+    +versionName
+    +publisher
+    +updateTime
+    +tag
+    +screenShots
+    +downloadUrl
+    +downloadTime
+    +type
+    +machineTypes
+  }
+  PlayNowService.BLL.PN_AppInfo -right--> PlayNowService.Model.PN_AppInfo
+}
+
+package "PlayNowService.IDAL" {
+  interface PlayNowService.IDAL.IPN_AppInfo{
+    +GetNewAppList()
+    -GetList()
+  }
+  interface PlayNowService.IDAL.IPN_Configuration{
+    +GetConfiguration()
+  }
+
+  PlayNowService.BLL.PN_AppInfo --> PlayNowService.IDAL.IPN_AppInfo
+  PlayNowService.BLL.PN_AppInfo --> PlayNowService.IDAL.IPN_Configuration
+}
+
+package "PlayNowService.DAL" {
+  class PlayNowService.DAL.PN_AppInfo{
+    +GetNewAppList()
+    -GetList()
+    -GetModel()
+    -PrepareModel()
+  }
+  class PN_Configuration{
+    +GetConfiguration()
+  }
+  class DALHelper{
+    +GetHelper()
+    #SqlHelper
+    #SqlHelperLog
+  }
+  PlayNowService.IDAL.IPN_AppInfo <|-- PlayNowService.DAL.PN_AppInfo
+  PlayNowService.IDAL.IPN_Configuration <|-- PN_Configuration
+  PlayNowService.DAL.PN_AppInfo-->DALHelper
+  PN_Configuration-->DALHelper
+  PlayNowService.DAL.PN_AppInfo -right-->PlayNowService.Model.PN_AppInfo
+}
+
+package "PlayNowService.Utility" {
+  enum AppType{
+    App
+    Game
+  }
+  PlayNowService.DAL.PN_AppInfo-->AppType
+}
+
+@enduml

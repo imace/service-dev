@@ -1,0 +1,44 @@
+@startuml
+
+== 获取分类的详细应用列表  ==
+
+Client --> PlayNowService_ServerApi : app.getCategoryDetailList
+activate PlayNowService_ServerApi
+
+PlayNowService_ServerApi --> BLL : PN_AppInfo.getCategoryDetailList
+activate BLL
+
+group Cache disable
+    BLL --> DAL : IDAL.IPN_AppInfo.GetCategoryDetailList
+    activate DAL
+    DAL --> PlayNow.dbo : PN_AppCategory / PN_AppInfo / PN_WindowDownload / PN_Machine
+    activate PlayNow.dbo
+    DAL <-- PlayNow.dbo
+    deactivate PlayNow.dbo
+    BLL <-- DAL
+    deactivate DAL
+
+else Cache enable
+
+    BLL --> BLL : Read From Cache
+
+    group 如果cache中没有数据
+        BLL --> DAL : IDAL.IPN_AppInfo.GetCategoryDetailListByCategoryId
+        activate DAL
+        DAL --> PlayNow.dbo : PN_AppCategory / PN_AppInfo / PN_WindowDownload / PN_Machine
+        activate PlayNow.dbo
+        DAL <-- PlayNow.dbo
+        deactivate PlayNow.dbo
+        BLL <-- DAL
+        deactivate DAL
+        BLL --> BLL : Add data into Cache
+    end
+end
+
+PlayNowService_ServerApi <-- BLL
+deactivate BLL
+
+Client <-- PlayNowService_ServerApi
+deactivate PlayNowService_ServerApi
+
+@enduml

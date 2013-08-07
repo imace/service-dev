@@ -1,0 +1,12 @@
+@startuml
+title 定时调度
+
+(*) --> "读取开关"
+if "是否更新" then
+-->[true] "读取更新条数"
+--> "调用数据库存储过程更新数据库"
+note right: 目前方案有问题，暂时没有动态内用与首页内容排序的存储过程
+else
+-->[false] (*)
+endif
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+
+title 人工干预生效 
+
+package WinService
+class AutoRankingUpdateService:ServiceBase{
+  void UpdateLatestLoop(object sender, ElapsedEventArgs e)
+}
+end package
+
+package PlayNowService.BLL
+class PN_AppPublish:BLHelper{
+  void SyncUpdateTime()
+} 
+end package
+
+
+package PlayNowService.DAL 
+class PN_AppPublish:IPN_AppPublish{
+  void SyncUpdateTime()
+} 
+end package
+ 
+"AutoRankingUpdateService:ServiceBase" -- "PN_AppPublish:BLHelper"
+"PN_AppPublish:BLHelper" -- "PN_AppPublish:IPN_AppPublish" 
+
+
+@enduml

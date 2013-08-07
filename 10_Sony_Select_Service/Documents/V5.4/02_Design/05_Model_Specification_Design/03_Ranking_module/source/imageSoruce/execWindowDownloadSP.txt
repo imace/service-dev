@@ -1,0 +1,31 @@
+@startuml
+
+package "表示层（PlayNowService.UIL）" {
+    class LogImportService {
+        +OnStart()
+        +OnStop()
+    }
+    Note left : 定时服务
+}
+
+package "业务逻辑层（PlayNowService.BLL）" {
+    class BLL_PN_S_Statistic {
+        +ExecWindowDownloadSP()
+    }
+    Note left : 窗口下载量统计
+    LogImportService --> BLL_PN_S_Statistic
+}
+
+interface  IPN_S_Statistic {
+    ExecWindowDownloadSP()
+}
+BLL_PN_S_Statistic --> IPN_S_Statistic
+
+package "数据访问层（PlayNowService.DAL）" {
+    class DAL_PN_S_Statistic {
+        +ExecWindowDownloadSP()
+    }
+    IPN_S_Statistic <|-- DAL_PN_S_Statistic
+}
+
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+title 获取新品列表总体状态图
+
+start
+
+:点击客户端
+进入新品分页;
+
+:选择程序种类
+（游戏或应用）;
+
+:客户端发送
+网络请求;
+
+:app.getNewAppList
+接口响应;
+
+:服务器端返回
+对应新品列表;
+note right
+  更多细节请参照序列图
+end note
+
+:客户端显示;
+
+
+stop
+
+@enduml

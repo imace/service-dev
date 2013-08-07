@@ -1,0 +1,63 @@
+@startuml
+
+Client --> BLL : AutoOrderorFactory.getFactory
+activate BLL
+
+Client <-- BLL : AutoOrderorFactory
+deactivate BLL
+
+Client --> BLL : AutoOrderorFactory.CreateAutoOrderor
+activate BLL
+
+Client <-- BLL : IAutoOrderor
+deactivate BLL
+
+Client --> BLL : BLL.IAutoOrderor.Order
+activate BLL
+
+Note left : 执行轮排 
+
+BLL --> DAL : IDAL.IAutoOrder.GetCategoryIds
+activate DAL
+
+DAL --> PlayNow.dbo : PN_Machine
+activate PlayNow.dbo
+DAL <-- PlayNow.dbo
+deactivate PlayNow.dbo
+
+BLL <-- DAL
+deactivate DAL
+
+BLL --> DAL : IDAL.IAutoOrder.AddParam
+activate DAL
+BLL <-- DAL
+deactivate DAL
+
+BLL --> DAL : IDAL.IAutoOrder.GetOrderedDatas
+activate DAL
+note left : 根据条件从数据集中取出特定方向的特定数量的数据
+
+DAL --> PlayNow.dbo : PN_AppLatestLoop / PN_AppRecommendationOrder
+activate PlayNow.dbo
+DAL <-- PlayNow.dbo
+deactivate PlayNow.dbo
+
+BLL <-- DAL
+deactivate DAL
+
+BLL --> DAL : IDAL.IAutoOrder.SaveOrderedData
+activate DAL
+note left : 更新数据
+
+DAL --> PlayNow.dbo : PN_AppLatestLoop / PN_AppRecommendationOrder
+activate PlayNow.dbo
+DAL <-- PlayNow.dbo
+deactivate PlayNow.dbo
+
+BLL <-- DAL
+deactivate DAL
+
+Client <-- BLL
+deactivate BLL
+
+@enduml

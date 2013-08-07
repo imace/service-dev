@@ -1,0 +1,38 @@
+@startuml
+
+package "表示层（PlayNowService.UIL）" {
+    class ServerApi {
+        +app.getFreeAppList()
+    }
+    Note left : PlayNow Service 对外接口
+}
+
+package "业务逻辑层（PlayNowService.BLL）" {
+    class BLL_PN_WindowDownload {
+        +getFreeList()
+    }
+    Note left : 获取游戏或应用排行列表
+    ServerApi --> BLL_PN_WindowDownload
+}
+
+interface  IPN_WindowDownload {
+    GetRankingList()
+}
+interface  IPN_Configuration {
+    GetConfiguration()
+}
+BLL_PN_WindowDownload --> IPN_WindowDownload
+BLL_PN_WindowDownload --> IPN_Configuration
+
+package "数据访问层（PlayNowService.DAL）" {
+    class DAL_PN_Configuration {
+        +GetConfiguration()
+    }
+    class DAL_PN_WindowDownload {
+        +GetRankingList()
+    }
+    IPN_WindowDownload <|-- DAL_PN_WindowDownload
+    IPN_Configuration <|-- DAL_PN_Configuration
+}
+
+@enduml

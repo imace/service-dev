@@ -1,0 +1,23 @@
+@startuml
+
+title 人工干预设置
+
+PlayNowManager_UI-> PlayNowManager.BLL:  PN_AppPublish.UpdateManualTime
+activate PlayNowManager.BLL
+
+PlayNowManager.BLL-> PlayNowManager.DAL:  PN_AppPublish.UpdateManualTime
+activate PlayNowManager.DAL
+
+PlayNowManager.DAL-> DB: PN_AppPublish(table)
+activate DB
+ 
+DB-> PlayNowManager.DAL:  
+deactivate DB
+
+PlayNowManager.DAL-> PlayNowManager.BLL:  PN_AppPublish.UpdateManualTime
+deactivate PlayNowManager.DAL
+
+PlayNowManager.BLL-> PlayNowManager_UI:  BLL.PN_AppPublish.UpdateManualTime 
+deactivate PlayNowManager.BLL
+
+@enduml

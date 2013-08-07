@@ -1,0 +1,90 @@
+@startuml
+
+== 读取排行榜（包含虚拟下载量设置）  ==
+
+PlayNowManager_UI --> BLL : BLL.IPN_AppAutoRanking.GetWindowRange
+activate BLL
+
+BLL --> DAL : IDAL.IPN_AppAutoRanking.GetWindowRange
+activate DAL
+DAL --> PlayNow.dbo : PN_Configuration
+activate PlayNow.dbo
+DAL <-- PlayNow.dbo
+deactivate PlayNow.dbo
+BLL <-- DAL
+deactivate DAL
+
+PlayNowManager_UI <-- BLL
+deactivate BLL
+
+PlayNowManager_UI --> BLL : BLL.IPN_AppAutoRanking.GetAppVirtualCountList
+activate BLL
+
+BLL --> DAL : IDAL.IPN_AppAutoRanking.GetAppVirtualCountList
+activate DAL
+DAL --> PlayNow.dbo : PN_WindowDownload / PN_Virtual / PN_AppInfo / PN_Machine
+activate PlayNow.dbo
+DAL <-- PlayNow.dbo
+deactivate PlayNow.dbo
+BLL <-- DAL
+deactivate DAL
+
+
+PlayNowManager_UI <-- BLL
+deactivate BLL
+
+== 添加虚拟下载量设置  ==
+
+PlayNowManager_UI --> BLL : BLL.IPN_AppAutoRanking.UpdateVirtualCount
+activate BLL
+
+group 如果虚拟量配置不存在
+    BLL --> DAL : IDAL.IPN_AppAutoRanking.AddRecord
+    activate DAL
+    DAL --> PlayNow.dbo : PN_VIRTUAL
+    activate PlayNow.dbo
+    DAL <-- PlayNow.dbo
+    deactivate PlayNow.dbo
+    BLL <-- DAL
+    deactivate DAL
+end
+
+PlayNowManager_UI <-- BLL
+deactivate BLL
+
+== 修改虚拟下载量设置  ==
+
+PlayNowManager_UI --> BLL : BLL.IPN_AppAutoRanking.UpdateVirtualCount
+activate BLL
+group 如果虚拟量配置已经存在，并且虚拟量为有效值
+    BLL --> DAL : IDAL.IPN_AppAutoRanking.UpdateVirtualCount
+    activate DAL
+    DAL --> PlayNow.dbo : PN_Virtual
+    activate PlayNow.dbo
+    DAL <-- PlayNow.dbo
+    deactivate PlayNow.dbo
+    BLL <-- DAL
+    deactivate DAL
+end
+
+PlayNowManager_UI <-- BLL
+deactivate BLL
+
+== 删除虚拟下载量设置  ==
+
+PlayNowManager_UI --> BLL : BLL.IPN_AppAutoRanking.UpdateVirtualCount
+activate BLL
+group 如果虚拟量配置已经存在，并且虚拟量为无效值（删除或设置为0）
+    BLL --> DAL : IDAL.IPN_AppAutoRanking.DeleteRecord
+    activate DAL
+    DAL --> PlayNow.dbo : PN_Virtual
+    activate PlayNow.dbo
+    DAL <-- PlayNow.dbo
+    deactivate PlayNow.dbo
+    BLL <-- DAL
+    deactivate DAL
+end
+
+PlayNowManager_UI <-- BLL
+deactivate BLL
+@enduml

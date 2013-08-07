@@ -1,0 +1,15 @@
+@startuml
+title 调度更新固定内容发布时间
+
+(*)-->"启动更新程序"
+if "是否为周一" then
+-->[true]"取出发布时间"
+if "是否大于更新时间" then
+-->[true]"更新时间修改为发布时间"
+else
+-->[false]"发布时间修改给更新时间"
+endif
+else
+-->[false](*)
+endif
+@enduml

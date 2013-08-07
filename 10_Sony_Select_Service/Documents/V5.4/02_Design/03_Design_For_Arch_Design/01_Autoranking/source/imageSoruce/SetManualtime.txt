@@ -1,0 +1,9 @@
+@startuml
+
+title 人工干预设置
+
+(*)-->"读取系统当前时间"
+-->"获取当前应用ID"
+-->"更新数据库中表PN_AppPublish"
+
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+
+title 人工干预生效 
+
+(*)-->"读取更新时间"
+note right: 从配置文件中读取更新时间
+-->"读取系统时间"
+if "是否等于更新时间" then
+-->[true]"读取当前日期"
+-->"读取生效日期"
+note left: 从配置文件中读取生效时间（周一到周日）
+if "当前日期是否等于生效日期" then
+-->[true]"访问数据访问接口"
+-->"更新PN_AppPublish中的UpdateTime"
+else
+-->(*)
+endif 
+else
+-->(*)
+endif 
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+
+title 获取新品列表服务器端序列图
+
+participant Client
+participant ServiceApi
+participant BLL
+participant DAL
+participant PlayNow.dbo
+
+Client->ServiceApi:app.getNewAppList
+ServiceApi->BLL:PN_AppInfo.GetNewAppList()
+activate BLL #FFBBBB
+BLL->BLL:PN_AppInfo.GetListCache()
+ALT ListCached
+  BLL-->ServiceApi:List<Model.PN_AppInfo>
+else ListNotCached
+  BLL->DAL:PN_Configuration.GetConfiguration()
+  activate BLL #DarkSalmon
+    activate DAL
+      DAL->PlayNow.dbo:PN_Configuration
+      PlayNow.dbo->DAL:
+      DAL->BLL:Model.PN_Configuration
+    deactivate DAL
+    BLL->DAL:PN_AppInfo.GetNewAppList
+    DAL->PlayNow.dbo:PN_AppLatestLoop/PN_Machine/PN_AppLatestLoop/PN_AppPublish
+      note left:关联查询得到我们需要的新品列表
+    PlayNow.dbo->DAL:
+    DAL->BLL:List<PlayNowService.Model.PN_AppInfo>
+  deactivate BLL
+  ALT EmptyAppList 
+    BLL-->ServiceApi:JavaScriptSerializer.Serialize(errMsg)
+  else NotEmptyAppList 
+    BLL->BLL:PN_AppInfo.TryAddCache()/PN_AppInfo.TryAddListCache()
+    BLL->ServiceApi:JavaScriptSerializer.Serialize()
+  end
+end
+deactivate BLL
+ServiceApi->Client:String
+
+@enduml

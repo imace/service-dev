@@ -1,0 +1,30 @@
+@startuml
+
+title 人工干预生效 
+
+WinService -> AutoRankingUpdateService: Start UpdateService
+AutoRankingUpdateService -> AutoRankingUpdateService: getAppSettingsTime(Get update Time)
+    group Timer  
+         
+		alt update time
+			AutoRankingUpdateService-> PlayNowService.BLL:  PN_AppPublish.SyncUpdateTime
+			activate PlayNowService.BLL
+
+			PlayNowService.BLL-> PlayNowService.DAL:  PN_AppPublish.SyncUpdateTime
+			activate PlayNowService.DAL
+			
+			PlayNowService.DAL-> DB: PN_AppPublish and PN_AppInfo(table)			
+			activate DB
+			DB-> PlayNowService.DAL:  
+			deactivate DB
+			PlayNowService.DAL-> PlayNowService.BLL
+			deactivate PlayNowService.DAL
+
+			PlayNowService.BLL-> AutoRankingUpdateService
+			deactivate PlayNowService.BLL 
+		end 
+    end 
+	
+@enduml
+
+ 

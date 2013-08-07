@@ -1,0 +1,38 @@
+@startuml
+
+title 人工干预设置
+
+package UI表示层
+class AppDetail:BasePage{
+  void btnManual_Click()
+}
+end package
+
+package PlayNowManager.BLL
+class PN_AppPublish:BLHelper{
+  int UpdateManualTime()
+} 
+end package
+
+package 模型层
+class PN_AppPublish{
+int  Id
+int  AppId
+DateTime  ManualTime
+DateTime  UpdateTime
+int Status
+}
+end package
+
+package PlayNowManager.DAL 
+class PN_AppPublish:IPN_AppPublish{
+  int UpdateManualTime()
+} 
+end package
+ 
+"AppDetail:BasePage" -- "PN_AppPublish:BLHelper"
+"AppDetail:BasePage" -- "PN_AppPublish" 
+"PN_AppPublish:BLHelper" -- "PN_AppPublish:IPN_AppPublish" 
+
+
+@enduml

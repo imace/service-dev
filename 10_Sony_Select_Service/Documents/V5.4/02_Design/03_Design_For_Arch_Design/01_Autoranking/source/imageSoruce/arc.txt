@@ -1,0 +1,58 @@
+@startuml
+
+
+
+package "PlayNowService" {
+[新品模块]
+[首页模块]
+[分类模块]
+[配置模块]
+[AutoRanking 任务执行模块]
+[轮排模块]
+[重新发布模块]
+[排行榜模块] 
+[DAO桥连接(PlayNowService)]  
+}
+
+
+
+package "PlayNowManager" {
+[AutoRanking 管理界面]
+[虚拟下载列表模块]
+[应用重新发布模块]
+[配置管理模块]
+[DAO桥连接(PlayNowManager)]
+}
+
+[DB] 
+
+[AutoRanking 管理界面] -->[虚拟下载列表模块]
+[AutoRanking 管理界面] -->[应用重新发布模块]
+[AutoRanking 管理界面] -->[配置管理模块]
+
+[配置管理模块] --> [DAO桥连接(PlayNowManager)]
+[应用重新发布模块] --> [DAO桥连接(PlayNowManager)]
+[虚拟下载列表模块] --> [DAO桥连接(PlayNowManager)]
+
+[DAO桥连接(PlayNowManager)]-->[DB]
+
+
+[新品模块]-->[AutoRanking 任务执行模块] 
+[首页模块]-->[AutoRanking 任务执行模块] 
+[排行榜模块]-->[AutoRanking 任务执行模块]  
+[分类模块]-->[DAO桥连接(PlayNowService)] 
+
+[AutoRanking 任务执行模块] --> [轮排模块]
+[AutoRanking 任务执行模块] --> [重新发布模块]
+[AutoRanking 任务执行模块] --> [配置模块]
+ 
+
+[轮排模块] --> [DAO桥连接(PlayNowService)] 
+[重新发布模块] --> [DAO桥连接(PlayNowService)] 
+[配置模块]   --> [DAO桥连接(PlayNowService)] 
+[AutoRanking 任务执行模块] --> [DAO桥连接(PlayNowService)] 
+
+[DAO桥连接(PlayNowService)] -->[DB] 
+ 
+ 
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+
+PlayNow_SP_WindowDownloadStatistic --> PlayNow.dbo : PN_Configuration / PN_ConfigurationType
+note left: 取滑动时间窗口
+PlayNow_SP_WindowDownloadStatistic <-- PlayNow.dbo
+
+PlayNow_SP_WindowDownloadStatistic <-- PlayNow_SP_WindowDownloadStatistic : DECLARE startTime and endTime
+note left: 设置统计开始日期，结束日期
+
+group 排行榜计算
+    group 联合查询表PN_AppInfo和PN_Machine得到全表
+    PlayNow_SP_WindowDownloadStatistic --> PlayNow.dbo : PN_AppInfo / PN_Machine
+    PlayNow_SP_WindowDownloadStatistic <-- PlayNow.dbo
+    end
+
+    group 左联虚拟量表得到统计排行下载量中的虚拟下载量部分
+    PlayNow_SP_WindowDownloadStatistic --> PlayNow.dbo : PN_Virtual
+    PlayNow_SP_WindowDownloadStatistic <-- PlayNow.dbo
+    end
+
+    group 全联PN_S_CP统计真实下载量和排行下载量中的真实下载量部分
+    PlayNow_SP_WindowDownloadStatistic --> PlaynowLog.dbo : PN_S_CP
+    PlayNow_SP_WindowDownloadStatistic <-- PlaynowLog.dbo
+    end
+
+    PlayNow_SP_WindowDownloadStatistic --> PlayNow.dbo : INSERT INTO PN_WindowDownload
+    note left : 用实际下载量和干预后下载量更新窗口下载量表
+end
+
+@enduml

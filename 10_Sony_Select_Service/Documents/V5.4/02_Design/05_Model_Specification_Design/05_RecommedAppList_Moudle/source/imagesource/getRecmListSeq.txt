@@ -1,0 +1,47 @@
+@startuml
+
+title 获取首页推荐列表序列图
+
+participant Client
+participant ServiceApi
+participant BLL
+participant DAL
+participant PlayNow.dbo
+
+Client->ServiceApi:app.getList
+activate ServiceApi
+ServiceApi->BLL:PN_AppInfo.GetAppList()
+activate BLL #FFBBBB
+BLL->BLL:PN_AppInfo.GetList()
+ALT EnableCache
+  BLL->DAL:PN_AppInfo.GetList()
+  activate BLL #DarkSalmon
+    DAL->DAL:PN_AppInfo.GetMechineIdFromMechineType()
+    DAL->PlayNow.dbo:PN_AppRecommendationOrder/PN_AppInfo
+    PlayNow.dbo->DAL:
+    DAL->DAL:PN_AppInfo.GetList()
+    DAL->BLL:List<PlayNowService.Model.PN_AppInfo>
+  deactivate BLL
+else DisableCache
+  BLL->BLL:PN_AppInfo.GetListByCache()
+  BLL->BLL:PN_AppInfo.GetListCache()
+  ALT ListCached
+    BLL-->ServiceApi:List<Model.PN_AppInfo>
+  else ListNotCached
+    BLL->DAL:PN_AppInfo.GetListByAppRecommendIdAndMachineType()
+    activate BLL #DarkSalmon
+    activate DAL
+      DAL->PlayNow.dbo:PN_AppRecommendationOrder/PN_Machine/PN_AppInfo
+      PlayNow.dbo->DAL:
+      DAL->DAL:PN_AppInfo.GetList()
+      DAL->BLL:List<PlayNowService.Model.PN_AppInfo>
+    deactivate DAL
+    deactivate BLL
+  end
+end
+BLL->ServiceApi:JavaScriptSerializer.Serialize()
+deactivate BLL
+ServiceApi->Client:String
+deactivate ServiceApi
+
+@enduml

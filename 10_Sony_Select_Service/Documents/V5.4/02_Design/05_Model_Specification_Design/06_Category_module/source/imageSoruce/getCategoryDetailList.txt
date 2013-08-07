@@ -1,0 +1,32 @@
+@startuml
+
+package "表示层（PlayNowService.UIL）" {
+    class ServerApi {
+        +app.getCategoryDetailList()
+    }
+    Note left : PlayNow Service 对外接口
+}
+
+package "业务逻辑层（PlayNowService.BLL）" {
+    class BLL_PN_AppInfo {
+        +getCategoryDetailList()
+    }
+    Note left : 获取分类的详细应用列表
+    ServerApi --> BLL_PN_AppInfo
+}
+
+interface  IPN_AppInfo {
+    GetCategoryDetailList()
+    GetCategoryDetailListByCategoryId()
+}
+BLL_PN_AppInfo --> IPN_AppInfo
+
+package "数据访问层（PlayNowService.DAL）" {
+    class DAL_PN_AppInfo {
+        +GetCategoryDetailList()
+        +GetCategoryDetailListByCategoryId()
+    }
+    IPN_AppInfo <|-- DAL_PN_AppInfo
+}
+
+@enduml

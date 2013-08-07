@@ -1,0 +1,45 @@
+@startuml
+
+package "业务逻辑层（PlayNowService.BLL）" {
+    abstract class AutoOrderorFactory {
+        {static} AutoOrderorFactory getFactory()
+        {abstract} IAutoOrderor CreateAutoOrderor()
+    }
+
+    class DefaultAutoOrderorFactory {
+        +CreateAutoOrderor()
+    }
+
+    AutoOrderorFactory <|-- DefaultAutoOrderorFactory
+    interface IAutoOrderor {
+        Order()
+    }
+
+    class AutoOrderor {
+        +Order()
+    }
+
+    Note left : 轮排模块
+    IAutoOrderor <|-- AutoOrderor
+    DefaultAutoOrderorFactory --> AutoOrderor
+}
+
+interface  IAutoOrder {
+    GetCategoryIds()
+    AddParam()
+    GetOrderedDatas()
+    SaveOrderedData()
+}
+AutoOrderor --> IAutoOrder
+
+package "数据访问层（PlayNowService.DAL）" {
+    class AutoOrder {
+        +GetCategoryIds()
+        +AddParam()
+        +GetOrderedDatas()
+        +SaveOrderedData()
+    }
+    IAutoOrder <|-- AutoOrder
+}
+
+@enduml

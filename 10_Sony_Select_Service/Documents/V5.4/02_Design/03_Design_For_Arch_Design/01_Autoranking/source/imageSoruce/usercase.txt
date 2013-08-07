@@ -1,0 +1,22 @@
+@startuml 
+
+user1 << manager >>
+user2 << Application >>
+(固定内容与动态内容) as (新品) << 新品列表 >>
+ 
+left to right direction
+ 
+user1 -left-> (人工干预发布时间)
+user1 --> (虚拟下载量设置)
+user1 --> (轮排数量的设置)
+user1 --> (轮排开关的设置)
+user1 -up-> (时间窗口的范围设置)
+user1 -down-> (排行榜容量设置)
+
+user2 -left-> (新品) 
+user2 -up-> (排行列表)
+user2 -right-> (首页列表)
+user2 -down-> (分类内容列表)
+
+ 
+@enduml

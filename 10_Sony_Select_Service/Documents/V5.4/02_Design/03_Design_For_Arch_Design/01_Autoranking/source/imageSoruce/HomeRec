@@ -1,0 +1,12 @@
+@startuml
+
+[PlaynowService系统] as ps
+[PlaynowManager系统] as pm
+[定时调度系统] as timer
+[DB系统] as db
+
+ps --> db
+timer --> db
+pm --> db
+
+@enduml

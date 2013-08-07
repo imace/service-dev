@@ -1,0 +1,20 @@
+@startuml
+
+database "PlayNow" {
+  frame “新品列表”{
+    [PN_AppLatestLoop]
+      note right of [PN_AppLatestLoop]
+        存储上周发布内容
+      end note
+    [PN_Publish]
+      note right of [PN_Publish]
+        获取某时间段内除上周发布
+        的内容,本周内容排列局前
+      end note
+  }
+  [PN_AppInfo] <--> [PN_Machine] : MachineTypes
+  [PN_Publish] <--> [PN_AppInfo] : AppId
+  [PN_AppLatestLoop] <--> [PN_Machine] : MachineId
+}
+
+@enduml

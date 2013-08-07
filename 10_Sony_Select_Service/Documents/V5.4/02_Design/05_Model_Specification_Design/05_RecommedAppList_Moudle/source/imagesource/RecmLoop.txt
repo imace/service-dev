@@ -1,0 +1,18 @@
+@startuml
+->WinService:start
+WinService->WinService:Timer.Start()
+group Timer
+  WinService->DAL:PN_Configuration.GetConfiguration()
+  DAL->PlayNow.dbo:PN_Configration/PN_ConfigurationType
+  PlayNow.dbo->DAL
+  DAL->WinService:bool isLoopEnable
+  ALT Swicher On & On Time
+    WinService->DAL:PN_Configuration.GetConfiguration()
+    DAL->PlayNow.dbo:PN_Configration/PN_ConfigurationType
+    PlayNow.dbo->DAL
+    DAL->WinService:int LoopSize
+    WinService->IAutoOrderor:AutoOrderorFactory.getFactory().CreateAutoOrderor()
+    IAutoOrderor->PlayNow.dbo:PN_AppRecommendationOrder
+  end
+end
+@enduml
