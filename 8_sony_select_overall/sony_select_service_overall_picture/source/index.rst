@@ -12,6 +12,12 @@ Overall Docs for Sony Select Service
 
    
    01_overview.rst
+   02_requirement.rst
+   03_design.rst
+   04_development.rst
+   05_test.rst
+   06_deployment.rst
+   07_operation.rst
    99_others.rst
 
 Indices and tables
