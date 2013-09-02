@@ -1,0 +1,128 @@
+@startuml
+== ÐÂÔöËÑË÷¹Ø¼ü×Ö ==
+
+PlayNowManger_UI  -> BLL:PN_SearchKeyWords().Exists
+	activate BLL
+	alt KeyWord exist
+		BLL --> PlayNowManger_UI:exist the same keyword	
+		deactivate BLL
+	else Keyword not exist
+		
+		PlayNowManger_UI -> BLL:PN_SearchKeyWords.Add
+		activate BLL
+			BLL -> DAL: PN_SearchKeyWords.Add
+			activate DAL
+				DAL -> PlayNow.dbo: PN_SearchKeyWords
+				activate PlayNow.dbo
+					
+				PlayNow.dbo --> DAL
+				deactivate PlayNow.dbo
+			DAL --> BLL
+			deactivate DAL
+		BLL --> PlayNowManger_UI
+		deactivate BLL
+		alt add MachineTypes to KeyWords
+		
+			PlayNowManger_UI -> BLL: PN_SearchKeyWordsMachine.Add
+			activate BLL
+			BLL -> DAL: PN_SearchKeyWordsMachine.Add
+			activate DAL
+				DAL -> PlayNow.dbo: PN_SearchKeyWordsMachine
+				activate PlayNow.dbo
+					
+				PlayNow.dbo --> DAL
+				deactivate PlayNow.dbo
+			DAL --> BLL
+			deactivate DAL
+			BLL --> PlayNowManger_UI
+			deactivate BLL
+		end	
+	end		
+		
+
+
+== »ñÈ¡ËÑË÷¹Ø¼ü×ÖÁÐ±í ==
+
+PlayNowManger_UI  -> BLL:PN_SearchKeyWords.GetList
+activate BLL
+	BLL -> DAL: PN_SearchKeyWords.GetList
+	activate DAL
+		DAL -> PlayNow.dbo: PN_SearchKeyWords/PN_SearchKeyWordsMachine/PN_Machine
+		activate PlayNow.dbo
+
+		PlayNow.dbo --> DAL
+		deactivate PlayNow.dbo
+	DAL --> BLL
+	deactivate DAL
+
+BLL --> PlayNowManger_UI
+deactivate BLL
+
+== ÐÞ¸ÄËÑË÷¹Ø¼ü×Ö ==
+PlayNowManger_UI  -> BLL:PN_SearchKeyWords().Exists
+activate BLL
+	alt KeyWord exist
+		BLL --> PlayNowManger_UI:exist the same keyword	
+	deactivate BLL
+	else Keyword not exist
+		
+		PlayNowManger_UI -> BLL:PN_SearchKeyWords.Update
+			activate BLL
+			BLL -> DAL: PN_SearchKeyWords.Update
+			activate DAL
+				DAL -> PlayNow.dbo: PN_SearchKeyWords
+				activate PlayNow.dbo
+					
+				PlayNow.dbo --> DAL
+				deactivate PlayNow.dbo
+			DAL --> BLL
+			deactivate DAL
+			BLL --> PlayNowManger_UI
+			deactivate BLL
+		PlayNowManger_UI -> BLL: PN_SearchKeyWordsMachine.Delete
+			activate BLL
+			BLL -> DAL: PN_SearchKeyWordsMachine.Delete
+			activate DAL
+				DAL -> PlayNow.dbo: PN_SearchKeyWordsMachine
+				activate PlayNow.dbo
+					
+				PlayNow.dbo --> DAL
+				deactivate PlayNow.dbo
+			DAL --> BLL
+			deactivate DAL
+			BLL --> PlayNowManger_UI
+			deactivate BLL
+		PlayNowManger_UI -> BLL: PN_SearchKeyWordsMachine.Add
+			activate BLL
+			BLL -> DAL: PN_SearchKeyWordsMachine.Add
+			activate DAL
+				DAL -> PlayNow.dbo: PN_SearchKeyWordsMachine
+				activate PlayNow.dbo
+					
+				PlayNow.dbo --> DAL
+				deactivate PlayNow.dbo
+			DAL --> BLL
+			deactivate DAL
+			BLL --> PlayNowManger_UI
+			deactivate BLL
+	end		
+		
+
+
+== É¾³ýËÑË÷¹Ø¼ü×Ö ==
+PlayNowManger_UI  -> BLL:PN_SearchKeyWords.Delete
+activate BLL
+	BLL -> DAL: PN_SearchKeyWords.Delete
+	activate DAL
+		DAL -> PlayNow.dbo: PN_SearchKeyWords/PN_SearchKeyWordsMachine
+		activate PlayNow.dbo
+
+		PlayNow.dbo --> DAL
+		deactivate PlayNow.dbo
+	DAL --> BLL
+	deactivate DAL
+
+BLL --> PlayNowManger_UI
+deactivate BLL
+
+@enduml

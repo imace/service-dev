@@ -1,0 +1,44 @@
+@startuml
+Client -> PlayNowService_ServerApi:app.getSearchKeywords
+activate PlayNowService_ServerApi
+	PlayNowService_ServerApi  -> BLL:PN_SearchKeyWords().GetList
+	activate BLL	
+			alt disableCache
+				BLL -> DAL:PN_SearchKeyWords.GetList
+				activate DAL
+					DAL -> PlayNow.dbo: PN_SearchKeyWords/PN_SearchKeyWordsMachine/PN_Machine
+					activate PlayNow.dbo
+					PlayNow.dbo --> DAL
+					deactivate  PlayNow.dbo	
+				DAL --> BLL
+				deactivate DAL	
+			else enableCahe
+				alt Data Exist in Cache
+					BLL --> BLL:BLHelper.GetListCache
+				else Data Not Exist in Cache
+					BLL -> DAL:PN_SearchKeyWords.GetList
+					activate DAL
+						DAL -> PlayNow.dbo: PN_SearchKeyWords/PN_SearchKeyWordsMachine/PN_Machine
+						activate PlayNow.dbo
+						PlayNow.dbo --> DAL
+						deactivate  PlayNow.dbo
+					DAL --> BLL
+					Deactivate DAL
+					BLL -> BLL:BLHelper.TryAddListCache					
+					
+
+				end
+					
+			end	
+		
+	BLL --> PlayNowService_ServerApi
+	deactivate BLL
+PlayNowService_ServerApi --> Client
+deactivate PlayNowService_ServerApi
+
+
+
+
+
+
+@enduml

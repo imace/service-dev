@@ -1,0 +1,66 @@
+@startuml
+package "表示层(PlayNowManager.UIL)"{
+	Enum PlayNowManager{
+		Keywords.aspx
+	}
+	note left of PlayNowManager:管理后台用户界面
+}
+
+
+
+package "业务逻辑层(PlayNowManager.BLL)"{
+	class BLL_PN_SearchKeyWords{
+		+Add()
+		+Update()
+		+Delete()
+		+GetList()
+		+Exist()
+	}
+	
+
+	class BLL_PN_SearchKeyWordsMachine{
+		+Add()
+		+Delete()
+	}
+
+	note left of BLL_PN_SearchKeyWords:维护搜索关键字基本信息
+	note right of BLL_PN_SearchKeyWordsMachine:维护搜索关键字与机型配置信息
+}
+PlayNowManager --> BLL_PN_SearchKeyWords
+PlayNowManager --> BLL_PN_SearchKeyWordsMachine
+
+interface IDAL_IPN_SearchKeyWords{
+		Add()
+		Update()
+		Delete()
+		GetList()
+		Exist()
+}
+
+interface IDAL_IPN_SearchKeyWordsMachine{
+		Add()
+		Delete()
+}
+
+BLL_PN_SearchKeyWords --> IDAL_IPN_SearchKeyWords
+BLL_PN_SearchKeyWordsMachine --> IDAL_IPN_SearchKeyWordsMachine
+
+package "数据访问层(PlayNowManager.DAL)"{
+	class DAL_PN_SearchKeyWords{
+		+Add()
+		+Update()
+		+Delete()
+		+GetList()
+		+Exist()
+	}
+	
+	class DAL_PN_SearchKeyWordsMachine{
+		+Add()
+		+Delete()
+	}
+}
+
+IDAL_IPN_SearchKeyWords <|-- DAL_PN_SearchKeyWords
+IDAL_IPN_SearchKeyWordsMachine <|-- DAL_PN_SearchKeyWordsMachine
+
+@enduml

@@ -1,0 +1,33 @@
+@startuml
+package "表示层(PlayNowService.UIL)"{
+	class ServerApi{
+		+app.getSearchKeywords()
+	}
+	note left of ServerApi:PlayNow Service对外接口
+}
+
+
+
+package "业务逻辑层(PlayNowService.BLL)"{
+	class BLL_PN_SearchKeyWords{
+		+GetList(Hashtable hbParams);
+	}
+	note left of BLL_PN_SearchKeyWords:根据搜索关键字列表
+}
+ServerApi --> BLL_PN_SearchKeyWords
+
+interface IDAL_IPN_SearchKeyWords{
+		+GetList(Hashtable hbParams);
+}
+
+BLL_PN_SearchKeyWords --> IDAL_IPN_SearchKeyWords
+
+package "数据访问层(PlayNowService.DAL)"{
+	class DAL_PN_SearchKeyWords{
+		+GetList(Hashtable hbParams);
+	}
+}
+
+IDAL_IPN_SearchKeyWords <|-- DAL_PN_SearchKeyWords
+
+@enduml

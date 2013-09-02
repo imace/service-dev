@@ -1,0 +1,20 @@
+UI展示
+##################
+图中用框表示的部分，是feature新增的功能，其它为系统原有功能
+
+* 搜索关键字新增
+.. image:: _static/searchKeywordsAdd1.png
+.. image:: _static/searchKeywordsAdd2.png
+
+
+* 搜索关键字查询
+.. image:: _static/searchKeywordsQuery1.png
+.. image:: _static/searchKeywordsQuery2.png
+.. image:: _static/searchKeywordsList.png
+
+* 搜索关键字修改
+.. image:: _static/searchKeywordsUpdate.png
+
+
+
+

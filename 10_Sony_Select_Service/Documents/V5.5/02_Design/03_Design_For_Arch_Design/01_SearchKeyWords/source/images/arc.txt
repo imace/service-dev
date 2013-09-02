@@ -1,0 +1,27 @@
+@startuml
+
+
+package "PlayNowService" {
+[搜索关键字模块] 
+[DAO桥连接(PlayNowService)]  
+}
+
+
+package "PlayNowManager" {
+[搜索关键字管理模块]
+[DAO桥连接(PlayNowManager)]
+}
+
+[DB]
+
+[搜索关键字管理模块] --> [DAO桥连接(PlayNowManager)]
+
+[DAO桥连接(PlayNowManager)]-->[DB] 
+
+
+[搜索关键字模块]-->[DAO桥连接(PlayNowService)] 
+[DAO桥连接(PlayNowService)] -->[DB]
+
+
+
+@enduml

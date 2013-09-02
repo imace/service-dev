@@ -1,0 +1,11 @@
+@startuml
+user1 << Manager >>
+user2 << Application >>
+
+left to right direction
+
+user1  --> (配置管理搜索关键字)
+
+user2  --> (按机型获取搜索关键字列表)
+
+@enduml
