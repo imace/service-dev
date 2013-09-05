@@ -1,0 +1,11 @@
+﻿@startuml 
+
+user1 << manager >>
+user2 << Application >>
+
+left to right direction
+user1 --> (用户评论管理)
+user2 --> (添加用户评论)
+user2 --> (获取用户评论)
+ 
+@enduml
