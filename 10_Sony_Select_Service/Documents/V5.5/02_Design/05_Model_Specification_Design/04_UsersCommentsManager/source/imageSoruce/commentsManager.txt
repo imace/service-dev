@@ -1,0 +1,42 @@
+@startuml
+
+package "表示层（PlayNowManager.UIL）" {
+    enum PlayNowManager_UI {
+        AppComment.aspx
+    }
+    Note left : 应用评论管理用户界面
+}
+
+package "业务逻辑层（PlayNowManager.BLL）" {
+    interface BLL_IPN_AppComment {
+        GetCommentsList()
+        GetExportCommentsList()
+        Delete()
+    }
+    class BLL_PN_AppComment {
+        +GetCommentsList()
+        +GetExportCommentsList()
+        +Delete()
+    }
+    Note left : 查询/删除应用评论
+    BLL_IPN_AppComment <|-- BLL_PN_AppComment
+    PlayNowManager_UI --> BLL_IPN_AppComment
+}
+
+interface  IPN_AppComment {
+        GetCommentsList()
+        GetExportCommentsList()
+        Delete()
+}
+BLL_PN_AppComment --> IPN_AppComment
+
+package "数据访问层（PlayNowManager.DAL）" {
+    class DAL_PN_AppComment {
+        +GetCommentsList()
+        +GetExportCommentsList()
+        +Delete()
+    }
+    IPN_AppComment <|-- DAL_PN_AppComment
+}
+
+@enduml
