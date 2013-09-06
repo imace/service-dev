@@ -1,0 +1,56 @@
+@startuml
+
+== 添加应用评论  ==
+Client --> PlayNowService_ServerApi : app.addComment
+activate PlayNowService_ServerApi
+
+PlayNowService_ServerApi --> BLL : PN_AppComment.Add
+activate BLL
+
+    BLL --> DAL : IDAL.IPN_Machine.GetModelByType
+    activate DAL
+    DAL --> PlayNow.dbo : PN_Machine
+    activate PlayNow.dbo
+    DAL <-- PlayNow.dbo
+    deactivate PlayNow.dbo
+    BLL <-- DAL
+    deactivate DAL
+
+    BLL --> DAL : IDAL.IPN_AppComment.Add
+    activate DAL
+    DAL --> PlayNow.dbo : PN_AppComment
+    activate PlayNow.dbo
+    DAL <-- PlayNow.dbo
+    deactivate PlayNow.dbo
+    BLL <-- DAL
+    deactivate DAL
+
+PlayNowService_ServerApi <-- BLL
+deactivate BLL
+
+Client <-- PlayNowService_ServerApi
+deactivate PlayNowService_ServerApi
+
+== 获取应用评论  ==
+Client --> PlayNowService_ServerApi : app.getComment
+activate PlayNowService_ServerApi
+
+PlayNowService_ServerApi --> BLL : PN_AppComment.GetList
+activate BLL
+
+    BLL --> DAL : IDAL.IPN_AppComment.GetList
+    activate DAL
+    DAL --> PlayNow.dbo : PN_AppComment / PN_Machine
+    activate PlayNow.dbo
+    DAL <-- PlayNow.dbo
+    deactivate PlayNow.dbo
+    BLL <-- DAL
+    deactivate DAL
+
+PlayNowService_ServerApi <-- BLL
+deactivate BLL
+
+Client <-- PlayNowService_ServerApi
+deactivate PlayNowService_ServerApi
+
+@enduml

@@ -1,0 +1,45 @@
+@startuml
+
+package "表示层（PlayNowService.UIL）" {
+    class ServerApi {
+        +app.getComment()
+        +app.addComment()
+    }
+    Note left : PlayNow Service 对外接口
+}
+
+package "业务逻辑层（PlayNowService.BLL）" {
+    class BLL_PN_AppComment {
+        +GetList()
+        +Add()
+    }
+    Note left : 添加&获取应用评论
+    ServerApi --> BLL_PN_AppComment
+}
+
+interface  IPN_AppComment {
+    GetList()
+    Add()
+}
+
+interface  IPN_Machine {
+    GetModelByType()
+}
+
+BLL_PN_AppComment --> IPN_AppComment
+BLL_PN_AppComment --> IPN_Machine
+
+package "数据访问层（PlayNowService.DAL）" {
+    class DAL_PN_AppComment {
+        +GetList()
+        +Add()
+    }
+    IPN_AppComment <|-- DAL_PN_AppComment
+
+    class DAL_PN_Machine {
+        +GetModelByType()
+    }
+    IPN_Machine <|-- DAL_PN_Machine
+}
+
+@enduml
