@@ -1,0 +1,26 @@
+﻿@startuml
+
+package "PlayNowService" {
+[用户评论模块]
+[DAO桥连接(PlayNowService)]  
+}
+
+package "PlayNowManager" {
+[评论管理界面]
+[评论管理模块]
+[DAO桥连接(PlayNowManager)]
+}
+
+[DB] 
+
+[评论管理界面] --> [评论管理模块]
+
+[评论管理模块] --> [DAO桥连接(PlayNowManager)]
+
+[DAO桥连接(PlayNowManager)]-->[DB]
+
+[用户评论模块] --> [DAO桥连接(PlayNowService)] 
+
+[DAO桥连接(PlayNowService)] -->[DB] 
+ 
+@enduml
