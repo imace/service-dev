@@ -1,0 +1,54 @@
+@startuml
+
+== 查询应用评论  ==
+
+PlayNowManager_UI --> BLL : BLL.IPN_AppComment.GetCommentsList
+activate BLL
+
+BLL --> DAL : IDAL.IPN_AppComment.GetCommentsList
+activate DAL
+DAL --> PlayNow.dbo : PN_AppComment / PN_Machine / PN_AppInfo
+activate PlayNow.dbo
+DAL <-- PlayNow.dbo
+deactivate PlayNow.dbo
+BLL <-- DAL
+deactivate DAL
+
+PlayNowManager_UI <-- BLL
+deactivate BLL
+
+== 导出查询结果  ==
+
+PlayNowManager_UI --> BLL : BLL.IPN_AppComment.GetExportCommentsList
+activate BLL
+
+BLL --> DAL : IDAL.IPN_AppComment.GetExportCommentsList
+activate DAL
+DAL --> PlayNow.dbo : PN_AppComment / PN_Machine / PN_AppInfo
+activate PlayNow.dbo
+DAL <-- PlayNow.dbo
+deactivate PlayNow.dbo
+BLL <-- DAL
+deactivate DAL
+
+PlayNowManager_UI <-- BLL
+deactivate BLL
+
+== 删除应用评论  ==
+
+PlayNowManager_UI --> BLL : BLL.IPN_AppComment.Delete
+activate BLL
+
+BLL --> DAL : IDAL.IPN_AppComment.Delete
+activate DAL
+DAL --> PlayNow.dbo : PN_AppComment
+activate PlayNow.dbo
+DAL <-- PlayNow.dbo
+deactivate PlayNow.dbo
+BLL <-- DAL
+deactivate DAL
+
+PlayNowManager_UI <-- BLL
+deactivate BLL
+
+@enduml
