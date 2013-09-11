@@ -1,0 +1,51 @@
+﻿
+@startuml "multizone_export_zone_to_home_pv_seq.png"
+ actor Operator 
+ Operator->PlayNowManager.UI : Click ZoneToHomePV Export button
+ activate PlayNowManager.UI
+ PlayNowManager.UI->PlayNowManager.UI : ZoneToHome.aspx.cs.btnExportExcel_Click
+ PlayNowManager.UI->PlayNowManager.UI : Client_PV.aspx.cs.CheckPermission
+ ALT User have permisson
+     == Export the Zone to Home PV statistic by date ==
+     ALT startDate is equal endDate
+         PlayNowManager.UI->PlayNowManager.UI : PN_S_ZoneToHomePV.ExportToExcelByDate
+         PlayNowManager.UI->PlayNowManager.BLL : PN_S_ZoneToHomePV.GetExportDayList
+         activate PlayNowManager.BLL
+         PlayNowManager.BLL->PlayNowManager.DAL : PN_S_ZoneToHomePV.GetExportDayList
+         activate PlayNowManager.DAL
+         PlayNowManager.DAL->PlayNowLog.dbo : PN_S_ZoneToHomePV
+         activate PlayNowLog.dbo
+         PlayNowLog.dbo->PlayNowManager.DAL : DataSet
+         deactivate PlayNowLog.dbo
+         PlayNowManager.DAL->PlayNowManager.BLL : DataSet
+         deactivate PlayNowManager.DAL
+         PlayNowManager.BLL->PlayNowManager.UI : DataSet
+         deactivate PlayNowManager.BLL
+         PlayNowManager.UI->PlayNowManager.UI : Rebuild data by alias
+         PlayNowManager.UI->PlayNowManager.UI : Utility.ExcelOpt.ExportToExcel
+         PlayNowManager.UI->Operator : Excel file
+     == Export the Zone to Home PV statistic in days ==
+     else startDate is not equal endDate
+         PlayNowManager.UI->PlayNowManager.UI : PN_S_ZoneToHomePV.ExportToExcel
+         PlayNowManager.UI->PlayNowManager.BLL : PN_S_ZoneToHomePV.GetExportList
+         activate PlayNowManager.BLL
+         PlayNowManager.BLL->PlayNowManager.DAL : PN_S_ZoneToHomePV.GetExportList
+         activate PlayNowManager.DAL
+         PlayNowManager.DAL->PlayNowLog.dbo : PN_S_ZoneToHomePV
+         activate PlayNowLog.dbo
+         PlayNowLog.dbo->PlayNowManager.DAL : DataSet
+         deactivate PlayNowLog.dbo
+         PlayNowManager.DAL->PlayNowManager.BLL : DataSet
+         deactivate PlayNowManager.DAL
+         PlayNowManager.BLL->PlayNowManager.UI : DataSet
+         deactivate PlayNowManager.BLL
+         PlayNowManager.UI->PlayNowManager.UI : Rebuild data by alias
+         PlayNowManager.UI->PlayNowManager.UI : Utility.ExcelOpt.ExportToExcel
+         PlayNowManager.UI->Operator : Excel file
+    == No permission ==
+    else User do not have permission
+         PlayNowManager.UI->Operator : No permisson to operate
+    end
+ end
+ deactivate PlayNowManager.UI
+@enduml

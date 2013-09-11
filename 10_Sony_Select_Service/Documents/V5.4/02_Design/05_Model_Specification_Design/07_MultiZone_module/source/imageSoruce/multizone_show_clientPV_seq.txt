@@ -1,0 +1,38 @@
+﻿
+@startuml "multizone_show_clientPV_seq.bak.png"
+
+ actor Operator 
+ Operator->PlayNowManager.UI : Open Client PV page
+ activate PlayNowManager.UI
+ PlayNowManager.UI->PlayNowManager.UI : Client_PV.aspx.cs.InitPage
+ PlayNowManager.UI->PlayNowManager.UI : Client_PV.aspx.cs.BindList
+ PlayNowManager.UI->PlayNowManager.UI : Client_PV.aspx.cs.CheckPermission
+ ALT User have permisson
+     PlayNowManager.UI->PlayNowManager.BLL : BLL.PN_S_ClientPV.GetList
+     activate PlayNowManager.BLL
+     PlayNowManager.BLL->PlayNowManager.DAL : DAL.PN_S_ClientPV.GetList
+     activate PlayNowManager.DAL
+     PlayNowManager.DAL->PlayNowLog.dbo : dbo.PN_S_ClinetPV/dbo.PN_S_ZoneToHome
+     activate PlayNowLog.dbo
+     PlayNowLog.dbo->PlayNowManager.DAL : DbDataReader
+     deactivate PlayNowLog.dbo
+     PlayNowManager.DAL->PlayNowManager.DAL : getList
+     loop Add every element into list
+         PlayNowManager.DAL->PlayNowManager.DAL : GetModel
+         activate PlayNowManager.DAL #FFBBBB
+         PlayNowManager.DAL->PlayNowManager.DAL : PrepareModel
+         PlayNowManager.DAL->PlayNowManager.DAL : list.Add
+         deactivate PlayNowManager.DAL 
+     end
+     PlayNowManager.DAL->PlayNowManager.BLL : DataSet
+     PlayNowManager.BLL->PlayNowManager.BLL : DataSet AddCollumn "VCreateTime" 
+     deactivate PlayNowManager.DAL
+     PlayNowManager.BLL->PlayNowManager.UI : DataSource
+     deactivate PlayNowManager.BLL
+     PlayNowManager.UI->PlayNowManager.UI : Client-PV.aspx.rptList.DataBind
+     PlayNowManager.UI->PlayNowManager.UI : Show client-pv statistic table
+ else User do not have permission
+     PlayNowManager.UI->Operator : No permisson to operate
+ end
+ deactivate PlayNowManager.UI
+@enduml

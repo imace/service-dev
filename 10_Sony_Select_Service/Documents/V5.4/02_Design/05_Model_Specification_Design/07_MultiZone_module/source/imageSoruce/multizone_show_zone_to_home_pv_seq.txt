@@ -1,0 +1,84 @@
+﻿
+@startuml "multizone_show_zone_to_home_pv_seq.png"
+
+ actor Operator 
+ Operator->PlayNowManager.UI : Click ZoneToHomePV link
+ activate PlayNowManager.UI
+ PlayNowManager.UI->PlayNowManager.UI : ZoneToHome.aspx.cs.InitPage
+ == Show the Zone to Home PV statistic by date ==
+ ALT Check parameter "Date" is not null
+     PlayNowManager.UI->PlayNowManager.UI : ZoneToHome.aspx set date
+     PlayNowManager.UI->PlayNowManager.UI : ZoneToHome.aspx.cs.BindListByDate
+     PlayNowManager.UI->PlayNowManager.UI : Client_PV.aspx.cs.CheckPermission
+     ALT User have permisson
+         PlayNowManager.UI->PlayNowManager.BLL : PN_S_ZoneToHomePV.GetDayList
+         activate PlayNowManager.BLL
+         PlayNowManager.BLL->PlayNowManager.DAL : PN_S_ZoneToHomePV.GetDayList
+         activate PlayNowManager.DAL
+         PlayNowManager.DAL->PlayNowLog.dbo : PN_S_ZoneToHomePV
+         activate PlayNowLog.dbo
+         PlayNowLog.dbo->PlayNowManager.DAL : DataSet
+         deactivate PlayNowLog.dbo
+         PlayNowManager.DAL->PlayNowManager.BLL : DataSet
+         deactivate PlayNowManager.DAL
+         PlayNowManager.BLL->PlayNowManager.UI : DataSet
+         deactivate PlayNowManager.BLL
+         PlayNowManager.UI->PlayNowManager.UI : Rebuild data by alias
+         PlayNowManager.UI->PlayNowManager.UI : Set displayed table
+         PlayNowManager.UI->Operator : Show tables
+    else User do not have permission
+         PlayNowManager.UI->Operator : No permisson to operate
+    end
+ == Show the Zone to Home PV statistic in days ==
+ else Check parameter "Startdate" & "EndDate" is not null
+     PlayNowManager.UI->PlayNowManager.UI : ZoneToHome.aspx set date
+     PlayNowManager.UI->PlayNowManager.UI : ZoneToHome.aspx.cs.BindList
+     PlayNowManager.UI->PlayNowManager.UI : Client_PV.aspx.cs.CheckPermission
+     ALT User have permisson
+         PlayNowManager.UI->PlayNowManager.BLL : PN_S_ZoneToHomePV.GetList
+         activate PlayNowManager.BLL
+         PlayNowManager.BLL->PlayNowManager.DAL : PN_S_ZoneToHomePV.GetList
+         activate PlayNowManager.DAL
+         PlayNowManager.DAL->PlayNowLog.dbo : PN_S_ZoneToHomePV
+         activate PlayNowLog.dbo
+         PlayNowLog.dbo->PlayNowManager.DAL : DataSet
+         deactivate PlayNowLog.dbo
+         PlayNowManager.DAL->PlayNowManager.BLL : DataSet
+         deactivate PlayNowManager.DAL
+         PlayNowManager.BLL->PlayNowManager.UI : DataSet
+         deactivate PlayNowManager.BLL
+         PlayNowManager.UI->PlayNowManager.UI : Rebuild data by alias
+         PlayNowManager.UI->PlayNowManager.UI : Set displayed table
+         PlayNowManager.UI->Operator : Show tables
+    else User do not have permission
+         PlayNowManager.UI->Operator : No permisson to operate
+    end
+ == Show the Zone to Home PV statistic by in recenty 7 days ==
+ else
+     PlayNowManager.UI->PlayNowManager.UI : ZoneToHome.aspx set recent 7 days
+     PlayNowManager.UI->PlayNowManager.UI : ZoneToHome.aspx.cs.BindList
+     PlayNowManager.UI->PlayNowManager.UI : Client_PV.aspx.cs.CheckPermission
+     ALT User have permisson
+         PlayNowManager.UI->PlayNowManager.BLL : PN_S_ZoneToHomePV.GetList
+         activate PlayNowManager.BLL
+         PlayNowManager.BLL->PlayNowManager.DAL : PN_S_ZoneToHomePV.GetList
+         activate PlayNowManager.DAL
+         PlayNowManager.DAL->PlayNowLog.dbo : PN_S_ZoneToHomePV
+         activate PlayNowLog.dbo
+         PlayNowLog.dbo->PlayNowManager.DAL : DataSet
+         deactivate PlayNowLog.dbo
+         PlayNowManager.DAL->PlayNowManager.BLL : DataSet
+         deactivate PlayNowManager.DAL
+         PlayNowManager.BLL->PlayNowManager.UI : DataSet
+         deactivate PlayNowManager.BLL
+         PlayNowManager.UI->PlayNowManager.UI : Rebuild data by alias
+         PlayNowManager.UI->PlayNowManager.UI : Set displayed table
+         PlayNowManager.UI->Operator : Show tables
+    else User do not have permission
+         PlayNowManager.UI->Operator : No permisson to operate
+    end     
+ end
+ deactivate PlayNowManager.UI
+
+
+@enduml
