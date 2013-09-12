@@ -1,0 +1,127 @@
+﻿
+@startuml "multizone_zonelist_pv_seq.png"
+ actor 3rd_Party_App
+ actor SonySelect_Client
+ 
+ 3rd_Party_App->SonySelect_Client : Android Intent
+ SonySelect_Client->ServerApi : zone.getAppList
+ activate ServerApi
+ ServerApi->ServerApi : machineType&zoneId&startIndex&returnNum
+ ALT Parameter is OK
+     ServerApi->ServerApi:zoneGetAppList
+     ServerApi->PlayNowService.BLL : BLL.PN_Zone.GetModel
+     activate PlayNowService.BLL 
+     ALT Is cached enable
+         PlayNowService.BLL->PlayNowService.BLL : BLL.PN_Zone.GetModelCache
+         ALT Cached model is null
+             PlayNowService.BLL->PlayNowService.DAL : DAL.PN_Zone.GetModel
+             activate PlayNowService.DAL 
+             Alt is id
+                 PlayNowService.DAL->PlayNowService.DAL : DAL.PN_Zone.GetModel(Id)
+                 PlayNowService.DAL->PlayNow.dbo : PN_Zone by Id
+                 activate PlayNow.dbo
+                 PlayNow.dbo->PlayNowService.DAL : object
+                 deactivate PlayNow.dbo
+                 PlayNowService.DAL->PlayNowService.BLL : Model.PN_Zone
+             else is alias
+                 PlayNowService.DAL->PlayNowService.DAL : DAL.PN_Zone.GetModel(alias)
+                 PlayNowService.DAL->PlayNow.dbo : PN_Zone by alias
+                 activate PlayNow.dbo
+                 PlayNow.dbo->PlayNowService.DAL : object
+                 deactivate PlayNow.dbo
+                 PlayNowService.DAL->PlayNowService.BLL : Model.PN_Zone
+             else
+                 PlayNowService.DAL->PlayNowService.BLL : null
+             end
+             deactivate PlayNowService.DAL  
+             PlayNowService.BLL->PlayNowService.BLL : BLL.PN_Zone.TryAddModelCache
+             PlayNowService.BLL->PlayNowService.BLL : BLL.PN_Zone.TryAddCache
+         else Cached model is not null
+             PlayNowService.BLL->PlayNowService.BLL : BLL.PN_Zone.GetModelCache
+             PlayNowService.BLL->ServerApi : Model.PN_Zone
+         end
+     else Is cached disable
+         PlayNowService.BLL->PlayNowService.DAL : DAL.PN_Zone.GetModel
+             activate PlayNowService.DAL 
+             Alt is id
+                 PlayNowService.DAL->PlayNowService.DAL : DAL.PN_Zone.GetModel(Id)
+                 PlayNowService.DAL->PlayNow.dbo : PN_Zone by Id
+                 activate PlayNow.dbo
+                 PlayNow.dbo->PlayNowService.DAL : object
+                 deactivate PlayNow.dbo
+                 PlayNowService.DAL->PlayNowService.BLL : Model.PN_Zone
+             else is alias
+                 PlayNowService.DAL->PlayNowService.DAL : DAL.PN_Zone.GetModel(alias)
+                 PlayNowService.DAL->PlayNow.dbo : PN_Zone by alias
+                 activate PlayNow.dbo
+                 PlayNow.dbo->PlayNowService.DAL : object
+                 deactivate PlayNow.dbo
+                 PlayNowService.DAL->PlayNowService.BLL : Model.PN_Zone
+             else
+                 PlayNowService.DAL->PlayNowService.BLL : null
+             end
+             deactivate PlayNowService.DAL  
+         PlayNowService.BLL->ServerApi : Model.PN_Zone
+     end
+     deactivate PlayNowService.BLL 
+     ALT Model.PN_Zone is null
+         ServerApi->ServerApi : serializer.Serialize(ErrorMessage)
+         activate ServerApi #FFBBBB
+     else Model.PN_Zone is not null
+         ServerApi->ServerApi : parse Model.PN_Zone
+         ServerApi->PlayNowService.BLL : BLL.PN_AppInfo.GetZoneAppList
+         activate PlayNowService.BLL
+         ALT Cache is enabled
+             PlayNowService.BLL->PlayNowService.BLL : GetZoneAppListByCache
+             PlayNowService.BLL->PlayNowService.BLL : GetListCache
+             ALT Cached list is null
+                 PlayNowService.BLL->PlayNowService.DAL : DAL.PN_AppInfo.GetZoneAppListByZoneId
+                 activate PlayNowService.DAL
+                 PlayNowService.DAL->PlayNow.dbo : dbo.PN_AppInfo & dbo.PN_ZoneDetail
+                 activate PlayNow.dbo
+                 PlayNow.dbo->PlayNowService.DAL : DbDataReader
+                 deactivate PlayNow.dbo
+                 PlayNowService.DAL->PlayNowService.DAL : DAL.PN_AppInfo.GetList
+                 PlayNowService.DAL->PlayNowService.BLL : List<Model.PN_AppInfo>
+                 deactivate PlayNowService.DAL 
+                 PlayNowService.BLL->PlayNowService.BLL : TryAddListCache
+             end
+             PlayNowService.BLL->PlayNow.dbo : LINQ
+             activate PlayNow.dbo
+             PlayNow.dbo->PlayNowService.BLL : List<Model.PN_AppInfo>
+             deactivate PlayNow.dbo
+         else cache is disabled
+             PlayNowService.BLL->PlayNowService.DAL : DAL.PN_AppInfo.GetZoneAppListByZoneId
+             activate PlayNowService.DAL
+             PlayNowService.DAL->PlayNow.dbo : dbo.PN_AppInfo & dbo.PN_ZoneDetail
+             activate PlayNow.dbo
+             PlayNow.dbo->PlayNowService.DAL : DbDataReader
+             deactivate PlayNow.dbo
+             PlayNowService.DAL->PlayNowService.DAL : DAL.PN_AppInfo.GetList
+             PlayNowService.DAL->PlayNowService.BLL : List<Model.PN_AppInfo>
+         end
+         PlayNowService.BLL->ServerApi : List<Model.PN_AppInfo> ListAppInfo
+         deactivate PlayNowService.BLL
+         ServerApi->ServerApi : serializer.Serialize(result)
+     end
+     ServerApi->SonySelect_Client :  JSON String
+     deactivate ServerApi
+     SonySelect_Client->SonySelect_Client : Parse JSON string
+     activate SonySelect_Client
+     ALT applications in zone is availble
+         SonySelect_Client->SonySelect_Client : Show applications in Zone
+     else
+         SonySelect_Client->SonySelect_Client : Show no applications in Zone
+     end
+     deactivate SonySelect_Client
+ else Parameter is not OK
+     ServerApi->SonySelect_Client : Parms Error message
+     deactivate ServerApi
+     SonySelect_Client->SonySelect_Client : Parse JSON string
+     activate SonySelect_Client
+     SonySelect_Client->SonySelect_Client : Show no applications in Zone
+     deactivate SonySelect_Client
+ end
+
+
+@enduml

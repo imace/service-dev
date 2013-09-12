@@ -1,0 +1,192 @@
+﻿
+@startuml "multizone_statistic_classes.png"
+
+ package "PlayNowManager.Statistic" #DDDDDD {
+    class System.Web.UI.Page {
+    }
+    class BasePage {
+        # Page_Init()
+        # CheckPermission()
+        # AlertJs()
+        ..
+        Other unused methods in Multi-zone module
+        ..
+    }
+    class PlayNowManager.Statistic.Client_PV {
+        + txtStartDateValue
+        + txtEndDateValue
+        # Page_Load()
+        # InitPage()
+        # GetParams()
+        # BindList()
+        # btnSearch_Click()
+        # pageRpt_PageChanged()
+        # btnExportExcel_Click()
+    }
+    class PlayNowManager.Statistic.ZoneToHome {
+        # Page_Load()
+        # InitPage()
+        # GetParams()
+        # BindList()
+        # BindListByDate()
+        # btnSearch_Click()
+        # pageRpt_PageChanged()
+        # pageRpt_PageChangedByDate()
+        # btnExportExcel_Click()
+        - ExportToExcelByDate()
+        - ExportToExcel()
+    }
+    System.Web.UI.Page <|- BasePage
+    BasePage <|-- PlayNowManager.Statistic.Client_PV
+    BasePage <|-- PlayNowManager.Statistic.ZoneToHome
+}
+
+package "PlayNowManager.BLL" #DDDDDD {
+    class BLHelper {
+        # TryAddModelCache()
+        # GetModelCache()
+        # RemoveModelCache()
+        # TryAddExistCache()
+        # GetExistCache()
+        # RemoveExistCache()
+        # TryAddCountCache()
+        # GetCountCache()
+        # RemoveCountCache()
+        # TryAddListCache()
+        # GetListCache()
+        # RemoveListCache()
+        # RemoveCountCache()
+        # RemoveListCache()
+        + {static} GetCache()
+        + {static} TryAddCache()
+        + {static} TryRemoveCache()
+        + {static} RemoveMultiCache()
+        + {static} RemoveAllCache()        
+    }
+
+    class PlayNowManager.BLL.PN_S_ClinetPV {
+        # Exists()
+        # GetModel()
+        # GetList()
+        # GetExportList()
+        # GetDayList()
+        # GetExportDayList()
+        # GetPageList()
+    }
+    
+    class PlayNowManager.BLL.PN_S_ZoneToHomePV {
+        # GetList()
+        # GetExportList()
+        # GetDayList()
+        # GetExportDayList()
+    }
+    BLHelper <|-- PlayNowManager.BLL.PN_S_ZoneToHomePV
+    BLHelper <|-- PlayNowManager.BLL.PN_S_ClinetPV
+}
+
+package "PlayNowManager.IDAL" #DDDDDD {
+    
+    interface PlayNowManager.IDAL.IPN_S_ZoneToHomePV {
+        # GetCount()
+        # GetList()
+        # GetExportList()
+        # GetDayList()
+        # GetExportDayList()
+    }
+    
+    interface PlayNowManager.IDAL.IPN_S_ClinetPV {
+        # Add()
+        # Update()
+        # Delete()
+        # GetModel()
+        # GetList()
+        # Exist()
+        # GetCount()
+        # GetExportList()
+        # GetDayList()
+        # GetExportDayList()
+        # GetPageList()
+    }
+}
+
+package "PlayNowManager.DAL" #DDDDDD {
+    class PlayNowManager.DAL.PN_S_ClinetPV {
+        # Add()
+        # Update()
+        # Delete()
+        # GetModel()
+        # GetList()
+        # Exist()
+        # GetCount()
+        # GetExportList()
+        # GetDayList()
+        # GetExportDayList()
+        # GetPageList()
+        - GetModel()
+        - GetList()
+        - PrepareModel()
+        - GetPageList()
+    }
+    
+    class PlayNowManager.DAL.PN_S_ZoneToHomePV {
+        # GetCount()
+        # GetList()
+        # GetExportList()
+        # GetDayList()
+        # GetExportDayList()
+    }
+    PlayNowManager.IDAL.IPN_S_ZoneToHomePV <|-- PlayNowManager.DAL.PN_S_ZoneToHomePV
+    PlayNowManager.IDAL.IPN_S_ClinetPV <|-- PlayNowManager.DAL.PN_S_ClinetPV
+}
+
+package "PlayNowManager.Model" #DDDDDD {
+    class PlayNowManager.Model.PN_S_ClinetPV {
+        + ID
+        + Home
+        + WidgetToHome
+        + AppDetail
+        + WidgetToAppDetai
+        + AppComment
+        + AppRelate
+        + Search
+        + SearchResult
+        + Recommend
+        + RankApp
+        + RankGame 
+        + Zone
+        + WidgetToZone
+        + ZoneDetail
+        + WidgetToZoneDeta
+        + CategoryApp
+        + CategoryGame
+        + CategoryDetail
+        + WapDownload
+        + WidgetToAppRank
+        + WidgetToGameRank
+        + ContentOrigin
+        + MachineType
+        + CreateTime
+        + Clone()
+        + Equals()
+        + GetHashCode()
+    }
+    class PlayNowManager.Model.PN_S_ZoneToHomePV {
+        + CreateTime
+        + MachineType
+        + Alias
+        + AccessCount
+        + Clone()
+        + Equals()
+        + GetHashCode()
+    }
+}
+PlayNowManager.Statistic.Client_PV -> PlayNowManager.BLL.PN_S_ClinetPV
+PlayNowManager.BLL.PN_S_ClinetPV -> PlayNowManager.IDAL.IPN_S_ClinetPV
+PlayNowManager.BLL.PN_S_ClinetPV -> PlayNowManager.Model.PN_S_ClinetPV
+PlayNowManager.DAL.PN_S_ClinetPV -left-> PlayNowManager.Model.PN_S_ClinetPV
+PlayNowManager.Statistic.ZoneToHome -> PlayNowManager.BLL.PN_S_ZoneToHomePV
+PlayNowManager.BLL.PN_S_ZoneToHomePV -> PlayNowManager.IDAL.IPN_S_ZoneToHomePV
+PlayNowManager.BLL.PN_S_ZoneToHomePV -> PlayNowManager.Model.PN_S_ZoneToHomePV
+PlayNowManager.DAL.PN_S_ZoneToHomePV -> PlayNowManager.Model.PN_S_ZoneToHomePV
+
+@enduml

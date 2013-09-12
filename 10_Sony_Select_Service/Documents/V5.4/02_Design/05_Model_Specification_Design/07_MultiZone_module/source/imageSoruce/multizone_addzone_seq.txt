@@ -1,0 +1,71 @@
+﻿
+@startuml "multizone_addzone_seq.png"
+
+actor Operator
+
+Operator->PlayNowManager.UI : Add Zone
+ activate PlayNowManager.UI 
+ PlayNowManager.UI->PlayNowManager.UI : App.ZoneModify.asp.CheckNull(id) 
+ ALT Illegal name or alias
+    PlayNowManager.UI->Operator : Show illegal name and alias
+ else Legal name and alias
+    PlayNowManager.UI->PlayNowManager.UI : App.ZoneModify.btnConfirm_Click
+    activate PlayNowManager.UI #FFBBBB
+    PlayNowManager.UI->PlayNowManager.UI : App.ZoneModify.GetControls
+    PlayNowManager.UI->PlayNowManager.UI : Request["action"] == "add"
+    deactivate PlayNowManager.UI #FFBBBB
+    ALT Is request Add
+        PlayNowManager.UI->PlayNowManager.BLL : BLL.PN_Zone.Exist("Name", strName, null)
+        activate PlayNowManager.BLL
+        PlayNowManager.BLL->PlayNowManager.DAL : DAL.PN_Zone.Exist("Name", strName, null)
+        activate PlayNowManager.DAL
+        PlayNowManager.DAL->PlayNowManager.DAL : DAL.PN_Zone.Exist("Name", DbType.String, strName, null)
+        PlayNowManager.DAL->PlayNow.dbo : PlayNow.dbo.PN_Zone
+        activate PlayNow.dbo
+        PlayNow.dbo->PlayNowManager.DAL : object
+        deactivate PlayNow.dbo
+        PlayNowManager.DAL->PlayNowManager.BLL : bool
+        deactivate PlayNowManager.DAL
+        PlayNowManager.BLL->PlayNowManager.UI : bool 
+        deactivate PlayNowManager.BLL
+        ALT Already exist name
+           PlayNowManager.UI->Operator : Show already exist name
+        else Name not exist
+           PlayNowManager.UI->PlayNowManager.BLL : BLL.PN_Zone.Exist("Alias", strAlias, null)
+           activate PlayNowManager.BLL  
+           PlayNowManager.BLL->PlayNowManager.DAL : DAL.PN_Zone.Exist("Alias", strAlias, null)
+           activate PlayNowManager.DAL
+           PlayNowManager.DAL->PlayNowManager.DAL : DAL.PN_Zone.Exist("Alias", DbType.String, strAlias, null)
+           PlayNowManager.DAL->PlayNow.dbo : PlayNow.dbo.PN_Zone
+           activate PlayNow.dbo
+           PlayNow.dbo->PlayNowManager.DAL : object
+           deactivate PlayNow.dbo
+           PlayNowManager.DAL->PlayNowManager.BLL : bool
+           deactivate PlayNowManager.DAL
+           PlayNowManager.BLL->PlayNowManager.UI : bool
+           deactivate PlayNowManager.BLL
+              ALT Already exist alias
+                  PlayNowManager.UI->Operator : Show already exist alias
+              else Alias not exist
+                  PlayNowManager.UI->PlayNowManager.BLL : BLL.PN_Zone.Add(Model.PN_Zone)
+                  activate PlayNowManager.BLL
+                  PlayNowManager.BLL->PlayNowManager.DAL : DAL.PN_Zone.Add(Model.PN_Zone)
+                  activate PlayNowManager.DAL
+                  PlayNowManager.DAL->PlayNow.dbo : PlayNow.dbo.PN_Zone
+                  activate PlayNow.dbo
+                  PlayNow.dbo->PlayNowManager.DAL : objcet
+                  deactivate PlayNow.dbo
+                  PlayNowManager.DAL->PlayNowManager.BLL : int
+                  deactivate PlayNowManager.DAL
+                  PlayNowManager.BLL->PlayNowManager.UI : int
+                  deactivate PlayNowManager.BLL
+                  ALT Added rows is larger then 0
+                      PlayNowManager.UI->PlayNowManager.UI : Session.Remove("Icon");
+                      PlayNowManager.UI->Operator : Show Added Success
+                  end
+              end
+        end   
+     end
+ end
+ deactivate PlayNowManager.UI
+@enduml

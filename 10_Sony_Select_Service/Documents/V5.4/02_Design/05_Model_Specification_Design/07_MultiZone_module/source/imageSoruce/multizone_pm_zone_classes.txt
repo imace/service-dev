@@ -1,0 +1,128 @@
+﻿
+@startuml "multizone_pv_classes.png"
+interface ICloneable
+package "PlayNowManager.App" #DDDDDD {
+    class System.Web.UI.Page {
+    }
+    class BasePage {
+        # Page_Init()
+        # CheckPermission()
+        # AlertJs()
+        ..
+        Other unused methods in Multi-zone module
+        ..
+    }
+    class ZoneModify {
+        # _zoneIcon
+        - zoneAlias
+        # Page_Load()
+        # InitPage()
+        # GetControls()
+        # btnConfirm_Click()
+        # btnAddIcon_Click()
+        # btnUpIcon_Click()
+    }
+    class ZoneList {
+        # Page_Load()
+        # InitPage()
+        # BindZoneList()
+        # btnSearch_Click()
+        # pageZoneList_PageChanged()
+        # btnAdd_Click()
+        # btnModify_Click()
+        # btnDelete_Click()
+    }
+    System.Web.UI.Page <|- BasePage
+    BasePage <|-- ZoneModify
+    BasePage <|-- ZoneList
+}
+
+package "PlayNowManager.Model" #DDDDDD {
+    class PlayNowManager.Model.PN_Zone {
+        + Id 
+        + Name
+        + Icon
+        + Description
+        + UpdateTime
+        + MachineTypes
+        + Alias          
+        + Clone()
+        + Equals()
+        + GetHashCode()
+    }
+    ICloneable <|- PlayNowManager.Model.PN_Zone
+}
+
+package "PlayNowManager.BLL" #DDDDDD {
+    class BLHelper {
+        # TryAddModelCache()
+        # GetModelCache()
+        # RemoveModelCache()
+        # TryAddExistCache()
+        # GetExistCache()
+        # RemoveExistCache()
+        # TryAddCountCache()
+        # GetCountCache()
+        # RemoveCountCache()
+        # TryAddListCache()
+        # GetListCache()
+        # RemoveListCache()
+        # RemoveCountCache()
+        # RemoveListCache()
+        + {static} GetCache()
+        + {static} TryAddCache()
+        + {static} TryRemoveCache()
+        + {static} RemoveMultiCache()
+        + {static} RemoveAllCache()        
+    }
+    
+    class PlayNowManager.BLL.PN_Zone {
+        + Add()
+        + Update()
+        + Delete()
+        + Exists()
+        + GetModel()
+        + GetList()
+        + GetPageList()
+    }
+    
+    BLHelper <|- PlayNowManager.BLL.PN_Zone
+}
+
+package "PlayNowManager.IDAL" #DDDDDD {
+    interface PlayNowManager.IDAL.IPN_Zone {
+        ~ Add()
+        ~ Update()
+        ~ Delete()
+        ~ Exists()
+        ~ GetModel()
+        ~ GetCount()
+        ~ GetList()
+        ~ GetPageList()
+    }
+}
+
+package "PlayNowManager.DAL" #DDDDDD {
+    class PlayNowManager.DAL.PN_Zone {
+        + Add()
+        + Update()
+        + Delete()
+        + Exists()
+        + GetModel()
+        + GetCount()
+        + GetList()
+        + GetPageList()
+        - GetModel()
+        - GetList()
+        - PrepareModel()
+        - GetPageList()
+        - GetModel()
+    }
+    PlayNowManager.IDAL.IPN_Zone <|- PlayNowManager.DAL.PN_Zone
+}
+ZoneModify --> PlayNowManager.BLL.PN_Zone
+PlayNowManager.BLL.PN_Zone --> PlayNowManager.IDAL.IPN_Zone
+PlayNowManager.BLL.PN_Zone -->PlayNowManager.Model.PN_Zone
+PlayNowManager.DAL.PN_Zone -->PlayNowManager.Model.PN_Zone
+
+@enduml

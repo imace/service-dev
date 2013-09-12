@@ -1,0 +1,175 @@
+﻿
+@startuml "multizone_zone_classes.png"
+interface ICloneable
+interface IHttpHandler
+
+package "PlayNowService" #DDDDDD {
+    class ServerApi {
+        ~ serializer
+        ~ mErroMsg
+        ~ paramsDic
+        ~ appChannelListCount
+        ~ zoneChannelListCount
+        + ProcessRequest()
+        - zoneGetAppList()
+        ..
+         Other unused in Multi-zone module
+        ..
+    }
+    IHttpHandler <|-- ServerApi 
+}
+
+package "PlayNowService.Model" #DDDDDD {
+    class PlayNowService.Model.PN_Zone {
+        + Id 
+        + Name
+        + Icon
+        + Description
+        + UpdateTime
+        + MachineTypes
+        + Alias          
+        + Clone()
+        + Equals()
+        + GetHashCode()
+    }
+    class PlayNowService.Model.PN_AppInfo {
+        + Id
+        + Name
+        + PackageName
+        + Size
+        + Description
+        + Grade
+        + SmallIcon 
+        + LargeIcon 
+        + IsFree
+        + Price
+        + VersionCode
+        + VersionName
+        + Publisher
+        + UpdateTime 
+        + Tag
+        + ScreenShots
+        + DownloadUrl
+        + DownloadTime
+        + Type
+        + MachineTypes
+        + Clone()
+        + Equals()
+        + GetHashCode()
+    }
+    ICloneable <|-- PlayNowService.Model.PN_Zone
+    ICloneable <|-- PlayNowService.Model.PN_AppInfo
+}
+
+package "PlayNowService.BLL" #DDDDDD {
+    class BLHelper {
+        # TryAddModelCache()
+        # GetModelCache()
+        # RemoveModelCache()
+        # TryAddExistCache()
+        # GetExistCache()
+        # RemoveExistCache()
+        # TryAddCountCache()
+        # GetCountCache()
+        # RemoveCountCache()
+        # TryAddListCache()
+        # GetListCache()
+        # RemoveListCache()
+        # RemoveCountCache()
+        # RemoveListCache()
+        + {static} GetCache()
+        + {static} TryAddCache()
+        + {static} TryRemoveCache()
+        + {static} RemoveMultiCache()
+        + {static} RemoveAllCache()        
+    }
+    
+    class PlayNowService.BLL.PN_Zone {
+        + Add()
+        + Update()
+        + Delete()
+        + Exists()
+        + GetModel()
+        + GetList()
+        + GetPageList()
+    }
+    
+    class PlayNowService.BLL.PN_AppInfo {
+        - tmpcache
+        - dal
+        - dal_PN_Configuration
+        + GetZoneAppList()
+        + GetZoneAppListByCache()
+        ..
+         Other unused in Multi-zone module
+        ..
+        
+    }
+    
+    BLHelper <|-- PlayNowService.BLL.PN_AppInfo
+    BLHelper <|-- PlayNowService.BLL.PN_Zone
+}
+
+package "PlayNowService.IDAL" #DDDDDD {
+    interface PlayNowService.IDAL.IPN_Zone {
+        ~ Add()
+        ~ Update()
+        ~ Delete()
+        ~ Exists()
+        ~ GetModel()
+        ~ GetCount()
+        ~ GetList()
+        ~ GetPageList()
+    }
+    interface PlayNowService.IDAL.IPN_AppInfo {
+        ~ GetZoneAppList()
+        ~ GetZoneAppListByZoneId()
+        ~ GetList()
+        ~ GetModel()
+        ..
+         Other unused in Multi-zone module
+        ..
+    }
+}
+
+package "PlayNowService.DAL" #DDDDDD {
+    class PlayNowService.DAL.PN_Zone {
+        + Add()
+        + Update()
+        + Delete()
+        + Exists()
+        + GetModel()
+        + GetCount()
+        + GetList()
+        + GetPageList()
+        - GetModel()
+        - GetList()
+        - PrepareModel()
+        - GetPageList()
+        - GetModel()
+    }
+    class PlayNowService.DAL.PN_AppInfo {
+        + GetZoneAppList()
+        + GetZoneAppListByZoneId()
+        - GetList()
+        - GetModel()
+        ..
+         Other unused in Multi-zone module
+        ..
+    }
+    PlayNowService.IDAL.IPN_Zone <|-- PlayNowService.DAL.PN_Zone
+    PlayNowService.IDAL.IPN_AppInfo <|-- PlayNowService.DAL.PN_AppInfo
+}
+
+ServerApi --> PlayNowService.BLL.PN_Zone
+PlayNowService.BLL.PN_Zone --> PlayNowService.IDAL.IPN_Zone
+PlayNowService.BLL.PN_Zone --> PlayNowService.Model.PN_Zone
+PlayNowService.DAL.PN_Zone --> PlayNowService.Model.PN_Zone
+
+ServerApi --> PlayNowService.BLL.PN_AppInfo
+PlayNowService.BLL.PN_AppInfo --> PlayNowService.IDAL.IPN_AppInfo
+PlayNowService.BLL.PN_AppInfo --> PlayNowService.Model.PN_AppInfo
+PlayNowService.DAL.PN_AppInfo --> PlayNowService.Model.PN_AppInfo
+
+
+@enduml

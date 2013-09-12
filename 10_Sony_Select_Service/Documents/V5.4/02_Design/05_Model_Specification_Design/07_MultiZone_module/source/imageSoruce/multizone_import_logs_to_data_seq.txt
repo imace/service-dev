@@ -1,0 +1,33 @@
+﻿
+@startuml "multizone_import_logs_to_data_seq.png"
+actor WindowsServices
+->WindowsServices : Start service
+activate WindowsServices
+WindowsServices->WindowsServices : LogImportService.InitializeComponent
+WindowsServices->WindowsServices : LogImportService.OnStart
+WindowsServices->WindowsServices : LogImportService.TimerLog_Elapsed
+group Timer
+    WindowsServices->PlayNowService.BLL : Log_Unify.ImportLogToDb
+    activate PlayNowService.BLL
+    ALT Log type is PVLog
+        PlayNowService.BLL->PlayNowService.BLL : Log_Unify.GetPageViewInfoTable
+        PlayNowService.BLL->PlayNowService.BLL : Log_Unify.CreateDataTable
+        activate PlayNowService.BLL #FFBBBB
+        PlayNowService.BLL->PlayNowService.BLL : SetPageViewInfoTable
+        deactivate PlayNowService.BLL
+        PlayNowService.BLL->PlayNowService.BLL : DirectoryInfo.GetFiles
+        Loop read each file
+            PlayNowService.BLL->PlayNowService.BLL : parse log infos
+            activate PlayNowService.BLL #FFBBBB
+            PlayNowService.BLL->PlayNowService.BLL : add into datable
+            deactivate PlayNowService.BLL #FFBBBB
+        end
+        PlayNowService.BLL->PlayNowService.DAL : Log_Unify.ImportPVLog
+        PlayNowService.DAL->PlayNowLog.dbo : dbo.PN_Log_PageViewInfo
+    end
+    PlayNowService.BLL->WindowsServices : int
+    deactivate PlayNowService.BLL
+    WindowsServices->WindowsServices : LogHelper.LogInfo
+end
+
+@enduml

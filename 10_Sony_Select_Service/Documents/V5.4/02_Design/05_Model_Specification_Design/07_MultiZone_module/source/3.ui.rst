@@ -1,0 +1,12 @@
+UI展示
+##################
+*  后台管理查看Client PV统计
+.. image:: images/UI_ClinetPV.png
+*  后台管理查看单日各机型Client PV统计
+.. image:: images/UI_ClinetPVByDate.png
+*  后台管理查看由zone到首页PV统计
+.. image:: images/UI_ZoneToHome.png
+*  后台管理查看单日由zone到首页PV统计
+.. image:: images/UI_ZoneToHomeByDate.png
+*  后台管理查看页面调用统计
+.. image:: images/UI_ES.png

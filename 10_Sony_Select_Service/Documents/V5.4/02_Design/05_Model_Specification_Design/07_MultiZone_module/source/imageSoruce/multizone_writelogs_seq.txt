@@ -1,0 +1,21 @@
+﻿
+@startuml "multizone_writelogs_seq.bak.png"
+ actor SonySelect_Client
+ SonySelect_Client->ServerApi : log.addInfo
+ activate ServerApi
+ ServerApi-> ApiLog : AddLog.AddInfo
+ activate ApiLog
+ ApiLog->ApiLog : Parse log info
+ ApiLog->PlayNowService.BLL : Log_Unify.LogToText
+ activate PlayNowService.BLL
+ PlayNowService.BLL->PlayNowService.Utility : LogHelper.LogUnify
+ activate PlayNowService.Utility
+ PlayNowService.Utility->PlayNowService.Utility : write log into file
+ deactivate PlayNowService.Utility
+ PlayNowService.BLL->ApiLog : JavaScriptSerializer.Serialize
+ deactivate PlayNowService.BLL
+ ApiLog->ServerApi : JSON String
+ deactivate ApiLog
+ ServerApi->SonySelect_Client : JSON String
+ deactivate ServerApi
+@enduml
