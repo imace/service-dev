@@ -1,0 +1,10 @@
+@startuml
+User1 <<SonySelect User>>
+User1 --> (View AppZone \nlist via alias)
+
+User2 <<Operating User>>
+User2 --> (View, Edit and delete\n the alias of AppZone)
+User2 --> (View and export the statistic\n data of PV in AppZone)
+User2 --> (View and export the statistic\n data of AppZone to Home)
+User2 --> (Clear AppZone\n cache)
+@enduml

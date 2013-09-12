@@ -1,0 +1,17 @@
+@startuml
+package "PlayNowService" {
+  [任务定时启动模块]
+  [PNS多专区模块] --> [DAO桥连接(PlayNowService)]
+  [日志统计模块] --> [DAO桥连接(PlayNowService)]
+}
+
+package "PlayNowManaer" {
+  [UI显示模块] --> [PNM多专区模块]
+  [UI显示模块] --> [PNM统计模块]
+  [PNM多专区模块] -->[DAO桥连接(PlayNowManager)]
+  [PNM统计模块] -->[DAO桥连接(PlayNowManager)]
+}
+[任务定时启动模块]-->[日志统计模块]
+[DAO桥连接(PlayNowManager)] --> [DB]
+[DAO桥连接(PlayNowService)] --> [DB]
+@enduml
