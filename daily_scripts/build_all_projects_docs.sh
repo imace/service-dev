@@ -22,6 +22,18 @@ function buildProjects()
     done
 }
 
+function cleanProjects()
+{
+    projects_paths=`find -name Makefile -exec dirname {} \;`
+
+    for path in $projects_paths;
+    do
+        cd $path
+        make clean
+        cd $project_root
+    done
+}
+
 function isDocumentNoteDirectory()
 {
 	local dir=$1
@@ -130,10 +142,16 @@ function echoHtmlFoots()
 }
 
 # Build all availble projects
-buildProjects
+echo $1
+if [ $1 == "clean" ];then
+    cleanProjects
+else
+    buildProjects
+fi
 
 TREE_HTML_FILE="$TREE_HTML_FILE"
 MAIN_HTML_FILE="$MAIN_HTML_FILE"
+REX_PROJECT_NAME='^[0-9]{1,2}_.*'
 
 echoHtmlHeads
 
@@ -145,7 +163,7 @@ file_list=$(ls);
 i=0;
 for file in $file_list
 do
-    if [ -d $file ] && [[ "$file" =~ ^[0-9]_ ]];then
+    if [ -d $file ] && [[ "$file" =~ $REX_PROJECT_NAME ]];then
         ((i++));
         root_id="doc_$i"
         echo "<li id=\"$root_id\">" >> $TREE_HTML_FILE
