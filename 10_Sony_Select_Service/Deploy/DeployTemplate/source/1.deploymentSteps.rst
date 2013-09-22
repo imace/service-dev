@@ -1,0 +1,31 @@
+Deployment Steps
+########################################
+**注：所有安装包所在文件夹为 <InstallPackageName>**
+
+更新步骤
+===============================
+<UpdateStep>
+
+
+<DatabaseStep>
+
+
+<PlayNowServiceStep>
+
+
+<PlayNowManagementStep>
+
+
+<WebAppStoreStep>
+
+
+<PlayNowWinServiceStep>
+
+
+
+
+
+
+
+
+
