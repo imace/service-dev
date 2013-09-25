@@ -16,9 +16,9 @@ Contents:
    02_signon.rst
    03_backuprestore.rst
    04_update.rst
-   05_smart_download.rst
+   05_smartdownload.rst
    06_widget.rst
-   07_silent_install.rst
+   07_silentinstall.rst
    08_bannerAD.rst
 
 
