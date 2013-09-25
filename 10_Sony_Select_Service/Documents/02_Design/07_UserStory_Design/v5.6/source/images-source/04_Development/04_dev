@@ -1,0 +1,21 @@
+@startuml
+
+输入 -right-> 执行
+输入 : 1.需求文档（MRD，PRD）
+输入 : 2.设计文档（BP,CV,架构设计,数据库设计,模块设计,其他设计文档）
+输入 : 3.项目管理计划
+输入 : 4.Sprint规划的输出
+
+执行 -right-> 输出
+state 执行
+note top of 执行 : 参与人员: 开发人员,产品经理,项目进度汇报对象,项目经理
+
+执行 : 1.编码（Coding）
+执行 : 2.文档（Documentation）
+执行 : 3.项目（Project）
+
+输出 : 1.完成编码（Coding）
+输出 : 2.更新文档（Documentation）
+输出 : 3.项目相关（Project）
+
+@enduml

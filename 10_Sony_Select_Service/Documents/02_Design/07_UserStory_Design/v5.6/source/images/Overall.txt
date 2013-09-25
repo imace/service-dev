@@ -1,0 +1,39 @@
+@startuml
+
+partition Requirement
+(*) --> ===R===
+end partition
+
+partition Design
+===R=== --> ===D===
+end partition
+
+partition Development
+partition "Sub Design Part"
+===D=== --> ===SD===
+end partition
+partition "Sub Development Part" 
+===SD=== --> ===SP===
+end partition
+partition "Sub Testing Part"
+===SP=== --> ===ST===
+end partition
+end partition
+
+partition Verification
+===ST=== --> ===SV===
+end partition
+
+partition Preview
+===SV=== --> ===SPR===
+end partition
+
+partition Operation
+partition "Production Launch"
+===SPR=== --> ===SPL===
+end partition
+===SPL=== --> (*)
+end partition
+
+@enduml
+

@@ -1,0 +1,9 @@
+@startuml
+
+(*) --> "Test Server Pre-Deploy"
+"Test Server Pre-Deploy" --> "Apply For Publish Online"
+"Apply For Publish Online" --> "Production Server Deploy"
+"Production Server Deploy" --> "Publish Release Notes"
+"Publish Release Notes" --> (*)
+
+@enduml
