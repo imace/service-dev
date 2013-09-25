@@ -1,0 +1,35 @@
+@startuml
+
+输入 -down-> 执行
+输入 : 1.需求文档(MRD, PRD)
+输入 : 2.设计文档(BP, CV, 架构，数据库，模块设计，其他）
+输入 : 3.批准的项目管理计划
+
+state 执行 {
+
+[*] -down-> 项目开踢会_Project_KickOff_Meeting
+--
+[*] -down-> Sprint规划_Sprint_Planning
+
+Sprint规划_Sprint_Planning -down-> Sprint开发_Sprint_Development
+
+Sprint开发_Sprint_Development -down-> Sprint功能测试_Sprint_Funtion_Test
+
+Sprint功能测试_Sprint_Funtion_Test -down-> Sprint演示_Sprint_Demo
+
+Sprint演示_Sprint_Demo -down-> Sprint回顾_Sprint_Review
+
+--
+[*] -down-> 开发发布_Development_Release
+
+}
+
+执行  -down-> 输出
+
+输出 : 1.更新的需求文档（MRD，PRD）
+输出 : 2.更新的设计文档(BP, CV, 架构，数据库，模块设计，用户手册，部署文档，其他）
+输出 : 3.上线文档(部署包, 部署计划, 部署步骤, 部署测试用例)
+输出 : 4.已知问题列表
+输出 : 5.经验教训总结报告
+
+@enduml
