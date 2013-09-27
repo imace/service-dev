@@ -54,12 +54,20 @@ http://metadoc.sonyericsson.net/login_link.asp?doc=32/1056-LXE1100566&rev=latest
 role定义   
 --------
 
-用户 | 后台管理人员 | 开发人员
+用户 | 后台管理人员 | 运营人员
+
+Goal定义
+--------
+
+NA
 
 详细设计
 --------
                                                     
 ID | Title (Role &Goal) |Mapped PRD |Status |Priority | Comment
+
+Status：New | On-going |Done |Blocked
+Priority：0（lowest）-100（highest）
 
 相关人员
 ****************************
