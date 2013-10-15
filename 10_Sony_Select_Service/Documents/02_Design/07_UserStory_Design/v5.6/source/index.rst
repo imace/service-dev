@@ -20,6 +20,7 @@ Contents:
    06_widget.rst
    07_silentinstall.rst
    08_bannerAD.rst
+   09_AD.rst
 
 
 .. 如果想新添加别的rst文件，在source目录下，另建一个新文件。就直接在content.rst下添加一行就可以。
