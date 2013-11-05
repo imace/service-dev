@@ -1,0 +1,20 @@
+@startuml
+
+Preview -down-> Deploy  
+
+state Deploy {
+
+[*] -down-> Deploy_Pre_Checking
+
+Deploy_Pre_Checking -down-> Deploy_Env_Comparing
+
+Deploy_Env_Comparing -down-> Deploy_Launch
+
+Deploy_Launch -down-> Deploy_Post_Confirmation
+
+}
+
+Deploy -down-> Operation
+
+
+@enduml

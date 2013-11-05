@@ -1,0 +1,18 @@
+@startuml
+
+Verification -down-> Preview  
+
+state Preview {
+
+[*] -down-> Preview_Demo
+
+Preview_Demo -down-> Preview_LUT
+
+Preview_LUT -down-> Preview_Summary
+
+}
+
+Preview -down-> Deploy
+
+
+@enduml

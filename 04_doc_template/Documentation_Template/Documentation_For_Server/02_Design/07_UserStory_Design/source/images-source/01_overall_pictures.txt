@@ -1,0 +1,20 @@
+@startuml
+
+[*] -right-> Requirement  
+
+Requirement  -right-> Design 
+
+Design  -right-> Development
+
+Development  -down-> Verification
+
+Verification  -down-> Preview
+
+Preview  -right-> Deploy
+
+Deploy  -right-> Operation
+
+Operation  -right-> [*]
+
+
+@enduml
