@@ -1,1 +1,1 @@
-daily_scripts/build_all_projects_docs.sh
+scripts/daily_scripts/build_all_projects_docs.sh
