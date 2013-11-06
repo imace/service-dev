@@ -8,11 +8,13 @@ import time
 import GenerateDeployPlanFile
 import GenerateStepFile
 import GenerateTestFile
+import sys
 
 
 Utile.writeLog("------------BEGIN GENGRATE PLAYNOW PACKAGE AND ZIP THE OUTPUT FILE------------")
 #代码的工作目录
-WORKSPACE_DIR = r"C:\Users\XS_Service_Dev\Water\PythonTest\builds\2013-09-23_14-27-37\PlayNow"
+WORKSPACE_DIR = sys.argv[1]
+print WORKSPACE_DIR
 #当前日期时间，主要是用于生成文件名
 CURRENT_TIME = time.strftime('%Y-%m-%d',time.localtime(time.time()))
 #ChangeLog目录
