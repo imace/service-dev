@@ -20,7 +20,7 @@ CURRENT_TIME = time.strftime('%Y-%m-%d',time.localtime(time.time()))
 #ChangeLog目录
 CHANGELOG_DIR=WORKSPACE_DIR+"\\ChangeLog"
 #ChangeLog目录中readme文件路径
-CHANGE_LOG_FILE= CHANGELOG_DIR+"\\readme.txt"  
+CHANGE_LOG_FILE= CHANGELOG_DIR+"\\"+sys.argv[2] 
 #文档模板目录
 PLAYNOW_DOCMENT_TEMPLATE_DIR=WORKSPACE_DIR+"\\DeployTemplate"
 

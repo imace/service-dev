@@ -109,7 +109,7 @@ CHANGELOG_DEPLOYMENT_PLAN_TAG='<DeploymentPlan>'
 CHANGELOG_DEPLOYMENT_PLAN_TAG_END='</DeploymentPlan>'
 
 #存放步骤步骤的字典， 主要是根据changelog内容来调整此字典整体部署步骤
-DEPLOYMENT_STEPS = {'1DataBase'   : '#. 更新数据库sss\n',
+DEPLOYMENT_STEPS = {'1DataBase'   : '#. 更新数据库\n',
              '2PlayNowService'     : '#. 更新playnow service\n',
              '3PlayNowManager' : '#. 更新playnow management\n',	
 			 '4WebAppStore' : '#. 更新webAppStore \n',
