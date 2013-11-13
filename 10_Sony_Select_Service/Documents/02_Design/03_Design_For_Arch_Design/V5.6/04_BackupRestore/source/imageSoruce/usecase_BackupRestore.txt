@@ -1,0 +1,14 @@
+@startuml
+
+user2 << manager >>
+user1 << client >>
+
+left to right direction
+user2 --> (查看备份内容列表)
+user2 --> (统计我的应用页面访问量)
+user2 --> (统计我的应用页面下载量)
+user1 --> (获取备份应用列表)
+user1 --> (添加备份应用)
+user1 --> (删除备份应用)
+
+@enduml

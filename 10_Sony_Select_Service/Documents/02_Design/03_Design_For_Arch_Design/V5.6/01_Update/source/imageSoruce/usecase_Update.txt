@@ -1,0 +1,11 @@
+@startuml
+
+user2 << manager >>
+user1 << client >>
+
+left to right direction
+user2 --> (下载来源日志统计)
+user2 --> (Client-PV日志统计)
+user1 --> (获取应用最新版本)
+
+@enduml

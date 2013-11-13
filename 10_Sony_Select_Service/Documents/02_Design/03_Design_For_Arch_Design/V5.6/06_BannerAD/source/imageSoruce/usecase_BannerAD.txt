@@ -1,0 +1,13 @@
+@startuml
+
+user2 << manager >>
+user1 << client >>
+
+left to right direction
+user2 --> (首页Banner管理（增加/删除/置顶广告Banner）)
+user2 --> (广告内容管理（增加描述和截止日期）)
+user2 --> (统计广告点击（首页Banner）)
+user1 --> (获取Banner内容，包括内容Banner、专区Banner和广告Banner)
+user1 --> (请求广告链接)
+
+@enduml

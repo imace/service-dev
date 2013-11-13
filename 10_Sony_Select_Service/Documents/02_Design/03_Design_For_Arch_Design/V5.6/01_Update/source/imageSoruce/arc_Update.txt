@@ -1,0 +1,29 @@
+@startuml
+
+package "PlayNowService" {
+[应用最新版本读取模块]
+[日志统计]
+[DAO桥连接(PlayNowService)]  
+}
+
+package "PlayNowManager" {
+[页面访问日志统计模块]
+[下载来源日志统计模块]
+[DAO桥连接(PlayNowManager)]
+}
+
+[DB] 
+
+[应用最新版本读取模块] --> [DAO桥连接(PlayNowService)]
+
+[日志统计] --> [DAO桥连接(PlayNowService)]
+
+[DAO桥连接(PlayNowService)]-->[DB]
+
+[页面访问日志统计模块] --> [DAO桥连接(PlayNowManager)] 
+
+[下载来源日志统计模块] --> [DAO桥连接(PlayNowManager)] 
+
+[DAO桥连接(PlayNowManager)] -->[DB] 
+
+@enduml

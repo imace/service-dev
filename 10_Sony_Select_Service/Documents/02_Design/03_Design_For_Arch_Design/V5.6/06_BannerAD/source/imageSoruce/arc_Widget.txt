@@ -1,0 +1,32 @@
+@startuml
+
+package "PlayNowService" {
+[Widget内容列表读取模块]
+[DAO桥连接(PlayNowService)]  
+}
+
+package "PlayNowManager" {
+[下载来源日志统计模块]
+[Client-PV日志统计模块]
+[广告统计模块]
+[Widget内容管理模块]
+[DAO桥连接(PlayNowManager)]
+}
+
+[DB] 
+
+[Widget内容管理模块] --> [DAO桥连接(PlayNowManager)]
+
+[广告统计模块] --> [DAO桥连接(PlayNowManager)]
+
+[Client-PV日志统计模块] --> [DAO桥连接(PlayNowManager)]
+
+[下载来源日志统计模块] --> [DAO桥连接(PlayNowManager)]
+
+[DAO桥连接(PlayNowManager)]-->[DB]
+
+[Widget内容列表读取模块] --> [DAO桥连接(PlayNowService)] 
+
+[DAO桥连接(PlayNowService)] -->[DB] 
+
+@enduml
