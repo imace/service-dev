@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-  
 
+import codecs
 import sys 
 import unicodedata 
 import os 
@@ -20,7 +21,7 @@ def readFile(orgFileName):
 
 # 将给定列表lineList 写入文件orgFileName, 写入成功返回true， 失败为false
 def writeFile(lineList, orgFileName):
-	orgF = open(orgFileName,'w')        
+	orgF = open(orgFileName,'w')
 	for  line in lineList: 	
 		orgF.write(line); 
 	orgF.flush();
@@ -59,7 +60,7 @@ def deploymentPlan_replaceTagString(beingTag, endTag, orgFile, newFile):
 # 给定起始标签，结束标签，原文件名，新文件名，生成新的文件
 def generalFile(beginTag,endTag,orgFileName,newFileName, ingoreStartStr="null"):
 	orgF = open(orgFileName,'r')
-	newF = open(newFileName,'w')
+	newF = codecs.open(newFileName,'w',encodeing='UTF-8')
 	isWrite = False
 	line = orgF.readline()         
 	while line:		
