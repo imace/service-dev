@@ -56,14 +56,14 @@ def deploymentPlan_replaceTagString(beingTag, endTag, orgFile, newFile):
 			newFilelist[i] = newFilelist[i].replace(beingTag,post)  
 		i +=1 
 	writeFile(newFilelist,newFile) 
-	
+
 # 给定起始标签，结束标签，原文件名，新文件名，生成新的文件
 def generalFile(beginTag,endTag,orgFileName,newFileName, ingoreStartStr="null"):
 	orgF = open(orgFileName,'r')
-	newF = codecs.open(newFileName,'w',encodeing='UTF-8')
+	newF = codecs.open(newFileName,'w','UTF-8')
 	isWrite = False
-	line = orgF.readline()         
-	while line:		
+	line = orgF.readline()
+	while line:
 		line = orgF.readline()   
 		if(line.startswith(endTag)):
 			isWrite = False
@@ -81,7 +81,7 @@ def deleteRow(fileName, contentString):
 	linelist = readFile(fileName) 
 	i =0
 	for  line in  linelist:  
-		if(contentString in line):	
+		if(contentString in line):
 			break;
 		i+=1
 	if(i < len(linelist)):
@@ -98,7 +98,7 @@ def insertFile(replaceTag,orgFileName,tagFile):
 		if(replaceTag in line):   
 			if(os.path.exists(tagFile) and (os.path.getsize(tagFile) != 0)):  
 				tagF = open(tagFile,'r+') 
-				for  replaceStr in  tagF.readlines():			  
+				for  replaceStr in  tagF.readlines():
 					if(len(replaceStr.strip()) != 0):
 						hasContent = True;
 						break; 
@@ -109,7 +109,7 @@ def insertFile(replaceTag,orgFileName,tagFile):
 					deleteLine = i-1
 					break;
 			else:
-				deleteLine = i-1		
+				deleteLine = i-1
 				break;
 		i+=1
 	if(deleteLine > 0):
@@ -124,7 +124,7 @@ def insertFile(replaceTag,orgFileName,tagFile):
 			orgF.write(line); 
 	orgF.flush();
 	orgF.close();  
-	return deleteLine		
+	return deleteLine
 	
 	#计算字符串的长度
 def string_width(text):	
@@ -212,8 +212,8 @@ def deploymentPlan_readTagString(beingTag, endTag, orgFile):
 				post =  str.replace(beingTag,'').replace(endTag,'')
 				break; 
 	return post
-	
-	
+
+
 # 给定标签，原文件名 ，replace string
 def replaceFileTag(replaceTag,orgFileName,replaceStr): 
 	linelist=readFile(orgFileName)	 
@@ -223,7 +223,7 @@ def replaceFileTag(replaceTag,orgFileName,replaceStr):
 			linelist[i] = linelist[i].replace(replaceTag,replaceStr); 
 		i+=1
 	writeFile(linelist, orgFileName)
-#print string_width(",，乔wwww".decode('utf-8 ')) 
+
 
 def writeLog(logString):
 	'''orgF = open("Log.txt",'w+') 

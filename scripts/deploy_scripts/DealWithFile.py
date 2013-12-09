@@ -23,8 +23,6 @@ def copyFiles(sourceDir, targetDir):
 	                open(targetF, "wb").write(open(sourceF, "rb").read())   
 	        if os.path.isdir(sourceF): 
 	            copyFiles(sourceF, targetF) 
-	           
-
 
 
 def zip_dir(dirname,zipfilename):
