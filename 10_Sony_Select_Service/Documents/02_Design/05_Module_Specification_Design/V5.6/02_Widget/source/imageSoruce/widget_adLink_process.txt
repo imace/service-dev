@@ -1,0 +1,22 @@
+@startuml"widget_adLink_process.png"
+
+:客户端调用接口app.requestAdvertLink;
+if (输入参数校验?) then (校验不通过)
+  :返回 参数错误;
+else (校验通过)
+  if (广告列表缓存?) then (已经缓存)
+    :从缓存中读取广告列表;
+  else (尚未缓存)
+    :从数据库读取未过期广告列表";
+    :添加广告列表到缓存;
+  endif
+  :匹配广告Id;
+  :获取广告link;
+  if(link不为空?) then (非空)
+      :记录日志;
+      :重定向到广告连接;
+  endif
+endif
+stop
+
+@enduml

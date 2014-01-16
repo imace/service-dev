@@ -1,0 +1,72 @@
+﻿
+@startuml "widget_contentlist_seq.png"
+ actor SonySelect_Client
+ 
+ SonySelect_Client->ServerApi : widget.getContentList
+ activate ServerApi
+ ServerApi->ServerApi : machineType&startIndex&returnNum&ContentType&AppType
+ ALT Parameter is OK
+     ServerApi->PlayNowService.ApiWidget : WidgetApi.GetContentList
+     activate PlayNowService.ApiWidget
+     PlayNowService.ApiWidget->PlayNowService.BLL : Widget.WidgetManager.getContentList
+     activate PlayNowService.BLL 
+     ALT Is App
+         PlayNowService.BLL->PlayNowService.BLL : Widget.WidgetManager.GetAppInfoList
+         ALT Is cached enable
+             PlayNowService.BLL->PlayNowService.BLL : Widget.WidgetManager.GetListCache
+         end    
+         ALT list PN_AppInfo is null
+             PlayNowService.BLL->PlayNowService.DAL : PN_AppInfo.GetListWithWidget
+             activate PlayNowService.DAL 
+             PlayNowService.DAL->PlayNow.dbo : PN_AppInfo list in PN_Widget
+             activate PlayNow.dbo
+             PlayNow.dbo->PlayNowService.DAL : list PN_AppInfo 
+             deactivate PlayNow.dbo
+             PlayNowService.DAL->PlayNowService.BLL : list PN_AppInfo
+             deactivate PlayNowService.DAL  
+             PlayNowService.BLL->PlayNowService.BLL : Widget.WidgetManager.TryAddListCache
+         end
+         PlayNowService.BLL->PlayNowService.BLL : Widget.WidgetManager.ConvertAppListToWidgetList
+     else Is Ad
+         PlayNowService.BLL->PlayNowService.BLL : Widget.WidgetManager.GetAdInfoList
+         ALT Is cached enable
+             PlayNowService.BLL->PlayNowService.BLL : Widget.WidgetManager.GetListCache
+         end    
+         ALT list PN_AppInfo is null
+             PlayNowService.BLL->PlayNowService.DAL : PN_AdInfo.GetListWithWidget
+             activate PlayNowService.DAL 
+             PlayNowService.DAL->PlayNow.dbo : PN_AdInfo list in PN_Widget
+             activate PlayNow.dbo
+             PlayNow.dbo->PlayNowService.DAL : list PN_AdInfo 
+             deactivate PlayNow.dbo
+             PlayNowService.DAL->PlayNowService.BLL : list PN_AdInfo
+             deactivate PlayNowService.DAL  
+             PlayNowService.BLL->PlayNowService.BLL : Widget.WidgetManager.TryAddListCache
+         end
+         PlayNowService.BLL->PlayNowService.BLL : Widget.WidgetManager.ConvertAdListToWidgetList
+     end
+     PlayNowService.BLL->PlayNowService.ApiWidget : list WidgetEntity
+     deactivate PlayNowService.BLL 
+     PlayNowService.ApiWidget->PlayNowService.ApiWidget : serializer.Serialize
+     PlayNowService.ApiWidget->ServerApi : JSON String
+     deactivate PlayNowService.ApiWidget
+     ServerApi->SonySelect_Client :  JSON String
+     SonySelect_Client->SonySelect_Client : Parse JSON string
+     activate SonySelect_Client
+     ALT contents in widget is availble
+         SonySelect_Client->SonySelect_Client : Show contents in widget
+     else
+         SonySelect_Client->SonySelect_Client : Show no contents in widget
+     end
+     deactivate SonySelect_Client
+ else Parameter is not OK
+     ServerApi->SonySelect_Client : Parms Error message
+     deactivate ServerApi
+     SonySelect_Client->SonySelect_Client : Parse JSON string
+     activate SonySelect_Client
+     SonySelect_Client->SonySelect_Client : Show no contents in widget
+     deactivate SonySelect_Client
+ end
+
+
+@enduml
