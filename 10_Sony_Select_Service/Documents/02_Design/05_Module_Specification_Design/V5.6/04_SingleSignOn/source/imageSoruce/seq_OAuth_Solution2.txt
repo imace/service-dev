@@ -1,0 +1,44 @@
+
+@startuml
+activate user
+user -> Client: 进入用户登录界面
+activate Client
+Client -> PN_Server: (1)获取支持的第三方登录授权平台列表
+activate PN_Server
+Client <- PN_Server: (2)返回列表
+deactivate PN_Server
+user <- Client: 支持的登录方式显示
+deactivate Client
+
+user -> Client: 点击按钮，选择QQ/Sina/Baidu登录
+
+activate Client
+
+Client -> PN_Server: (3)QQ/Sina/Baidu Login
+note left : User Agent
+activate PN_Server
+PN_Server -> OAuth授权平台: (4)302跳转，请求授权
+deactivate PN_Server
+
+OAuth授权平台 -> Client:(5)返回登录页面
+Client -> user:(6)展示登录页面
+
+user->Client:(7)输入用户名密码
+Client -> OAuth授权平台: (8)用户登录
+Client <- OAuth授权平台: (9)返回授权码
+
+Client -> PN_Server: (10)302跳转，返回授权码给PN-Server
+activate PN_Server
+OAuth授权平台 <- PN_Server: (11)请求访问令牌
+OAuth授权平台 -> PN_Server: (12)返回访问令牌
+
+OAuth授权平台 <- PN_Server: (13)获取用户的用户ID（UID）
+OAuth授权平台 -> PN_Server: (14)返回用户的用户ID（UID）
+
+PN_Server -> PN_Server: (15)返回的UID与本地用户建立绑定关系
+
+Client <- PN_Server: (16)返回Sony Select ID
+deactivate PN_Server
+user <- Client:登录完成
+deactivate Client
+@enduml
