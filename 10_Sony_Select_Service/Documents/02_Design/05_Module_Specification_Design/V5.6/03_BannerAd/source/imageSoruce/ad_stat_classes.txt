@@ -1,0 +1,196 @@
+
+@startuml "ad_stat_classes.png"
+interface ICloneable
+interface IHttpHandler
+
+package "PlayNowService" #DDDDDD {
+    class ServerApi {
+        ~ serializer
+        ~ mErroMsg
+        ~ paramsDic
+        + ProcessRequest()
+
+        ..
+         Other unused in this module
+        ..
+    }
+    IHttpHandler <|-- ServerApi 
+}
+
+package "PlayNowService.ApiApp" #DDDDDD {
+    class PlayNowService.ApiApp.AdvertisementManager {
+        + {static}void RequestAdvertLink(HttpContext context)
+    }
+}
+package "PlayNowService.BLL.Api" #DDDDDD {
+    class PlayNowService.BLL.Api.Advertisement {
+        + string RequestAdvertLink(int adId, int intenetFromId, string machineType)
+        ..
+         Other unused in this module
+        ..
+    }
+}
+
+
+package "PlayNowService.BLL" #DDDDDD {
+    class PlayNowService.BLL.BLHelper {
+        # TryAddModelCache()
+        # GetModelCache()
+        # RemoveModelCache()
+        # TryAddExistCache()
+        # GetExistCache()
+        # RemoveExistCache()
+        # TryAddCountCache()
+        # GetCountCache()
+        # RemoveCountCache()
+        # TryAddListCache()
+        # GetListCache()
+        # RemoveListCache()
+        # RemoveCountCache()
+        # RemoveListCache()
+        + {static} GetCache()
+        + {static} TryAddCache()
+        + {static} TryRemoveCache()
+        + {static} RemoveMultiCache()
+        + {static} RemoveAllCache()        
+    }
+    
+    class PlayNowService.BLL.Log_Unify {
+        - dal
+        - RegDate
+        - RegMsg
+        - RegNoEmp
+        + LogToText()
+        + ImportLog()
+        + ConvertLogToModel()
+        + ReadLogTextStream()
+        + ImportLogToDb()
+        + DataTable GetAdHitLogTable(string strLogPath)
+        + CreateDataTable()
+        + DataTable SetAdHitLogTable()
+        + UpdateLogToDb()
+        + WriteLog()
+        ..
+         Other unused in this module
+        ..
+    }
+    
+    class PlayNowService.BLL.PN_S_Statistic{
+        - dal
+        + ExecAdHitStatisticSP()
+        ..
+         Other unused in this module
+        ..
+    }
+    
+    class ErroMsg {
+        + ResultCode
+        + Discription
+    }
+    PlayNowService.BLL.BLHelper <|--PlayNowService.BLL.PN_S_Statistic
+}
+
+package "PlayNowService.WinServices" #DDDDDD {
+    class LogImportService {
+        ~ timerLog
+        ~ timerCache
+        - strPaths
+        + LogImportService()
+        # OnStart()
+        # OnStop()
+        # TimerLog_Elapsed()
+        # TimerCache_Elapsed()
+        # LogError()
+    }
+    System.ServiceProcess.ServiceBase <|-- LogImportService
+}
+
+package "PlayNowService.IDAL" #DDDDDD {
+    
+    interface PlayNowService.IDAL.IPN_S_Statistic{
+        ~ ExecAdHitStatisticSP()
+        ..
+         Other unused in this module
+        ..
+    }
+    
+    interface PlayNowService.IDAL.ILog_Unify {
+        ~ ImportLog()
+        ~ ImportAdHitLog()
+        ~ ExecuteToDb()
+        ..
+         Other unused in this module
+        ..
+    }
+    
+}
+
+package "PlayNowService.DAL" #DDDDDD {
+    
+    class PlayNowService.DAL.PN_S_Statistic {
+        + ExecAdHitStatisticSP()
+        ..
+         Other unused in this module
+        ..
+    }
+    class PlayNowService.DAL.Log_Unify {
+        + ImportLog()
+        + ImportAdHitLog()
+        + ExecuteToDb()
+        ..
+         Other unused in this module
+        ..
+    }
+    PlayNowService.IDAL.IPN_S_Statistic <|-- PlayNowService.DAL.PN_S_Statistic
+    PlayNowService.IDAL.ILog_Unify <|-- PlayNowService.DAL.Log_Unify
+}
+
+package "PlayNowService.Model" #DDDDDD {
+    class PlayNowService.Model.PN_S_Statistic{
+        + StartTime
+        + EndTime
+        + Equals()
+        + GetHashCode()
+    }
+
+    class PlayNowService.Model.PNL_Log_AdHit{
+        + ID
+        + AdId
+        + AdName
+        + MachineType
+        + IntenetFromId
+        + IP
+        + CreateTime
+        + Equals()
+        + GetHashCode()
+    }
+    ICloneable <|-- PlayNowService.Model.PN_S_Statistic
+    ICloneable <|-- PlayNowService.Model.PNL_Log_AdHit
+}
+
+package "PlayNowService.Utility" #DDDDDD {
+    class LogHelper {
+        + {static} LogInfo()
+        + {static} LogUnify()
+        + {static} LogError()
+    }
+}
+
+
+ServerApi ..> PlayNowService.ApiApp.AdvertisementManager 
+PlayNowService.ApiApp.AdvertisementManager ..> PlayNowService.BLL.Api.Advertisement
+PlayNowService.BLL.Api.Advertisement ..> PlayNowService.BLL.Log_Unify
+PlayNowService.BLL.Log_Unify --> LogHelper
+PlayNowService.BLL.Log_Unify --> PlayNowService.IDAL.ILog_Unify
+LogImportService --> PlayNowService.BLL.Log_Unify
+LogImportService --> LogHelper
+LogImportService ..> PlayNowService.BLL.PN_S_Statistic
+LogImportService ..> PlayNowService.Model.PN_S_Statistic
+PlayNowService.BLL.PN_S_Statistic --> PlayNowService.IDAL.IPN_S_Statistic
+PlayNowService.BLL.PN_S_Statistic --> PlayNowService.Model.PN_S_Statistic
+PlayNowService.DAL.PN_S_Statistic --> PlayNowService.Model.PN_S_Statistic
+PlayNowService.BLL.Log_Unify ..> PlayNowService.Model.PNL_Log_AdHit
+
+
+
+@enduml

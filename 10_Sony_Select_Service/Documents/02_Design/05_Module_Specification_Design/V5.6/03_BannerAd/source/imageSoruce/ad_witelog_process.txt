@@ -1,0 +1,11 @@
+@startuml"ad_writelog_process.png"
+
+:客户端调用接口app.requestAdvertLink;
+if(AD link不为空?) then (非空)
+    :记日志到广告日志文件;
+endif
+
+
+stop
+
+@enduml

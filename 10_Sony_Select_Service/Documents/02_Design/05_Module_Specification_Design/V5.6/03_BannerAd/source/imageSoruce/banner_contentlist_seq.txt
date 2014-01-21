@@ -1,0 +1,146 @@
+﻿
+@startuml "banner_contentlist_seq.png"
+ actor SonySelect_Client
+ 
+ SonySelect_Client->ServerApi : app.getBannerList
+ activate ServerApi
+ ServerApi->ServerApi : machineType&platformType&Version
+ ALT Parameter is OK
+     ServerApi->PlayNowService.ApiApp : getBannerList.GetBannerList
+     activate PlayNowService.ApiApp
+
+     ALT Is web
+         PlayNowService.ApiApp->PlayNowService.BLL : PN_Banner.GetWebBannerResult
+         activate PlayNowService.BLL 
+         PlayNowService.BLL->PlayNowService.BLL : PN_Banner.GetListCache
+         PlayNowService.BLL->PlayNowService.BLL : lstBanner
+         ALT lstBanner is null
+             PlayNowService.BLL->PlayNowService.DAL : PN_Banner.GetWebList
+             activate PlayNowService.DAL 
+             PlayNowService.DAL->PlayNow.dbo : web PN_Banner list in table PN_Banner
+             activate PlayNow.dbo
+             PlayNow.dbo->PlayNowService.DAL : list PN_Banner 
+             deactivate PlayNow.dbo
+             PlayNowService.DAL->PlayNowService.BLL : list PN_Banner
+             deactivate PlayNowService.DAL
+             loop PN_Banner in list
+                 ALT BannerType=APP
+                     PlayNowService.BLL->PlayNowService.DAL : PN_AppInfo.GetModel
+                     activate PlayNowService.DAL 
+                     PlayNowService.DAL->PlayNow.dbo : PN_AppInfo by id
+                     activate PlayNow.dbo
+                     PlayNow.dbo->PlayNowService.DAL : PN_AppInfo 
+                     deactivate PlayNow.dbo
+                     PlayNowService.DAL->PlayNowService.BLL : PN_AppInfo
+                     deactivate PlayNowService.DAL
+                     PlayNowService.BLL->PlayNowService.BLL : get MachineTypes
+                 else BannerType=Zone
+                     PlayNowService.BLL->PlayNowService.DAL : PN_ZoneDetail.GetZoneAppDetail
+                     activate PlayNowService.DAL 
+                     PlayNowService.DAL->PlayNow.dbo : get AppIds and MachinTypes by ZoneId
+                     activate PlayNow.dbo
+                     PlayNow.dbo->PlayNowService.DAL : DataSet 
+                     deactivate PlayNow.dbo
+                     PlayNowService.DAL->PlayNowService.BLL : DataSet
+                     deactivate PlayNowService.DAL
+                     PlayNowService.BLL->PlayNowService.BLL : loop dataset get all MachineTypes
+                 else BannerType=Ad
+                     PlayNowService.BLL->PlayNowService.BLL : PN_Machine.GetAllSupportMachineTypes
+                     PlayNowService.BLL->PlayNowService.DAL : PN_Machine.GetList
+                     activate PlayNowService.DAL 
+                     PlayNowService.DAL->PlayNow.dbo : get all PN_Machine list
+                     activate PlayNow.dbo
+                     PlayNow.dbo->PlayNowService.DAL : PN_Machine list 
+                     deactivate PlayNow.dbo
+                     PlayNowService.DAL->PlayNowService.BLL : PN_Machine list
+                     deactivate PlayNowService.DAL
+                     PlayNowService.BLL->PlayNowService.BLL : get MachineTypes
+                 end
+                 PlayNowService.BLL->PlayNowService.BLL : update MachineTypes to PN_Banner
+             end
+             PlayNowService.BLL->PlayNowService.BLL : TryAddListCache
+         end
+         PlayNowService.BLL->PlayNowService.BLL : filter PN_Banner list by client MachinType
+         PlayNowService.BLL->PlayNowService.BLL : Convert PN_Banner list to BLL.BannerListNew
+         PlayNowService.BLL->PlayNowService.BLL : serializer.Serialize
+         PlayNowService.BLL->PlayNowService.ApiApp : JSON String
+         deactivate PlayNowService.BLL
+     else Is default
+         PlayNowService.ApiApp->PlayNowService.BLL : PN_Banner.GetNewBannerResult
+         activate PlayNowService.BLL 
+         PlayNowService.BLL->PlayNowService.BLL : PN_Banner.GetListCache
+         PlayNowService.BLL->PlayNowService.BLL : lstBanner
+         ALT lstBanner is null
+             PlayNowService.BLL->PlayNowService.DAL : PN_Banner.GetList
+             activate PlayNowService.DAL 
+             PlayNowService.DAL->PlayNow.dbo : default PN_Banner list in table PN_Banner
+             activate PlayNow.dbo
+             PlayNow.dbo->PlayNowService.DAL : list PN_Banner 
+             deactivate PlayNow.dbo
+             PlayNowService.DAL->PlayNowService.BLL : list PN_Banner
+             deactivate PlayNowService.DAL
+             loop PN_Banner in list
+                 ALT BannerType=APP
+                     PlayNowService.BLL->PlayNowService.DAL : PN_AppInfo.GetModel
+                     activate PlayNowService.DAL 
+                     PlayNowService.DAL->PlayNow.dbo : PN_AppInfo by id
+                     activate PlayNow.dbo
+                     PlayNow.dbo->PlayNowService.DAL : PN_AppInfo 
+                     deactivate PlayNow.dbo
+                     PlayNowService.DAL->PlayNowService.BLL : PN_AppInfo
+                     deactivate PlayNowService.DAL
+                     PlayNowService.BLL->PlayNowService.BLL : get MachineTypes
+                 else BannerType=Zone
+                     PlayNowService.BLL->PlayNowService.DAL : PN_ZoneDetail.GetZoneAppDetail
+                     activate PlayNowService.DAL 
+                     PlayNowService.DAL->PlayNow.dbo : get AppIds and MachinTypes by ZoneId
+                     activate PlayNow.dbo
+                     PlayNow.dbo->PlayNowService.DAL : DataSet 
+                     deactivate PlayNow.dbo
+                     PlayNowService.DAL->PlayNowService.BLL : DataSet
+                     deactivate PlayNowService.DAL
+                     PlayNowService.BLL->PlayNowService.BLL : loop dataset get all MachineTypes
+                 else BannerType=Ad
+                     PlayNowService.BLL->PlayNowService.BLL : PN_Machine.GetAllSupportMachineTypes
+                     PlayNowService.BLL->PlayNowService.DAL : PN_Machine.GetList
+                     activate PlayNowService.DAL 
+                     PlayNowService.DAL->PlayNow.dbo : get all PN_Machine list
+                     activate PlayNow.dbo
+                     PlayNow.dbo->PlayNowService.DAL : PN_Machine list 
+                     deactivate PlayNow.dbo
+                     PlayNowService.DAL->PlayNowService.BLL : PN_Machine list
+                     deactivate PlayNowService.DAL
+                     PlayNowService.BLL->PlayNowService.BLL : get MachineTypes
+                 end
+                 PlayNowService.BLL->PlayNowService.BLL : update MachineTypes to PN_Banner
+             end
+             PlayNowService.BLL->PlayNowService.BLL : TryAddListCache
+         end
+         PlayNowService.BLL->PlayNowService.BLL : filter PN_Banner list by client MachinType
+         PlayNowService.BLL->PlayNowService.BLL : Convert PN_Banner list to BLL.BannerListNew
+         PlayNowService.BLL->PlayNowService.BLL : serializer.Serialize
+         PlayNowService.BLL->PlayNowService.ApiApp : JSON String
+         deactivate PlayNowService.BLL
+     end
+     PlayNowService.ApiApp->ServerApi : JSON String
+     deactivate PlayNowService.ApiApp
+     ServerApi->SonySelect_Client :  JSON String
+     SonySelect_Client->SonySelect_Client : Parse JSON string
+     activate SonySelect_Client
+     ALT contents in banner is availble
+         SonySelect_Client->SonySelect_Client : Show contents in banner
+     else
+         SonySelect_Client->SonySelect_Client : Show no contents in banner
+     end
+     deactivate SonySelect_Client
+ else Parameter is not OK
+     ServerApi->SonySelect_Client : Parms Error message
+     deactivate ServerApi
+     SonySelect_Client->SonySelect_Client : Parse JSON string
+     activate SonySelect_Client
+     SonySelect_Client->SonySelect_Client : Show no contents in banner
+     deactivate SonySelect_Client
+ end
+
+
+@enduml

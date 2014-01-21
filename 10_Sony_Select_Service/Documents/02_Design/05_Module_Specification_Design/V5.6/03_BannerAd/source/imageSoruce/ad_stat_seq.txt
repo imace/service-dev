@@ -1,0 +1,57 @@
+
+@startuml "ad_stat_seq.png"
+actor WindowsServices
+->WindowsServices : Start service
+activate WindowsServices
+WindowsServices->WindowsServices : LogImportService.InitializeComponent
+WindowsServices->WindowsServices : LogImportService.OnStart
+WindowsServices->WindowsServices : LogImportService.TimerLog_Elapsed
+group Timer - time to switch log file
+    WindowsServices->PlayNowService.Service : WS, LogHandle.ChangeLogText
+    activate PlayNowService.Service
+    deactivate PlayNowService.Service
+    PlayNowService.Service->PlayNowService.BLL : Log_Unify.LogToText
+    activate PlayNowService.BLL
+    deactivate PlayNowService.BLL
+end
+group Timer - time to import log to DB
+    WindowsServices->PlayNowService.BLL : Log_Unify.ImportLogToDb
+    activate PlayNowService.BLL
+    ALT Log type is ClientAdvertisement
+        PlayNowService.BLL->PlayNowService.BLL : Log_Unify.GetAdHitLogTable
+        PlayNowService.BLL->PlayNowService.BLL : Log_Unify.CreateDataTable
+        activate PlayNowService.BLL #FFBBBB
+        PlayNowService.BLL->PlayNowService.BLL : SetAdHitLogTable
+        deactivate PlayNowService.BLL
+        PlayNowService.BLL->PlayNowService.BLL : DirectoryInfo.GetFiles
+        Loop read each file
+            PlayNowService.BLL->PlayNowService.BLL : parse log infos
+            activate PlayNowService.BLL #FFBBBB
+            PlayNowService.BLL->PlayNowService.BLL : add into datable
+            deactivate PlayNowService.BLL #FFBBBB
+            ALT equal BatchSize or reach end
+                PlayNowService.BLL->PlayNowService.DAL : Log_Unify.ImportAdHitLog
+            end
+        end
+        
+        PlayNowService.DAL->PlayNowLog.dbo : dbo.[PNL_Log_AdHit]
+    end
+    PlayNowService.BLL->WindowsServices : int result
+    deactivate PlayNowService.BLL
+end
+group Timer - time to statistic log in DB
+    WindowsServices->PlayNowService.BLL : PN_S_Statistic.ExecAdHitStatisticSP
+    activate PlayNowService.BLL
+    PlayNowService.BLL->PlayNowService.DAL : PN_S_Statistic.ExecAdHitStatisticSP
+    activate PlayNowService.DAL
+    PlayNowService.DAL->PlayNowLog.dbo : dbo.[SP_AdHitStatistic]
+    activate PlayNowLog.dbo
+    PlayNowLog.dbo->PlayNowService.DAL : int result
+    deactivate PlayNowLog.dbo
+    PlayNowService.DAL->PlayNowService.BLL : int result
+    deactivate PlayNowService.DAL
+    PlayNowService.BLL->WindowsServices : int result
+    deactivate PlayNowService.BLL
+end
+
+@enduml

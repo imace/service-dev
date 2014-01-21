@@ -1,0 +1,53 @@
+@startuml"banner_contentlist_process.png"
+
+:客户端调用接口app.getBannerList;
+if (输入参数校验?) then (校验不通过)
+  :返回 参数错误;
+else (校验通过)
+    if(平台类型？) then (平板)
+        if(WebBanner列表缓存？) then(已经缓存)
+            :从缓存中读取WebBanner列表;
+        else (尚未缓存)
+            :从数据库读取WebBanner列表;
+            while (More WebBanner?) is (yes)
+                if(Banner类型?) then (应用)
+                    :获取应用支持机型列表;
+                else if (Banner类型?) then (专区)
+                        :获取专区中应用机型列表合集;
+                else  (广告)
+                        :获取所有机型列表;
+                endif
+                :更新机型列表到WebBanner中;
+            endwhile(no)
+            :添加WebBanner列表到缓存;
+        endif
+        :适配机型过滤;
+        :构造WebBanner内容列表;
+        :对广告Banner获取AD Link;
+        :返回WebBanner内容列表;
+    else(手机)
+        if(Banner列表缓存？) then(已经缓存)
+            :从缓存中读取Banner列表;
+        else (尚未缓存)
+            :从数据库读取Banner列表;
+            while (More Banner?) is (yes)
+                if(Banner类型?) then (应用)
+                    :获取应用支持机型列表;
+                else if (Banner类型?) then (专区)
+                    :获取专区中应用机型列表合集;
+                else  (广告)
+                    :获取所有机型列表;
+                endif
+                :更新机型列表到Banner中;
+            endwhile(no)
+            :添加Banner列表到缓存;
+        endif
+        :适配机型过滤;
+        :构造Banner内容列表;
+        :对广告Banner更新AD Link;
+        :返回Banner内容列表;
+    endif
+endif
+stop
+
+@enduml

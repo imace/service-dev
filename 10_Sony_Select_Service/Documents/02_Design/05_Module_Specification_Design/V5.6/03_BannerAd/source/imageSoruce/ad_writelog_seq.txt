@@ -1,0 +1,70 @@
+
+@startuml "ad_writelog_seq.png"
+ actor SonySelect_Client
+ 
+ SonySelect_Client->ServerApi : app.requestAdvertLink
+ activate ServerApi
+ ServerApi->ServerApi : AdId&IntenetFromId
+ ALT Parameter is OK
+     ServerApi->PlayNowService.ApiApp : AdvertisementManager.RequestAdvertLink
+     deactivate ServerApi
+     activate PlayNowService.ApiApp
+     PlayNowService.ApiApp->PlayNowService.BLL : Api.Advertisement.RequestAdvertLink
+     activate PlayNowService.BLL 
+
+     PlayNowService.BLL->PlayNowService.BLL : Api.Advertisement.GetAdInfoById
+     ALT Is cached enable
+         Group Api.Advertisement.GetList
+             ALT Is cached enable
+                 PlayNowService.BLL->PlayNowService.BLL : Api.Advertisement.GetListCache
+             end    
+             ALT list PN_AdInfo is null
+                 PlayNowService.BLL->PlayNowService.DAL : PN_AdInfo.GetAdList
+                 activate PlayNowService.DAL 
+                 PlayNowService.DAL->PlayNow.dbo : PN_AdInfo list not expried
+                 activate PlayNow.dbo
+                 PlayNow.dbo->PlayNowService.DAL : list PN_AdInfo 
+                 deactivate PlayNow.dbo
+                 PlayNowService.DAL->PlayNowService.BLL : list PN_AdInfo
+                 deactivate PlayNowService.DAL  
+                 PlayNowService.BLL->PlayNowService.BLL : Api.Advertisement.TryAddListCache
+             end
+         end
+         PlayNowService.BLL->PlayNowService.BLL : get PN_AdInfo by Id
+     else
+         PlayNowService.BLL->PlayNowService.DAL : PN_AdInfo.GetModel(Id)
+         activate PlayNowService.DAL 
+         PlayNowService.DAL->PlayNow.dbo : PN_AdInfo by Id
+         activate PlayNow.dbo
+         PlayNow.dbo->PlayNowService.DAL : object PN_AdInfo 
+         deactivate PlayNow.dbo
+         PlayNowService.DAL->PlayNowService.BLL : PN_AdInfo
+         deactivate PlayNowService.DAL  
+     end
+     PlayNowService.BLL->PlayNowService.BLL : PN_AdInfo.Link
+     ALT adLink not null
+         PlayNowService.BLL->PlayNowService.BLL : Log_Unify.WriteLog
+         PlayNowService.BLL->PlayNowService.Utility : LogHelper.LogUnify
+         activate PlayNowService.Utility
+         PlayNowService.Utility -> PlayNowService.BLL : result
+         deactivate PlayNowService.Utility
+     end
+     PlayNowService.BLL->PlayNowService.ApiApp : adLink
+     deactivate PlayNowService.BLL
+     PlayNowService.ApiApp->SonySelect_Client : response 301 redirct
+     deactivate PlayNowService.ApiApp
+     activate SonySelect_Client
+     SonySelect_Client->SonySelect_Client : Show ad
+     deactivate SonySelect_Client
+ else Parameter is not OK
+     ServerApi->SonySelect_Client : Parms Error message
+     activate ServerApi
+     deactivate ServerApi
+     SonySelect_Client->SonySelect_Client : Parse JSON string
+     activate SonySelect_Client
+     SonySelect_Client->SonySelect_Client : Show no ad
+     deactivate SonySelect_Client
+ end
+
+
+@enduml

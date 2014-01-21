@@ -1,0 +1,112 @@
+﻿
+@startuml "ad_manager_classes.png"
+interface ICloneable
+class PlayNowManager.BasePage {
+    # Page_Init()
+    # CheckPermission()
+    # AlertJs()
+    ..
+    Other unused methods in Multi-zone module
+    ..
+}
+package "PlayNowManager.App" #DDDDDD {
+    class PlayNowManager.App.AdInfo {
+        # Page_Load()
+        # InitPage()
+        # BindAdList()
+        # btnSearch_Click()
+        # pageAdRec_PageChanged()
+        # grvAdRec_RowEditing()
+        # grvAdRec_RowCancelingEdit()
+        # grvAdRec_RowUpdating()
+        # grvAdRec_RowDeleting()
+        # btnAdd_Click()
+        # addbtnAddAdIcon_Click()
+        # AddAdIcon()
+        # addbtnUpAdIcon_Click()
+        # updbtnAddAdIcon_Click()
+        # updAdIcon()
+        # updbtnUpAdIcon_Click()
+        # updAdIcon()
+        # btnDelete_Click()
+    }
+    PlayNowManager.BasePage <|-- PlayNowManager.App.AdInfo
+}
+
+package "PlayNowManager.BLL" #DDDDDD {
+    class PlayNowManager.BLL.PN_AdInfo {
+        - PlayNowManager.IDAL.IPN_AdInfo dal
+        - PlayNowManager.IDAL.IPN_Banner ban
+        + int Add(PlayNowManager.Model.PN_AdInfo model)
+        + int Update(PlayNowManager.Model.PN_AdInfo model)
+        + int Delete(int? Id)
+        + PlayNowManager.Model.PN_AdInfo GetModel(int? Id)
+        + DataSet GetDataSet(Hashtable htParams, ref int intRowsCount)
+
+    }
+    
+}
+
+package "PlayNowManager.Model" #DDDDDD {
+    class PlayNowManager.Model.PN_AdInfo {
+        + ID
+        + Name
+        + Link
+        + Icon
+        + CreateTime
+        + UpdateTime
+        + Description
+        + ExpiryDate
+        + Clone()
+        + Equals()
+        + GetHashCode()
+    }
+    ICloneable <|- PlayNowManager.Model.PN_AdInfo
+}
+
+package "PlayNowManager.IDAL" #DDDDDD {
+    interface PlayNowManager.IDAL.IPN_AdInfo {
+        ~ int Add(Model.PN_AdInfo model);
+        ~ int Update(Model.PN_AdInfo model);
+        ~ int Delete(int? ID);
+        ~ Model.PN_AdInfo GetModel(int? ID);
+        ~ DataSet GetDataSet(Hashtable htParams, ref int intRowsCount);
+    }
+}
+package "PlayNowManager.DAL" #DDDDDD {
+    class PlayNowManager.DAL.PN_AdInfo {
+        + int Add(Model.PN_AdInfo model);
+        + int Update(Model.PN_AdInfo model);
+        + int Delete(int? ID);
+        + Model.PN_AdInfo GetModel(int? ID);
+        + DataSet GetDataSet(Hashtable htParams, ref int intRowsCount);
+
+    }
+    PlayNowManager.IDAL.IPN_AdInfo <|- PlayNowManager.DAL.PN_AdInfo
+}
+
+package "PlayNowManager.IDAL" #DDDDDD {
+    interface PlayNowManager.IDAL.IPN_Banner {
+        ~ int DeleteContent(int? ContentId, int? type);
+        ~ bool ExistsContent(int? ContentId, int? type);
+    }
+}
+package "PlayNowManager.DAL" #DDDDDD {
+    class PlayNowManager.DAL.PN_Banner {
+        + int DeleteContent(int? ContentId, int? type);
+        + bool ExistsContent(int? ContentId, int? type);
+    }
+    PlayNowManager.IDAL.IPN_Banner <|- PlayNowManager.DAL.PN_Banner
+}
+
+
+PlayNowManager.App.AdInfo --> PlayNowManager.BLL.PN_AdInfo
+PlayNowManager.BLL.PN_AdInfo --> PlayNowManager.IDAL.IPN_AdInfo
+PlayNowManager.BLL.PN_AdInfo --> PlayNowManager.IDAL.IPN_Banner
+PlayNowManager.BLL.PN_AdInfo ..> PlayNowManager.Model.PN_AdInfo
+PlayNowManager.DAL.PN_AdInfo ..> PlayNowManager.Model.PN_AdInfo
+
+
+
+
+@enduml
