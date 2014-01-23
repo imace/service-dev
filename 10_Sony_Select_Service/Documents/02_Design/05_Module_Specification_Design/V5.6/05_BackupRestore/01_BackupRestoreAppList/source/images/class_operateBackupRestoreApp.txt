@@ -1,0 +1,69 @@
+@startuml
+package "接口层(PlayNowService.API)"{
+	class ServerApi{
+		+account.addIntoMyAppsList()
+		+account.removeFromMyAppsList()
+		+account.getMyAppsList()
+	}
+	note left of ServerApi:PlayNow Service对外接口
+	
+	class UserBackupAppManager{
+		+AddIntoMyAppsList(string strSonySelectID, string strPackageInfos)
+		+RemoveMyAppsList(string strSonySelectID, string packageInfos)
+		+GetMyAppsList(string machineType, string sonySelectID)
+	}
+	ServerApi --> UserBackupAppManager
+}
+
+
+package "业务逻辑层(PlayNowService.BLL)"{
+	class BLL_UserDownloadAppManager{
+		+AddIntoMyAppsList(string strSonySelectID, string strPackageNames)
+		+DeleteUserDownloadAppList(string sonySelectID, string packageNames)
+		+GetMyAppsList(string machineType, string sonySelectID)
+	}
+	note left of BLL_UserDownloadAppManager:操作备份应用列表
+}
+UserBackupAppManager --> BLL_UserDownloadAppManager
+
+package "数据访问接口层(PlayNowService.IDAL)"{
+	interface IDAL_IPN_UserDownloadList{
+			+Add(string sonySelectID, string[] arrPackageName)
+			+DeleteUserDownloadAppList(string sonySelectID, string packageNames)
+			+GetExtPackageNameList(string machineType, string sonySelectID)
+	}
+	
+	interface IDAL_IPN_BaiduDownloadList{
+			+GetListByUserId(string machineType, string userId)
+	}
+	
+	interface IDAL_IPN_AppInfo{
+			+GetListByUserId(string machineType, string userId)
+	}
+}
+
+BLL_UserDownloadAppManager --> IDAL_IPN_UserDownloadList
+BLL_UserDownloadAppManager --> IDAL_IPN_BaiduDownloadList
+BLL_UserDownloadAppManager --> IDAL_IPN_AppInfo
+
+package "数据访问实现层(PlayNowService.DAL)"{
+	class DAL_PN_UserDownloadList{
+		+Add(string sonySelectID, string[] arrPackageName)
+		+DeleteUserDownloadAppList(string sonySelectID, string packageNames)
+		+GetExtPackageNameList(string machineType, string sonySelectID)
+	}
+	
+	class DAL_PN_BaiduDownloadList{
+			+GetListByUserId(string machineType, string userId)
+	}
+	
+	class DAL_PN_AppInfo{
+			+GetListByUserId(string machineType, string userId)
+	}
+}
+
+IDAL_IPN_UserDownloadList <|-- DAL_PN_UserDownloadList
+IDAL_IPN_BaiduDownloadList <|-- DAL_PN_BaiduDownloadList
+IDAL_IPN_AppInfo <|-- DAL_PN_AppInfo
+
+@enduml

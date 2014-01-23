@@ -1,0 +1,33 @@
+@startuml
+
+== 查询用户备份应用信息  ==
+
+PlayNowManager_UI --> BLL : BLL_UserDownloadAppManager.GetUserBackupAppList
+activate BLL
+
+BLL --> DAL : IDAL.IPN_UserDownloadList.GetUserBackupAppList
+activate DAL
+DAL --> PlayNow.dbo : PN_UserDownloadList
+activate PlayNow.dbo
+DAL <-- PlayNow.dbo
+deactivate PlayNow.dbo
+BLL <-- DAL
+deactivate DAL
+PlayNowManager_UI <-- BLL
+deactivate BLL
+
+PlayNowManager_UI --> BLL : BLL_UserDownloadAppManager.GetTotalCount
+activate BLL
+
+BLL --> DAL : IDAL.IPN_UserDownloadList.GetTotalCount
+activate DAL
+DAL --> PlayNow.dbo : PN_UserDownloadList
+activate PlayNow.dbo
+DAL <-- PlayNow.dbo
+deactivate PlayNow.dbo
+BLL <-- DAL
+deactivate DAL
+PlayNowManager_UI <-- BLL
+deactivate BLL
+
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+
+start
+
+:客户端调用接口account.getMyAppsList;
+
+if (输入参数校验?) then (校验不通过)
+
+  :返回 参数错误;
+
+else (校验通过)
+
+  :获取站内应用列表;
+  :获取站内缓存的百度应用列表;
+  if(站内没有匹配的应用信息?) then(yes)
+	: 百度实时获取应用信息;
+  else(no)
+  endif
+  :返回 备份应用列表;
+endif
+
+
+stop
+
+@enduml

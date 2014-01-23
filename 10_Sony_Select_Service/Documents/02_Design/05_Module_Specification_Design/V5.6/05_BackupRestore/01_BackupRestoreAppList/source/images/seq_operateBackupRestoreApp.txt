@@ -1,0 +1,95 @@
+@startuml
+== 添加备份应用 ==
+Client -> PlayNowService_ServerApi:account.addIntoMyAppsList
+activate PlayNowService_ServerApi
+	PlayNowService_ServerApi  -> API:UserBackupAppManager.AddIntoMyAppsList
+	activate API
+	API -> BLL:UserDownloadAppManager.AddIntoMyAppsList
+	activate BLL	
+			BLL -> DAL:PN_UserDownloadList.Add
+			activate DAL
+				DAL -> PlayNow.dbo: PN_UserDownloadList
+				activate PlayNow.dbo
+				PlayNow.dbo --> DAL
+				deactivate  PlayNow.dbo
+			DAL --> BLL
+			Deactivate DAL												
+	BLL --> API	
+	deactivate BLL
+	
+	API --> PlayNowService_ServerApi
+	deactivate API
+PlayNowService_ServerApi --> Client
+deactivate PlayNowService_ServerApi
+
+== 删除备份应用 ==
+Client -> PlayNowService_ServerApi:account.removeFromMyAppsList
+activate PlayNowService_ServerApi
+	PlayNowService_ServerApi  -> API:UserBackupAppManager.RemoveMyAppsList
+	activate API
+	API -> BLL:UserDownloadAppManager.DeleteUserDownloadAppList
+	activate BLL	
+			BLL -> DAL:PN_UserDownloadList.DeleteUserDownloadAppList
+			activate DAL
+				DAL -> PlayNow.dbo: PN_UserDownloadList
+				activate PlayNow.dbo
+				PlayNow.dbo --> DAL
+				deactivate  PlayNow.dbo
+			DAL --> BLL
+			Deactivate DAL												
+	BLL --> API	
+	deactivate BLL
+	
+	API --> PlayNowService_ServerApi
+	deactivate API
+PlayNowService_ServerApi --> Client
+deactivate PlayNowService_ServerApi
+
+== 获取已备份应用列表 ==
+Client -> PlayNowService_ServerApi:account.getMyAppsList
+activate PlayNowService_ServerApi
+	PlayNowService_ServerApi  -> API:UserBackupAppManager.GetMyAppsList
+	activate API
+	API -> BLL:UserDownloadAppManager.GetMyAppsList
+	activate BLL	
+			BLL -> DAL:PN_AppInfo.GetListByUserId
+			activate DAL
+				DAL -> PlayNow.dbo: PN_AppInfo\PN_UserDownloadList\PN_UserInfo
+				activate PlayNow.dbo
+				PlayNow.dbo --> DAL
+				deactivate  PlayNow.dbo
+			DAL --> BLL
+			Deactivate DAL
+			BLL -> DAL:PN_BaiduDownloadList.GetListByUserId
+			activate DAL
+				DAL -> PlayNow.dbo: PN_AppInfo\PN_UserDownloadList\PN_UserInfo\PN_BaiduDownloadList
+				activate PlayNow.dbo
+				PlayNow.dbo --> DAL
+				deactivate  PlayNow.dbo
+			DAL --> BLL
+			Deactivate DAL
+			BLL -> DAL:PN_UserDownloadList.GetExtPackageNameList
+			activate DAL
+				DAL -> PlayNow.dbo: PN_AppInfo\PN_UserDownloadList\PN_UserInfo
+				activate PlayNow.dbo
+				PlayNow.dbo --> DAL
+				deactivate  PlayNow.dbo
+			DAL --> BLL
+			Deactivate DAL	
+			BLL -> DAL:Baidu_Api.GetBaiduAppListByPackage
+			activate DAL
+				DAL -> PlayNow.dbo: PN_BaiduDownloadList
+				activate PlayNow.dbo
+				PlayNow.dbo --> DAL
+				deactivate  PlayNow.dbo
+			DAL --> BLL
+			Deactivate DAL	
+	BLL --> API	
+	deactivate BLL
+	
+	API --> PlayNowService_ServerApi
+	deactivate API
+PlayNowService_ServerApi --> Client
+deactivate PlayNowService_ServerApi
+
+@enduml
