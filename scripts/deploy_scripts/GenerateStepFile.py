@@ -7,15 +7,17 @@ import os
 import DealWithFile
 
 #处理SQL脚本文件
-#去处多余的空格，空行, 生成压缩文件
+#去处多余的空格，空行, 生成压缩文件，
+#并解决sql文件中在sql server studio中直接打开的乱码问题
 def doWithSQLFile(filename):
-
 	fileF = open(filename,'r');
-	filelist = fileF.readlines();
+	lines = fileF.readlines();
 	fileF.close()
+	os.remove(filename)
 	outF = open(filename,'w')  
-	for temp in filelist:
-		outF.write(temp.lstrip());  
+	for line in lines:
+	    #SQL server manager打开sql文件默认是ansi编码格式
+		outF.write(line.lstrip().decode("utf-8").encode("gbk"));
 	outF.flush();
 	outF.close();
 

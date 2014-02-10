@@ -1,6 +1,5 @@
 # -*- coding:utf-8 -*-  
 
-import codecs
 import sys 
 import unicodedata 
 import os 
@@ -60,7 +59,7 @@ def deploymentPlan_replaceTagString(beingTag, endTag, orgFile, newFile):
 # 给定起始标签，结束标签，原文件名，新文件名，生成新的文件
 def generalFile(beginTag,endTag,orgFileName,newFileName, ingoreStartStr="null"):
 	orgF = open(orgFileName,'r')
-	newF = codecs.open(newFileName,'w','UTF-8')
+	newF = open(newFileName,'w')
 	isWrite = False
 	line = orgF.readline()
 	while line:
