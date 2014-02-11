@@ -31,13 +31,13 @@ Utile.writeLog("---current application version = "+CURRENTVERSION+"---")
 #输出目录
 OUTDIR = WORKSPACE_DIR +'\\PlayNow_out'
 #编译结果的输出目录  
-BINDIR = OUTDIR+"\\Release"+CURRENT_TIME+"_"+CURRENTVERSION
+BINDIR = OUTDIR+"\\Packages"
 #编译结果中安装包的输出目录
-PLAYNOW_PACKAGE_DIR = BINDIR + '\\PlayNow_'+CURRENTVERSION
+PLAYNOW_PACKAGE_DIR = BINDIR + '\\PlayNow_Packages'
 #编译结果中文档的输出目录
-PLAYNOW_DOCMENT_DIR = BINDIR + '\\PlayNow_Docment_'+CURRENTVERSION 
+PLAYNOW_DOCMENT_DIR = BINDIR + '\\PlayNow_Docment' 
 #zip包的文件名
-OUTZIP_FILENAME = 'Release'+CURRENT_TIME+"_"+CURRENTVERSION+'.zip'
+OUTZIP_FILENAME = 'ReleasePackages_'+CURRENT_TIME+"_"+CURRENTVERSION+'.zip'
 #生成最终压缩包路径
 OUTZIP_FILEPATH = OUTDIR+'\\'+OUTZIP_FILENAME
 
