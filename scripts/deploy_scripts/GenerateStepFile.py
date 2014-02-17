@@ -43,9 +43,9 @@ def generateDatabaseStep(docTempdir, changeLogDir, changeLogFile):
 def generatePlayNowServiceStep(docTempdir, changeLogDir, changeLogFile):
 	Utile.writeLog("生成playnow service更新步骤");
 	Utile.insertFile(ConstantValue.DEPLOMENT_RSTFILE_PLAYNOW_SERVICESTEP_TAG,docTempdir+ConstantValue.DEPLOYMENT_STEPS_FILENAME,changeLogDir+ConstantValue.PLAYNOW_SERVICESETP_FILENAME);
-	Utile.generalFile(ConstantValue.CHANGELOG_PLANNOW_SERVICE_WEBCONFIG_TAG,ConstantValue.CHANGELOG_PLANNOW_SERVICE_WEBCONFIG_TAG_END,changeLogFile,'temp','****');
+	Utile.generalFile(ConstantValue.CHANGELOG_PLANNOW_SERVICE_WEBCONFIG_TAG,ConstantValue.CHANGELOG_PLANNOW_SERVICE_WEBCONFIG_TAG_END,changeLogFile,'temp',True,'****');
 	Utile.insertFile(ConstantValue.PLAYNOWSERVICE_WEBCONFIG_TAG,docTempdir+ConstantValue.DEPLOYMENT_STEPS_FILENAME,'temp');
-	Utile.generalFile(ConstantValue.CHANGELOG_PLANNOW_SERVICE_APPSETTING_TAG,ConstantValue.CHANGELOG_PLANNOW_SERVICE_APPSETTING_TAG_END,changeLogFile,'temp','****');
+	Utile.generalFile(ConstantValue.CHANGELOG_PLANNOW_SERVICE_APPSETTING_TAG,ConstantValue.CHANGELOG_PLANNOW_SERVICE_APPSETTING_TAG_END,changeLogFile,'temp',True,'****');
 	Utile.insertFile(ConstantValue.PLAYNOWSERVICE_APPSETTINGS_TAG,docTempdir+ConstantValue.DEPLOYMENT_STEPS_FILENAME,'temp');
 
 def generateStepFile(docTempdir,changeLogFile, changeLogDir, installPackageName):
@@ -75,19 +75,19 @@ def generateStepFile(docTempdir,changeLogFile, changeLogDir, installPackageName)
 	#生成PlayNow Managerment更新步骤
 	Utile.writeLog("生成PlayNow Managerment更新步骤");
 	Utile.insertFile(ConstantValue.DEPLOMENT_RSTFILE_PLAYNOW_MANAGERMENTSTEP_TAG,docTempdir+ConstantValue.DEPLOYMENT_STEPS_FILENAME,changeLogDir+ConstantValue.PLAYNOW_MANAGERSETP_FILENAME);
-	Utile.generalFile(ConstantValue.CHANGELOG_PLANNOW_MANAGERMENT_WEBCONFIG_TAG,ConstantValue.CHANGELOG_PLANNOW_MANAGERMENT_WEBCONFIG_TAG_END,changeLogFile,'temp','****');
+	Utile.generalFile(ConstantValue.CHANGELOG_PLANNOW_MANAGERMENT_WEBCONFIG_TAG,ConstantValue.CHANGELOG_PLANNOW_MANAGERMENT_WEBCONFIG_TAG_END,changeLogFile,'temp',True,'****');
 	Utile.insertFile(ConstantValue.PLAYNOWMANAGERMENT_WEBCONFIG_TAG,docTempdir+ConstantValue.DEPLOYMENT_STEPS_FILENAME,'temp'); 
 	
 	#生成WebAppStore更新步骤
 	Utile.writeLog("生成WebAppStore更新步骤");
 	Utile.insertFile(ConstantValue.DEPLOMENT_RSTFILE_PLAYNOW_WEBAPPSTORESTEP_TAG,docTempdir+ConstantValue.DEPLOYMENT_STEPS_FILENAME,changeLogDir+ConstantValue.WEBAPPSTORESETPS_FILENAME);
-	Utile.generalFile(ConstantValue.CHANGELOG_WEBAPPSTORE_WEBCONFIG_TAG,ConstantValue.CHANGELOG_WEBAPPSTORE_WEBCONFIG_TAG_END,changeLogFile,'temp','****');
+	Utile.generalFile(ConstantValue.CHANGELOG_WEBAPPSTORE_WEBCONFIG_TAG,ConstantValue.CHANGELOG_WEBAPPSTORE_WEBCONFIG_TAG_END,changeLogFile,'temp',True,'****');
 	Utile.insertFile(ConstantValue.WEBAPPSTORE_WEBCONFIG_TAG,docTempdir+ConstantValue.DEPLOYMENT_STEPS_FILENAME,'temp'); 
 	
 	#生成WinService更新步骤
 	Utile.writeLog("生成WinService更新步骤");
 	Utile.insertFile(ConstantValue.DEPLOMENT_RSTFILE_PLAYNOW_WINSERVICESTEP_TAG,docTempdir+ConstantValue.DEPLOYMENT_STEPS_FILENAME,changeLogDir+ConstantValue.PLAYNOW_WINSERVICESETP_FILENAME);
-	Utile.generalFile(ConstantValue.CHANGELOG_PLANNOW_WINSERVICE_CONFIG_TAG,ConstantValue.CHANGELOG_PLANNOW_WINSERVICE_CONFIG_TAG_END,changeLogFile,'temp','****');
+	Utile.generalFile(ConstantValue.CHANGELOG_PLANNOW_WINSERVICE_CONFIG_TAG,ConstantValue.CHANGELOG_PLANNOW_WINSERVICE_CONFIG_TAG_END,changeLogFile,'temp',True,'****');
 	Utile.insertFile(ConstantValue.PLAYNOWWINSERVICE_WEBCONFIG_TAG,docTempdir+ConstantValue.DEPLOYMENT_STEPS_FILENAME,'temp'); 
 	
 	#替换包名字符串	 

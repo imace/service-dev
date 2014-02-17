@@ -56,8 +56,8 @@ def deploymentPlan_replaceTagString(beingTag, endTag, orgFile, newFile):
 		i +=1 
 	writeFile(newFilelist,newFile) 
 
-# 给定起始标签，结束标签，原文件名，新文件名，生成新的文件
-def generalFile(beginTag,endTag,orgFileName,newFileName, ingoreStartStr="null"):
+# 给定"起始标签"/"结束标签"/"原文件名"/"新文件名"/"是否修改配置文件项"/"注释项开头字符"生成新的文件
+def generalFile(beginTag,endTag,orgFileName,newFileName, isForCofigFile=False, ingoreStartStr="null"):
 	orgF = open(orgFileName,'r')
 	newF = open(newFileName,'w')
 	isWrite = False
@@ -66,9 +66,11 @@ def generalFile(beginTag,endTag,orgFileName,newFileName, ingoreStartStr="null"):
 		line = orgF.readline()   
 		if(line.startswith(endTag)):
 			isWrite = False
-		if(isWrite):  
+		if(isWrite and (not line.startswith(ingoreStartStr))):
+			if(isForCofigFile):
+				newF.write(line)
 			#if(((not line.startswith(ingoreStartStr))) or ingoreStartStr == "null"):
-			if(((not line.startswith(ingoreStartStr)) or ingoreStartStr == ("null"))  and (len(line.strip().strip('\n')) != 0)): 
+			elif(ingoreStartStr == ("null")  and (len(line.strip().strip('\n')) != 0)): 
 				newF.write('\t'+line.lstrip())
 		if(line.startswith(beginTag)):
 			isWrite = True
