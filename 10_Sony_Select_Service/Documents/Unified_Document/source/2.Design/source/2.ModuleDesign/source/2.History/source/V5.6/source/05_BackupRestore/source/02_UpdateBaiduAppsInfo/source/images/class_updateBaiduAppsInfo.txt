@@ -1,0 +1,83 @@
+@startuml
+package "接口层PlayNowService.API)"{
+	class ServerApi{
+		+internal.updateOffSiteAppInfo
+	}
+	note left of ServerApi:PlayNow Service对内接口
+	
+	class OffSiteAppManager{
+		+UpdateOffSiteAppInfo(int offSiteCode, string packageInfos)
+	}
+	ServerApi --> OffSiteAppManager
+}
+
+package "windows自动任务(WinServices.Tasks)"{
+	class UnorderedAutoTasks{
+		+TimerUpdateBaiduApps_Elapsed(object sender, ElapsedEventArgs e)
+	}
+	note right of UnorderedAutoTasks:自动更新百度应用
+}
+
+package "业务逻辑层(PlayNowService.BLL)"{
+	
+	
+	
+	class Baidu_Api{
+		+UpdateOffSiteApp(string packageInfos);
+	}
+	OffSiteAppManager --> Baidu_Api
+	
+
+	class BLL_BaiduDownloadListManager{
+		+UpdateBaiduDownloadList(int updateCount)
+		+SyncInsertWhileNoData(List<Model.Baidu_Api> lstBaiduApp)
+	}
+	BLL_BaiduDownloadListManager --> ServerApi
+	UnorderedAutoTasks -down-> BLL_BaiduDownloadListManager
+	
+	
+}
+
+package "数据访问接口层(PlayNowService.IDAL)"{
+	interface IDAL_IBaidu_Api{
+			+GetBaiduAppListByPackage(List<string> lstPackage)
+	}
+
+	interface IDAL_IPN_BaiduDownloadList{
+			+ClearBaiduDownloadList()
+			+AddWhileNoData(Model.Api.PN_BaiduDownloadList model)
+	}
+	
+	interface IDAL_IPN_UserDownloadList{
+			+GetBaiduAppOrderedList()
+	}
+	
+	
+}
+
+Baidu_Api --> IDAL_IBaidu_Api
+Baidu_Api -right-> BLL_BaiduDownloadListManager
+BLL_BaiduDownloadListManager --> IDAL_IPN_BaiduDownloadList
+BLL_BaiduDownloadListManager --> IDAL_IPN_UserDownloadList
+
+
+package "数据访问实现层(PlayNowService.DAL)"{
+	class DAL_Baidu_Api{
+			+GetBaiduAppListByPackage(List<string> lstPackage)
+	}
+	
+	class DAL_PN_BaiduDownloadList{
+			+GetListByUserId(string machineType, string userId)
+	}
+	
+	class DAL_PN_UserDownloadList{
+		+GetBaiduAppOrderedList()
+	}
+	
+	
+}
+IDAL_IBaidu_Api <|-- DAL_Baidu_Api
+IDAL_IPN_BaiduDownloadList <|-- DAL_PN_BaiduDownloadList
+IDAL_IPN_UserDownloadList <|-- DAL_PN_UserDownloadList
+
+@enduml

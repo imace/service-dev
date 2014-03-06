@@ -1,0 +1,38 @@
+@startuml
+
+package "PlayNowService" {
+[Baidu下载应用信息列表维护模块]
+[删除备份应用模块]
+[添加备份应用模块]
+[获取备份应用列表模块]
+[DAO桥连接(PlayNowService)]  
+}
+
+package "PlayNowManager" {
+[备份内容查询模块]
+[下载来源日志统计模块]
+[Client-PV日志统计模块]
+[DAO桥连接(PlayNowManager)]
+}
+
+[DB] 
+
+[备份内容查询模块] --> [DAO桥连接(PlayNowManager)]
+
+[Client-PV日志统计模块] --> [DAO桥连接(PlayNowManager)]
+
+[下载来源日志统计模块] --> [DAO桥连接(PlayNowManager)]
+
+[DAO桥连接(PlayNowManager)]-->[DB]
+
+[获取备份应用列表模块] --> [DAO桥连接(PlayNowService)]
+
+[添加备份应用模块] --> [DAO桥连接(PlayNowService)]
+
+[删除备份应用模块] --> [DAO桥连接(PlayNowService)]
+
+[Baidu下载应用信息列表维护模块] --> [DAO桥连接(PlayNowService)]
+
+[DAO桥连接(PlayNowService)] -->[DB]
+
+@enduml

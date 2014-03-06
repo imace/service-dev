@@ -1,0 +1,831 @@
+接口定义
+==========================================
+
+SonySelect API 概览
+******************************
+
+.. #. 首页API
+.. #. 新品API
+.. #. 排行API
+.. #. 分类API
+.. #. 专区API
+.. #. Widget API
+.. #. 搜索API
+.. #. 详情API
+.. #. 下载API
+.. #. 用户API
+.. #. 更新API
+.. #. 广告API
+.. #. 评论API
+.. #. 日志API
+.. #. 缓存API
+.. #. 消息API
+.. #. 获取相关条款API
+.. #. 客户端版本API
+.. #. 其他API
+
+
+
+#. 首页API
+
+		首页banner，首页推荐
+
+		=========  =============================  ============================================================
+		ID                 资源                            功能
+		=========  =============================  ============================================================
+		1            :ref:`app.getBannerList`       获取首页Banner列表
+		2            :ref:`app.getList`             获取应用推荐列表
+		=========  =============================  ============================================================
+
+
+#. 新品API
+
+		=========  =============================  ============================================================
+		ID                 资源                            功能
+		=========  =============================  ============================================================
+		1            :ref:`app.getNewAppList`       获取新品应用列表
+		=========  =============================  ============================================================
+
+
+#. 排行API
+
+		=========  =============================  ============================================================
+		ID                 资源                            功能
+		=========  =============================  ============================================================
+		1            :ref:`app.getFreeAppList`      获取免费应用排行列表
+		=========  =============================  ============================================================
+
+
+#. 分类API
+
+		=========  =================================  ============================================================
+		ID                 资源                            功能
+		=========  =================================  ============================================================
+		1            :ref:`app.getCategoryList`         获取分类列表
+		2            :ref:`app.getCategoryDetailList    获取分类详细应用列表
+		=========  =================================  ============================================================
+
+
+#. 专区API                                                                                                
+
+		=========  =============================  ================================================================
+		ID                 资源                            功能                                               
+		=========  =============================  ================================================================
+		1            :ref:`app.addComments`         获取专区Banner列表	                                            
+		2            :ref:`app.getComments`         获取专区列表	                                                  
+		3            app.addComments                获取专区详细应用列表（Id）	                                  
+		4            app.addComments                获取专区详细应用列表（Alias）（客户端版本5.4.3及以后版本使用）
+		=========  =============================  ================================================================
+
+
+#. Widget API                                                                                                
+
+		=========  =============================  ================================================================
+		ID                 资源                            功能                                               
+		=========  =============================  ================================================================
+		1            :ref:`app.addComments`         获取频道列表数据接口                                   
+		2            :ref:`app.getComments`         获取widget频道更新信息接口                             
+		3            app.addComments                获取widget内容列表                                   
+		=========  =============================  ================================================================
+
+
+#. 搜索API
+
+		=========  =============================  ============================================================
+		ID                 资源                            功能
+		=========  =============================  ============================================================
+		1            :ref:`app.addComments`         获取搜索关键字                      
+		2            :ref:`app.getComments`         获取搜索内容（5.0.16及之前版本使用）
+		3            app.addComments                获取搜索内容（增加百度）            
+		=========  =============================  ============================================================
+
+
+#. 详情API
+
+		=========  =============================  ============================================================
+		ID                 资源                            功能
+		=========  =============================  ============================================================
+		1          :ref:`app.getDetail`             获取应用详情
+		2          :ref:`app.getRelativeAppList`    获取应用相关推荐
+		=========  =============================  ============================================================
+
+
+#. 下载API
+
+		=========  =============================  ============================================================
+		ID                 资源                            功能
+		=========  =============================  ============================================================
+		1            :ref:`app.getDownUrl`          获取应用下载地址（5.0.16及之前版本使用）
+		2            :ref:`app.getNewDownUrl`       获取应用下载地址（新）
+		3            :ref:`app.downCompleted`       通知应用下载成功
+		=========  =============================  ============================================================
+
+
+#. 用户API
+
+		=========  =============================  ============================================================
+		ID                 资源                            功能
+		=========  =============================  ============================================================
+		1            :ref:`app.addComments`         获取支持的登录方式
+		2            :ref:`app.getComments`         绑定用户信息	    
+		3            app.addComments                获取用户信息	    
+		4            app.addComments                用户授权验证	    
+		5            app.addComments                请求授权	        
+		6            app.addComments                获取已备份应用列表
+		7            app.addComments                删除备份应用	    
+		8            app.addComments                添加备份应用	    
+		=========  =============================  ============================================================
+
+
+#. 更新API
+
+		=========  =============================  ============================================================
+		ID                 资源                            功能
+		=========  =============================  ============================================================
+		1            :ref:`app.addComments`         获取最新版本应用列表
+		=========  =============================  ============================================================
+
+
+#. 广告API
+
+		=========  =============================  ============================================================
+		ID                 资源                            功能
+		=========  =============================  ============================================================
+		1            :ref:`app.addComments`         请求广告链接
+		=========  =============================  ============================================================
+
+
+#. 评论API
+
+		=========  =============================  ============================================================
+		ID                 资源                            功能
+		=========  =============================  ============================================================
+		1            :ref:`app.addComments`         添加应用评论
+		2            :ref:`app.getComments`         获取应用评论
+		=========  =============================  ============================================================
+
+
+#. 日志API                                                                                                
+
+		=========  =============================  ================================================================
+		ID                 资源                            功能                                               
+		=========  =============================  ================================================================
+		1            :ref:`app.addComments`         添加页面访问日志（5.0.8及之前版本使用）                              
+		2            :ref:`app.getComments`         添加页面访问日志（新）（5.0.16及之前版本使用）                       
+		3            app.addComments                通用日志接口	                                                     
+		=========  =============================  ================================================================
+
+
+#. 缓存API
+
+		=========  =============================  ============================================================
+		ID                 资源                            功能
+		=========  =============================  ============================================================
+		1          :ref:`app.getAllMachineTypes`         清空缓存
+		=========  =============================  ============================================================
+
+
+#. 消息API
+
+		=========  =============================  ============================================================
+		ID                 资源                            功能
+		=========  =============================  ============================================================
+		1          :ref:`app.getAllMachineTypes`         获取消息接口
+		=========  =============================  ============================================================
+
+
+#. 相关条款API                                                                                                
+
+		=========  =============================  ================================================================
+		ID                 资源                            功能                                               
+		=========  =============================  ================================================================
+		1            :ref:`app.addComments`         获取法律条款                                        
+		2            :ref:`app.getComments`         获取关于                                            
+		3            app.addComments                获取索尼精选(Sony Select)法律条款	                
+		=========  =============================  ================================================================
+
+
+#. 客户端版本API
+
+		=========  =============================  ============================================================
+		ID                 资源                            功能
+		=========  =============================  ============================================================
+		1          :ref:`app.getAllMachineTypes`    获取版本升级
+		=========  =============================  ============================================================
+
+
+#. 其他API
+
+		=========  =============================  ============================================================
+		ID                 资源                            功能
+		=========  =============================  ============================================================
+		1          :ref:`app.getAllMachineTypes`    获取所有机型列表
+		2          :ref:`app. getAnalysisConfig`    获取行为分析器接口
+		=========  =============================  ============================================================
+
+
+首页API
+******************************
+
+.. _app.getBannerList:
+
+app.getBannerList
+-----------------------------
+
+#. **功能描述:**
+	#. **5.2.5版本及之前版本（不存在Version字段）**
+
+	   该接口支持用户根据机型获取首页Banner位置的所有应用，包括Banner图标，名称，应用ID等信息。如果机型不存在，则返回空结果。
+	#. **5.2.5版本之后及5.6版本之前（Version值为1）**
+
+	   该接口支持用户根据机型获取首页Banner位置的相关应用及专区，包括图标，名称， ID，类型，Banner图标等信息。如果机型不存在，则返回空结果。
+	#. **5.6版本及之后版本（Version值为2）**
+
+	   该接口支持用户根据机型获取首页Banner位置的相关应用及专区和广告，包括图标，名称， ID，类型，Banner图标、广告Link等信息。如果机型不存在，则返回空结果。
+#. **资源URL:**    
+	#. 格式: {protocol}://{host}/{resource}.  例如: http://homepage.playnow.com/index.aspx
+	#. 说明: 在SonySelect系统中, protocol采用http协议, host是homepage.playnow.com, resource是index.aspx, 那么请求的资源URL是
+	   http://homepage.playnow.com/index.aspx;  如果host换成www.sonyselect.cn,那么请求的资源URL就是 http://www.sonyselect.cn/index.aspx
+   	#. Http 请求方式: POST	
+	#. 数据返回格式: JSON, 
+#. **请求参数**
+
+        .. csv-table::
+           :header: "", "名称", "是否必须", "类型", "描述"
+           :widths: 1, 3, 3, 3, 20
+        
+           "1","**method**",            "Required",       "String",      "API接口名称,在这里是 app.getBannerList"
+           "2","**machineType**",       "Required",       "String",      "机型, 例如LT26i"           
+           "3","**Appkey**",            "Required",       "String",      "appkey是客户端身份的唯一标识(详见PlaynowApi接口安全验证说明书)"
+           "4","**Sig**",               "Required",       "String",      "数字签名(详见PlaynowApi接口安全验证说明书)"
+           "5","**Version**",           "Optional",       "String",      "接口版本（可选）。
+           
+                                                                    1、5.2.5版本及之前版本不存在该参数；
+                                                                    
+                                                                    2、5.2.5版本之后及5.6版本之前值为1,支持专区；
+                                                                    
+                                                                    3、5.6版本及之后值为2，支持广告"
+           "6","**PlatformType**",      "Optional",       "String",      "平台类型，如果不存在该参数则默认为default。     
+        
+                                                                    1、	default：客户端首页Banner；  
+        
+                                                                    2、	web：web版本Banner。"
+
+#. **返回参数**
+	#. **5.2.5版本及之前版本（不存在Version字段）**
+
+            .. csv-table::
+               :header: "", "名称", "是否必须", "类型", "描述"
+               :widths: 1, 3, 3, 3, 20
+            
+               "1","**AppId**",             "Optional",       "Int",         "应用ID"
+               "2","**Name**",              "Optional",       "String",      "名称"           
+               "3","**Icon**",              "Optional",       "String",      "图标"
+
+	#. **5.2.5版本之后及5.6版本之前（Version值为1）**
+
+            .. csv-table::
+               :header: "", "名称", "是否必须", "类型", "描述"
+               :widths: 1, 3, 3, 3, 20
+            
+               "1","**ContentId**",         "Optional",       "Int",         "Banner对应的应用或专区ID"
+               "2","**Name**",              "Optional",       "String",      "名称"           
+               "3","**Icon**",              "Optional",       "String",      "应用或专区的图标"
+               "4","**BannerIcon**",        "Optional",       "String",      "Banner图标"
+               "5","**Type**",              "Optional",       "Int",         "类型。
+            
+                                                                       1.应用；
+            
+                                                                       2.专区。"           
+               "6","**Version**",           "Optional",       "Int",         "1"	
+
+	#. **5.6版本及之后版本（Version值为2）**
+
+            .. csv-table::
+               :header: "", "名称", "是否必须", "类型", "描述"
+               :widths: 1, 3, 3, 3, 20
+            
+               "1","**ContentId**",         "Optional",       "Int",         "Banner对应的应用或专区ID"
+               "2","**Name**",              "Optional",       "String",      "名称"           
+               "3","**Icon**",              "Optional",       "String",      "应用或专区的图标"
+               "4","**BannerIcon**",        "Optional",       "String",      "Banner图标"
+               "5","**Type**",              "Optional",       "Int",         "类型。
+            
+                                                                       1.应用；
+            
+                                                                       2.专区；
+            
+                                                                       3.广告。"           
+               "6","**Version**",           "Optional",       "Int",         "2"	
+               "7","**Link**",              "Optional",       "String",      "广告链接"
+
+#. **请求和返回示例**
+
+	#. **5.2.5版本及之前版本（不存在Version字段）**
+
+		请求示例:
+
+		.. sourcecode:: http
+		   :linenos:
+
+		   	
+		    POST /ServerApi.ashx HTTP/1.1
+		    Host: homepage.playnow.com
+		    
+		    method=app.getBannerList&
+		    machineType=LT26i&
+		    appkey=dvw3n34d&
+		    sig=wesf234g34fsf
+
+
+		返回示例
+
+		.. sourcecode:: json
+		   :linenos:
+
+		   
+		    {
+		    "ResultCode":1,
+		    "AppBannerList":[
+					 {
+					  "AppId":103,
+					  "Name":"经典方块",
+					  "Icon": "http://xxx/1.jpg"
+					 },
+					 {
+					  "AppId":104,
+					  "Name":"经典方块",
+					  "Icon": "http://xxx/1.jpg"
+					 }
+					]
+		    }
+
+	#. **5.2.5版本之后及5.6版本之前（Version值为1）**
+
+		请求示例:
+
+		.. sourcecode:: text
+		   :linenos:
+		   	
+		    POST /ServerApi.ashx HTTP/1.1
+		    Host: homepage.playnow.com
+		    
+		    method=app.getBannerList&
+		    machineType=LT26i&
+		    version=1&
+		    appkey=dvw3n34d&
+		    sig=wesf234g34fsf
+
+
+		返回示例
+
+		.. sourcecode:: json
+		   :linenos:
+
+		   
+		    {
+		    "ResultCode":1,
+		    "BannerList":[
+					 {
+					  "ContentId":103,
+					  "Name":"经典方块",
+					  "Icon": "http://xxx/1.jpg",
+					  "BannerIcon":"http://xxx/2.jpg",
+					  "Type":1
+					 },
+					 {
+					  "ContentId":10,
+					  "Name":"那些年我们一起玩的应用",
+					  "Icon": "http://xxx/4.jpg",
+					  "BannerIcon":"http://xxx/3.jpg",
+					  "Type":2
+					 }
+					]
+		    }
+
+	#. **5.6及版本之后（Version值为2）**
+
+		请求示例:
+
+		.. sourcecode:: text
+		   :linenos:
+		   	
+		    POST /ServerApi.ashx HTTP/1.1
+		    Host: homepage.playnow.com
+		    
+		    method=app.getBannerList&
+		    machineType=LT26i&
+		    version=2&
+		    appkey=dvw3n34d&
+		    sig=wesf234g34fsf
+
+
+		返回示例
+
+		.. sourcecode:: json
+		   :linenos:
+
+		   
+		    {
+		    "ResultCode":1,
+		    "BannerList":[
+					 {
+					  "ContentId":103,
+					  "Name":"经典方块",
+					  "Icon": "http://xxx/1.jpg",
+					  "BannerIcon":"http://xxx/2.jpg",
+					  "Type":1
+					 },
+					 {
+					  "ContentId":10,
+					  "Name":"那些年我们一起玩的应用",
+					  "Icon": "http://xxx/4.jpg",
+					  "BannerIcon":"http://xxx/3.jpg",
+					  "Type":2
+					 }
+					]
+		    }
+
+#. **其它注意事项**
+	#. Http Header,无特别要求	
+	#. 其它的一些需要注意的问题,比如不是全局错误码之类的,特别的URL Encoding之类的,都需要特别说明.
+
+
+
+
+.. _app.getList:
+
+app.getList
+-----------------------------
+
+#. **功能描述:**    
+	#. 该接口支持用户根据机型获取推荐应用的列表。如果机型不存在，则返回空结果。
+#. **资源URL:**    
+	#. 格式: {protocol}://{host}/{resource}.  例如: http://homepage.playnow.com/index.aspx
+	#. 说明: 在SonySelect系统中, protocol采用http协议, host是homepage.playnow.com, resource是index.aspx, 那么请求的资源URL是
+	   http://homepage.playnow.com/index.aspx;  如果host换成www.sonyselect.cn,那么请求的资源URL就是 http://www.sonyselect.cn/index.aspx
+   	#. Http 请求方式: POST	
+	#. 数据返回格式: JSON, 
+#. **请求参数**
+	#. **method**,			    Required		String		API接口名称,在这里是 app.getList
+	#. **machineType**,			Required		String		机型, 例如LT26i
+	#. **Appkey**,			    Required		String		appkey是客户端身份的唯一标识(详见PlaynowApi接口安全验证说明书)
+	#. **Sig**,				      Required		String		应用Id
+	#. **appRecommendationId**,		Required		Int		应用推荐ID,100表示首页推荐,101表示精品推荐
+	#. **startIndex**,			Required		Int		从第几个索引开始
+	#. **returnNum**,			  Required		Int		返回个数
+	#. **withDesc**,			  Optional		Int		返回应用列表是否带描述。1：带描述；0：不带描述；如果不存在该参数则默认不带描述
+	#. **WithType**,			  Optional		Int		返回应用是否带类型。1：带类型；0：不带类型；如果不存在该参数则默认不带类型
+
+
+#. **返回参数**
+	#. **RetValue**,    Required; Int,      描述:返回请求状态值：1. 表示请求成功; 2. 返回状态码,请参考此链接http://baidu.com
+	#. **discription**, Optional; String,   描述:描述信息
+	#. **TotalCount**,	Required	Int	      记录总数
+	#. **Id**,	        Optional	Int	      应用Id
+	#. **Name**,	      Optional	String	  名称
+	#. **PackageName**,	Optional	String	  安装包名称
+	#. **Size**,	      Optional	Float	    大小
+	#. **Grade**,	      Optional	Float	    评分
+	#. **SmallIcon**,	  Optional	String	  图标
+	#. **IsFree**,	    Optional	Boolean	  是否免费。1.False 收费；2.True 免费
+	#. **Price**,	      Optional	Float	    价格
+	#. **VersionCode**,	Required	Int	      版本号
+	#. **VersionName**,	Required	String	  版本名称
+	#. **Publisher**,	  Optional	String	  发布者
+	#. **Description**,	Optional	String	  应用描述
+	#. **Type**,	      Optional	String	  应用类型(game|app)
+
+	
+#. **请求和返回示例**
+
+		请求示例:
+
+		.. sourcecode:: text
+		   :linenos:
+
+		    POST /ServerApi.ashx HTTP/1.1
+		    Host: homepage.playnow.com
+		    
+		    method=app.getList&
+		    machineType=LT26i&
+		    appkey=dvw3n34d&
+		    sig=wesf234g34fsf&
+		    appRecommendationId=100&
+		    startIndex=0&
+		    returnNum=6&
+		    withdesc=1&
+		    withtype=1
+
+		返回示例
+
+		.. sourcecode:: json
+		   :linenos:
+
+		    {              
+		    "ResultCode":1,
+		    "TotalCount":25,
+		    "AppInfoList":[
+                             {
+                               "Id":102,
+                              "Name":"经典方块1",
+                              "PackageName":"jdfk.apk",
+                             "Size":,
+                             "Grade":4.5,
+                             "SmallIcon":" http://xxx/1.jpg",
+                             "IsFree":True,
+                             "Price":0,
+                             "VersionCode":2,
+                             "VersionName":"1.0"
+                              "Publisher":"第九城市",
+                              "Description":"这是经典方块",
+                             "Type":"game"
+                             },
+                             {
+                               "Id":103,
+                              "Name":"经典方块2",
+                             "Size":,
+                             "Grade":4.5,
+                             "SmallIcon":" http://xxx/1.jpg",
+                             "IsFree":1,
+                             "Price":0,
+                             "VersionCode":2,
+                             "VersionName":"1.0"
+                              "Publisher":"第九城市",
+                             "Description":"这是经典方块"
+                             "Type":"app"
+                             }
+                        ]
+         }
+         
+		   
+#. **其它注意事项**
+	#. Http Header,无特别要求	
+	#. 其它的一些需要注意的问题,比如不是全局错误码之类的,特别的URL Encoding之类的,都需要特别说明.
+
+
+新品API详细介绍
+******************************
+
+.. _app.getNewAppList:
+
+app.getNewAppList
+-----------------------------
+
+#. **功能描述:**    
+	#. 该接口支持用户根据机型获取新品应用列表，应用按照更新时间倒序排列。如果机型不存在，则返回空结果。
+#. **资源URL:**    
+	#. 格式: {protocol}://{host}/{resource}.  例如: http://homepage.playnow.com/index.aspx
+	#. 说明: 在SonySelect系统中, protocol采用http协议, host是homepage.playnow.com, resource是index.aspx, 那么请求的资源URL是
+	   http://homepage.playnow.com/index.aspx;  如果host换成www.sonyselect.cn,那么请求的资源URL就是 http://www.sonyselect.cn/index.aspx
+   	#. Http 请求方式: POST	
+	#. 数据返回格式: JSON, 
+#. **请求参数**
+	#. **method**;      Required; String; 描述:API接口名称,在这里是 app.getNewAppList
+	#. **machineType**; Required; String; 描述:机型, 例如LT26i
+	#. **Appkey**;      Required; String; 描述:appkey是客户端身份的唯一标识(详见PlaynowApi接口安全验证说明书)
+	#. **Sig**;         Required; String; 描述:数字签名(详见PlaynowApi接口安全验证说明书)
+	#. **appType**;     Required; Int;    描述:应用类型。1：新品应用；2：新品游戏。 
+	#. **startIndex**;  Required; Int;    描述:从第几个索引开始
+	#. **returnNum**;   Required; Int;    描述:返回个数.
+	
+#. **返回参数**
+	#. **ResultCode**,    Required; Int;,    描述:返回请求状态值：1. 表示请求成功; 2. 返回状态码,请参考此链接http://baidu.com
+	#. **description** ,  Required; Int;     描述:描述信息 
+	#. **TotalCount**,    Required; Int;     描述:评论记录总数 
+	#. **Id**,            Optional; Int;     描述:应用ID 
+	#. **Name**,          Optional; String;, 描述:名称 
+	#. **PackageName**,   Optional; String;, 描述:安装包名称
+	#. **Size**,          Optional; Float;,  描述:大小  
+	#. **Grade**,         Optional; Float;,  描述:评分 
+	#. **SmallIcon**,     Optional; String;  描述:图标 
+	#. **VersionCode**,	  Optional	Int	     描述:版本号
+	#. **VersionName**,	  Optional	String	 描述:版本名称
+	#. **Publisher**,	    Optional	String	 描述:发布者	
+	
+#. **请求和返回示例**
+
+		请求示例:
+
+		.. sourcecode:: text
+		   :linenos:
+		   	
+		    POST /ServerApi.ashx HTTP/1.1
+		    Host: homepage.playnow.com
+		    
+		    method=app.getNewAppList&
+		    machineType=LT26i&
+		    appkey=dvw3n34d&
+		    sig=wesf234g34fsf&
+		    apptype=1&
+		    startIndex=0&
+		    returnNum=6 
+			   	
+
+		返回示例
+
+		.. sourcecode:: json
+		   :linenos:
+		   
+		    {
+		    "ResultCode":1,
+		    "TotalCount":25,
+		    "AppInfoList":[
+                          {
+                            "Id":102,
+                           "Name":"经典方块1",
+                           "PackageName":"jdfk.apk",
+                          "Size":,
+                          "Grade":4.5,
+                          "SmallIcon":" http://xxx/1.jpg",
+                          "VersionCode":2,
+                          "VersionName":"1.0"
+                           "Publisher":"第九城市",
+                          },
+                          {
+                            "Id":103,
+                           "Name":"经典方块2",
+                          "Size":,
+                          "Grade":4.5,
+                          "SmallIcon":" http://xxx/1.jpg",
+                          "VersionCode":2,
+                          "VersionName":"1.0"
+                           "Publisher":"第九城市",
+                          }
+                          ]
+		    }
+
+
+		   
+#. **其它注意事项**
+	#. Http Header,无特别要求	
+	#. 其它的一些需要注意的问题,比如不是全局错误码之类的,特别的URL Encoding之类的,都需要特别说明.
+
+
+
+
+评论API详细介绍
+******************************
+
+.. _app.getComments:
+
+app.getComments
+-----------------------------
+
+#. **功能描述:**    
+	#. 该接口支持用户获取应用的评论信息。如果评论不存在，则返回空结果。
+#. **资源URL:**    
+	#. 格式: {protocol}://{host}/{resource}.  例如: http://homepage.playnow.com/index.aspx
+	#. 说明: 在SonySelect系统中, protocol采用http协议, host是homepage.playnow.com, resource是index.aspx, 那么请求的资源URL是
+	   http://homepage.playnow.com/index.aspx;  如果host换成www.sonyselect.cn,那么请求的资源URL就是 http://www.sonyselect.cn/index.aspx
+   	#. Http 请求方式: POST	
+	#. 数据返回格式: JSON, 
+#. **请求参数**
+	#. **method**;      Required; String; 描述:API接口名称,在这里是 app.getComment
+	#. **machineType**; Required; String; 描述:机型, 例如LT26i
+	#. **Appkey**;      Required; String; 描述:appkey是客户端身份的唯一标识(详见PlaynowApi接口安全验证说明书)
+	#. **Sig**;         Required; String; 描述:数字签名(详见PlaynowApi接口安全验证说明书)
+	#. **appId**;       Required; Int; 描述:应用Id 
+	#. **startIndex**;    Required; Int; 描述:从第几个索引开始
+	#. **returnNum**;    Required; Int; 描述:返回个数.
+#. **返回参数**
+	#. **ResultCode**,    Required; Int;, 描述:返回请求状态值：1. 表示请求成功; 2. 返回状态码,请参考此链接http://baidu.com
+	#. **description**,  Required; Int; 描述:描述信息 
+	#. **AppId**,  Optional; Int; 描述:应用ID 
+	#. **TotalCount**,  Required; Int; 描述:评论记录总数 
+	#. **UserName**,  Optional; Int;, 描述:用户名 
+	#. **Comment**,  Optional; Int;, 描述:评分 
+	#. **Grade**,  Optional; Int;, 描述:评分等级 
+	#. **AddTime**,  Optional; DateTime; 描述:添加时间 
+	
+#. **请求和返回示例**
+
+		请求示例:
+
+		.. sourcecode:: text
+		   :linenos:
+		   	
+		   GET http://homepage.playnow.com/index.aspx?
+			   method=app.getComment&
+			   machineType=LT26i&
+			   appkey=dvw3n34d&
+			   sig=wesf234g34fsf&
+			   appid=11&
+			   startIndex=0&
+			   returnNum=6"
+			   	
+
+		返回示例
+
+		.. sourcecode:: json
+		   :linenos:
+		   
+		    {
+		    "ResultCode":1,
+		    "AppId":11,
+		    "TotalCount":20,
+		    "AppCommentList":[
+					         {
+						         "UserName":"匿名用户",
+						         "Comment":"很好",
+						         "Grade":5,
+						         "AddTime": "2011-02-17 03:28:27"
+					         },
+					         {
+						         "UserName":"匿名用户",
+						         "Comment":"很好",
+						         "Grade":5,
+						         "AddTime": "2011-02-17 03:28:27"
+					         }
+					        ]
+		    }
+		   
+#. **其它注意事项**
+	#. Http Header,无特别要求	
+	#. 其它的一些需要注意的问题,比如不是全局错误码之类的,特别的URL Encoding之类的,都需要特别说明.
+
+
+
+
+.. _app.addComments:
+
+app.addComments
+-----------------------------
+
+#. **功能描述:**    
+	#. 该接口支持用户对应用添加评论
+#. **资源URL:**    
+	#. 格式: {protocol}://{host}/{resource}.  例如: http://homepage.playnow.com/index.aspx
+	#. 说明: 在SonySelect系统中, protocol采用http协议, host是homepage.playnow.com, resource是index.aspx, 那么请求的资源URL是
+	   http://homepage.playnow.com/index.aspx;  如果host换成www.sonyselect.cn,那么请求的资源URL就是 http://www.sonyselect.cn/index.aspx
+   	#. Http 请求方式: POST	
+	#. 数据返回格式: JSON, 
+#. **请求参数**
+	#. **method**,      是否必须:是; 类型:String, 描述:API接口名称,在这里是 app.addComments
+	#. **machineType**, 是否必须:是; 类型:String, 描述:机型, 例如LT26i
+	#. **Appkey**,      是否必须:是; 类型:String, 描述:appkey是客户端身份的唯一标识(详见PlaynowApi接口安全验证说明书)
+	#. **Sig**,         是否必须:是; 类型:String, 描述:数字签名(详见PlaynowApi接口安全验证说明书)
+	#. **appId**,       是否必须:是; 类型:Int,    描述:应用Id 
+	#. **userName**,    是否必须:是; 类型:String, 描述:用户名，如果用户没有登录则设置为"匿名用户"
+	#. **comment**,     是否必须:是; 类型:String, 描述:评论, 长度或者编码要求.
+	#. **grade**,       是否必须:是; 类型:Int,    描述:评分, 最大为5级,大于5级,系统将只保留最高值为5.
+#. **返回参数**
+	#. **RetValue**,    是否必须:是; 类型:Int, 描述:返回请求状态值：1. 表示请求成功; 2. 返回状态码,请参考此链接http://baidu.com
+	#. **discription**,  是否必须:否; 类型:String, 描述:描述信息 
+#. **请求和返回示例**
+
+		请求示例:
+
+		.. sourcecode:: text
+		   :linenos:
+
+		   GET http://homepage.playnow.com/index.aspx?
+			method=app.addComment&
+			machineType=LT26i&
+			appkey=dvw3n34d&
+			sig=wesf234g34fsf&
+			appId=11&
+			userName=匿名用户&
+			comment =很好&
+			grade=5
+
+		返回示例
+
+		.. sourcecode:: json
+		   :linenos:
+
+		   {
+		     "RetCode":"1",
+		     "Description":"1",
+		   }
+		   
+#. **其它注意事项**
+	#. Http Header,无特别要求	
+	#. 其它的一些需要注意的问题,比如不是全局错误码之类的,特别的URL Encoding之类的,都需要特别说明.
+
+登录API详细介绍
+******************************
+
+
+
+推荐API详细介绍
+******************************
+
+
+
+排行API详细介绍
+******************************
+
+
+
+分类API详细介绍
+******************************
+
+
+
+详情API详细介绍
+******************************
+
+
+下载API详细介绍
+******************************

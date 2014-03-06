@@ -1,0 +1,29 @@
+@startuml
+
+package "PlayNowService" {
+[第三方登录平台配置读取模块]
+[账户绑定模块]
+[DAO桥连接(PlayNowService)]  
+}
+
+package "PlayNowManager" {
+[第三方登录平台配置模块]
+[用户信息管理模块]
+[DAO桥连接(PlayNowManager)]
+}
+
+[DB] 
+
+[第三方登录平台配置模块] --> [DAO桥连接(PlayNowManager)]
+
+[用户信息管理模块] --> [DAO桥连接(PlayNowManager)]
+
+[DAO桥连接(PlayNowManager)]-->[DB]
+
+[第三方登录平台配置读取模块] --> [DAO桥连接(PlayNowService)] 
+
+[账户绑定模块] --> [DAO桥连接(PlayNowService)] 
+
+[DAO桥连接(PlayNowService)] -->[DB] 
+
+@enduml

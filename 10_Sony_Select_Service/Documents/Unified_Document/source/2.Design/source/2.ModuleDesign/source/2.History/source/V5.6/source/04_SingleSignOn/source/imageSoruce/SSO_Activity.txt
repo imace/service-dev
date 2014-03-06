@@ -1,0 +1,55 @@
+
+@startuml "SSO_Activity.png"
+
+start
+
+:客户端调用接口
+查看支持第三方的登录平台
+account.getSupportOauthPlatform;
+:服务器返回
+登录平台列表;
+:用户选择登录平台;
+:客户端向服务器
+发出登录选择请求;
+:服务器端请求
+平台登录地址;
+if (登录平台RedirectUri校验?) then (Failed)
+  :返回 RedirectUri不匹配;
+else (Pass)
+  :平台重定向登录页面到手机 
+  :用户输入用户名密码;
+  if (登录平台用户名密码校验) then (Failed)
+    :返回 用户名密码错误;
+  else (Pass)
+    :登录平台返回授权码到客户端;
+	:客户端跳转到服务器
+	并提交授权码到登录平台;
+	if (登录平台授权码校验) then (Failed)
+	  :提示 授权码失效;
+	else (Pass)
+	  :返回 访问令牌（含刷新令牌）到服务器;
+	  :根据访问令牌请求登录用户的ID;
+	  if (登录平台校验访问令牌是否过期) then (Yes)
+	    if (服务器判断是否存在刷新令牌) then (Exist)
+		  :通过刷新令牌来取访问令牌;
+		  :根据访问令牌请求登录用户的ID;
+		else (Not Exist)
+		  :返回 获取登录用户ID失败;
+		  stop
+		endif
+	  endif
+	  :登录平台返回
+	  登录用户的ID给服务器;
+	  :服务器更新保存的
+	  登录用户的ID与访问令牌;
+	  :服务器将登录用户的ID
+	  与SonySelectId进行绑定;
+	  :服务器返回更新
+	  后的SonySelectId;
+	endif
+  endif
+endif
+
+stop
+
+@enduml

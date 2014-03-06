@@ -1,0 +1,30 @@
+@startuml
+
+package "表示层（PlayNowService.UIL）" {
+    class ServerApi {
+        +app.getLatestVersions()
+    }
+    Note left : PlayNow Service 对外接口
+}
+
+package "业务逻辑层（PlayNowService.BLL）" {
+    class BLL_PN_AppInfo {
+        +GetUpdateAppList()
+    }
+    Note left : 获取用于更新的最新应用列表
+    ServerApi --> BLL_PN_AppInfo
+}
+
+interface  IPN_AppInfo {
+    GetLatestVersionAppsList()
+}
+BLL_PN_AppInfo --> IPN_AppInfo
+
+package "数据访问层（PlayNowService.DAL）" {
+    class DAL_PN_AppInfo {
+        +GetLatestVersionAppsList()
+    }
+    IPN_AppInfo <|-- DAL_PN_AppInfo
+}
+
+@enduml

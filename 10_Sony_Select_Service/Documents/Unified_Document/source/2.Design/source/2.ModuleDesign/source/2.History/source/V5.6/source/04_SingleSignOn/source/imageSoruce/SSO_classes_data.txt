@@ -1,0 +1,273 @@
+﻿
+@startuml "SSO_classes_data.png"
+package "PlayNowService.BLL" #DDDDDD {
+
+    class BLHelper {
+        # TryAddModelCache()
+        # GetModelCache()
+        # RemoveModelCache()
+        # TryAddExistCache()
+        # GetExistCache()
+        # RemoveExistCache()
+        ..
+        Other unused methods in SSO module
+        ..          
+    }
+        
+    Class PlayNowService.BLL.OAuthDbDelegate {
+        - bllUserInfo
+        - bllUserBindInfo
+        - bllUserLoginInfo
+        - dalBinder
+        - dalOAuthDelegate
+        + GetOAuthToken()
+        + GetOrCreateSonyId()
+    }
+    
+    Class PlayNowService.BLL.PN_OAuthPlatform {
+        - dal
+        + GetSupportOauthPlatform()
+        + GetModel()
+        + GetOAuthPlatformList()
+    
+    }
+    BLHelper <|-- PlayNowService.BLL.PN_OAuthPlatform
+    PlayNowService.BLL.PN_OAuthPlatform --> PlayNowService.IDAL.IPN_OAuthPlatform
+    
+    Class PlayNowService.BLL.PN_UserBindInfo {
+        - dal
+        + UpdateByThirdPartenID()
+        + IsThirdUserExists()
+        + GetModel()
+        + GetModelByThirdParten()
+        + GetModelByUid()
+        ..
+        Other unused methods in SSO module
+        ..  
+    }
+    BLHelper <|-- PlayNowService.BLL.PN_UserBindInfo
+    PlayNowService.BLL.PN_UserBindInfo --> PlayNowService.IDAL.IPN_UserBindInfo
+    
+    Class PlayNowService.BLL.PN_UserLoginInfo {
+        - dal
+        + GetModel()
+        + GetModelByUserID()
+        ..
+        Other unused methods in SSO module
+        ..  
+        
+    }
+    BLHelper <|-- PlayNowService.BLL.PN_UserLoginInfo
+    PlayNowService.BLL.PN_UserLoginInfo --> PlayNowService.IDAL.IPN_UserLoginInfo
+    
+    Class PlayNowService.BLL.PN_UserInfo {
+        - dal
+        + GetModel()
+        + GetModelBySomcId()
+        ..
+        Other unused methods in SSO module
+        ..        
+    }
+    BLHelper <|-- PlayNowService.BLL.PN_UserInfo
+    PlayNowService.BLL.PN_UserInfo --> PlayNowService.IDAL.IPN_UserInfo
+    
+    PlayNowService.BLL.OAuthDbDelegate --> PlayNowService.BLL.PN_UserInfo
+    PlayNowService.BLL.OAuthDbDelegate --> PlayNowService.BLL.PN_UserBindInfo
+    PlayNowService.BLL.OAuthDbDelegate --> PlayNowService.BLL.PN_UserLoginInfo
+    PlayNowService.BLL.OAuthDbDelegate --> PlayNowService.IDAL.IPN_UserInfoBinder
+    PlayNowService.BLL.OAuthDbDelegate --> PlayNowService.IDAL.IOAuthDbDelegate
+}
+
+package "PlayNowService.IDAL" #DDDDDD {
+    Interface PlayNowService.IDAL.IPN_UserInfo {
+        ~ GetModelBySomcId()
+        ~ GetModel()
+        ..
+        Other unused methods in SSO module
+        .. 
+    }
+    
+    Interface PlayNowService.IDAL.IPN_UserInfoBinder {
+        ~ BindUserInfo()
+        ~ IsAleadyBound()
+        ~ GetBoundInfo()
+        ~ LoadBoundInfo()
+    }
+
+    Interface PlayNowService.IDAL.IPN_UserBindInfo {
+        ~ IsThirdUserExists()
+        ~ GetModelByThirdParten()
+        ~ GetModelByUid()
+        ~ GetModel()
+        ..
+        Other unused methods in SSO module
+        .. 
+    }
+
+    Interface PlayNowService.IDAL.IPN_UserLoginInfo {
+        ~ GetModelByUserID()
+        ~ GetModel()
+        ..
+        Other unused methods in SSO module
+        .. 
+    }
+    
+    Interface IOAuthDbDelegate {
+        ~ BeginTransaction()
+        ~ RollbackTransaction()
+        ~ CommitTransaction()
+    }
+
+    Interface PlayNowService.IDAL.IPN_OAuthPlatform {
+        ~ Update()
+        ~ Exists()
+        ~ GetModelViaPlatformId()
+        ~ GetModel()
+        ..
+        Other unused methods in SSO module
+        .. 
+    }
+    
+}
+
+package "PlayNowService.Model" #DDDDDD {
+    class PlayNowService.Model.OAuthDbDelegate {
+        + trans
+        + conn
+    }
+  
+    class PlayNowService.Model.PN_UserBindInfo {
+        + Id
+        + Uid
+        + OAuthPlatformID
+        + ThirdUserId
+        + NickName
+        + Icon
+        + UserInfo
+        + Clone()
+        + Equals()
+        + GetHashCode()
+    }
+    
+    class PlayNowService.Model.PN_OAuthPlatform {
+        + Id
+        + OAuthPlatformID
+        + Name
+        + Enable
+        + PlatformLogoUri
+        + AuthorizationReqUri
+        + AccessTokenReqUri
+        + RefreshTokenReqUri
+        + GetUserIdReqUri
+        + GetUserInfoReqUri
+        + Client_id
+        + Client_secret
+        + Clone()
+        + Equals()
+        + GetHashCode()
+    }
+    
+    class PlayNowService.Model.PN_UserLoginInfo {
+        + Id
+        + UserID
+        + LoginType
+        + AccessToken
+        + RefreshToken
+        + Expires
+        + LoginTime
+        + DeviceID
+        + LoginIP
+        + Clone()
+        + Equals()
+        + GetHashCode()
+    }
+    
+    class PlayNowService.Model.PN_UserInfo {
+        + Id
+        + SonySelectID
+        + Clone()
+        + Equals()
+        + GetHashCode()
+    }
+}
+
+package "PlayNowService.DAL" #DDDDDD {    
+    class DALHelper {
+        # SqlHelper
+        # SqlHelperLog
+        - {static} GetHelper()
+    }
+    
+    class PlayNowService.DAL.PN_UserInfo {
+        + GetModelBySomcId()
+        ..
+        Other unused methods in SSO module
+        ..        
+    }
+    PlayNowService.DAL.PN_UserInfo -|> DALHelper
+    PlayNowService.DAL.PN_UserInfo -up-|> PlayNowService.IDAL.IPN_UserInfo
+    PlayNowService.DAL.PN_UserInfo -down-> PlayNowService.Model.PN_UserInfo
+    
+    class PlayNowService.DAL.PN_UserInfoBinder {
+        + BindUserInfo()
+        + IsAleadyBound()
+        + GetBoundInfo()
+        + LoadBoundInfo()
+        - SaveUserInfo()
+        - SaveUserBindInfo()
+        - SaveUserLoginInfo()
+        - GenSonySelectId()
+        - BuildBoundInfo()
+        - GetUserBoundInfo()
+    }
+    PlayNowService.DAL.PN_UserInfoBinder -|> DALHelper
+    PlayNowService.DAL.PN_UserInfoBinder -up-|> PlayNowService.IDAL.IPN_UserInfoBinder
+    PlayNowService.DAL.PN_UserInfoBinder -down-> PlayNowService.Model.PN_UserBindInfo
+    
+    class PlayNowService.DAL.PN_UserBindInfo {
+        ~ IsThirdUserExists()
+        ~ GetModelByThirdParten()
+        ~ GetModelByUid()
+        ~ GetModel()
+        ..
+        Other unused methods in SSO module
+        .. 
+    }
+    PlayNowService.DAL.PN_UserBindInfo -|> DALHelper
+    PlayNowService.DAL.PN_UserBindInfo -up-|> PlayNowService.IDAL.IPN_UserBindInfo
+    PlayNowService.DAL.PN_UserBindInfo -down-> PlayNowService.Model.PN_UserBindInfo
+	
+    class PlayNowService.DAL.PN_UserLoginInfo {
+        + GetModelByUserID()
+        ..
+        Other unused methods in SSO module
+        ..        
+    }
+    PlayNowService.DAL.PN_UserLoginInfo -|> DALHelper
+    PlayNowService.DAL.PN_UserLoginInfo -up-|> PlayNowService.IDAL.IPN_UserLoginInfo
+    PlayNowService.DAL.PN_UserLoginInfo -down-> PlayNowService.Model.PN_UserLoginInfo
+    
+    class PlayNowService.DAL.OAuthDbDelegate {
+        + BeginTransaction()
+        + RollbackTransaction()
+        + CommitTransaction()     
+    }
+    PlayNowService.DAL.OAuthDbDelegate -|> DALHelper
+    PlayNowService.DAL.OAuthDbDelegate -up-|> PlayNowService.IDAL.IOAuthDbDelegate
+    PlayNowService.DAL.OAuthDbDelegate -down-> PlayNowService.Model.OAuthDbDelegate
+
+    class PlayNowService.DAL.PN_OAuthPlatform {
+        ~ Update()
+        ~ Exists()
+        ~ GetModelViaPlatformId()
+        ~ GetModel()
+        ..
+        Other unused methods in SSO module
+        .. 
+    }
+    PlayNowService.DAL.PN_OAuthPlatform -|> DALHelper
+    PlayNowService.DAL.PN_OAuthPlatform -up-|> PlayNowService.IDAL.IPN_OAuthPlatform
+    PlayNowService.DAL.PN_OAuthPlatform -down-> PlayNowService.Model.PN_OAuthPlatform
+}
+
+@enduml

@@ -1,0 +1,12 @@
+﻿@startuml 
+
+user1 << client >>
+user2 << manager >>
+
+left to right direction
+user1 --> (获取支持的登录方式)
+user1 --> (设置用户信息)
+user2 --> (账号设置)
+user2 --> (用户信息查询)
+
+@enduml

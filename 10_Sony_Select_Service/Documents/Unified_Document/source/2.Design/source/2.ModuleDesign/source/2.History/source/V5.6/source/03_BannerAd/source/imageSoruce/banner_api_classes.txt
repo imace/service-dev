@@ -1,0 +1,274 @@
+
+@startuml "banner_api_classes.png"
+interface ICloneable
+interface IHttpHandler
+
+package "PlayNowService" #DDDDDD {
+    class ServerApi {
+        ~ serializer
+        ~ mErroMsg
+        ~ paramsDic
+        + ProcessRequest()
+        ..
+         Other unused in this module
+        ..
+    }
+    IHttpHandler <|-- ServerApi 
+}
+
+package "PlayNowService.ApiApp" #DDDDDD {
+    class PlayNowService.ApiApp.getBannerList {
+        + {static}string GetBannerList(HttpContext context)
+    }
+}
+package "PlayNowService.ApiApp" #DDDDDD {
+    class PlayNowService.ApiApp.AdvertisementManager {
+        + {static}void RequestAdvertLink(HttpContext context)
+    }
+}
+package "PlayNowService.BLL" #DDDDDD {
+    class PlayNowService.BLL.BLHelper {
+        # TryAddModelCache()
+        # GetModelCache()
+        # RemoveModelCache()
+        # TryAddExistCache()
+        # GetExistCache()
+        # RemoveExistCache()
+        # TryAddCountCache()
+        # GetCountCache()
+        # RemoveCountCache()
+        # TryAddListCache()
+        # GetListCache()
+        # RemoveListCache()
+        # RemoveCountCache()
+        # RemoveListCache()
+        + {static} GetCache()
+        + {static} TryAddCache()
+        + {static} TryRemoveCache()
+        + {static} RemoveMultiCache()
+        + {static} RemoveAllCache()        
+    }
+}
+
+package "PlayNowService.BLL" #DDDDDD {
+    class PlayNowService.BLL.PN_Banner {
+        - IDAL.IPN_Banner dalBan
+        - IDAL.IPN_ZoneDetail dalZone
+        - IDAL.IPN_AppInfo dalApp
+        - Advertisement advertisement
+        + GetMachinetypes(int intBanType, string contentId)
+        + GetWebBannerList()
+        + GetNewBannerList()
+        + string GetWebBannerResult(string strMachineType)
+        + string GetNewBannerResult(string strMachineType)
+        ..
+         Other unused in this module
+        ..
+        
+    }
+    class PlayNowService.BLL.PN_Machine{
+        - PlayNowService.IDAL.IPN_Machine dal
+        + GetList()
+        + GetAllSupportMachineTypes()
+    }
+    
+    PlayNowService.BLL.BLHelper <|-- PlayNowService.BLL.PN_Banner
+    PlayNowService.BLL.BLHelper <|-- PlayNowService.BLL.PN_Machine
+}
+package "PlayNowService.BLL.Api" #DDDDDD {
+    class PlayNowService.BLL.Api.Advertisement {
+        - IPN_AdInfo adInfoDAL
+        + string RequestAdvertLink(int adId, int intenetFromId, string machineType)
+        + Model.PN_AdInfo GetAdInfoById(int? id)
+        + GetList()
+        ..
+         Other unused in this module
+        ..
+    }
+    
+    PlayNowService.BLL.BLHelper <|-- PlayNowService.BLL.Api.Advertisement
+}
+
+package "PlayNowService.Model" #DDDDDD {
+    class PlayNowService.Model.PN_AppInfo {
+        + Id
+        + Name
+        + PackageName
+        + Size
+        + Description
+        + Grade
+        + SmallIcon 
+        + LargeIcon 
+        + IsFree
+        + Price
+        + VersionCode
+        + VersionName
+        + Publisher
+        + UpdateTime 
+        + Tag
+        + ScreenShots
+        + DownloadUrl
+        + DownloadTime
+        + Type
+        + MachineTypes
+        + Clone()
+        + Equals()
+        + GetHashCode()
+    }
+    class PlayNowService.Model.PN_Banner {
+        + Id
+        + Name
+        + Icon
+        + BannerIcon
+        + Type
+        + ContentId
+        + UpdateTime
+        + MachineTypes
+        + Clone()
+        + Equals()
+        + GetHashCode()
+    }
+    class PlayNowService.Model.PN_AdInfo {
+        + ID 
+        + Name
+        + Link
+        + Icon
+        + CreateTime
+        + UpdateTime
+        + Description
+        + ExpiryDate
+        + Clone()
+        + Equals()
+        + GetHashCode()
+    }
+    class PlayNowService.Model.PN_Machine{
+        + Id
+        + Type
+        + Clone()
+        + Equals()
+        + GetHashCode()
+    }
+    ICloneable <|-- PlayNowService.Model.PN_AppInfo
+    ICloneable <|-- PlayNowService.Model.PN_Banner
+    ICloneable <|-- PlayNowService.Model.PN_AdInfo
+    ICloneable <|-- PlayNowService.Model.PN_Machine
+}
+
+package "PlayNowService.BLL" #DDDDDD {
+    class PlayNowService.BLL.BannerNew {
+        + Type
+        + ContentId
+        + Name
+        + Icon
+        + BannerIcon
+        + Link
+    }
+    class PlayNowService.BLL.BannerListNew {
+        + int ResultCode
+        + List<BannerNew> BannerList
+    }
+    PlayNowService.BLL.BannerListNew --> PlayNowService.BLL.BannerNew
+
+}
+
+package "PlayNowService.IDAL" #DDDDDD {
+    interface PlayNowService.IDAL.IPN_AppInfo {
+        ~ GetModel(int? Id)
+        ..
+         Other unused in this module
+        ..
+    }
+    interface PlayNowService.IDAL.IPN_AdInfo {
+        ~ GetModel()
+        ~ GetListWithWidget()
+        ~ GetAdList()
+        ..
+         Other unused in this module
+        ..
+    }
+    interface PlayNowService.IDAL.IPN_Banner {
+        ~ GetWebList();
+        ~ GetList();
+        ..
+         Other unused in this module
+        ..
+    }
+    interface PlayNowService.IDAL.IPN_ZoneDetail {
+        ~ DataSet GetZoneAppDetail(int intZoneId)
+        ..
+         Other unused in this module
+        ..
+    }
+    interface PlayNowService.IDAL.IPN_Machine {
+        ~ GetList()
+        ..
+         Other unused in this module
+        ..
+    }
+}
+
+package "PlayNowService.DAL" #DDDDDD {
+    interface PlayNowService.DAL.PN_AppInfo {
+        + GetModel(int? Id)
+        ..
+         Other unused in this module
+        ..
+    }
+    interface PlayNowService.DAL.PN_AdInfo {
+        + GetModel()
+        + GetListWithWidget()
+        + GetAdList()
+        ..
+         Other unused in this module
+        ..
+    }
+    interface PlayNowService.DAL.PN_Banner {
+        + GetWebList();
+        + GetList();
+        ..
+         Other unused in this module
+        ..
+    }
+    interface PlayNowService.DAL.PN_ZoneDetail {
+        + DataSet GetZoneAppDetail(int intZoneId)
+        ..
+         Other unused in this module
+        ..
+    }
+    interface PlayNowService.DAL.PN_Machine {
+        + GetList()
+        ..
+         Other unused in this module
+        ..
+    }
+    PlayNowService.IDAL.IPN_AppInfo <|-- PlayNowService.DAL.PN_AppInfo
+    PlayNowService.IDAL.IPN_AdInfo <|-- PlayNowService.DAL.PN_AdInfo
+    PlayNowService.IDAL.IPN_Banner <|-- PlayNowService.DAL.PN_Banner
+    PlayNowService.IDAL.IPN_ZoneDetail <|-- PlayNowService.DAL.PN_ZoneDetail
+    PlayNowService.IDAL.IPN_Machine <|-- PlayNowService.DAL.PN_Machine
+}
+
+ServerApi ..> PlayNowService.ApiApp.getBannerList
+PlayNowService.ApiApp.getBannerList ..> PlayNowService.BLL.PN_Banner
+PlayNowService.BLL.PN_Banner ..> PlayNowService.BLL.BannerNew
+PlayNowService.BLL.PN_Banner ..> PlayNowService.BLL.BannerListNew
+PlayNowService.BLL.PN_Banner --> PlayNowService.IDAL.IPN_Banner
+PlayNowService.BLL.PN_Banner --> PlayNowService.IDAL.IPN_ZoneDetail
+PlayNowService.BLL.PN_Banner --> PlayNowService.IDAL.IPN_AppInfo
+PlayNowService.BLL.PN_Banner --> PlayNowService.BLL.Api.Advertisement
+PlayNowService.BLL.PN_Banner ..> PlayNowService.BLL.PN_Machine
+
+PlayNowService.DAL.PN_AdInfo ..> PlayNowService.Model.PN_AdInfo
+PlayNowService.DAL.PN_AppInfo ..> PlayNowService.Model.PN_AppInfo
+PlayNowService.DAL.PN_Banner ..> PlayNowService.Model.PN_Banner
+
+PlayNowService.BLL.PN_Machine --> PlayNowService.IDAL.IPN_Machine
+PlayNowService.DAL.PN_Machine ..> PlayNowService.Model.PN_Machine
+
+
+ServerApi ..> PlayNowService.ApiApp.AdvertisementManager 
+PlayNowService.ApiApp.AdvertisementManager ..> PlayNowService.BLL.Api.Advertisement
+PlayNowService.BLL.Api.Advertisement --> PlayNowService.IDAL.IPN_AdInfo
+
+
+@enduml

@@ -1,0 +1,33 @@
+@startuml
+
+package "表示层（PlayNowManager.UIL）" {
+    enum PlayNowManager_UI {
+        +UserBackupAppList.aspx
+    }
+    Note left : 用户备份应用列表界面
+}
+
+package "业务逻辑层（PlayNowManager.BLL）" {
+    class BLL_UserDownloadAppManager {
+        +GetUserBackupAppList(Hashtable htParams)
+		+GetTotalCount(Hashtable htParams)
+    } 
+    Note left : 查询用户备份应用
+    PlayNowManager_UI --> BLL_UserDownloadAppManager
+}
+
+interface  IPN_UserDownloadList {
+        +GetUserBackupAppList(Hashtable htParams)
+		+GetTotalCount(Hashtable htParams)
+}
+BLL_UserDownloadAppManager --> IPN_UserDownloadList
+
+package "数据访问层（PlayNowManager.DAL）" {
+    class DAL_PN_UserDownloadList {
+        +GetUserBackupAppList(Hashtable htParams)
+		+GetTotalCount(Hashtable htParams)
+    }
+    IPN_UserDownloadList <|-- DAL_PN_UserDownloadList
+}
+
+@enduml

@@ -1,0 +1,124 @@
+﻿
+@startuml "widget_manager_classes.png"
+interface ICloneable
+class PlayNowManager.BasePage {
+    # Page_Init()
+    # CheckPermission()
+    # AlertJs()
+    ..
+    Other unused methods in Multi-zone module
+    ..
+}
+package "PlayNowManager.Widget" #DDDDDD {
+    class PlayNowManager.Widget.WidgetInfo {
+        # Page_Load()
+        # InitPage()
+        # BindContentInfo()
+        # BindWidgetInfo()
+        # BtnWidgetSearch_Click()
+        # PageWidgetInfo_PageChanged()
+        # BtnContentSearch_Click()
+        # pagContentInfo_PageChanged()
+        # BtnToWidgetList_Click()
+        # BtnDelete_Click()
+        # grvWidget_RowUpdating()
+
+    }
+    PlayNowManager.BasePage <|-- PlayNowManager.Widget.WidgetInfo
+}
+
+package "PlayNowManager.BLL.Content" #DDDDDD {
+    class PlayNowManager.BLL.Content.ContentManager {
+        - IContentIDal contentDal
+        + DataSet GetList(Hashtable htParams)
+        + int GetCount(Hashtable htParams)
+    }
+    
+}
+package "PlayNowManager.BLL.Widget" #DDDDDD {
+    class PlayNowManager.BLL.Widget.WidgetManager {
+        - IPN_Widget widgetDAl
+        + DataSet GetList(Hashtable htParams)
+        + int GetCount(Hashtable htParams)
+        + void Add(PlayNowManager.Model.Widget.PN_Widget model)
+        + bool Exists(int intContentId, int intContentType)
+        + void Delete(int id)
+        + void UpdateTime(int id)
+    }
+    
+}
+
+package "PlayNowManager.Model.Widget" #DDDDDD {
+    class PlayNowManager.Model.Widget.PN_Widget {
+        + id 
+        + contentId
+        + contentType
+        + updateTime
+        + Clone()
+        + Equals()
+        + GetHashCode()
+    }
+    ICloneable <|- PlayNowManager.Model.Widget.PN_Widget
+}
+
+package "PlayNowManager.IDAL.Content" #DDDDDD {
+    interface PlayNowManager.IDAL.Content.IContentIDal {
+        ~ DataSet GetContentList(Hashtable htParams);
+        ~ int GetCount(Hashtable htParams);
+    }
+}
+package "PlayNowManager.DAL.Content" #DDDDDD {
+    class PlayNowManager.DAL.Content.ContentDal {
+        - GetSqlForDataSet()
+        - GetSqlForCount()
+        - GetCommonSql()
+        - GetAppSql()
+        - GetAdSql()
+        - IsAppOrGame()
+        - IsAd()
+        + GetContentList(Hashtable htParams);
+        + GetCount(Hashtable htParams);
+
+    }
+    PlayNowManager.IDAL.Content.IContentIDal <|- PlayNowManager.DAL.Content.ContentDal
+}
+
+package "PlayNowManager.IDAL.Widget" #DDDDDD {
+    interface PlayNowManager.IDAL.Widget.IPN_Widget {
+        ~ DataSet GetList(Hashtable htParams);
+        ~ int GetCount(Hashtable htParams);
+        ~ bool Exists(int? intContentId, int? intContentType);
+        ~ int Add(PlayNowManager.Model.Widget.PN_Widget model);
+        ~ int Delete(int id);
+        ~ int UpdateTime(int? id, DateTime curDateTime);
+    }
+}
+package "PlayNowManager.DAL.Widget" #DDDDDD {
+    class PlayNowManager.DAL.Widget.PN_Widget {
+        - GetSqlForDataSet()
+        - GetSqlForCount()
+        - GetCommonSql()
+        - GetAppSql()
+        - GetAdSql()
+        - IsAppOrGame()
+        - IsAd()
+        + DataSet GetList(Hashtable htParams);
+        + int GetCount(Hashtable htParams);
+        + bool Exists(int? intContentId, int? intContentType);
+        + int Add(PlayNowManager.Model.Widget.PN_Widget model);
+        + int Delete(int id);
+        + int UpdateTime(int? id, DateTime curDateTime);
+    }
+    PlayNowManager.IDAL.Widget.IPN_Widget <|- PlayNowManager.DAL.Widget.PN_Widget
+}
+
+
+PlayNowManager.Widget.WidgetInfo --> PlayNowManager.BLL.Content.ContentManager
+PlayNowManager.BLL.Content.ContentManager --> PlayNowManager.IDAL.Content.IContentIDal
+
+PlayNowManager.Widget.WidgetInfo --> PlayNowManager.BLL.Widget.WidgetManager
+PlayNowManager.BLL.Widget.WidgetManager --> PlayNowManager.IDAL.Widget.IPN_Widget
+PlayNowManager.BLL.Widget.WidgetManager ..> PlayNowManager.Model.Widget.PN_Widget
+PlayNowManager.DAL.Widget.PN_Widget ..> PlayNowManager.Model.Widget.PN_Widget
+
+@enduml

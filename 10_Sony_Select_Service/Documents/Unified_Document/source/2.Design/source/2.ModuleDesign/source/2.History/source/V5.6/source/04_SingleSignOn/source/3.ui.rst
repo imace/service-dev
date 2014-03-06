@@ -1,0 +1,18 @@
+UI展示
+##################
+
+* 用户登录入口
+.. image:: images/login_1.png 
+.. image:: images/login_2.png
+
+* 用户登录平台选择列表
+.. image:: images/login_list.png
+
+* 百度登陆入口
+.. image:: images/baidu_login.png
+
+* 新浪登陆入口
+.. image:: images/sina_login.png
+
+* 登陆方式管理后台UI
+.. image:: images/mng_sys.png

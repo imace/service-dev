@@ -1,0 +1,11 @@
+@startuml"ad_stat_process.png"
+
+:启动LogImportSevice;
+:读日志文件;
+:日志解析;
+:日志导入临时表;
+:统计临时表数据到正式表;
+:清空临时表数据;
+stop
+
+@enduml

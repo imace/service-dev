@@ -1,0 +1,52 @@
+@startuml
+
+== 更新百度应用信息 ==
+Client -> AutoTask:UnorderedAutoTasks.TimerUpdateBaiduApps_Elapsed
+activate AutoTask
+AutoTask -> BLL:UpdateBaiduDownloadList
+activate BLL
+	BLL -> DAL: PN_BaiduDownloadList.ClearBaiduDownloadList
+	activate DAL
+		DAL -> PlayNow.dbo: PN_BaiduDownloadList
+		activate PlayNow.dbo
+		PlayNow.dbo --> DAL
+		deactivate  PlayNow.dbo
+		DAL --> BLL
+	deactivate DAL
+	
+	BLL -> DAL: PN_UserDownloadList.GetBaiduAppOrderedList
+	activate DAL
+		DAL -> PlayNow.dbo: PN_UserDownloadList/PN_AppInfo
+		activate PlayNow.dbo
+		PlayNow.dbo --> DAL
+		deactivate  PlayNow.dbo
+		DAL --> BLL
+	deactivate DAL
+	
+	
+	BLL -> ServiceApi:internal.updateOffSiteAppInfo
+	activate ServiceApi
+		ServiceApi -> Api:OffSiteAppManager.UpdateOffSiteAppInfo
+		activate Api
+			Api -> BLL:Baidu_Api.UpdateOffSiteApp
+			activate BLL
+				BLL -> DAL: Baidu_Api.GetBaiduAppListByPackage
+				activate DAL
+					DAL -> PlayNow.dbo: PN_BaiduDownloadList
+					activate PlayNow.dbo
+					PlayNow.dbo --> DAL
+					deactivate  PlayNow.dbo
+					DAL --> BLL
+				deactivate DAL
+				BLL --> Api
+			deactivate BLL
+			Api --> ServiceApi
+		deactivate Api
+		ServiceApi --> BLL
+	deactivate ServiceApi
+	BLL --> AutoTask
+deactivate BLL
+AutoTask --> Client
+deactivate AutoTask
+
+@enduml

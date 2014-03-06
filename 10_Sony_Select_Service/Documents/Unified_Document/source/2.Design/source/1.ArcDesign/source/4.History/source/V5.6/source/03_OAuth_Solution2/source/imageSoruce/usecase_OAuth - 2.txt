@@ -1,0 +1,16 @@
+@startuml
+
+user2 << manager >>
+user1 << client >>
+
+left to right direction
+user2 --> (第三方登录平台配置)
+user2 --> (用户信息查询)
+user1 --> (获取支持的登录方式)
+user1 --> (第三方用户登录)
+user1 --> (获取用户信息)
+user1 --> (登录有效性检查)
+(第三方用户登录) --> OAuth授权平台
+(获取用户信息) --> OAuth授权平台
+(登录有效性检查) --> OAuth授权平台
+@enduml

@@ -1,0 +1,265 @@
+﻿
+@startuml "SSO_classes_business.png"
+
+package "PlayNowService" #DDDDDD {
+    class PlayNowService.PlayNowService {
+        - NO_RESPONSE_HTML_FILE
+        - HTML_CONTENT_TYPE
+        - JSON_CODE_TEMPLATE
+    
+        + ProcessRequest()
+        ..
+        Other unused methods in SSO module
+        ..
+    }
+
+}
+
+package "PlayNowService.Utility" #DDDDDD {    
+    class PlayNowService.Utility.DBHelper {
+        - _iDBHelper
+        - _databaseType
+        + ExecuteReader()
+        + ExecuteScalar()
+    }
+    
+    class PlayNowService.Utility.Common {
+        - TRIPLE_DES_SECURITY_KEY_IN_BASE64
+        - CONFIG_APPKEY
+        - CONFIG_SECURITYKEY
+        - CONFIG_FORMAT
+        - SUCCESS_CODE
+        - FAILED_CODE
+        + {static} GenerateSignature()
+        + {static} EncryptString()
+        ..
+        Other unused methods in SSO module
+        ..        
+    }
+}
+
+package "PlayNowService.ApiApp" #DDDDDD {
+    class PlayNowService.ApiApp.AccountApiApp {
+        - {static} mThirdOAuthAgent
+        + {static} GetUserInfo()
+        + {static} GetAuthenticate()
+        ~ {static} GetAuthorizationRequest()
+        + {static} AuthenticateCallback()
+    }
+    PlayNowService.ApiApp.AccountApiApp -right-> PlayNowService.Utility.Common
+}
+PlayNowService.PlayNowService --> PlayNowService.ApiApp.AccountApiApp
+PlayNowService.ApiApp.AccountApiApp -->PlayNowService.BLL.IThirdOAuthAgent
+
+package "PlayNowService.Model" #DDDDDD {
+  
+    class PlayNowService.Model.PN_UserBindInfo {
+        + Id
+        + Uid
+        + OAuthPlatformID
+        + ThirdUserId
+        + NickName
+        + Icon
+        + UserInfo
+        + Clone()
+        + Equals()
+        + GetHashCode()
+    }
+    
+    class PlayNowService.Model.PN_OAuthPlatform {
+        + Id
+        + OAuthPlatformID
+        + Name
+        + Enable
+        + PlatformLogoUri
+        + AuthorizationReqUri
+        + AccessTokenReqUri
+        + RefreshTokenReqUri
+        + GetUserIdReqUri
+        + GetUserInfoReqUri
+        + Client_id
+        + Client_secret
+        + Clone()
+        + Equals()
+        + GetHashCode()
+    }
+    
+    class PlayNowService.Model.PN_UserLoginInfo {
+        + Id
+        + UserID
+        + LoginType
+        + AccessToken
+        + RefreshToken
+        + Expires
+        + LoginTime
+        + DeviceID
+        + LoginIP
+        + Clone()
+        + Equals()
+        + GetHashCode()
+    }
+    
+    class PlayNowService.Model.PN_UserInfo {
+        + Id
+        + SonySelectID
+        + Clone()
+        + Equals()
+        + GetHashCode()
+    }
+    
+    class PlayNowService.Model.OAuthToken {
+        + AccessToken
+        + RefreshToken
+        + Expires_in        
+    }
+}
+
+package "PlayNowService.BLL" #DDDDDD {
+    
+    Interface IThirdOAuthAgent {
+        ~ {abstract} GetLoginUrl()
+        ~ {abstract} BindUser()
+        ~ {abstract} GetUserInfo()
+        ~ {abstract} VerifyUserLoginStatus()
+    }
+
+    class BLHelper {
+        # TryAddModelCache()
+        # GetModelCache()
+        # RemoveModelCache()
+        # TryAddExistCache()
+        # GetExistCache()
+        # RemoveExistCache()
+        ..
+        Other unused methods in SSO module
+        ..          
+    }
+    BLHelper -up-> PlayNowService.Utility.DBHelper
+        
+    Class PlayNowService.BLL.OAuthDbDelegate {
+        - bllUserInfo
+        - bllUserBindInfo
+        - bllUserLoginInfo
+        - dalBinder
+        - dalOAuthDelegate
+        + GetOAuthToken()
+        + GetOrCreateSonyId()
+    }
+    
+    class ThirdOAuthAgent {
+        - oauthDbHandler
+        - userInfoBinderDAL
+        - oauthPlatform
+        - bllUserInfo
+        - bllUserBindInfo
+        - bllUserLoginInfo
+        - InitPlugin()
+        + ThirdOAuthAgent()
+        + GetLoginUrl()
+        + BindUser()
+        + GetUserInfo()
+        + VerifyUserLoginStatus()
+        + getOAuthPlatformName()
+        + FindPlugin()
+        
+    }
+    ThirdOAuthAgent -up-|> IThirdOAuthAgent
+    ThirdOAuthAgent -right-|> BLHelper
+    PlayNowService.BLL.ThirdOAuthAgent --> PlayNowService.Model.PN_OAuthPlatform
+    PlayNowService.BLL.ThirdOAuthAgent --> PlayNowService.Model.OAuthToken
+    PlayNowService.BLL.ThirdOAuthAgent --> PlayNowService.Model.PN_UserBindInfo
+    PlayNowService.BLL.ThirdOAuthAgent --> PlayNowService.Model.PN_UserLoginInfo
+    PlayNowService.BLL.ThirdOAuthAgent --> PlayNowService.Model.PN_UserInfo
+    PlayNowService.BLL.ThirdOAuthAgent --> PlayNowService.BLL.OAuthDbDelegate
+    
+    enum ENUM_PLATFORMS {
+       SINA
+       QQ_CONNECT
+       BAIDU
+       COUNT
+    }
+    
+    class OAuthPlatformFactory {
+        + {static} GetOAuthPlatform()
+        + {static} GetOAuthPlatformsList()
+    }
+    ThirdOAuthAgent --> OAuthPlatformFactory
+    OAuthPlatformFactory -up-> ENUM_PLATFORMS
+    OAuthPlatformFactory -right-> IThirdOAuthPlugin   
+    
+    Interface IOAuthProtocolRunner {
+        ~ GetAccessToken()
+        ~ RefreshAccessToken()
+        ~ GetUserId()
+        ~ GetUserInfo()
+    }
+    
+    Interface IThirdOAuthPlugin {
+        ~ GetLoginURL()
+        ~ Authorize()
+        ~ GetPlatformId()
+    }
+    IOAuthProtocolRunner <|-- IThirdOAuthPlugin
+    
+    abstract Class DefaultOAuthPlatform {
+        ~ REDIRECT_URI
+        - oauthPlatform
+        - bllUserBindInfo
+        
+        + GetPlatformId()
+        # {abstract} GetLoginURL()
+        # {abstract} Authorize()
+        # {abstract} FetchPlatformId()
+        # {abstract} GetAccessToken()
+        # {abstract} RefreshAccessToken()
+        # {abstract} GetUserId()
+        # {abstract} GetUserInfo()
+        ~ getOAuthPlatformModel()
+        ~ UpdateUserBindInfoInDb()
+        ~ IsThirdUserExists()
+    }
+    IThirdOAuthPlugin <|-- DefaultOAuthPlatform
+    
+    Class QQOAuthPlatform {
+        - QQ_REDIRECT_URI
+        - QQ_OAUTH_PLATFORM_ID
+        ~ FetchPlatformId()
+        + GetLoginURL()
+        + GetAccessToken()
+        + RefreshAccessToken()
+        + GetUserId()
+        + GetUserInfo()
+    
+    }
+    DefaultOAuthPlatform <|-- QQOAuthPlatform
+    
+    Class SinaOAuthPlatform {
+        - SINA_OAUTH_PLATFORM_ID
+        ~ FetchPlatformId()
+        + GetLoginURL()
+        + GetAccessToken()
+        + RefreshAccessToken()
+        + GetUserId()
+        + GetUserInfo()
+    
+    }
+    DefaultOAuthPlatform <|-- SinaOAuthPlatform
+    
+    Class BaiduOAuthPlatform {
+        - BAIDU_OAUTH_PLATFORM_ID
+        - BAIDU_IMAGE_URL_HEAD
+        ~ FetchPlatformId()
+        + GetLoginURL()
+        + GetAccessToken()
+        + RefreshAccessToken()
+        + GetUserId()
+        + GetUserInfo()
+    
+    }
+    DefaultOAuthPlatform <|-- BaiduOAuthPlatform    
+    DefaultOAuthPlatform --> PlayNowService.Model.OAuthToken
+    DefaultOAuthPlatform --> PlayNowService.Model.PN_UserBindInfo
+    DefaultOAuthPlatform --> PlayNowService.Model.PN_OAuthPlatform
+}
+
+@enduml

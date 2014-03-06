@@ -1,0 +1,29 @@
+@startuml"widget_contentlist_process.png"
+
+:客户端调用接口widget.getContentList;
+if (输入参数校验?) then (校验不通过)
+  :返回 参数错误;
+else (校验通过)
+    if (内容类型?) then (应用)
+          if (应用列表缓存?) then (已经缓存)
+            :从缓存中读取应用列表;
+          else (尚未缓存)
+            :从数据库读取应用列表";
+            :添加应用列表到缓存;
+          endif
+          :匹配机型、应用类型;
+          :转换应用列表到内容列表;
+    else (广告)
+          if (广告列表缓存?) then (已经缓存)
+            :从缓存中读取广告列表;
+          else (尚未缓存)
+            :从数据库读取广告列表";
+            :添加广告列表到缓存;
+          endif
+          :转换广告列表到内容列表;
+    endif
+    :返回 内容列表;
+endif
+stop
+
+@enduml

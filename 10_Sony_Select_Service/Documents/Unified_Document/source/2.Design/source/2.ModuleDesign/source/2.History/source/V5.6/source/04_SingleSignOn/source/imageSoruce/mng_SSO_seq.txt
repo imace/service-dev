@@ -1,0 +1,71 @@
+@startuml "mng_SSO.png"
+
+actor Operator
+
+== 用户新增登录平台 ==
+Operator->PlayNowManager.UI : 增加登录平台
+  activate PlayNowManager.UI 
+  ALT 用户有权限添加登录平台
+    PlayNowManager.UI->PlayNowManager.UI : 显示增加输入界面(Account.OAuthPlatformManagement.BtnAddClick) 
+    PlayNowManager.UI->PlayNowManager.UI : 初始化界面输入框
+    ALT 存在空的必填项
+       PlayNowManager.UI->Operator : 提示用户存在空的必填项
+    else 不存在空的必填项
+       PlayNowManager.UI->PlayNowManager.UI : 提交数据(Account.OAuthPlatformManagement.BtnConfirmClick)
+       PlayNowManager.UI->PlayNowManager.BLL : 添加数据(BLL.PN_OAuthPlatform.Add)
+       activate PlayNowManager.BLL
+         PlayNowManager.BLL->PlayNowManager.BLL : 生成OAuthPlatformID(GetMaxPlatformId() + 1)
+         PlayNowManager.BLL->PlayNowManager.DAL : 添加数据(DAL.PN_OAuthPlatform.Add)
+         activate PlayNowManager.DAL
+           PlayNowManager.DAL->PlayNowManager.DAL : 拆解数据(DAL.PN_OAuthPlatform.PrepareAddParameters)
+           PlayNowManager.DAL->PlayNowManager.DAL : 操作数据到数据库(DAL.SqlHelper.ExecuteNonQuery)
+           activate PlayNow.dbo
+             PlayNow.dbo->PlayNow.dbo : 数据库运行添加操作
+             PlayNow.dbo->PlayNowManager.DAL : 返回执行结果(object)
+           deactivate PlayNow.dbo
+           PlayNowManager.DAL->PlayNowManager.BLL : 返回数据库操作行数(int)
+         deactivate PlayNowManager.DAL
+         PlayNowManager.BLL->PlayNowManager.UI : 返回添加到数据库的行数(int)
+       deactivate PlayNowManager.BLL
+       PlayNowManager.UI->PlayNowManager.UI : 页面清除输入框中数据(Account.OAuthPlatformManagement.clearInputArea)
+       PlayNowManager.UI->PlayNowManager.UI : 页面将新内容刷新到列表中(Account.OAuthPlatformManagement.InitPage)
+    end
+  else 用户没有权限添加登录平台
+    PlayNowManager.UI->PlayNowManager.UI : 提示用户没有权限(BasePage.AlertJs)
+  end
+  PlayNowManager.UI->Operator : 操作结果
+  deactivate PlayNowManager.UI
+
+== 用户修改登录平台 ==
+Operator->PlayNowManager.UI : 修改登录平台
+  activate PlayNowManager.UI 
+  ALT 用户有权限修改登录平台
+    PlayNowManager.UI->PlayNowManager.UI : 显示增加输入界面(Account.OAuthPlatformManagement.BtnModifyClick) 
+    PlayNowManager.UI->PlayNowManager.UI : 初始化界面输入框
+    ALT 存在空的必填项
+       PlayNowManager.UI->Operator : 提示用户存在空的必填项
+    else 不存在空的必填项
+       PlayNowManager.UI->PlayNowManager.UI : 提交数据(Account.OAuthPlatformManagement.BtnConfirmClick)
+       PlayNowManager.UI->PlayNowManager.BLL : 添加数据(BLL.PN_OAuthPlatform.Update)
+       activate PlayNowManager.BLL
+         PlayNowManager.BLL->PlayNowManager.DAL : 添加数据(DAL.PN_OAuthPlatform.Add)
+         activate PlayNowManager.DAL
+           PlayNowManager.DAL->PlayNowManager.DAL : 拆解数据(DAL.PN_OAuthPlatform.PrepareAddParameters)
+           PlayNowManager.DAL->PlayNowManager.DAL : 操作数据到数据库(DAL.SqlHelper.ExecuteNonQuery)
+           activate PlayNow.dbo
+             PlayNow.dbo->PlayNow.dbo : 数据库运行添加操作
+             PlayNow.dbo->PlayNowManager.DAL : 返回执行结果(object)
+           deactivate PlayNow.dbo
+           PlayNowManager.DAL->PlayNowManager.BLL : 返回数据库操作行数(int)
+         deactivate PlayNowManager.DAL
+         PlayNowManager.BLL->PlayNowManager.UI : 返回更新到数据库的行数(int)
+       deactivate PlayNowManager.BLL
+       PlayNowManager.UI->PlayNowManager.UI : 页面清除输入框中数据(Account.OAuthPlatformManagement.clearInputArea)
+       PlayNowManager.UI->PlayNowManager.UI : 页面将新内容刷新到列表中(Account.OAuthPlatformManagement.InitPage)
+    end
+  else 用户没有权限添加登录平台
+    PlayNowManager.UI->PlayNowManager.UI : 提示用户没有权限(BasePage.AlertJs)
+  end
+  PlayNowManager.UI->Operator : 操作结果
+  deactivate PlayNowManager.UI
+@enduml

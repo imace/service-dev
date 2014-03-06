@@ -1,0 +1,10 @@
+UI展示
+##################
+
+* PlayNowManager下载来源日志统计模块更新，增加“应用更新”的数量统计列
+
+.. image:: images/DownUrl.png
+
+* PlayNowManager页面访问日志统计模块更新，增加“应用更新”的数量统计列
+
+.. image:: images/ClientPV.png
