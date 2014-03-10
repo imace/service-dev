@@ -1,0 +1,8 @@
+1. 2014年03月03号提交上线申请。
+
+2. 2014年03月03号1:55 PM部署成功。
+
+3. 2014年03月10号线上测试完毕，上线成功
+
+上线链接：http://collaboration.intranet.sonyericsson.net/project/SonySelectChina/Lists/Release%20Management/DispForm.aspx?ID=46&ContentTypeId=0x010300843F6B115FD8EA49A499CE70DE5F3257
+	
