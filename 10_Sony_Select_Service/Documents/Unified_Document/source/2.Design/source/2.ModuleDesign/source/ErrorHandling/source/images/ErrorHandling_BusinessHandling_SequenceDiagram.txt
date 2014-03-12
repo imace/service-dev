@@ -1,0 +1,43 @@
+@startuml
+== 业务处理 ==
+Client -> PlayNowService_ServerApi:widget.getContentList
+activate PlayNowService_ServerApi
+	
+	PlayNowService_ServerApi  -> RequestHandlerChain:RequestHandlerChain.HandleRequest
+	activate RequestHandlerChain
+		RequestHandlerChain  -> API:WidgetListHandler.HandleRequest
+		activate API
+		API -> BLL:WidgetManager.GetContentList
+		activate BLL
+			BLL --> DALThrowAdvice	
+				BLL -> DAL:PN_AppInfo.GetListWithWidget
+			
+			  	activate DAL
+					DAL -> PlayNow.dbo: PN_AppInfo/PN_Widget
+					activate PlayNow.dbo
+					PlayNow.dbo --> DAL
+					deactivate  PlayNow.dbo
+			  
+			  	DAL --> DALThrowAdvice: <color:Salmon>System.SqlException(或者PN_DBException)</color>
+				Deactivate DAL
+			  	activate DALThrowAdvice
+			  	
+			DALThrowAdvice --> BLL: <color:Crimson>PN_BizException</color>
+			deactivate DALThrowAdvice												
+		BLL --> API: <color:Crimson>PN_BizException</color>	
+		deactivate BLL
+	
+		API --> RequestHandlerChain:<color:Crimson>PN_BizException</color>
+		deactivate API
+		
+		
+	RequestHandlerChain --> PlayNowService_ServerApi: <color:Crimson>PN_BizException</color>
+	deactivate RequestHandlerChain  
+	PlayNowService_ServerApi  -> PlayNowService_ServerApi:UniformExceptionHandler.ConvertExceptionToMsg 
+PlayNowService_ServerApi --> Client: <color:Crimson>带ErrorCode的错误信息</color>
+deactivate PlayNowService_ServerApi
+
+== 业务处理 ==
+
+
+@enduml

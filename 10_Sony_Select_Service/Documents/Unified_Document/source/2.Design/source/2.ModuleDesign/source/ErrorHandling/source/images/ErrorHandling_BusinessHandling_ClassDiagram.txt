@@ -1,0 +1,109 @@
+@startuml
+
+class ServerApi{
+	+void ProcessRequest(HttpContext context)
+}
+
+note top of ServerApi: 程序入口
+
+class UniformExceptionHandler{
+
+}
+note top of UniformExceptionHandler:统一将异常\n转化为错误信息
+ServerApi --> UniformExceptionHandler
+
+class RequestHandlerChain{
+	+static string HandleRequest(Dictionary<string, object> clientParamsDic)
+}
+ServerApi --> RequestHandlerChain
+
+interface IClientRequestHandler{
+	string HandleClientRequest(Dictionary<string, object> clientParamsDic)
+        bool CanBeHandled(Dictionary<string, object> clientParamsDic)
+}
+IClientRequestHandler <|.. RequestHandlerChain 
+
+class WidgetListHandler{
+
+}
+note left of WidgetListHandler: 实现"widget.getContentList"接口
+IClientRequestHandler <|.. WidgetListHandler
+RequestHandlerChain --> WidgetListHandler
+
+namespace BLL.Widget{
+	class WidgetManager{
+		+List<WidgetEntity> getContentList()
+		+int GetTotalCount()
+	}
+	.WidgetListHandler --> WidgetManager
+	
+}
+
+namespace DAL{
+	class PN_AppInfo{
+		List<PlayNowService.Model.PN_AppInfo> GetListWithWidget()
+	}
+	BLL.Widget.WidgetManager --> PN_AppInfo
+}
+
+namespace IDAL{
+	interface IPN_AppInfo{
+		List<PlayNowService.Model.PN_AppInfo> GetListWithWidget()
+	}
+	IPN_AppInfo <|-- DAL.PN_AppInfo
+	
+}
+
+class DALThrowsAdvice
+
+
+namespace Spring.Aop{	
+	interface IThrowsAdvice <|.. .DALThrowsAdvice
+	ProxyFactoryObject --> .DALThrowsAdvice
+
+	
+}
+
+DALThrowsAdvice .. IDAL.IPN_AppInfo
+
+
+class WidgetListResult{
+	+int ResultCode
+	+int TotalCount
+	+List<WidgetEntity> WidgetContentList
+}
+
+WidgetListHandler --> WidgetListResult
+
+class JavaScriptSerializer{
+	+string Serialize(object obj)
+}
+WidgetListHandler --> JavaScriptSerializer
+
+
+class WidgetListParams{
+	+int StartIndex
+	+int ReturnNum
+	+int ContentType
+	+int AppType
+}
+
+
+
+class AttributeValidator{
+	+static void AttributeValidate(Object obj)
+}
+AttributeValidator --> WidgetListParams
+WidgetListHandler --> WidgetListParams
+WidgetListHandler --> AttributeValidator
+
+namespace System.ComponentModel.DataAnnotations{
+
+
+	.WidgetListParams --> RequiredAttribute
+	.WidgetListParams --> RegularExpressionAttribute
+	.AttributeValidator --> Validator
+	.AttributeValidator --> ValidationException
+}
+
+@enduml

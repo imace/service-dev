@@ -1,0 +1,59 @@
+@startuml
+
+class ServerApi{
+	+void ProcessRequest(HttpContext context)
+}
+ServerApi --> UniformExceptionHandler
+
+class UniformExceptionHandler{
+
+}
+note bottom  of UniformExceptionHandler:统一将异常\n转化为错误信息
+
+interface IValidator{
+	void Validate(Dictionary<string, object> clientParamsDic)
+}
+
+class IntegrityValidator{
+
+}
+note bottom of IntegrityValidator:完整性校验
+
+IValidator <|.. IntegrityValidator
+
+
+
+
+class SecurityValidatorChain{
+	+static void Validate(Dictionary<string, object> clientParamsDic)
+}
+note bottom of SecurityValidatorChain:安全验证入口
+IValidator <|.. SecurityValidatorChain 
+
+
+ServerApi --> SecurityValidatorChain
+
+SecurityValidatorChain --> IntegrityValidator
+
+class PN_IntegrityException{
+
+}
+
+
+
+
+
+IntegrityValidator --> PN_IntegrityException
+
+
+class SecurityException{
+	
+}
+SecurityException <|-- PN_IntegrityException
+
+
+
+
+
+
+@enduml

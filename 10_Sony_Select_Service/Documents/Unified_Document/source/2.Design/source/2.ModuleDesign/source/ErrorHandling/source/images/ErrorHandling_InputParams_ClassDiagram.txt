@@ -1,0 +1,62 @@
+@startuml
+
+class ServerApi{
+	+void ProcessRequest(HttpContext context)
+}
+
+class UniformExceptionHandler{
+
+}
+note top of UniformExceptionHandler:统一将异常\n转化为错误信息
+ServerApi --> UniformExceptionHandler
+
+ 
+class InputCommonParams{
+	public string Method
+	public string MachineType
+	public string Appkey
+	public string Sig
+}
+
+class InputParamsValidator{
+
+}
+
+ServerApi --> InputParamsValidator
+
+
+
+
+interface IValidator{
+	void Validate(Dictionary<string, object> clientParamsDic)
+}
+
+IValidator <|.. InputParamsValidator
+
+InputParamsValidator --> InputCommonParams
+
+namespace System.ComponentModel.DataAnnotations{
+
+
+	.InputCommonParams --> RequiredAttribute
+	.InputCommonParams --> RegularExpressionAttribute
+	.InputParamsValidator --> Validator
+	.InputParamsValidator --> ValidationException
+}
+
+note left of System.ComponentModel.DataAnnotations.RegularExpressionAttribute:使用.net framework自带的验证包，\n完成对变量类型、值范围的校验
+
+
+
+class PN_InputParamsException{
+
+}
+note top of PN_InputParamsException: 自定义业务异常
+
+InputParamsValidator --> PN_InputParamsException
+
+
+
+
+
+@enduml

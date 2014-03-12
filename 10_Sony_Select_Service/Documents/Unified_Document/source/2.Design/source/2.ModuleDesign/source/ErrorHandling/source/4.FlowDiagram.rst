@@ -1,0 +1,43 @@
+流程图
+########################################
+
+
+业务流程图
+*****************
+* 业务流程图（整体）
+
+.. image:: _static/BFD_Total.png
+
+* 业务流程图（安全验证）
+
+.. image:: _static/BFD_Security.png
+
+* 业务流程图（输入验证）
+
+.. image:: _static/BFD_InputParams.png
+
+* 业务流程图（业务处理）
+
+.. image:: _static/BFD_BizHandling.png
+
+
+详细设计图
+*****************
+
+* 类图（安全验证）
+
+.. image:: _static/ErrorHandling_Security_ClassDiagram.png
+
+* 类图（输入验证）
+
+.. image:: _static/ErrorHandling_InputParams_ClassDiagram.png
+
+* 类图（业务处理）
+
+.. image:: _static/ErrorHandling_BusinessHandling_ClassDiagram.png
+
+
+时间顺序图
+*****************
+
+

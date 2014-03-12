@@ -23,6 +23,7 @@
   Update/source/index.rst
   UserLogin/source/index.rst
   Backup&&Restore/source/index.rst
+  ErrorHandling/source/index.rst
   2.History/source/index.rst
 
 
