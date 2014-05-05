@@ -1,0 +1,202 @@
+-- phpMyAdmin SQL Dump
+-- version 3.3.8.1
+-- http://www.phpmyadmin.net
+--
+-- 主机: w.rdc.sae.sina.com.cn:3307
+-- 生成日期: 2014 年 05 月 05 日 14:00
+-- 服务器版本: 5.5.23
+-- PHP 版本: 5.3.3
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- 数据库: `app_sonyfifa`
+--
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `bet`
+--
+-- 创建时间: 2014 年 05 月 04 日 16:56
+-- 最后更新: 2014 年 05 月 04 日 16:56
+--
+
+DROP TABLE IF EXISTS `bet`;
+CREATE TABLE IF NOT EXISTS `bet` (
+  `id` bigint(20) NOT NULL COMMENT 'Primary key',
+  `userId` bigint(20) NOT NULL COMMENT '外键，User表主键',
+  `matchId` bigint(20) NOT NULL COMMENT '外键，比赛表主键',
+  `betPointsOne` int(2) NOT NULL COMMENT '下注国家一的进球数',
+  `betPointsTwo` int(2) NOT NULL COMMENT '下注国家二的进球数',
+  `betPoints` int(11) NOT NULL COMMENT '下注的人气点数',
+  `winPoints` int(11) NOT NULL COMMENT '赢得的人气点数',
+  `createTime` varchar(12) NOT NULL COMMENT '下注时间Eg：201404101535',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `bet`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `handle`
+--
+-- 创建时间: 2014 年 05 月 04 日 17:05
+-- 最后更新: 2014 年 05 月 04 日 17:05
+--
+
+DROP TABLE IF EXISTS `handle`;
+CREATE TABLE IF NOT EXISTS `handle` (
+  `id` bigint(20) NOT NULL COMMENT 'Primary key',
+  `ownerUserId` bigint(20) NOT NULL COMMENT '发起人或者叫推荐者的用户Id(外键，User表主键)',
+  `supporterUserId` bigint(20) NOT NULL COMMENT '支持者，被推荐者或者叫接收者用户Id(外键，User表主键)',
+  `createTime` varchar(12) NOT NULL COMMENT '拉手创建时间Eg：201404101535',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `handle`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `match`
+--
+-- 创建时间: 2014 年 05 月 04 日 16:47
+-- 最后更新: 2014 年 05 月 04 日 16:47
+--
+
+DROP TABLE IF EXISTS `match`;
+CREATE TABLE IF NOT EXISTS `match` (
+  `id` bigint(20) NOT NULL COMMENT 'Primary key',
+  `countryOne` varchar(64) NOT NULL COMMENT '国家一',
+  `countryTwo` varchar(64) NOT NULL COMMENT '国家二',
+  `pointsOne` int(2) NOT NULL COMMENT '国家一的进球数',
+  `pointsTwo` int(2) NOT NULL COMMENT '国家二的进球数',
+  `startTime` varchar(12) NOT NULL COMMENT '比赛时间Eg：201404101535',
+  `createTime` varchar(12) NOT NULL COMMENT '创建时间Eg：201404101535',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `match`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `orderHistory`
+--
+-- 创建时间: 2014 年 05 月 04 日 17:16
+-- 最后更新: 2014 年 05 月 04 日 17:16
+--
+
+DROP TABLE IF EXISTS `orderHistory`;
+CREATE TABLE IF NOT EXISTS `orderHistory` (
+  `id` bigint(20) NOT NULL COMMENT 'Primary key',
+  `ownerUserId` bigint(20) NOT NULL COMMENT '发起人或者叫推荐者的用户Id(外键，User表主键)',
+  `supporterUserId` bigint(20) NOT NULL COMMENT '支持者，被推荐者或者叫接收者用户Id(外键，User表主键)',
+  `orderNum` varchar(255) NOT NULL COMMENT '订单号',
+  `cashFlag` int(1) NOT NULL COMMENT '0：未返现，1：已返现',
+  `validOrder` int(1) NOT NULL COMMENT '0：无效订单，1：有效订单',
+  `createTime` varchar(12) NOT NULL COMMENT '创建时间Eg：201404101535',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `orderHistory`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `popularity`
+--
+-- 创建时间: 2014 年 05 月 04 日 17:04
+-- 最后更新: 2014 年 05 月 04 日 17:04
+--
+
+DROP TABLE IF EXISTS `popularity`;
+CREATE TABLE IF NOT EXISTS `popularity` (
+  `id` bigint(20) NOT NULL COMMENT 'Primary key',
+  `ownerUserId` bigint(20) NOT NULL COMMENT '发起人或者叫推荐者的用户Id(外键，User表主键)',
+  `supporterUserId` bigint(20) NOT NULL COMMENT '支持者，被推荐者或者叫接收者用户Id(外键，User表主键)',
+  `createTime` varchar(12) NOT NULL COMMENT '人气关联创建时间Eg：201404101535',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `popularity`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `product`
+--
+-- 创建时间: 2014 年 05 月 04 日 17:08
+-- 最后更新: 2014 年 05 月 04 日 17:08
+--
+
+DROP TABLE IF EXISTS `product`;
+CREATE TABLE IF NOT EXISTS `product` (
+  `id` bigint(20) NOT NULL COMMENT 'Primary key',
+  `name` varchar(255) NOT NULL COMMENT '产品名称',
+  `description` varchar(255) NOT NULL COMMENT '产品描述',
+  `iconLink` varchar(255) NOT NULL COMMENT '产品图标链接',
+  `jdLink` varchar(255) NOT NULL COMMENT '京东链接',
+  `createTime` varchar(12) NOT NULL COMMENT '创建时间Eg：201404101535',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `product`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `user`
+--
+-- 创建时间: 2014 年 05 月 04 日 00:10
+-- 最后更新: 2014 年 05 月 04 日 02:17
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Primary key',
+  `openId` varchar(128) NOT NULL COMMENT '微信OpenID',
+  `nickname` varchar(128) DEFAULT NULL COMMENT '昵称',
+  `focusFlag` int(1) NOT NULL COMMENT '0：未关注sony 微信，1：已关注sony微信',
+  `phoneNum` char(11) DEFAULT NULL COMMENT '电话号码',
+  `email` varchar(128) DEFAULT NULL COMMENT '邮箱',
+  `address` varchar(255) DEFAULT NULL COMMENT '地址',
+  `jdId` varchar(255) DEFAULT NULL COMMENT '京东账户',
+  `points` bigint(11) DEFAULT NULL COMMENT '人气值',
+  `focusTime` varchar(12) DEFAULT NULL COMMENT '关注时间Eg：201404101535',
+  `createTime` varchar(12) DEFAULT NULL COMMENT '注册时间Eg：201404101535',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- 转存表中的数据 `user`
+--
+
+INSERT INTO `user` (`id`, `openId`, `nickname`, `focusFlag`, `phoneNum`, `email`, `address`, `jdId`, `points`, `focusTime`, `createTime`) VALUES
+(1, '1', '测试', 0, '12345678901', '123@163.com', '地址', '1', 1, '20140503', '20140504');
