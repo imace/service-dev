@@ -1,10 +1,18 @@
-package com.sonymobile.sonyfifa.entity.json;
+package com.sonymobile.sonysales.entity.json;
 
+/**
+ * The result of SAE Fetch URL 
+ * */
 public final class SaeFetchUrlResult {
+	// The HTTP status code of http connection
 	private int httpCode;
+	// The Error number of SAE fetch URL
 	private int errNumber;
+	// The Error message of SAE fetch URL
 	private String errMsg;
+	// The HTTP connection content of SAE fetch URL
 	private String content;
+	// The HTTP connection body of SAE fetch URL
 	private String body;
 
 	public int getHttpCode() {

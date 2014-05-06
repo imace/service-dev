@@ -9,12 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONObject;
 
-import com.sonymobile.sonyfifa.entity.json.AccessToken;
-import com.sonymobile.sonyfifa.entity.json.SaeFetchUrlResult;
-import com.sonymobile.sonyfifa.util.Constant;
-import com.sonymobile.sonyfifa.util.HttpConnetcion;
 import com.sonymobile.sonysales.entity.DefaultWechatInfoImpl;
 import com.sonymobile.sonysales.entity.IWechatInfo;
+import com.sonymobile.sonysales.entity.json.AccessToken;
+import com.sonymobile.sonysales.entity.json.SaeFetchUrlResult;
+import com.sonymobile.sonysales.util.Base64Coder;
+import com.sonymobile.sonysales.util.Constant;
+import com.sonymobile.sonysales.util.HttpConnetcion;
 
 public class OAuthServlet extends HttpServlet {
 	private IWechatInfo wechatInfo;
@@ -30,29 +31,33 @@ public class OAuthServlet extends HttpServlet {
 		String oauthState = request.getParameter("state");
 		String fromOpenId = request.getParameter("id");
 
-		if (Constant.WECHAT_OAUTH_POPULARITY_STATE.equals(oauthState)) {
-			String url = buildGetAccessTokenUrl(oauthCode);
-			SaeFetchUrlResult result = HttpConnetcion.saeHttpGetRequest(url);
+		String tokenUrl = buildGetAccessTokenUrl(oauthCode);
+		SaeFetchUrlResult result = HttpConnetcion.saeHttpGetRequest(tokenUrl);
 
-			JSONObject jsonObject = JSONObject.fromObject(result.getBody());
-			AccessToken accessToken  = (AccessToken) JSONObject.toBean(jsonObject,AccessToken.class);
-			String oauthOpenId = accessToken.getOpenid();
-			if (oauthOpenId == null || oauthOpenId.isEmpty()) {
-				// TODO : OAuthOpenId is null
-			} else if (oauthOpenId.equals(fromOpenId)) {
-				// TODO : Redirect to an error page
-			} else {
-				StringBuilder sb = new StringBuilder(Constant.HOST);
-				sb.append('?');
-				sb.append("fromid=");
-				sb.append(fromOpenId);
-				sb.append("&toid=");
-				sb.append(oauthOpenId);
+		JSONObject jsonObject = JSONObject.fromObject(result.getBody());
+		AccessToken accessToken = (AccessToken) JSONObject.toBean(jsonObject,
+				AccessToken.class);
+		String oauthOpenId = accessToken.getOpenid();
 
-				response.sendRedirect(sb.toString());
-			}
-			
+		// build the response redirect url
+		String url = Base64Coder.convertBase64ToStr(oauthState);
+		StringBuilder sb = new StringBuilder(url);
+		if (oauthOpenId != null && !oauthOpenId.isEmpty()) {
+			sb.append('?');
+			sb.append("toid=");
+			sb.append(oauthOpenId);
 		}
+		if (fromOpenId != null && !fromOpenId.isEmpty()) {
+			if (oauthOpenId != null && !oauthOpenId.isEmpty()) {
+				sb.append('&');
+			} else {
+				sb.append('?');
+			}
+			sb.append("fromid=");
+			sb.append(fromOpenId);
+		}
+
+		response.sendRedirect(sb.toString());
 	}
 
 	@Override

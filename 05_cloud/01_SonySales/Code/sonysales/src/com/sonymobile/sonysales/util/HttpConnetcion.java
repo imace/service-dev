@@ -1,4 +1,4 @@
-package com.sonymobile.sonyfifa.util;
+package com.sonymobile.sonysales.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.net.URL;
 
 import com.sina.sae.fetchurl.BinaryData;
 import com.sina.sae.fetchurl.SaeFetchurl;
-import com.sonymobile.sonyfifa.entity.json.SaeFetchUrlResult;
+import com.sonymobile.sonysales.entity.json.SaeFetchUrlResult;
 
 public final class HttpConnetcion {
 	private static final String GET = "GET";

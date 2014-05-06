@@ -1,4 +1,4 @@
-package com.sonymobile.sonyfifa.entity.json;
+package com.sonymobile.sonysales.entity.json;
 
 public final class AccessToken {
 	private String access_token;

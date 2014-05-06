@@ -1,14 +1,15 @@
-package com.sonymobile.sonyfifa.util;
+package com.sonymobile.sonysales.util;
 
 public final class Constant {
 	public static final String APP_ID = "wxe2fed806213159c7";
 
 	public static final String APP_SECRET = "24151f5740661c0afafd8f8145ce2061";
 
-	public static final String HOST = "http://sonyfifa.sinaapp.com";
-	
-	public static final String WECHAT_OAUTH_REDIRECT_PATH = "/jsp/relationpage";
-	
+	// Debug with Kevin, Nie
+	public static final String HOST = "http://1.kevinnie.sinaapp.com/";
+	// Release link
+	//public static final String HOST = "http://sonyfifa.sinaapp.com";
+
 	public static final String WECHAT_GET_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token";
 
 	public static final String WECHAT_GET_USER_INFO_URL = "https://api.weixin.qq.com/cgi-bin/user/info";
@@ -32,11 +33,5 @@ public final class Constant {
 
 	};
 
-	public static final String WECHAT_OAUTH_POPULARITY_STATE = "SONY_POPULARITY";
-	
-	public static final String WECHAT_OAUTH_GROUP_BUY_STATE = "SONY_GROUP_BUY";
-
 	public static final String WECHAT_OAUTH_EXTRA_STRING = "#wechat_redirect";
-	
-
 }

@@ -1,6 +1,6 @@
 package com.sonymobile.sonysales.entity;
 
-import com.sonymobile.sonyfifa.util.Constant;
+import com.sonymobile.sonysales.util.Constant;
 
 public class DefaultWechatInfoImpl implements IWechatInfo {
 
