@@ -13,7 +13,27 @@
 	<servlet>
 		<servlet-name>OAuthServlet</servlet-name>
 		<servlet-class>com.sonymobile.sonysales.servlet.userServlet.OAuthServlet</servlet-class>
-	</servlet>
+	</servlet>	
+    <servlet>
+      <description></description>
+      <display-name></display-name>
+      <servlet-name>Activity</servlet-name>
+      <servlet-class>com.sonymobile.sonysales.servlet.userServlet.Activity</servlet-class>
+    </servlet>
+    <servlet>
+      <description></description>
+      <display-name></display-name>
+      <servlet-name>Relation</servlet-name>
+      <servlet-class>com.sonymobile.sonysales.servlet.userServlet.Relation</servlet-class>
+    </servlet>
+    <servlet>
+      <description></description>
+      <display-name></display-name>
+      <servlet-name>Share</servlet-name>
+      <servlet-class>com.sonymobile.sonysales.servlet.userServlet.Share</servlet-class>
+    </servlet>
+    
+    
 	<servlet-mapping>
 		<servlet-name>getUser</servlet-name>
 		<url-pattern>/getUser</url-pattern>
@@ -23,6 +43,21 @@
 		<servlet-name>OAuthServlet</servlet-name>
 		<url-pattern>/wechat_authorize</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+	  <servlet-name>Activity</servlet-name>
+	  <url-pattern>/activitypage</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	  <servlet-name>Relation</servlet-name>
+	  <url-pattern>/relationpage</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	  <servlet-name>Share</servlet-name>
+	  <url-pattern>/sharepage</url-pattern>
+	</servlet-mapping>
+	
+	
+	
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
 		<filter-class>com.sonymobile.sonysales.filter.CharacterEncodingFilter</filter-class>
