@@ -1,3 +1,5 @@
+<%@page import="com.sonymobile.sonysales.util.Constant"%>
+<%@page import="com.sonymobile.sonysales.util.Base64Coder"%>
 <%@ page contentType="text/html; charset=gb2312"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -5,77 +7,108 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Type" content="text/html charset=gb2312">
-<meta name="viewport" content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
+<meta name="viewport"
+	content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
 <title>活动详情</title>
 
-<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
-<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
+<link rel="stylesheet"
+	href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
 <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<script type="text/javascript" src= "/sonyfifa/js/WeChatShare.js" ></script>
+<script
+	src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sonyfifa/js/WeChatShare.js"></script>
 
 </head>
 <body>
 
-<%String openid=(String)session.getAttribute("openid");%>
-<% String currenturl = request.getScheme()+"://"+ request.getServerName()+request.getRequestURI()+"?"+request.getQueryString(); %>
-<%
+	<%
+		String openid = (String) session.getAttribute("openid");
+	%>
+	<%
+		String currenturl = request.getScheme() + "://"
+				+ request.getServerName() + request.getRequestURI() + "?"
+				+ request.getQueryString();
+	%>
+	<%
+		String relationUrl = Base64Coder.convertStrToBase64(request
+				.getContextPath() + "/relationpage");
 
-String state="SONY_FIFA_POPULARITY";
+		if (openid == null) {
+			openid = "o_2fijpLPf7JsvVZPsiZ1mA5Pk1c";
+		}
+		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxe2fed806213159c7&redirect_uri="+request.getContextPath()+"/wechat_authorize?id="
+				+ openid
+				+ "&response_type=code&scope="
+				+ Constant.WECHAT_OAUTH_SCOPES.BASE.getValue()
+				+ "&state="
+				+ relationUrl + "#wechat_redirect";
+		String msgimg = "http://www.sonystyle.com.cn/images/weibo_share_1.jpg";
+		String tlimg = "http://www.sonystyle.com.cn/images/weibo_share_2.jpg";
+		out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
+				+ "MsgImg:\""
+				+ msgimg
+				+ "\","
+				+ "TLImg:\""
+				+ tlimg
+				+ "\","
+				+
+				//"url:\""+url+"?id="+openid+"\","+
+				"url:\""
+				+ url
+				+ "\","
+				+ "title:\"SONY FIFA 邀请您中大奖\","
+				+ "desc:\"源网址是 "
+				+ currenturl
+				+ "\","
+				+ "fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
+	%>
+	<hr>
+	<div class="row">
+		<div class="col-xs-4">
+			<img class="img-rounded" alt="fifa"
+				src="http://www.sonystyle.com.cn/products/xperia/images/xperia_m51w/pro_img/z1_m51w_y1_b.jpg">
+		</div>
+		<div class="col-xs-8">
+			超值, <br>
+			<h2>索尼FIFA手机等你来拿</h2>
+		</div>
+	</div>
 
-if(openid==null)
-{
-	openid="o_2fijpLPf7JsvVZPsiZ1mA5Pk1c";
-}
-String url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxe2fed806213159c7&redirect_uri=http://sonyfifa.sinaapp.com/wechat_authorize?id="+openid+"&response_type=code&scope=snsapi_base&state="+state+"#wechat_redirect";
-String msgimg="http://www.sonystyle.com.cn/images/weibo_share_1.jpg";
-String tlimg="http://www.sonystyle.com.cn/images/weibo_share_2.jpg";
-out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","+
-		"MsgImg:\""+msgimg+"\","+
-		"TLImg:\""+tlimg+"\","+
-		//"url:\""+url+"?id="+openid+"\","+
-		"url:\""+url+"\","+
-		"title:\"SONY FIFA 邀请您中大奖\","+
-		"desc:\"源网址是 "+currenturl+"\","+
-		"fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
-%>
-<hr>
-<div class="row">
-  <div class="col-xs-4"><img class="img-rounded" alt="fifa" src="http://www.sonystyle.com.cn/products/xperia/images/xperia_m51w/pro_img/z1_m51w_y1_b.jpg"></div>
-  <div class="col-xs-8">超值, <br>
-  <h2>索尼FIFA手机等你来拿</h2></div>
-</div>
+	<div class="row">
+		<div class="col-xs-12">
+			FIFA手机大奖, 只要你人气排名前8, 即可获得索尼FIFA官方定制精美手机一部. <br>
+			<h2>点击右上角->发送给朋友</h2>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-xs-5">
+			<img class="img-rounded" alt="fifa"
+				src="http://www.sonystyle.com.cn/products/xperia/images/xperia_t2_xm50h.png">
+		</div>
+		<div class="col-xs-7">
+			<div class="row">
+				<div class="col-xs-12">商品描述, 点击购买</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-6">
+					<button type="button" class="btn btn-success">PC 购买</button>
+				</div>
+				<div class="col-xs-6">
+					<button type="button" class="btn btn-warning">手机购买</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<button type="button" class="btn btn-primary">我的折扣券</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-<div class="row">
-  <div class="col-xs-12">FIFA手机大奖, 只要你人气排名前8, 即可获得索尼FIFA官方定制精美手机一部. <br>
-  <h2>点击右上角->发送给朋友</h2></div>
-</div>
-<hr>
-<div class="row">
-  <div class="col-xs-5"><img class="img-rounded" alt="fifa" src="http://www.sonystyle.com.cn/products/xperia/images/xperia_t2_xm50h.png"></div>
-  <div class="col-xs-7">
-    <div class="row">
-      <div class="col-xs-12">
-      商品描述, 点击购买
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-6">
-      <button type="button" class="btn btn-success">PC 购买</button>
-      </div>
-            <div class="col-xs-6">
-      <button type="button" class="btn btn-warning">手机购买</button>
-      </div>
-    </div>
-        <div class="row">
-      <div class="col-xs-12">
-      <button type="button" class="btn btn-primary">我的折扣券</button>
-      </div>
-    </div>
-</div>
-</div>
-
-<script type="text/javascript">
+	<script type="text/javascript">
 (function(){
    var onBridgeReady=function(){
    WeixinJSBridge.on('menu:share:appmessage', function(argv){

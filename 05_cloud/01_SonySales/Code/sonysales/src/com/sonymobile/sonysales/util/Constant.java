@@ -1,14 +1,12 @@
 package com.sonymobile.sonysales.util;
 
 public final class Constant {
-	public static final String APP_ID = "wxe2fed806213159c7";
-
-	public static final String APP_SECRET = "24151f5740661c0afafd8f8145ce2061";
-
-	// Debug with Kevin, Nie
-	public static final String HOST = "http://1.kevinnie.sinaapp.com/";
-	// Release link
-	//public static final String HOST = "http://sonyfifa.sinaapp.com";
+    //public static final String APP_ID = "wxe2fed806213159c7";
+    //public static final String APP_SECRET = "24151f5740661c0afafd8f8145ce2061";
+    
+    // Test with Pingfanghe's account 
+    public static final String APP_ID = "wxd6c996ffd460c4b7";
+    public static final String APP_SECRET = "a57f48290475ab4efd80bcfedee277c5";
 
 	public static final String WECHAT_GET_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token";
 
