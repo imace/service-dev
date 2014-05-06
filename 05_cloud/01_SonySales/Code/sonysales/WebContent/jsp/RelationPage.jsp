@@ -22,6 +22,7 @@
 		String toid = (String)request.getAttribute("toid");		
 		String fromnickname = (String)request.getAttribute("fromnickname");
 		String tonickname = (String)request.getAttribute("tonickname");
+		String oauthtoidlink = (String)request.getAttribute("oauthtoidlink");
 	%>
 	<hr>
 	<div class="row">
@@ -44,6 +45,9 @@
 						<td><input type="hidden" name="user2" value="<%=toid%>"></td>
 					</tr>
 				</table>
+				<br>
+				<br>
+				<a href="<%=oauthtoidlink%>">无法显示姓名，点击我显示</a>
 			</form>
 		</div>
 	</div>

@@ -1,7 +1,7 @@
 package com.sonymobile.sonysales.entity.json;
 
 /**
- * The result of SAE Fetch URL 
+ * The result of SAE Fetch URL
  * */
 public final class SaeFetchUrlResult {
 	// The HTTP status code of http connection
@@ -55,5 +55,8 @@ public final class SaeFetchUrlResult {
 		this.body = body;
 	}
 
-
+	@Override
+	public String toString() {
+		return "httpCode = " + httpCode + ",errNumber : " + errNumber + ", errMsg = " + errMsg + ", content = " + content;
+	}
 }

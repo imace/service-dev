@@ -32,7 +32,7 @@
 				+ Constant.APP_ID
 				+ "&redirect_uri="
 				+ Constant.HOST
-				+ "/wechat_authorize?id="
+				+ "/wechat_authorize?fromid="
 				+ openid
 				+ "&response_type=code&scope="
 				+ Constant.WECHAT_OAUTH_SCOPES.BASE.getValue()
@@ -52,7 +52,7 @@
 				+ url
 				+ "\","
 				+ "title:\"SONY FIFA 邀请您中大奖\","
-				+ "desc:\"源网址是 "
+				+ "desc:\"来自于 "
 				+ openid
 				+ "\","
 				+ "fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");

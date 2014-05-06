@@ -11,6 +11,7 @@ public final class WechatUserInfo {
 	private String country;
 	private String headimgurl;
 	private double subscribe_time;
+	private String[] privilege;
 
 	public int getSubscribe() {
 		return subscribe;
@@ -90,6 +91,14 @@ public final class WechatUserInfo {
 
 	public void setSubscribe_time(double subscribe_time) {
 		this.subscribe_time = subscribe_time;
+	}
+
+	public String[] getPrivilege() {
+		return privilege;
+	}
+
+	public void setPrivilege(String[] privilege) {
+		this.privilege = privilege;
 	}
 
 }
