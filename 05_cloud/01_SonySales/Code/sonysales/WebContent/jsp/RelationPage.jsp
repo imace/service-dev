@@ -1,3 +1,4 @@
+<%@page import="com.sonymobile.sonysales.util.Constant"%>
 <%@ page contentType="text/html; charset=gb2312"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -35,7 +36,7 @@
 			<h3>2. Íê³É¹Ø×¢</h3>
 			<br> <img class="img-rounded" alt="fifa"
 				src="http://www.sonystyle.com.cn/products/xperia/images/xperia_m51w/pro_img/z1_m51w_y1_b.jpg"><br>
-			<form action="<%=request.getContextPath()%>/sharepage">
+			<form action="<%=Constant.HOST%>/sharepage">
 				<table>
 					<tr>
 						<td><%=fromnickname%></td>

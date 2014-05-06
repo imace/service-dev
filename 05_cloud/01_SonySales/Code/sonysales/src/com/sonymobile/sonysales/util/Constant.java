@@ -8,6 +8,14 @@ public final class Constant {
     public static final String APP_ID = "wxd6c996ffd460c4b7";
     public static final String APP_SECRET = "a57f48290475ab4efd80bcfedee277c5";
 
+
+    // Debug with Kevin, Nie
+    //public static final String HOST = "http://1.kevinnie.sinaapp.com/";
+    // Release link
+    public static final String HOST = "http://sonyfifa.sinaapp.com";
+
+
+
 	public static final String WECHAT_GET_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token";
 
 	public static final String WECHAT_GET_USER_INFO_URL = "https://api.weixin.qq.com/cgi-bin/user/info";

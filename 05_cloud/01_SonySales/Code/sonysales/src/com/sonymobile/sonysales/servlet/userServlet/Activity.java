@@ -32,18 +32,19 @@ public class Activity extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	        try {  
 	            String openId = request.getParameter("id");
-	            if (openId==null) {
-					openId="o_2fijpLPf7JsvVZPsiZ1mA5Pk1c";
-				}
 	            response.setContentType("application/json;charset=UTF-8");
 	            response.setCharacterEncoding("UTF-8");
-	            	            
+
 	            HttpSession session = request.getSession();
 	    		session.setAttribute("openid", openId);
+	    			    		
+	    		request.setAttribute("openid", openId);	    		
 	    		if (request.getServerName().equals("localhost")) {
-	    			response.sendRedirect("/sonysales/jsp/ActivityPage.jsp");
+	    			//response.sendRedirect("/sonysales/jsp/ActivityPage.jsp");
+	    			request.getRequestDispatcher("/sonysales/jsp/ActivityPage.jsp").forward(request, response);
 				}else {
-					response.sendRedirect("/jsp/ActivityPage.jsp");	
+					//response.sendRedirect("/jsp/ActivityPage.jsp");	
+					request.getRequestDispatcher("/jsp/ActivityPage.jsp").forward(request, response);
 				}
 	        } catch (JSONException e) {  
 	            e.printStackTrace();  

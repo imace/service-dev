@@ -24,21 +24,24 @@
 <body>
 
 	<%
-		String openid = (String) session.getAttribute("openid");
-	%>
-	<%
-		String currenturl = request.getScheme() + "://"
-				+ request.getServerName() + request.getRequestURI() + "?"
-				+ request.getQueryString();
-	%>
-	<%
-		String relationUrl = Base64Coder.convertStrToBase64(request
-				.getContextPath() + "/relationpage");
-
-		if (openid == null) {
-			openid = "o_2fijpLPf7JsvVZPsiZ1mA5Pk1c";
+		String openid = session.getAttribute("openid").toString();
+		if(openid==null)
+		{
+			openid=request.getAttribute("openid").toString();
+			
 		}
-		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxe2fed806213159c7&redirect_uri="+request.getContextPath()+"/wechat_authorize?id="
+	
+		String currenturl = request.getScheme() + "://"
+				+ request.getServerName() + request.getRequestURI();
+
+		String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST
+				+ "/relationpage");
+
+		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
+				+ Constant.APP_ID
+				+ "&redirect_uri="
+				+ Constant.HOST
+				+ "/wechat_authorize?id="
 				+ openid
 				+ "&response_type=code&scope="
 				+ Constant.WECHAT_OAUTH_SCOPES.BASE.getValue()
@@ -54,13 +57,12 @@
 				+ tlimg
 				+ "\","
 				+
-				//"url:\""+url+"?id="+openid+"\","+
 				"url:\""
 				+ url
 				+ "\","
 				+ "title:\"SONY FIFA 邀请您中大奖\","
 				+ "desc:\"源网址是 "
-				+ currenturl
+				+ openid
 				+ "\","
 				+ "fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
 	%>

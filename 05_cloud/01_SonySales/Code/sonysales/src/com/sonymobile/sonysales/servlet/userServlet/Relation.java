@@ -68,10 +68,10 @@ public class Relation extends HttpServlet {
 			}else {
 				//forward to error page
 				HttpSession session = request.getSession();
-				session.setAttribute("fromnickname", "fromnickname");
+				/*session.setAttribute("fromnickname", "fromnickname");
 				session.setAttribute("tonickname", "tonickname");
 				session.setAttribute("fromid", "fromid");
-				session.setAttribute("toid", "toid");
+				session.setAttribute("toid", "toid");*/
 			}
 			//only for test
 			if (request.getServerName().equals("localhost")) {
