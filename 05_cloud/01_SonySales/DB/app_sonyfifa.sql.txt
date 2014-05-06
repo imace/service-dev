@@ -107,8 +107,8 @@ CREATE TABLE IF NOT EXISTS `match` (
 DROP TABLE IF EXISTS `orderHistory`;
 CREATE TABLE IF NOT EXISTS `orderHistory` (
   `id` bigint(20) NOT NULL COMMENT 'Primary key',
-  `ownerUserId` bigint(20) NOT NULL COMMENT '发起人或者叫推荐者的用户Id(外键，User表主键)',
-  `supporterUserId` bigint(20) NOT NULL COMMENT '支持者，被推荐者或者叫接收者用户Id(外键，User表主键)',
+  `userId` bigint(20) NOT NULL COMMENT '购买者的用户Id(外键，User表主键)',
+  `parentOrderNum` varchar(255) NOT NULL COMMENT '父订单号',
   `orderNum` varchar(255) NOT NULL COMMENT '订单号',
   `cashFlag` int(1) NOT NULL COMMENT '0：未返现，1：已返现',
   `validOrder` int(1) NOT NULL COMMENT '0：无效订单，1：有效订单',

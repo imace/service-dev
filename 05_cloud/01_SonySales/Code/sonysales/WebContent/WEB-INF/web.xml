@@ -8,7 +8,7 @@
 		<description>This is the description of my J2EE component</description>
 		<display-name>This is the display name of my J2EE component</display-name>
 		<servlet-name>getUser</servlet-name>
-		<servlet-class>com.sonymobile.sonysalesservlet.userServlet.GetUser</servlet-class>
+		<servlet-class>com.sonymobile.sonysales.servlet.userServlet.GetUser</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>OAuthServlet</servlet-name>
@@ -38,7 +38,26 @@
 		<servlet-name>getUser</servlet-name>
 		<url-pattern>/getUser</url-pattern>
 	</servlet-mapping>
-
+    <servlet>
+        <description>add a user</description>
+        <display-name>add a user</display-name>
+        <servlet-name>addUser</servlet-name>
+        <servlet-class>com.sonymobile.sonysales.servlet.userServlet.AddUser</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addUser</servlet-name>
+        <url-pattern>/addUser</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description></description>
+        <display-name>AddPopularity</display-name>
+        <servlet-name>AddPopularity</servlet-name>
+        <servlet-class>com.sonymobile.sonysales.servlet.popularityServlet.AddPopularity</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddPopularity</servlet-name>
+        <url-pattern>/addPopularity</url-pattern>
+    </servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>OAuthServlet</servlet-name>
 		<url-pattern>/wechat_authorize</url-pattern>

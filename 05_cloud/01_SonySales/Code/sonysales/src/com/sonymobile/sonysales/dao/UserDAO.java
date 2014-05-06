@@ -4,7 +4,7 @@ import java.util.List;
 
 import net.sf.json.JSONArray;
 
-import com.sonymobile.sonysales.entity.User;
+import com.sonymobile.sonysales.model.User;
 
 public class UserDAO {
 
