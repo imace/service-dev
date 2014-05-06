@@ -24,18 +24,9 @@
 <body>
 
 	<%
-		String openid = session.getAttribute("openid").toString();
-		if(openid==null)
-		{
-			openid=request.getAttribute("openid").toString();
-			
-		}
-	
-		String currenturl = request.getScheme() + "://"
-				+ request.getServerName() + request.getRequestURI();
-
-		String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST
-				+ "/relationpage");
+		String openid =(String)request.getAttribute("openid");	
+		String currenturl = request.getScheme() + "://" + request.getServerName() + request.getRequestURI();
+		String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST + "/relationpage");
 
 		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
 				+ Constant.APP_ID

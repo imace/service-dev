@@ -9,8 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import com.sonymobile.sonysales.entity.json.SaeFetchUrlResult;
 import com.sonymobile.sonysales.entity.json.WechatUserInfo;
 import com.sonymobile.sonysales.util.HttpConnetcion;
@@ -45,7 +43,6 @@ public class Relation extends HttpServlet {
 			response.setCharacterEncoding("UTF-8");
 			String getwechatinfourl = "http://1.sonyfifadev.sinaapp.com/WeChat/getuserinfo.php";
 			if (fromid!=null&&toid!=null) {
-
 				String fromurl = getwechatinfourl + "?id=" + fromid;
 				String tourl = getwechatinfourl + "?id=" + toid;
 
@@ -59,26 +56,19 @@ public class Relation extends HttpServlet {
 				
 				String fromnickname = weChatUserInfo1.getNickname();
 				String tonickname = weChatUserInfo2.getNickname();
-				
-				HttpSession session = request.getSession();
-				session.setAttribute("fromid", fromid);
-				session.setAttribute("toid", toid);
-				session.setAttribute("fromnickname", fromnickname==null?"cannot get name":fromnickname);
-				session.setAttribute("tonickname", tonickname==null?"cannot get name":tonickname);
+
+	    		request.setAttribute("fromid", fromid);
+	    		request.setAttribute("toid", toid);	 
+	    		request.setAttribute("fromnickname", fromnickname==null?"cannot get name":fromnickname);	 
+	    		request.setAttribute("tonickname", tonickname==null?"cannot get name":tonickname);	 
 			}else {
 				//forward to error page
-				HttpSession session = request.getSession();
-				/*session.setAttribute("fromnickname", "fromnickname");
-				session.setAttribute("tonickname", "tonickname");
-				session.setAttribute("fromid", "fromid");
-				session.setAttribute("toid", "toid");*/
+				request.setAttribute("fromid", fromid);
+	    		request.setAttribute("toid", toid);	 
+	    		request.setAttribute("fromnickname", "cannot get name.");	 
+	    		request.setAttribute("tonickname", "cannot get name.");
 			}
-			//only for test
-			if (request.getServerName().equals("localhost")) {
-				response.sendRedirect("/sonysales/jsp/RelationPage.jsp");
-			} else {
-				response.sendRedirect("/jsp/RelationPage.jsp");
-			}
+			request.getRequestDispatcher("/jsp/RelationPage.jsp").forward(request, response);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

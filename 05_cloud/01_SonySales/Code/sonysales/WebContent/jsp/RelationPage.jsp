@@ -18,14 +18,10 @@
 <body>
 
 	<%
-		String fromid = (String) session.getAttribute("fromid");
-		String toid = (String) session.getAttribute("toid");		
-		String fromnickname = (String) session.getAttribute("fromnickname");
-		String tonickname = (String) session.getAttribute("tonickname");
-		out.println(fromid);
-		out.println(toid);
-		out.println(fromnickname);
-		out.println(tonickname);
+		String fromid = (String)request.getAttribute("fromid");
+		String toid = (String)request.getAttribute("toid");		
+		String fromnickname = (String)request.getAttribute("fromnickname");
+		String tonickname = (String)request.getAttribute("tonickname");
 	%>
 	<hr>
 	<div class="row">
@@ -48,7 +44,6 @@
 						<td><input type="hidden" name="user2" value="<%=toid%>"></td>
 					</tr>
 				</table>
-
 			</form>
 		</div>
 	</div>
