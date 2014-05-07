@@ -19,7 +19,8 @@
 			com.mysql.jdbc.Driver
 		</property>
 		<mapping resource="com/sonymobile/sonysales/model/User.hbm.xml" /><!--指定持久化类映射文件 -->
-        <mapping resource="com/sonymobile/sonysales/model/Popularity.hbm.xml" /><!--指定持久化类映射文件 -->
+		<mapping resource="com/sonymobile/sonysales/model/Popularity.hbm.xml" /><!--指定持久化类映射文件 -->
+		<mapping resource="com/sonymobile/sonysales/model/Handle.hbm.xml" /><!--指定持久化类映射文件 -->
 
 	</session-factory>
 

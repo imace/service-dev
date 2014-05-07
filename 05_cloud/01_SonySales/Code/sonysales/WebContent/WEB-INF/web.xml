@@ -109,8 +109,38 @@
       <url-pattern>/sharepage</url-pattern>
     </servlet-mapping>
     
+	<servlet>
+		<description>add a user</description>
+		<display-name>add a user</display-name>
+		<servlet-name>addUser</servlet-name>
+		<servlet-class>com.sonymobile.sonysales.servlet.userServlet.AddUser</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>addUser</servlet-name>
+		<url-pattern>/addUser</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>AddPopularity</display-name>
+		<servlet-name>AddPopularity</servlet-name>
+		<servlet-class>com.sonymobile.sonysales.servlet.popularityServlet.AddPopularity</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddPopularity</servlet-name>
+		<url-pattern>/addPopularity</url-pattern>
+	</servlet-mapping>
     
     
+	<servlet>
+		<description></description>
+		<display-name>AddHandle</display-name>
+		<servlet-name>AddHandle</servlet-name>
+		<servlet-class>com.sonymobile.sonysales.servlet.handleServlet.AddHandle</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddHandle</servlet-name>
+		<url-pattern>/addHandle</url-pattern>
+	</servlet-mapping>
     <filter>
         <filter-name>characterEncodingFilter</filter-name>
         <filter-class>com.sonymobile.sonysales.filter.CharacterEncodingFilter</filter-class>

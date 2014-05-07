@@ -1,7 +1,6 @@
-package com.sonymobile.sonysales.servlet.popularityServlet;
+package com.sonymobile.sonysales.servlet.handleServlet;
 
 import java.io.IOException;
-
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -10,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONObject;
-import com.sonymobile.sonysales.service.PopularityService;
+import com.sonymobile.sonysales.service.HandleService;
 
 /**
- * Servlet implementation class AddPopularity
+ * Servlet implementation class AddHandle
  */
-public class AddPopularity extends HttpServlet {
+public class AddHandle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -43,9 +42,8 @@ public class AddPopularity extends HttpServlet {
 			String ownerOpenId = requestJSONObject.getString("ownerOpenId");
 			String supporterOpenId = requestJSONObject
 					.getString("supporterOpenId");
+			Map retMsg = HandleService.addHandle(ownerOpenId, supporterOpenId);
 
-			Map retMsg = PopularityService.addPopularity(ownerOpenId,
-					supporterOpenId);
 			response = initHeader(response);
 			response.getWriter()
 					.write(JSONObject.fromObject(retMsg).toString());
@@ -63,4 +61,5 @@ public class AddPopularity extends HttpServlet {
 
 		return response;
 	}
+
 }

@@ -15,14 +15,15 @@ public class ResultMsg {
 	private static final int RESULT_CODE_ERROR = 0;
 
 	private static final String RESULT_DES_SUCESS = "success.";
-	
+
 	private static final String ERROR_DES_OPENID_EXISTS = "open id exists already.";
 	private static final String ERROR_DES_JDID_EXISTS = "jd id exists already.";
+	private static final String ERROR_DES_SAMEROW_EXISTS = "the same record exists already in ";
 	private static final String ERROR_DES_OPERAION_DB_FAIL = "database operation fail in ";
 
-	
 	private static final String ERROR_DES_OWNEROPENID_NOTEXISTS = "owner open id not exists.";
 	private static final String ERROR_DES_SUPPORTEROPENID_NOTEXISTS = "supporter open id not exists.";
+
 	// / <summary>
 	// / openId已经存在
 	// / </summary>
@@ -62,15 +63,24 @@ public class ResultMsg {
 	public static Map OwnerOpenIDNotExistsError() {
 		return GetResultMsg(RESULT_CODE_ERROR, ERROR_DES_OWNEROPENID_NOTEXISTS);
 	}
-	
-	// / <summary>
-	// / openId已经存在
-	// / </summary>
-	// / <returns></returns>
+
+	// <summary>
+	// openId已经存在
+	// </summary>
+	// <returns></returns>
 	public static Map SupporterOpenIDNotExistsError() {
-		return GetResultMsg(RESULT_CODE_ERROR, ERROR_DES_SUPPORTEROPENID_NOTEXISTS);
+		return GetResultMsg(RESULT_CODE_ERROR,
+				ERROR_DES_SUPPORTEROPENID_NOTEXISTS);
 	}
-	
+
+	// <summary>
+	// the record already exist in Popularity
+	// </summary>
+	// <returns></returns>
+	public static Map SameRecordExistInTable(String tableName) {
+		return GetResultMsg(RESULT_CODE_ERROR, ERROR_DES_SAMEROW_EXISTS + tableName);
+	}
+
 	private static Map GetResultMsg(int code, String des) {
 		Map ret = new HashMap();
 		ret.put("ResultCode", code);
