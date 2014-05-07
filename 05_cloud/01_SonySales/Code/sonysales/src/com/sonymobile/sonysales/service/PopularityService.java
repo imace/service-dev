@@ -15,10 +15,12 @@ public class PopularityService {
 
 	public static Map addUser(User user) {
 		Map retMsg = null;
+		String jdId = user.getJdId();
 
 		if (UserDAO.ExistOpenIdInUser(user.getOpenId())) {
 			retMsg = ResultMsg.OpenIDExistsError();
-		} else if (UserDAO.ExistJdIdInUser(user.getJdId())) {
+		} else if (jdId != null && jdId.length() > 0
+				&& UserDAO.ExistJdIdInUser(jdId)) {
 			retMsg = ResultMsg.JdIDExistsError();
 		} else if (UserDAO.addUser(user)) {
 			retMsg = ResultMsg.SuccessInfo();
