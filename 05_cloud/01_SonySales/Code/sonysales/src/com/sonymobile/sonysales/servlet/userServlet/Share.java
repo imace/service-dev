@@ -43,7 +43,7 @@ public class Share extends HttpServlet {
 	    		if (request.getServerName().equals("localhost")) {
 	    			response.sendRedirect("/sonysales/jsp/SharePage.jsp");
 				}else {
-					response.sendRedirect("/jsp/SharePage.jsp");
+					response.sendRedirect("http://mp.weixin.qq.com/s?__biz=MzA5NDAwODUxMQ==&mid=10013503&idx=2&sn=1cbb860dc2db0a5af0bcc9e4941612dd#rd");
 				}
 	        } catch (JSONException e) {  
 	            e.printStackTrace();  

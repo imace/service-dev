@@ -97,11 +97,10 @@ public class Relation extends HttpServlet {
 				// forward to error page
 				request.setAttribute("fromid", fromid);
 				request.setAttribute("toid", toid);
-				request.setAttribute("fromnickname", "cannot get name.");
-				request.setAttribute("tonickname", "cannot get name.");
+				request.setAttribute("fromnickname", "Ëû");
+				request.setAttribute("tonickname", "ÎÒ");
 			}
-			request.getRequestDispatcher("/jsp/RelationPage.jsp").forward(
-					request, response);
+			request.getRequestDispatcher("/jsp/RelationPage.jsp").forward(request, response);
 		} catch (JSONException e) {
 			logger.error("Relation in json convert : " + e.getMessage());
 			e.printStackTrace();

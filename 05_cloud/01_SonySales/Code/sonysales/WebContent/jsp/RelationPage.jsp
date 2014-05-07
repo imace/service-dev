@@ -33,13 +33,17 @@
 			<h3>2. 完成关注</h3>
 			<br> <img class="img-rounded" alt="fifa"
 				src="http://www.sonystyle.com.cn/products/xperia/images/xperia_m51w/pro_img/z1_m51w_y1_b.jpg"><br>
+				<hr>
+				<input type="text" placeholder="请输入昵称" name="yournickname"/>
+				<a href="<%=oauthtoidlink%>">不想填? 请点击这里.</a>
+				<hr>
 			<form action="<%=Constant.HOST%>/sharepage">
 				<table>
 					<tr>
 						<td><%=fromnickname%></td>
-						<td><input type=hidden name="user1" value="<%=fromid%>"></td>
+						<td><input type="hidden" name="user1" value="<%=fromid%>"></td>
 						<td>
-							<button type="submit" class="btn btn-success btn-lg">点我支持!!</button>
+							<button type="submit" class="btn btn-success btn-lg">支持他!</button>
 						</td>
 						<td><%=tonickname%></td>
 						<td><input type="hidden" name="user2" value="<%=toid%>"></td>
@@ -47,7 +51,6 @@
 				</table>
 				<br>
 				<br>
-				<a href="<%=oauthtoidlink%>">无法显示姓名，点击我显示</a>
 			</form>
 		</div>
 	</div>
