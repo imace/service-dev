@@ -3,17 +3,17 @@ package com.sonymobile.sonysales.servlet.userServlet;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 
 import com.sonymobile.sonysales.model.User;
-import com.sonymobile.sonysales.service.MyFIFAService;
+import com.sonymobile.sonysales.service.PopularityService;
 
 /**
  * Servlet implementation class AddUser
@@ -45,12 +45,11 @@ public class AddUser extends HttpServlet {
 			Date date = new Date();
 			SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmm");
 			String now = df.format(date);
-
 			user.setCreateTime(now);
+			Map retMsg = PopularityService.addUser(user);
 
 			response = initHeader(response);
-			MyFIFAService myFIFAService = new MyFIFAService();
-			response.getWriter().write(myFIFAService.addUser(user));
+			response.getWriter().write(JSONObject.fromObject(retMsg).toString());
 			response.getWriter().close();
 		} catch (Exception e) {
 			e.printStackTrace();
