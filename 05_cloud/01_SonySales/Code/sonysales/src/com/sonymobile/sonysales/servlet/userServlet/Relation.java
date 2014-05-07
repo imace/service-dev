@@ -38,7 +38,7 @@ public class Relation extends HttpServlet {
 	private IWechatInfo wechatInfo;
 
 	public Relation() {
-		wechatInfo = new DefaultWechatInfoImpl();
+		wechatInfo = DefaultWechatInfoImpl.getInstance();
 	}
 
 	protected void doGet(HttpServletRequest request,
@@ -63,13 +63,13 @@ public class Relation extends HttpServlet {
 				if (fromname != null) {
 					fromnickname = fromname;
 				} else {
-					fromnickname = GetNickNamebyOpenId(fromid);
+					fromnickname = wechatInfo.getWebChatUserInfo(fromid).getNickname();
 				}
 
 				if (toname != null) {
 					tonickname = toname;
 				} else {
-					tonickname = GetNickNamebyOpenId(toid);
+					tonickname = wechatInfo.getWebChatUserInfo(toid).getNickname();
 				}
 
 				String relationUrl = Base64Coder
@@ -105,22 +105,6 @@ public class Relation extends HttpServlet {
 			logger.error("Relation in json convert : " + e.getMessage());
 			e.printStackTrace();
 		}
-	}
-
-	private String GetNickNamebyOpenId(String openid) {
-		String nickName = "";
-		String getwechatinfourl = "http://1.sonyfifadev.sinaapp.com/WeChat/getuserinfo.php";
-		String url = getwechatinfourl + "?id=" + openid;
-		try {
-			SaeFetchUrlResult result = HttpConnetcion.saeHttpGetRequest(url);
-			JSONObject jsonObject = JSONObject.fromObject(result.getBody());
-			WechatUserInfo weChatUserInfo1 = (WechatUserInfo) JSONObject
-					.toBean(jsonObject, WechatUserInfo.class);
-			nickName = weChatUserInfo1.getNickname();
-		} catch (Exception e) {
-			nickName = null;
-		}
-		return nickName;
 	}
 
 	private WechatUserInfo getOAuthUserInfo(String fromId, String fromName,

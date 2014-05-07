@@ -9,22 +9,23 @@ public final class Constant {
 	public static final String APP_ID = "wxd6c996ffd460c4b7";
 	public static final String APP_SECRET = "a57f48290475ab4efd80bcfedee277c5";
 
+	public static final int SAE_FETCHURL_SUCCESS_CODE = 0;
+
 
 	// Debug with Kevin, Nie
 //	public static final String HOST = "http://1.kevinnie.sinaapp.com/";
 	// Release link
 	public static final String HOST = "http://sonyfifa.sinaapp.com";
+	
+	public static final String MASTER_ACCOUNT_HOST = "http://1.sonyfifadev.sinaapp.com/WeChat/";
+	public static final String MASTER_ACCOUNT_GETUSERINFO_PATH="getuserinfo.php";
 
-	public static final String WECHAT_GET_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token";
-
-	public static final String WECHAT_GET_USER_INFO_URL = "https://api.weixin.qq.com/cgi-bin/user/info";
-
+	// The links of Wechat OAUTH links
 	public static final String WECHAT_OAUTH2_AUTHORIZE_URL = "https://open.weixin.qq.com/connect/oauth2/authorize";
-	
 	public static final String WECHAT_OAUTH2_ACCESSTOKEN_URL = "https://api.weixin.qq.com/sns/oauth2/access_token";
-	
 	public static final String WECHAT_OAUTH2_USERINFO_URL = "https://api.weixin.qq.com/sns/userinfo";
-
+	public static final String WECHAT_OAUTH_EXTRA_STRING = "#wechat_redirect";
+	// The Wechat oauth scopes
 	public enum WECHAT_OAUTH_SCOPES {
 		BASE("snsapi_base"), USERINFO("snsapi_userinfo");
 
@@ -39,6 +40,4 @@ public final class Constant {
 		}
 
 	};
-
-	public static final String WECHAT_OAUTH_EXTRA_STRING = "#wechat_redirect";
 }

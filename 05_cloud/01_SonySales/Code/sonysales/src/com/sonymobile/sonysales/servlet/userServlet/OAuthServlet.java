@@ -28,7 +28,7 @@ public class OAuthServlet extends HttpServlet {
 			.getName());
 
 	public OAuthServlet() {
-		wechatInfo = new DefaultWechatInfoImpl();
+		wechatInfo = DefaultWechatInfoImpl.getInstance();
 	}
 
 	@Override
