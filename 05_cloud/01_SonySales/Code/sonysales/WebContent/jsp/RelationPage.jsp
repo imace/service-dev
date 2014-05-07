@@ -4,15 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport"
-	content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
-<link rel="stylesheet"
-	href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
+<meta name="viewport" content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
+<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
 <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-<script
-	src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <title>支持我,得大奖!</title>
 </head>
 <body>
@@ -81,6 +77,13 @@
 	</div>
 
 
+	<script type="text/javascript">
+(function(){
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+	WeixinJSBridge.call('hideToolbar');
+});
+})();
+</script>
 
 </body>
 </html>
