@@ -1,19 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	id="WebApp_ID" version="2.5">
-	<display-name>sonysales</display-name>
-	<servlet>
-		<description>This is the description of my J2EE component</description>
-		<display-name>This is the display name of my J2EE component</display-name>
-		<servlet-name>getUser</servlet-name>
-		<servlet-class>com.sonymobile.sonysales.servlet.userServlet.GetUser</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>OAuthServlet</servlet-name>
-		<servlet-class>com.sonymobile.sonysales.servlet.userServlet.OAuthServlet</servlet-class>
-	</servlet>	
+    xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    id="WebApp_ID" version="2.5">
+    <display-name>sonysales</display-name>
+
+  <servlet>
+    <servlet-name>getUser</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.userServlet.GetUser</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>getUserInfo</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.MyFIFAServlet.GetUserInfo</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>getPointsOrder</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.MyFIFAServlet.GetPointsOrder</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>getSupporters</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.MyFIFAServlet.GetSupporters</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>updateUser</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.MyFIFAServlet.UpdateUser</servlet-class>
+  </servlet>
+    
+  <servlet>
+    <servlet-name>getNameListOfHandle</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.NameListServlet.GetNameListOfHandle</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>getNameListOfPopularity</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.NameListServlet.GetNameListOfPopularity</servlet-class>
+  </servlet>
+  
+    <servlet>
+        <servlet-name>OAuthServlet</servlet-name>
+        <servlet-class>com.sonymobile.sonysales.servlet.userServlet.OAuthServlet</servlet-class>
+    </servlet>
+    
+
+  <servlet-mapping>
+    <servlet-name>getUserInfo</servlet-name>
+    <url-pattern>/getUserInfo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getPointsOrder</servlet-name>
+    <url-pattern>/getPointsOrder</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getSupporters</servlet-name>
+    <url-pattern>/getSupporters</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>updateUser</servlet-name>
+    <url-pattern>/updateUser</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>getNameListOfHandle</servlet-name>
+    <url-pattern>/getNameListOfHandle</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getNameListOfPopularity</servlet-name>
+    <url-pattern>/getNameListOfPopularity</url-pattern>
+  </servlet-mapping>
+
     <servlet>
       <description></description>
       <display-name></display-name>
@@ -34,59 +87,40 @@
     </servlet>
     
     
-	<servlet-mapping>
-		<servlet-name>getUser</servlet-name>
-		<url-pattern>/getUser</url-pattern>
-	</servlet-mapping>
-    <servlet>
-        <description>add a user</description>
-        <display-name>add a user</display-name>
-        <servlet-name>addUser</servlet-name>
-        <servlet-class>com.sonymobile.sonysales.servlet.userServlet.AddUser</servlet-class>
-    </servlet>
     <servlet-mapping>
-        <servlet-name>addUser</servlet-name>
-        <url-pattern>/addUser</url-pattern>
+        <servlet-name>getUser</servlet-name>
+        <url-pattern>/getUser</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <description></description>
-        <display-name>AddPopularity</display-name>
-        <servlet-name>AddPopularity</servlet-name>
-        <servlet-class>com.sonymobile.sonysales.servlet.popularityServlet.AddPopularity</servlet-class>
-    </servlet>
+
     <servlet-mapping>
-        <servlet-name>AddPopularity</servlet-name>
-        <url-pattern>/addPopularity</url-pattern>
+        <servlet-name>OAuthServlet</servlet-name>
+        <url-pattern>/wechat_authorize</url-pattern>
     </servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>OAuthServlet</servlet-name>
-		<url-pattern>/wechat_authorize</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-	  <servlet-name>Activity</servlet-name>
-	  <url-pattern>/activitypage</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-	  <servlet-name>Relation</servlet-name>
-	  <url-pattern>/relationpage</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-	  <servlet-name>Share</servlet-name>
-	  <url-pattern>/sharepage</url-pattern>
-	</servlet-mapping>
-	
-	
-	
-	<filter>
-		<filter-name>characterEncodingFilter</filter-name>
-		<filter-class>com.sonymobile.sonysales.filter.CharacterEncodingFilter</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>characterEncodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+    <servlet-mapping>
+      <servlet-name>Activity</servlet-name>
+      <url-pattern>/activitypage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>Relation</servlet-name>
+      <url-pattern>/relationpage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>Share</servlet-name>
+      <url-pattern>/sharepage</url-pattern>
+    </servlet-mapping>
+    
+    
+    
+    <filter>
+        <filter-name>characterEncodingFilter</filter-name>
+        <filter-class>com.sonymobile.sonysales.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>characterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>
