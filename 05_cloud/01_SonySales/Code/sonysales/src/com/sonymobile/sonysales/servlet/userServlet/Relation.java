@@ -19,6 +19,7 @@ import com.sonymobile.sonysales.entity.DefaultWechatInfoImpl;
 import com.sonymobile.sonysales.entity.IWechatInfo;
 import com.sonymobile.sonysales.entity.json.SaeFetchUrlResult;
 import com.sonymobile.sonysales.entity.json.WechatUserInfo;
+import com.sonymobile.sonysales.service.PopularityService;
 import com.sonymobile.sonysales.util.Base64Coder;
 import com.sonymobile.sonysales.util.Constant;
 import com.sonymobile.sonysales.util.HttpConnetcion;
@@ -53,7 +54,6 @@ public class Relation extends HttpServlet {
 			String fromname = request.getParameter("fromname");
 			String toid = request.getParameter("toid");
 			String toname = request.getParameter("toname");
-
 			response.setContentType("application/json;charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
 
@@ -72,8 +72,7 @@ public class Relation extends HttpServlet {
 					tonickname = wechatInfo.getWebChatUserInfo(toid).getNickname();
 				}
 
-				String relationUrl = Base64Coder
-						.convertStrToBase64(Constant.HOST + "/relationpage");
+				String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST + "/relationpage");
 				/*
 				 * if (tonickname == null) { tonickname =
 				 * getOAuthUserInfo(fromid, relationUrl,
@@ -82,17 +81,20 @@ public class Relation extends HttpServlet {
 
 				request.setAttribute("fromid", fromid);
 				request.setAttribute("toid", toid);
-				String oauthtoidlink = buildGetOAuthUserInfoUrl(fromid,
-						fromnickname, relationUrl);
+				String oauthtoidlink = buildGetOAuthUserInfoUrl(fromid, fromnickname, relationUrl);
 
 				if (tonickname == null) {
 					request.setAttribute("oauthtoidlink", oauthtoidlink);
 				}
 
-				request.setAttribute("fromnickname",
-						fromnickname == null ? "cannot get name" : fromnickname);
-				request.setAttribute("tonickname",
-						tonickname == null ? "cannot get name" : tonickname);
+				//add to-user info
+				if (Activity.AddUser(toid, tonickname)) {
+					//add popularity
+					PopularityService.addPopularity(fromid, toid);
+				}
+				
+				request.setAttribute("fromnickname", fromnickname == null ? "cannot get name" : fromnickname);
+				request.setAttribute("tonickname", tonickname == null ? "cannot get name" : tonickname);
 			} else {
 				// forward to error page
 				request.setAttribute("fromid", fromid);
