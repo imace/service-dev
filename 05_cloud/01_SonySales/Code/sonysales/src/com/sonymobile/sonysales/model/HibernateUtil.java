@@ -3,6 +3,7 @@ package com.sonymobile.sonysales.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -20,11 +21,11 @@ public class HibernateUtil {
 	private static SessionFactory sessionFactory;
 	private Session session = null;
 	private Transaction tx = null;
-
+	private static Logger logger = Logger.getLogger(HibernateUtil.class
+			.getName());
 	static {
 		try {
-			Configuration config = new Configuration()
-					.configure("hibernate.cfg.xml");
+			Configuration config = new Configuration().configure();
 			sessionFactory = config.buildSessionFactory();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -69,6 +70,8 @@ public class HibernateUtil {
 			ret = criteria.list();
 		} catch (Exception e) {
 			e.printStackTrace();
+			logger.error("Exception in getObjectByColumnName, ToString: "
+					+ e.toString() + " message: " + e.getMessage());
 			tx.rollback();
 			ret = null;
 		} finally {

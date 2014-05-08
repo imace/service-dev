@@ -6,8 +6,19 @@
 <hibernate-configuration>
 
 	<session-factory>
-		<property name="dialect"><!--指定数据库使用的方言 -->
-			org.hibernate.dialect.MySQLDialect
+
+		<!-- configuration pool via c3p0 -->
+		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+		<property name="c3p0.min_size">5</property>
+		<property name="c3p0.max_size">30</property>
+		<property name="c3p0.time_out">1800</property> <!-- seconds --><!-- default: 0 -->
+		<property name="c3p0.max_statement">50</property> <!-- default: 0 -->
+		<property name="c3p0.acquire_increment">1</property> <!-- default: 1 -->
+		<property name="c3p0.idle_test_period">10</property> <!-- seconds --><!-- default: 0 -->
+		<property name="c3p0.validate">true</property>
+
+		<property name="hibernate.dialect"><!--指定数据库使用的方言 -->
+			org.hibernate.dialect.MySQLMyISAMDialect
 		</property>
 		<property name="connection.url"><!--指定连接数据库的URL地址 -->
 			jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_sonyfifa
@@ -18,6 +29,7 @@
 		<property name="connection.driver_class"><!--指定连接数据库用的驱动 -->
 			com.mysql.jdbc.Driver
 		</property>
+
 		<mapping resource="com/sonymobile/sonysales/model/User.hbm.xml" /><!--指定持久化类映射文件 -->
 		<mapping resource="com/sonymobile/sonysales/model/Popularity.hbm.xml" /><!--指定持久化类映射文件 -->
 		<mapping resource="com/sonymobile/sonysales/model/Handle.hbm.xml" /><!--指定持久化类映射文件 -->

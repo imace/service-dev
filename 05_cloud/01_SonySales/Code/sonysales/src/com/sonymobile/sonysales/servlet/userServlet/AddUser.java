@@ -49,7 +49,8 @@ public class AddUser extends HttpServlet {
 			Map retMsg = PopularityService.addUser(user);
 
 			response = initHeader(response);
-			response.getWriter().write(JSONObject.fromObject(retMsg).toString());
+			response.getWriter()
+					.write(JSONObject.fromObject(retMsg).toString());
 			response.getWriter().close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -77,53 +78,89 @@ public class AddUser extends HttpServlet {
 			JSONObject requestJSONObject;
 			requestJSONObject = JSONObject.fromObject(request
 					.getParameter("json"));
-
-			String openId = requestJSONObject.getString("openId");
-			if (openId != null && openId.length() > 0) {
-				user.setOpenId(openId);
+			try {
+				String openId = requestJSONObject.getString("openId");
+				if (openId != null && openId.length() > 0) {
+					user.setOpenId(openId);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 
-			String address = requestJSONObject.getString("address");
-			if (address != null && address.length() > 0) {
-				user.setAddress(address);
+			try {
+				String address = requestJSONObject.getString("address");
+				if (address != null && address.length() > 0) {
+					user.setAddress(address);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 
-			String email = requestJSONObject.getString("email");
-			if (email != null && email.length() > 0) {
-				user.setEmail(email);
+			try {
+				String email = requestJSONObject.getString("email");
+				if (email != null && email.length() > 0) {
+					user.setEmail(email);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 
-			int focusFlag = -1;
-			focusFlag = requestJSONObject.getInt("focusFlag");
-			if (focusFlag != -1) {
-				user.setFocusFlag(focusFlag);
+			try {
+				int focusFlag = -1;
+				focusFlag = requestJSONObject.getInt("focusFlag");
+				if (focusFlag != -1) {
+					user.setFocusFlag(focusFlag);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 
-			String focusTime = requestJSONObject.getString("focusTime");
-			if (focusTime != null && focusTime.length() > 0) {
-				user.setFocusTime(openId);
+			try {
+				String focusTime = requestJSONObject.getString("focusTime");
+				if (focusTime != null && focusTime.length() > 0) {
+					user.setFocusTime(focusTime);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 
-			String jdId = requestJSONObject.getString("jdId");
-			if (jdId != null && jdId.length() > 0) {
-				user.setJdId(jdId);
+			try {
+				String jdId = requestJSONObject.getString("jdId");
+				if (jdId != null && jdId.length() > 0) {
+					user.setJdId(jdId);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 
-			String nickname = requestJSONObject.getString("nickname");
-			if (nickname != null && nickname.length() > 0) {
-				user.setNickname(openId);
+			try {
+				String nickname = requestJSONObject.getString("nickname");
+				if (nickname != null && nickname.length() > 0) {
+					user.setNickname(nickname);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 
-			String phoneNum = requestJSONObject.getString("phoneNum");
-			if (phoneNum != null && phoneNum.length() > 0) {
-				user.setPhoneNum(phoneNum);
+			try {
+				String phoneNum = requestJSONObject.getString("phoneNum");
+				if (phoneNum != null && phoneNum.length() > 0) {
+					user.setPhoneNum(phoneNum);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 
-			long points = -1;
-			points = requestJSONObject.getLong("points");
-			if (points != -1) {
-				user.setPoints(points);
+			try {
+				long points = -1;
+				points = requestJSONObject.getLong("points");
+				if (points != -1) {
+					user.setPoints(points);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
+
 		}
 		return user;
 	}
