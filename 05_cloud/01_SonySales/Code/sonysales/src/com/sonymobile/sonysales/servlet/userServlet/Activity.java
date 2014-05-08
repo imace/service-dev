@@ -46,7 +46,8 @@ public class Activity extends HttpServlet {
 	            System.out.println("~~~~~~~~~~~~ openid = "+openId+"~~~~~~~~~~~~");
 	            response.setContentType("application/json;charset=UTF-8");
 	            response.setCharacterEncoding("UTF-8");
-	    		request.setAttribute("openid", openId);	    		
+	    		request.setAttribute("openid", openId);
+	    		request.setAttribute("nickname", nickname);
 	    		request.getRequestDispatcher("/jsp/ActivityPage.jsp").forward(request, response);
 	        } catch (JSONException e) {  
 	            e.printStackTrace();  

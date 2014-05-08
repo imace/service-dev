@@ -11,53 +11,17 @@
 <title>SharePage</title>
 </head>
 <body>
-
-
-<%
-String user1=(String)session.getAttribute("user1");
-String user2=(String)session.getAttribute("user2");
-out.print("user1 = "+user1);
-out.print("user2 = "+user2);
-%>
 	<hr>
 	<div class="row">
 		<div class="col-xs-12">
-			<h5>索尼Xpria(微信产生)</h5>
+			
 			<br>
 			<img class="img-rounded" style="width:300px; height:300px;" alt="fifa"
 				src="http://www.yooyoo360.com/photo/2009-1-1/20090112200838440.jpg">
-			<h3>第二步. 完成关注</h3>
-			<br> <img class="img-rounded" alt="fifa"
-				src="http://www.sonystyle.com.cn/products/xperia/images/xperia_m51w/pro_img/z1_m51w_y1_b.jpg"><br>
+			<h3>自己不能支持自己!! 请分享给其他人吧!!</h3>
+			<br>
 		</div>
 	</div>
 	<hr>
-	<div class="row">
-		<div class="col-xs-5">
-			<img class="img-rounded" alt="fifa"
-				src="http://www.sonystyle.com.cn/products/xperia/images/xperia_t2_xm50h.png">
-		</div>
-		<div class="col-xs-7">
-			<div class="row">
-				<div class="col-xs-12">商品描述, 点击购买</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-6">
-					<button type="button" class="btn btn-success">PC 购买</button>
-				</div>
-				<div class="col-xs-6">
-					<button type="button" class="btn btn-warning">手机购买</button>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<button type="button" class="btn btn-primary">我的折扣券</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
 </body>
 </html>

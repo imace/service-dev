@@ -5,10 +5,7 @@
     id="WebApp_ID" version="2.5">
     <display-name>sonysales</display-name>
 
-  <servlet>
-    <servlet-name>getUser</servlet-name>
-    <servlet-class>com.sonymobile.sonysales.servlet.userServlet.GetUser</servlet-class>
-  </servlet>
+
   <servlet>
     <servlet-name>getUserInfo</servlet-name>
     <servlet-class>com.sonymobile.sonysales.servlet.MyFIFAServlet.GetUserInfo</servlet-class>

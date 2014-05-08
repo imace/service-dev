@@ -30,8 +30,8 @@
 			<br> <img class="img-rounded" alt="fifa"
 				src="http://www.sonystyle.com.cn/products/xperia/images/xperia_m51w/pro_img/z1_m51w_y1_b.jpg"><br>
 				<hr>
-				<input type="text" placeholder="请输入昵称" name="yournickname"/>
-				<a href="<%=oauthtoidlink%>">不想填? 请点击这里.</a>
+				<!-- <input type="text" placeholder="请输入昵称" name="yournickname"/> -->
+				<a href="<%=oauthtoidlink%>" style="display:block;" id="clickoauth">不想填? 请点击这里.</a>
 				<hr>
 			<form action="<%=Constant.HOST%>/sharepage">
 				<table>
@@ -41,48 +41,34 @@
 						<td>
 							<button type="submit" class="btn btn-success btn-lg">支持他!</button>
 						</td>
-						<td><%=tonickname%></td>
-						<td><input type="hidden" name="user2" value="<%=toid%>"></td>
+						<td id="tonickname"><%=tonickname%></td>
+						<td><input type="hidden" name="user2" id="user2" value="<%=toid%>"></td>
 					</tr>
 				</table>
-				<br>
-				<br>
 			</form>
 		</div>
 	</div>
 	<hr>
-	<div class="row">
-		<div class="col-xs-5">
-			<img class="img-rounded" alt="fifa"
-				src="http://www.sonystyle.com.cn/products/xperia/images/xperia_t2_xm50h.png">
-		</div>
-		<div class="col-xs-7">
-			<div class="row">
-				<div class="col-xs-12">商品描述, 点击购买</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-6">
-					<button type="button" class="btn btn-success">PC 购买</button>
-				</div>
-				<div class="col-xs-6">
-					<button type="button" class="btn btn-warning">手机购买</button>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<button type="button" class="btn btn-primary">我的折扣券</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<script type="text/javascript">
+	
+<script type="text/javascript">
 (function(){
 document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
 	WeixinJSBridge.call('hideToolbar');
 });
 })();
+
+jQuery(function () {
+    var tonickname = $('#tonickname');
+    var form = $("form");
+    var oauthlink=$("#clickoauth");
+    if(tonickname.text()=='我'){
+    	oauthlink.show();
+    	form.hide();
+    }else{
+    	oauthlink.hide();
+    	from.show();
+    }
+});
 </script>
 
 </body>

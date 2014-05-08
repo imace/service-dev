@@ -24,7 +24,9 @@
 <body>
 
 	<%
-		String openid =(String)request.getAttribute("openid");	
+		String openid =(String)request.getAttribute("openid");
+		String nickname =(String)request.getAttribute("nickname");
+	
 		String currenturl = request.getScheme() + "://" + request.getServerName() + request.getRequestURI();
 		String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST + "/relationpage");
 
@@ -38,6 +40,7 @@
 				+ Constant.WECHAT_OAUTH_SCOPES.BASE.getValue()
 				+ "&state="
 				+ relationUrl + "#wechat_redirect";
+
 		String msgimg = "http://www.sonystyle.com.cn/images/weibo_share_1.jpg";
 		String tlimg = "http://www.sonystyle.com.cn/images/weibo_share_2.jpg";
 		out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
@@ -101,6 +104,7 @@
 		</div>
 	</div>
 
+
 	<script type="text/javascript">
 (function(){
    var onBridgeReady=function(){
@@ -156,7 +160,5 @@ document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
 });
 })();
 </script>
-
-
 </body>
 </html>

@@ -50,8 +50,14 @@ public class Relation extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
+			
+			String navurl="/jsp/RelationPage.jsp";
+			
 			String fromid = request.getParameter("fromid");
 			String fromname = request.getParameter("fromname");
+			
+			logger.error("nickname from first page>>>>>>>>>>>> : " + fromname);
+			
 			String toid = request.getParameter("toid");
 			String toname = request.getParameter("toname");
 			response.setContentType("application/json;charset=UTF-8");
@@ -71,38 +77,36 @@ public class Relation extends HttpServlet {
 				} else {
 					tonickname = wechatInfo.getWebChatUserInfo(toid).getNickname();
 				}
-
-				String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST + "/relationpage");
-				/*
-				 * if (tonickname == null) { tonickname =
-				 * getOAuthUserInfo(fromid, relationUrl,
-				 * response).getNickname(); }
-				 */
-
-				request.setAttribute("fromid", fromid);
-				request.setAttribute("toid", toid);
-				String oauthtoidlink = buildGetOAuthUserInfoUrl(fromid, fromnickname, relationUrl);
-
-				if (tonickname == null) {
-					request.setAttribute("oauthtoidlink", oauthtoidlink);
-				}
-
-				//add to-user info
-				if (Activity.AddUser(toid, tonickname)) {
-					//add popularity
-					PopularityService.addPopularity(fromid, toid);
-				}
 				
-				request.setAttribute("fromnickname", fromnickname == null ? "cannot get name" : fromnickname);
-				request.setAttribute("tonickname", tonickname == null ? "cannot get name" : tonickname);
+				
+				// if current user is yourself then nav to other page 
+				if (fromid.equals(toid)) {
+					logger.error("cannot select yourself.>>>>>>>>>>>> : " + fromid+"____"+toid);
+					navurl="/jsp/SharePage.jsp";
+				}else {
+					String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST + "/relationpage");
+					request.setAttribute("fromid", fromid);
+					request.setAttribute("toid", toid);
+					String oauthtoidlink = buildGetOAuthUserInfoUrl(fromid, fromnickname, relationUrl);
+					request.setAttribute("oauthtoidlink", oauthtoidlink);
+					
+					//add to-user info
+					if (Activity.AddUser(toid, tonickname)) {
+						//add popularity
+						PopularityService.addPopularity(fromid, toid);
+					}
+					
+					request.setAttribute("fromnickname", fromnickname == null ? "他" : fromnickname);
+					request.setAttribute("tonickname", tonickname == null ? "我" : tonickname);
+				}
 			} else {
 				// forward to error page
 				request.setAttribute("fromid", fromid);
 				request.setAttribute("toid", toid);
-				request.setAttribute("fromnickname", "他");
+				request.setAttribute("fromnickname", "他_");
 				request.setAttribute("tonickname", "我");
 			}
-			request.getRequestDispatcher("/jsp/RelationPage.jsp").forward(request, response);
+			request.getRequestDispatcher(navurl).forward(request, response);
 		} catch (JSONException e) {
 			logger.error("Relation in json convert : " + e.getMessage());
 			e.printStackTrace();
