@@ -24,11 +24,11 @@
 	<div class="row">
 		<div class="col-xs-12">
 			Hi, 亲, 我(<%=fromnickname%>)正在参加索尼FIFA活动, 如果你支持并完成关注可以获得50元购买折扣券, 同时我也可以获得奖金的哦, 非常感谢咯, 仅需完成以下两步:<br>
-			<h3>1. 点击支持</h3>
+			<h3>1. 立即购买</h3>
 			<br>
 			<h3>2. 完成关注</h3>
 			<br> <img class="img-rounded" alt="fifa"
-				src="http://www.sonystyle.com.cn/products/xperia/images/xperia_m51w/pro_img/z1_m51w_y1_b.jpg"><br>
+				src="http://www.sonystyle.com.cn/products/xperia/images/xperia_m51w/pro_img/z1_m51w_p1_b504.jpg"><br>
 				<hr>
 				<!-- <input type="text" placeholder="请输入昵称" name="yournickname"/> -->
 				<a href="<%=oauthtoidlink%>" style="display:block;" id="clickoauth">请点击这里, 继续支持他!</a>
@@ -36,13 +36,9 @@
 			<form action="<%=Constant.HOST%>/lashoufollow">
 				<table>
 					<tr>
-						<td><%=fromnickname%></td>
-						<td><input type="hidden" name="user1" value="<%=fromid%>"></td>
 						<td>
-							<button type="submit" class="btn btn-success btn-lg">支持他!</button>
+							<button type="submit" class="btn btn-success btn-lg">立即购买!</button>
 						</td>
-						<td id="tonickname"><%=tonickname%></td>
-						<td><input type="hidden" name="user2" id="user2" value="<%=toid%>"></td>
 					</tr>
 				</table>
 			</form>
