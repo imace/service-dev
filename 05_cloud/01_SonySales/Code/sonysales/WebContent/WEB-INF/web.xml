@@ -23,6 +23,10 @@
   </servlet>
     
   <servlet>
+    <servlet-name>getNameList</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.NameListServlet.GetNameList</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>getNameListOfHandle</servlet-name>
     <servlet-class>com.sonymobile.sonysales.servlet.NameListServlet.GetNameListOfHandle</servlet-class>
   </servlet>
@@ -54,6 +58,10 @@
     <url-pattern>/updateUser</url-pattern>
   </servlet-mapping>
   
+  <servlet-mapping>
+    <servlet-name>getNameList</servlet-name>
+    <url-pattern>/getNameList</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>getNameListOfHandle</servlet-name>
     <url-pattern>/getNameListOfHandle</url-pattern>
