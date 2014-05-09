@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sonymobile.sonysales.servlet.userServlet;
+package com.sonymobile.sonysales.servlet.LaPopularityServlet;
 
 import java.io.IOException;
 
@@ -48,7 +48,7 @@ public class Activity extends HttpServlet {
 	            response.setCharacterEncoding("UTF-8");
 	    		request.setAttribute("openid", openId);
 	    		request.setAttribute("nickname", nickname);
-	    		request.getRequestDispatcher("/jsp/ActivityPage.jsp").forward(request, response);
+	    		request.getRequestDispatcher("/jsp/LaPopularity/ActivityPage.jsp").forward(request, response);
 	        } catch (JSONException e) {  
 	            e.printStackTrace();  
 	        }

@@ -68,26 +68,21 @@
       <description></description>
       <display-name></display-name>
       <servlet-name>Activity</servlet-name>
-      <servlet-class>com.sonymobile.sonysales.servlet.userServlet.Activity</servlet-class>
+      <servlet-class>com.sonymobile.sonysales.servlet.LaPopularityServlet.Activity</servlet-class>
     </servlet>
     <servlet>
       <description></description>
       <display-name></display-name>
       <servlet-name>Relation</servlet-name>
-      <servlet-class>com.sonymobile.sonysales.servlet.userServlet.Relation</servlet-class>
+      <servlet-class>com.sonymobile.sonysales.servlet.LaPopularityServlet.Relation</servlet-class>
     </servlet>
     <servlet>
       <description></description>
       <display-name></display-name>
       <servlet-name>Share</servlet-name>
-      <servlet-class>com.sonymobile.sonysales.servlet.userServlet.Share</servlet-class>
+      <servlet-class>com.sonymobile.sonysales.servlet.LaPopularityServlet.Share</servlet-class>
     </servlet>
     
-    
-    <servlet-mapping>
-        <servlet-name>getUser</servlet-name>
-        <url-pattern>/getUser</url-pattern>
-    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>OAuthServlet</servlet-name>

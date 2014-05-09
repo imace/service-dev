@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sonymobile.sonysales.servlet.userServlet;
+package com.sonymobile.sonysales.servlet.LaPopularityServlet;
 
 import java.io.IOException;
 
@@ -51,7 +51,7 @@ public class Relation extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
 			
-			String navurl="/jsp/RelationPage.jsp";
+			String navurl="/jsp/LaPopularity/RelationPage.jsp";
 			
 			String fromid = request.getParameter("fromid");
 			String fromname = request.getParameter("fromname");
@@ -82,7 +82,7 @@ public class Relation extends HttpServlet {
 				// if current user is yourself then nav to other page 
 				if (fromid.equals(toid)) {
 					logger.error("cannot select yourself.>>>>>>>>>>>> : " + fromid+"____"+toid);
-					navurl="/jsp/SharePage.jsp";
+					navurl="/jsp/LaPopularity/SharePage.jsp";
 				}else {
 					String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST + "/relationpage");
 					request.setAttribute("fromid", fromid);

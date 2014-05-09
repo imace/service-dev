@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sonymobile.sonysales.servlet.userServlet;
+package com.sonymobile.sonysales.servlet.LaPopularityServlet;
 
 import java.io.IOException;
 
@@ -41,7 +41,7 @@ public class Share extends HttpServlet {
 	    		session.setAttribute("user2", user2);
 	    		
 	    		if (request.getServerName().equals("localhost")) {
-	    			response.sendRedirect("/sonysales/jsp/SharePage.jsp");
+	    			response.sendRedirect("/jsp/LaPopularity/SharePage.jsp");
 				}else {
 					response.sendRedirect("http://mp.weixin.qq.com/s?__biz=MzA5NDAwODUxMQ==&mid=10013503&idx=2&sn=1cbb860dc2db0a5af0bcc9e4941612dd#rd");
 				}
