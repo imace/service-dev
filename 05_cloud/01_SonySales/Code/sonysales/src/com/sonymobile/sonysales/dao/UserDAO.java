@@ -96,5 +96,4 @@ public class UserDAO {
 				columnName, columeValue);
 		return list != null && list.size() > 0;
 	}
-
 }

@@ -159,6 +159,26 @@
               <url-pattern>/addUser</url-pattern>
        </servlet-mapping>
        <servlet>
+              <description>get a user</description>
+              <display-name>get a user</display-name>
+              <servlet-name>getUser</servlet-name>
+              <servlet-class>com.sonymobile.sonysales.servlet.userServlet.GetUser</servlet-class>
+       </servlet>
+       <servlet-mapping>
+              <servlet-name>getUser</servlet-name>
+              <url-pattern>/getUser</url-pattern>
+       </servlet-mapping>
+       <servlet>
+              <description>Get my user Info</description>
+              <display-name>Get my user Info</display-name>
+              <servlet-name>ShowUserInfoServlet</servlet-name>
+              <servlet-class>com.sonymobile.sonysales.servlet.userServlet.ShowUserInfoServlet</servlet-class>
+       </servlet>
+       <servlet-mapping>
+              <servlet-name>ShowUserInfoServlet</servlet-name>
+              <url-pattern>/myInfo</url-pattern>
+       </servlet-mapping>       
+       <servlet>
               <description></description>
               <display-name>AddPopularity</display-name>
               <servlet-name>AddPopularity</servlet-name>
