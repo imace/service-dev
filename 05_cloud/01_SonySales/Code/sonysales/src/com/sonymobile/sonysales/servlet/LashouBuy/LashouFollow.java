@@ -31,7 +31,7 @@ public class LashouFollow extends HttpServlet {
 		// TODO Auto-generated method stub
 				try {
 					System.out.println("7878787");
-		    		if (request.getServerName().equals("local_host")) {
+		    		if (request.getServerName().equals("localhost")) {
 		    			//response.sendRedirect("/jsp/LashouBuy/LashouFollow.jsp");
 		    			request.getRequestDispatcher("/jsp/LashouBuy/LashouFollow.jsp").forward(request, response);
 					}else {
@@ -49,7 +49,7 @@ public class LashouFollow extends HttpServlet {
 		// TODO Auto-generated method stub
 		try {
 			System.out.println("7878787");
-    		if (request.getServerName().equals("local_host")) {
+    		if (request.getServerName().equals("localhost")) {
     			//response.sendRedirect("/jsp/LashouBuy/LashouFollow.jsp");
     			request.getRequestDispatcher("/jsp/LashouBuy/LashouFollow.jsp").forward(request, response);
 			}else {
