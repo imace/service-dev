@@ -42,7 +42,8 @@ public class AddHandle extends HttpServlet {
 			String ownerOpenId = requestJSONObject.getString("ownerOpenId");
 			String supporterOpenId = requestJSONObject
 					.getString("supporterOpenId");
-			Map retMsg = HandleService.addHandle(ownerOpenId, supporterOpenId);
+			Map<?, ?> retMsg = HandleService.addHandle(ownerOpenId,
+					supporterOpenId);
 
 			response = initHeader(response);
 			response.getWriter()
@@ -58,7 +59,6 @@ public class AddHandle extends HttpServlet {
 		response.setHeader("Cache-Control", "no-cache");
 		response.setDateHeader("Expires", 0);
 		response.setContentType("text/plain; charset=utf-8");
-
 		return response;
 	}
 

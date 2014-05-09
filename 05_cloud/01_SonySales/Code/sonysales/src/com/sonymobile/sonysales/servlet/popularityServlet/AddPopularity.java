@@ -44,7 +44,7 @@ public class AddPopularity extends HttpServlet {
 			String supporterOpenId = requestJSONObject
 					.getString("supporterOpenId");
 
-			Map retMsg = PopularityService.addPopularity(ownerOpenId,
+			Map<?, ?> retMsg = PopularityService.addPopularity(ownerOpenId,
 					supporterOpenId);
 			response = initHeader(response);
 			response.getWriter()

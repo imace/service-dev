@@ -46,7 +46,7 @@ public class AddUser extends HttpServlet {
 			SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmm");
 			String now = df.format(date);
 			user.setCreateTime(now);
-			Map retMsg = PopularityService.addUser(user);
+			Map<?, ?> retMsg = PopularityService.addUser(user);
 
 			response = initHeader(response);
 			response.getWriter()

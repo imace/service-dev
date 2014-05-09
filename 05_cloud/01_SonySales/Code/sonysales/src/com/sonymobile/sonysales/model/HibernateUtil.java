@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -56,10 +57,10 @@ public class HibernateUtil {
 		return ret;
 	}
 
-	// get list
-	public List<Object> getObjectByColumnName(Class objClass,
+	// get list by column name
+	public List<?> getObjectByColumnName(Class<?> objClass,
 			ArrayList<String> columnName, ArrayList<Object> columeValue) {
-		List<Object> ret = null;
+		List<?> ret = null;
 		try {
 			openSession();
 			Criteria criteria = session.createCriteria(objClass);
@@ -72,6 +73,41 @@ public class HibernateUtil {
 			e.printStackTrace();
 			logger.error("Exception in getObjectByColumnName, ToString: "
 					+ e.toString() + " message: " + e.getMessage());
+			tx.rollback();
+			ret = null;
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		return ret;
+	}
+
+	// get list by column name
+	public List<?> getListByHql(String hql, ArrayList<String> parameter,
+			int firstResult, int maxResults) {
+		List<?> ret = null;
+		
+
+		try {
+			openSession();
+			Query query = session.createQuery(hql);
+			if (parameter != null) {
+				for (int i = 0; i < parameter.size(); i++) {
+					query.setParameter(i, parameter.get(i));
+				}
+			}
+			if (firstResult > 0) {
+				query.setFirstResult(firstResult);
+			}
+			if (maxResults > 0) {
+				query.setMaxResults(maxResults);
+			}
+			ret = query.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error("Exception in getListByHql, ToString: " + e.toString()
+					+ " message: " + e.getMessage());
 			tx.rollback();
 			ret = null;
 		} finally {

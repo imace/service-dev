@@ -8,20 +8,28 @@ import com.sonymobile.sonysales.model.HibernateUtil;
 
 public class HandleDAO {
 
-        //获得前limit名获得拉手支持最多的用户昵称和支持者数量
-    public String getSupporterCount(String limit) {
-        String sql = "select u.nickname, l.count from user u,"+
-        "(select ownerUserId, count(supporterUserId) count from handle group by ownerUserId order by count desc limit "+limit+") l"+
-        " where u.id = l.ownerUserId";
-        return BaseDAO.findBySql(sql).toString();
-    }
-    
-        //根据openID查询拉友支持列表
-    public String getSupporters(String openId) {
-        String sql = "select h1.nickname,h1.createTime from user u1, (select u.nickname, h.createTime,h.ownerUserId from handle h, user u where u.id=h.supporterUserId ) h1"+
-        " where  h1.ownerUserId=u1.id and u1.openId="+openId;
-        return BaseDAO.findBySql(sql).toString();
-    }
+	public static List<?> getSupporterList(String limit) {
+		HibernateUtil hibernateUtil = new HibernateUtil();
+
+		String hql = "select u.nickname, count(*) as supportersCount from User as u, Handle as h where u.id = h.ownerUserId group by h.ownerUserId order by 2 desc";
+
+		int maxResults = 0;
+		try {
+			maxResults = Integer.parseInt(limit);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return hibernateUtil.getListByHql(hql, null, 0, maxResults);
+	}
+
+	public static List<?> getSupporters(String openId) {
+		HibernateUtil hibernateUtil = new HibernateUtil();
+
+		String hql = "select u1.nickname, u1.createTime from Handle as h , User as u1, User as u2 where u1.id = h.supporterUserId and u2.id = h.ownerUserId and u2.openId='"
+				+ openId + "'";
+
+		return hibernateUtil.getListByHql(hql, null, 0, 0);
+	}
 
 	public static boolean addHandle(Handle handle) {
 		HibernateUtil hibernateUtil = new HibernateUtil();
@@ -37,8 +45,8 @@ public class HandleDAO {
 		ArrayList<Object> columeValue = new ArrayList<Object>();
 		columeValue.add(handle.getOwnerUserId());
 		columeValue.add(handle.getSupporterUserId());
-		List<Object> list = hibernateUtil.getObjectByColumnName(Handle.class,
+		List<?> list = hibernateUtil.getObjectByColumnName(Handle.class,
 				columnName, columeValue);
-		return list.size() > 0;
+		return list != null && list.size() > 0;
 	}
 }

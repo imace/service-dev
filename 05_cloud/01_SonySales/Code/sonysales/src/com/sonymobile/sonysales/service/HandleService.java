@@ -11,8 +11,8 @@ import com.sonymobile.sonysales.model.User;
 import com.sonymobile.sonysales.util.ResultMsg;
 
 public class HandleService {
-	public static Map addHandle(String ownerOpenId, String supporterOpenId) {
-		Map retMsg = null;
+	public static Map<?, ?> addHandle(String ownerOpenId, String supporterOpenId) {
+		Map<?, ?> retMsg = null;
 
 		User ownerUser = UserDAO.getUserByOpenId(ownerOpenId);
 		User supporterUser = UserDAO.getUserByOpenId(supporterOpenId);

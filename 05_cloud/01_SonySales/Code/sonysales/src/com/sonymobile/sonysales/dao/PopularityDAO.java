@@ -3,7 +3,6 @@ package com.sonymobile.sonysales.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sonymobile.sonysales.model.Handle;
 import com.sonymobile.sonysales.model.HibernateUtil;
 import com.sonymobile.sonysales.model.Popularity;
 
@@ -22,8 +21,9 @@ public class PopularityDAO {
 		ArrayList<Object> columeValue = new ArrayList<Object>();
 		columeValue.add(popularity.getOwnerUserId());
 		columeValue.add(popularity.getSupporterUserId());
-		List<Object> list = hibernateUtil.getObjectByColumnName(
-				Popularity.class, columnName, columeValue);
-		return list.size() > 0;
+		List<?> list = hibernateUtil.getObjectByColumnName(Popularity.class,
+				columnName, columeValue);
+
+		return list != null && list.size() > 0;
 	}
 }

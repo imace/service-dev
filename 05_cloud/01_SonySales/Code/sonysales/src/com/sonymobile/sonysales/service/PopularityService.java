@@ -13,11 +13,14 @@ import com.sonymobile.sonysales.util.ResultMsg;
 
 public class PopularityService {
 
-	public static Map addUser(User user) {
-		Map retMsg = null;
+	public static Map<?, ?> addUser(User user) {
+		Map<?, ?> retMsg = null;
+		String openId = user.getOpenId();
 		String jdId = user.getJdId();
 
-		if (UserDAO.ExistOpenIdInUser(user.getOpenId())) {
+		if (openId == null || openId.length() == 0) {
+			retMsg = ResultMsg.OpenIDIsNull();
+		} else if (UserDAO.ExistOpenIdInUser(user.getOpenId())) {
 			retMsg = ResultMsg.OpenIDExistsError();
 		} else if (jdId != null && jdId.length() > 0
 				&& UserDAO.ExistJdIdInUser(jdId)) {
@@ -31,8 +34,9 @@ public class PopularityService {
 		return retMsg;
 	}
 
-	public static Map addPopularity(String ownerOpenId, String supporterOpenId) {
-		Map retMsg = null;
+	public static Map<?, ?> addPopularity(String ownerOpenId,
+			String supporterOpenId) {
+		Map<?, ?> retMsg = null;
 
 		HibernateUtil hibernateUtil = new HibernateUtil();
 		if (hibernateUtil != null) {
@@ -59,7 +63,7 @@ public class PopularityService {
 				if (PopularityDAO.ExistRecordInPopularity(popularity)) {
 					retMsg = ResultMsg.SameRecordExistInTable("popularity");
 				} else if (PopularityDAO.addPopularity(popularity)) {
-                    // popularity + 1
+					// popularity + 1
 					ownerUser.setPoints(ownerUser.getPoints() + 1);
 					if (UserDAO.updateUser(ownerUser)) {
 						retMsg = ResultMsg.SuccessInfo();
