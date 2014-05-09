@@ -20,7 +20,7 @@
 		String nickname =(String)request.getAttribute("nickname");
 	
 		String currenturl = request.getScheme() + "://" + request.getServerName() + request.getRequestURI();
-		String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST + "/LashouRelation");
+		String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST + "/lashourelation");
 
 		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
 				+ Constant.APP_ID

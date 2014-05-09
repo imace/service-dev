@@ -22,7 +22,6 @@ public class LashouActivity extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public LashouActivity() {
-        super();
         // TODO Auto-generated constructor stub
     }
 

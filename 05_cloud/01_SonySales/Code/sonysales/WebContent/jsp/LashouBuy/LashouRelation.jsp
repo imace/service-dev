@@ -33,7 +33,7 @@
 				<!-- <input type="text" placeholder="请输入昵称" name="yournickname"/> -->
 				<a href="<%=oauthtoidlink%>" style="display:block;" id="clickoauth">请点击这里, 继续支持他!</a>
 				<hr>
-			<form action="<%=Constant.HOST%>/LashouFollow">
+			<form action="<%=Constant.HOST%>/lashoufollow">
 				<table>
 					<tr>
 						<td><%=fromnickname%></td>

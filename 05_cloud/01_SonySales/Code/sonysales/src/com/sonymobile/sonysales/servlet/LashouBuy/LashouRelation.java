@@ -76,7 +76,7 @@ try {
 					logger.error("cannot select yourself.>>>>>>>>>>>> : " + fromid+"____"+toid);
 					navurl="/jsp/LashouBuy/LashouFollow.jsp";
 				}else {
-					String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST + "/LashouRelation");
+					String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST + "/lashourelation");
 					request.setAttribute("fromid", fromid);
 					request.setAttribute("toid", toid);
 					String oauthtoidlink = buildGetOAuthUserInfoUrl(fromid, fromnickname, relationUrl);
