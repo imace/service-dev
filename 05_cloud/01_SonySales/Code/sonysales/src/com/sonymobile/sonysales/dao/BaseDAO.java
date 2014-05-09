@@ -22,15 +22,15 @@ public class BaseDAO {
 
     static {
         try {
-          Class.forName("com.mysql.jdbc.Driver");
-          conn = DriverManager.getConnection("jdbc:mysql://localhost/app_sonyfifa",
-                  "root", "root");
+//          Class.forName("com.mysql.jdbc.Driver");
+//          conn = DriverManager.getConnection("jdbc:mysql://localhost/app_sonyfifa",
+//                  "root", "root");
             
-//            String username=SaeUserInfo.getAccessKey();
-//            String password=SaeUserInfo.getSecretKey();
-//            String driver="com.mysql.jdbc.Driver";
-//            Class.forName(driver).newInstance();
-//            conn=DriverManager.getConnection("jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_sonyfifa",username,password);
+            String username=SaeUserInfo.getAccessKey();
+            String password=SaeUserInfo.getSecretKey();
+            String driver="com.mysql.jdbc.Driver";
+            Class.forName(driver).newInstance();
+            conn=DriverManager.getConnection("jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_sonyfifa",username,password);
 //            
         } catch (Exception e) {
             e.printStackTrace();
