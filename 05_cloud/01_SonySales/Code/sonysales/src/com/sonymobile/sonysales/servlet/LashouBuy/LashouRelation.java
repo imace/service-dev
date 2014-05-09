@@ -5,54 +5,40 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.log4j.Logger;
 import net.sf.json.JSONException;
+import org.apache.log4j.Logger;
 import com.sonymobile.sonysales.entity.DefaultWechatInfoImpl;
 import com.sonymobile.sonysales.entity.IWechatInfo;
-import com.sonymobile.sonysales.entity.json.WechatUserInfo;
-import com.sonymobile.sonysales.service.PopularityService;
-import com.sonymobile.sonysales.servlet.LashouBuy.LashouActivity;
+import com.sonymobile.sonysales.service.HandleService;
 import com.sonymobile.sonysales.util.Base64Coder;
 import com.sonymobile.sonysales.util.Constant;
 
-/**
- * Servlet implementation class LashouActivity
- */
+
 public class LashouRelation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger logger = Logger.getLogger(LashouRelation.class.getName());
 	private IWechatInfo wechatInfo;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
+
     public LashouRelation() {
     	wechatInfo = DefaultWechatInfoImpl.getInstance();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-try {
+		try {
 			
 			String navurl="/jsp/LashouBuy/LashouRelation.jsp";
 			
 			String fromid = request.getParameter("fromid");
-			String fromname = request.getParameter("fromname");
-			
-			logger.error("nickname from first page>>>>>>>>>>>> : " + fromname);
-			
+			String fromname = request.getParameter("fromname");			
 			String toid = request.getParameter("toid");
 			String toname = request.getParameter("toname");
+			
 			response.setContentType("application/json;charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
 
@@ -74,7 +60,6 @@ try {
 				
 				// if current user is yourself then nav to other page 
 				if (fromid.equals(toid)) {
-					logger.error("cannot select yourself.>>>>>>>>>>>> : " + fromid+"____"+toid);
 					navurl="/jsp/LashouBuy/LashouFollow.jsp";
 				}else {
 					String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST + "/lashourelation");
@@ -85,8 +70,8 @@ try {
 					
 					//add to-user info
 					if (LashouActivity.AddUser(toid, tonickname)) {
-						//add popularity
-						PopularityService.addPopularity(fromid, toid);
+						//add handle
+						HandleService.addHandle(fromid, toid);
 					}
 					
 					request.setAttribute("fromnickname", fromnickname == null ? "Ëû" : fromnickname);
@@ -101,15 +86,13 @@ try {
 			}
 			request.getRequestDispatcher(navurl).forward(request, response);
 		} catch (JSONException e) {
-			logger.error("Relation in json convert : " + e.getMessage());
+			logger.error("LashouRelation->doPost() in exception : " + e.getMessage());
 			e.printStackTrace();
 		}
 	}	
 
-	private String buildGetOAuthUserInfoUrl(String fromid, String fromname,
-			String codedUrl) {
-		StringBuilder infourl = new StringBuilder(
-				Constant.WECHAT_OAUTH2_AUTHORIZE_URL);
+	private String buildGetOAuthUserInfoUrl(String fromid, String fromname, String codedUrl) {
+		StringBuilder infourl = new StringBuilder(Constant.WECHAT_OAUTH2_AUTHORIZE_URL);
 		infourl.append('?');
 		infourl.append("appid=");
 		infourl.append(wechatInfo.getAppId());
@@ -124,7 +107,6 @@ try {
 		infourl.append("&state=");
 		infourl.append(codedUrl);
 		infourl.append("#wechat_redirect");
-
 		return infourl.toString();
 	}
 

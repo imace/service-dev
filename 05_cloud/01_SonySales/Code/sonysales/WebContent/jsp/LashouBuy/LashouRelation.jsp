@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
 <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<title>支持我,得大奖!</title>
+<title>快来领取优惠券啦!</title>
 </head>
 <body>
 
@@ -24,14 +24,10 @@
 	<div class="row">
 		<div class="col-xs-12">
 			Hi, 亲, 我(<%=fromnickname%>)正在参加索尼FIFA活动, 如果你支持并完成关注可以获得50元购买折扣券, 同时我也可以获得奖金的哦, 非常感谢咯, 仅需完成以下两步:<br>
-			<h3>1. 立即购买</h3>
-			<br>
-			<h3>2. 完成关注</h3>
+			<h5>1. 立即购买</h5>
+			<h5>2. 完成关注</h5>
 			<br> <img class="img-rounded" alt="fifa"
 				src="http://img14.360buyimg.com/n1/g15/M08/16/0E/rBEhWVNM4rsIAAAAAAELASvYq4EAAL12gLe8tAAAQsZ648.jpg"><br>
-				<hr>
-				<!-- <input type="text" placeholder="请输入昵称" name="yournickname"/> -->
-				<a href="<%=oauthtoidlink%>" style="display:block;" id="clickoauth">请点击这里, 继续支持他!</a>
 				<hr>
 			<form action="<%=Constant.HOST%>/lashoufollow">
 				<table>
@@ -44,27 +40,12 @@
 			</form>
 		</div>
 	</div>
-	<hr>
-	
 <script type="text/javascript">
 (function(){
 document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
 	WeixinJSBridge.call('hideToolbar');
 });
 })();
-
-jQuery(function () {
-    var tonickname = $('#tonickname');
-    var form = $("form");
-    var oauthlink=$("#clickoauth");
-    if(tonickname.text()=='我'){
-    	oauthlink.show();
-    	form.hide();
-    }else{
-    	oauthlink.hide();
-    	from.show();
-    }
-});
 </script>
 
 </body>

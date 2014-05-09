@@ -9,20 +9,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import net.sf.json.JSONException;
-import net.sf.json.JSONObject;
-
 import org.apache.log4j.Logger;
-
 import com.sonymobile.sonysales.entity.DefaultWechatInfoImpl;
 import com.sonymobile.sonysales.entity.IWechatInfo;
-import com.sonymobile.sonysales.entity.json.SaeFetchUrlResult;
 import com.sonymobile.sonysales.entity.json.WechatUserInfo;
 import com.sonymobile.sonysales.service.PopularityService;
 import com.sonymobile.sonysales.util.Base64Coder;
 import com.sonymobile.sonysales.util.Constant;
-import com.sonymobile.sonysales.util.HttpConnetcion;
 
 /**
  * @author 28852095
@@ -30,11 +24,7 @@ import com.sonymobile.sonysales.util.HttpConnetcion;
  */
 public class Relation extends HttpServlet {
 
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = 3477353244980948618L;
-
 	private static Logger logger = Logger.getLogger(Relation.class.getName());
 	private IWechatInfo wechatInfo;
 
@@ -52,12 +42,8 @@ public class Relation extends HttpServlet {
 		try {
 			
 			String navurl="/jsp/LaPopularity/RelationPage.jsp";
-			
 			String fromid = request.getParameter("fromid");
 			String fromname = request.getParameter("fromname");
-			
-			logger.error("nickname from first page>>>>>>>>>>>> : " + fromname);
-			
 			String toid = request.getParameter("toid");
 			String toname = request.getParameter("toname");
 			response.setContentType("application/json;charset=UTF-8");
@@ -77,11 +63,9 @@ public class Relation extends HttpServlet {
 				} else {
 					tonickname = wechatInfo.getWebChatUserInfo(toid).getNickname();
 				}
-				
-				
+								
 				// if current user is yourself then nav to other page 
 				if (fromid.equals(toid)) {
-					logger.error("cannot select yourself.>>>>>>>>>>>> : " + fromid+"____"+toid);
 					navurl="/jsp/LaPopularity/SharePage.jsp";
 				}else {
 					String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST + "/relationpage");
@@ -108,7 +92,7 @@ public class Relation extends HttpServlet {
 			}
 			request.getRequestDispatcher(navurl).forward(request, response);
 		} catch (JSONException e) {
-			logger.error("Relation in json convert : " + e.getMessage());
+			logger.error("Relation->doPost() in exception : " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -142,10 +126,8 @@ public class Relation extends HttpServlet {
 
 	}
 
-	private String buildGetOAuthUserInfoUrl(String fromid, String fromname,
-			String codedUrl) {
-		StringBuilder infourl = new StringBuilder(
-				Constant.WECHAT_OAUTH2_AUTHORIZE_URL);
+	private String buildGetOAuthUserInfoUrl(String fromid, String fromname, String codedUrl) {
+		StringBuilder infourl = new StringBuilder(Constant.WECHAT_OAUTH2_AUTHORIZE_URL);
 		infourl.append('?');
 		infourl.append("appid=");
 		infourl.append(wechatInfo.getAppId());
@@ -160,7 +142,6 @@ public class Relation extends HttpServlet {
 		infourl.append("&state=");
 		infourl.append(codedUrl);
 		infourl.append("#wechat_redirect");
-
 		return infourl.toString();
 	}
 

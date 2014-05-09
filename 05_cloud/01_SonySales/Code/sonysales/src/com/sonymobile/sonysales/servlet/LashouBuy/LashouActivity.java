@@ -11,60 +11,46 @@ import com.sonymobile.sonysales.entity.DefaultWechatInfoImpl;
 import com.sonymobile.sonysales.model.User;
 import com.sonymobile.sonysales.service.PopularityService;
 
-/**
- * Servlet implementation class LashouActivity
- */
+
 public class LashouActivity extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static Logger logger = Logger.getLogger(LashouRelation.class.getName());
-	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LashouActivity() {
-        // TODO Auto-generated constructor stub
-    }
+	private static Logger logger = Logger.getLogger(LashouActivity.class.getName());
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	public LashouActivity() {
+	}
+
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-        try {  
-            String openId = request.getParameter("id");
-            //get user nick name for add user
-            String nickname = DefaultWechatInfoImpl.getInstance().getWebChatUserInfo(openId).getNickname();
-            AddUser(openId, nickname);
-            
-            System.out.println("~~~~~~~~~~~~ openid = "+openId+"~~~~~~~~~~~~");
-            response.setContentType("application/json;charset=UTF-8");
-            response.setCharacterEncoding("UTF-8");
-    		request.setAttribute("openid", openId);
-    		request.setAttribute("nickname", nickname);
-    		request.getRequestDispatcher("/jsp/LashouBuy/LashouActivity.jsp").forward(request, response);
-        } catch (JSONException e) {
-            e.printStackTrace();  
-        }
+		try {
+			String openId = request.getParameter("id");
+			// get user nick name for add user
+			String nickname = DefaultWechatInfoImpl.getInstance().getWebChatUserInfo(openId).getNickname();
+			AddUser(openId, nickname);
+			response.setContentType("application/json;charset=UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			request.setAttribute("openid", openId);
+			request.setAttribute("nickname", nickname);
+			request.getRequestDispatcher("/jsp/LashouBuy/LashouActivity.jsp").forward(request, response);
+		} catch (JSONException e) {
+			logger.error("LashouActivity->doPost() in exception : " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
+
 	public static boolean AddUser(String openid, String nickname) {
-	       try {
-	    	   logger.error("Activity : adduser-> openid=" +openid+", nickname="+nickname );
-	       User user=new User();
-         user.setOpenId(openid);
-         user.setNickname(nickname);	
-         PopularityService.addUser(user);	
-         return true;
-        } catch (Exception e) {	
-               // TODO: handle exception 	
-               return false;
-        }
-	  }
+		try {
+			User user = new User();
+			user.setOpenId(openid);
+			user.setNickname(nickname);
+			PopularityService.addUser(user);
+			return true;
+		} catch (Exception e) {
+			logger.error("LashouActivity->AddUser() in exception : " + e.getMessage());
+			return false;
+		}
+	}
 }

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import net.sf.json.JSONException;
 
 /**
@@ -20,10 +22,8 @@ import net.sf.json.JSONException;
 public class Share extends HttpServlet {
 	
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2170271794700562161L;
+	private static Logger logger = Logger.getLogger(Share.class.getName());
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.doPost(request, response);
@@ -46,15 +46,12 @@ public class Share extends HttpServlet {
 					response.sendRedirect("http://mp.weixin.qq.com/s?__biz=MzA5NDAwODUxMQ==&mid=10013503&idx=2&sn=1cbb860dc2db0a5af0bcc9e4941612dd#rd");
 				}
 	        } catch (JSONException e) {  
+	        	logger.error("Share->doPost() in exception : " + e.getMessage());
 	            e.printStackTrace();  
 	        }
 	}
-	
-	/**
-	 * 
-	 */
+
 	public Share() {
-		// TODO Auto-generated constructor stub
 	}
 
 }
