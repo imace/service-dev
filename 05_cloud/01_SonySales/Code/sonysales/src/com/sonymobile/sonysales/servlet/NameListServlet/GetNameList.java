@@ -26,12 +26,12 @@ public class GetNameList extends HttpServlet {
 			request.setAttribute("userList",
 					NameListService.getNameListOfPopularity("10"));
 
-			request.setAttribute("mySupportCountList",
+			request.setAttribute("supporterList",
 					NameListService.getNameListOfHandle("10"));
 
 			request.getRequestDispatcher("/jsp/nameList.jsp").forward(request,
 					response);
-		} catch (JSONException e) {
+		} catch (JSONException e) { 
 			e.printStackTrace();
 		}
 	}
