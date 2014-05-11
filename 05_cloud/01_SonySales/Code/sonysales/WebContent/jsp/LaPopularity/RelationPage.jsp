@@ -4,35 +4,41 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
-<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
-<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
+<meta name="viewport"
+	content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
+<link rel="stylesheet"
+	href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
 <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script
+	src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <title>支持我,得大奖!</title>
 </head>
 <body>
 
 	<%
-		String fromid = (String)request.getAttribute("fromid");
-		String toid = (String)request.getAttribute("toid");		
-		String fromnickname = (String)request.getAttribute("fromnickname");
-		String tonickname = (String)request.getAttribute("tonickname");
-		String oauthtoidlink = (String)request.getAttribute("oauthtoidlink");
+		String fromid = (String) request.getAttribute("fromid");
+		String toid = (String) request.getAttribute("toid");
+		String fromnickname = (String) request.getAttribute("fromnickname");
+		String tonickname = (String) request.getAttribute("tonickname");
+		String oauthtoidlink = (String) request
+				.getAttribute("oauthtoidlink");
 	%>
 	<hr>
 	<div class="row">
 		<div class="col-xs-12">
-			Hi, 亲, 我(<%=fromnickname%>)对索尼FIFA手机志在必得, 请你拉我一票, 同时你也可以获得打折惠, 仅需完成以下两步:<br>
+			Hi, 亲, 我(<%=fromnickname%>)对索尼FIFA手机志在必得, 请你拉我一票, 同时你也可以获得打折惠,
+			仅需完成以下两步:<br>
 			<h3>1. 点击支持</h3>
 			<br>
 			<h3>2. 完成关注</h3>
-			<br> <img class="img-rounded" alt="fifa"
-				src="/img/entry2.png"><br>
-				<hr>
-				<!-- <input type="text" placeholder="请输入昵称" name="yournickname"/> -->
-				<a href="<%=oauthtoidlink%>" style="display:block;" id="clickoauth">请点击这里, 继续支持他!</a>
-				<hr>
+			<br> <img class="img-rounded" alt="fifa" src="/img/entry2.png"><br>
+			<hr>
+			<!-- <input type="text" placeholder="请输入昵称" name="yournickname"/> -->
+			<a href="<%=oauthtoidlink%>" style="display: block;" id="clickoauth">请点击这里,
+				继续支持他!</a>
+			<hr>
 			<form action="<%=Constant.HOST%>/sharepage">
 				<table>
 					<tr>
@@ -42,34 +48,36 @@
 							<button type="submit" class="btn btn-success btn-lg">支持他!</button>
 						</td>
 						<td id="tonickname"><%=tonickname%></td>
-						<td><input type="hidden" name="user2" id="user2" value="<%=toid%>"></td>
+						<td><input type="hidden" name="user2" id="user2"
+							value="<%=toid%>"></td>
 					</tr>
 				</table>
 			</form>
 		</div>
 	</div>
 	<hr>
-	
-<script type="text/javascript">
-(function(){
-document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-	WeixinJSBridge.call('hideToolbar');
-});
-})();
 
-jQuery(function () {
-    var tonickname = $('#tonickname');
-    var form = $("form");
-    var oauthlink=$("#clickoauth");
-    if(tonickname.text()=='我'){
-    	oauthlink.show();
-    	form.hide();
-    }else{
-    	oauthlink.hide();
-    	from.show();
-    }
-});
-</script>
+	<script type="text/javascript">
+		(function() {
+			document.addEventListener('WeixinJSBridgeReady',
+					function onBridgeReady() {
+						WeixinJSBridge.call('hideToolbar');
+					});
+		})();
+
+		jQuery(function() {
+			var tonickname = $('#tonickname');
+			var form = $("form");
+			var oauthlink = $("#clickoauth");
+			if (tonickname.text() == '我') {
+				oauthlink.show();
+				form.hide();
+			} else {
+				oauthlink.hide();
+				from.show();
+			}
+		});
+	</script>
 
 </body>
 </html>
