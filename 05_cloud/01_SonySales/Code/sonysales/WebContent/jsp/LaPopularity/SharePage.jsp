@@ -12,14 +12,15 @@
 </head>
 <body>
 	<hr>
-	<div class="row">
-		<div class="col-xs-12">
-			
-			<br>
-			<img class="img-rounded" style="width:300px; height:300px;" alt="fifa"
-				src="http://www.yooyoo360.com/photo/2009-1-1/20090112200838440.jpg">
-			<h3>自己不能支持自己!! 请分享给其他人吧!!</h3>
-			<br>
+	<div class="container"
+		style="background: url(/img/stamp.png) right bottom no-repeat; background-size: 55%;">
+		<div style="margin: 10px;">
+			<div class="row" style="font-family: Droid Sans Fallback;">
+				<div class="col-xs-12">
+					<h3>自己不能支持自己!!! 请分享给其他人吧!!!</h3>
+				</div>
+			</div>
+			<hr>
 		</div>
 	</div>
 	<hr>
