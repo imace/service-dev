@@ -13,38 +13,41 @@ import com.sonymobile.sonysales.service.HandleService;
 import com.sonymobile.sonysales.util.Base64Coder;
 import com.sonymobile.sonysales.util.Constant;
 
-
 public class LashouRelation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger logger = Logger.getLogger(LashouRelation.class.getName());
 	private IWechatInfo wechatInfo;
 
+	public LashouRelation() {
+		wechatInfo = DefaultWechatInfoImpl.getInstance();
+	}
 
-    public LashouRelation() {
-    	wechatInfo = DefaultWechatInfoImpl.getInstance();
-    }
-
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		try {
-			
-			String navurl="/jsp/LashouBuy/LashouRelation.jsp";
-			
+
+			String navurl = "/jsp/LashouBuy/LashouRelation.jsp";
+
 			String fromid = request.getParameter("fromid");
-			String fromname = request.getParameter("fromname");			
+			String fromname = request.getParameter("fromname");
 			String toid = request.getParameter("toid");
 			String toname = request.getParameter("toname");
-			
+			String toheadimgurl = request.getParameter("toheadimgurl");
+
+			String fromimg = "";
+			String toimg = toheadimgurl;
+
 			response.setContentType("application/json;charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
 
 			if (fromid != null && toid != null) {
 				String tonickname, fromnickname;
-				
+
 				if (fromname != null) {
 					fromnickname = fromname;
 				} else {
@@ -55,26 +58,32 @@ public class LashouRelation extends HttpServlet {
 					tonickname = toname;
 				} else {
 					tonickname = wechatInfo.getWebChatUserInfo(toid).getNickname();
+					// for get to user head image url
+					toimg = wechatInfo.getWebChatUserInfo(toid).getHeadimgurl();
 				}
-				
-				
-				// if current user is yourself then nav to other page 
+
+				// get img url on here for temporary
+				fromimg = wechatInfo.getWebChatUserInfo(fromid).getHeadimgurl();
+
+				// if current user is yourself then nav to other page
 				if (fromid.equals(toid)) {
-					navurl="/jsp/LashouBuy/LashouFollow.jsp";
-				}else {
+					navurl = "/jsp/LashouBuy/LashouFollow.jsp";
+				} else {
 					String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST + "/lashourelation");
 					request.setAttribute("fromid", fromid);
 					request.setAttribute("toid", toid);
 					String oauthtoidlink = buildGetOAuthUserInfoUrl(fromid, fromnickname, relationUrl);
 					request.setAttribute("oauthtoidlink", oauthtoidlink);
-					
-					//add to-user info
+
+					// add to-user info
 					LashouActivity.AddUser(toid, tonickname);
 					// add handle
 					HandleService.addHandle(fromid, toid);
-					
+
 					request.setAttribute("fromnickname", fromnickname == null ? "他" : fromnickname);
 					request.setAttribute("tonickname", tonickname == null ? "我" : tonickname);
+					request.setAttribute("fromimg", fromimg == null ? Constant.HOST + "/img/head1.png" : fromimg);
+					request.setAttribute("toimg", toimg == null ? Constant.HOST + "/img/head2.png" : toimg);
 				}
 			} else {
 				// forward to error page
@@ -82,15 +91,19 @@ public class LashouRelation extends HttpServlet {
 				request.setAttribute("toid", toid);
 				request.setAttribute("fromnickname", "他_");
 				request.setAttribute("tonickname", "我");
+				request.setAttribute("fromimg", Constant.HOST + "/img/head1.png");
+				request.setAttribute("toimg", Constant.HOST + "/img/head2.png");
 			}
 			request.getRequestDispatcher(navurl).forward(request, response);
 		} catch (JSONException e) {
-			logger.error("LashouRelation->doPost() in exception : " + e.getMessage());
+			logger.error("LashouRelation->doPost() in exception : "
+					+ e.getMessage());
 			e.printStackTrace();
 		}
-	}	
+	}
 
-	private String buildGetOAuthUserInfoUrl(String fromid, String fromname, String codedUrl) {
+	private String buildGetOAuthUserInfoUrl(String fromid, String fromname,
+			String codedUrl) {
 		StringBuilder infourl = new StringBuilder(Constant.WECHAT_OAUTH2_AUTHORIZE_URL);
 		infourl.append('?');
 		infourl.append("appid=");

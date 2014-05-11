@@ -50,7 +50,7 @@ public class OAuthServlet extends HttpServlet {
 			String scope = accessToken.getScope();
 
 			if (oauthOpenId == null || oauthOpenId.isEmpty()) {
-				logger.error("Get OAuth Error¡¡: " + result.getBody());
+				logger.error("Get OAuth Errorï¿½ï¿½: " + result.getBody());
 				JSONObject jsonErr = JSONObject.fromObject(result.getBody());
 				WechatError error = (WechatError) JSONObject.toBean(jsonErr,
 						WechatError.class);
@@ -67,7 +67,7 @@ public class OAuthServlet extends HttpServlet {
 			}
 		} else {
 			// TODO : Show http connection error message
-			logger.error("Connected to OAuth Error¡¡: " + result.toString());
+			logger.error("Connected to OAuth Errorï¿½ï¿½: " + result.toString());
 		}
 	}
 
@@ -134,7 +134,7 @@ public class OAuthServlet extends HttpServlet {
 			WechatUserInfo userInfo = (WechatUserInfo) JSONObject.toBean(
 					jsonObject, WechatUserInfo.class);
 			if (oauthOpenId == null || oauthOpenId.isEmpty()) {
-				logger.error("Get OAuth Error¡¡: " + result.getBody());
+				logger.error("Get OAuth Errorï¿½ï¿½: " + result.getBody());
 				JSONObject jsonErr = JSONObject.fromObject(result.getBody());
 				WechatError error = (WechatError) JSONObject.toBean(jsonErr,
 						WechatError.class);
@@ -148,6 +148,8 @@ public class OAuthServlet extends HttpServlet {
 				sb.append(oauthOpenId);
 				sb.append("&toname=");
 				sb.append(userInfo.getNickname());
+				sb.append("&toheadimgurl=");
+				sb.append(userInfo.getHeadimgurl());
 				if (fromOpenId != null && !fromOpenId.isEmpty()) {
 					sb.append("&fromid=");
 					sb.append(fromOpenId);
@@ -160,7 +162,7 @@ public class OAuthServlet extends HttpServlet {
 			}
 		} else {
 			// TODO : Show http connection error message
-			logger.error("Get OAuth UserInfo¡¡: " + result.toString());
+			logger.error("Get OAuth UserInfoï¿½ï¿½: " + result.toString());
 		}
 	}
 

@@ -27,7 +27,8 @@ public class LashouFollow extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			response.sendRedirect("http://item.jd.com/1101144.html");
+			//response.sendRedirect("http://item.jd.com/1101144.html");
+			response.sendRedirect("http://mp.weixin.qq.com/s?__biz=MzA5NDAwODUxMQ==&mid=200111401&idx=1&sn=c2c817de70b14a702fe02da6997f8f64#rd");
 		} catch (JSONException e) {
 			logger.error("LashouFollow->doPost() in exception : " + e.getMessage());
 			e.printStackTrace();

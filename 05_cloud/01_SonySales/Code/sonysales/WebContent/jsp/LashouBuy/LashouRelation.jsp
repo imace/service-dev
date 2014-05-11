@@ -23,8 +23,9 @@
 		String toid = (String) request.getAttribute("toid");
 		String fromnickname = (String) request.getAttribute("fromnickname");
 		String tonickname = (String) request.getAttribute("tonickname");
-		String oauthtoidlink = (String) request
-				.getAttribute("oauthtoidlink");
+		String oauthtoidlink = (String) request.getAttribute("oauthtoidlink");
+		String fromimg = (String) request.getAttribute("fromimg");
+		String toimg = (String) request.getAttribute("toimg");
 	%>
 	<div class="container"
 		style="background: url(/img/stamp.png) right bottom no-repeat; background-size: 55%; margin: 10px;">
@@ -47,15 +48,26 @@
 				</div>
 				<div id="supportFriend" class="text-center">
 					<form action="<%=Constant.HOST%>/lashoufollow">
-						<div id="tonickname">
-							<%=tonickname%>
-						</div>
 						<hr>
 						<div class="row">
-							<div class="col-xs-12">
-								<button type="submit" class="btn btn-success btn-lg btn-block"
-									style="background: #e82827; border-color: #e82827; padding: 15px;">立即购买</button>
+							<div class="col-xs-1"></div>
+							<div class="col-xs-3">
+								<img alt="fifa" style="max-width: 100%;" src="<%=fromimg%>"><br>
+								<%=fromnickname%>
+								<input type="hidden" name="user1" value="<%=fromid%>">
 							</div>
+							<div class="col-xs-4">
+								<button type="submit" class="btn btn-success btn-block"
+									style="background: #22bff2; border-color: #22bff2; padding: 15px;">支持他</button>
+								<br> <img alt="fifa" style="max-width: 100%;"
+									src="/img/arrow.png">
+							</div>
+							<div class="col-xs-3" id="tonickname">
+								<img alt="fifa" style="max-width: 100%;" src="<%=toimg%>"><br>
+								<%=tonickname%>
+								<input type="hidden" name="user2" value="<%=toid%>">
+							</div>
+							<div class="col-xs-1"></div>
 						</div>
 						<hr>
 					</form>

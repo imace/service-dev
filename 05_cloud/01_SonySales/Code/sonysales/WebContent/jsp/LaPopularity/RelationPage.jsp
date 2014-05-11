@@ -23,8 +23,7 @@
 		String toid = (String) request.getAttribute("toid");
 		String fromnickname = (String) request.getAttribute("fromnickname");
 		String tonickname = (String) request.getAttribute("tonickname");
-		String oauthtoidlink = (String) request
-				.getAttribute("oauthtoidlink");
+		String oauthtoidlink = (String) request.getAttribute("oauthtoidlink");
 		String fromimg = (String) request.getAttribute("fromimg");
 		String toimg = (String) request.getAttribute("toimg");
 	%>
