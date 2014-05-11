@@ -10,6 +10,8 @@ public final class Constant {
 	public static final String APP_SECRET = "a57f48290475ab4efd80bcfedee277c5";
 
 	public static final int SAE_FETCHURL_SUCCESS_CODE = 0;
+	
+	public static final int FEEDBACK_SINGLE_MONEY =  20;
 
 
 	// Debug with Kevin, Nie

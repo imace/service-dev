@@ -38,7 +38,7 @@
 	       <tr>
 	       <td><%=i+1 %></td>
 	       <td><%=userList.get(i).getNickname() %></td>
-	       <td>已经获得<%=userList.get(i).getPoints() %>人气值了！</td>
+	       <td>已经获得<%=userList.get(i).getPoints() %>个好友支持了！</td>
 	       </tr>
 	  <% 
 	   }
@@ -57,7 +57,7 @@
            <tr>
            <td><%=i+1 %></td>
            <td><%=mySupportCountList.get(i).getNickname() %></td>
-           <td>已经获得<%=mySupportCountList.get(i).getCount() %>个好友支持了！</td>
+           <td>已经邀请<%=mySupportCountList.get(i).getCount() %>个好友参与购买！</td>
            </tr>
       <% 
        }
