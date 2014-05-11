@@ -66,7 +66,7 @@
          </div>
             <div id="content" style="display:none;background-color:white">
                 <div id="bttons" style="padding-top:1px;margin-left:10px">
-                    <div id="pcbuy" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:left">
+                    <div id="pcbuy" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:left" onclick="window.location.href='../productPage.jsp'">
                         <div><img src="../../img/http_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:12px"/></div>
                         <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">PC¹ºÂò</div>
                     </div>
