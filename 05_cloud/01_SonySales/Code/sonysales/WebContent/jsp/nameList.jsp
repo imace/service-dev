@@ -101,7 +101,9 @@
     </table>
 
 
-
+    <div id="rob2" style="margin-bottom:20px;margin-left:11px;margin-top:10px;height:50px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;">
+       <div style="font-size:x-large;color:white;margin-top:12px">还不来抢大奖</div>
+    </div>
 
 </body>
 </html>
