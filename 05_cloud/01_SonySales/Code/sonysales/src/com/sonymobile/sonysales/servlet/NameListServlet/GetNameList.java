@@ -24,10 +24,10 @@ public class GetNameList extends HttpServlet {
 			response = initHeader(response);
 
 			request.setAttribute("userList",
-					NameListService.getNameListOfPopularity("5"));
+					NameListService.getNameListOfPopularity("10"));
 
 			request.setAttribute("mySupportCountList",
-					NameListService.getNameListOfHandle("5"));
+					NameListService.getNameListOfHandle("10"));
 
 			request.getRequestDispatcher("/jsp/nameList.jsp").forward(request,
 					response);
