@@ -19,39 +19,22 @@
 	<%
 		String openid =(String)request.getAttribute("openid");
 		String nickname =(String)request.getAttribute("nickname");
-	
-		String currenturl = request.getScheme() + "://" + request.getServerName() + request.getRequestURI();
+		nickname=(nickname==null?"":"("+nickname+")");
+		String message="Hi, 亲, 我"+nickname+"对索尼FIFA志在必得, 请你拉我一票!";
+		String imgurl=Constant.HOST+"/img/entry2.png";	
 		String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST + "/relationpage");
-
 		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
 				+ Constant.APP_ID
-				+ "&redirect_uri="
-				+ Constant.HOST
-				+ "/wechat_authorize?fromid="
-				+ openid
-				+ "&response_type=code&scope="
-				+ Constant.WECHAT_OAUTH_SCOPES.BASE.getValue()
-				+ "&state="
-				+ relationUrl + "#wechat_redirect";
-
-		String msgimg = "http://www.sonystyle.com.cn/images/weibo_share_1.jpg";
-		String tlimg = "http://www.sonystyle.com.cn/images/weibo_share_2.jpg";
+				+ "&redirect_uri="+ Constant.HOST
+				+ "/wechat_authorize?fromid="+ openid
+				+ "&response_type=code&scope="+ Constant.WECHAT_OAUTH_SCOPES.BASE.getValue()
+				+ "&state="+ relationUrl + "#wechat_redirect";
 		out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
-				+ "MsgImg:\""
-				+ msgimg
-				+ "\","
-				+ "TLImg:\""
-				+ tlimg
-				+ "\","
-				+
-				"url:\""
-				+ url
-				+ "\","
-				+ "title:\"SONY FIFA 邀请您中大奖\","
-				+ "desc:\"来自于 "
-				+ openid
-				+ "\","
-				+ "fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
+				+ "MsgImg:\""+ imgurl
+				+ "\", TLImg:\""+ imgurl
+				+ "\", url:\""+ url
+				+ "\", title:\"拉人气, 得大奖\", desc:\""+ message
+				+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
 	%>
 	<hr>
 	<div class="row">

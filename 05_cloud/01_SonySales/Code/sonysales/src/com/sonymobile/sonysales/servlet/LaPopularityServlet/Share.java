@@ -43,7 +43,7 @@ public class Share extends HttpServlet {
 	    		if (request.getServerName().equals("localhost")) {
 	    			response.sendRedirect("/jsp/LaPopularity/SharePage.jsp");
 				}else {
-					response.sendRedirect("http://mp.weixin.qq.com/s?__biz=MzA5NDAwODUxMQ==&mid=10013503&idx=2&sn=1cbb860dc2db0a5af0bcc9e4941612dd#rd");
+					response.sendRedirect("http://mp.weixin.qq.com/s?__biz=MzA5NDAwODUxMQ==&mid=200111401&idx=1&sn=c2c817de70b14a702fe02da6997f8f64#rd");
 				}
 	        } catch (JSONException e) {  
 	        	logger.error("Share->doPost() in exception : " + e.getMessage());

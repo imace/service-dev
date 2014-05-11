@@ -28,7 +28,7 @@
 			<br>
 			<h3>2. 完成关注</h3>
 			<br> <img class="img-rounded" alt="fifa"
-				src="http://www.sonystyle.com.cn/products/xperia/images/xperia_m51w/pro_img/z1_m51w_y1_b.jpg"><br>
+				src="/img/entry2.png"><br>
 				<hr>
 				<!-- <input type="text" placeholder="请输入昵称" name="yournickname"/> -->
 				<a href="<%=oauthtoidlink%>" style="display:block;" id="clickoauth">请点击这里, 继续支持他!</a>
