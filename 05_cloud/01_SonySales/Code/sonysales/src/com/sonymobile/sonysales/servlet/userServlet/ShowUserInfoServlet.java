@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 import com.sonymobile.sonysales.service.MyFIFAService;
 
@@ -18,31 +19,22 @@ public class ShowUserInfoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String openId = (String) request.getParameter("id");
-		MyFIFAService myFIFAService = new MyFIFAService();
-		
-//		String userJson = myFIFAService.getUser(openId);
-//		JSONObject userJO = JSONObject.fromObject(userJson);
-//		String phoneNum = userJO.getString("phoneNum");
-//		String email = userJO.getString("email");
-//		String address = userJO.getString("address");
-//		String jdId = userJO.getString("jdId");
-//		String points = userJO.getString("points");
-		
-		@SuppressWarnings("static-access")
-		List<?> list = myFIFAService.getPointsOrder(openId);
 
-		Object[] attributes = (Object[])list.get(0);
-		String phoneNum = attributes[2].toString();
-		String email =  attributes[3].toString();
-		String address =  attributes[4].toString();
-		String jdId =  attributes[5].toString();
-		String points =  attributes[6].toString();
-		String pointsOrder =  attributes[9].toString();
-
-		@SuppressWarnings("static-access")
-		List<?> supporters = myFIFAService.getSupporters(openId);
+		List<?> list = MyFIFAService.getPointsOrder(openId);
+		String userJson = JSONArray.fromObject(list).toString();
+		JSONArray userJA = JSONArray.fromObject(userJson);
+		JSONObject userJO = userJA.getJSONObject(0);
+		String phoneNum = userJO.getString("phoneNum");
+		String email = userJO.getString("email");
+		String address = userJO.getString("address");
+		String jdId = userJO.getString("jdId");
+		String points = userJO.getString("points");
+		String pointsOrder = userJO.getString("pointsOrder");
+		
+		List<?> supporters = MyFIFAService.getSupporters(openId);
 		String supporterJS = JSONArray.fromObject(supporters).toString();
 
+		request.setAttribute("openId", openId);
 		request.setAttribute("phoneNum", phoneNum);
 		request.setAttribute("email", email);
 		request.setAttribute("address", address);

@@ -169,6 +169,16 @@
               <url-pattern>/getUser</url-pattern>
        </servlet-mapping>
        <servlet>
+              <description>Update a user</description>
+              <display-name>Update a user</display-name>
+              <servlet-name>updateUserInfo</servlet-name>
+              <servlet-class>com.sonymobile.sonysales.servlet.userServlet.UpdateUserInfo</servlet-class>
+       </servlet>
+       <servlet-mapping>
+              <servlet-name>updateUserInfo</servlet-name>
+              <url-pattern>/updateUserInfo</url-pattern>
+       </servlet-mapping>
+       <servlet>
               <description>Get my user Info</description>
               <display-name>Get my user Info</display-name>
               <servlet-name>ShowUserInfoServlet</servlet-name>

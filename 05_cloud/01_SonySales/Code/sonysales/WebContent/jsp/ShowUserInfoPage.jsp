@@ -9,25 +9,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
 	content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
+<link rel="stylesheet"
+	href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
+<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+<script
+	src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <title>您的基本信息</title>
 </head>
 <body>
-	<script language="javascript">
-		function edit() {
-			document.getElementById('showInfo').style.display = "none";
-			document.getElementById('editInfo').style.display = "";
-			document.getElementById('edit').style.display = "none";
-			document.getElementById('save').style.display = "";
-		}
-		function save() {
-			document.getElementById('showInfo').style.display = "";
-			document.getElementById('editInfo').style.display = "none";
-			document.getElementById('edit').style.display = "";
-			document.getElementById('save').style.display = "none";
-
-		}
-	</script>
 	<%
+		String openId = (String) request.getAttribute("openId");
 		String phoneNum = (String) request.getAttribute("phoneNum");
 		String email = (String) request.getAttribute("email");
 		String address = (String) request.getAttribute("address");
@@ -38,59 +31,173 @@
 
 		PrintWriter outwriter = response.getWriter();
 	%>
+	<script language="javascript">
+		jQuery(function() {
 
-	您的基本信息：
-	<br> ---------------------------------
-	<br> （请正确填写，以便我们能联系到您，及获奖资格认证。我们承诺，不对您的信息进行转发，泄露，以及其他商业用途）
-	<br>
-	<form name="userInfoForm" action="updateUser" method="post">
-		<div id="showInfo">
-			电话：
-			<%=phoneNum%><br> 邮箱：<%=email%><br> 地址：<%=address%><br>
-			京东账号：<%=jdId%><br>
-		</div>
-		<div id="editInfo" style="display: none">
-			电话： <input name="phoneNum" type="text" id="phoneNum"
-				style="width: 120px"><br> 邮箱：<input name="email"
-				type="text" id="email" style="width: 120px"><br> 地址：<input
-				name="address" type="text" id="address" style="width: 120px"><br>
-			京东账号：<input name="jdId" type="text" id="jdId" style="width: 120px"><br>
-		</div>
-		（如果需要邮递奖品或领取奖金，请填写真实信息） <br> <input id="edit" type="submit"
-			value="编辑" onclick="edit()"> <input id="save" type="submit"
-			value="保存" onclick="save()" style="display: none"> <br>
-	</form>
-	<div>
-		<h2>您的人气</h2>
-		<hr>
-		您已经获得人气情况如下：<br> 您已经获得<%=points%>人气点，目前排名<%=pointsOrder%>位，继续加油哦！
-	</div>
-	<div>
-		<%
-			JSONArray supporterJA = JSONArray.fromObject(supporterJS);
-			int supporterCount = supporterJA.size();
-			int money = supporterCount * Constant.FEEDBACK_SINGLE_MONEY;
-		%>
-		您已经获取<%=supporterCount%>个好友的支持进行拉手购买活动，最多可以获得<%=money%>元返金，您的拉手团信息如下：<br>
-		<table border="1">
-			<%
-				for (int i = 0; i < supporterCount; i++) {
-					JSONArray jo = supporterJA.getJSONArray(i);
-					String nickname = jo.getString(0);
-					String createTime = jo.getString(1);
-			%>
-			<tr>
-				<td><%=nickname%>已于<%=createTime%>支持了您！</td>
-			</tr>
-			<%
+			$('#openId').val(
+	<%=openId%>
+		);
+			$('#phoneNum').val($('#showphoneNum').text());
+			$('#email').val($('#showemail').text());
+			$('#address').val($('#showaddress').text());
+			$('#jdId').val($('#showjdId').text());
+			$('#showInfo').hide();
+			$('#editInfo').show();
+
+			$("form input").attr('disabled', 'true');
+			$('#test').click(function() {
+				//alert($('#test').text());
+				if ($('#test').text() == '保存') {
+					$('#test').text('编辑');
+					$('form input').removeAttr("disabled");
+				} else {
+					$('#test').text('保存');
+					$("form input").attr('disabled', 'true');
 				}
-			%>
-		</table>
+				return false;
+			});
+
+			var save = function() {
+				$mobileNum =
+	<%=phoneNum%>
+		;
+				alert($mobileNum);
+				if (mobileNum.length == 0) {
+					alert('请输入手机号码！');
+					return false;
+				}
+				if (mobileNum.length != 11) {
+					alert('请输入有效的手机号码！');
+					return false;
+				}
+
+				var myreg = /^(((1[3-9][0-9]{1}))+\d{8})$/;
+				if (!myreg.test(mobileNum)) {
+					alert('请输入有效的手机号码！');
+					return false;
+				}
+				return true;
+			};
+
+		});
+	</script>
+
+
+	<div class="container"
+		style="background: url(/img/stamp.png) right bottom no-repeat; background-size: 55%; margin: 10px;">
+		<div class="row" style="font-family: Droid Sans Fallback;">
+			<h2 style="font-style: bold;">您的基本信息</h2>
+			<hr>
+			（请正确填写，以便我们能联系到您，及获奖资格认证。我们承诺，不对您的信息进行转发，泄露，以及其他商业用途） <br>
+			<form class="form-horizontal" role="form">
+				<input name="openId" type="hidden" id="openId">
+				<div class="form-group">
+					<label for="phoneNum" class="col-sm-2 control-label">电话：</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="phoneNum"
+							id="phoneNum" placeholder="电话">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="email" class="col-sm-2 control-label">邮箱：</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="email" id="email"
+							placeholder="邮箱">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="address" class="col-sm-2 control-label">地址：</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="address"
+							id="address" placeholder="地址">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="jdId" class="col-sm-2 control-label">京东账号：</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="jdId" id="jdId"
+							placeholder="京东账号">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button id="test" class="btn btn-default">编辑</button>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<label> （如果需要邮递奖品或领取奖金，请填写真实信息） </label>
+					</div>
+				</div>
+			</form>
+
+			<br>
+			<h2>您的优惠卷</h2>
+			<hr>
+			<a href="#" class="btn btn-primary btn-lg active" role="button">点击获取优惠卷</a>
+
+			<br>
+
+			<div>
+				<h2>您的人气</h2>
+				<hr>
+				您已经获得人气情况如下：<br> 您已经获得<%=points%>人气点，目前排名<%=pointsOrder%>位，继续加油哦！
+			</div>
+
+			<br>
+
+			<h2>您的拉友团</h2>
+			<hr>
+			<div>
+				<%
+					JSONArray supporterJA = JSONArray.fromObject(supporterJS);
+					int supporterCount = supporterJA.size();
+					int money = supporterCount * Constant.FEEDBACK_SINGLE_MONEY;
+				%>
+				您已经获取<%=supporterCount%>个好友的支持进行拉手购买活动，最多可以获得<%=money%>元返金，您的拉手团信息如下：<br>
+				<table class="table  table-striped">
+					<%
+						for (int i = 0; i < supporterCount; i++) {
+							JSONObject jo = supporterJA.getJSONObject(i);
+							String nickname = jo.getString("nickname");
+							String createTime = jo.getString("createTime");
+
+							StringBuilder sb = new StringBuilder();
+							if (createTime != null && !createTime.isEmpty()
+									&& createTime.length() > 8) {
+								sb.append("已于");
+								sb.append(createTime.substring(0, 4));
+								sb.append("年");
+								sb.append(createTime.substring(4, 6));
+								sb.append("月");
+								sb.append(createTime.substring(6, 8));
+								sb.append("日");
+							} else {
+								sb.append("已经");
+							}
+							createTime = sb.toString();
+					%>
+					<tr>
+						<td><%=nickname%><%=createTime%>支持了您！</td>
+					</tr>
+					<%
+						}
+					%>
+				</table>
+			</div>
+
+
+
+<br>
+
+<hr>
+<a href="<%=Constant.HOST%>/getNameList" class="btn btn-primary btn-lg active" role="button">查看排行榜信息</a>
+
+
+
+		</div>
 	</div>
-	<br> 您的优惠卷：
-	<br> ---------------------------------
-	<br>
-	<input type="submit" value="点击获取优惠卷">
-	<br>
+
 </body>
 </html>
