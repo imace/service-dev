@@ -36,8 +36,8 @@
 
 
             <div>
-                <div id="title" style="margin-left:10px">
-                  <h3>超值，索尼FIFA手机等你来拿！</h3>
+                <div id="title" style="margin-left:10px;font-size:larger">
+                  <h2>超值，索尼FIFA手机等你来拿！</h2>
                 </div>
                 <div id="banner_img_div">
                     <img src="../../img/banner_popularity.png" id="banner_img" style="margin-left:10px"/>
@@ -51,7 +51,7 @@
                         官方定制精美手机一部。</br>
                         每拉一个朋友激活10000人气积分呦！
                     </div>
-                    <div style="font-size:130%;color:rgb(116, 105, 105)">
+                    <div style="font-size:140%;color:rgb(148, 140, 140);padding-top:3px">
                                                 点击右上角-->发送给朋友
                     </div>
                 </div>
@@ -120,7 +120,7 @@
         var touch = event.touches[0];
 
         endY = touch.pageY;
-        if((startY-endY)>20) {//上滑
+        if((startY-endY)>15) {//上滑
             //$("#desc").css("height", 100); 
             //$("#desc").css("overflow-y", "auto"); 
             document.getElementById("content").style.display="";
@@ -129,7 +129,7 @@
             
             
             }
-        if((endY-startY)>30) {//下滑
+        if((endY-startY)>20) {//下滑
             document.getElementById("content").style.display="none";
 
             }
@@ -140,13 +140,13 @@
 
 
         function touchEnd(event){
-            if((endY-startY)>30) {//下滑
+            if((endY-startY)>20) {//下滑
                    $("#top_img").attr("src","../../img/product_top_all_1.png"); 
                 document.getElementById("content").style.display="none";
                 $("#touchBox").css({position: "absolute",'bottom':0,'z-index':2});
 
                 }
-            if((startY-endY)>20) {//上滑
+            if((startY-endY)>15) {//上滑
                   $("#top_img").attr("src","../../img/product_top_all_2.png"); 
                 //$("#desc").css("height", 100); 
                 //$("#desc").css("overflow-y", "auto"); 
