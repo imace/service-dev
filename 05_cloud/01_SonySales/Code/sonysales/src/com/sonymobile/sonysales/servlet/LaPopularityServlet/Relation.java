@@ -99,8 +99,8 @@ public class Relation extends HttpServlet {
 				request.setAttribute("toid", toid);
 				request.setAttribute("fromnickname", "他_");
 				request.setAttribute("tonickname", "我");
-				request.setAttribute("fromimg", Constant.HOST+"/img/head1.png");
-				request.setAttribute("toimg", Constant.HOST+"/img/head2.png");
+				//request.setAttribute("fromimg", Constant.HOST+"/img/head1.png");
+				//request.setAttribute("toimg", Constant.HOST+"/img/head2.png");
 			}
 			request.getRequestDispatcher(navurl).forward(request, response);
 		} catch (JSONException e) {
