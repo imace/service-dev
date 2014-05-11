@@ -69,10 +69,9 @@ public class LashouRelation extends HttpServlet {
 					request.setAttribute("oauthtoidlink", oauthtoidlink);
 					
 					//add to-user info
-					if (LashouActivity.AddUser(toid, tonickname)) {
-						//add handle
-						HandleService.addHandle(fromid, toid);
-					}
+					LashouActivity.AddUser(toid, tonickname);
+					// add handle
+					HandleService.addHandle(fromid, toid);
 					
 					request.setAttribute("fromnickname", fromnickname == null ? "Ëû" : fromnickname);
 					request.setAttribute("tonickname", tonickname == null ? "ÎÒ" : tonickname);
