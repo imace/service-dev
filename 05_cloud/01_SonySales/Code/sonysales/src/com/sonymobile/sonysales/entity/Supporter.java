@@ -3,16 +3,16 @@ package com.sonymobile.sonysales.entity;
 public class Supporter {
 	// 昵称
 	private String nickname;
-	// 支持者数量
-	private String count;
+
+	private String createTime;
 
 	public Supporter() {
 
 	}
 
-	public Supporter(String nickname, Object count) {
+	public Supporter(String nickname, String createTime) {
 		this.nickname = nickname;
-		this.count = count.toString();
+		this.createTime = createTime;
 	}
 
 	public String getNickname() {
@@ -23,11 +23,11 @@ public class Supporter {
 		this.nickname = nickname;
 	}
 
-	public String getCount() {
-		return count;
+	public String getCreateTime() {
+		return createTime;
 	}
 
-	public void setCount(String count) {
-		this.count = count;
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
 	}
 }
