@@ -8,13 +8,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Type" content="text/html charset=gb2312">
 <meta name="viewport" content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
-<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
-<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
-<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="../../js/jquery-2.1.1.min.js"></script>
 <title>»î¶¯ÏêÇé</title>
 </head>
-<body>
+<body style="margin:0;background-color:#f8f7f5">
 
 	<%
 		String openid =(String)request.getAttribute("openid");
