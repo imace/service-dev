@@ -46,6 +46,9 @@ public class Relation extends HttpServlet {
 			String fromname = request.getParameter("fromname");
 			String toid = request.getParameter("toid");
 			String toname = request.getParameter("toname");
+			String fromimg="";
+			String toimg="";
+			
 			response.setContentType("application/json;charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
 
@@ -63,7 +66,11 @@ public class Relation extends HttpServlet {
 				} else {
 					tonickname = wechatInfo.getWebChatUserInfo(toid).getNickname();
 				}
-								
+				
+				//get img url on here for temporary
+				fromimg=wechatInfo.getWebChatUserInfo(fromid).getHeadimgurl();
+				toimg=wechatInfo.getWebChatUserInfo(toid).getHeadimgurl();
+
 				// if current user is yourself then nav to other page 
 				if (fromid.equals(toid)) {
 					navurl="/jsp/LaPopularity/SharePage.jsp";
@@ -82,6 +89,9 @@ public class Relation extends HttpServlet {
 					
 					request.setAttribute("fromnickname", fromnickname == null ? "他" : fromnickname);
 					request.setAttribute("tonickname", tonickname == null ? "我" : tonickname);
+					request.setAttribute("fromimg", fromimg == null ? Constant.HOST+"/img/head1.png" : fromimg);
+					request.setAttribute("toimg", toimg == null ? Constant.HOST+"/img/head2.png" : toimg);
+					
 				}
 			} else {
 				// forward to error page
@@ -89,6 +99,8 @@ public class Relation extends HttpServlet {
 				request.setAttribute("toid", toid);
 				request.setAttribute("fromnickname", "他_");
 				request.setAttribute("tonickname", "我");
+				request.setAttribute("fromimg", Constant.HOST+"/img/head1.png");
+				request.setAttribute("toimg", Constant.HOST+"/img/head2.png");
 			}
 			request.getRequestDispatcher(navurl).forward(request, response);
 		} catch (JSONException e) {
