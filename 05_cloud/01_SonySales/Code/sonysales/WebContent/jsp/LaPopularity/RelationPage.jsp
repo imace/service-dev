@@ -26,6 +26,7 @@
 		String fromimg=(String) request.getAttribute("fromimg");
 		String toimg=(String) request.getAttribute("toimg");
 	%>
+<div class="container" style="background:url(/img/stamp.png) right bottom  no-repeat; background-size:55%;">
 	<div style="margin:10px;">
 	<div class="row" style="font-family: Droid Sans Fallback;">
 		<div class="col-xs-12">
@@ -68,6 +69,7 @@
 	</div>
 	<hr>
 </div>
+</div>
 	<script type="text/javascript">
 		(function() {
 			document.addEventListener('WeixinJSBridgeReady',
@@ -94,6 +96,5 @@
 			}
 		});
 	</script>
-
 </body>
 </html>

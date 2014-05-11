@@ -70,7 +70,7 @@ public class Relation extends HttpServlet {
 				//get img url on here for temporary
 				fromimg=wechatInfo.getWebChatUserInfo(fromid).getHeadimgurl();
 				toimg=wechatInfo.getWebChatUserInfo(toid).getHeadimgurl();
-
+				
 				// if current user is yourself then nav to other page 
 				if (fromid.equals(toid)) {
 					navurl="/jsp/LaPopularity/SharePage.jsp";
