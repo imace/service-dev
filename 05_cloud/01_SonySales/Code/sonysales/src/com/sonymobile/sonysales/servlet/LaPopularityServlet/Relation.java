@@ -80,15 +80,15 @@ public class Relation extends HttpServlet {
 						PopularityService.addPopularity(fromid, toid);
 					}
 					
-					request.setAttribute("fromnickname", fromnickname == null ? "Ëû" : fromnickname);
-					request.setAttribute("tonickname", tonickname == null ? "ÎÒ" : tonickname);
+					request.setAttribute("fromnickname", fromnickname == null ? "ä»–" : fromnickname);
+					request.setAttribute("tonickname", tonickname == null ? "æˆ‘" : tonickname);
 				}
 			} else {
 				// forward to error page
 				request.setAttribute("fromid", fromid);
 				request.setAttribute("toid", toid);
-				request.setAttribute("fromnickname", "Ëû_");
-				request.setAttribute("tonickname", "ÎÒ");
+				request.setAttribute("fromnickname", "ä»–_");
+				request.setAttribute("tonickname", "æˆ‘");
 			}
 			request.getRequestDispatcher(navurl).forward(request, response);
 		} catch (JSONException e) {
