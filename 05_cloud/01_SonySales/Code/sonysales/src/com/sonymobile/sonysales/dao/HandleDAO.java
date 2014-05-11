@@ -11,7 +11,7 @@ public class HandleDAO {
 	public static List<?> getSupporterList(String limit) {
 		HibernateUtil hibernateUtil = new HibernateUtil();
 
-		String hql = "select new com.sonymobile.sonysales.entity.Supporter(u.nickname, count(*)) from User as u, Handle as h where u.id = h.ownerUserId group by h.ownerUserId order by 2 desc";
+		String hql = "select new com.sonymobile.sonysales.entity.SupporterCount(u.nickname, count(*)) from User as u, Handle as h where u.id = h.ownerUserId group by h.ownerUserId order by 2 desc";
 
 		int maxResults = 0;
 		try {
@@ -25,7 +25,7 @@ public class HandleDAO {
 	public static List<?> getSupporters(String openId) {
 		HibernateUtil hibernateUtil = new HibernateUtil();
 
-		String hql = "select u1.nickname, h.createTime from Handle as h , User as u1, User as u2 where u1.id = h.supporterUserId and u2.id = h.ownerUserId and u2.openId='"
+		String hql = "select new com.sonymobile.sonysales.entity.Supporter(u1.nickname, h.createTime) from Handle as h , User as u1, User as u2 where u1.id = h.supporterUserId and u2.id = h.ownerUserId and u2.openId='"
 				+ openId + "'";
 
 		return hibernateUtil.getListByHql(hql, null, 0, 0);

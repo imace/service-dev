@@ -25,7 +25,7 @@ public class UserDAO {
 	public static List<?> getPointsOrder(String openId) {
 		HibernateUtil hibernateUtil = new HibernateUtil();
 
-		String hql = "select u2.nickname,u2.focusFlag,u2.phoneNum,u2.email,u2.address,u2.jdId,u2.points,u2.focusTime,u2.createTime, (select count(*) from User u1 where u1.points>=u2.points order by u1.points desc) as pointsOrder from User u2 where u2.openId='"
+		String hql = "select new com.sonymobile.sonysales.entity.PointsOrder(u2.nickname,u2.focusFlag,u2.phoneNum,u2.email,u2.address,u2.jdId,u2.points,u2.focusTime,u2.createTime, (select count(*) from User u1 where u1.points>=u2.points order by u1.points desc)) from User u2 where u2.openId='"
 				+ openId + "'";
 
 		return hibernateUtil.getListByHql(hql, null, 0, 0);
