@@ -49,7 +49,9 @@ public class HibernateUtil {
 			ret = true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			tx.rollback();
+			if (tx != null) {
+				tx.rollback();
+			}
 			ret = false;
 		} finally {
 			session.close();
@@ -73,7 +75,9 @@ public class HibernateUtil {
 			e.printStackTrace();
 			logger.error("Exception in getObjectByColumnName, ToString: "
 					+ e.toString() + " message: " + e.getMessage());
-			tx.rollback();
+			if (tx != null) {
+				tx.rollback();
+			}
 			ret = null;
 		} finally {
 			if (session != null) {
@@ -87,7 +91,6 @@ public class HibernateUtil {
 	public List<?> getListByHql(String hql, ArrayList<String> parameter,
 			int firstResult, int maxResults) {
 		List<?> ret = null;
-		
 
 		try {
 			openSession();
@@ -108,7 +111,9 @@ public class HibernateUtil {
 			e.printStackTrace();
 			logger.error("Exception in getListByHql, ToString: " + e.toString()
 					+ " message: " + e.getMessage());
-			tx.rollback();
+			if (tx != null) {
+				tx.rollback();
+			}
 			ret = null;
 		} finally {
 			if (session != null) {
@@ -128,7 +133,9 @@ public class HibernateUtil {
 			ret = true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			tx.rollback();
+			if (tx != null) {
+				tx.rollback();
+			}
 			ret = false;
 		} finally {
 			if (session != null) {
