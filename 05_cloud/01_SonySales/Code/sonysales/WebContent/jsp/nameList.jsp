@@ -1,6 +1,6 @@
 <%@page import="com.sonymobile.sonysales.util.Constant"%>
 <%@page import="com.sonymobile.sonysales.model.User"%>
-<%@page import="com.sonymobile.sonysales.entity.Supporter"%>
+<%@page import="com.sonymobile.sonysales.entity.SupporterCount"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=gb2312"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -44,7 +44,7 @@
 	<%
 
 	 List<User> userList = (List<User>)request.getAttribute("userList");
-	 List<Supporter> supporterList = (List<Supporter>)request.getAttribute("supporterList");
+	 List<SupporterCount> supporterList = (List<SupporterCount>)request.getAttribute("supporterList");
 	
 	%>
 	<div id="title" style="margin-left:10px">
