@@ -13,6 +13,7 @@
 <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
 <script
 	src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="../../js/relation.js"></script>
 <title>快来领取优惠券啦!</title>
 </head>
 <body>
@@ -25,52 +26,43 @@
 		String oauthtoidlink = (String) request
 				.getAttribute("oauthtoidlink");
 	%>
-	<hr>
-	<div class="row">
-		<div class="col-xs-12">
-			Hi, 亲, 我(<%=fromnickname%>)正在参加索尼FIFA活动, 如果你支持并完成关注可以获得50元购买折扣券,
-			同时我也可以获得奖金的哦, 非常感谢咯, 仅需完成以下两步:<br>
-			<h5>1. 立即购买</h5>
-			<h5>2. 完成关注</h5>
-			<br> <img class="img-rounded" alt="fifa"
-				src="http://img14.360buyimg.com/n1/g15/M08/16/0E/rBEhWVNM4rsIAAAAAAELASvYq4EAAL12gLe8tAAAQsZ648.jpg"><br>
-			<a href="<%=oauthtoidlink%>" style="display: block;" id="clickoauth">请点击这里,
-				继续支持他!</a>
-
-			<hr>
-			<form action="<%=Constant.HOST%>/lashoufollow">
-				<table>
-					<tr>
-						<td><%=fromnickname%></td>
-						<td>
-							<button type="submit" class="btn btn-success btn-lg">立即购买!</button>
-						</td>
-						<td id="tonickname"><%=tonickname%></td>
-					</tr>
-				</table>
-			</form>
+	<div class="container"
+		style="background: url(/img/stamp.png) right bottom no-repeat; background-size: 55%; margin: 10px;">
+		<div class="row" style="font-family: Droid Sans Fallback;">
+			<div class="col-xs-12">
+				<h4>
+					Hi, 亲, 我(<%=fromnickname%>)正在参加索尼FIFA活动, 如果你支持并完成关注可以获得50元购买折扣券,
+					同时我也可以获得奖金的哦, 非常感谢咯, 仅需完成以下两步:
+				</h4>
+				<h4 style="color: #cea14b">1. 点击支持 2. 完成关注 即可获得下面奖品</h4>
+				<img alt="fifa" style="max-width: 100%;"
+					src="/img/banner_recevier.png">
+				<h4 style="color: #22bff2">支持您的好友</h4>
+				<div id="personalInfo">
+					<h4>为了支持您的好友, 需要首先点击下面按钮获取您的个人信息。</h4>
+					<hr>
+					<a href="<%=oauthtoidlink%>"
+						style="display: block; background-color: #7adb81; border-color: #7adb81;"
+						class="btn btn-primary btn-lg active" role="button">获取个人信息</a>
+				</div>
+				<div id="supportFriend" class="text-center">
+					<form action="<%=Constant.HOST%>/lashoufollow">
+						<div id="tonickname">
+							<%=tonickname%>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-xs-12">
+								<button type="submit" class="btn btn-success btn-lg btn-block"
+									style="background: #e82827; border-color: #e82827; padding: 15px;">立即购买</button>
+							</div>
+						</div>
+						<hr>
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-		(function() {
-			document.addEventListener('WeixinJSBridgeReady',
-					function onBridgeReady() {
-						WeixinJSBridge.call('hideToolbar');
-					});
-		})();
-		jQuery(function () {
-		    var tonickname = $('#tonickname');
-		    var form = $("form");
-		    var oauthlink=$("#clickoauth");
-		    if(tonickname.text()=='我'){
-		    	oauthlink.show();
-		    	form.hide();
-		    }else{
-		    	oauthlink.hide();
-		    	from.show();
-		    }
-		});
-	</script>
 
 </body>
 </html>
