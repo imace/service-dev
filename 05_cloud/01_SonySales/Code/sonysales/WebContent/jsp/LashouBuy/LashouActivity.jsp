@@ -57,7 +57,7 @@
 </div>
 
         <div id="touchBox">
-               <img src="../../img/product_top_all_1.png" style="margin-top:0" id="top_img" />
+               <img src="../../img/product_top_all_1.png" style="margin-top:0" id="top_img" onclick="draw()"/>
             <div  style="background-color:white;padding-bottom:10px;">
              <div id="buy" style="margin-left:10px;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='http://www.jd.com'">
                 <div style="font-size:larger;color:white;padding-top:15px">Á¢¼´¹ºÂò</div>
@@ -101,7 +101,7 @@
         $("#desc").css("width", document.body.clientWidth-20); 
         $("#pcbuy").css("width", (document.body.clientWidth-20)/2-7); 
         $("#discount").css("width", (document.body.clientWidth-20)/2-7); 
-        var startX,startY,endX,endY
+ /*       var startX,startY,endX,endY
      var scrollTopVal=0; //×óÓÒ»¬¶¯Çë×ÔÐÐÐÞ¸Ä
         document.getElementById("touchBox").addEventListener("touchstart", touchStart, false);
         document.getElementById("touchBox").addEventListener("touchmove", touchMove, false);
@@ -157,9 +157,21 @@
 
 
         }
-
+        */
         });
     
+    var open = false;
+    function draw() {
+        if(!open) {
+            document.getElementById("content").style.display="";
+       $("#touchBox").css({position: "absolute",'bottom':0,'z-index':2}); 
+       open = true;
+            } else {
+                document.getElementById("content").style.display="none";
+         $("#touchBox").css({position: "absolute",'bottom':0,'z-index':2});
+         open = false;
+                }
+            }
 (function(){
    var onBridgeReady=function(){
    WeixinJSBridge.on('menu:share:appmessage', function(argv){
