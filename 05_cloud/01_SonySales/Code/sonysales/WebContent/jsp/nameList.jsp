@@ -66,7 +66,7 @@
 	       <tr>
          <td><div style="color:#e82827"><%=i+1 %></div></td>
          <td><div style="color:#e82827"><%=userList.get(i).getNickname() %></div></td>
-         <td>已经获得<div style="color:rgb(190, 155, 43)"><%=userList.get(i).getPoints() %></div>个好友支持了！</td>
+         <td>已经获得<font style="color:rgb(190, 155, 43)"><%=userList.get(i).getPoints() %></font>个好友支持了！</td>
          </tr>
 	    <%     
 	       } else {
@@ -74,7 +74,7 @@
 	          <tr>
            <td><%=i+1 %></td>
            <td><%=userList.get(i).getNickname() %></td>
-           <td>已经获得<div style="color:rgb(190, 155, 43)"><%=userList.get(i).getPoints() %></div>个好友支持了！</td>
+           <td>已经获得<font style="color:rgb(190, 155, 43)"><%=userList.get(i).getPoints() %></font>个好友支持了！</td>
            </tr>
 	         <%  
 	       }
@@ -102,7 +102,7 @@
 
            <tr>
            <td style="height:55px;"><div style="color:#e82827"><%=i+1 %></div></td>
-           <td><div style="line-height:150%";><div style="color:#e82827"><%=supporterList.get(i).getNickname() %></div>，已获得<div style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></div>位朋友的拉友买支持，<br/>
+           <td><div style="line-height:150%";><font style="color:#e82827"><%=supporterList.get(i).getNickname() %></font>，已获得<font style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></font>位朋友的拉友买支持，<br/>
            最多可获得现金卷<%=supporterList.get(i).getCount() %>*50的奖金！</div>
            </td>
            </tr>
@@ -111,7 +111,7 @@
                       %>
            <tr>
            <td style="height:55px"><%=i+1 %></td>
-           <td><div style="line-height:150%";><%=supporterList.get(i).getNickname() %>，已获得<div style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></div>位朋友的拉友买支持，<br/>
+           <td><div style="line-height:150%";><%=supporterList.get(i).getNickname() %>，已获得<font style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></font>位朋友的拉友买支持，<br/>
            最多可获得现金卷<%=supporterList.get(i).getCount() %>*50的奖金！</div>
            </td>
            </tr>
@@ -123,7 +123,7 @@
     </table>
 
 
-    <div id="rob2" style="margin-bottom:20px;margin-left:11px;margin-top:10px;height:50px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='<%=Constant.HOST%>/jsp/LaPopularity/ActivityPage.jsp'">
+    <div id="rob2" style="margin-bottom:20px;margin-left:11px;margin-top:10px;height:50px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='<%=Constant.HOST%>/jsp/LashouBuy/LashouActivity.jsp'">
        <div style="font-size:x-large;color:white;margin-top:12px">还不来抢奖金</div>
     </div>
 
