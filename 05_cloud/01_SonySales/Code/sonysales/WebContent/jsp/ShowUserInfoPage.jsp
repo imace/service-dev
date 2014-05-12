@@ -2,7 +2,7 @@
 <%@page import="net.sf.json.JSONObject"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="com.sonymobile.sonysales.util.Constant"%>
-<%@ page contentType="text/html; charset=gb2312"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,64 +16,66 @@
 <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
 <script
 	src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<title>ÄúµÄ»ù±¾ĞÅÏ¢</title>
+<title>æ‚¨çš„åŸºæœ¬ä¿¡æ¯</title>
 </head>
 <body>
 	<%
 		String openId = (String) request.getAttribute("openId");
 		String phoneNum = (String) request.getAttribute("phoneNum");
-		String email = (String) request.getAttribute("email");
+		String email = ((String) request.getAttribute("email"));
 		String address = (String) request.getAttribute("address");
 		String jdId = (String) request.getAttribute("jdId");
 		String points = (String) request.getAttribute("points");
 		String pointsOrder = (String) request.getAttribute("pointsOrder");
 		String supporterJS = (String) request.getAttribute("supporterJS");
-
 		PrintWriter outwriter = response.getWriter();
 	%>
 	<script language="javascript">
 		jQuery(function() {
 
-			$('#openId').val(
-	<%=openId%>
-		);
-			$('#phoneNum').val($('#showphoneNum').text());
-			$('#email').val($('#showemail').text());
-			$('#address').val($('#showaddress').text());
-			$('#jdId').val($('#showjdId').text());
-			$('#showInfo').hide();
-			$('#editInfo').show();
+			$('#openId').val('<%=openId%>');
+			$('#phoneNum').val('<%=phoneNum%>');
+			$('#email').val('<%=email%>');
+			$('#address').val('<%=address%>');
+			$('#jdId').val('<%=jdId%>');
+			
+			var url="<%=Constant.HOST%>/updateUserInfo";
 
 			$("form input").attr('disabled', 'true');
-			$('#test').click(function() {
-				//alert($('#test').text());
-				if ($('#test').text() == '±£´æ') {
-					$('#test').text('±à¼­');
-					$('form input').removeAttr("disabled");
-				} else {
-					$('#test').text('±£´æ');
-					$("form input").attr('disabled', 'true');
-				}
-				return false;
-			});
-
+			$('#test').click(
+					function() {
+						if ($('#test').text() == 'ä¿å­˜') {
+							$('#test').text('ç¼–è¾‘');
+							$("form input").attr('disabled', 'true');
+							var actionurl = url + "?openId=";
+							if (save()) {
+								actionurl += $('#openId').val() + "&phoneNum="
+										+ $('#phoneNum').val() + "&email="
+										+ $('#email').val() + "&address="
+										+ $('#address').val() + "&jdId="
+										+ $('#jdId').val();
+								$("#userform").attr("action", actionurl);
+								$("#userform").submit();
+							}
+						} else {
+							$('#test').text('ä¿å­˜');
+							$('form input').removeAttr("disabled");
+						}
+						return false;
+					});
 			var save = function() {
-				$mobileNum =
-	<%=phoneNum%>
-		;
-				alert($mobileNum);
+				var mobileNum = $('#phoneNum').val();
 				if (mobileNum.length == 0) {
-					alert('ÇëÊäÈëÊÖ»úºÅÂë£¡');
+					alert('è¯·è¾“å…¥æ‰‹æœºå·ç ï¼');
 					return false;
 				}
 				if (mobileNum.length != 11) {
-					alert('ÇëÊäÈëÓĞĞ§µÄÊÖ»úºÅÂë£¡');
+					alert('è¯·è¾“å…¥æœ‰æ•ˆçš„æ‰‹æœºå·ç ï¼');
 					return false;
 				}
-
 				var myreg = /^(((1[3-9][0-9]{1}))+\d{8})$/;
 				if (!myreg.test(mobileNum)) {
-					alert('ÇëÊäÈëÓĞĞ§µÄÊÖ»úºÅÂë£¡');
+					alert('è¯·è¾“å…¥æœ‰æ•ˆçš„æ‰‹æœºå·ç ï¼');
 					return false;
 				}
 				return true;
@@ -81,121 +83,129 @@
 
 		});
 	</script>
-
-
 	<div class="container"
 		style="background: url(/img/stamp.png) right bottom no-repeat; background-size: 55%; margin: 10px;">
 		<div class="row" style="font-family: Droid Sans Fallback;">
-			<h2 style="font-style: bold;">ÄúµÄ»ù±¾ĞÅÏ¢</h2>
-			<hr>
-			£¨ÇëÕıÈ·ÌîĞ´£¬ÒÔ±ãÎÒÃÇÄÜÁªÏµµ½Äú£¬¼°»ñ½±×Ê¸ñÈÏÖ¤¡£ÎÒÃÇ³ĞÅµ£¬²»¶ÔÄúµÄĞÅÏ¢½øĞĞ×ª·¢£¬Ğ¹Â¶£¬ÒÔ¼°ÆäËûÉÌÒµÓÃÍ¾£© <br>
-			<form class="form-horizontal" role="form">
+			<h2 style="color: #22bff2;">æ‚¨çš„åŸºæœ¬ä¿¡æ¯</h2>
+			<hr style="border: 1px solid #22bff2;">
+			ï¼ˆè¯·æ­£ç¡®å¡«å†™ï¼Œä»¥ä¾¿æˆ‘ä»¬èƒ½è”ç³»åˆ°æ‚¨ï¼ŒåŠè·å¥–èµ„æ ¼è®¤è¯ã€‚æˆ‘ä»¬æ‰¿è¯ºï¼Œä¸å¯¹æ‚¨çš„ä¿¡æ¯è¿›è¡Œè½¬å‘ï¼Œæ³„éœ²ï¼Œä»¥åŠå…¶ä»–å•†ä¸šç”¨é€”ï¼‰ <br>
+			<%-- <form class="form-horizontal" role="form" action="<%=Constant.HOST%>/updateUserInfo" > --%>
+			<form class="form-horizontal" id="userform" role="form"
+				action="http://localhost:8888/sonysales/updateUserInfo"
+				method="post">
 				<input name="openId" type="hidden" id="openId">
 				<div class="form-group">
-					<label for="phoneNum" class="col-sm-2 control-label">µç»°£º</label>
+					<label for="phoneNum" class="col-sm-2 control-label">ç”µè¯ï¼š</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" name="phoneNum"
-							id="phoneNum" placeholder="µç»°">
+							id="phoneNum" placeholder="ç”µè¯">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="email" class="col-sm-2 control-label">ÓÊÏä£º</label>
+					<label for="email" class="col-sm-2 control-label">é‚®ç®±ï¼š</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" name="email" id="email"
-							placeholder="ÓÊÏä">
+							placeholder="é‚®ç®±">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="address" class="col-sm-2 control-label">µØÖ·£º</label>
+					<label for="address" class="col-sm-2 control-label">åœ°å€ï¼š</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" name="address"
-							id="address" placeholder="µØÖ·">
+							id="address" placeholder="åœ°å€">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="jdId" class="col-sm-2 control-label">¾©¶«ÕËºÅ£º</label>
+					<label for="jdId" class="col-sm-2 control-label">äº¬ä¸œè´¦å·ï¼š</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" name="jdId" id="jdId"
-							placeholder="¾©¶«ÕËºÅ">
+							placeholder="äº¬ä¸œè´¦å·">
 					</div>
 				</div>
 
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button id="test" class="btn btn-default">±à¼­</button>
+						<button id="test" class="btn btn-default">ç¼–è¾‘</button>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<label> £¨Èç¹ûĞèÒªÓÊµİ½±Æ·»òÁìÈ¡½±½ğ£¬ÇëÌîĞ´ÕæÊµĞÅÏ¢£© </label>
+						<label style="color: #cea14b">ï¼ˆå¦‚æœéœ€è¦é‚®é€’å¥–å“æˆ–é¢†å–å¥–é‡‘ï¼Œè¯·å¡«å†™çœŸå®ä¿¡æ¯ï¼‰ </label>
 					</div>
 				</div>
 			</form>
 
 			<br>
-			<h2>ÄúµÄÓÅ»İ¾í</h2>
-			<hr>
-			<a href="#" class="btn btn-primary btn-lg active" role="button">µã»÷»ñÈ¡ÓÅ»İ¾í</a>
+			<h2 style="color: #22bff2;">æ‚¨çš„ä¼˜æƒ å·</h2>
+			<hr style="border: 1px solid #22bff2;">
+			<a href="#" class="btn btn-primary btn-lg active" role="button">ç‚¹å‡»è·å–ä¼˜æƒ å·</a>
 
 			<br>
 
 			<div>
-				<h2>ÄúµÄÈËÆø</h2>
-				<hr>
-				ÄúÒÑ¾­»ñµÃÈËÆøÇé¿öÈçÏÂ£º<br> ÄúÒÑ¾­»ñµÃ<%=points%>ÈËÆøµã£¬Ä¿Ç°ÅÅÃû<%=pointsOrder%>Î»£¬¼ÌĞø¼ÓÓÍÅ¶£¡
+				<h2 style="color: #22bff2;">æ‚¨çš„äººæ°”</h2>
+				<hr style="border: 1px solid #22bff2;">
+				æ‚¨å·²ç»è·å¾—äººæ°”æƒ…å†µå¦‚ä¸‹ï¼š<br> æ‚¨å·²ç»è·å¾—<%=points%>äººæ°”ç‚¹ï¼Œç›®å‰æ’å<%=pointsOrder%>ä½ï¼Œç»§ç»­åŠ æ²¹å“¦ï¼
 			</div>
 
 			<br>
 
-			<h2>ÄúµÄÀ­ÓÑÍÅ</h2>
-			<hr>
+			<h2 style="color: #22bff2;">æ‚¨çš„æ‹‰å‹å›¢</h2>
+			<hr style="border: 1px solid #22bff2;">
 			<div>
 				<%
 					JSONArray supporterJA = JSONArray.fromObject(supporterJS);
 					int supporterCount = supporterJA.size();
 					int money = supporterCount * Constant.FEEDBACK_SINGLE_MONEY;
 				%>
-				ÄúÒÑ¾­»ñÈ¡<%=supporterCount%>¸öºÃÓÑµÄÖ§³Ö½øĞĞÀ­ÊÖ¹ºÂò»î¶¯£¬×î¶à¿ÉÒÔ»ñµÃ<%=money%>Ôª·µ½ğ£¬ÄúµÄÀ­ÊÖÍÅĞÅÏ¢ÈçÏÂ£º<br>
+				æ‚¨å·²ç»è·å–<%=supporterCount%>ä¸ªå¥½å‹çš„æ”¯æŒè¿›è¡Œæ‹‰æ‰‹è´­ä¹°æ´»åŠ¨ï¼Œæœ€å¤šå¯ä»¥è·å¾—<%=money%>å…ƒè¿”é‡‘ï¼Œæ‚¨çš„æ‹‰æ‰‹å›¢ä¿¡æ¯å¦‚ä¸‹ï¼š<br>
 				<table class="table  table-striped">
 					<%
+						if (supporterCount > 0) {
+					%>
+					<%
 						for (int i = 0; i < supporterCount; i++) {
-							JSONObject jo = supporterJA.getJSONObject(i);
-							String nickname = jo.getString("nickname");
-							String createTime = jo.getString("createTime");
+								JSONObject jo = supporterJA.getJSONObject(i);
+								String nickname = jo.getString("nickname");
+								String createTime = jo.getString("createTime");
 
-							StringBuilder sb = new StringBuilder();
-							if (createTime != null && !createTime.isEmpty()
-									&& createTime.length() > 8) {
-								sb.append("ÒÑÓÚ");
-								sb.append(createTime.substring(0, 4));
-								sb.append("Äê");
-								sb.append(createTime.substring(4, 6));
-								sb.append("ÔÂ");
-								sb.append(createTime.substring(6, 8));
-								sb.append("ÈÕ");
-							} else {
-								sb.append("ÒÑ¾­");
-							}
-							createTime = sb.toString();
+								StringBuilder sb = new StringBuilder();
+								if (createTime != null && !createTime.isEmpty()
+										&& createTime.length() > 8) {
+									sb.append("å·²äº");
+									sb.append(createTime.substring(0, 4));
+									sb.append("å¹´");
+									sb.append(createTime.substring(4, 6));
+									sb.append("æœˆ");
+									sb.append(createTime.substring(6, 8));
+									sb.append("æ—¥");
+								} else {
+									sb.append("å·²ç»");
+								}
+								createTime = sb.toString();
 					%>
 					<tr>
-						<td><%=nickname%><%=createTime%>Ö§³ÖÁËÄú£¡</td>
+						<td><%=nickname%><%=createTime%>æ”¯æŒäº†æ‚¨ï¼</td>
+					</tr>
+					<%
+						}
+						}
+					%>
+					<%
+						if (supporterCount == 0) {
+					%>
+					<tr>
+						<td>è¿˜æ²¡æœ‰äººæ”¯æŒä½ ï¼Œ èµ¶ç´§å»æ‹‰å¥½å‹å§ï¼</td>
 					</tr>
 					<%
 						}
 					%>
 				</table>
 			</div>
-
-
-
-<br>
-
-<hr>
-<a href="<%=Constant.HOST%>/getNameList" class="btn btn-primary btn-lg active" role="button">²é¿´ÅÅĞĞ°ñĞÅÏ¢</a>
-
-
-
+			<br>
+			<hr style="border: 1px solid #22bff2;">
+			<a href="<%=Constant.HOST%>/getNameList"
+				class="btn btn-primary btn-lg active" role="button">æŸ¥çœ‹æ’è¡Œæ¦œä¿¡æ¯</a>
 		</div>
 	</div>
 
