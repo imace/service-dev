@@ -39,7 +39,8 @@
 			$('#address').val('<%=address%>');
 			$('#jdId').val('<%=jdId%>');
 			
-			var url="<%=Constant.HOST%>/updateUserInfo";
+			var url="<%=Constant.HOST%>
+		/updateUserInfo";
 
 			$("form input").attr('disabled', 'true');
 			$('#test').click(
@@ -86,9 +87,9 @@
 	<div class="container"
 		style="background: url(/img/stamp.png) right bottom no-repeat; background-size: 55%; margin: 10px;">
 		<div class="row" style="font-family: Droid Sans Fallback;">
-			<h2 style="color: #22bff2;">您的基本信息</h2>
+			<h4 style="color: #22bff2;">您的基本信息</h4>
 			<hr style="border: 1px solid #22bff2;">
-			（请正确填写，以便我们能联系到您，及获奖资格认证。我们承诺，不对您的信息进行转发，泄露，以及其他商业用途） <br>
+			请正确填写，以便我们能联系到您，及获奖资格认证。我们承诺，不对您的信息进行转发，泄露，以及其他商业用途 <br>
 			<%-- <form class="form-horizontal" role="form" action="<%=Constant.HOST%>/updateUserInfo" > --%>
 			<form class="form-horizontal" id="userform" role="form"
 				action="http://localhost:8888/sonysales/updateUserInfo"
@@ -122,35 +123,37 @@
 							placeholder="京东账号">
 					</div>
 				</div>
-
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button id="test" class="btn btn-default">编辑</button>
-					</div>
-				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<label style="color: #cea14b">（如果需要邮递奖品或领取奖金，请填写真实信息） </label>
 					</div>
 				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<a href="#" id="test"
+							style="display: block; background-color: #22bff2; border-color: #22bff2;"
+							class="btn btn-primary btn-lg active" role="button">编辑</a>
+					</div>
+				</div>
 			</form>
 
 			<br>
-			<h2 style="color: #22bff2;">您的优惠卷</h2>
+			<h4 style="color: #22bff2;">您的优惠卷</h4>
 			<hr style="border: 1px solid #22bff2;">
-			<a href="#" class="btn btn-primary btn-lg active" role="button">点击获取优惠卷</a>
-
-			<br>
-
+			<a href="#"
+				style="display: block; background-color: #22bff2; border-color: #22bff2;"
+				class="btn btn-primary btn-lg active" role="button">点击获取优惠卷</a> <br>
 			<div>
-				<h2 style="color: #22bff2;">您的人气</h2>
+				<h4 style="color: #22bff2;">您的人气</h4>
 				<hr style="border: 1px solid #22bff2;">
-				您已经获得人气情况如下：<br> 您已经获得<%=points%>人气点，目前排名<%=pointsOrder%>位，继续加油哦！
+				恭喜! 您已经获得<span style="color: #cea14b"><%=points%>人气点</span>，目前排名<span
+					style="color: #cea14b">第<%=pointsOrder%>位
+				</span>，继续加油哦！
 			</div>
 
 			<br>
 
-			<h2 style="color: #22bff2;">您的拉友团</h2>
+			<h4 style="color: #22bff2;">您的拉友团</h4>
 			<hr style="border: 1px solid #22bff2;">
 			<div>
 				<%
@@ -158,7 +161,8 @@
 					int supporterCount = supporterJA.size();
 					int money = supporterCount * Constant.FEEDBACK_SINGLE_MONEY;
 				%>
-				您已经获取<%=supporterCount%>个好友的支持进行拉手购买活动，最多可以获得<%=money%>元返金，您的拉手团信息如下：<br>
+				您已经获取<span style="color: #cea14b"><%=supporterCount%>个好友</span>的支持进行拉手购买活动，最多可以获得<span
+					style="color: #cea14b"><%=money%>元返金</span><br>
 				<table class="table  table-striped">
 					<%
 						if (supporterCount > 0) {
@@ -168,7 +172,6 @@
 								JSONObject jo = supporterJA.getJSONObject(i);
 								String nickname = jo.getString("nickname");
 								String createTime = jo.getString("createTime");
-
 								StringBuilder sb = new StringBuilder();
 								if (createTime != null && !createTime.isEmpty()
 										&& createTime.length() > 8) {
@@ -205,7 +208,8 @@
 			<br>
 			<hr style="border: 1px solid #22bff2;">
 			<a href="<%=Constant.HOST%>/getNameList"
-				class="btn btn-primary btn-lg active" role="button">查看排行榜信息</a>
+				class="btn btn-primary btn-lg active" role="button"
+				style="display: block; background-color: #22bff2; border-color: #22bff2;">查看排行榜信息</a>
 		</div>
 	</div>
 
