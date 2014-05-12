@@ -37,7 +37,7 @@
 
             <div>
                 <div id="title" style="margin-left:10px;font-size:larger">
-                  <h2>超值，索尼FIFA手机等你来拿！</h2>
+                  <h3>超值，索尼FIFA手机等你来拿！</h3>
                 </div>
                 <div id="banner_img_div">
                     <img src="../../img/banner_popularity.png" id="banner_img" style="margin-left:10px"/>
@@ -60,20 +60,19 @@
         <div id="touchBox">
                <img src="../../img/product_top_all_1.png" style="margin-top:0" id="top_img" />
             <div  style="background-color:white;padding-bottom:10px;">
-             <div id="buy" style="margin-left:10px;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;">
+             <div id="buy" style="margin-left:10px;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='http://www.jd.com'">
                 <div style="font-size:larger;color:white;padding-top:15px">立即购买</div>
              </div>
          </div>
             <div id="content" style="display:none;background-color:white">
                 <div id="bttons" style="padding-top:1px;margin-left:10px">
-                    <div id="pcbuy" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:left" onclick="window.location.href='../productPage.jsp'">
+                    <div id="pcbuy" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:left" onclick="window.location.href='<%=Constant.HOST%>/jsp/productPage.jsp'">
                         <div><img src="../../img/http_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:12px"/></div>
                         <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">PC购买</div>
                     </div>
-                    <div id="discount" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:right">
+                    <div id="discount" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:right" onclick="window.location.href='http://quan.jd.com/user_quan.action'">
                         <div><img src="../../img/discount_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:10px"/></div>
                         <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">折扣券</div>
-
                     </div>
                 </div>
                 <div id="desc" style="margin-left:10px;margin-top:65px;padding-bottom:10px">
@@ -84,7 +83,6 @@
                 </div>
             </div>
         </div>
-
 
 	<script type="text/javascript">
 
@@ -120,7 +118,7 @@
         var touch = event.touches[0];
 
         endY = touch.pageY;
-        if((startY-endY)>15) {//上滑
+        if((startY-endY)>20) {//上滑
             //$("#desc").css("height", 100); 
             //$("#desc").css("overflow-y", "auto"); 
             document.getElementById("content").style.display="";
@@ -129,7 +127,7 @@
             
             
             }
-        if((endY-startY)>20) {//下滑
+        if((endY-startY)>25) {//下滑
             document.getElementById("content").style.display="none";
 
             }
