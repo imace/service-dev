@@ -38,11 +38,11 @@
 	%>
 
 <div>
-        <div id="banner_img">
-            <img src="../../img/banner_popularity.png" id="banner_img" style="margin-left:10px"/>
-        </div>
-        <div id="intro" style="margin-left:10px;word-wrap:break-word;word-break:break-all;">
-            <div style="margin-top:10px;color:rgb(0, 173, 255);font-size:larger">
+   <div id="banner_img_div">
+             <img src="../../img/banner_popularity.png" id="banner_img" style="margin-left:10px"/>
+         </div>
+         <div id="intro" style="margin-left:10px;word-wrap:break-word;word-break:break-all;">
+             <div style="margin-top:10px;color:rgb(0, 173, 255);font-size:larger">
                             大力神杯拉手买活动规则
             </div>
             <div style="font-size:larger;line-height:150%;">
@@ -57,6 +57,7 @@
 </div>
 
         <div id="touchBox">
+               <img src="../../img/product_top_all_1.png" style="margin-top:0" id="top_img" />
             <div  style="background-color:white;padding-bottom:10px;">
              <div id="buy" style="margin-left:10px;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='http://www.jd.com'">
                 <div style="font-size:larger;color:white;padding-top:15px">立即购买</div>
