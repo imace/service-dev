@@ -38,7 +38,7 @@
 	%>
 
 <div>
-        <div id="banner_img_div">
+        <div id="banner_img">
             <img src="../../img/banner_popularity.png" id="banner_img" style="margin-left:10px"/>
         </div>
         <div id="intro" style="margin-left:10px;word-wrap:break-word;word-break:break-all;">
@@ -56,25 +56,23 @@
         </div>
 </div>
 
-<div id="touchBox">
-       <img src="../../img/product_top_all_1.png" style="margin-top:0" id="top_img" />
-    <div  style="background-color:white;padding-bottom:10px;">
-     <div id="buy" style="margin-left:10px;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='http://www.jd.com'">
-        <div style="font-size:larger;color:white;padding-top:15px">¡¢º¥π∫¬Ú</div>
-     </div>
- </div>
-    <div id="content" style="display:none;background-color:white">
-        <div id="bttons" style="padding-top:1px;margin-left:10px">
-            <div id="pcbuy" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:left" onclick="window.location.href='<%=Constant.HOST%>/jsp/productPage.jsp'">
-                <div><img src="../../img/http_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:12px"/></div>
-                <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">PCπ∫¬Ú</div>
-            </div>
-            <div id="discount" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:right" onclick="window.location.href='http://passport.jd.com/new/login.aspx?ReturnUrl=http%3A%2F%2Fquan.jd.com%2Fuser_quan.action'">
-                <div><img src="../../img/discount_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:10px"/></div>
-                <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">’€ø€»Ø</div>
-
-            </div>
-        </div>
+        <div id="touchBox">
+            <div  style="background-color:white;padding-bottom:10px;">
+             <div id="buy" style="margin-left:10px;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='http://www.jd.com'">
+                <div style="font-size:larger;color:white;padding-top:15px">¡¢º¥π∫¬Ú</div>
+             </div>
+         </div>
+            <div id="content" style="display:none;background-color:white">
+                <div id="bttons" style="padding-top:1px;margin-left:10px">
+                    <div id="pcbuy" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:left" onclick="window.location.href='<%=Constant.HOST%>/jsp/productPage.jsp'">
+                        <div><img src="../../img/http_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:12px"/></div>
+                        <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">PCπ∫¬Ú</div>
+                    </div>
+                    <div id="discount" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:right" onclick="window.location.href='http://passport.jd.com/new/login.aspx?ReturnUrl=http%3A%2F%2Fquan.jd.com%2Fuser_quan.action'">
+                        <div><img src="../../img/discount_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:10px"/></div>
+                        <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">’€ø€»Ø</div>
+                    </div>
+                </div>
         <div id="desc" style="margin-left:10px;margin-top:65px;padding-bottom:10px">
             <div style="font-size:small;font-weight:700">…Ã∆∑√Ë ˆ£∫</div>
             <div style="line-height:150%;margin-top:4px;word-wrap:break-word;word-break:break-all;color:rgb(117, 108, 108);font-size:small">

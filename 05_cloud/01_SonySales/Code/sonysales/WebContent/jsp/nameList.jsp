@@ -60,6 +60,7 @@
     </div>
     <table id="pop_table" cellSpacing=0 cellPadding=0 align=center border=1>
 	   <%  
+	   if(userList!=null) {
 	   for(int i=0;i<userList.size();i++) {
 	       if(i<3) {
 	    %>  
@@ -71,7 +72,7 @@
 	    <%     
 	       } else {
 	           %>
-	          <tr>
+	         <tr>
            <td><%=i+1 %></td>
            <td><%=userList.get(i).getNickname() %></td>
            <td>已经获得<font style="color:rgb(190, 155, 43)"><%=userList.get(i).getPoints() %></font>个好友支持了！</td>
@@ -79,10 +80,11 @@
 	         <%  
 	       }
 	   }
+   }
 	   %>
 	</table>
 	    <div id="rob1" style="margin-bottom:30px;margin-left:11px;margin-top:10px;height:50px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='<%=Constant.HOST%>/jsp/LaPopularity/ActivityPage.jsp'">
-       <div style="font-size:x-large;color:white;margin-top:12px">还不来抢大奖</div>
+       <div style="font-size:larger;color:white;margin-top:12px">还不来抢大奖</div>
     </div>
     
     <div id="pop_div" style="padding-top:1px;margin-left:10px">
@@ -96,6 +98,7 @@
 
     <table id="handle_table" cellSpacing=0 cellPadding=0 align=center border=1>
        <%  
+      if(supporterList!=null) {
        for(int i=0;i<supporterList.size();i++) {
            if(i<3) {
                %>  
@@ -118,13 +121,14 @@
       <% 
        }
        }
+       }
        %>
     
     </table>
 
 
     <div id="rob2" style="margin-bottom:20px;margin-left:11px;margin-top:10px;height:50px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='<%=Constant.HOST%>/jsp/LashouBuy/LashouActivity.jsp'">
-       <div style="font-size:x-large;color:white;margin-top:12px">还不来抢奖金</div>
+       <div style="font-size:larger;color:white;margin-top:12px">还不来抢奖金</div>
     </div>
 
 </body>
