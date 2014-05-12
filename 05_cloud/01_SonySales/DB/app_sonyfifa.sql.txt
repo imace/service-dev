@@ -160,6 +160,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `description` varchar(255) NOT NULL COMMENT '产品描述',
   `iconLink` varchar(255) NOT NULL COMMENT '产品图标链接',
   `jdLink` varchar(255) NOT NULL COMMENT '京东链接',
+  `price` int(11) NOT NULL COMMENT '价格',
   `createTime` varchar(12) NOT NULL COMMENT '创建时间Eg：201404101535',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
