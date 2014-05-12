@@ -13,7 +13,7 @@
 <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
 <script
 	src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<script src="../../js/relation.js"></script>
+<script src="<%=Constant.HOST%>/js/relation.js"></script>
 <title>支持我,得大奖!</title>
 </head>
 <body>
@@ -23,7 +23,8 @@
 		String toid = (String) request.getAttribute("toid");
 		String fromnickname = (String) request.getAttribute("fromnickname");
 		String tonickname = (String) request.getAttribute("tonickname");
-		String oauthtoidlink = (String) request.getAttribute("oauthtoidlink");
+		String oauthtoidlink = (String) request
+				.getAttribute("oauthtoidlink");
 		String fromimg = (String) request.getAttribute("fromimg");
 		String toimg = (String) request.getAttribute("toimg");
 	%>
