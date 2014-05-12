@@ -70,7 +70,7 @@
                         <div><img src="../../img/http_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:12px"/></div>
                         <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">PCπ∫¬Ú</div>
                     </div>
-                    <div id="discount" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:right" onclick="window.location.href='http://quan.jd.com/user_quan.action'">
+                    <div id="discount" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:right" onclick="window.location.href='http://passport.jd.com/new/login.aspx?ReturnUrl=http%3A%2F%2Fquan.jd.com%2Fuser_quan.action'">
                         <div><img src="../../img/discount_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:10px"/></div>
                         <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">’€ø€»Ø</div>
                     </div>
