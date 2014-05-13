@@ -39,8 +39,7 @@
 			$('#address').val('<%=address%>');
 			$('#jdId').val('<%=jdId%>');
 			
-			var url="<%=Constant.HOST%>
-		/updateUserInfo";
+			var url="<%=Constant.HOST%>"+"/updateUserInfo";
 
 			$("form input").attr('disabled', 'true');
 			$('#test').click(
@@ -86,6 +85,7 @@
 	</script>
 	<div class="container"
 		style="background: url(/img/stamp.png) right bottom no-repeat; background-size: 55%; margin: 10px;">
+		<h2>我的战况</h2>
 		<div class="row" style="font-family: Droid Sans Fallback;">
 			<h4 style="color: #22bff2;">您的基本信息</h4>
 			<hr style="border: 1px solid #22bff2;">
@@ -161,8 +161,7 @@
 					int supporterCount = supporterJA.size();
 					int money = supporterCount * Constant.FEEDBACK_SINGLE_MONEY;
 				%>
-				您已经获取<span style="color: #cea14b"><%=supporterCount%>个好友</span>的支持进行拉手购买活动，最多可以获得<span
-					style="color: #cea14b"><%=money%>元返金</span><br>
+				
 				<table class="table  table-striped">
 					<%
 						if (supporterCount > 0) {
@@ -204,12 +203,14 @@
 						}
 					%>
 				</table>
+				您已经获取<span style="color: #cea14b"><%=supporterCount%>个好友</span>的支持进行拉手购买活动，最多可以获得<span
+					style="color: #cea14b"><%=money%>元返金</span>
 			</div>
 			<br>
-			<hr style="border: 1px solid #22bff2;">
-			<a href="<%=Constant.HOST%>/getNameList"
-				class="btn btn-primary btn-lg active" role="button"
-				style="display: block; background-color: #22bff2; border-color: #22bff2;">查看排行榜信息</a>
+			<hr style="border: 1px dashed #999999;">
+			<a href="<%=Constant.HOST%>/getNameList" role="button" class="btn btn-lg"
+				style="display: block; border:1px solid #999999; text-align:center; font-size:20px; color:#3e3e3e;"><img src="/img/ranking_icn.png" alt="" style="padding:0px;border:none;width:24px;
+height:24px;margin:-2px 15px -3px 0px !important;"/>查看排行榜信息</a>
 		</div>
 	</div>
 

@@ -51,21 +51,21 @@
 						<hr>
 						<div class="row">
 							<div class="col-xs-1"></div>
-							<div class="col-xs-3">
-								<img alt="fifa" style="max-width: 100%;" src="<%=fromimg%>"><br>
-								<%=fromnickname%>
-								<input type="hidden" name="user1" value="<%=fromid%>">
+							<div class="col-xs-3" id="tonickname">
+								<img alt="fifa" style="max-width: 100%;" src="<%=toimg%>"><br>
+								<%=tonickname%>
+								<input type="hidden" name="user2" value="<%=toid%>">
 							</div>
 							<div class="col-xs-4">
 								<button type="submit" class="btn btn-success btn-block"
 									style="background: #22bff2; border-color: #22bff2; padding: 15px;">Ö§³ÖËû</button>
 								<br> <img alt="fifa" style="max-width: 100%;"
 									src="/img/arrow.png">
-							</div>
-							<div class="col-xs-3" id="tonickname">
-								<img alt="fifa" style="max-width: 100%;" src="<%=toimg%>"><br>
-								<%=tonickname%>
-								<input type="hidden" name="user2" value="<%=toid%>">
+							</div>							
+							<div class="col-xs-3">
+								<img alt="fifa" style="max-width: 100%;" src="<%=fromimg%>"><br>
+								<%=fromnickname%>
+								<input type="hidden" name="user1" value="<%=fromid%>">
 							</div>
 							<div class="col-xs-1"></div>
 						</div>
