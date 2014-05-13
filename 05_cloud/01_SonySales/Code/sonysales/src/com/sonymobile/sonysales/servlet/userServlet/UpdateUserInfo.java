@@ -2,12 +2,18 @@ package com.sonymobile.sonysales.servlet.userServlet;
 
 import java.io.IOException;
 import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import net.sf.json.JSONException;
+
+import com.sonymobile.sonysales.dao.UserDAO;
+import com.sonymobile.sonysales.model.User;
 import com.sonymobile.sonysales.service.MyFIFAService;
+import com.sonymobile.sonysales.service.PopularityService;
 import com.sonymobile.sonysales.util.Constant;
 
 public class UpdateUserInfo extends HttpServlet {
@@ -27,8 +33,14 @@ public class UpdateUserInfo extends HttpServlet {
 			String address = request.getParameter("address");
 			String jdId = request.getParameter("jdId");
 			response = initHeader(response);
-			Map<?, ?> retMsg = MyFIFAService.updateUser(openId, phoneNum,
-					email, address, jdId);
+			User user = UserDAO.getUserByOpenId(openId);
+			if (user != null) {
+				Map<?, ?> retMsg = MyFIFAService.updateUser(openId, phoneNum,email, address, jdId);
+			}else {
+				User addUser = new User();
+				addUser.setOpenId(openId);
+				PopularityService.addUser(addUser);
+			}
 			response.sendRedirect(Constant.HOST+"/myInfo?id="+openId);
 		} catch (JSONException e) {
 			e.printStackTrace();

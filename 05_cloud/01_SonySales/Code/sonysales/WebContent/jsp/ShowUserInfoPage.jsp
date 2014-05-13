@@ -146,9 +146,14 @@
 			<div>
 				<h4 style="color: #22bff2;">您的人气</h4>
 				<hr style="border: 1px solid #22bff2;">
+				<%if(points=="0") {%>
+				很抱歉, 您获得<span style="color: #cea14b">0人气点</span>，目前尚无排名，赶快加油吧！
+				<% }%>
+				<%if(points!="0") {%>
 				恭喜! 您已经获得<span style="color: #cea14b"><%=points%>人气点</span>，目前排名<span
 					style="color: #cea14b">第<%=pointsOrder%>位
 				</span>，继续加油哦！
+				<% }%>
 			</div>
 
 			<br>
