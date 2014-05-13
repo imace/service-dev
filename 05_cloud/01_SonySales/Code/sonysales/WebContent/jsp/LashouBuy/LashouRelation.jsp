@@ -37,7 +37,7 @@
 				</h4>
 				<h4 style="color: #cea14b">1.点击支持  2.完成关注</h4>
 				<img alt="fifa" style="max-width: 100%;"
-					src="/img/banner_recevier.png">
+					src="/img/product_2.png">
 				<h4 style="color: #22bff2">支持您的好友</h4>
 				<div id="personalInfo">
 					<h4>为了支持您的好友, 需要首先点击下面按钮获取您的个人信息。</h4>
