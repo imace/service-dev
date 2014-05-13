@@ -35,7 +35,7 @@
 					Hi, 亲, 我(<%=fromnickname%>)正在参加索尼FIFA活动, 如果你支持并完成关注可以获得50元购买折扣券,
 					同时我也可以获得奖金的哦, 非常感谢咯, 仅需完成以下两步:
 				</h4>
-				<h4 style="color: #cea14b">1. 点击支持 2. 完成关注 即可获得下面奖品</h4>
+				<h4 style="color: #cea14b">1.点击支持  2.完成关注</h4>
 				<img alt="fifa" style="max-width: 100%;"
 					src="/img/banner_recevier.png">
 				<h4 style="color: #22bff2">支持您的好友</h4>

@@ -36,7 +36,7 @@
 					Hi, 亲, 我(<%=fromnickname%>)对索尼FIFA手机志在必得, 请你拉我一票, 同时你也可以获得打折惠,
 					请完成简单2步:
 				</h4>
-				<h4 style="color: #cea14b">1. 点击支持 2. 完成关注 即可获得下面奖品</h4>
+				<h4 style="color: #cea14b">1.点击支持  2.完成关注</h4>
 				<img alt="fifa" style="max-width: 100%;"
 					src="/img/banner_recevier.png">
 				<h4 style="color: #22bff2">支持您的好友</h4>
@@ -59,7 +59,7 @@
 							</div>
 							<div class="col-xs-4">
 								<button type="submit" class="btn btn-success btn-block"
-									style="background: #22bff2; border-color: #22bff2; padding: 15px;">点击支持</button>
+									style="background: #22bff2; border-color: #22bff2; padding: 15px;">支持他</button>
 								<br> <img alt="fifa" style="max-width: 100%;"
 									src="/img/arrow.png">
 							</div>
