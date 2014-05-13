@@ -96,40 +96,40 @@
 				method="post">
 				<input name="openId" type="hidden" id="openId">
 				<div class="form-group">
-					<label for="phoneNum" class="col-sm-2 control-label">电话：</label>
-					<div class="col-sm-10">
+					<label for="phoneNum" class="col-xs-3 control-label">电话：</label>
+					<div class="col-xs-9">
 						<input type="text" class="form-control" name="phoneNum"
 							id="phoneNum" placeholder="电话">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="email" class="col-sm-2 control-label">邮箱：</label>
-					<div class="col-sm-10">
+					<label for="email" class="col-xs-3 control-label">邮箱：</label>
+					<div class="col-xs-9">
 						<input type="text" class="form-control" name="email" id="email"
 							placeholder="邮箱">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="address" class="col-sm-2 control-label">地址：</label>
-					<div class="col-sm-10">
+					<label for="address" class="col-xs-3 control-label">地址：</label>
+					<div class="col-xs-9">
 						<input type="text" class="form-control" name="address"
 							id="address" placeholder="地址">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="jdId" class="col-sm-2 control-label">京东账号：</label>
-					<div class="col-sm-10">
+					<label for="jdId" class="col-xs-3 control-label" style="padding-right:0px;">京东账号：</label>
+					<div class="col-xs-9">
 						<input type="text" class="form-control" name="jdId" id="jdId"
 							placeholder="京东账号">
 					</div>
 				</div>
 				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
+					<div class="col-xs-12">
 						<label style="color: #cea14b">（如果需要邮递奖品或领取奖金，请填写真实信息） </label>
 					</div>
 				</div>
 				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
+					<div class="col-xs-12">
 						<a href="#" id="test"
 							style="display: block; background-color: #22bff2; border-color: #22bff2;"
 							class="btn btn-primary btn-lg active" role="button">编辑</a>

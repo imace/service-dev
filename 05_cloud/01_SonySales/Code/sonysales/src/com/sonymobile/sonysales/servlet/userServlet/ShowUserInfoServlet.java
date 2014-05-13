@@ -23,13 +23,18 @@ public class ShowUserInfoServlet extends HttpServlet {
 		List<?> list = MyFIFAService.getPointsOrder(openId);
 		String userJson = JSONArray.fromObject(list).toString();
 		JSONArray userJA = JSONArray.fromObject(userJson);
-		JSONObject userJO = userJA.getJSONObject(0);
-		String phoneNum = userJO.getString("phoneNum");
-		String email = userJO.getString("email");
-		String address = userJO.getString("address");
-		String jdId = userJO.getString("jdId");
-		String points = userJO.getString("points");
-		String pointsOrder = userJO.getString("pointsOrder");
+		String phoneNum="", email="",address="",jdId="",points="",pointsOrder="";
+		
+		if (userJA.size()>0) {
+			JSONObject userJO = userJA.getJSONObject(0);
+			phoneNum = userJO.getString("phoneNum");
+			email = userJO.getString("email");
+			address = userJO.getString("address");
+			jdId = userJO.getString("jdId");
+			points = userJO.getString("points");
+			pointsOrder = userJO.getString("pointsOrder");	
+		}
+		
 		
 		List<?> supporters = MyFIFAService.getSupporters(openId);
 		String supporterJS = JSONArray.fromObject(supporters).toString();
