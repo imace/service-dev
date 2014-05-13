@@ -44,6 +44,10 @@ public class UpdateUserInfo extends HttpServlet {
 				User addUser = new User();
 				addUser.setOpenId(openId);
 				addUser.setNickname(nickname);
+				addUser.setNickname(phoneNum);
+				addUser.setNickname(email);
+				addUser.setNickname(address);
+				addUser.setNickname(jdId);
 				PopularityService.addUser(addUser);
 			}
 			response.sendRedirect(Constant.HOST+"/myInfo?id="+openId);
