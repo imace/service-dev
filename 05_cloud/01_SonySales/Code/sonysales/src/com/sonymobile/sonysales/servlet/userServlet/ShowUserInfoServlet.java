@@ -23,7 +23,7 @@ public class ShowUserInfoServlet extends HttpServlet {
 		List<?> list = MyFIFAService.getPointsOrder(openId);
 		String userJson = JSONArray.fromObject(list).toString();
 		JSONArray userJA = JSONArray.fromObject(userJson);
-		String phoneNum="", email="",address="",jdId="",points="",pointsOrder="";
+		String phoneNum="", email="",address="",jdId="",points="0",pointsOrder="0";
 		
 		if (userJA.size()>0) {
 			JSONObject userJO = userJA.getJSONObject(0);
@@ -44,8 +44,8 @@ public class ShowUserInfoServlet extends HttpServlet {
 		request.setAttribute("email", email);
 		request.setAttribute("address", address);
 		request.setAttribute("jdId", jdId);
-		request.setAttribute("points", points);
-		request.setAttribute("pointsOrder", pointsOrder);
+		request.setAttribute("points", points==null?"0":points);
+		request.setAttribute("pointsOrder", pointsOrder==null?"0":points);
 		request.setAttribute("supporterJS", supporterJS);
 		request.getRequestDispatcher("/jsp/ShowUserInfoPage.jsp").forward(request, response);
 	}

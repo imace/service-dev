@@ -15,7 +15,7 @@ public final class Constant {
 
 	public static final int SAE_FETCHURL_SUCCESS_CODE = 0;
 	
-	public static final int FEEDBACK_SINGLE_MONEY =  20;
+	public static final int FEEDBACK_SINGLE_MONEY =  50;
 
 	public static final String MASTER_ACCOUNT_HOST = "http://1.sonyfifadev.sinaapp.com/WeChat/";
 	public static final String MASTER_ACCOUNT_GETUSERINFO_PATH="getuserinfo.php";
