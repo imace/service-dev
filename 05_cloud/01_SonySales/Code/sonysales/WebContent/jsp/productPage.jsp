@@ -26,7 +26,7 @@
 								            <img src="../img/PC_product.png" id="PC_product_img" style="margin-left:10px"/>
 								            </p>
 								        </div>
-                    <div style="text-align:center;font-size:300%;font-weight:bold;padding-top:3px;">
+                    <div style="text-align:center;font-size:260%;font-weight:bold;padding-top:3px;">
                                                 http://item.jd.com/1107153627
                     </div> 
                 </div>
@@ -37,7 +37,7 @@
 	<script type="text/javascript">
 
 	$(document).ready(function(){
-        $("#PC_product_img").css("width", document.body.clientWidth/3); 
+        $("#PC_product_img").css("width", document.body.clientWidth/2); 
         $("#intro").css("width", document.body.clientWidth-20); 
        
         });
