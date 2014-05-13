@@ -18,7 +18,10 @@ public final class Constant {
 	public static final int FEEDBACK_SINGLE_MONEY =  50;
 
 	public static final String MASTER_ACCOUNT_HOST = "http://1.sonyfifadev.sinaapp.com/WeChat/";
-	public static final String MASTER_ACCOUNT_GETUSERINFO_PATH="getuserinfo.php";
+	// Test Server to get UserInfo
+	//public static final String MASTER_ACCOUNT_GETUSERINFO_PATH="getuserinfo.php";
+	// Development server to get UserInfo
+	public static final String MASTER_ACCOUNT_GETUSERINFO_PATH="devUserInfo.php";
 
 	// The links of Wechat OAUTH links
 	public static final String WECHAT_OAUTH2_AUTHORIZE_URL = "https://open.weixin.qq.com/connect/oauth2/authorize";
