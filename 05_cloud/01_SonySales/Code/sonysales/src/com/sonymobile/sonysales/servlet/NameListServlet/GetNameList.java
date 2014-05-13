@@ -28,7 +28,9 @@ public class GetNameList extends HttpServlet {
 
 			request.setAttribute("supporterList",
 					NameListService.getNameListOfHandle("10"));
-
+			
+			String openId = request.getParameter("id");
+			request.setAttribute("openId", openId);
 			request.getRequestDispatcher("/jsp/nameList.jsp").forward(request,
 					response);
 		} catch (JSONException e) { 

@@ -45,6 +45,7 @@
 
 	 List<User> userList = (List<User>)request.getAttribute("userList");
 	 List<SupporterCount> supporterList = (List<SupporterCount>)request.getAttribute("supporterList");
+	 String openId =(String)request.getAttribute("openId");
 	
 	%>
 	<div id="title" style="margin-left:10px">
@@ -83,7 +84,7 @@
    }
 	   %>
 	</table>
-	    <div id="rob1" style="margin-bottom:30px;margin-left:11px;margin-top:10px;height:50px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='<%=Constant.HOST%>/jsp/LaPopularity/ActivityPage.jsp'">
+	    <div id="rob1" style="margin-bottom:30px;margin-left:11px;margin-top:10px;height:50px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='<%=Constant.HOST%>/jsp/LaPopularity/ActivityPage.jsp?id=<%=openId%>'">
        <div style="font-size:larger;color:white;margin-top:12px">还不来抢大奖</div>
     </div>
     
@@ -127,7 +128,7 @@
     </table>
 
 
-    <div id="rob2" style="margin-bottom:20px;margin-left:11px;margin-top:10px;height:50px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='<%=Constant.HOST%>/jsp/LashouBuy/LashouActivity.jsp'">
+    <div id="rob2" style="margin-bottom:20px;margin-left:11px;margin-top:10px;height:50px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='<%=Constant.HOST%>/jsp/LashouBuy/LashouActivity.jsp?id=<%=openId%>'">
        <div style="font-size:larger;color:white;margin-top:12px">还不来抢奖金</div>
     </div>
 
