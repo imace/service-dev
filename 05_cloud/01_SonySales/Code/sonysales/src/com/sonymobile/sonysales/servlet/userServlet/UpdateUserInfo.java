@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONException;
 
 import com.sonymobile.sonysales.dao.UserDAO;
+import com.sonymobile.sonysales.entity.DefaultWechatInfoImpl;
+import com.sonymobile.sonysales.entity.json.WechatUserInfo;
 import com.sonymobile.sonysales.model.User;
 import com.sonymobile.sonysales.service.MyFIFAService;
 import com.sonymobile.sonysales.service.PopularityService;
@@ -37,8 +39,11 @@ public class UpdateUserInfo extends HttpServlet {
 			if (user != null) {
 				Map<?, ?> retMsg = MyFIFAService.updateUser(openId, phoneNum,email, address, jdId);
 			}else {
+				WechatUserInfo wechatuserinfo=DefaultWechatInfoImpl.getInstance().getWebChatUserInfo(openId);
+				String nickname = wechatuserinfo.getNickname();
 				User addUser = new User();
 				addUser.setOpenId(openId);
+				addUser.setNickname(nickname);
 				PopularityService.addUser(addUser);
 			}
 			response.sendRedirect(Constant.HOST+"/myInfo?id="+openId);
