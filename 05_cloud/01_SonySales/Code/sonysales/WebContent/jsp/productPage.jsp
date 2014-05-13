@@ -15,20 +15,20 @@
 
 
             <div>
-                <div id="intro" style="margin-left:10px;word-wrap:break-word;word-break:break-all;">
-                    <div style="margin-top:10px;color:rgb(0, 173, 255);font-size:larger">
-                                    购买链接
+                <div id="intro" style="text-align:center;word-wrap:break-word;word-break:break-all;">
+                    <div style="font-size:larger;">
+                    <p>
+                        请在pc端浏览器输入下面链接进行后续购买。
+                        </p>
                     </div>
-                    <div style="font-size:larger;line-height:150%;">
-                        请在pc端浏览器输入下面链接<br/>
-                        进行后续购买。
-                    </div>
-                    <div id="product_div">
-								            <img src="../img/product.png" id="product_img" style="margin-left:10px"/>
+                    <div id="product_div" style="text-align:center">
+                    <p>
+								            <img src="../img/PC_product.png" id="PC_product_img" style="margin-left:10px"/>
+								            </p>
 								        </div>
-                    <div style="font-size:300%;font-weight:bold;padding-top:3px">
+                    <div style="text-align:center;font-size:300%;font-weight:bold;padding-top:3px;">
                                                 http://item.jd.com/1107153627
-                    </div>
+                    </div> 
                 </div>
             </div>
 
@@ -37,10 +37,7 @@
 	<script type="text/javascript">
 
 	$(document).ready(function(){
-        var windowHeight = window.innerHeight;
-        $("#touchBox").css({position: "absolute",'bottom':0,'z-index':2}); 
-        document.getElementById("top_img").width=document.body.clientWidth;
-        $("#product_img").css("width", document.body.clientWidth/3); 
+        $("#PC_product_img").css("width", document.body.clientWidth/3); 
         $("#intro").css("width", document.body.clientWidth-20); 
        
         });

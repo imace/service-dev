@@ -163,10 +163,12 @@
         if(!open) {
        document.getElementById("content").style.display="";
        $("#touchBox").css({position: "absolute",'bottom':0,'z-index':2}); 
+       $("#top_img").attr("src","../../img/product_top_all_2.png"); 
        open = true;
-            } else {
-                document.getElementById("content").style.display="none";
+       } else {
+           document.getElementById("content").style.display="none";
          $("#touchBox").css({position: "absolute",'bottom':0,'z-index':2});
+         $("#top_img").attr("src","../../img/product_top_all_1.png");
          open = false;
                 }
             }
