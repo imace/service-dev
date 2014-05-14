@@ -140,7 +140,7 @@
     <div id = "handlelist_div1">
     <table id="handle_table1" cellSpacing=0 cellPadding=0 align=center border=1>
        <%  
-      if(supporterList!=null) {
+      if(supporterList!=null&&supporterList.size()!=0) {
        for(int i=0;i<supporterList.size();i++) {
            if(i<3) {
                %>  
@@ -174,7 +174,7 @@
     <div id = "handlelist_div2">
         <table id="handle_table2" cellSpacing=0 cellPadding=0 align=center border=1 style="border-top:aliceblue">
  <%  
-      if(supporterList!=null) {
+      if(supporterList!=null&&supporterList.size()!=0) {
        for(int i=0;i<supporterList.size();i++) {
            if(i<3) {
                %>  
