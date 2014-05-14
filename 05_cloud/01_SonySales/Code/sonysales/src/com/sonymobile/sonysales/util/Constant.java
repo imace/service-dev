@@ -19,7 +19,7 @@ public final class Constant {
 	public static final int FEEDBACK_SINGLE_MONEY;
     
     static {
-        InputStream is = ConfigReader.class.getClassLoader()
+        InputStream is = Constant.class.getClassLoader()
                 .getResourceAsStream("config.properties");
         try {
             properties.load(is);
