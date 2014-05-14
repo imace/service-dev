@@ -58,7 +58,7 @@
         </div>
 
         <div id="touchBox">
-               <img src="../../img/product_top_all_1.png" style="margin-top:0" id="top_img" onclick="draw()"/>
+               <img src="../../img/product_top_all_1.png" style="margin-top:0" id="top_img" />
             <div  style="background-color:white;padding-bottom:10px;">
              <div id="buy" style="margin-left:10px;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='http://www.jd.com'">
                 <div style="font-size:larger;color:white;padding-top:15px">立即购买</div>
@@ -99,7 +99,7 @@
         $("#pcbuy").css("width", (document.body.clientWidth-20)/2-7); 
         $("#discount").css("width", (document.body.clientWidth-20)/2-7); 
         
-       /* var startX,startY,endX,endY
+        var startX,startY,endX,endY
      var scrollTopVal=0; //左右滑动请自行修改
         document.getElementById("touchBox").addEventListener("touchstart", touchStart, false);
         document.getElementById("touchBox").addEventListener("touchmove", touchMove, false);
@@ -119,7 +119,7 @@
         var touch = event.touches[0];
 
         endY = touch.pageY;
-        if((startY-endY)>20) {//上滑
+        if((startY-endY)>25) {//上滑
             //$("#desc").css("height", 100); 
             //$("#desc").css("overflow-y", "auto"); 
             document.getElementById("content").style.display="";
@@ -145,7 +145,7 @@
                 $("#touchBox").css({position: "absolute",'bottom':0,'z-index':2});
 
                 }
-            if((startY-endY)>20) {//上滑
+            if((startY-endY)>25) {//上滑
                   $("#top_img").attr("src","../../img/product_top_all_2.png"); 
                 //$("#desc").css("height", 100); 
                 //$("#desc").css("overflow-y", "auto"); 
@@ -155,7 +155,7 @@
 
 
         }
-        */
+       
         });
     
 	var open = false;
