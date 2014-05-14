@@ -10,13 +10,20 @@ public final class Constant {
 	private static Logger logger = Logger.getLogger(Constant.class);
 	private static Properties properties = new Properties();
 	
-	public static final String HOST;
+	// This application host
+	public static final String HOST; 
+	// The images host of this application 
+	public static final String SONY_FIFA_IMAGES_HOST;
+	
+	// The wechat account
 	public static final String APP_ID;
 	public static final String APP_SECRET;
 
 	public static final String MASTER_ACCOUNT_HOST;
 	public static final String MASTER_ACCOUNT_GETUSERINFO_PATH;
 	public static final int FEEDBACK_SINGLE_MONEY;
+	
+	public static final String SONY_FIFA_INDEX_NEWS;
     
     static {
         InputStream is = Constant.class.getClassLoader()
@@ -29,6 +36,7 @@ public final class Constant {
         }
 
         HOST = properties.getProperty("HOST");
+        SONY_FIFA_IMAGES_HOST = properties.getProperty("SONY_FIFA_IMAGES_HOST");
 		APP_ID = properties.getProperty("APP_ID");
 		APP_SECRET = properties.getProperty("APP_SECRET");
 		
@@ -36,9 +44,13 @@ public final class Constant {
 		MASTER_ACCOUNT_GETUSERINFO_PATH = properties.getProperty("MASTER_ACCOUNT_GETUSERINFO_PATH");
 		
 		FEEDBACK_SINGLE_MONEY = Integer.parseInt(properties.getProperty("FEEDBACK_SINGLE_MONEY"));
+		
+		SONY_FIFA_INDEX_NEWS = properties.getProperty("SONY_FIFA_INDEX_NEWS");
 	}
 
 	public static final int SAE_FETCHURL_SUCCESS_CODE = 0;
+	
+	public static final String SONY_FIFA_KEY = "SONY_FIFA_INDEX";
 	
 
 	/**

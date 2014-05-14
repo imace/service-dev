@@ -210,6 +210,27 @@
               <servlet-name>AddHandle</servlet-name>
               <url-pattern>/addHandle</url-pattern>
        </servlet-mapping>
+    
+       <servlet>
+              <description></description>
+              <display-name>GetPictextListServlet</display-name>
+              <servlet-name>GetPictextListServlet</servlet-name>
+              <servlet-class>com.sonymobile.sonysales.servlet.api.GetPictextListServlet</servlet-class>
+       </servlet>
+       <servlet-mapping>
+              <servlet-name>GetPictextListServlet</servlet-name>
+              <url-pattern>/getSonySalesNews</url-pattern>
+       </servlet-mapping>
+       <servlet>
+              <description></description>
+              <display-name>HeaderServlet</display-name>
+              <servlet-name>HeaderServlet</servlet-name>
+              <servlet-class>com.sonymobile.sonysales.servlet.api.HeaderServlet</servlet-class>
+       </servlet>
+       <servlet-mapping>
+              <servlet-name>HeaderServlet</servlet-name>
+              <url-pattern>/head</url-pattern>
+       </servlet-mapping>
     <filter>
         <filter-name>characterEncodingFilter</filter-name>
         <filter-class>com.sonymobile.sonysales.filter.CharacterEncodingFilter</filter-class>
