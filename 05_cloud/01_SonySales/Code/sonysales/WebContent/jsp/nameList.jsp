@@ -67,29 +67,33 @@
     <div id="poplist_div">
     <div id = "poplist_div1">
     <table id="pop_table1" cellSpacing=0 cellPadding=0 align=center border=1>
-	   <%  
-	   if(userList!=null) {
-	   for(int i=0;i<userList.size();i++) {
-	       if(i<3) {
-	    %>  
-	       <tr>
+       <%  
+       if(userList!=null) {
+       for(int i=0;i<userList.size();i++) {
+           if(i<3) {
+        %>  
+           <tr>
          <td><div style="color:#e82827"><%=i+1 %></div></td>
          <td><div style="color:#e82827"><%=userList.get(i).getNickname() %></div></td>
          <td>已经获得<font style="color:rgb(190, 155, 43)"><%=userList.get(i).getPoints() %></font>个好友支持了！</td>
          </tr>
-	    <%     
-	       } else {
-	           %>
-	         <tr>
+        <%     
+           } else {
+               %>
+             <tr>
            <td><%=i+1 %></td>
            <td><%=userList.get(i).getNickname() %></td>
            <td>已经获得<font style="color:rgb(190, 155, 43)"><%=userList.get(i).getPoints() %></font>个好友支持了！</td>
            </tr>
-	         <%  
-	       }
-	   }
+             <%  
+           }
+       }
+   } else {
+       %>
+       <tr><td id="pop_img_td" style="text-align:center;border-top:medium none;"><div style="margin: 15px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="img/product_3.png" style="height:180px" id="pop_img"/></div><td></tr>
+       <%
    }
-	   %>
+       %>
 	</table>
 	</div>
     <div id = "poplist_div2">
@@ -159,8 +163,12 @@
       <% 
        }
        }
+       } else {
+           %>
+           <tr><td style="text-align:center;border-top:medium none;"><div style="margin: 15px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="img/product_3.png" style="height:180px"/></div><td></tr>
+           <%
        }
-       %>
+           %>
     </table>
 </div>
     <div id = "handlelist_div2">
