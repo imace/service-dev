@@ -18,12 +18,13 @@
 	FONT-SIZE: larger;
 	position: fixed;
 	bottom: 0;
-	background-color: white;
+	background-color: transparent;
+	outline-style: none;
 }
 
-.deco {
-	TEXT-DECORATION: none;
-	outline: none
+.bottom {
+	position: fixed;
+	bottom: 0;
 }
 </style>
 </head>
@@ -58,55 +59,52 @@
 				走过，路过，不要错过！</div>
 		</div>
 	</div>
+	<br>
+	<br>
+	<br>
+	<img id="bgImg" src="../../img/main_panel_all_word.png" class="bottom" />
+	<input type="button" id="button1" value="查看&#13;&#10;大奖榜单" class="btn"
+		onclick="window.open('<%=Constant.HOST%>/getNameList')" />
 
-	<br>
+	<input type="button" id="button2" value="拉人气&#13;&#10;得大奖" class="btn"
+		onclick="window.open('<%=Constant.HOST%>/activitypage?id=<%=openId%>')" />
 
-	<br>
+	<input type="button" id="button3" value="拉友买&#13;&#10;获奖金" class="btn"
+		onclick="window.open('<%=Constant.HOST%>/lashouactivity?id=<%=openId%>')" />
 
-	<br>
+	<input type="button" id="button4" value="查看&#13;&#10;大奖榜单" class="btn"
+		onclick="window.open('<%=Constant.HOST%>/myInfo?id=<%=openId%>')" />
 
-	<a class="deco" href="<%=Constant.HOST%>/getNameList"><input
-		type="button" id="button1" value="查看&#13;&#10;大奖榜单" class="btn" /></a>
-	<br>
-	<a class="deco" href="<%=Constant.HOST%>/activitypage?id=<%=openId%>"><input
-		type="button" id="button2" value="拉人气&#13;&#10;得大奖" class="btn" /></a>
-	<br>
-	<a class="deco" href="<%=Constant.HOST%>/lashouactivity?id=<%=openId%>"><input
-		type="button" id="button3" value="拉友买&#13;&#10;获奖金" class="btn" /></a>
-	<br>
-	<a class="deco" href="<%=Constant.HOST%>/myInfo?id=<%=openId%>"><input
-		type="button" id="button4" value="我的战况" class="btn" /></a>
-	<br>
 	<script type="text/javascript">
 		$(document).ready(
 				function() {
 					$("#banner_img").css("width",
 							document.body.clientWidth - 20);
+					$("bgImg").css("width", document.body.clientWidth);
 					$("#intro").css("width", document.body.clientWidth - 20);
 					$("#button1").css("width",
 							(document.body.clientWidth - 50) / 4);
 					$("#button1").css("height",
 							(document.body.clientWidth - 50) / 4);
 					$("#button1").css("left", 10);
-
 					$("#button2").css("width",
 							(document.body.clientWidth - 50) / 4);
 					$("#button2").css("height",
 							(document.body.clientWidth - 50) / 4);
 					$("#button2").css("left",
-							(document.body.clientWidth) / 4 + 10);
+							(document.body.clientWidth + 30) / 4);
 					$("#button3").css("width",
 							(document.body.clientWidth - 50) / 4);
 					$("#button3").css("height",
 							(document.body.clientWidth - 50) / 4);
 					$("#button3").css("left",
-							(document.body.clientWidth) / 2 + 10);
+							(document.body.clientWidth + 10) / 2);
 					$("#button4").css("width",
 							(document.body.clientWidth - 50) / 4);
 					$("#button4").css("height",
 							(document.body.clientWidth - 50) / 4);
 					$("#button4").css("left",
-							(document.body.clientWidth * 3) / 4 + 10);
+							(document.body.clientWidth * 3 + 10) / 4);
 				});
 	</script>
 </body>
