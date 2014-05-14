@@ -68,7 +68,7 @@
     <div id = "poplist_div1">
     <table id="pop_table1" cellSpacing=0 cellPadding=0 align=center border=1>
        <%  
-       if(userList!=null) {
+       if(userList!=null&&userList.size()!=0) {
        for(int i=0;i<userList.size();i++) {
            if(i<3) {
         %>  
@@ -99,7 +99,7 @@
     <div id = "poplist_div2">
         <table id="pop_table2" cellSpacing=0 cellPadding=0 align=center border=1 style="border-top:aliceblue">
          <%  
-       if(userList!=null) {
+       if(userList!=null&&userList.size()!=0) {
        for(int i=0;i<userList.size();i++) {
            if(i<3) {
         %>  
