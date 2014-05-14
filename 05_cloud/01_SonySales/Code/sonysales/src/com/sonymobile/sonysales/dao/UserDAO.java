@@ -11,7 +11,7 @@ public class UserDAO {
 	public static List<?> getUserList(String limit, String orderby) {
 		HibernateUtil hibernateUtil = new HibernateUtil();
 
-		String hql = "from User u order by u." + orderby + " desc";
+		String hql = "from User u where u.points>0 order by u." + orderby + " desc ";
 
 		int maxResults = 0;
 		try {

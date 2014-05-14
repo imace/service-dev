@@ -24,10 +24,10 @@ public class GetNameList extends HttpServlet {
 			response = initHeader(response);
 
 			request.setAttribute("userList",
-					NameListService.getNameListOfPopularity("10"));
+					NameListService.getNameListOfPopularity("20"));
 
 			request.setAttribute("supporterList",
-					NameListService.getNameListOfHandle("10"));
+					NameListService.getNameListOfHandle("20"));
 			
 			String openId = request.getParameter("id");
 			request.setAttribute("openId", openId);
