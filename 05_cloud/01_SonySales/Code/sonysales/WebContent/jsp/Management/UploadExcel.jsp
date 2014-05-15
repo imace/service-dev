@@ -8,8 +8,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport"
 	content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
-<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-
+<script src="<%=Constant.HOST%>/js/jquery-1.7.2.min.js"></script>
 <script src="<%=Constant.HOST%>/js/bootstrap.js"></script>
 <link rel="stylesheet" href="<%=Constant.HOST%>/css/bootstrap.min.css" />
 <link rel="stylesheet"
@@ -17,15 +16,10 @@
 <link rel="stylesheet" href="<%=Constant.HOST%>/css/adminia.css">
 <link rel="stylesheet"
 	href="<%=Constant.HOST%>/css/adminia-responsive.css">
-
-
-<title>批量上传订单</title>
+<title>拉友买订单导入</title>
 </head>
 <body>
-
-
 	<jsp:include page="Layout/Header.jsp"></jsp:include>
-
 	<div id="content">
 		<div class="container">
 			<div class="row">
