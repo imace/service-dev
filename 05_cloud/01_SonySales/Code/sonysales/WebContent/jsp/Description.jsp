@@ -15,7 +15,6 @@
 	width: 120px;
 	height: 120px;
 	border-radius: 60px;
-	FONT-SIZE: larger;
 	position: fixed;
 	bottom: 0;
 	background-color: transparent;
@@ -48,11 +47,11 @@
 				索尼 FIFA 2014 活动介绍</div>
 			<div
 				style="font-size: larger; color: rgb(62, 62, 62); line-height: 150%; font-family: Droid Sans Fallback;">
-				FIFA , 2014 , 赛事重来 ,<br /> 谁将会成为最后赢家？</br> 想不想也参与这个激动人心的活动？</br> </br>
+				FIFA , 2014 , 赛事重来 ,<br> 谁将会成为最后赢家？<br> 想不想也参与这个激动人心的活动？<br><br>
 			</div>
 			<div
 				style="font-size: larger; color: rgb(206, 161, 75); line-height: 150%; font-family: Droid Sans Fallback;">
-				参加这个活动，不仅有机会获得超值索尼FIFA手机，还可以获得关注奖金和拉手获现金。 </br> </br>
+				参加这个活动，不仅有机会获得超值索尼FIFA手机，还可以获得关注奖金和拉手获现金。 <br> <br>
 			</div>
 			<div
 				style="font-size: larger; color: rgb(62, 62, 62); line-height: 150%; font-family: Droid Sans Fallback;">
@@ -61,18 +60,21 @@
 	</div>
 	<br>
 	<br>
-	<br>
-	<img id="bgImg" src="../../img/main_panel_all_word.png" class="bottom" />
-	<input type="button" id="button1" value="查看&#13;&#10;大奖榜单" class="btn"
+	<div id="bgImg_div">
+		<img src="../../img/main_panel_all_word.png" id="bgImg" class="bottom"
+			style="margin-left: 10px" />
+	</div>
+
+	<input type="button" id="button1" value="" class="btn"
 		onclick="window.open('<%=Constant.HOST%>/getNameList')" />
 
-	<input type="button" id="button2" value="拉人气&#13;&#10;得大奖" class="btn"
+	<input type="button" id="button2" value="" class="btn"
 		onclick="window.open('<%=Constant.HOST%>/activitypage?id=<%=openId%>')" />
 
-	<input type="button" id="button3" value="拉友买&#13;&#10;获奖金" class="btn"
+	<input type="button" id="button3" value="" class="btn"
 		onclick="window.open('<%=Constant.HOST%>/lashouactivity?id=<%=openId%>')" />
 
-	<input type="button" id="button4" value="查看&#13;&#10;大奖榜单" class="btn"
+	<input type="button" id="button4" value="" class="btn"
 		onclick="window.open('<%=Constant.HOST%>/myInfo?id=<%=openId%>')" />
 
 	<script type="text/javascript">
@@ -80,7 +82,7 @@
 				function() {
 					$("#banner_img").css("width",
 							document.body.clientWidth - 20);
-					$("bgImg").css("width", document.body.clientWidth);
+					$("#bgImg").css("width", document.body.clientWidth - 20);
 					$("#intro").css("width", document.body.clientWidth - 20);
 					$("#button1").css("width",
 							(document.body.clientWidth - 50) / 4);
