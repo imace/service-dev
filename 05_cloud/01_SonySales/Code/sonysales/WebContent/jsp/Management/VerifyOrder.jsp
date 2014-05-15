@@ -8,7 +8,6 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport"
 	content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
-
 <script src="<%=Constant.HOST%>/js/jquery-1.7.2.min.js"></script>
 <script src="<%=Constant.HOST%>/js/bootstrap.js"></script>
 <link rel="stylesheet" href="<%=Constant.HOST%>/css/bootstrap.min.css" />
@@ -17,13 +16,10 @@
 <link rel="stylesheet" href="<%=Constant.HOST%>/css/adminia.css">
 <link rel="stylesheet"
 	href="<%=Constant.HOST%>/css/adminia-responsive.css">
-
-
-<title>订单验证</title>
+<title>拉手团晒单验证</title>
 </head>
 <body>
-<jsp:include page="Layout/Header.jsp"></jsp:include>
-
+	<jsp:include page="Layout/Header.jsp"></jsp:include>
 	<div id="content">
 		<div class="container">
 			<div class="row">
@@ -79,6 +75,6 @@
 			</div>
 		</div>
 	</div>
-<jsp:include page="Layout/Footer.jsp"></jsp:include>
+	<jsp:include page="Layout/Footer.jsp"></jsp:include>
 </body>
 </html>
