@@ -96,4 +96,20 @@ public class UserDAO {
 				columnName, columeValue);
 		return list != null && list.size() > 0;
 	}
+
+	public static User getUserByJdId(String ownJdId) {
+		HibernateUtil hibernateUtil = new HibernateUtil();
+		ArrayList<String> columnName = new ArrayList<String>();
+		columnName.add("jdId");
+		ArrayList<Object> columeValue = new ArrayList<Object>();
+		columeValue.add(ownJdId);
+		List<?> list = hibernateUtil.getObjectByColumnName(User.class,
+				columnName, columeValue);
+
+		if (list == null || list.size() == 0) {
+			return null;
+		}
+
+		return (User) list.get(0);
+	}
 }

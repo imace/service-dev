@@ -20,7 +20,7 @@ public class PopularityService {
 
 		if (openId == null || openId.length() == 0) {
 			retMsg = ResultMsg.OpenIDIsNull();
-		} else if (UserDAO.ExistOpenIdInUser(user.getOpenId())) {
+		} else if (UserDAO.ExistOpenIdInUser(openId)) {
 			retMsg = ResultMsg.OpenIDExistsError();
 		} else if (jdId != null && jdId.length() > 0
 				&& UserDAO.ExistJdIdInUser(jdId)) {

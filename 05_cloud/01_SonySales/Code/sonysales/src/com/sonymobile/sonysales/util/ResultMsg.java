@@ -19,6 +19,9 @@ public class ResultMsg {
 	private static final String ERROR_DES_OWNEROPENID_NOTEXISTS = "owner open id not exists.";
 	private static final String ERROR_DES_SUPPORTEROPENID_NOTEXISTS = "supporter open id not exists.";
 
+	private static final String ERROR_DES_ORDERNUM_EXISTS = "order num exists already.";
+
+	private static final String ERROR_DES_PARAMETER_ERROR = "input parameter error.";
 	// / <summary>
 	// / success result info
 	// / </summary>
@@ -91,5 +94,13 @@ public class ResultMsg {
 		ret.put("Discription", des);
 
 		return ret;
+	}
+
+	public static Map<?, ?> OrderNumExistsError() {
+		return GetResultMsg(RESULT_CODE_ERROR, ERROR_DES_ORDERNUM_EXISTS);
+	}
+
+	public static Map<?, ?> ParameterError() {
+		return GetResultMsg(RESULT_CODE_ERROR, ERROR_DES_PARAMETER_ERROR);
 	}
 }

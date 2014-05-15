@@ -198,7 +198,16 @@
               <servlet-name>AddPopularity</servlet-name>
               <url-pattern>/addPopularity</url-pattern>
        </servlet-mapping>
-    
+       <servlet>
+              <description></description>
+              <display-name>GetProduct</display-name>
+              <servlet-name>GetProduct</servlet-name>
+              <servlet-class>com.sonymobile.sonysales.servlet.ProductServlet.GetProduct</servlet-class>
+       </servlet>
+       <servlet-mapping>
+              <servlet-name>GetProduct</servlet-name>
+              <url-pattern>/getProduct</url-pattern>
+       </servlet-mapping>
     
        <servlet>
               <description></description>
