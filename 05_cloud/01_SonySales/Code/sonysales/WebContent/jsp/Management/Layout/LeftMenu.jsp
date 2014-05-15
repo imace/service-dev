@@ -32,13 +32,13 @@
 	<li class="active"><a href="#"> <i class="icon-home"></i>
 	</a></li>
 	<li><a href="UploadExcel.jsp"> <i class="icon-home"></i>
-			拉又买-上传Excel
+			拉友买订单导入
 	</a></li>
 	<li><a href="VerifyOrder.jsp"> <i class="icon-pushpin"></i>
-			拉又买-晒单验证
+			拉手团晒单验证
 	</a></li>
 	<li><a href="MainPage.jsp"> <i class="icon-th-list"></i>
-			拉又买-导出结果
+			拉手团订单查询
 	</a></li>
 </ul>
 <hr />
