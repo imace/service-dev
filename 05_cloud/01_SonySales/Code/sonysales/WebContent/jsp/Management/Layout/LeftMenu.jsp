@@ -27,7 +27,7 @@
 </div>
 <hr />
 <ul id="main-nav" class="nav nav-tabs nav-stacked">
-	<li class="active"><a href="#"> <i class="icon-home"></i>
+	<li class="active"><a href="#"> <i class="icon-home"></i>订单管理
 	</a></li>
 	<li><a href="UploadExcel.jsp"> <i class="icon-home"></i>
 			拉友买订单导入
@@ -37,6 +37,14 @@
 	</a></li>
 	<li><a href="MainPage.jsp"> <i class="icon-th-list"></i>
 			拉手团订单查询
+	</a></li>
+	<li class="active"><a href="#"> <i class="icon-home"></i>用户管理
+	</a></li>
+	<li><a href="#"> <i class="icon-th-list"></i>
+			新建
+	</a></li>
+	<li><a href="#"> <i class="icon-th-list"></i>
+			更新
 	</a></li>
 </ul>
 <hr />
