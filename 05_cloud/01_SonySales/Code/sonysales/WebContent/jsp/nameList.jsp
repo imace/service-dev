@@ -180,7 +180,7 @@
        
        } else {
            %>
-           <tr><td style="text-align:center;border-top:medium none;"><div style="margin: 15px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="img/product_3.png" style="height:180px"/></div><td></tr>
+           <tr><td style="text-align:center;border-top:medium none;"><div style="margin: 15px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="img/product_3.png" style="height:280px"/></div><td></tr>
            <%
        }
            %>
