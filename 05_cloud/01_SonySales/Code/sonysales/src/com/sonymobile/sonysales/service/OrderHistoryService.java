@@ -13,7 +13,7 @@ import com.sonymobile.sonysales.util.ResultMsg;
 
 public class OrderHistoryService {
 
-	public static Map<?, ?> addOrderHistory(String orderNum, String jdId) {
+	public static Map<?, ?> addValidOrderHistory(String orderNum, String jdId) {
 
 		Map<?, ?> retMsg = ResultMsg.ParameterError();
 
@@ -21,6 +21,8 @@ public class OrderHistoryService {
 		if (order != null) {
 			order.setOrderNum(orderNum);
 			order.setJdId(jdId);
+			order.setCashFlag(0);
+			order.setValidOrder(1);
 			retMsg = addOrderHistory(order);
 		}
 		return retMsg;
@@ -48,7 +50,8 @@ public class OrderHistoryService {
 	private static final String DEFAULT_CASH_BACK_ALREADY = "已返金";
 	private static final String DEFAULT_INVALID_ORDER = "无效订单";
 
-	public AssociationOrders verifyAssociationOrders(AssociationOrders assOrder) {
+	public static AssociationOrders verifyAssociationOrders(
+			AssociationOrders assOrder) {
 		String ownNickName = DEFAULT_NICKNAME;
 		OrderHistory ownerOrder = null;
 		List<OrderHistory> supporterOrderList = null;
@@ -92,10 +95,10 @@ public class OrderHistoryService {
 						// valid order
 						if (OrderHistoryDAO.CashFlagMarked(supporterOrderNum)) {
 							// cash back already
-							resultList.add(DEFAULT_CASH_BACK_ALREADY);
+							result = DEFAULT_CASH_BACK_ALREADY;
 						} else {
 							// cash back allow
-							resultList.add(RESULT_CASH_BACK_ALLOW);
+							result = RESULT_CASH_BACK_ALLOW;
 							validSupporter++;
 						}
 					}
@@ -118,8 +121,8 @@ public class OrderHistoryService {
 		return assOrder;
 	}
 
-	public boolean saveAssociationOrders(AssociationOrders assOrder) {
-		boolean ret = false;
+	public static List<Boolean> saveAssociationOrders(AssociationOrders assOrder) {
+		List<Boolean> ret = new ArrayList<Boolean>();
 
 		List<OrderHistory> supporterOrderList = null;
 		List<String> resultList = null;
@@ -135,8 +138,9 @@ public class OrderHistoryService {
 				OrderHistory supporterOrder = supporterOrderList.get(index);
 				String result = resultList.get(index);
 				if (result.equals(RESULT_CASH_BACK_ALLOW)) {
-					OrderHistoryDAO.updateOrderHistory(
+					boolean booRet = OrderHistoryDAO.updateOrderHistory(
 							supporterOrder.getOrderNum(), 1);
+					ret.add(Boolean.valueOf(booRet));
 				}
 
 			}

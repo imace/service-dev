@@ -16,9 +16,9 @@
 		<property name="c3p0.acquire_increment">1</property> <!-- default: 1 -->
 		<property name="c3p0.idle_test_period">10</property> <!-- seconds --><!-- default: 0 -->
 		<property name="c3p0.validate">true</property>
-        <property name="c3p0.acquireRetryAttempts">30</property>
-        <property name="c3p0.acquireRetryDelay">100</property>
-        <property name="c3p0.breakAfterAcquireFailure">false</property>
+		<property name="c3p0.acquireRetryAttempts">30</property>
+		<property name="c3p0.acquireRetryDelay">100</property>
+		<property name="c3p0.breakAfterAcquireFailure">false</property>
 
 		<property name="hibernate.dialect"><!--指定数据库使用的方言 -->
 			org.hibernate.dialect.MySQLMyISAMDialect
