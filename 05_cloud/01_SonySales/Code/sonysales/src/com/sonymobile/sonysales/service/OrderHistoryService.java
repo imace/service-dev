@@ -7,6 +7,7 @@ import java.util.Map;
 import com.sonymobile.sonysales.dao.OrderHistoryDAO;
 import com.sonymobile.sonysales.dao.UserDAO;
 import com.sonymobile.sonysales.entity.AssociationOrders;
+import com.sonymobile.sonysales.entity.OrderInfo;
 import com.sonymobile.sonysales.model.OrderHistory;
 import com.sonymobile.sonysales.model.User;
 import com.sonymobile.sonysales.util.ResultMsg;
@@ -53,8 +54,8 @@ public class OrderHistoryService {
 	public static AssociationOrders verifyAssociationOrders(
 			AssociationOrders assOrder) {
 		String ownNickName = DEFAULT_NICKNAME;
-		OrderHistory ownerOrder = null;
-		List<OrderHistory> supporterOrderList = null;
+		OrderInfo ownerOrder = null;
+		List<OrderInfo> supporterOrderList = null;
 		String ownJdId = null;
 		User ownUser = null;
 
@@ -71,16 +72,15 @@ public class OrderHistoryService {
 		if (ownUser != null) {
 			ownNickName = ownUser.getNickname();
 		}
-
-		assOrder.setOwnerNickName(ownNickName);
+		if (ownerOrder != null) {
+			ownerOrder.setNickname(ownNickName);
+		}
 
 		if (supporterOrderList != null) {
 			int validSupporter = 0;
-			List<String> resultList = new ArrayList<String>();
-			List<String> supporterNickNameList = new ArrayList<String>();
 
 			for (int index = 0; index < supporterOrderList.size(); index++) {
-				OrderHistory supporterOrder = supporterOrderList.get(index);
+				OrderInfo supporterOrder = supporterOrderList.get(index);
 				String supporterJdId = null;
 				User supporter = null;
 				String supporterNickName = DEFAULT_NICKNAME;
@@ -109,12 +109,13 @@ public class OrderHistoryService {
 				if (supporter != null) {
 					supporterNickName = supporter.getNickname();
 				}
-				resultList.add(result);
-				supporterNickNameList.add(supporterNickName);
+
+				if (supporterOrder != null) {
+					supporterOrder.setVerifyResult(result);
+					supporterOrder.setNickname(supporterNickName);
+				}
 			}
 
-			assOrder.setSupporterNickName(supporterNickNameList);
-			assOrder.setResultList(resultList);
 			assOrder.setValidSupporterCount(validSupporter);
 		}
 
@@ -124,25 +125,21 @@ public class OrderHistoryService {
 	public static List<Boolean> saveAssociationOrders(AssociationOrders assOrder) {
 		List<Boolean> ret = new ArrayList<Boolean>();
 
-		List<OrderHistory> supporterOrderList = null;
-		List<String> resultList = null;
-
+		List<OrderInfo> supporterOrderList = null;
 		if (assOrder != null) {
 			supporterOrderList = assOrder.getSupptorOrderList();
-			resultList = assOrder.getResultList();
 		}
 
 		if (supporterOrderList != null) {
 
 			for (int index = 0; index < supporterOrderList.size(); index++) {
-				OrderHistory supporterOrder = supporterOrderList.get(index);
-				String result = resultList.get(index);
-				if (result.equals(RESULT_CASH_BACK_ALLOW)) {
+				OrderInfo supporterOrder = supporterOrderList.get(index);
+				String result = supporterOrder.getVerifyResult();
+				if (result != null && result.equals(RESULT_CASH_BACK_ALLOW)) {
 					boolean booRet = OrderHistoryDAO.updateOrderHistory(
 							supporterOrder.getOrderNum(), 1);
 					ret.add(Boolean.valueOf(booRet));
 				}
-
 			}
 		}
 

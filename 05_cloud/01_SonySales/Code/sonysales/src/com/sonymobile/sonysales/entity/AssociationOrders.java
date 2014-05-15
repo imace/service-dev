@@ -2,31 +2,18 @@ package com.sonymobile.sonysales.entity;
 
 import java.util.List;
 
-import com.sonymobile.sonysales.model.OrderHistory;
-
 public class AssociationOrders {
-	private OrderHistory ownerOrder;
-	private String ownerNickName;
+	private OrderInfo ownerOrder;
 	private int validSupporterCount;
 
-	private List<OrderHistory> supptorOrderList;
-	private List<String> supporterNickNameList;
-	private List<String> resultList;
+	private List<OrderInfo> supptorOrderList;
 
-	public OrderHistory getOwnerOrder() {
+	public OrderInfo getOwnerOrder() {
 		return ownerOrder;
 	}
 
-	public void setOwnerOrder(OrderHistory ownerOrder) {
+	public void setOwnerOrder(OrderInfo ownerOrder) {
 		this.ownerOrder = ownerOrder;
-	}
-
-	public String getOwnerNickName() {
-		return ownerNickName;
-	}
-
-	public void setOwnerNickName(String ownerNickName) {
-		this.ownerNickName = ownerNickName;
 	}
 
 	public int getValidSupporterCount() {
@@ -37,27 +24,11 @@ public class AssociationOrders {
 		this.validSupporterCount = validSupporterCount;
 	}
 
-	public List<OrderHistory> getSupptorOrderList() {
+	public List<OrderInfo> getSupptorOrderList() {
 		return supptorOrderList;
 	}
 
-	public void setSupptorOrderList(List<OrderHistory> supptorOrderList) {
+	public void setSupptorOrderList(List<OrderInfo> supptorOrderList) {
 		this.supptorOrderList = supptorOrderList;
-	}
-
-	public List<String> getSupporterNickName() {
-		return supporterNickNameList;
-	}
-
-	public void setSupporterNickName(List<String> supporterNickNameList) {
-		this.supporterNickNameList = supporterNickNameList;
-	}
-
-	public List<String> getResultList() {
-		return resultList;
-	}
-
-	public void setResultList(List<String> resultList) {
-		this.resultList = resultList;
 	}
 }
