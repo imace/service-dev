@@ -10,6 +10,7 @@
 <title>索尼FIFA2014世界杯狂热季</title>
 <style type="text/css">
 .btn {
+    display:block;
 	border: none;
 	width: 120px;
 	height: 120px;
@@ -18,8 +19,23 @@
 	bottom: 0;
 	background-color: transparent;
 	outline-style: none;
+	outline:none;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	-o-user-select:none;
+	user-select:none
+	border-color:transparent;
+	box-shadow:0 0;
 }
 
+.btn:active{
+	box-shadow:0 0;
+}
+
+.btn:focus{
+	box-shadow:0 0;
+}
 .bottom {
 	position: fixed;
 	bottom: 0;
@@ -60,20 +76,19 @@
 	<br>
 	<br>
 	<div id="bgImg_div">
-		<img src="../../img/main_panel_all_word.png" id="bgImg" class="bottom"
-			style="margin-left: 10px" />
+		<img src="../../img/main_panel_all_word.png" id="bgImg" class="bottom"/>
 	</div>
 
-	<input type="button" id="button1" value="" class="btn"
+	<input onFocus="this.blur()" type="button" id="button1" value="" class="btn"
 		onclick="window.open('<%=Constant.HOST%>/getNameList?id=<%=openId%>')" />
 
-	<input type="button" id="button2" value="" class="btn"
+	<input onFocus="this.blur()" type="button" id="button2" value="" class="btn"
 		onclick="window.open('<%=Constant.HOST%>/activitypage?id=<%=openId%>')" />
 
-	<input type="button" id="button3" value="" class="btn"
+	<input onFocus="this.blur()" type="button" id="button3" value="" class="btn"
 		onclick="window.open('<%=Constant.HOST%>/lashouactivity?id=<%=openId%>')" />
 
-	<input type="button" id="button4" value="" class="btn"
+	<input onFocus="this.blur()" type="button" id="button4" value="" class="btn"
 		onclick="window.open('<%=Constant.HOST%>/myInfo?id=<%=openId%>')" />
 
 	<script type="text/javascript">
@@ -81,7 +96,7 @@
 				function() {
 					$("#banner_img").css("width",
 							document.body.clientWidth - 20);
-					$("#bgImg").css("width", document.body.clientWidth - 20);
+					$("#bgImg").css("width", document.body.clientWidth);
 					$("#intro").css("width", document.body.clientWidth - 20);
 					$("#button1").css("width",
 							(document.body.clientWidth - 50) / 4);
