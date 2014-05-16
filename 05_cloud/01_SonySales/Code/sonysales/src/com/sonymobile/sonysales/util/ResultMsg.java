@@ -4,9 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ResultMsg {
+	public static final String RESULT_CODE_KEY = "ResultCode";
+	public static final String RESULT_CODE_DESCRIPTION = "Discription";
 
-	private static final int RESULT_CODE_SUCESS = 1;
-	private static final int RESULT_CODE_ERROR = 0;
+	public static final int RESULT_CODE_SUCESS = 1;
+	public static final int RESULT_CODE_ERROR = 0;
 
 	private static final String RESULT_DES_SUCESS = "success.";
 
@@ -90,8 +92,8 @@ public class ResultMsg {
 
 	private static Map<?, ?> GetResultMsg(int code, String des) {
 		Map<String, String> ret = new HashMap<String, String>();
-		ret.put("ResultCode", String.valueOf(code));
-		ret.put("Discription", des);
+		ret.put(RESULT_CODE_KEY, String.valueOf(code));
+		ret.put(RESULT_CODE_DESCRIPTION, des);
 
 		return ret;
 	}
