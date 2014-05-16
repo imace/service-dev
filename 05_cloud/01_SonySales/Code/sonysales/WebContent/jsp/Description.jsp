@@ -18,11 +18,6 @@
 	bottom: 0;
 	background-color: transparent;
 	outline-style: none;
-	-webkit-user-select:none;
-	-moz-user-select:none;
-	-ms-user-select:none;
-	-o-user-select:none;
-	user-select:none
 }
 
 .bottom {
@@ -70,7 +65,7 @@
 	</div>
 
 	<input type="button" id="button1" value="" class="btn"
-		onclick="window.open('<%=Constant.HOST%>/getNameList?id=<%=openId%>')" />
+		onclick="window.open('<%=Constant.HOST%>/getNameList')" />
 
 	<input type="button" id="button2" value="" class="btn"
 		onclick="window.open('<%=Constant.HOST%>/activitypage?id=<%=openId%>')" />
