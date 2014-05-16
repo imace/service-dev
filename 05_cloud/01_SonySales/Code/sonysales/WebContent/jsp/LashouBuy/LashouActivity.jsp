@@ -121,7 +121,7 @@
         var touch = event.touches[0];
 
         endY = touch.pageY;
-        if((startY-endY)>20) {//上滑
+        if((startY-endY)>30) {//上滑
             //$("#desc").css("height", 100); 
             //$("#desc").css("overflow-y", "auto"); 
             document.getElementById("content").style.display="";
@@ -130,7 +130,7 @@
             
             
             }
-        if((endY-startY)>20) {//下滑
+        if((endY-startY)>30) {//下滑
             document.getElementById("content").style.display="none";
 
             }
@@ -141,13 +141,13 @@
 
 
         function touchEnd(event){
-            if((endY-startY)>20) {//下滑
+            if((endY-startY)>30) {//下滑
                    $("#top_img").attr("src","../../img/product_top_all_1.png"); 
                 document.getElementById("content").style.display="none";
                 $("#touchBox").css({position: "absolute",'bottom':0,'z-index':2});
 
                 }
-            if((startY-endY)>20) {//上滑
+            if((startY-endY)>30) {//上滑
                   $("#top_img").attr("src","../../img/product_top_all_2.png"); 
                 //$("#desc").css("height", 100); 
                 //$("#desc").css("overflow-y", "auto"); 
