@@ -68,9 +68,6 @@
 				style="font-size: larger; color: rgb(206, 161, 75); line-height: 150%; font-family: Droid Sans Fallback;">
 				参加这个活动，不仅有机会获得超值索尼FIFA手机，还可以获得关注奖金和拉手获现金。 <br> <br>
 			</div>
-			<div
-				style="font-size: larger; color: rgb(62, 62, 62); line-height: 150%; font-family: Droid Sans Fallback;">
-				走过，路过，不要错过！</div>
 		</div>
 	</div>
 	<br>
