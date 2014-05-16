@@ -2,7 +2,7 @@
 <%@page import="com.sonymobile.sonysales.model.User"%>
 <%@page import="com.sonymobile.sonysales.entity.SupporterCount"%>
 <%@page import="java.util.List"%>
-<%@ page contentType="text/html; charset=gb2312"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,12 +23,12 @@
         td {  
             BORDER-RIGHT: medium none; 
             BORDER-LEFT: medium none;
-            height:35px;
+            height:55px;
             padding-left:10px
         }  
         #poplist_div {  
                         overflow:hidden;
-                        height: 252px;
+                        height: 280px;
          border-top-width:3px;
          border-top-color:#22bff2;
          margin-left:10px;
@@ -45,7 +45,7 @@
 </style>
 </head>
 <body>
-<!--<div id="result" style="border:2px solid red; color:red;">δ�����¼���</div> -->
+<!--<div id="result" style="border:2px solid red; color:red;">未触发事件！</div> -->
 	<%
 
 	 List<User> userList = (List<User>)request.getAttribute("userList");
@@ -54,11 +54,11 @@
 	
 	%>
 	<div id="title" style="margin-left:10px">
-     <h2>����FIFA2014�󽱰񽱽��</h2>
+     <h2>索尼FIFA2014大奖榜奖金榜</h2>
     </div>
     <div id="pop_div" style="padding-top:1px;margin-left:10px">
      <div id="pop_title" style="height:40px;text-align:left;float:left">
-         <div style="font-size:larger;color:#22bff2;padding-top:12px;padding-right:30px">������</div>
+         <div style="font-size:larger;color:#22bff2;padding-top:12px;padding-right:30px">人气榜</div>
      </div>
      <div id="pop_image" style="height:40px;text-align:right;float:right;margin-right:13px">
          <div><img src="img/ranking1.png" style="height:40px;float:left;margin-left:10px;"/></div>
@@ -75,7 +75,7 @@
            <tr>
          <td><div style="color:#e82827"><%=i+1 %></div></td>
          <td><div style="color:#e82827"><%=userList.get(i).getNickname() %></div></td>
-         <td>�Ѿ����<font style="color:rgb(190, 155, 43)"><%=userList.get(i).getPoints() %></font>������֧���ˣ�</td>
+         <td>已经获得<font style="color:rgb(190, 155, 43)"><%=userList.get(i).getPoints() %></font>个好友支持了！</td>
          </tr>
         <%     
            } else {
@@ -83,21 +83,21 @@
              <tr>
            <td><%=i+1 %></td>
            <td><%=userList.get(i).getNickname() %></td>
-           <td>�Ѿ����<font style="color:rgb(190, 155, 43)"><%=userList.get(i).getPoints() %></font>������֧���ˣ�</td>
+           <td>已经获得<font style="color:rgb(190, 155, 43)"><%=userList.get(i).getPoints() %></font>个好友支持了！</td>
            </tr>
              <%  
            }
        }
-       if(userList.size()<=6) {
+       if(userList.size()<5) {
            int size = userList.size();
-           int height = (7-size)*35;
+           int height = (5-size)*55;
            %>
-           <tr><td colspan=3 style="height:<%=height%>px;text-align:center;border-top:medium none;"><div style="font-size:large"><font  style="color:rgb(128, 124, 115)">�������ǹ�ֻ���</font><font  style="color:#e82827">�͵����水ť��</font></div></td></tr>
+           <tr><td colspan=3 style="height:<%=height%>px;text-align:center;border-top:medium none;"><div style="font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div></td></tr>
        <%
        }
    } else {
        %>
-       <tr><td id="pop_img_td" style="text-align:center;border-top:medium none;"><div style="margin: 22px;font-size:large"><font  style="color:rgb(128, 124, 115)">�������ǹ�ֻ���</font><font  style="color:#e82827">�͵����水ť��</font></div><div><img src="img/product_3.png" style="height:180px" id="pop_img"/></div></td></tr>
+       <tr><td id="pop_img_td" style="text-align:center;border-top:medium none;"><div style="margin: 35px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="img/product_3.png" style="height:180px" id="pop_img"/></div></td></tr>
        <%
    }
        %>
@@ -113,7 +113,7 @@
            <tr>
          <td><div style="color:#e82827"><%=i+1 %></div></td>
          <td><div style="color:#e82827"><%=userList.get(i).getNickname() %></div></td>
-         <td>�Ѿ����<font style="color:rgb(190, 155, 43)"><%=userList.get(i).getPoints() %></font>������֧���ˣ�</td>
+         <td>已经获得<font style="color:rgb(190, 155, 43)"><%=userList.get(i).getPoints() %></font>个好友支持了！</td>
          </tr>
         <%     
            } else {
@@ -121,7 +121,7 @@
              <tr>
            <td><%=i+1 %></td>
            <td><%=userList.get(i).getNickname() %></td>
-           <td>�Ѿ����<font style="color:rgb(190, 155, 43)"><%=userList.get(i).getPoints() %></font>������֧���ˣ�</td>
+           <td>已经获得<font style="color:rgb(190, 155, 43)"><%=userList.get(i).getPoints() %></font>个好友支持了！</td>
            </tr>
              <%  
            }
@@ -132,12 +132,12 @@
     </div>
     </div>
 	    <div id="rob1" style="margin-bottom:30px;margin-left:11px;margin-top:10px;height:50px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='<%=Constant.HOST%>/activitypage?id=<%=openId%>'">
-       <div style="font-size:larger;color:white;margin-top:12px">����������</div>
+       <div style="font-size:larger;color:white;margin-top:12px">还不来抢大奖</div>
     </div>
     
     <div id="pop_div" style="padding-top:1px;margin-left:10px">
      <div id="pop_title" style="height:40px;text-align:left;float:left">
-         <div style="font-size:larger;color:#22bff2;padding-top:12px;padding-right:30px">�����</div>
+         <div style="font-size:larger;color:#22bff2;padding-top:12px;padding-right:30px">奖金榜</div>
      </div>
      <div id="pop_image" style="height:40px;text-align:right;float:right;margin-right:13px">
          <div><img src="img/ranking2.png" style="height:40px;float:left;margin-left:10px;"/></div>
@@ -154,8 +154,8 @@
 
            <tr>
            <td style="height:55px;"><div style="color:#e82827"><%=i+1 %></div></td>
-           <td><div style="line-height:150%";><font style="color:#e82827"><%=supporterList.get(i).getNickname() %></font>���ѻ��<font style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></font>λ���ѵ�������֧�֣�
-           ���ɻ���ֽ��<%=supporterList.get(i).getCount() %>*50�Ľ���</div>
+           <td><div style="line-height:150%";><font style="color:#e82827"><%=supporterList.get(i).getNickname() %></font>，已获得<font style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></font>位朋友的拉友买支持，
+           最多可获得现金卷<%=supporterList.get(i).getCount() %>*50的奖金！</div>
            </td>
            </tr>
                <%     
@@ -163,8 +163,8 @@
                       %>
            <tr>
            <td style="height:55px"><%=i+1 %></td>
-           <td><div style="line-height:150%";><%=supporterList.get(i).getNickname() %>���ѻ��<font style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></font>λ���ѵ�������֧�֣�
-           ���ɻ���ֽ��<%=supporterList.get(i).getCount() %>*50�Ľ���</div>
+           <td><div style="line-height:150%";><%=supporterList.get(i).getNickname() %>，已获得<font style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></font>位朋友的拉友买支持，
+           最多可获得现金卷<%=supporterList.get(i).getCount() %>*50的奖金！</div>
            </td>
            </tr>
       <% 
@@ -174,13 +174,13 @@
            int size = supporterList.size();
            int height = (5-size)*55;
            %>
-           <tr><td colspan=2 style="height:<%=height%>px;text-align:center;border-top:medium none;"><div style="font-size:large"><font  style="color:rgb(128, 124, 115)">�������ǹ�ֻ���</font><font  style="color:#e82827">�͵����水ť��</font></div></td></tr>
+           <tr><td colspan=2 style="height:<%=height%>px;text-align:center;border-top:medium none;"><div style="font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div></td></tr>
        <%
        }
        
        } else {
            %>
-           <tr><td style="text-align:center;border-top:medium none;"><div style="margin: 35px;font-size:large"><font  style="color:rgb(128, 124, 115)">�������ǹ�ֻ���</font><font  style="color:#e82827">�͵����水ť��</font></div><div><img src="img/product_3.png" style="height:180px"/></div><td></tr>
+           <tr><td style="text-align:center;border-top:medium none;"><div style="margin: 35px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="img/product_3.png" style="height:180px"/></div><td></tr>
            <%
        }
            %>
@@ -196,8 +196,8 @@
 
            <tr>
            <td style="height:55px;"><div style="color:#e82827"><%=i+1 %></div></td>
-           <td><div style="line-height:150%";><font style="color:#e82827"><%=supporterList.get(i).getNickname() %></font>���ѻ��<font style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></font>λ���ѵ�������֧�֣�
-           ���ɻ���ֽ��<%=supporterList.get(i).getCount() %>*50�Ľ���</div>
+           <td><div style="line-height:150%";><font style="color:#e82827"><%=supporterList.get(i).getNickname() %></font>，已获得<font style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></font>位朋友的拉友买支持，
+           最多可获得现金卷<%=supporterList.get(i).getCount() %>*50的奖金！</div>
            </td>
            </tr>
                <%     
@@ -205,8 +205,8 @@
                       %>
            <tr>
            <td style="height:55px"><%=i+1 %></td>
-           <td><div style="line-height:150%";><%=supporterList.get(i).getNickname() %>���ѻ��<font style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></font>λ���ѵ�������֧�֣�
-           ���ɻ���ֽ��<%=supporterList.get(i).getCount() %>*50�Ľ���</div>
+           <td><div style="line-height:150%";><%=supporterList.get(i).getNickname() %>，已获得<font style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></font>位朋友的拉友买支持，
+           最多可获得现金卷<%=supporterList.get(i).getCount() %>*50的奖金！</div>
            </td>
            </tr>
       <% 
@@ -218,7 +218,7 @@
     </div>
     </div>
     <div id="rob2" style="margin-bottom:20px;margin-left:11px;margin-top:10px;height:50px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='<%=Constant.HOST%>/lashouactivity?id=<%=openId%>'">
-       <div style="font-size:larger;color:white;margin-top:12px">������������</div>
+       <div style="font-size:larger;color:white;margin-top:12px">还不来抢奖金</div>
     </div>
     
       <script type="text/javascript">  
@@ -229,7 +229,7 @@
       var handlelist_div1=document.getElementById("handlelist_div1");  
       var handlelist_div2=document.getElementById("handlelist_div2");
       var handlelist_div=document.getElementById("handlelist_div"); 
-      var speed=50;//���������ֶ����ٶ�  
+      var speed=50;//设置向上轮动的速度  
       
       $(document).ready(function(){
           $("#pop_table1").css("width", document.body.clientWidth-20);
@@ -255,7 +255,7 @@
         
           });
 
-      //poplist_div2.innerHTML=poplist_div1.innerHTML;//���ƽڵ�  
+      //poplist_div2.innerHTML=poplist_div1.innerHTML;//复制节点  
 
       function moveTop(){  
 
