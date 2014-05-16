@@ -65,7 +65,7 @@
 	</div>
 
 	<input type="button" id="button1" value="" class="btn"
-		onclick="window.open('<%=Constant.HOST%>/getNameList')" />
+		onclick="window.open('<%=Constant.HOST%>/getNameList?id=<%=openId%>')" />
 
 	<input type="button" id="button2" value="" class="btn"
 		onclick="window.open('<%=Constant.HOST%>/activitypage?id=<%=openId%>')" />
