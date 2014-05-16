@@ -50,8 +50,8 @@ public class GetPointsOrder extends HttpServlet {
 		response.setHeader("Pragma", "No-cache");
 		response.setHeader("Cache-Control", "no-cache");
 		response.setDateHeader("Expires", 0);
-		response.setContentType("text/plain; charset=utf-8");
-		// response.setContentType("text/json; charset=utf-8");
+		response.setContentType("text/plain; charset=UTF-8");
+		// response.setContentType("text/json; charset=UTF-8");
 		return response;
 	}
 

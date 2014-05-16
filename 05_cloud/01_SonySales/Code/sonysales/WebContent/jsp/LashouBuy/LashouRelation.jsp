@@ -1,5 +1,5 @@
 <%@page import="com.sonymobile.sonysales.util.Constant"%>
-<%@ page contentType="text/html; charset=gb2312"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,7 +14,7 @@
 <script
 	src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script src="<%=Constant.HOST%>/js/relation.js"></script>
-<title>������ȡ�Ż�ȯ��!</title>
+<title>快来领取优惠券啦!</title>
 </head>
 <body>
 
@@ -32,19 +32,19 @@
 		<div class="row" style="font-family: Droid Sans Fallback;">
 			<div class="col-xs-12">
 				<h4>
-					Hi, ��, ��(<%=fromnickname%>)���ڲμ�����FIFA�, �����֧�ֲ���ɹ�ע���Ի��50Ԫ�����ۿ�ȯ,
-					ͬʱ��Ҳ���Ի�ý����Ŷ, �ǳ���л��, ���������������:
+					Hi, 亲, 我(<%=fromnickname%>)正在参加索尼FIFA活动, 如果你支持并完成关注可以获得50元购买折扣券,
+					同时我也可以获得奖金的哦, 非常感谢咯, 仅需完成以下两步:
 				</h4>
-				<h4 style="color: #cea14b">1.���֧��  2.��ɹ�ע</h4>
+				<h4 style="color: #cea14b">1.点击支持  2.完成关注</h4>
 				<img alt="fifa" style="max-width: 100%;"
 					src="/img/product_2.png">
-				<h4 style="color: #22bff2">֧�����ĺ���</h4>
+				<h4 style="color: #22bff2">支持您的好友</h4>
 				<div id="personalInfo">
-					<h4>Ϊ��֧�����ĺ���, ��Ҫ���ȵ�����水ť��ȡ���ĸ�����Ϣ��</h4>
+					<h4>为了支持您的好友, 需要首先点击下面按钮获取您的个人信息。</h4>
 					<hr>
 					<a href="<%=oauthtoidlink%>"
 						style="display: block; background-color: #7adb81; border-color: #7adb81;"
-						class="btn btn-primary btn-lg active" role="button">��ȡ������Ϣ</a>
+						class="btn btn-primary btn-lg active" role="button">获取个人信息</a>
 				</div>
 				<div id="supportFriend" class="text-center">
 					<form action="<%=Constant.HOST%>/lashoufollow">
@@ -58,7 +58,7 @@
 							</div>
 							<div class="col-xs-4">
 								<button type="submit" class="btn btn-success btn-block"
-									style="background: #22bff2; border-color: #22bff2; padding: 15px;">֧����</button>
+									style="background: #22bff2; border-color: #22bff2; padding: 15px;">支持他</button>
 								<br> <img alt="fifa" style="max-width: 100%;"
 									src="/img/arrow.png">
 							</div>							

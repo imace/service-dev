@@ -1,25 +1,25 @@
 <%@page import="com.sonymobile.sonysales.util.Constant"%>
 <%@page import="com.sonymobile.sonysales.util.Base64Coder"%>
-<%@ page contentType="text/html; charset=gb2312"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="Content-Type" content="text/html charset=gb2312">
+<meta http-equiv="Content-Type" content="text/html charset=UTF-8">
 <meta name="viewport" content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
 <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
 <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<title>Ë÷ÄáÀ­ÊÖÂò, ËûÊµ»Ý, ÎÒÊÜÒæ!</title>
+<title>ç´¢å°¼æ‹‰æ‰‹ä¹°, ä»–å®žæƒ , æˆ‘å—ç›Š!</title>
 </head>
 <body style="margin:0;background-color:#f8f7f5">
 	<%
 		String openid =(String)request.getAttribute("openid");
 		String nickname =(String)request.getAttribute("nickname");
 		nickname=(nickname==null?"":"("+nickname+")");
-		String message="Hi, Ç×, ÎÒ"+nickname+"¶ÔË÷ÄáFIFAÖ¾ÔÚ±ØµÃ, ÇëÄãÀ­ÎÒÒ»Æ±!ÄãÒ²¿ÉÒÔ»ñµÃ´òÕÛÓÅ»ÝÈ¯!";
+		String message="Hi, äº², æˆ‘"+nickname+"å¯¹ç´¢å°¼FIFAå¿—åœ¨å¿…å¾—, è¯·ä½ æ‹‰æˆ‘ä¸€ç¥¨!ä½ ä¹Ÿå¯ä»¥èŽ·å¾—æ‰“æŠ˜ä¼˜æƒ åˆ¸!";
 		String imgurl=Constant.HOST+"/img/entry3.png";
 		String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST + "/lashourelation");
 		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
@@ -32,9 +32,9 @@
 				+ "MsgImg:\""+ imgurl
 				+ "\", TLImg:\""+ imgurl
 				+ "\", url:\""+ url
-				+ "\", title:\"À­ÓÑÂò, ËûÊµ»Ý, ÎÒÊÜÒæ!\","
+				+ "\", title:\"æ‹‰å‹ä¹°, ä»–å®žæƒ , æˆ‘å—ç›Š!\","
 				+ "desc:\""+ message
-				+ "\", fakeid:\"\",callback:function(){/*alert('¸ÐÐ»·ÖÏí, ¸ü¶à¾ªÏ²Çë¼ÌÐø¹Ø×¢!-SonyXpria');*/}};</script>");
+				+ "\", fakeid:\"\",callback:function(){/*alert('æ„Ÿè°¢åˆ†äº«, æ›´å¤šæƒŠå–œè¯·ç»§ç»­å…³æ³¨!-SonyXpria');*/}};</script>");
 	%>
 
 <div>
@@ -43,15 +43,15 @@
          </div>
          <div id="intro" style="margin-left:10px;word-wrap:break-word;word-break:break-all;">
              <div style="margin-top:10px;color:rgb(0, 173, 255);font-size:larger">
-                            ´óÁ¦Éñ±­À­ÊÖÂò»î¶¯¹æÔò
+                            å¤§åŠ›ç¥žæ¯æ‹‰æ‰‹ä¹°æ´»åŠ¨è§„åˆ™
             </div>
             <div style="font-size:larger;line-height:150%;">
-                Ç×, Ë÷ÄáFIFA »î¶¯ÕýÔÚ½øÐÐ, <br/>
-               ÍÆËÍÏûÏ¢¸øÄãÅóÓÑ, ÄãµÄÅóÓÑ¿É»ñµÃ50ÔªÓÅ»ÝÈ¯,</br>
-               Í¬Ê±Èç¹ûËû¹ºÂòÊÖ»ú, Äã¼´¿É»ñµÃ50Ôª½±½ð.
+                äº², ç´¢å°¼FIFA æ´»åŠ¨æ­£åœ¨è¿›è¡Œ, <br/>
+               æŽ¨é€æ¶ˆæ¯ç»™ä½ æœ‹å‹, ä½ çš„æœ‹å‹å¯èŽ·å¾—50å…ƒä¼˜æƒ åˆ¸,</br>
+               åŒæ—¶å¦‚æžœä»–è´­ä¹°æ‰‹æœº, ä½ å³å¯èŽ·å¾—50å…ƒå¥–é‡‘.
             </div>
             <div style="font-size:140%;color:rgb(148, 140, 140);padding-top:3px">
-                                        µã»÷ÓÒÉÏ½Ç-->·¢ËÍ¸øÅóÓÑ
+                                        ç‚¹å‡»å³ä¸Šè§’-->å‘é€ç»™æœ‹å‹
             </div>
         </div>
 </div>
@@ -60,24 +60,24 @@
                <img src="../../img/product_top_all_1.png" style="margin-top:0" id="top_img" />
             <div  style="background-color:white;padding-bottom:10px;">
              <div id="buy" style="margin-left:10px;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='http://www.jd.com'">
-                <div style="font-size:larger;color:white;padding-top:15px">Á¢¼´¹ºÂò</div>
+                <div style="font-size:larger;color:white;padding-top:15px">ç«‹å³è´­ä¹°</div>
              </div>
          </div>
             <div id="content" style="display:none;background-color:white">
                 <div id="bttons" style="padding-top:1px;margin-left:10px">
                     <div id="pcbuy" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:left" onclick="window.location.href='<%=Constant.HOST%>/jsp/productPage.jsp'">
                         <div><img src="../../img/http_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:12px"/></div>
-                        <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">PC¹ºÂò</div>
+                        <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">PCè´­ä¹°</div>
                     </div>
                     <div id="discount" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:right" onclick="window.location.href='http://passport.jd.com/new/login.aspx?ReturnUrl=http%3A%2F%2Fquan.jd.com%2Fuser_quan.action'">
                         <div><img src="../../img/discount_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:10px"/></div>
-                        <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">ÕÛ¿ÛÈ¯</div>
+                        <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">æŠ˜æ‰£åˆ¸</div>
                     </div>
                 </div>
         <div id="desc" style="margin-left:10px;margin-top:65px;padding-bottom:10px">
-            <div style="font-size:small;font-weight:700">ÉÌÆ·ÃèÊö£º</div>
+            <div style="font-size:small;font-weight:700">å•†å“æè¿°ï¼š</div>
             <div style="line-height:150%;margin-top:4px;word-wrap:break-word;word-break:break-all;color:rgb(117, 108, 108);font-size:small">
-                        Ë÷ÄáSONY¹«Ë¾×÷ÎªFIFA2014ÊÀ½ç±­ÔÞÖúÉÌ£¬ÎªÁËÄý½á×¡¾«²ÊµÄÈü¼¾»ØÒä£¬ÌØ±ðÎªÊÀ½çÇòÃÔ¶¨ÖÆÁË¼«¾ßÊÕ²Ø¼ÛÖµµÄ¸ß¶ËÖÇÄÜÊÖ»ú£¬ÏÞÁ¿°æÓ´-²»ÒªÓÌÔ¥£¬¼Ç×¡Õâ¸öÏÄÌì£¡
+                        ç´¢å°¼SONYå…¬å¸ä½œä¸ºFIFA2014ä¸–ç•Œæ¯èµžåŠ©å•†ï¼Œä¸ºäº†å‡ç»“ä½ç²¾å½©çš„èµ›å­£å›žå¿†ï¼Œç‰¹åˆ«ä¸ºä¸–ç•Œçƒè¿·å®šåˆ¶äº†æžå…·æ”¶è—ä»·å€¼çš„é«˜ç«¯æ™ºèƒ½æ‰‹æœºï¼Œé™é‡ç‰ˆå“Ÿ-ä¸è¦çŠ¹è±«ï¼Œè®°ä½è¿™ä¸ªå¤å¤©ï¼
             </div>             
         </div>
     </div>
@@ -102,7 +102,7 @@
         $("#pcbuy").css("width", (document.body.clientWidth-20)/2-7); 
         $("#discount").css("width", (document.body.clientWidth-20)/2-7); 
         var startX,startY,endX,endY
-     var scrollTopVal=0; //×óÓÒ»¬¶¯Çë×ÔÐÐÐÞ¸Ä
+     var scrollTopVal=0; //å·¦å³æ»‘åŠ¨è¯·è‡ªè¡Œä¿®æ”¹
         document.getElementById("touchBox").addEventListener("touchstart", touchStart, false);
         document.getElementById("touchBox").addEventListener("touchmove", touchMove, false);
         document.getElementById("touchBox").addEventListener("touchend", touchEnd, false);
@@ -121,7 +121,7 @@
         var touch = event.touches[0];
 
         endY = touch.pageY;
-        if((startY-endY)>20) {//ÉÏ»¬
+        if((startY-endY)>20) {//ä¸Šæ»‘
             //$("#desc").css("height", 100); 
             //$("#desc").css("overflow-y", "auto"); 
             document.getElementById("content").style.display="";
@@ -130,7 +130,7 @@
             
             
             }
-        if((endY-startY)>20) {//ÏÂ»¬
+        if((endY-startY)>20) {//ä¸‹æ»‘
             document.getElementById("content").style.display="none";
 
             }
@@ -141,13 +141,13 @@
 
 
         function touchEnd(event){
-            if((endY-startY)>20) {//ÏÂ»¬
+            if((endY-startY)>20) {//ä¸‹æ»‘
                    $("#top_img").attr("src","../../img/product_top_all_1.png"); 
                 document.getElementById("content").style.display="none";
                 $("#touchBox").css({position: "absolute",'bottom':0,'z-index':2});
 
                 }
-            if((startY-endY)>20) {//ÉÏ»¬
+            if((startY-endY)>20) {//ä¸Šæ»‘
                   $("#top_img").attr("src","../../img/product_top_all_2.png"); 
                 //$("#desc").css("height", 100); 
                 //$("#desc").css("overflow-y", "auto"); 

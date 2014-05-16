@@ -1,14 +1,13 @@
 <%@page import="com.sonymobile.sonysales.util.Constant"%>
-<%@ page contentType="text/html; charset=gb2312"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="Content-Type" content="text/html charset=gb2312">
+<meta http-equiv="Content-Type" content="text/html charset=UTF-8">
 <meta name="viewport"
 	content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
 <script src="../../js/jquery-2.1.1.min.js"></script>
-<title>Ë÷ÄáFIFA2014ÊÀ½ç±­¿ñÈÈ¼¾</title>
+<title>ç´¢å°¼FIFA2014ä¸–ç•Œæ¯ç‹‚çƒ­å­£</title>
 <style type="text/css">
 .btn {
 	border: none;
@@ -33,7 +32,7 @@
 	%>
 	<div>
 		<div id="title" style="margin-left: 10px; font-size: larger">
-			<h2>Ë÷ÄáFIFA2014ÊÀ½ç±­¿ñÈÈ¼¾</h2>
+			<h2>ç´¢å°¼FIFA2014ä¸–ç•Œæ¯ç‹‚çƒ­å­£</h2>
 		</div>
 		<div id="banner_img_div">
 			<img src="../../img/banner_popularity.png" id="banner_img"
@@ -44,18 +43,18 @@
 			style="margin-left: 10px; word-wrap: break-word; word-break: break-all;">
 			<div
 				style="margin-top: 10px; color: rgb(34, 191, 242); font-size: larger; font-family: Droid Sans Fallback;">
-				Ë÷Äá FIFA 2014 »î¶¯½éÉÜ</div>
+				ç´¢å°¼ FIFA 2014 æ´»åŠ¨ä»‹ç»</div>
 			<div
 				style="font-size: larger; color: rgb(62, 62, 62); line-height: 150%; font-family: Droid Sans Fallback;">
-				FIFA , 2014 , ÈüÊÂÖØÀ´ ,<br> Ë­½«»á³ÉÎª×îºóÓ®¼Ò£¿<br> Ïë²»ÏëÒ²²ÎÓëÕâ¸ö¼¤¶¯ÈËÐÄµÄ»î¶¯£¿<br><br>
+				FIFA , 2014 , èµ›äº‹é‡æ¥ ,<br> è°å°†ä¼šæˆä¸ºæœ€åŽèµ¢å®¶ï¼Ÿ<br> æƒ³ä¸æƒ³ä¹Ÿå‚ä¸Žè¿™ä¸ªæ¿€åŠ¨äººå¿ƒçš„æ´»åŠ¨ï¼Ÿ<br><br>
 			</div>
 			<div
 				style="font-size: larger; color: rgb(206, 161, 75); line-height: 150%; font-family: Droid Sans Fallback;">
-				²Î¼ÓÕâ¸ö»î¶¯£¬²»½öÓÐ»ú»á»ñµÃ³¬ÖµË÷ÄáFIFAÊÖ»ú£¬»¹¿ÉÒÔ»ñµÃ¹Ø×¢½±½ðºÍÀ­ÊÖ»ñÏÖ½ð¡£ <br> <br>
+				å‚åŠ è¿™ä¸ªæ´»åŠ¨ï¼Œä¸ä»…æœ‰æœºä¼šèŽ·å¾—è¶…å€¼ç´¢å°¼FIFAæ‰‹æœºï¼Œè¿˜å¯ä»¥èŽ·å¾—å…³æ³¨å¥–é‡‘å’Œæ‹‰æ‰‹èŽ·çŽ°é‡‘ã€‚ <br> <br>
 			</div>
 			<div
 				style="font-size: larger; color: rgb(62, 62, 62); line-height: 150%; font-family: Droid Sans Fallback;">
-				×ß¹ý£¬Â·¹ý£¬²»Òª´í¹ý£¡</div>
+				èµ°è¿‡ï¼Œè·¯è¿‡ï¼Œä¸è¦é”™è¿‡ï¼</div>
 		</div>
 	</div>
 	<br>

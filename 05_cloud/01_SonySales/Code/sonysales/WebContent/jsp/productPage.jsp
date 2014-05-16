@@ -1,15 +1,15 @@
 <%@page import="com.sonymobile.sonysales.util.Constant"%>
 <%@page import="com.sonymobile.sonysales.util.Base64Coder"%>
-<%@ page contentType="text/html; charset=gb2312"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="Content-Type" content="text/html charset=gb2312">
+<meta http-equiv="Content-Type" content="text/html charset=UTF-8">
 <meta name="viewport" content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
 <script src="../js/jquery-2.1.1.min.js"></script>
-<title>»î¶¯ÏêÇé</title>
+<title>æ´»åŠ¨è¯¦æƒ…</title>
 </head>
 <body style="margin:0;background-color:#f8f7f5">
 
@@ -18,7 +18,7 @@
                 <div id="intro" style="text-align:center;word-wrap:break-word;word-break:break-all;">
                     <div style="font-size:larger;">
                     <p>
-                        ÇëÔÚpc¶Ëä¯ÀÀÆ÷ÊäÈëÏÂÃæÁ´½Ó½øÐÐºóÐø¹ºÂò¡£
+                        è¯·åœ¨pcç«¯æµè§ˆå™¨è¾“å…¥ä¸‹é¢é“¾æŽ¥è¿›è¡ŒåŽç»­è´­ä¹°ã€‚
                         </p>
                     </div>
                     <div id="product_div" style="text-align:center">

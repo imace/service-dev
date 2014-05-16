@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=gb2312"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
 <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<title>ÄãÒÑ¾­Ö§³Ö¹ýÁË</title>
+<title>ä½ å·²ç»æ”¯æŒè¿‡äº†</title>
 </head>
 <body>
 	<hr>	
@@ -16,7 +16,7 @@
 		style="background: url(/img/stamp.png) right bottom no-repeat; background-size: 55%; margin: 10px;">
 		<div class="row" style="font-family: Droid Sans Fallback;">
 			<div class="col-xs-12">
-				<h3>À­ÓÑÂò, ×Ô¼º²»ÄÜÖ§³Ö×Ô¼º!!! Çë·ÖÏí¸øÆäËûÈË°É!!!</h3>
+				<h3>æ‹‰å‹ä¹°, è‡ªå·±ä¸èƒ½æ”¯æŒè‡ªå·±!!! è¯·åˆ†äº«ç»™å…¶ä»–äººå§!!!</h3>
 			</div>
 		</div>
 		<hr>
