@@ -36,7 +36,7 @@
     }  
         #handlelist_div {  
                         overflow:hidden;
-                        height: 336px;
+                        height: 280px;
          border-top-width:3px;
          border-top-color:#22bff2;
          margin-left:10px;
@@ -97,7 +97,7 @@
        }
    } else {
        %>
-       <tr><td id="pop_img_td" style="text-align:center;border-top:medium none;"><div style="margin: 15px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="img/product_3.png" style="height:180px" id="pop_img"/></div></td></tr>
+       <tr><td id="pop_img_td" style="text-align:center;border-top:medium none;"><div style="margin: 22px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="img/product_3.png" style="height:180px" id="pop_img"/></div></td></tr>
        <%
    }
        %>
@@ -154,7 +154,7 @@
 
            <tr>
            <td style="height:55px;"><div style="color:#e82827"><%=i+1 %></div></td>
-           <td><div style="line-height:150%";><font style="color:#e82827"><%=supporterList.get(i).getNickname() %></font>，已获得<font style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></font>位朋友的拉友买支持，<br/>
+           <td><div style="line-height:150%";><font style="color:#e82827"><%=supporterList.get(i).getNickname() %></font>，已获得<font style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></font>位朋友的拉友买支持，
            最多可获得现金卷<%=supporterList.get(i).getCount() %>*50的奖金！</div>
            </td>
            </tr>
@@ -163,16 +163,16 @@
                       %>
            <tr>
            <td style="height:55px"><%=i+1 %></td>
-           <td><div style="line-height:150%";><%=supporterList.get(i).getNickname() %>，已获得<font style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></font>位朋友的拉友买支持，<br/>
+           <td><div style="line-height:150%";><%=supporterList.get(i).getNickname() %>，已获得<font style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></font>位朋友的拉友买支持，
            最多可获得现金卷<%=supporterList.get(i).getCount() %>*50的奖金！</div>
            </td>
            </tr>
       <% 
        }
        }
-       if(supporterList.size()<=5) {
+       if(supporterList.size()<5) {
            int size = supporterList.size();
-           int height = (6-size)*55;
+           int height = (5-size)*55;
            %>
            <tr><td colspan=2 style="height:<%=height%>px;text-align:center;border-top:medium none;"><div style="font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div></td></tr>
        <%
@@ -180,7 +180,7 @@
        
        } else {
            %>
-           <tr><td style="text-align:center;border-top:medium none;"><div style="margin: 15px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="img/product_3.png" style="height:280px"/></div><td></tr>
+           <tr><td style="text-align:center;border-top:medium none;"><div style="margin: 35px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="img/product_3.png" style="height:180px"/></div><td></tr>
            <%
        }
            %>
@@ -196,7 +196,7 @@
 
            <tr>
            <td style="height:55px;"><div style="color:#e82827"><%=i+1 %></div></td>
-           <td><div style="line-height:150%";><font style="color:#e82827"><%=supporterList.get(i).getNickname() %></font>，已获得<font style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></font>位朋友的拉友买支持，<br/>
+           <td><div style="line-height:150%";><font style="color:#e82827"><%=supporterList.get(i).getNickname() %></font>，已获得<font style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></font>位朋友的拉友买支持，
            最多可获得现金卷<%=supporterList.get(i).getCount() %>*50的奖金！</div>
            </td>
            </tr>
@@ -205,7 +205,7 @@
                       %>
            <tr>
            <td style="height:55px"><%=i+1 %></td>
-           <td><div style="line-height:150%";><%=supporterList.get(i).getNickname() %>，已获得<font style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></font>位朋友的拉友买支持，<br/>
+           <td><div style="line-height:150%";><%=supporterList.get(i).getNickname() %>，已获得<font style="color:rgb(190, 155, 43)"><%=supporterList.get(i).getCount() %></font>位朋友的拉友买支持，
            最多可获得现金卷<%=supporterList.get(i).getCount() %>*50的奖金！</div>
            </td>
            </tr>
