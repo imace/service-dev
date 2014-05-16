@@ -237,7 +237,7 @@
 			</div>
 			<br>
 			<hr style="border: 1px dashed #999999;">
-			<a href="<%=Constant.HOST%>/getNameList" role="button" class="btn btn-lg"
+			<a href="<%=Constant.HOST%>/getNameList?id=<%=openId%>" role="button" class="btn btn-lg"
 				style="display: block; border:1px solid #999999; text-align:center; font-size:20px; color:#3e3e3e;"><img src="/img/ranking_icn.png" alt="" style="padding:0px;border:none;width:24px;
 height:24px;margin:-2px 15px -3px 0px !important;"/>查看排行榜信息</a>
 		</div>
