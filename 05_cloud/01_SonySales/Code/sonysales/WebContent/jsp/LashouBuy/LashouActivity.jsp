@@ -59,7 +59,7 @@
         <div id="touchBox">
                <img src="../../img/product_top_all_1.png" style="margin-top:0" id="top_img" />
             <div  style="background-color:white;padding-bottom:10px;">
-             <div id="buy" style="margin-left:10px;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='http://www.jd.com'">
+             <div id="buy" style="margin-left:10px;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='http://m.jd.com/product/813097.html'">
                 <div style="font-size:larger;color:white;padding-top:15px">立即购买</div>
              </div>
          </div>
