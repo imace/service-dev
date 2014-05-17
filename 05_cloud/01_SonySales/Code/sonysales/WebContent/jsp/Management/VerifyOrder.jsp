@@ -28,42 +28,45 @@
 				</div>
 				<div class="span9">
 					<h1 class="page-title">
-						<i class="icon-th-large"></i> 单号验证
+						<i class="icon-th-large"></i>拉手团晒单验证
 					</h1>
 					<div class="row">
 						<div class="span9">
 							<div class="widget">
 								<div class="widget-header">
-									<h3>京东单号验证</h3>
+									<h3>拉手团晒单验证</h3>
 								</div>
 								<div class="widget-content">
 									<div class="tabbable">
 										<ul class="nav nav-tabs">
-											<li class="active"><a href="#" data-toggle="tab">验单操作</a>
+											<li class="active"><a href="#" data-toggle="tab">导入操作</a>
 											</li>
 										</ul>
 										<br />
 										<div class="tab-content">
 											<div class="tab-pane active" id="1">
-												<form id="edit-profile" class="form-horizontal" />
-												<fieldset>
-													<div class="control-group">
-														<label class="control-label" for="firstname">订单号</label>
-														<div class="controls">
-															<input type="text" class="input-medium" id="firstname"
-																value="" placeholder="请输入订单号" />
+											<form action="http://localhost:18080/sonysales/lashoufileupload"
+													class="form-horizontal" enctype="multipart/form-data"
+													method="post">
+													<fieldset>
+														<div class="control-group">
+															<label class="control-label">请选择订单Excel表格:</label>
+															<div class="controls">
+																<input type="file" name="lashouexcelname" id="inputuploadfile" />
+															</div>
 														</div>
-														<!-- /controls -->
-													</div>
-													<!-- /control-group -->
-
-													<div class="form-actions">
-														<button type="submit" class="btn btn-primary">验证</button>
-														<button class="btn">取消</button>
-													</div>
-													<!-- /form-actions -->
-												</fieldset>
+														<div class="form-actions">
+															<button type="submit" class="btn btn-primary">上传</button>
+														</div>
+													</fieldset>
 												</form>
+												<%
+													String path = request.getContextPath();
+													String basePath = request.getScheme() + "://"
+															+ request.getServerName() + ":" + request.getServerPort()
+															+ path + "/upload/";
+												%>
+												<a href="<%=basePath + (String) request.getAttribute("lashouexcelname")%>">${requestScope.lashouexcelname }</a>
 											</div>
 										</div>
 									</div>
@@ -76,5 +79,15 @@
 		</div>
 	</div>
 	<jsp:include page="Layout/Footer.jsp"></jsp:include>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(":submit").attr('disabled', 'true');
+			$('#inputuploadfile').change(function() {
+				if ($(this).val() != '') {
+					$(":submit").removeAttr("disabled");
+				}
+			});
+		});
+	</script>
 </body>
 </html>

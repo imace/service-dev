@@ -28,18 +28,18 @@
 				</div>
 				<div class="span9">
 					<h1 class="page-title">
-						<i class="icon-th-large"></i> 单号验证
+						<i class="icon-th-large"></i>拉友买订单导入
 					</h1>
 					<div class="row">
 						<div class="span9">
 							<div class="widget">
 								<div class="widget-header">
-									<h3>京东单号验证</h3>
+									<h3>拉友买订单导入</h3>
 								</div>
 								<div class="widget-content">
 									<div class="tabbable">
 										<ul class="nav nav-tabs">
-											<li class="active"><a href="#" data-toggle="tab">验单操作</a>
+											<li class="active"><a href="#" data-toggle="tab">导入操作</a>
 											</li>
 										</ul>
 										<br />

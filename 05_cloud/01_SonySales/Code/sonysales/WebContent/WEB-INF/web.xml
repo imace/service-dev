@@ -95,7 +95,12 @@
       <servlet-name>FileUpLoad</servlet-name>
       <servlet-class>com.sonymobile.sonysales.servlet.Management.FileUpLoad</servlet-class>
     </servlet>
-    
+    <servlet>
+      <description></description>
+      <display-name></display-name>
+      <servlet-name>LashouFileUpLoad</servlet-name>
+      <servlet-class>com.sonymobile.sonysales.servlet.Management.LashouFileUpLoad</servlet-class>
+    </servlet>
     
     <servlet-mapping>
         <servlet-name>OAuthServlet</servlet-name>
@@ -117,7 +122,10 @@
       <servlet-name>FileUpLoad</servlet-name>
       <url-pattern>/fileupload</url-pattern>
     </servlet-mapping>
-    
+    <servlet-mapping>
+      <servlet-name>LashouFileUpLoad</servlet-name>
+      <url-pattern>/lashoufileupload</url-pattern>
+    </servlet-mapping>
     
     
     
