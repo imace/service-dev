@@ -11,6 +11,37 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap.min.css">
 <script src="<%=request.getContextPath()%>/js/jquery-1.7.2.min.js"></script>
 <script src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css"
+	media="screen and (max-device-width:320px) and (-webkit-device-pixel-ratio:1)"
+	href="<%=Constant.HOST%>/css/site_320.css">
+<link rel="stylesheet" type="text/css"
+	media="screen and (min-device-width:321px) and (max-device-width:480px) and (-webkit-device-pixel-ratio:1)"
+	href="<%=Constant.HOST%>/css/site_540.css">
+<link rel="stylesheet" type="text/css"
+	media="screen and (max-device-width:640px) and (-webkit-device-pixel-ratio:1.5)"
+	href="<%=Constant.HOST%>/css/site_320.css">
+<link rel="stylesheet" type="text/css"
+	media="screen and (max-device-width:720px) and (-webkit-device-pixel-ratio:2)"
+	href="<%=Constant.HOST%>/css/site_320.css">
+
+<link rel="stylesheet" type="text/css"
+	media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
+	href="<%=Constant.HOST%>/css/site_540.css">
+
+<link rel="stylesheet" type="text/css"
+	media="screen and (min-device-width:721px) and (device-width:960px) and (-webkit-device-pixel-ratio:1.5)"
+	href="<%=Constant.HOST%>/css/site_720.css">
+
+<link rel="stylesheet" type="text/css"
+	media="screen and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
+	href="<%=Constant.HOST%>/css/site_320.css">
+
+<link rel="stylesheet" type="text/css"
+	media="screen and (min-device-width:721px) and (max-device-width:1280px) and (-webkit-device-pixel-ratio: 2)"
+	href="<%=Constant.HOST%>/css/site_720.css">
+<link rel="stylesheet" type="text/css"
+	media="screen and (min-device-width:1081px) and (max-device-width:1920px) and (-webkit-device-pixel-ratio: 3)"
+	href="<%=Constant.HOST%>/css/site_720.css">  
 <title>索尼拉手买, 他实惠, 我受益!</title>
 </head>
 <body style="margin:0;background-color:#f8f7f5">
@@ -41,15 +72,15 @@
              <img src="<%=request.getContextPath()%>/img/banner_popularity.png" id="banner_img" style="margin-left:10px"/>
          </div>
          <div id="intro" style="margin-left:10px;word-wrap:break-word;word-break:break-all;">
-             <div style="margin-top:10px;color:rgb(0, 173, 255);font-size:larger">
+             <div class="text_subHeader" style="margin-top:10px;">
                             大力神杯拉手买活动规则
             </div>
-            <div style="font-size:larger;line-height:150%;">
+            <div class="text_mainBody" style="line-height:150%;">
                 亲, 索尼FIFA 活动正在进行, <br/>
                推送消息给你朋友, 你的朋友可获得50元优惠券,</br>
                同时如果他购买手机, 你即可获得50元奖金.
             </div>
-            <div style="font-size:140%;color:rgb(148, 140, 140);padding-top:3px">
+            <div class="text_guide" style="padding-top:3px">
                                         点击右上角-->发送给朋友
             </div>
         </div>

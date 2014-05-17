@@ -10,7 +10,37 @@
 <meta name="viewport"
 	content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
 	<script src="js/jquery-2.1.1.min.js"></script>
-  
+<link rel="stylesheet" type="text/css"
+	media="screen and (max-device-width:320px) and (-webkit-device-pixel-ratio:1)"
+	href="<%=Constant.HOST%>/css/site_320.css">
+<link rel="stylesheet" type="text/css"
+	media="screen and (min-device-width:321px) and (max-device-width:480px) and (-webkit-device-pixel-ratio:1)"
+	href="<%=Constant.HOST%>/css/site_540.css">
+<link rel="stylesheet" type="text/css"
+	media="screen and (max-device-width:640px) and (-webkit-device-pixel-ratio:1.5)"
+	href="<%=Constant.HOST%>/css/site_320.css">
+<link rel="stylesheet" type="text/css"
+	media="screen and (max-device-width:720px) and (-webkit-device-pixel-ratio:2)"
+	href="<%=Constant.HOST%>/css/site_320.css">
+
+<link rel="stylesheet" type="text/css"
+	media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
+	href="<%=Constant.HOST%>/css/site_540.css">
+
+<link rel="stylesheet" type="text/css"
+	media="screen and (min-device-width:721px) and (device-width:960px) and (-webkit-device-pixel-ratio:1.5)"
+	href="<%=Constant.HOST%>/css/site_720.css">
+
+<link rel="stylesheet" type="text/css"
+	media="screen and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
+	href="<%=Constant.HOST%>/css/site_320.css">
+
+<link rel="stylesheet" type="text/css"
+	media="screen and (min-device-width:721px) and (max-device-width:1280px) and (-webkit-device-pixel-ratio: 2)"
+	href="<%=Constant.HOST%>/css/site_720.css">
+<link rel="stylesheet" type="text/css"
+	media="screen and (min-device-width:1081px) and (max-device-width:1920px) and (-webkit-device-pixel-ratio: 3)"
+	href="<%=Constant.HOST%>/css/site_720.css">  
 <title></title>
 <style type="text/css">  
         table {  
@@ -53,12 +83,10 @@
 	 String openId =(String)request.getAttribute("openId");
 	
 	%>
-	<div id="title" style="margin-left:10px">
-     <h2>索尼FIFA2014大奖榜奖金榜</h2>
-    </div>
+	<div id="title" class="text_header" style="margin-left:10px;margin-top:10px;">索尼FIFA2014大奖榜奖金榜</div>
     <div id="pop_div" style="padding-top:1px;margin-left:10px">
      <div id="pop_title" style="height:40px;text-align:left;float:left">
-         <div style="font-size:larger;color:#22bff2;padding-top:12px;padding-right:30px">人气榜</div>
+         <div class="text_subHeader" style="padding-top:12px;padding-right:30px">人气榜</div>
      </div>
      <div id="pop_image" style="height:40px;text-align:right;float:right;margin-right:13px">
          <div><img src="img/ranking1.png" style="height:40px;float:left;margin-left:10px;"/></div>
@@ -137,7 +165,7 @@
     
     <div id="pop_div" style="padding-top:1px;margin-left:10px">
      <div id="pop_title" style="height:40px;text-align:left;float:left">
-         <div style="font-size:larger;color:#22bff2;padding-top:12px;padding-right:30px">奖金榜</div>
+         <div class="text_subHeader" style="padding-top:12px;padding-right:30px">奖金榜</div>
      </div>
      <div id="pop_image" style="height:40px;text-align:right;float:right;margin-right:13px">
          <div><img src="img/ranking2.png" style="height:40px;float:left;margin-left:10px;"/></div>
