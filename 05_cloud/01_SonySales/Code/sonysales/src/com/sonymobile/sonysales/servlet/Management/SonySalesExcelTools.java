@@ -1,12 +1,21 @@
-package com.sonymobile.sonysales.util;
+package com.sonymobile.sonysales.servlet.Management;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
@@ -24,6 +33,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import com.sonymobile.sonysales.entity.AssociationOrders;
 import com.sonymobile.sonysales.entity.OrderInfo;
 import com.sonymobile.sonysales.service.OrderHistoryService;
+import com.sonymobile.sonysales.util.ResultMsg;
 
 public final class SonySalesExcelTools {
 	private static Logger logger = Logger.getLogger(SonySalesExcelTools.class);
@@ -93,7 +103,7 @@ public final class SonySalesExcelTools {
 	 * @return 晒单结果对象
 	 * 
 	 * */
-	public static AssociationOrders importSupportedOrders(String filePath) {
+	public static AssociationOrders importAndVerifySupportedOrders(String filePath) {
 		AssociationOrders associationOrders = new AssociationOrders();
 		try {
 			Workbook wb = getExcelWorkbook(filePath);
@@ -101,18 +111,20 @@ public final class SonySalesExcelTools {
 			Sheet sheet = wb.getSheetAt(0);
 			Iterator<Row> rowInterator = sheet.rowIterator();
 			Row row = rowInterator.next(); // The excel head row
+			row = rowInterator.next();     // The excel head row
 			row = rowInterator.next();
 			row.getCell(0).setCellType(Cell.CELL_TYPE_STRING);
 			String ownJdId = row.getCell(0).getStringCellValue();
 			row.getCell(0).setCellType(Cell.CELL_TYPE_STRING);
 			String ownOrderId = row.getCell(0).getStringCellValue();
 
-			OrderInfo ownerOrderInfo = associationOrders.getOwnerOrder();
+			OrderInfo ownerOrderInfo = new OrderInfo();
 			ownerOrderInfo.setJdId(ownJdId);
 			ownerOrderInfo.setOrderNum(ownOrderId);
+			associationOrders.setOwnerOrder(ownerOrderInfo);
 
-			List<OrderInfo> supporterList = associationOrders
-					.getSupptorOrderList();
+			List<OrderInfo> supporterList = new ArrayList<OrderInfo>();
+			row = rowInterator.next(); // The excel head row
 			row = rowInterator.next(); // The excel head row
 			while (rowInterator.hasNext()) {
 				OrderInfo orderInfo = new OrderInfo();
@@ -125,7 +137,9 @@ public final class SonySalesExcelTools {
 				orderInfo.setOrderNum(orderId);
 				supporterList.add(orderInfo);
 			}
-			return associationOrders;
+			associationOrders.setSupptorOrderList(supporterList);
+
+			return OrderHistoryService.verifyAssociationOrders(associationOrders);
 		} catch (IOException e) {
 			e.printStackTrace();
 			logger.fatal("导入文件错误：\n" + e.toString());
@@ -137,7 +151,7 @@ public final class SonySalesExcelTools {
 	/**
 	 * 导出晒单整理结果
 	 * */
-	public static void exportUserHandleData(String sheetName,
+	public static void exportUserHandleData(String path, String sheetName,
 			AssociationOrders orders) {
 		// write the column metadata in excel
 		HSSFWorkbook wb = new HSSFWorkbook();
@@ -156,6 +170,23 @@ public final class SonySalesExcelTools {
 		));// 设置合并的区域(支持者订单)
 		rowNum = buildOwnerOfUserHandleData(wb, rowNum, sheet, orders);
 		rowNum = buildSupporterOfUserHandleData(wb, rowNum, sheet, orders);
+
+		try {
+			sheetName = System.currentTimeMillis() + "-" + sheetName;
+			File file = new File(path, sheetName);
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+			OutputStream out = new FileOutputStream(file);
+			wb.write(out);
+			out.close();
+		} catch (FileNotFoundException e) {
+			logger.fatal("No file found : \n");
+			e.printStackTrace();
+		} catch (IOException e) {
+			logger.fatal("File I/O exception : \n");
+			e.printStackTrace();
+		}
 	}
 
 	private static int buildOwnerOfUserHandleData(HSSFWorkbook wb, int rowNum,
