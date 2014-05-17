@@ -20,6 +20,7 @@ public class ResultMsg {
 
 	private static final String ERROR_DES_OWNEROPENID_NOTEXISTS = "owner open id not exists.";
 	private static final String ERROR_DES_SUPPORTEROPENID_NOTEXISTS = "supporter open id not exists.";
+	private static final String ERROR_DES_INVALID_OWNERID = "Invalid JD ower order id";
 
 	private static final String ERROR_DES_ORDERNUM_EXISTS = "order num exists already.";
 

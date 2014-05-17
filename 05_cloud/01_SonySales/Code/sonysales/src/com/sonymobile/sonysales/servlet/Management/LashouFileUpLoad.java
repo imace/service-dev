@@ -76,7 +76,7 @@ public class LashouFileUpLoad extends HttpServlet {
 		}
 		
 		//SonySalesExcelTools.importJDOrdersToDB(path+"\\"+filename);
-		AssociationOrders assciationorders= SonySalesExcelTools.importSupportedOrders(path+"\\"+filename);
+		AssociationOrders assciationorders= SonySalesExcelTools.importAndVerifySupportedOrders(path+"\\"+filename);
 		String downfile="";
 		
 		request.setAttribute("Order", assciationorders);

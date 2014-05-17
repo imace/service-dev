@@ -58,6 +58,7 @@ public class OrderHistoryService {
 		List<OrderInfo> supporterOrderList = null;
 		String ownJdId = null;
 		User ownUser = null;
+		String ownOrderId = null;
 
 		if (assOrder != null) {
 			ownerOrder = assOrder.getOwnerOrder();
@@ -74,9 +75,10 @@ public class OrderHistoryService {
 		}
 		if (ownerOrder != null) {
 			ownerOrder.setNickname(ownNickName);
+			ownOrderId = ownerOrder.getOrderNum();
 		}
 
-		if (supporterOrderList != null) {
+		if (supporterOrderList != null && OrderHistoryDAO.ValidOrderNum(ownOrderId)) {
 			int validSupporter = 0;
 
 			for (int index = 0; index < supporterOrderList.size(); index++) {
@@ -100,6 +102,9 @@ public class OrderHistoryService {
 							// cash back allow
 							result = RESULT_CASH_BACK_ALLOW;
 							validSupporter++;
+							if (ownerOrder != null) {
+								OrderHistoryDAO.updateOrderHistory(supporterOrderNum, ownOrderId);
+							}
 						}
 					}
 				}

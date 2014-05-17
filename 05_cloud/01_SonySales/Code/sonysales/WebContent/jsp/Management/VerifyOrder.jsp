@@ -50,8 +50,7 @@
 										<br />
 										<div class="tab-content">
 											<div class="tab-pane active" id="1">
-												<form
-													action="http://localhost:18080/sonysales/lashoufileupload"
+											<form action="http://localhost:8888/sonysales/lashoufileupload"
 													class="form-horizontal" enctype="multipart/form-data"
 													method="post">
 													<fieldset>
