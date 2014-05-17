@@ -46,7 +46,7 @@
 										<div class="tab-content">
 											<div class="tab-pane active" id="1">
 
-												<form action="http://localhost:18080/sonysales/fileupload"
+												<form action="<%=request.getContextPath()%>/sonysales/fileupload"
 													class="form-horizontal" enctype="multipart/form-data"
 													method="post">
 													<fieldset>

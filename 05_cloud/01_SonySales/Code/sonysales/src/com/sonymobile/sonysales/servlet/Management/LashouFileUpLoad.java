@@ -17,6 +17,7 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.sonymobile.sonysales.entity.AssociationOrders;
 import com.sonymobile.sonysales.util.SonySalesExcelTools;
 
 /**
@@ -75,8 +76,11 @@ public class LashouFileUpLoad extends HttpServlet {
 		}
 		
 		//SonySalesExcelTools.importJDOrdersToDB(path+"\\"+filename);
-		SonySalesExcelTools.importSupportedOrders(path+"\\"+filename);
-				
+		AssociationOrders assciationorders= SonySalesExcelTools.importSupportedOrders(path+"\\"+filename);
+		String downfile="";
+		
+		request.setAttribute("Order", assciationorders);
+		request.setAttribute("DownFile", downfile);
 		request.getRequestDispatcher("/jsp/Management/VerifyOrder.jsp")
 				.forward(request, response);
 	}

@@ -1,6 +1,11 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="com.sonymobile.sonysales.util.Constant"%>
+<%@page import="com.sonymobile.sonysales.entity.AssociationOrders"%>
+<%@page import="com.sonymobile.sonysales.entity.OrderInfo"%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,14 +50,16 @@
 										<br />
 										<div class="tab-content">
 											<div class="tab-pane active" id="1">
-											<form action="http://localhost:18080/sonysales/lashoufileupload"
+												<form
+													action="http://localhost:18080/sonysales/lashoufileupload"
 													class="form-horizontal" enctype="multipart/form-data"
 													method="post">
 													<fieldset>
 														<div class="control-group">
 															<label class="control-label">请选择订单Excel表格:</label>
 															<div class="controls">
-																<input type="file" name="lashouexcelname" id="inputuploadfile" />
+																<input type="file" name="lashouexcelname"
+																	id="inputuploadfile" />
 															</div>
 														</div>
 														<div class="form-actions">
@@ -62,11 +69,78 @@
 												</form>
 												<%
 													String path = request.getContextPath();
-													String basePath = request.getScheme() + "://"
-															+ request.getServerName() + ":" + request.getServerPort()
-															+ path + "/upload/";
+																																	String basePath = request.getScheme() + "://"
+																																			+ request.getServerName() + ":" + request.getServerPort()
+																																			+ path + "/upload/";
+																																	AssociationOrders assciationorders = (AssociationOrders) request
+																																			.getAttribute("Order");
+																																	if (assciationorders != null) {
 												%>
-												<a href="<%=basePath + (String) request.getAttribute("lashouexcelname")%>">${requestScope.lashouexcelname }</a>
+
+												<h3>发起者订单</h3>
+												<table class="table table-striped table-bordered">
+													<thead>
+														<tr>
+															<th>单号</th>
+															<th>京东号</th>
+															<th>微信昵称</th>
+															<th>有效支持者</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td><%=assciationorders.getOwnerOrder().getOrderNum()%></td>
+															<td><%=assciationorders.getOwnerOrder().getJdId()%></td>
+															<td><%=assciationorders.getOwnerOrder().getNickname()%></td>
+															<td><%=assciationorders.getValidSupporterCount()%></td>
+														</tr>
+													</tbody>
+												</table>
+
+												<%
+													if (assciationorders.getSupptorOrderList().size() > 0) {
+												%>
+
+												<h3>发起者订单</h3>
+												<table class="table table-striped table-bordered">
+													<thead>
+														<tr>
+															<th>单号</th>
+															<th>京东号</th>
+															<th>微信昵称</th>
+															<th>验证结果</th>
+														</tr>
+													</thead>
+													<tbody>
+
+														<%
+															for(OrderInfo order: assciationorders.getSupptorOrderList()){
+														%>
+														<tr>
+															<td><%=order.getOrderNum()%></td>
+															<td><%=order.getJdId()%></td>
+															<td><%=order.getNickname()%></td>
+															<td><%=order.getVerifyResult()%></td>
+														</tr>
+														<%
+															}
+														%>
+													</tbody>
+												</table>
+
+												<%
+													}
+												%>
+
+												<a
+													href="<%=basePath + (String) request.getAttribute("DownFile")%>"
+													class="btn btn-lg">导出结果</a>
+												<%
+													}
+												%>
+												<a
+													href="<%=basePath
+					+ (String) request.getAttribute("lashouexcelname")%>">${requestScope.lashouexcelname }</a>
 											</div>
 										</div>
 									</div>
