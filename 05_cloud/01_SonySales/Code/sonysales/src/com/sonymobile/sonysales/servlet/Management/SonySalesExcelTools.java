@@ -116,8 +116,8 @@ public final class SonySalesExcelTools {
 			row = rowInterator.next();
 			row.getCell(0).setCellType(Cell.CELL_TYPE_STRING);
 			String ownJdId = row.getCell(0).getStringCellValue();
-			row.getCell(0).setCellType(Cell.CELL_TYPE_STRING);
-			String ownOrderId = row.getCell(0).getStringCellValue();
+			row.getCell(1).setCellType(Cell.CELL_TYPE_STRING);
+			String ownOrderId = row.getCell(1).getStringCellValue();
 
 			OrderInfo ownerOrderInfo = new OrderInfo();
 			ownerOrderInfo.setJdId(ownJdId);
@@ -261,7 +261,6 @@ public final class SonySalesExcelTools {
 		cell.setCellStyle(style);
 
 		style = wb.createCellStyle();
-		style = wb.createCellStyle();
 		style.setAlignment(HSSFCellStyle.ALIGN_CENTER);
 		style.setFillBackgroundColor(IndexedColors.GREEN.getIndex());
 		row = sheet.createRow(rowNum++);
@@ -284,6 +283,10 @@ public final class SonySalesExcelTools {
 		cell = row.createCell(3);
 		cell.setCellValue("验证结果");
 		cell.setCellStyle(style);
+
+		style = wb.createCellStyle();
+		style.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+		style.setFillBackgroundColor(IndexedColors.WHITE.getIndex());
 
 		// fill in the score data in excel
 		for (int i = 0; i < supporterList.size(); i++) {
