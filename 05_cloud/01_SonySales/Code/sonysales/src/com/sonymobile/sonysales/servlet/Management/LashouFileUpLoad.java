@@ -78,9 +78,9 @@ public class LashouFileUpLoad extends HttpServlet {
 		AssociationOrders assciationorders= SonySalesExcelTools.importAndVerifySupportedOrders(path+"\\"+filename);
 		String downfile="VerifedResult";
 		String fileFullPath = SonySalesExcelTools.exportUserHandleData(path, downfile, assciationorders);
-		
+
 		request.setAttribute("Order", assciationorders);
-		request.setAttribute("DownFile", fileFullPath);
+		request.setAttribute("DownFile", fileFullPath.substring(fileFullPath.lastIndexOf("\\") + 1));
 		request.getRequestDispatcher("/jsp/Management/VerifyOrder.jsp")
 				.forward(request, response);
 	}

@@ -50,7 +50,8 @@
 										<br />
 										<div class="tab-content">
 											<div class="tab-pane active" id="1">
-											<form action="<%=request.getContextPath()%>/lashoufileupload"
+												<form
+													action="<%=request.getContextPath()%>/lashoufileupload"
 													class="form-horizontal" enctype="multipart/form-data"
 													method="post">
 													<fieldset>
@@ -68,12 +69,12 @@
 												</form>
 												<%
 													String path = request.getContextPath();
-																																	String basePath = request.getScheme() + "://"
-																																			+ request.getServerName() + ":" + request.getServerPort()
-																																			+ path + "/upload/";
-																																	AssociationOrders assciationorders = (AssociationOrders) request
-																																			.getAttribute("Order");
-																																	if (assciationorders != null) {
+													String basePath = request.getScheme() + "://"
+															+ request.getServerName() + ":" + request.getServerPort()
+															+ path + "/upload/";
+													AssociationOrders assciationorders = (AssociationOrders) request
+															.getAttribute("Order");
+													if (assciationorders != null) {
 												%>
 
 												<h3>发起者订单</h3>
@@ -95,12 +96,10 @@
 														</tr>
 													</tbody>
 												</table>
-
 												<%
 													if (assciationorders.getSupptorOrderList().size() > 0) {
 												%>
-
-												<h3>发起者订单</h3>
+												<h3>支持者订单</h3>
 												<table class="table table-striped table-bordered">
 													<thead>
 														<tr>
@@ -111,7 +110,6 @@
 														</tr>
 													</thead>
 													<tbody>
-
 														<%
 															for(OrderInfo order: assciationorders.getSupptorOrderList()){
 														%>
@@ -126,20 +124,15 @@
 														%>
 													</tbody>
 												</table>
-
 												<%
 													}
 												%>
-
 												<a
 													href="<%=basePath + (String) request.getAttribute("DownFile")%>"
 													class="btn btn-lg">导出结果</a>
 												<%
 													}
 												%>
-												<a
-													href="<%=basePath
-					+ (String) request.getAttribute("lashouexcelname")%>">${requestScope.lashouexcelname }</a>
 											</div>
 										</div>
 									</div>
