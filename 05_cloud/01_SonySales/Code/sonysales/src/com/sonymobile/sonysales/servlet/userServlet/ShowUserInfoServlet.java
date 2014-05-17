@@ -35,12 +35,14 @@ public class ShowUserInfoServlet extends HttpServlet {
 
 			if (userJA.size() > 0) {
 				JSONObject userJO = userJA.getJSONObject(0);
-				phoneNum = userJO.getString("phoneNum");
-				email = userJO.getString("email");
-				address = userJO.getString("address");
-				jdId = userJO.getString("jdId");
-				points = userJO.getString("points");
-				pointsOrder = userJO.getString("pointsOrder");
+			    if (!userJO.isNullObject()) {
+					phoneNum = userJO.getString("phoneNum");
+					email = userJO.getString("email");
+					address = userJO.getString("address");
+					jdId = userJO.getString("jdId");
+					points = userJO.getString("points");
+					pointsOrder = userJO.getString("pointsOrder");
+			    }
 			}
 
 			List<?> supporters = MyFIFAService.getSupporters(fromid);

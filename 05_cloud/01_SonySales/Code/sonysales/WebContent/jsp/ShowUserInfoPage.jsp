@@ -205,17 +205,20 @@
 					JSONArray supporterJA = JSONArray.fromObject(supporterJS);
 					int supporterCount = supporterJA.size();
 					int money = supporterCount * Constant.FEEDBACK_SINGLE_MONEY;
+
+					int emptyObjectCount = 0;
 				%>
 
 				<table class="table  table-striped">
-					<%
-						if (supporterCount > 0) {
-					%>
-					<%
+				<%
+					if (supporterCount > 0) {
 						for (int i = 0; i < supporterCount; i++) {
-								JSONObject jo = supporterJA.getJSONObject(i);
-								String nickname = jo.getString("nickname");
-								String createTime = jo.getString("createTime");
+							JSONObject jo = supporterJA.getJSONObject(i);
+							String createTime = "";
+							String nickname = "";
+							if (!jo.isNullObject()) {
+								nickname = jo.getString("nickname");
+								createTime = jo.getString("createTime");
 								StringBuilder sb = new StringBuilder();
 								if (createTime != null && !createTime.isEmpty()
 										&& createTime.length() > 8) {
@@ -230,16 +233,18 @@
 									sb.append("已经");
 								}
 								createTime = sb.toString();
-					%>
-					<tr>
-						<td><%=nickname%><%=createTime%>支持了您！</td>
-					</tr>
+				%>
+				<tr>
+					<td><%=nickname%><%=createTime%>支持了您！</td>
+				</tr>
 					<%
+						} else {
+									emptyObjectCount++;
+								}
+							}
 						}
-						}
-					%>
-					<%
-						if (supporterCount == 0) {
+						supporterCount -= emptyObjectCount;
+						if (supporterCount < 1) {
 					%>
 					<tr>
 						<td>还没有人支持你， 赶紧去拉好友吧！</td>
