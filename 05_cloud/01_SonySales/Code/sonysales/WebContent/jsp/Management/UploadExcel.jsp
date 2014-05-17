@@ -45,22 +45,29 @@
 										<br />
 										<div class="tab-content">
 											<div class="tab-pane active" id="1">
-												<form id="edit-profile" class="form-horizontal" />
-												<fieldset>
-													<!-- /control-group -->
-													<div class="control-group">
-														<label class="control-label">File upload input</label>
-														<div class="controls">
-															<input type="file" />
+
+												<form action="http://localhost:18080/sonysales/fileupload"
+													class="form-horizontal" enctype="multipart/form-data"
+													method="post">
+													<fieldset>
+														<div class="control-group">
+															<label class="control-label">请选择订单Excel表格:</label>
+															<div class="controls">
+																<input type="file" name="excelname" id="inputuploadfile" />
+															</div>
 														</div>
-													</div>
-													<div class="form-actions">
-														<button type="submit" class="btn btn-primary">上传</button>
-														<button class="btn">取消</button>
-													</div>
-													<!-- /form-actions -->
-												</fieldset>
+														<div class="form-actions">
+															<button type="submit" class="btn btn-primary">上传</button>
+														</div>
+													</fieldset>
 												</form>
+												<%
+													String path = request.getContextPath();
+													String basePath = request.getScheme() + "://"
+															+ request.getServerName() + ":" + request.getServerPort()
+															+ path + "/upload/";
+												%>
+												<a href="<%=basePath + (String) request.getAttribute("excelname")%>">${requestScope.excelname }</a>
 											</div>
 										</div>
 									</div>
@@ -73,5 +80,15 @@
 		</div>
 	</div>
 	<jsp:include page="Layout/Footer.jsp"></jsp:include>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(":submit").attr('disabled', 'true');
+			$('#inputuploadfile').change(function() {
+				if ($(this).val() != '') {
+					$(":submit").removeAttr("disabled");
+				}
+			});
+		});
+	</script>
 </body>
 </html>

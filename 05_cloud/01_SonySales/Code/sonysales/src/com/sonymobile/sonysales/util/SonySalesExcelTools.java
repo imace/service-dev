@@ -56,18 +56,27 @@ public final class SonySalesExcelTools {
 			Workbook wb = getExcelWorkbook(filePath);
 
 			Sheet sheet = wb.getSheetAt(0);
+			boolean isSuccess = false;
 			for (Row row : sheet) {
+				if (row.getRowNum() == 0)
+					continue;
 				row.getCell(0).setCellType(Cell.CELL_TYPE_STRING);
 				String jdId = row.getCell(0).getStringCellValue();
 				row.getCell(1).setCellType(Cell.CELL_TYPE_STRING);
 				String orderId = row.getCell(1).getStringCellValue();
-
 				Map<?, ?> result = OrderHistoryService.addValidOrderHistory(
 						orderId, jdId);
-				return ((Integer) result.get(ResultMsg.RESULT_CODE_KEY))
-						.intValue() == ResultMsg.RESULT_CODE_SUCESS;
+				logger.info(result);
+				String code = (String) result.get(ResultMsg.RESULT_CODE_KEY);
+				logger.info("code = " + code);
+				if (Integer.valueOf(code) == ResultMsg.RESULT_CODE_ERROR) {
+					isSuccess = false;
+					break;
+				} else {
+					isSuccess = true;
+				}
 			}
-			return true;
+			return isSuccess;
 		} catch (IOException e) {
 			e.printStackTrace();
 			logger.fatal("导入文件错误：\n" + e.toString());

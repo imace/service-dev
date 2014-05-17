@@ -23,12 +23,20 @@
 		<property name="hibernate.dialect"><!--指定数据库使用的方言 -->
 			org.hibernate.dialect.MySQLMyISAMDialect
 		</property>
-		<!-- 开发服务器访问地址 -->
+		
+		<!-- Jingzhi服务器访问地址 -->
 		<property name="connection.url">
+			jdbc:mysql://semcw20813:3306/app_sonyfifa
+		</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">9682095</property>
+		
+		<!-- 开发服务器访问地址 -->
+		<!-- <property name="connection.url">
 			jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_sonyfifa
 		</property>
 		<property name="connection.username">nzkkkjwlm0</property>
-		<property name="connection.password">3314wkhwj35i2w3yhxm54yxw5kxwlmlk3xj5x1mx</property>
+		<property name="connection.password">3314wkhwj35i2w3yhxm54yxw5kxwlmlk3xj5x1mx</property> -->
 
 		<!-- 测试服务器访问地址 -->
 		<!-- <property name="connection.url">
