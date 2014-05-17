@@ -149,7 +149,58 @@ public class OrderHistoryService {
 		return ret;
 	}
 
-	public static OrderHistory getOrderHistoryByOrderNum(String orderNum) {
-		return OrderHistoryDAO.getOrderHistoryByOrderNum(orderNum);
+	public static OrderInfo getOrderHistoryByOrderNum(String orderNum) {
+		OrderInfo result = new OrderInfo();
+
+		if (result != null) {
+			// order num
+			result.setOrderNum(orderNum);
+			result.setVerifyResult(DEFAULT_INVALID_ORDER);
+			result.setJdId(DEFAULT_NICKNAME);
+			result.setOwnerNickname(DEFAULT_NICKNAME);
+
+			OrderHistory orderHistory = OrderHistoryDAO
+					.getOrderHistoryByOrderNum(orderNum);
+			OrderHistory parentOrder = null;
+			if (orderHistory != null) {
+				// jd id
+				String jdId = orderHistory.getJdId();
+				if (jdId != null) {
+					result.setJdId(jdId);
+					User user = UserDAO.getUserByJdId(jdId);
+					// nickName
+					if (user != null) {
+						result.setNickname(user.getNickname());
+					}
+				}
+
+				int cashFlag = orderHistory.getCashFlag();
+				int validOrder = orderHistory.getValidOrder();
+				// result
+				if (validOrder > 0 && cashFlag > 0) {
+					result.setVerifyResult(DEFAULT_CASH_BACK_ALREADY);
+				} else if (validOrder > 0 && cashFlag == 0) {
+					result.setVerifyResult(RESULT_CASH_BACK_ALLOW);
+				}
+				String parentOrderNum = orderHistory.getParentOrderNum();
+				if (parentOrderNum != null) {
+					parentOrder = OrderHistoryDAO
+							.getOrderHistoryByOrderNum(parentOrderNum);
+				}
+			}
+			if (parentOrder != null) {
+
+				String jdId = parentOrder.getJdId();
+				if (jdId != null) {
+					User user = UserDAO.getUserByJdId(jdId);
+					// parent nickName
+					if (user != null) {
+						result.setOwnerNickname(user.getNickname());
+					}
+				}
+			}
+		}
+
+		return result;
 	}
 }
