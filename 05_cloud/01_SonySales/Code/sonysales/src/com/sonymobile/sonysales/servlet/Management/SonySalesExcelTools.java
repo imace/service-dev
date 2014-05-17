@@ -23,6 +23,7 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -151,19 +152,21 @@ public final class SonySalesExcelTools {
 	/**
 	 * 导出晒单整理结果
 	 * */
-	public static void exportUserHandleData(String path, String sheetName,
+	public static String exportUserHandleData(String path, String sheetName,
 			AssociationOrders orders) {
 		// write the column metadata in excel
 		HSSFWorkbook wb = new HSSFWorkbook();
 		HSSFSheet sheet = wb.createSheet(sheetName);
 		int rowNum = 0;
 
-		sheet.addMergedRegion(new CellRangeAddress(0, // first row (0-based)
+		sheet.addMergedRegion(new CellRangeAddress(
+				0, // first row (0-based)
 				0, // last row (0-based)
 				0, // first column (0-based)
 				3 // last column (0-based)
 		));// 设置合并的区域(发起者订单)
-		sheet.addMergedRegion(new CellRangeAddress(3, // first row (0-based)
+		sheet.addMergedRegion(new CellRangeAddress(
+				3, // first row (0-based)
 				3, // last row (0-based)
 				0, // first column (0-based)
 				3 // last column (0-based)
@@ -173,37 +176,41 @@ public final class SonySalesExcelTools {
 
 		try {
 			sheetName = System.currentTimeMillis() + "-" + sheetName;
-			File file = new File(path, sheetName);
+			File file = new File(path, sheetName+".xls");
 			if (!file.exists()) {
 				file.createNewFile();
 			}
 			OutputStream out = new FileOutputStream(file);
 			wb.write(out);
 			out.close();
+			return file.getCanonicalPath();
 		} catch (FileNotFoundException e) {
 			logger.fatal("No file found : \n");
 			e.printStackTrace();
+			return null;
 		} catch (IOException e) {
 			logger.fatal("File I/O exception : \n");
 			e.printStackTrace();
+			return null;
 		}
 	}
 
 	private static int buildOwnerOfUserHandleData(HSSFWorkbook wb, int rowNum,
 			HSSFSheet sheet, AssociationOrders orders) {
 		HSSFCellStyle style = wb.createCellStyle();
-
 		style.setAlignment(HSSFCellStyle.ALIGN_LEFT);
 		HSSFRow row = sheet.createRow(rowNum++);
-		HSSFCell cell = row.getCell(0);
+		HSSFCell cell = row.createCell(0);
+		logger.info(cell);
 		cell.setCellValue("发起者订单：");
 		cell.setCellStyle(style);
-
+		
+		style = wb.createCellStyle();
 		style.setAlignment(HSSFCellStyle.ALIGN_CENTER);
 		style.setFillBackgroundColor(IndexedColors.GREEN.getIndex());
 		row = sheet.createRow(rowNum++);
 
-		cell = row.getCell(0);
+		cell = row.createCell(0);
 		cell.setCellValue("单号");
 		cell.setCellStyle(style);
 
@@ -220,10 +227,12 @@ public final class SonySalesExcelTools {
 		cell.setCellStyle(style);
 
 		OrderInfo owner = orders.getOwnerOrder();
+		style = wb.createCellStyle();
+		style.setAlignment(HSSFCellStyle.ALIGN_CENTER);
 		style.setFillBackgroundColor(IndexedColors.WHITE.getIndex());
 		row = sheet.createRow(rowNum++);
 
-		cell = row.getCell(0);
+		cell = row.createCell(0);
 		cell.setCellValue(owner.getOrderNum());
 		cell.setCellStyle(style);
 
@@ -245,13 +254,14 @@ public final class SonySalesExcelTools {
 	private static int buildSupporterOfUserHandleData(HSSFWorkbook wb,
 			int rowNum, HSSFSheet sheet, AssociationOrders orders) {
 		HSSFCellStyle style = wb.createCellStyle();
-
 		style.setAlignment(HSSFCellStyle.ALIGN_LEFT);
 		HSSFRow row = sheet.createRow(rowNum++);
-		HSSFCell cell = row.getCell(0);
+		HSSFCell cell = row.createCell(0);
 		cell.setCellValue("支持者订单：");
 		cell.setCellStyle(style);
 
+		style = wb.createCellStyle();
+		style = wb.createCellStyle();
 		style.setAlignment(HSSFCellStyle.ALIGN_CENTER);
 		style.setFillBackgroundColor(IndexedColors.GREEN.getIndex());
 		row = sheet.createRow(rowNum++);
@@ -280,7 +290,7 @@ public final class SonySalesExcelTools {
 			row = sheet.createRow(i + rowNum);
 			OrderInfo supporter = supporterList.get(i);
 
-			cell = row.getCell(0);
+			cell = row.createCell(0);
 			cell.setCellValue(supporter.getOrderNum());
 			cell.setCellStyle(style);
 
