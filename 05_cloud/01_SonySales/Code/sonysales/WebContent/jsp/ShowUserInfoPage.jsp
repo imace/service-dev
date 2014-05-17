@@ -172,7 +172,7 @@
 			<br>
 			<h4 style="color: #22bff2;">您的优惠卷</h4>
 			<hr style="border: 1px solid #22bff2;">
-			<a href="http://quan.jd.com/user_quan.action"
+			<a href="http://help.jd.com/help/question-60.html"
 				style="display: block; background-color: #22bff2; border-color: #22bff2;"
 				class="btn btn-primary btn-lg active" role="button">点击获取优惠卷</a> <br>
 			<div>
