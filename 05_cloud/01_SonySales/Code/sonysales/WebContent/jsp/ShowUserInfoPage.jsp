@@ -30,24 +30,31 @@
 		String pointsOrder = (String) request.getAttribute("pointsOrder");
 		String supporterJS = (String) request.getAttribute("supporterJS");
 		PrintWriter outwriter = response.getWriter();
-		
-		String message="索尼FIFA我的战况!";
-		String imgurl=Constant.HOST+"/img/ranking_icn.png";	
-		String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST + "/myInfo");
+
+		String message = "索尼FIFA我的战况!";
+		String imgurl = Constant.HOST + "/img/ranking_icn.png";
+		String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST
+				+ "/myInfo");
 		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
 				+ Constant.APP_ID
-				+ "&redirect_uri="+ Constant.HOST
-				+ "/wechat_authorize?fromid="+ openId
-				+ "&response_type=code&scope="+ Constant.WECHAT_OAUTH_SCOPES.BASE.getValue()
-				+ "&state="+ relationUrl + "#wechat_redirect";
+				+ "&redirect_uri="
+				+ Constant.HOST
+				+ "/wechat_authorize?fromid="
+				+ openId
+				+ "&response_type=code&scope="
+				+ Constant.WECHAT_OAUTH_SCOPES.BASE.getValue()
+				+ "&state="
+				+ relationUrl + "#wechat_redirect";
 		out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
-				+ "MsgImg:\""+ imgurl
-				+ "\", TLImg:\""+ imgurl
-				+ "\", url:\""+ url
-				+ "\", title:\"索尼FIFA我的战况!\", desc:\""+ message
+				+ "MsgImg:\""
+				+ imgurl
+				+ "\", TLImg:\""
+				+ imgurl
+				+ "\", url:\""
+				+ url
+				+ "\", title:\"索尼FIFA我的战况!\", desc:\""
+				+ message
 				+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
-		
-		
 	%>
 	<script language="javascript">
 		jQuery(function() {
@@ -102,15 +109,15 @@
 
 		});
 	</script>
-	
-	
-	
-	
-	
+
+
+
+
+
 	<div class="container"
 		style="background: url(/img/stamp.png) right bottom no-repeat; background-size: 55%; margin: 10px;">
-		<h2>我的战况</h2>
 		<div class="row" style="font-family: Droid Sans Fallback;">
+			<h2>我的战况</h2>
 			<h4 style="color: #22bff2;">您的基本信息</h4>
 			<hr style="border: 1px solid #22bff2;">
 			请正确填写，以便我们能联系到您，及获奖资格认证。我们承诺，不对您的信息进行转发，泄露，以及其他商业用途 <br>
@@ -141,7 +148,8 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="jdId" class="col-xs-3 control-label" style="padding-right:0px;">京东账号：</label>
+					<label for="jdId" class="col-xs-3 control-label"
+						style="padding-right: 0px;">京东账号：</label>
 					<div class="col-xs-9">
 						<input type="text" class="form-control" name="jdId" id="jdId"
 							placeholder="京东账号">
@@ -164,20 +172,28 @@
 			<br>
 			<h4 style="color: #22bff2;">您的优惠卷</h4>
 			<hr style="border: 1px solid #22bff2;">
-			<a href="#"
+			<a href="http://quan.jd.com/user_quan.action"
 				style="display: block; background-color: #22bff2; border-color: #22bff2;"
 				class="btn btn-primary btn-lg active" role="button">点击获取优惠卷</a> <br>
 			<div>
 				<h4 style="color: #22bff2;">您的人气</h4>
 				<hr style="border: 1px solid #22bff2;">
-				<%if(points=="0") {%>
+				<%
+					if (points == "0") {
+				%>
 				很抱歉, 您获得<span style="color: #cea14b">0人气点</span>，目前尚无排名，赶快加油吧！
-				<% }%>
-				<%if(points!="0") {%>
+				<%
+					}
+				%>
+				<%
+					if (points != "0") {
+				%>
 				恭喜! 您已经获得<span style="color: #cea14b"><%=points%>人气点</span>，目前排名<span
 					style="color: #cea14b">第<%=pointsOrder%>位
 				</span>，继续加油哦！
-				<% }%>
+				<%
+					}
+				%>
 			</div>
 
 			<br>
@@ -190,7 +206,7 @@
 					int supporterCount = supporterJA.size();
 					int money = supporterCount * Constant.FEEDBACK_SINGLE_MONEY;
 				%>
-				
+
 				<table class="table  table-striped">
 					<%
 						if (supporterCount > 0) {
@@ -237,9 +253,11 @@
 			</div>
 			<br>
 			<hr style="border: 1px dashed #999999;">
-			<a href="<%=Constant.HOST%>/getNameList?id=<%=openId%>" role="button" class="btn btn-lg"
-				style="display: block; border:1px solid #999999; text-align:center; font-size:20px; color:#3e3e3e;"><img src="/img/ranking_icn.png" alt="" style="padding:0px;border:none;width:24px;
-height:24px;margin:-2px 15px -3px 0px !important;"/>查看排行榜信息</a>
+			<a href="<%=Constant.HOST%>/getNameList?id=<%=openId%>" role="button"
+				class="btn btn-lg"
+				style="display: block; border: 1px solid #999999; text-align: center; font-size: 20px; color: #3e3e3e;"><img
+				src="/img/ranking_icn.png" alt=""
+				style="padding: 0px; border: none; width: 24px; height: 24px; margin: -2px 15px -3px 0px !important;" />查看排行榜信息</a>
 		</div>
 	</div>
 
