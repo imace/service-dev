@@ -53,26 +53,15 @@ public class OrderHistoryDAO {
 		return order != null && order.getCashFlag() > 0;
 	}
 
-	public static boolean updateOrderHistory(String orderNum, int cashFlag) {
+	public static boolean updateOrderHistory(String orderNum, String parentOrderNum, int cashFlag) {
 		boolean ret = false;
 		OrderHistory order = getOrderHistoryByOrderNum(orderNum);
 		if (order != null) {
 			order.setCashFlag(cashFlag);
-			HibernateUtil hibernateUtil = new HibernateUtil();
-			ret = hibernateUtil.updateObject(order);
-		}
-		return ret;
-	}
-
-	public static boolean updateOrderHistory(String orderNum, String parentOrderNum) {
-		boolean ret = false;
-		OrderHistory order = getOrderHistoryByOrderNum(orderNum);
-		if (order != null) {
 			order.setParentOrderNum(parentOrderNum);
 			HibernateUtil hibernateUtil = new HibernateUtil();
 			ret = hibernateUtil.updateObject(order);
 		}
 		return ret;
 	}
-
 }

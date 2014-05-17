@@ -102,9 +102,6 @@ public class OrderHistoryService {
 							// cash back allow
 							result = RESULT_CASH_BACK_ALLOW;
 							validSupporter++;
-							if (ownerOrder != null) {
-								OrderHistoryDAO.updateOrderHistory(supporterOrderNum, ownOrderId);
-							}
 						}
 					}
 				}
@@ -141,8 +138,9 @@ public class OrderHistoryService {
 				OrderInfo supporterOrder = supporterOrderList.get(index);
 				String result = supporterOrder.getVerifyResult();
 				if (result != null && result.equals(RESULT_CASH_BACK_ALLOW)) {
+					String ownOrderNum = assOrder.getOwnerOrder().getOrderNum();
 					boolean booRet = OrderHistoryDAO.updateOrderHistory(
-							supporterOrder.getOrderNum(), 1);
+							supporterOrder.getOrderNum(), ownOrderNum, 1);
 					ret.add(Boolean.valueOf(booRet));
 				}
 			}
