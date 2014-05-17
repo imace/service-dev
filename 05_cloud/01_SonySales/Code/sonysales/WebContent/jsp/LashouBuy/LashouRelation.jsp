@@ -58,7 +58,7 @@
 							</div>
 							<div class="col-xs-4">
 								<button type="submit" class="btn btn-success btn-block"
-									style="background: #22bff2; border-color: #22bff2; padding: 15px;">支持他</button>
+									style="background: #22bff2; border-color: #22bff2; padding: 15px;">点击支持</button>
 								<br> <img alt="fifa" style="max-width: 100%;"
 									src="/img/arrow.png">
 							</div>							
