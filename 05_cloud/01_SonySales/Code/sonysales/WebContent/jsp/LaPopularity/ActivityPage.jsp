@@ -72,7 +72,7 @@
                     <img src="<%=request.getContextPath()%>/img/banner_popularity.png" id="banner_img" style="margin-left:10px"/>
                 </div>
                 <div id="intro">
-                    <div class="text_subHeader common_style" style="margin-top:10px;">
+                    <div class="text_subHeader common_style">
                                     大力神杯拉人气活动规则
                     </div>
                     <div class="text_mainBody common_style" style="line-height:150%;">
