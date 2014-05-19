@@ -1,5 +1,7 @@
 package com.sonymobile.sonysales.service;
 
+import java.util.List;
+
 import com.sonymobile.sonysales.dao.AdministratorDAO;
 import com.sonymobile.sonysales.model.Administrator;
 
@@ -17,5 +19,9 @@ public class UserAdminService {
 	public Administrator getAdministratorByUserName(String userName) {
    return AdministratorDAO.getAdministratorByUserName(userName);
 	}
+	
+   public List<?> getAdministratorList() {
+       return AdministratorDAO.getAdministratorList();
+        }
 	
 }

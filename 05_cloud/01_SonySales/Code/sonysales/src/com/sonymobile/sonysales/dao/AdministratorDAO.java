@@ -51,4 +51,12 @@ public class AdministratorDAO {
        }
        return (Administrator) list.get(0);
    }
+   
+   public static List<?> getAdministratorList() {
+       HibernateUtil hibernateUtil = new HibernateUtil();
+
+       String hql = "from Administrator a order by a.createTime desc";
+
+       return hibernateUtil.getListByHql(hql, null, 0, 0);
+   }
 }

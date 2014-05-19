@@ -41,10 +41,10 @@
 	<li class="active"><a href="#"> <i class="icon-home"></i>用户管理
 	</a></li>
 	<li><a href="#"> <i class="icon-th-list"></i>
-			新建
+			用户管理
 	</a></li>
 	<li><a href="#"> <i class="icon-th-list"></i>
-			更新
+			权限管理
 	</a></li>
 </ul>
 <hr />
