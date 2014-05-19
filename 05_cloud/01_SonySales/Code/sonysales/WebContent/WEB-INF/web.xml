@@ -128,15 +128,15 @@
     </servlet-mapping>
     <servlet-mapping>
       <servlet-name>FileUpLoad</servlet-name>
-      <url-pattern>/fileupload</url-pattern>
+      <url-pattern>/Management/fileupload</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
       <servlet-name>LashouFileUpLoad</servlet-name>
-      <url-pattern>/lashoufileupload</url-pattern>
+      <url-pattern>/Management/lashoufileupload</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
       <servlet-name>OrderQuery</servlet-name>
-      <url-pattern>/orderquery</url-pattern>
+      <url-pattern>/Management/orderquery</url-pattern>
     </servlet-mapping>
     
     

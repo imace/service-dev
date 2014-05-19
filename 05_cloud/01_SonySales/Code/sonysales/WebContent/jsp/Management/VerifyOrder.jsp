@@ -51,7 +51,7 @@
 										<div class="tab-content">
 											<div class="tab-pane active" id="1">
 												<form
-													action="<%=request.getContextPath()%>/lashoufileupload"
+													action="<%=request.getContextPath()%>/Management/lashoufileupload"
 													class="form-horizontal" enctype="multipart/form-data"
 													method="post">
 													<fieldset>

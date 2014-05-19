@@ -43,7 +43,7 @@
 									<div class="tabbable">
 										<div class="tab-content">
 											<div class="tab-pane active" id="1">
-												<form action="<%=request.getContextPath()%>/orderquery"
+												<form action="<%=request.getContextPath()%>/Management/orderquery"
 													class="form-horizontal" method="post">
 													<fieldset>
 														<div class="control-group">
@@ -102,13 +102,8 @@
 
 									</div>
 									<!-- /widget-content -->
-
 								</div>
 								<!-- /widget -->
-
-
-
-
 							</div>
 						</div>
 					</div>
