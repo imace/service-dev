@@ -18,7 +18,7 @@
 	
 <div class="account-container">
 	<div class="account-avatar">
-		<img src="../../css/weichat.jpg" alt="" class="thumbnail" />
+		<img src="<%=Constant.HOST%>/css/weichat.jpg" alt="" class="thumbnail" />
 	</div>
 	<div class="account-details">
 		<span class="account-name">用户1</span> <span class="account-role">管理员</span>
@@ -29,13 +29,13 @@
 <ul id="main-nav" class="nav nav-tabs nav-stacked">
 	<li class="active"><a href="#"> <i class="icon-home"></i>订单管理
 	</a></li>
-	<li><a href="UploadExcel.jsp"> <i class="icon-home"></i>
+	<li><a href="<%=Constant.HOST%>/jsp/Management/UploadExcel.jsp"> <i class="icon-home"></i>
 			拉友买订单导入
 	</a></li>
-	<li><a href="VerifyOrder.jsp"> <i class="icon-pushpin"></i>
+	<li><a href="<%=Constant.HOST%>/jsp/Management/VerifyOrder.jsp"> <i class="icon-pushpin"></i>
 			拉手团晒单验证
 	</a></li>
-	<li><a href="MainPage.jsp"> <i class="icon-th-list"></i>
+	<li><a href="<%=Constant.HOST%>/jsp/Management/MainPage.jsp"> <i class="icon-th-list"></i>
 			拉手团订单查询
 	</a></li>
 	<li class="active"><a href="#"> <i class="icon-home"></i>用户管理

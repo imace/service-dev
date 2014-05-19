@@ -53,7 +53,7 @@
 												<form
 													action="<%=request.getContextPath()%>/Management/lashoufileupload"
 													class="form-horizontal" enctype="multipart/form-data"
-													method="post">
+													method="post" style="border:1px solid #aaaaaa; background:#eeeeee; padding:15px;">
 													<fieldset>
 														<div class="control-group">
 															<label class="control-label">请选择订单Excel表格:</label>
@@ -63,7 +63,7 @@
 															</div>
 														</div>
 														<div class="form-actions">
-															<button type="submit" class="btn btn-primary">上传</button>
+															<button type="submit" class="btn btn-primary" style="width: 100px; padding: 10px;">上传</button>
 														</div>
 													</fieldset>
 												</form>

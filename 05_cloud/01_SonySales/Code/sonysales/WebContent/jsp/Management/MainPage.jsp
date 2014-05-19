@@ -40,11 +40,18 @@
 									<h3>拉手团订单查询</h3>
 								</div>
 								<div class="widget-content">
+									<ul class="nav nav-tabs">
+										<li class="active"><a href="#" data-toggle="tab">导入操作</a>
+										</li>
+									</ul>
+									<br />
 									<div class="tabbable">
 										<div class="tab-content">
 											<div class="tab-pane active" id="1">
-												<form action="<%=request.getContextPath()%>/Management/orderquery"
-													class="form-horizontal" method="post">
+												<form
+													action="<%=request.getContextPath()%>/Management/orderquery"
+													class="form-horizontal" method="post"
+													style="border: 1px solid #aaaaaa; background: #eeeeee; padding: 15px;">
 													<fieldset>
 														<div class="control-group">
 															<label class="control-label" for="OrderId">订单号</label>
