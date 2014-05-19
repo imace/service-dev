@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-5-17 20:11:16 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.sonymobile.sonysales.model.Bet" table="bet">
+
+		<id name="id" column="id" type="long">
+			<generator class="increment" />	<!-- 设置ID字段自动增值 -->
+		</id>
+
+		<property name="userId" type="long">
+			<column name="userId" not-null="true">
+				<comment>&#229;&#164;&#150;&#233;&#148;&#174;&#239;&#188;&#140;User&#232;&#161;&#168;&#228;&#184;&#187;&#233;&#148;?</comment>
+			</column>
+		</property>
+		<property name="matchId" type="long">
+			<column name="matchId" not-null="true">
+				<comment>&#229;&#164;&#150;&#233;&#148;&#174;&#239;&#188;&#140;&#230;&#175;&#148;&#232;&#181;&#155;&#232;&#161;&#168;&#228;&#184;&#187;&#233;&#148;&#174;</comment>
+			</column>
+		</property>
+		<property name="betPointsOne" type="int">
+			<column name="betPointsOne" not-null="true">
+				<comment>
+					&#228;&#184;&#139;&#230;&#179;&#168;&#229;&#155;&#189;&#229;&#174;&#182;&#228;&#184;?&#154;&#132;&#232;&#191;&#155;&#231;&#144;&#131;&#230;&#149;?</comment>
+			</column>
+		</property>
+		<property name="betPointsTwo" type="int">
+			<column name="betPointsTwo" not-null="true">
+				<comment>
+					&#228;&#184;&#139;&#230;&#179;&#168;&#229;&#155;&#189;&#229;&#174;&#182;&#228;&#186;&#140;&#231;&#154;&#132;&#232;&#191;&#155;&#231;&#144;&#131;&#230;&#149;?</comment>
+			</column>
+		</property>
+		<property name="betPoints" type="long">
+			<column name="betPoints" not-null="true">
+				<comment>&#228;&#184;&#139;&#230;&#179;&#168;&#231;&#154;&#132;&#228;&#186;&#186;&#230;&#176;&#148;&#231;&#130;&#185;&#230;&#149;?</comment>
+			</column>
+		</property>
+		<property name="winPoints" type="long">
+			<column name="winPoints" not-null="true">
+				<comment>&#232;&#181;&#162;&#229;&#190;&#151;&#231;&#154;&#132;&#228;&#186;&#186;&#230;&#176;&#148;&#231;&#130;&#185;&#230;&#149;?</comment>
+			</column>
+		</property>
+		<property name="createTime" type="string">
+			<column name="createTime" length="12" not-null="true">
+				<comment>&#228;&#184;&#139;&#230;&#179;&#168;&#230;&#151;&#182;&#233;&#151;&#180;Eg&#239;&#188;?01404101535</comment>
+			</column>
+		</property>
+	</class>
+</hibernate-mapping>

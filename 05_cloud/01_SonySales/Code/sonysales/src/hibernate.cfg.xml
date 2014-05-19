@@ -54,7 +54,8 @@
 		<mapping resource="com/sonymobile/sonysales/model/Handle.hbm.xml" /><!--指定持久化类映射文件 -->
 		<mapping resource="com/sonymobile/sonysales/model/Product.hbm.xml" /><!--指定持久化类映射文件 -->
 		<mapping resource="com/sonymobile/sonysales/model/OrderHistory.hbm.xml" /><!--指定持久化类映射文件 -->
-        
+		<mapping resource="com/sonymobile/sonysales/model/Bet.hbm.xml" /><!--指定持久化类映射文件 -->
+		<mapping resource="com/sonymobile/sonysales/model/Match.hbm.xml" /><!--指定持久化类映射文件 -->        
 	</session-factory>
 
 </hibernate-configuration>

@@ -72,14 +72,14 @@ CREATE TABLE IF NOT EXISTS `handle` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `match`
+-- 表的结构 `fifaMatch`
 --
 -- 创建时间: 2014 年 05 月 04 日 16:47
 -- 最后更新: 2014 年 05 月 04 日 16:47
 --
 
-DROP TABLE IF EXISTS `match`;
-CREATE TABLE IF NOT EXISTS `match` (
+DROP TABLE IF EXISTS `fifaMatch`;
+CREATE TABLE IF NOT EXISTS `fifaMatch` (
   `id` bigint(20) NOT NULL COMMENT 'Primary key',
   `countryOne` varchar(64) NOT NULL COMMENT '国家一',
   `countryTwo` varchar(64) NOT NULL COMMENT '国家二',

@@ -41,7 +41,7 @@ public class UserDAO {
 		return hibernateUtil.updateObject(user);
 	}
 
-	public static User getUserById(int id) {
+	public static User getUserById(long id) {
 		HibernateUtil hibernateUtil = new HibernateUtil();
 
 		ArrayList<String> columnName = new ArrayList<String>();

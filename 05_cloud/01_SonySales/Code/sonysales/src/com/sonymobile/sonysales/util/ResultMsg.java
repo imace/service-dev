@@ -25,6 +25,7 @@ public class ResultMsg {
 	private static final String ERROR_DES_ORDERNUM_EXISTS = "order num exists already.";
 
 	private static final String ERROR_DES_PARAMETER_ERROR = "input parameter error.";
+	private static final String ERROR_DES_POINTSNOTENOUGH_ERROR = "points not enough error.";
 	// / <summary>
 	// / success result info
 	// / </summary>
@@ -105,5 +106,9 @@ public class ResultMsg {
 
 	public static Map<?, ?> ParameterError() {
 		return GetResultMsg(RESULT_CODE_ERROR, ERROR_DES_PARAMETER_ERROR);
+	}
+	
+	public static Map<?, ?> PointsNotEnoughError() {
+		return GetResultMsg(RESULT_CODE_ERROR, ERROR_DES_POINTSNOTENOUGH_ERROR);
 	}
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-5-17 20:11:16 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.sonymobile.sonysales.model.Match" table="fifaMatch">
+		<id name="id" column="id" type="long">
+			<generator class="increment" />	<!-- 设置ID字段自动增值 -->
+		</id>
+		<property name="countryOne" type="string">
+			<column name="countryOne" length="64" not-null="true">
+				<comment>&#229;&#155;&#189;&#229;&#174;&#182;&#228;&#184;?</comment>
+			</column>
+		</property>
+		<property name="countryTwo" type="string">
+			<column name="countryTwo" length="64" not-null="true">
+				<comment>&#229;&#155;&#189;&#229;&#174;&#182;&#228;&#186;?</comment>
+			</column>
+		</property>
+		<property name="pointsOne" type="int">
+			<column name="pointsOne" not-null="true">
+				<comment>&#229;&#155;&#189;&#229;&#174;&#182;&#228;&#184;?&#154;&#132;&#232;&#191;&#155;&#231;&#144;&#131;&#230;&#149;?</comment>
+			</column>
+		</property>
+		<property name="pointsTwo" type="int">
+			<column name="pointsTwo" not-null="true">
+				<comment>&#229;&#155;&#189;&#229;&#174;&#182;&#228;&#186;&#140;&#231;&#154;&#132;&#232;&#191;&#155;&#231;&#144;&#131;&#230;&#149;?</comment>
+			</column>
+		</property>
+		<property name="startTime" type="string">
+			<column name="startTime" length="12" not-null="true">
+				<comment>&#230;&#175;&#148;&#232;&#181;&#155;&#230;&#151;&#182;&#233;&#151;&#180;Eg&#239;&#188;?01404101535</comment>
+			</column>
+		</property>
+		<property name="createTime" type="string">
+			<column name="createTime" length="12" not-null="true">
+				<comment>&#229;&#136;&#155;&#229;&#187;&#186;&#230;&#151;&#182;&#233;&#151;&#180;Eg&#239;&#188;?01404101535</comment>
+			</column>
+		</property>
+	</class>
+</hibernate-mapping>
