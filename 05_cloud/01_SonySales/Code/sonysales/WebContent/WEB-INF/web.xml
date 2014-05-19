@@ -101,6 +101,14 @@
       <servlet-name>LashouFileUpLoad</servlet-name>
       <servlet-class>com.sonymobile.sonysales.servlet.Management.LashouFileUpLoad</servlet-class>
     </servlet>
+    <servlet>
+      <description></description>
+      <display-name></display-name>
+      <servlet-name>OrderQuery</servlet-name>
+      <servlet-class>com.sonymobile.sonysales.servlet.Management.OrderQuery</servlet-class>
+    </servlet>
+    
+    
     
     <servlet-mapping>
         <servlet-name>OAuthServlet</servlet-name>
@@ -126,7 +134,10 @@
       <servlet-name>LashouFileUpLoad</servlet-name>
       <url-pattern>/lashoufileupload</url-pattern>
     </servlet-mapping>
-    
+    <servlet-mapping>
+      <servlet-name>OrderQuery</servlet-name>
+      <url-pattern>/orderquery</url-pattern>
+    </servlet-mapping>
     
     
     

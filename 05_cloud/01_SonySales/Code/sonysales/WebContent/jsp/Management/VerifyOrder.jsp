@@ -69,12 +69,12 @@
 												</form>
 												<%
 													String path = request.getContextPath();
-													String basePath = request.getScheme() + "://"
-															+ request.getServerName() + ":" + request.getServerPort()
-															+ path + "/upload/";
-													AssociationOrders assciationorders = (AssociationOrders) request
-															.getAttribute("Order");
-													if (assciationorders != null) {
+																									String basePath = request.getScheme() + "://"
+																											+ request.getServerName() + ":" + request.getServerPort()
+																											+ path + "/upload/";
+																									AssociationOrders assciationorders = (AssociationOrders) request
+																											.getAttribute("Order");
+																									if (assciationorders != null) {
 												%>
 
 												<h3>发起者订单</h3>
