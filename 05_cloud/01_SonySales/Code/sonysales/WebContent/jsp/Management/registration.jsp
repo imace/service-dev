@@ -42,18 +42,18 @@
 		</div>
 		<!-- /login-header -->
 		<div id="login-content" class="clearfix">
-			<form action="<%=request.getContextPath()%>/Management/login" method="post">
+			<form action="MainPage.jsp" />
 			<fieldset>
 				<div class="control-group">
-					<label class="control-label" for="userName">用户名</label>
+					<label class="control-label" for="username">用户名</label>
 					<div class="controls">
-						<input type="text" class="" id="userName" name="userName"/>
-					</div> 
+						<input type="text" class="" id="username" />
+					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="password">密码</label>
 					<div class="controls">
-						<input type="password" class="" id="password" name="password"/>
+						<input type="password" class="" id="password" />
 					</div>
 				</div>
 			</fieldset>
@@ -65,10 +65,7 @@
 				<button type="submit" class="btn btn-warning btn-large">登录</button>
 			</div>
 			</form>
-			
 		</div>
-		<div style="color:red;font-size:larger;margin-top:10px"><%=request.getAttribute("msg")==null?"":request.getAttribute("msg") %></div>
 	</div>
-	   
 </body>
 </html>
