@@ -80,21 +80,19 @@
 		String openId = request.getParameter("id");
 	%>
 	<div>
-		<div id="title" class="text_header"
-			style="margin-left: 10px; margin-top: 10px;">索尼FIFA2014世界杯狂热季</div>
+		<div id="title" class="text_header common_style">索尼FIFA2014世界杯狂热季</div>
 		<div id="banner_img_div" style="margin-left: 10px; margin-top: 20px;">
 			<img src="<%=Constant.HOST%>/img/banner_popularity.png"
 				id="banner_img" />
 		</div>
 		<br>
-		<div id="intro"
-			style="margin-left: 10px; margin-top: 10px; word-wrap: break-word; word-break: break-all;">
-			<div class="text_subHeader">索尼 FIFA 2014 活动介绍</div>
-			<div class="text_mainBody">
+		<div id="intro">
+			<div class="text_subHeader common_style">索尼 FIFA 2014 活动介绍</div>
+			<div class="text_mainBody common_style">
 				FIFA , 2014 , 赛事重来 ,<br> 谁将会成为最后赢家？<br> 想不想也参与这个激动人心的活动？<br>
 				<br>
 			</div>
-			<div class="text_highlight">
+			<div class="text_highlight common_style">
 				参加这个活动，不仅有机会获得超值索尼FIFA手机，还可以获得关注奖金和拉手获现金。 <br> <br>
 			</div>
 
