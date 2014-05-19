@@ -207,7 +207,8 @@ public final class SonySalesExcelTools {
 		
 		style = wb.createCellStyle();
 		style.setAlignment(HSSFCellStyle.ALIGN_CENTER);
-		style.setFillBackgroundColor(IndexedColors.GREEN.getIndex());
+		style.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+		style.setFillForegroundColor(IndexedColors.GREEN.getIndex());
 		row = sheet.createRow(rowNum++);
 
 		cell = row.createCell(0);
@@ -262,7 +263,8 @@ public final class SonySalesExcelTools {
 
 		style = wb.createCellStyle();
 		style.setAlignment(HSSFCellStyle.ALIGN_CENTER);
-		style.setFillBackgroundColor(IndexedColors.GREEN.getIndex());
+		style.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+		style.setFillForegroundColor(IndexedColors.GREEN.getIndex());
 		row = sheet.createRow(rowNum++);
 
 		List<OrderInfo> supporterList = orders.getSupptorOrderList();
