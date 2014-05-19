@@ -67,20 +67,20 @@
 
 
             <div>
-                <div id="title" class="text_header" style="margin-left:10px;margin-top:10px;">超值，索尼FIFA手机等你来拿！</div>
+                <div id="title" class="text_header common_style">超值，索尼FIFA手机等你来拿！</div>
                 <div id="banner_img_div">
                     <img src="<%=request.getContextPath()%>/img/banner_popularity.png" id="banner_img" style="margin-left:10px"/>
                 </div>
-                <div id="intro" style="margin-left:10px;word-wrap:break-word;word-break:break-all;">
-                    <div class="text_subHeader" style="margin-top:10px;">
+                <div id="intro">
+                    <div class="text_subHeader common_style" style="margin-top:10px;">
                                     大力神杯拉人气活动规则
                     </div>
-                    <div class="text_mainBody" style="line-height:150%;">
+                    <div class="text_mainBody common_style" style="line-height:150%;">
                         只要你名列人气排行榜前8<br/>
                         官方定制精美手机一部。</br>
                         每拉一个朋友激活10000人气积分呦！
                     </div>
-                    <div class="text_guide" style="padding-top:3px">
+                    <div class="text_guide common_style" style="padding-top:3px">
                                                 点击右上角-->发送给朋友
                     </div>
                 </div>

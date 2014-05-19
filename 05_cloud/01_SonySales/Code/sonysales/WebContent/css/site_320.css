@@ -2,29 +2,46 @@
 	font-size: 22px;
 	display: block;
 	font-weight: bold;
-	font-family: Droid Sans Fallback;
 }
 
 .text_subHeader {
 	color: rgb(34, 191, 242);
 	font-size: 18px;
-	font-family: Droid Sans Fallback;
 }
 
 .text_mainBody {
 	font-size: 18px;
 	color: rgb(62, 62, 62);
-	font-family: Droid Sans Fallback;
 }
 
 .text_highlight {
 	font-size: 18px;
 	color: rgb(206, 161, 75);
-	font-family: Droid Sans Fallback;
 }
 
 .text_guide {
 	font-size: 18px;
 	color: rgb(148, 140, 140);
+}
+.text_support_btn
+{
+	background: #22bff2; 
+	border-color: #22bff2; 
+	padding: 15px;"
+	font-size:16px;
+}
+.common_style
+{
+	font-family: Droid Sans Fallback;
+	margin-left: 10px; 
+	margin-top: 10px;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+.page_background
+{
+	background: url(/img/stamp.png) right bottom no-repeat; 
+	background-size: 55%; 
+	margin: 10px;"
 	font-family: Droid Sans Fallback;
 }
