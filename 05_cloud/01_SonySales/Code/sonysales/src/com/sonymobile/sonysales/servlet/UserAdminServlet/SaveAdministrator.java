@@ -17,7 +17,7 @@ import com.sonymobile.sonysales.model.Administrator;
 import com.sonymobile.sonysales.service.UserAdminService;
 import com.sonymobile.sonysales.util.CodeMsg;
 
-public class UpdateAdministratorState extends HttpServlet {
+public class SaveAdministrator extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request,
@@ -31,38 +31,37 @@ public class UpdateAdministratorState extends HttpServlet {
 		try {
 			      response = initHeader(response);
 
-    			   String userName = request.getParameter("username");
-    			   String state = request.getParameter("state"); 
+    			   String userName = request.getParameter("userName");
     			   String password = request.getParameter("password");
-		        String password2 = request.getParameter("password2");
+    			   String id = request.getParameter("id");
 
+    			   if(id==null) {
+    			       System.out.println("【SaveAdministrator id为空！】");
+    			       return;
+    			   }
 		        if(userName==null || userName.trim().equals("") || password==null || password.trim().equals("")) {
-		            return;
+		            request.setAttribute("msg", "用户名或密码不能为空！");
+                    request.getRequestDispatcher("/jsp/Management/editAdministrator.jsp").forward(request,
+                            response);
 		        }
-		        //System.out.println("username1:"+username);
 		        UserAdminService userAdminService = new UserAdminService();
-           Administrator administrator = userAdminService.getAdministratorByUserName(userName);
+           Administrator administrator = userAdminService.getAdministratorById(Long.parseLong(id));
            if(administrator!=null) {
-               Map<?, ?> codeMsg = CodeMsg.GetCodeMsg(CodeMsg.CODE_USERADMIN_USERNAME_EXSISTS, "用户名已存在");
-               response.getWriter().write(JSONArray.fromObject(codeMsg).toString());
-               response.getWriter().close();
-           } else {
-               administrator = new Administrator();
                administrator.setUserName(userName);
                administrator.setPassword(password);
-               Date date = new Date();
-               SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmm");
-               String now = df.format(date);
-               administrator.setCreateTime(now);
-               if(userAdminService.addAdministrator(administrator)) {
-                   Map<?, ?> codeMsg = CodeMsg.GetCodeMsg(CodeMsg.CODE_ADD_ADMINISTRATOR_SUCCESS, "添加管理员成功");
-                   response.getWriter().write(JSONArray.fromObject(codeMsg).toString());
-                   response.getWriter().close();
+               boolean bool = userAdminService.update(administrator);
+               if(!bool) {
+                   request.setAttribute("msg", "更新失败！");
+                   request.getRequestDispatcher("/jsp/Management/editAdministrator.jsp").forward(request,
+                           response);
                } else {
-                   Map<?, ?> codeMsg = CodeMsg.GetCodeMsg(CodeMsg.CODE_ADD_ADMINISTRATOR_FAILURE, "添加管理员失败");
-                   response.getWriter().write(JSONArray.fromObject(codeMsg).toString());
-                   response.getWriter().close();
+                   request.getRequestDispatcher("/Management/getAdministratorList").forward(request,
+                           response);
                }
+           } else {
+               request.setAttribute("msg", "用户不存在！");
+               request.getRequestDispatcher("/jsp/Management/editAdministrator.jsp").forward(request,
+                       response);
            }
 		        
 

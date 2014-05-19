@@ -23,5 +23,10 @@ public class UserAdminService {
    public List<?> getAdministratorList() {
        return AdministratorDAO.getAdministratorList();
         }
-	
+   public boolean update(Administrator administrator) {
+       return AdministratorDAO.update(administrator);
+   }
+   public boolean deleteAdministratorById(long id) {
+       return AdministratorDAO.deleteAdministratorById(id);
+   }
 }

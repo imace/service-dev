@@ -40,8 +40,24 @@
     <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.AddAdministrator</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>getAdministratorList</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.GetAdministratorList</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>login</servlet-name>
     <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.Login</servlet-class>
+  </servlet>
+   <servlet>
+    <servlet-name>editAdministrator</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.EditAdministrator</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>saveAdministrator</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.SaveAdministrator</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>deleteAdministratorById</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.DeleteAdministratorById</servlet-class>
   </servlet>
   
     <servlet>
@@ -81,13 +97,29 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>addAdministrator</servlet-name>
-    <url-pattern>/addAdministrator</url-pattern>
+    <url-pattern>/Management/addAdministrator</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>login</servlet-name>
     <url-pattern>/Management/login</url-pattern>
   </servlet-mapping>
-
+  <servlet-mapping>
+    <servlet-name>getAdministratorList</servlet-name>
+    <url-pattern>/Management/getAdministratorList</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>editAdministrator</servlet-name>
+    <url-pattern>/Management/editAdministrator</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>saveAdministrator</servlet-name>
+    <url-pattern>/Management/saveAdministrator</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>deleteAdministratorById</servlet-name>
+    <url-pattern>/Management/deleteAdministratorById</url-pattern>
+  </servlet-mapping>
+  
     <servlet>
       <description></description>
       <display-name></display-name>

@@ -59,4 +59,12 @@ public class AdministratorDAO {
 
        return hibernateUtil.getListByHql(hql, null, 0, 0);
    }
+   
+   public static boolean deleteAdministratorById(long id) {
+       HibernateUtil hibernateUtil = new HibernateUtil();
+       
+       String hsql = "delete from Administrator a where a.id="+id;
+
+       return hibernateUtil.excuteUpdate(hsql);
+   }
 }

@@ -33,19 +33,20 @@ public class AddAdministrator extends HttpServlet {
 
     			   String userName = request.getParameter("userName");
     			   String password = request.getParameter("password");
-		        String password2 = request.getParameter("password2");
 
 		        if(userName==null || userName.trim().equals("") || password==null || password.trim().equals("")) {
-		            return;
+		            request.setAttribute("msg", "用户名或密码为空！");
+                    request.getRequestDispatcher("/jsp/Management/addAdministrator.jsp").forward(request,
+                            response);
+                    return;
 		        }
-		        userName = new String(request.getParameter("userName").getBytes("ISO-8859-1"),"UTF-8");
-		        //System.out.println("username1:"+username);
+		        System.out.println("username1:"+userName);
 		        UserAdminService userAdminService = new UserAdminService();
            Administrator administrator = userAdminService.getAdministratorByUserName(userName);
            if(administrator!=null) {
-               Map<?, ?> codeMsg = CodeMsg.GetCodeMsg(CodeMsg.CODE_USERADMIN_USERNAME_EXSISTS, "用户名已存在");
-               response.getWriter().write(JSONArray.fromObject(codeMsg).toString());
-               response.getWriter().close();
+               request.setAttribute("msg", "用户名已存在！");
+               request.getRequestDispatcher("/jsp/Management/addAdministrator.jsp").forward(request,
+                       response);
            } else {
                administrator = new Administrator();
                administrator.setUserName(userName);
@@ -55,13 +56,12 @@ public class AddAdministrator extends HttpServlet {
                String now = df.format(date);
                administrator.setCreateTime(now);
                if(userAdminService.addAdministrator(administrator)) {
-                   Map<?, ?> codeMsg = CodeMsg.GetCodeMsg(CodeMsg.CODE_ADD_ADMINISTRATOR_SUCCESS, "添加管理员成功");
-                   response.getWriter().write(JSONArray.fromObject(codeMsg).toString());
-                   response.getWriter().close();
+                   request.getRequestDispatcher("/Management/getAdministratorList").forward(request,
+                           response);
                } else {
-                   Map<?, ?> codeMsg = CodeMsg.GetCodeMsg(CodeMsg.CODE_ADD_ADMINISTRATOR_FAILURE, "添加管理员失败");
-                   response.getWriter().write(JSONArray.fromObject(codeMsg).toString());
-                   response.getWriter().close();
+                   request.setAttribute("msg", "添加用户失败！");
+                   request.getRequestDispatcher("/jsp/Management/addAdministrator.jsp").forward(request,
+                           response);
                }
            }
 		        

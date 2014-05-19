@@ -144,4 +144,28 @@ public class HibernateUtil {
 		}
 		return ret;
 	}
+	
+	public boolean excuteUpdate(String hsql)
+	{  
+	   boolean ret = false;
+       try {
+           openSession();
+           Query query = session.createQuery(hsql);
+           query.executeUpdate();
+           tx.commit();
+           ret = true;
+       } catch (Exception e) {
+           e.printStackTrace();
+           if (tx != null) {
+               tx.rollback();
+           }
+           ret = false;
+       } finally {
+           if (session != null) {
+               session.close();
+           }
+       }
+       return ret;
+	}  
+	
 }

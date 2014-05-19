@@ -18,7 +18,7 @@ import com.sonymobile.sonysales.service.NameListService;
 import com.sonymobile.sonysales.service.UserAdminService;
 import com.sonymobile.sonysales.util.CodeMsg;
 
-public class getAdministratorList extends HttpServlet {
+public class GetAdministratorList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request,
@@ -33,7 +33,7 @@ public class getAdministratorList extends HttpServlet {
    UserAdminService userAdminService = new UserAdminService();
    request.setAttribute("administratorList",
            userAdminService.getAdministratorList());
-   request.getRequestDispatcher("/jsp/AdministratorListPage.jsp").forward(request,
+   request.getRequestDispatcher("/jsp/Management/AdministratorListPage.jsp").forward(request,
            response);
 	
 	}
