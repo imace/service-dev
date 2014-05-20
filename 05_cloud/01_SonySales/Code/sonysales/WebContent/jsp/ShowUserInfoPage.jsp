@@ -10,13 +10,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
 	content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
-<link rel="stylesheet"
-	href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
-<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-<script
-	src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="<%=Constant.HOST%>/css/bootstrap.min.css" />
+<link rel="stylesheet" href="<%=Constant.HOST%>/css/bootstrap-responsive.min.css" />
+<script src="<%=Constant.HOST%>/js/jquery-1.7.2.min.js"></script>
+<script src="<%=Constant.HOST%>/js/bootstrap.js"></script>
 <title>您的基本信息</title>
 </head>
 <body>

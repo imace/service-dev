@@ -6,10 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
 	content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
-<link rel="stylesheet"
-	href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="<%=Constant.HOST%>/css/bootstrap.min.css" />
+<link rel="stylesheet" href="<%=Constant.HOST%>/css/bootstrap-responsive.min.css" />
 <link rel="stylesheet" type="text/css" media="screen and (max-device-width:320px) and (-webkit-device-pixel-ratio:1)" href="<%=Constant.HOST%>/css/site_320.css">
 <link rel="stylesheet" type="text/css" media="screen and (min-device-width:321px) and (max-device-width:480px) and (-webkit-device-pixel-ratio:1)" href="<%=Constant.HOST%>/css/site_540.css">
 <link rel="stylesheet" type="text/css" media="screen and (max-device-width:640px) and (-webkit-device-pixel-ratio:1.5)" href="<%=Constant.HOST%>/css/site_320.css">
@@ -19,10 +17,8 @@
 <link rel="stylesheet" type="text/css" media="screen and (min-device-width:721px) and (max-device-width:1280px) and (-webkit-device-pixel-ratio: 2)" href="<%=Constant.HOST%>/css/site_720.css">
 <link rel="stylesheet" type="text/css" media="screen and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)" href="<%=Constant.HOST%>/css/site_320.css">
 <link rel="stylesheet" type="text/css" media="screen and (min-device-width:1081px) and (max-device-width:1920px) and (-webkit-device-pixel-ratio: 3)" href="<%=Constant.HOST%>/css/site_720.css">
-	
-<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-<script
-	src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="<%=Constant.HOST%>/js/jquery-1.7.2.min.js"></script>
+<script src="<%=Constant.HOST%>/js/bootstrap.js"></script>
 <script src="<%=Constant.HOST%>/js/relation.js"></script>
 <title>快来领取优惠券啦!</title>
 </head>
