@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.sonymobile.sonysales.model.Permission" table="permission">
+
+		<id name="id" column="id" type="long">
+			<generator class="increment" />	<!-- 设置ID字段自动增值 -->
+		</id>
+    <property name="code" type="java.lang.String">
+        <column name="code" length="20" not-null="true">
+            <comment>权限码</comment>
+        </column>
+    </property>
+    <property name="name" type="java.lang.String">
+        <column name="name" length="20" not-null="true">
+            <comment>权限名</comment>
+        </column>
+    </property>
+		<property name="createTime" type="java.lang.String">
+			<column name="createTime" length="12" not-null="true">
+				<comment>创建时间</comment>
+			</column>
+		</property>
+	</class>
+</hibernate-mapping>

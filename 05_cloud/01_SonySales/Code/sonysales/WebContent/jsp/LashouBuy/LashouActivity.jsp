@@ -76,8 +76,8 @@
                             大力神杯拉手买活动规则
             </div>
             <div class="text_mainBody common_style" style="line-height:150%;">
-                亲, 索尼FIFA 活动正在进行, <br/>
-               推送消息给你朋友, 你的朋友可获得50元优惠券,</br>
+                亲, 索尼FIFA 活动正在进行, 
+               推送消息给你朋友, 你的朋友可获得50元优惠券,
                同时如果他购买手机, 你即可获得50元奖金.
             </div>
             <div class="text_guide common_style" style="padding-top:3px">

@@ -1,12 +1,16 @@
 package com.sonymobile.sonysales.servlet.NameListServlet;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONException;
+
+import com.sonymobile.sonysales.model.User;
 import com.sonymobile.sonysales.service.NameListService;
 
 public class GetNameList extends HttpServlet {
@@ -31,6 +35,12 @@ public class GetNameList extends HttpServlet {
 			
 			String openId = request.getParameter("id");
 			request.setAttribute("openId", openId);
+//			List<User> userList = (List<User>)request.getAttribute("userList");
+//			if(userList!=null&&userList.size()>0) {
+//			    System.out.println("【GetNameList userList.size()】:"+userList.size());
+//			} else {
+//			    System.out.println("【GetNameList userList is null】");
+//			}
 			request.getRequestDispatcher("/jsp/nameList.jsp").forward(request,
 					response);
 		} catch (JSONException e) { 

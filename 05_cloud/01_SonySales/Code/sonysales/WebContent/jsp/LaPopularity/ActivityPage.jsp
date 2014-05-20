@@ -80,7 +80,7 @@
                         官方定制精美手机一部。</br>
                         每拉一个朋友激活10000人气积分呦！
                     </div>
-                    <div class="text_guide common_style" style="padding-top:3px">
+                    <div class="text_guide common_style">
                                                 点击右上角-->发送给朋友
                     </div>
                 </div>
