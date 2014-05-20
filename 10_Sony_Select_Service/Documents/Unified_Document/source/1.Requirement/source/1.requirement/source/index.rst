@@ -14,5 +14,6 @@
    
 
   PRD5.6/source/index.rst
+  CR00024/source/index.rst
 
 
