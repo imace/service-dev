@@ -58,5 +58,19 @@ public class CookieHelper {
         }
         return cookieMap;
     }
-
+    
+    public static void removeAllCookies(HttpServletRequest request, HttpServletResponse response, String path) {
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            cookie.setMaxAge(0);
+            cookie.setPath(path);
+            response.addCookie(cookie);
+        }
+    }
+    public static void removeCookie(HttpServletResponse response, String name, String path) {
+        Cookie newCookie=new Cookie(name,null); //假如要删除名称为name的Cookie
+        newCookie.setMaxAge(0); //立即删除型
+        newCookie.setPath(path); //项目所有目录均有效，这句很关键，否则不敢保证删除
+        response.addCookie(newCookie); //重新写入，将覆盖之前的
+    }
 }

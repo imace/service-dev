@@ -57,10 +57,12 @@
 					</div>
 				</div>
 			</fieldset>
+			<!--  
 			<div id="remember-me" class="pull-left">
 				<input type="checkbox" name="remember" id="remember" /> <label
 					id="remember-label" for="remember">记住</label>
 			</div>
+			-->
 			<div class="pull-right">
 				<button type="submit" class="btn btn-warning btn-large">登录</button>
 			</div>

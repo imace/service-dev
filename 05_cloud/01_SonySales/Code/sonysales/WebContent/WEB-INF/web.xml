@@ -59,6 +59,10 @@
     <servlet-name>deleteAdministratorById</servlet-name>
     <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.DeleteAdministratorById</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>loginOut</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.LoginOut</servlet-class>
+  </servlet>
   
     <servlet>
         <servlet-name>OAuthServlet</servlet-name>
@@ -118,6 +122,10 @@
   <servlet-mapping>
     <servlet-name>deleteAdministratorById</servlet-name>
     <url-pattern>/Management/deleteAdministratorById</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>loginOut</servlet-name>
+    <url-pattern>/Management/loginOut</url-pattern>
   </servlet-mapping>
   
     <servlet>

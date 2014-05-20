@@ -31,10 +31,12 @@
 						class="dropdown-toggle " href="#"> 设置 <b class="caret"></b>
 					</a>
 						<ul class="dropdown-menu">
+						<!-- 
 							<li><a href="#"><i class="icon-user"></i> 帐户设置 </a></li>
 							<li><a href="#"><i class="icon-lock"></i> 更改密码</a></li>
 							<li class="divider"></li>
-							<li><a href="#"><i class="icon-off"></i> 退出系统</a></li>
+							 -->
+							<li><a href="<%=request.getContextPath()%>/Management/loginOut"><i class="icon-off"></i> 退出系统</a></li>
 						</ul></li>
 				</ul>
 			</div>
