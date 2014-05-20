@@ -1,14 +1,14 @@
 package com.sonymobile.sonysales.model;
 
-public class Permission {
+public class Role {
 
 	//Primary key
 	private long id;
 	
-	//权限码
+	//角色代码
 	private String code;
 	
-	//权限名称
+	//角色名称
 	private String name;
 	
     //创建时间Eg：201404101535

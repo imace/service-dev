@@ -1,23 +1,18 @@
 package com.sonymobile.sonysales.servlet.UserAdminServlet;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONArray;
 import net.sf.json.JSONException;
 
-import com.sonymobile.sonysales.model.Administrator;
+import com.sonymobile.sonysales.model.Role;
 import com.sonymobile.sonysales.service.UserAdminService;
-import com.sonymobile.sonysales.util.CodeMsg;
 
-public class SaveAdministrator extends HttpServlet {
+public class SaveRole extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request,
@@ -31,36 +26,36 @@ public class SaveAdministrator extends HttpServlet {
 		try {
 			      response = initHeader(response);
 
-    			   String userName = request.getParameter("userName");
-    			   String password = request.getParameter("password");
+    			   String code = request.getParameter("code");
+    			   String name = request.getParameter("name");
     			   String id = request.getParameter("id");
 
     			   if(id==null) {
-    			       System.out.println("【SaveAdministrator id为空！】");
+    			       System.out.println("【SaveRole id为空！】");
     			       return;
     			   }
-		        if(userName==null || userName.trim().equals("") || password==null || password.trim().equals("")) {
-		            request.setAttribute("msg", "用户名或密码不能为空！");
-                    request.getRequestDispatcher("/jsp/Management/EditAdministrator.jsp").forward(request,
+		        if(code==null || code.trim().equals("") || name==null || name.trim().equals("")) {
+		            request.setAttribute("msg", "角色代码或角色名称不能为空！");
+                    request.getRequestDispatcher("/jsp/Management/EditRole.jsp").forward(request,
                             response);
 		        }
 		        UserAdminService userAdminService = new UserAdminService();
-           Administrator administrator = userAdminService.getAdministratorById(Long.parseLong(id));
-           if(administrator!=null) {
-               administrator.setUserName(userName);
-               administrator.setPassword(password);
-               boolean bool = userAdminService.update(administrator);
+		        Role Role = userAdminService.getRoleById(Long.parseLong(id));
+           if(Role!=null) {
+               Role.setCode(code);
+               Role.setName(name);
+               boolean bool = userAdminService.updateRole(Role);
                if(!bool) {
                    request.setAttribute("msg", "更新失败！");
-                   request.getRequestDispatcher("/jsp/Management/EditAdministrator.jsp").forward(request,
+                   request.getRequestDispatcher("/jsp/Management/EditRole.jsp").forward(request,
                            response);
                } else {
-                   request.getRequestDispatcher("/Management/getAdministratorList").forward(request,
+                   request.getRequestDispatcher("/Management/getRoleList").forward(request,
                            response);
                }
            } else {
-               request.setAttribute("msg", "用户不存在！");
-               request.getRequestDispatcher("/jsp/Management/EditAdministrator.jsp").forward(request,
+               request.setAttribute("msg", "角色不存在！");
+               request.getRequestDispatcher("/jsp/Management/EditRole.jsp").forward(request,
                        response);
            }
 		        

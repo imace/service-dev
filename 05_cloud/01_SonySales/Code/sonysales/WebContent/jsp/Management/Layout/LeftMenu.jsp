@@ -29,7 +29,12 @@
 		href="<%=request.getContextPath()%>/Management/getAdministratorList">
 			<i class="icon-th-list"></i> 用户管理
 	</a></li>
+<<<<<<< HEAD
 	<li><a href="#"> <i class="icon-th-list"></i> 权限管理
+=======
+	<li><a href="<%=request.getContextPath()%>/Management/getRoleList"> <i class="icon-th-list"></i>
+			角色管理
+>>>>>>> modify role
 	</a></li>
 </ul>
 <hr />

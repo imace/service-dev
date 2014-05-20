@@ -47,7 +47,7 @@
     <servlet-name>login</servlet-name>
     <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.Login</servlet-class>
   </servlet>
-   <servlet>
+  <servlet>
     <servlet-name>editAdministrator</servlet-name>
     <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.EditAdministrator</servlet-class>
   </servlet>
@@ -63,7 +63,30 @@
     <servlet-name>loginOut</servlet-name>
     <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.LoginOut</servlet-class>
   </servlet>
-  
+  <servlet>
+    <servlet-name>getRoleList</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.GetRoleList</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>addRole</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.AddRole</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>editRole</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.EditRole</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>saveRole</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.SaveRole</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>deleteRoleById</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.DeleteRoleById</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>toAddAdministrator</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.ToAddAdministrator</servlet-class>
+  </servlet>
     <servlet>
         <servlet-name>OAuthServlet</servlet-name>
         <servlet-class>com.sonymobile.sonysales.servlet.userServlet.OAuthServlet</servlet-class>
@@ -126,6 +149,30 @@
   <servlet-mapping>
     <servlet-name>loginOut</servlet-name>
     <url-pattern>/Management/loginOut</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getRoleList</servlet-name>
+    <url-pattern>/Management/getRoleList</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>addRole</servlet-name>
+    <url-pattern>/Management/addRole</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>editRole</servlet-name>
+    <url-pattern>/Management/editRole</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>saveRole</servlet-name>
+    <url-pattern>/Management/saveRole</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>deleteRoleById</servlet-name>
+    <url-pattern>/Management/deleteRoleById</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>toAddAdministrator</servlet-name>
+    <url-pattern>/Management/toAddAdministrator</url-pattern>
   </servlet-mapping>
   
     <servlet>

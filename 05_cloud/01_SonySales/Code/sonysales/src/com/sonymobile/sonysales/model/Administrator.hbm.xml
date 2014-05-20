@@ -17,9 +17,9 @@
             <comment>密码</comment>
         </column>
     </property>
-		<property name="permissionId" type="long">
-			<column name="permissionId" length="20" not-null="false">
-				<comment>权限id</comment>
+		<property name="roleId" type="long">
+			<column name="roleId" length="20" not-null="false">
+				<comment>角色id</comment>
 			</column>
 		</property>
     <property name="state" type="int">

@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@page import="com.sonymobile.sonysales.util.Constant"%>
 <%@page import="com.sonymobile.sonysales.model.Role"%>
-<%@page import="java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,7 +18,7 @@
 <link rel="stylesheet"
 	href="<%=Constant.HOST%>/css/adminia-responsive.css">
 <link rel="stylesheet" href="<%=Constant.HOST%>/css/login.css">
-<title>添加用户</title>
+<title>编辑角色</title>
 </head>
 <body>
 	<div class="navbar navbar-fixed-top">
@@ -28,7 +27,7 @@
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="#">添加用户</a>
+				</a> <a class="brand" href="#">编辑角色</a>
 				<div class="nav-collapse">
 					<ul class="nav pull-right">
 						<li class=""><a href="javascript:;"><i
@@ -40,37 +39,31 @@
 	</div>
 	<div id="login-container">
 		<div id="login-header">
-			<h3>用户信息</h3>
+			<h3>角色信息</h3>
 		</div>
+		 <%
+		 Role role = (Role)request.getAttribute("Role");
+          %>
 		<!-- /login-header -->
 		<div id="login-content" class="clearfix">
-			<form action="<%=request.getContextPath()%>/Management/addAdministrator" method="post">
+			<form action="<%=request.getContextPath()%>/Management/saveRole" method="post">
+			<input type="hidden"  name="id" value="<%=role==null?"":role.getId()%>"/>
 			<fieldset>
 				<div class="control-group">
-					<label class="control-label" for="userName">用户名</label>
+					<label class="control-label" for="code">角色代码</label>
 					<div class="controls">
-						<input type="text" class="" id="userName" name="userName"/>
+						<input type="text" class="" id="code" name="code" value="<%=role==null?"":role.getCode()%>"/>
 					</div> 
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="password">密码</label>
+					<label class="control-label" for="name">角色名称</label>
 					<div class="controls">
-						<input type="password" class="" id="password" name="password"/>
+						<input type="text" class="" id="name" name="name" value="<%=role==null?"":role.getName()%>"/>
 					</div>
 				</div>
-				  <%
-         List<Role> permissionList = (List<Role>)request.getAttribute("roleList");
-               %>
-       <div class="control-group">
-           <label class="control-label" for="role">角色</label>
-           <div class="controls">
-               <input type="radio" name="role" value="jquery获取radio的值" />jquery获取radio的值<br /> 
-           </div>
-       </div>
 			</fieldset>
-			
 			<div>
-				<button type="submit" class="btn btn-warning btn-large" style="margin-left:240px">添加</button>
+				<button type="submit" class="btn btn-warning btn-large" style="margin-left:240px">修改</button>
 			</div>
 			</form>
 			<div class="pull-right">

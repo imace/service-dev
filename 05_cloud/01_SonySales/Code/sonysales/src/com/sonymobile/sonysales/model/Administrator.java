@@ -17,11 +17,11 @@ public class Administrator {
     //创建时间Eg：201404101535
  private String createTime;
 	
-    //权限id
-	private long permissionId;
+    //角色id
+	private long roleId;
 	
     public Administrator(){
-        setPermissionId(0);
+        setRoleId(0);
     }
 
     public long getId() {
@@ -56,12 +56,12 @@ public class Administrator {
         this.state = state;
     }
 
-    public long getPermissionId() {
-        return permissionId;
+    public long getRoleId() {
+        return roleId;
     }
 
-    public void setPermissionId(long permissionId) {
-        this.permissionId = permissionId;
+    public void setRoleId(long roleId) {
+        this.roleId = roleId;
     }
 
     public String getCreateTime() {

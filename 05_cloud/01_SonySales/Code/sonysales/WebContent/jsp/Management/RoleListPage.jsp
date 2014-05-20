@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="com.sonymobile.sonysales.model.Administrator"%>
+<%@page import="com.sonymobile.sonysales.model.Role"%>
 <%@page import="java.util.List"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/adminia.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/adminia-responsive.css">
-<title>用户管理</title>
+<title>角色管理</title>
 </head>
 <body>
 	<jsp:include page="Layout/Header.jsp"></jsp:include>
@@ -30,7 +30,7 @@
 				</div>
 				<div class="span9">
 					<h1 class="page-title">
-						<i class="icon-th-large"></i>用户管理
+						<i class="icon-th-large"></i>角色管理
 					</h1>
 					
 					<div class="row">
@@ -40,37 +40,37 @@
 								<div class="widget widget-table">
 									<div class="widget-header">
 										<i class="icon-th-list"></i>
-										<h3>用户列表</h3>
-										<a href="<%=request.getContextPath()%>/Management/toAddAdministrator"><button  class="btn btn-primary" style="float:right;margin:5px">添加用户</button></a>
+										<h3>角色列表</h3>
+										<a href="<%=request.getContextPath()%>/jsp/Management/addRole.jsp"><button  class="btn btn-primary" style="float:right;margin:5px">添加角色</button></a>
 									</div>
 									<!-- /widget-header -->
 
 									<div class="widget-content">
 										<table class="table table-striped table-bordered">
                                     <%
-                   List<Administrator> administratorList = (List<Administrator>)request.getAttribute("administratorList");
+                   List<Role> roleList = (List<Role>)request.getAttribute("roleList");
                                     %>
 											<thead>
 												<tr>
 													<th>序号</th>
-													<th>用户名</th>
-													<th>添加时间</th>
+													<th>角色代码</th>
+													<th>角色名称</th>
 												</tr>
 											</thead>
 											<tbody>
 									  <%  
-								       if(administratorList!=null&&administratorList.size()!=0) {
-								       for(int i=0;i<administratorList.size();i++) {
+								       if(roleList!=null&&roleList.size()!=0) {
+								       for(int i=0;i<roleList.size();i++) {
 								        %>  
 						         <tr>
 						           <td><%=i+1 %></td>
-						           <td><%=administratorList.get(i).getUserName() %></td>
-						           <td><%=administratorList.get(i).getCreateTime() %></td>
+						           <td><%=roleList.get(i).getCode() %></td>
+						           <td><%=roleList.get(i).getName() %></td>
 						           <td class="action-td">
-                        <a href="<%=request.getContextPath()%>/Management/editAdministrator?id=<%=administratorList.get(i).getId()%>" class="btn btn-small btn-warning">
+                        <a href="<%=request.getContextPath()%>/Management/editRole?id=<%=roleList.get(i).getId()%>" class="btn btn-small btn-warning">
                                 <i  style="font-size:9px" >修改</i>                                                                
                         </a>                                    
-                        <a href="<%=request.getContextPath()%>/Management/deleteAdministratorById?id=<%=administratorList.get(i).getId()%>" class="btn btn-small">
+                        <a href="<%=request.getContextPath()%>/Management/deleteRoleById?id=<%=roleList.get(i).getId()%>" class="btn btn-small">
                                 <i style="font-size:9px">删除</i>                                            
                         </a>
                     </td>
