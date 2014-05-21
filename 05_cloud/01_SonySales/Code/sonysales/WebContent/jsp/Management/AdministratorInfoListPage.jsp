@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="com.sonymobile.sonysales.model.Administrator"%>
+<%@page import="com.sonymobile.sonysales.entity.AdministratorInfo"%>
 <%@page import="java.util.List"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -48,29 +48,29 @@
 									<div class="widget-content">
 										<table class="table table-striped table-bordered">
                                     <%
-                   List<Administrator> administratorList = (List<Administrator>)request.getAttribute("administratorList");
+                   List<AdministratorInfo> administratorInfoList = (List<AdministratorInfo>)request.getAttribute("administratorInfoList");
                                     %>
 											<thead>
 												<tr>
 													<th>序号</th>
 													<th>用户名</th>
-													<th>添加时间</th>
+													<th>角色名称</th>
 												</tr>
 											</thead>
 											<tbody>
 									  <%  
-								       if(administratorList!=null&&administratorList.size()!=0) {
-								       for(int i=0;i<administratorList.size();i++) {
+								       if(administratorInfoList!=null&&administratorInfoList.size()!=0) {
+								       for(int i=0;i<administratorInfoList.size();i++) {
 								        %>  
 						         <tr>
 						           <td><%=i+1 %></td>
-						           <td><%=administratorList.get(i).getUserName() %></td>
-						           <td><%=administratorList.get(i).getCreateTime() %></td>
+						           <td><%=administratorInfoList.get(i).getUserName() %></td>
+						           <td><%=administratorInfoList.get(i).getRoleName() %></td>
 						           <td class="action-td">
-                        <a href="<%=request.getContextPath()%>/Management/editAdministrator?id=<%=administratorList.get(i).getId()%>" class="btn btn-small btn-warning">
+                        <a href="<%=request.getContextPath()%>/Management/editAdministrator?id=<%=administratorInfoList.get(i).getId()%>" class="btn btn-small btn-warning">
                                 <i  style="font-size:9px" >修改</i>                                                                
                         </a>                                    
-                        <a href="<%=request.getContextPath()%>/Management/deleteAdministratorById?id=<%=administratorList.get(i).getId()%>" class="btn btn-small">
+                        <a href="<%=request.getContextPath()%>/Management/deleteAdministratorById?id=<%=administratorInfoList.get(i).getId()%>" class="btn btn-small">
                                 <i style="font-size:9px">删除</i>                                            
                         </a>
                     </td>

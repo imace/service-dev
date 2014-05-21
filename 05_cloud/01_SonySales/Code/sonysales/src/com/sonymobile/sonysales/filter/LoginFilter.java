@@ -49,7 +49,8 @@ public class LoginFilter implements Filter{
 //        String username =  (String) session.getAttribute("userName");
 
         String userName = CookieHelper.getValueFromCookieByName(req, "userName");
-        System.out.println("【LoginFilter userName】:"+userName); 
+//        System.out.println("【LoginFilter userName】:"+userName); 
+//        System.out.println("【LoginFilter CookieHelper.getValueFromCookieByName】:"+CookieHelper.getValueFromCookieByName(req, "roleCode"));
         if(userName == null||"".equals(userName)){  
             resp.sendRedirect(req.getContextPath()+"/jsp/Management/Login.jsp"); 
         }else {  

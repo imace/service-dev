@@ -39,7 +39,7 @@ public class DeleteAdministratorById extends HttpServlet {
        UserAdminService userAdminService = new UserAdminService();
        boolean bool = userAdminService.deleteAdministratorById(Long.parseLong(id));
        if(bool) {
-           request.getRequestDispatcher("/Management/getAdministratorList").forward(request,
+           request.getRequestDispatcher("/Management/getAdministratorInfoList").forward(request,
                    response);
        } else {
            System.out.println("【DeleteAdministratorById 删除失败！】");

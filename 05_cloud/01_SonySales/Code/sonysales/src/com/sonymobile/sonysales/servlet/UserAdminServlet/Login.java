@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sonymobile.sonysales.model.Administrator;
+import com.sonymobile.sonysales.model.Role;
 import com.sonymobile.sonysales.service.UserAdminService;
 import com.sonymobile.sonysales.util.CookieHelper;
 
@@ -49,9 +50,17 @@ public class Login extends HttpServlet {
                        response);
                return;
            } else {
+               Role role = userAdminService.getRoleById(administrator.getRoleId());
+               if(role!=null) {
+                   System.out.println("【Login role.getCode()】:"+role.getCode());
+                   CookieHelper.addCookie(response, "roleCode", role.getCode(), request.getContextPath()+"/");
+               } else {
+                   CookieHelper.addCookie(response, "roleCode", "", request.getContextPath()+"/");
+               }
                CookieHelper.addCookie(response, "userName", administrator.getUserName(), request.getContextPath()+"/");
-               request.getRequestDispatcher("/jsp/Management/MainPage.jsp").forward(request,
-                       response);
+               response.sendRedirect(request.getContextPath()+"/jsp/Management/MainPage.jsp"); 
+//               request.getRequestDispatcher("/jsp/Management/MainPage.jsp").forward(request,
+//                       response);
                return;
            }
               

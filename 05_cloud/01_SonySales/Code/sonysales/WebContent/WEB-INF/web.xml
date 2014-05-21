@@ -40,8 +40,8 @@
     <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.AddAdministrator</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>getAdministratorList</servlet-name>
-    <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.GetAdministratorList</servlet-class>
+    <servlet-name>getAdministratorInfoList</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.GetAdministratorInfoList</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>login</servlet-name>
@@ -131,8 +131,8 @@
     <url-pattern>/Management/login</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>getAdministratorList</servlet-name>
-    <url-pattern>/Management/getAdministratorList</url-pattern>
+    <servlet-name>getAdministratorInfoList</servlet-name>
+    <url-pattern>/Management/getAdministratorInfoList</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>editAdministrator</servlet-name>

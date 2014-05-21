@@ -34,34 +34,52 @@ public class SaveAdministrator extends HttpServlet {
     			   String userName = request.getParameter("userName");
     			   String password = request.getParameter("password");
     			   String id = request.getParameter("id");
-
+    			   String[] roles = request.getParameterValues("roles");
+    			   
     			   if(id==null) {
     			       System.out.println("【SaveAdministrator id为空！】");
     			       return;
     			   }
 		        if(userName==null || userName.trim().equals("") || password==null || password.trim().equals("")) {
 		            request.setAttribute("msg", "用户名或密码不能为空！");
-                    request.getRequestDispatcher("/jsp/Management/EditAdministrator.jsp").forward(request,
+                    request.getRequestDispatcher("/Management/editAdministrator").forward(request,
                             response);
+                    return;
 		        }
+          if(roles==null || roles.length==0) {
+              request.setAttribute("msg", "请选择角色！");
+              request.getRequestDispatcher("/Management/editAdministrator").forward(request,
+                      response);
+              return;
+                  }
 		        UserAdminService userAdminService = new UserAdminService();
            Administrator administrator = userAdminService.getAdministratorById(Long.parseLong(id));
            if(administrator!=null) {
                administrator.setUserName(userName);
                administrator.setPassword(password);
+               long roleId = 0;
+               if(roles!=null&&roles.length>0) {
+                   for(int i = 0;i<roles.length;i++) {
+                       roleId = Long.parseLong(roles[i]);
+                   }
+               }
+               administrator.setRoleId(roleId);
                boolean bool = userAdminService.update(administrator);
                if(!bool) {
                    request.setAttribute("msg", "更新失败！");
-                   request.getRequestDispatcher("/jsp/Management/EditAdministrator.jsp").forward(request,
+                   request.getRequestDispatcher("/Management/editAdministrator").forward(request,
                            response);
+                   return;
                } else {
-                   request.getRequestDispatcher("/Management/getAdministratorList").forward(request,
+                   request.getRequestDispatcher("/Management/getAdministratorInfoList").forward(request,
                            response);
+                   return;
                }
            } else {
                request.setAttribute("msg", "用户不存在！");
-               request.getRequestDispatcher("/jsp/Management/EditAdministrator.jsp").forward(request,
+               request.getRequestDispatcher("/Management/editAdministrator").forward(request,
                        response);
+               return;
            }
 		        
 

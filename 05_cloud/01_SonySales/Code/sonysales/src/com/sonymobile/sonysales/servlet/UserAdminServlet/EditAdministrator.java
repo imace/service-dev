@@ -1,21 +1,17 @@
 package com.sonymobile.sonysales.servlet.UserAdminServlet;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONArray;
 import net.sf.json.JSONException;
 
 import com.sonymobile.sonysales.model.Administrator;
+import com.sonymobile.sonysales.model.Role;
 import com.sonymobile.sonysales.service.UserAdminService;
-import com.sonymobile.sonysales.util.CodeMsg;
 
 public class EditAdministrator extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -44,8 +40,15 @@ public class EditAdministrator extends HttpServlet {
                System.out.println("【EditAdministrator administrator is null】");
                return;
            } else {
+               if(administrator.getRoleId()!=0) {
+                   Role role = userAdminService.getRoleById(administrator.getRoleId());
+                   request.setAttribute("role",
+                           role);
+               }
                request.setAttribute("administrator",
                        administrator);
+               request.setAttribute("roleList",
+                       userAdminService.getRoleList());
                request.getRequestDispatcher("/jsp/Management/EditAdministrator.jsp").forward(request,
                        response);
            }

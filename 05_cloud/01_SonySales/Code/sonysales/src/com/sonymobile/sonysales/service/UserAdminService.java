@@ -22,8 +22,8 @@ public class UserAdminService {
    return AdministratorDAO.getAdministratorByUserName(userName);
 	}
 	
-   public List<?> getAdministratorList() {
-       return AdministratorDAO.getAdministratorList();
+   public List<?> getAdministratorInfoList() {
+       return AdministratorDAO.getAdministratorInfoList();
         }
    
    public boolean update(Administrator administrator) {

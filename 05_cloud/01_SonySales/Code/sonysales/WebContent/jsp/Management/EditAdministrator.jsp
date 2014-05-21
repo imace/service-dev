@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@page import="com.sonymobile.sonysales.util.Constant"%>
 <%@page import="com.sonymobile.sonysales.model.Administrator"%>
+<%@page import="com.sonymobile.sonysales.model.Role"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -43,6 +45,7 @@
 		</div>
 		 <%
        Administrator administrator = (Administrator)request.getAttribute("administrator");
+		    Role role = (Role)request.getAttribute("role");
           %>
 		<!-- /login-header -->
 		<div id="login-content" class="clearfix">
@@ -61,6 +64,33 @@
 						<input type="password" class="" id="password" name="password" value="<%=administrator==null?"":administrator.getPassword()%>"/>
 					</div>
 				</div>
+				  <%
+         List<Role> roleList = (List<Role>)request.getAttribute("roleList");
+               %>
+       <div >
+           <label class="control-label" for="roles">角色</label>
+           <%
+           if(roleList!=null&&roleList.size()!=0) {
+               for(int i=0;i<roleList.size();i++) {
+                   %>
+                     <div class="radio">
+            <label>
+              <input type="radio" name="roles" id="roles" value="<%=roleList.get(i).getId()%>"
+              <% 
+              if(role!=null&&role.getId()==roleList.get(i).getId()) {
+                  %>
+                  checked
+                  <%
+              }
+              %>
+              ><%=roleList.get(i).getName()%>
+            </label>
+          </div>
+                   <% 
+               }
+            }
+           %>
+       </div>
 			</fieldset>
 			<div>
 				<button type="submit" class="btn btn-warning btn-large" style="margin-left:240px">修改</button>

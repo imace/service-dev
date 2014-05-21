@@ -59,13 +59,24 @@
 					</div>
 				</div>
 				  <%
-         List<Role> permissionList = (List<Role>)request.getAttribute("roleList");
+         List<Role> roleList = (List<Role>)request.getAttribute("roleList");
                %>
-       <div class="control-group">
-           <label class="control-label" for="role">角色</label>
-           <div class="controls">
-               <input type="radio" name="role" value="jquery获取radio的值" />jquery获取radio的值<br /> 
-           </div>
+       <div >
+           <label class="control-label" for="roles">角色</label>
+           <%
+           if(roleList!=null&&roleList.size()!=0) {
+               for(int i=0;i<roleList.size();i++) {
+                   %>
+					 <div class="radio">
+            <label>
+              <input type="radio" name="roles" id="roles" value="<%=roleList.get(i).getId()%>">
+              <%=roleList.get(i).getName()%>
+            </label>
+          </div>
+                   <% 
+               }
+            }
+           %>
        </div>
 			</fieldset>
 			

@@ -33,20 +33,29 @@ public class AddAdministrator extends HttpServlet {
 
     			   String userName = request.getParameter("userName");
     			   String password = request.getParameter("password");
+    			   String[] roles = request.getParameterValues("roles");
+    			   
 
 		        if(userName==null || userName.trim().equals("") || password==null || password.trim().equals("")) {
 		            request.setAttribute("msg", "用户名或密码为空！");
-                    request.getRequestDispatcher("/jsp/Management/addAdministrator.jsp").forward(request,
-                            response);
-                    return;
+               request.getRequestDispatcher("/Management/toAddAdministrator").forward(request,
+                        response);
+               return;
 		        }
+		        if(roles==null || roles.length==0) {
+               request.setAttribute("msg", "请选择角色！");
+               request.getRequestDispatcher("/Management/toAddAdministrator").forward(request,
+                       response);
+               return;
+	               }
 		        System.out.println("username1:"+userName);
 		        UserAdminService userAdminService = new UserAdminService();
            Administrator administrator = userAdminService.getAdministratorByUserName(userName);
            if(administrator!=null) {
                request.setAttribute("msg", "用户名已存在！");
-               request.getRequestDispatcher("/jsp/Management/addAdministrator.jsp").forward(request,
+               request.getRequestDispatcher("/Management/toAddAdministrator").forward(request,
                        response);
+               return;
            } else {
                administrator = new Administrator();
                administrator.setUserName(userName);
@@ -55,13 +64,22 @@ public class AddAdministrator extends HttpServlet {
                SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmm");
                String now = df.format(date);
                administrator.setCreateTime(now);
+               long roleId = 0;
+               if(roles!=null&&roles.length>0) {
+                   for(int i = 0;i<roles.length;i++) {
+                       roleId = Long.parseLong(roles[i]);
+                   }
+               }
+               administrator.setRoleId(roleId);
                if(userAdminService.addAdministrator(administrator)) {
-                   request.getRequestDispatcher("/Management/getAdministratorList").forward(request,
+                   request.getRequestDispatcher("/Management/getAdministratorInfoList").forward(request,
                            response);
+                   return;
                } else {
                    request.setAttribute("msg", "添加用户失败！");
-                   request.getRequestDispatcher("/jsp/Management/addAdministrator.jsp").forward(request,
+                   request.getRequestDispatcher("/Management/toAddAdministrator").forward(request,
                            response);
+                   return;
                }
            }
 		        

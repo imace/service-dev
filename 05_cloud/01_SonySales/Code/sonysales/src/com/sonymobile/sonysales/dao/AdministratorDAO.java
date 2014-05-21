@@ -52,11 +52,11 @@ public class AdministratorDAO {
        return (Administrator) list.get(0);
    }
    
-   public static List<?> getAdministratorList() {
+   public static List<?> getAdministratorInfoList() {
        HibernateUtil hibernateUtil = new HibernateUtil();
 
-       String hql = "from Administrator a order by a.createTime desc";
-
+       String hql = "select new com.sonymobile.sonysales.entity.AdministratorInfo(a.id, a.userName, r.name) from Administrator as a, Role as r where a.roleId=r.id order by a.createTime desc";
+       
        return hibernateUtil.getListByHql(hql, null, 0, 0);
    }
    
