@@ -26,7 +26,7 @@
 		String email = ((String) request.getAttribute("email"));
 		String address = (String) request.getAttribute("address");
 		String jdId = (String) request.getAttribute("jdId");
-		String points = (String) request.getAttribute("points");
+		String points = ((String) request.getAttribute("points")).trim();
 		String pointsOrder = (String) request.getAttribute("pointsOrder");
 		String supporterJS = (String) request.getAttribute("supporterJS");
 		PrintWriter outwriter = response.getWriter();
@@ -179,16 +179,16 @@
 				<h4 style="color: #22bff2;">您的人气</h4>
 				<hr style="border: 1px solid #22bff2;">
 				<%
-					if (points == "0") {
+					if (Integer.parseInt(points) == 0) {
 				%>
 				很抱歉, 您获得<span style="color: #cea14b">0人气点</span>，目前尚无排名，赶快加油吧！
 				<%
 					}
 				%>
 				<%
-					if (points != "0") {
+					if (Integer.parseInt(points) > 0) {
 				%>
-				恭喜! 您已经获得<span style="color: #cea14b">[<%=points%>]人气点</span>，目前排名<span
+				恭喜! 您已经获得<span style="color: #cea14b"><%=points%>人气点</span>，目前排名<span
 					style="color: #cea14b">第<%=pointsOrder%>位
 				</span>，继续加油哦！
 				<%
@@ -210,33 +210,33 @@
 				%>
 
 				<table class="table  table-striped">
-				<%
-					if (supporterCount > 0) {
-						for (int i = 0; i < supporterCount; i++) {
-							JSONObject jo = supporterJA.getJSONObject(i);
-							String createTime = "";
-							String nickname = "";
-							if (!jo.isNullObject()) {
-								nickname = jo.getString("nickname");
-								createTime = jo.getString("createTime");
-								StringBuilder sb = new StringBuilder();
-								if (createTime != null && !createTime.isEmpty()
-										&& createTime.length() > 8) {
-									sb.append("已于");
-									sb.append(createTime.substring(0, 4));
-									sb.append("年");
-									sb.append(createTime.substring(4, 6));
-									sb.append("月");
-									sb.append(createTime.substring(6, 8));
-									sb.append("日");
-								} else {
-									sb.append("已经");
-								}
-								createTime = sb.toString();
-				%>
-				<tr>
-					<td><%=nickname%><%=createTime%>支持了您！</td>
-				</tr>
+					<%
+						if (supporterCount > 0) {
+							for (int i = 0; i < supporterCount; i++) {
+								JSONObject jo = supporterJA.getJSONObject(i);
+								String createTime = "";
+								String nickname = "";
+								if (!jo.isNullObject()) {
+									nickname = jo.getString("nickname");
+									createTime = jo.getString("createTime");
+									StringBuilder sb = new StringBuilder();
+									if (createTime != null && !createTime.isEmpty()
+											&& createTime.length() > 8) {
+										sb.append("已于");
+										sb.append(createTime.substring(0, 4));
+										sb.append("年");
+										sb.append(createTime.substring(4, 6));
+										sb.append("月");
+										sb.append(createTime.substring(6, 8));
+										sb.append("日");
+									} else {
+										sb.append("已经");
+									}
+									createTime = sb.toString();
+					%>
+					<tr>
+						<td><%=nickname%><%=createTime%>支持了您！</td>
+					</tr>
 					<%
 						} else {
 									emptyObjectCount++;
