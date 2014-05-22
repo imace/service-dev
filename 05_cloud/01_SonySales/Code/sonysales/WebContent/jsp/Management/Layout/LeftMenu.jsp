@@ -16,15 +16,24 @@
 <ul id="main-nav" class="nav nav-tabs nav-stacked">
 	<li class="active"><a href="#"> <i class="icon-home"></i>订单管理
 	</a></li>
-	<li><a href="<%=Constant.HOST%>/jsp/Management/UploadExcel.jsp">
+	      <% if(code!=null&&(code.equals("excute")||code.equals("admin"))) {
+        %>
+	<li><a href="<%=request.getContextPath()%>/jsp/Management/UploadExcel.jsp">
 			<i class="icon-home"></i> 拉友买订单导入
 	</a></li>
-	<li><a href="<%=Constant.HOST%>/jsp/Management/VerifyOrder.jsp">
+	<li><a href="<%=request.getContextPath()%>/jsp/Management/VerifyOrder.jsp">
 			<i class="icon-pushpin"></i> 拉手团晒单验证
 	</a></li>
-	<li><a href="<%=Constant.HOST%>/jsp/Management/MainPage.jsp">
+	          <% 
+    }%>
+	   <% if(code!=null&&(code.equals("search")||code.equals("admin"))) {
+        %>
+        
+	<li><a href="<%=request.getContextPath()%>/jsp/Management/MainPage.jsp">
 			<i class="icon-th-list"></i> 拉手团订单查询
 	</a></li>
+	       <% 
+    }%>
 	<% if(code!=null&&code.equals("admin")) {
         %>
 	<li class="active"><a href="#"> <i class="icon-home"></i>用户管理
