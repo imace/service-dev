@@ -118,58 +118,6 @@
 		style="background: url(/img/stamp.png) right bottom no-repeat; background-size: 55%; margin: 10px;">
 		<div class="row" style="font-family: Droid Sans Fallback;">
 			<h2>我的战况</h2>
-			<h4 style="color: #22bff2;">您的基本信息</h4>
-			<hr style="border: 1px solid #22bff2;">
-			请正确填写，以便我们能联系到您，及获奖资格认证。我们承诺，不对您的信息进行转发，泄露，以及其他商业用途 <br>
-			<%-- <form class="form-horizontal" role="form" action="<%=Constant.HOST%>/updateUserInfo" > --%>
-			<form class="form-horizontal" id="userform" role="form"
-				action="http://localhost:8888/sonysales/updateUserInfo"
-				method="post">
-				<input name="openId" type="hidden" id="openId">
-				<div class="form-group">
-					<label for="phoneNum" class="col-xs-3 control-label">电话：</label>
-					<div class="col-xs-9">
-						<input type="text" class="form-control" name="phoneNum"
-							id="phoneNum" placeholder="电话">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="email" class="col-xs-3 control-label">邮箱：</label>
-					<div class="col-xs-9">
-						<input type="text" class="form-control" name="email" id="email"
-							placeholder="邮箱">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="address" class="col-xs-3 control-label">地址：</label>
-					<div class="col-xs-9">
-						<input type="text" class="form-control" name="address"
-							id="address" placeholder="地址">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="jdId" class="col-xs-3 control-label"
-						style="padding-right: 0px;">京东账号：</label>
-					<div class="col-xs-9">
-						<input type="text" class="form-control" name="jdId" id="jdId"
-							placeholder="京东账号">
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-xs-12">
-						<label style="color: #cea14b">（如果需要邮递奖品或领取奖金，请填写真实信息） </label>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-xs-12">
-						<a href="#" id="test"
-							style="display: block; background-color: #22bff2; border-color: #22bff2;"
-							class="btn btn-primary btn-lg active" role="button">编辑</a>
-					</div>
-				</div>
-			</form>
-
-			<br>
 			<h4 style="color: #22bff2;">您的优惠卷</h4>
 			<hr style="border: 1px solid #22bff2;">
 			<a href="http://help.jd.com/help/question-60.html"
@@ -263,6 +211,57 @@
 				style="display: block; border: 1px solid #999999; text-align: center; font-size: 20px; color: #3e3e3e;"><img
 				src="/img/ranking_icn.png" alt=""
 				style="padding: 0px; border: none; width: 24px; height: 24px; margin: -2px 15px -3px 0px !important;" />查看排行榜信息</a>
+			<br>
+			<h4 style="color: #22bff2;">您的基本信息</h4>
+			<hr style="border: 1px solid #22bff2;">
+			请正确填写，以便我们能联系到您，及获奖资格认证。我们承诺，不对您的信息进行转发，泄露，以及其他商业用途 <br>
+			<%-- <form class="form-horizontal" role="form" action="<%=Constant.HOST%>/updateUserInfo" > --%>
+			<form class="form-horizontal" id="userform" role="form"
+				action="http://localhost:8888/sonysales/updateUserInfo"
+				method="post">
+				<input name="openId" type="hidden" id="openId">
+				<div class="form-group">
+					<label for="phoneNum" class="col-xs-3 control-label">电话：</label>
+					<div class="col-xs-9">
+						<input type="text" class="form-control" name="phoneNum"
+							id="phoneNum" placeholder="电话">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="email" class="col-xs-3 control-label">邮箱：</label>
+					<div class="col-xs-9">
+						<input type="text" class="form-control" name="email" id="email"
+							placeholder="邮箱">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="address" class="col-xs-3 control-label">地址：</label>
+					<div class="col-xs-9">
+						<input type="text" class="form-control" name="address"
+							id="address" placeholder="地址">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="jdId" class="col-xs-3 control-label"
+						style="padding-right: 0px;">京东账号：</label>
+					<div class="col-xs-9">
+						<input type="text" class="form-control" name="jdId" id="jdId"
+							placeholder="京东账号">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-xs-12">
+						<label style="color: #cea14b">（如果需要邮递奖品或领取奖金，请填写真实信息） </label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-xs-12">
+						<a href="#" id="test"
+							style="display: block; background-color: #22bff2; border-color: #22bff2;"
+							class="btn btn-primary btn-lg active" role="button">编辑</a>
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
 
