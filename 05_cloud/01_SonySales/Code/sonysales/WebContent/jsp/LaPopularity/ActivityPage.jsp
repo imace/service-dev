@@ -11,35 +11,35 @@
 <script src="<%=request.getContextPath()%>/js/jquery-1.7.2.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:320px) and (-webkit-device-pixel-ratio:1)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:321px) and (max-device-width:480px) and (-webkit-device-pixel-ratio:1)"
-	href="<%=Constant.HOST%>/css/site_540.css">
+	href="<%=request.getContextPath()%>/css/site_540.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:640px) and (-webkit-device-pixel-ratio:1.5)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:720px) and (-webkit-device-pixel-ratio:2)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
-	href="<%=Constant.HOST%>/css/site_540.css">
+	href="<%=request.getContextPath()%>/css/site_540.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:721px) and (device-width:960px) and (-webkit-device-pixel-ratio:1.5)"
-	href="<%=Constant.HOST%>/css/site_720.css">
+	href="<%=request.getContextPath()%>/css/site_720.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:721px) and (max-device-width:1280px) and (-webkit-device-pixel-ratio: 2)"
-	href="<%=Constant.HOST%>/css/site_720.css">
+	href="<%=request.getContextPath()%>/css/site_720.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:1081px) and (max-device-width:1920px) and (-webkit-device-pixel-ratio: 3)"
-	href="<%=Constant.HOST%>/css/site_720.css">  
+	href="<%=request.getContextPath()%>/css/site_720.css">  
 <title>活动详情</title>
 </head>
 <body style="margin:0;background-color:#f8f7f5">
@@ -90,7 +90,7 @@
                <img src="<%=request.getContextPath()%>/img/product_top_all_1.png" style="margin-top:0" id="top_img" />
             <div  style="background-color:white;padding-bottom:10px;">
              <div id="buy" style="margin-left:10px;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='http://m.jd.com/product/813097.html'">
-                <div style="font-size:larger;color:white;padding-top:15px">立即购买</div>
+                <div style="font-size:larger;color:white;padding-top:15px" id="buyNow" >立即购买</div>
              </div>
          	</div>
             <div id="content" style="display:none;background-color:white">
@@ -104,12 +104,14 @@
                         <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">折扣券</div>
                     </div>
                 </div>
+                <!--
                 <div id="desc" style="margin-left:10px;margin-top:65px;padding-bottom:10px">
                     <div style="font-size:small;font-weight:700">商品描述：</div>
                     <div style="line-height:150%;margin-top:4px;word-wrap:break-word;word-break:break-all;color:rgb(117, 108, 108);font-size:small">
                                 索尼SONY公司作为FIFA2014世界杯赞助商，为了凝结住精彩的赛季回忆，特别为世界球迷定制了极具收藏价值的高端智能手机，限量版哟-不要犹豫，记住这个夏天！
                     </div>             
                 </div>
+                  -->
             </div>
         </div>
 
@@ -124,7 +126,7 @@
         $("#intro").css("width", document.body.clientWidth-20); 
         $("#buy").css("width", document.body.clientWidth-22); 
         $("#bttons").css("width", document.body.clientWidth-22); 
-        $("#desc").css("width", document.body.clientWidth-20); 
+        //$("#desc").css("width", document.body.clientWidth-20); 
         $("#pcbuy").css("width", (document.body.clientWidth-20)/2-7); 
         $("#discount").css("width", (document.body.clientWidth-20)/2-7); 
         
