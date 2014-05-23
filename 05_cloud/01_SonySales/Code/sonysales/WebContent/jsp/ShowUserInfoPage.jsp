@@ -17,7 +17,43 @@
 <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
 <script
 	src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	media="screen and (max-device-width:320px) and (-webkit-device-pixel-ratio:1)"
+	href="<%=Constant.HOST%>/css/site_320.css">
+<link rel="stylesheet" type="text/css"
+	media="screen and (min-device-width:321px) and (max-device-width:480px) and (-webkit-device-pixel-ratio:1)"
+	href="<%=Constant.HOST%>/css/site_540.css">
+<link rel="stylesheet" type="text/css"
+	media="screen and (max-device-width:640px) and (-webkit-device-pixel-ratio:1.5)"
+	href="<%=Constant.HOST%>/css/site_320.css">
+<link rel="stylesheet" type="text/css"
+	media="screen and (max-device-width:720px) and (-webkit-device-pixel-ratio:2)"
+	href="<%=Constant.HOST%>/css/site_320.css">
+
+<link rel="stylesheet" type="text/css"
+	media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
+	href="<%=Constant.HOST%>/css/site_540.css">
+
+<link rel="stylesheet" type="text/css"
+	media="screen and (min-device-width:721px) and (device-width:960px) and (-webkit-device-pixel-ratio:1.5)"
+	href="<%=Constant.HOST%>/css/site_720.css">
+
+<link rel="stylesheet" type="text/css"
+	media="screen and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
+	href="<%=Constant.HOST%>/css/site_320.css">
+
+<link rel="stylesheet" type="text/css"
+	media="screen and (min-device-width:721px) and (max-device-width:1280px) and (-webkit-device-pixel-ratio: 2)"
+	href="<%=Constant.HOST%>/css/site_720.css">
+<link rel="stylesheet" type="text/css"
+	media="screen and (min-device-width:1081px) and (max-device-width:1920px) and (-webkit-device-pixel-ratio: 3)"
+	href="<%=Constant.HOST%>/css/site_720.css">
 <title>我的基本信息</title>
+<style type="text/css">
+.btn_decoration:hover,.btn_decoration:focus {
+	text-decoration: none
+}
+</style>
 </head>
 <body>
 	<%
@@ -117,38 +153,43 @@
 	<div class="container"
 		style="background: url(/img/stamp.png) right bottom no-repeat; background-size: 55%; margin: 10px;">
 		<div class="row" style="font-family: Droid Sans Fallback;">
-			<h2>我的战况</h2>
-			<h4 style="color: #22bff2;">我的优惠卷</h4>
+			<div id="title" class="text_header" style="margin-bottom: 10px">我的战况</div>
+			<div class="text_subHeader"
+				style="margin-top: 10px; margin-bottom: 10px">我的优惠卷</div>
 			<hr style="border: 1px solid #22bff2;">
 			<a href="http://help.jd.com/help/question-60.html"
-				style="display: block; background-color: #22bff2; border-color: #22bff2;"
-				class="btn btn-primary btn-lg active" role="button">点击获取优惠卷</a> <br>
+				style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
+				class="btn_decoration btn-lg" role="button">点击获取优惠卷</a> <br>
 			<div>
-				<h4 style="color: #22bff2;">我的人气</h4>
-				<hr style="border: 1px solid #22bff2;">
-				<%
-					if (Integer.parseInt(points) == 0) {
-				%>
-				很抱歉, 您获得<span style="color: #cea14b">0人气点</span>，目前尚无排名，赶快加油吧！
-				<%
-					}
-				%>
-				<%
-					if (Integer.parseInt(points) > 0) {
-				%>
-				恭喜! 您已经获得<span style="color: #cea14b"><%=points%>人气点</span>，目前排名<span
-					style="color: #cea14b">第<%=pointsOrder%>位
-				</span>，继续加油哦！
-				<%
-					}
-				%>
+				<div class="text_subHeader"
+					style="margin-top: 10px; margin-bottom: 10px">我的人气</div>
+				<div class="text_mainBody">
+					<hr style="border: 1px solid #22bff2;">
+					<%
+						if (Integer.parseInt(points) == 0) {
+					%>
+					很抱歉, 您获得<span class="text_highlight">0人气点</span>，目前尚无排名，赶快加油吧！
+					<%
+						}
+					%>
+					<%
+						if (Integer.parseInt(points) > 0) {
+					%>
+					恭喜! 您已经获得<span class="text_highlight"><%=points%>人气点</span>，目前排名<span
+						class="text_highlight">第<%=pointsOrder%>位
+					</span>，继续加油哦！
+					<%
+						}
+					%>
+				</div>
 			</div>
 
 			<br>
 
-			<h4 style="color: #22bff2;">我的拉友团</h4>
+			<div class="text_subHeader"
+				style="margin-top: 10px; margin-bottom: 10px">我的拉友团</div>
 			<hr style="border: 1px solid #22bff2;">
-			<div>
+			<div class="text_mainBody">
 				<%
 					JSONArray supporterJA = JSONArray.fromObject(supporterJS);
 					int supporterCount = supporterJA.size();
@@ -192,76 +233,85 @@
 							}
 						}
 						supporterCount -= emptyObjectCount;
-						if (supporterCount < 1) {
-					%>
-					<tr>
-						<td>还没有人支持你， 赶紧去拉好友吧！</td>
-					</tr>
-					<%
-						}
 					%>
 				</table>
+				<%
+					if (supporterCount < 1) {
+				%>
+				<tr>
+					<td>还没有人支持你， 赶紧去拉好友吧！</td>
+				</tr>
+				<%
+					} else {
+				%>
 				您已经获取<span style="color: #cea14b"><%=supporterCount%>个好友</span>的支持进行拉手购买活动，最多可以获得<span
 					style="color: #cea14b"><%=money%>元返金</span>
+				<%
+					}
+				%>
 			</div>
 			<br>
-			<hr style="border: 1px dashed #999999;">
-			<a href="<%=Constant.HOST%>/getNameList?id=<%=openId%>" role="button"
-				class="btn btn-lg"
-				style="display: block; border: 1px solid #999999; text-align: center; font-size: 20px; color: #3e3e3e;"><img
-				src="/img/ranking_icn.png" alt=""
-				style="padding: 0px; border: none; width: 24px; height: 24px; margin: -2px 15px -3px 0px !important;" />查看排行榜信息</a>
-			<br>
-			<h4 style="color: #22bff2;">我的基本信息</h4>
+			<div class="text_subHeader"
+				style="margin-top: 10px; margin-bottom: 10px">我的基本信息</div>
 			<hr style="border: 1px solid #22bff2;">
-			请正确填写，以便我们能联系到您，及获奖资格认证。我们承诺，不对您的信息进行转发，泄露，以及其他商业用途 <br>
+			<div class="text_mainBody" style="margin-bottom: 10px;">
+				请正确填写，以便我们能联系到您，及获奖资格认证。我们承诺，不对您的信息进行转发，泄露，以及其他商业用途 <br>
+			</div>
 			<%-- <form class="form-horizontal" role="form" action="<%=Constant.HOST%>/updateUserInfo" > --%>
 			<form class="form-horizontal" id="userform" role="form"
 				action="http://localhost:8888/sonysales/updateUserInfo"
 				method="post">
 				<input name="openId" type="hidden" id="openId">
 				<div class="form-group">
-					<label for="phoneNum" class="col-xs-3 control-label">电话：</label>
+					<label for="phoneNum" class="col-xs-3 control-label text_mainBody">电话：</label>
 					<div class="col-xs-9">
 						<input type="text" class="form-control" name="phoneNum"
 							id="phoneNum" placeholder="电话">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="email" class="col-xs-3 control-label">邮箱：</label>
+					<label for="email" class="col-xs-3 control-label text_mainBody">邮箱：</label>
 					<div class="col-xs-9">
 						<input type="text" class="form-control" name="email" id="email"
 							placeholder="邮箱">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="address" class="col-xs-3 control-label">地址：</label>
+					<label for="address" class="col-xs-3 control-label text_mainBody">地址：</label>
 					<div class="col-xs-9">
 						<input type="text" class="form-control" name="address"
 							id="address" placeholder="地址">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="jdId" class="col-xs-3 control-label"
+					<label for="jdId" class="col-xs-4 control-label text_mainBody"
 						style="padding-right: 0px;">京东账号：</label>
-					<div class="col-xs-9">
+					<div class="col-xs-8">
 						<input type="text" class="form-control" name="jdId" id="jdId"
 							placeholder="京东账号">
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-xs-12">
-						<label style="color: #cea14b">（如果需要邮递奖品或领取奖金，请填写真实信息） </label>
+						<label class="text_highlight">（如果需要邮递奖品或领取奖金，请填写真实信息） </label>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-xs-12">
 						<a href="#" id="test"
-							style="display: block; background-color: #22bff2; border-color: #22bff2;"
-							class="btn btn-primary btn-lg active" role="button">编辑</a>
+							style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
+							class="btn-lg active btn_decoration" role="button">编辑</a>
 					</div>
 				</div>
 			</form>
+			<br>
+			<hr style="border: 1px dashed #999999;">
+			<a href="<%=Constant.HOST%>/getNameList?id=<%=openId%>" role="button"
+				class="btn_decoration btn-lg"
+				style="display: block; border: 1px solid #999999; text-align: center; font-size: 20px; color: #3e3e3e;"><img
+				src="/img/ranking_icn.png" alt=""
+				style="padding: 0px; border: none; width: 24px; height: 24px; margin: -2px 15px -3px 0px !important;" />查看排行榜信息</a>
+			<br>
 		</div>
 	</div>
 
