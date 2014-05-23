@@ -116,13 +116,9 @@
              <%  
            }
        }
-       if(userList.size()<5) {
-           int size = userList.size();
-           int height = (5-size)*55;
            %>
-           <tr><td colspan=3 style="height:<%=height%>px;text-align:center;border-top:medium none;"><div style="font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div></td></tr>
+           <tr><td id ="pop_point_td" colspan=3 style="height:55px;text-align:center;border-top:medium none;"><div style="font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div></td></tr>
        <%
-       }
    } else {
        %>
        <tr><td id="pop_img_td" style="text-align:center;border-top:medium none;"><div style="margin: 35px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="img/product_3.png" style="height:165px" id="pop_img"/></div></td></tr>
@@ -198,13 +194,9 @@
       <% 
        }
        }
-       if(supporterList.size()<5) {
-           int size = supporterList.size();
-           int height = (5-size)*55;
            %>
-           <tr><td colspan=2 style="height:<%=height%>px;text-align:center;border-top:medium none;"><div style="font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div></td></tr>
+           <tr><td id="handle_point_td" colspan=2 style="height:55px;text-align:center;border-top:medium none;"><div style="font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div></td></tr>
        <%
-       }
        
        } else {
            %>
@@ -270,17 +262,20 @@
           $("#rob1").css("width", document.body.clientWidth-24);
           $("#rob2").css("width", document.body.clientWidth-24);
           
-          
-          if(handlelist_div1.offsetHeight>handlelist_div.offsetHeight) {
-              document.getElementById("handlelist_div2").style.display="";
-              //document.getElementById("handlelist_div2").remove();
-              }
           if(poplist_div1.offsetHeight>poplist_div.offsetHeight) {
               document.getElementById("poplist_div2").style.display="";
-              //document.getElementById("poplist_div2").remove();
-              }
-          
-        
+              } else {
+                  $("#pop_point_td").css("height", (poplist_div.offsetHeight-poplist_div1.offsetHeight+55)+"px");
+                  //var text = ' poplist_div1.offsetHeight:' + poplist_div1.offsetHeight + ' poplist_div.offsetHeight:' + poplist_div.offsetHeight;  
+                  //document.getElementById("result").innerHTML = text; 
+                  }
+         
+          if(handlelist_div1.offsetHeight>handlelist_div.offsetHeight) {
+              document.getElementById("handlelist_div2").style.display="";
+              } else {
+            	  $("#handle_point_td").css("height", (handlelist_div.offsetHeight-handlelist_div1.offsetHeight+55)+"px");
+                  }
+         
           });
 
       //poplist_div2.innerHTML=poplist_div1.innerHTML;//复制节点  
@@ -300,7 +295,7 @@
          
                   poplist_div.scrollTop++;  
                   handlelist_div.scrollTop++; 
-                  //var text = ' handlelist_div1.offsetHeight:' + handlelist_div1.offsetHeight + ' handlelist_div.offsetHeight:' + handlelist_div.offsetHeight + " poplist_div.scrollTop:" + poplist_div.scrollTop;  
+                  //var text = ' pop_table1.offsetHeight:' + pop_table1.offsetHeight + ' handlelist_div.offsetHeight:' + handlelist_div.offsetHeight + " poplist_div.scrollTop:" + poplist_div.scrollTop;  
                   //document.getElementById("result").innerHTML = text;  
 
       }  
