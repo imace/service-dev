@@ -1,12 +1,16 @@
 package com.sonymobile.sonysales.servlet.LashouBuy;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import net.sf.json.JSONException;
+
 import org.apache.log4j.Logger;
+
 import com.sonymobile.sonysales.entity.DefaultWechatInfoImpl;
 import com.sonymobile.sonysales.entity.IWechatInfo;
 import com.sonymobile.sonysales.service.HandleService;
@@ -32,16 +36,20 @@ public class LashouRelation extends HttpServlet {
 		try {
 
 			String navurl = "/jsp/LashouBuy/LashouRelation.jsp";
-
 			String fromid = request.getParameter("fromid");
 			String fromname = request.getParameter("fromname");
 			String toid = request.getParameter("toid");
 			String toname = request.getParameter("toname");
 			String toheadimgurl = request.getParameter("toheadimgurl");
+			String attention="1";
 
 			String fromimg = "";
 			String toimg = toheadimgurl;
 
+			if (toimg!=null) {
+				attention="0";
+			}
+			
 			response.setContentType("application/json;charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
 
@@ -83,7 +91,8 @@ public class LashouRelation extends HttpServlet {
 					request.setAttribute("fromnickname", fromnickname == null ? "他" : fromnickname);
 					request.setAttribute("tonickname", tonickname == null ? "我" : tonickname);
 					request.setAttribute("fromimg", fromimg == null ? Constant.HOST + "/img/head1.png" : fromimg);
-					request.setAttribute("toimg", toimg == null ? Constant.HOST + "/img/head2.png" : toimg);
+					request.setAttribute("toimg", Constant.HOST + "/img/head2.png");
+					request.setAttribute("attention", attention);
 				}
 			} else {
 				// forward to error page
