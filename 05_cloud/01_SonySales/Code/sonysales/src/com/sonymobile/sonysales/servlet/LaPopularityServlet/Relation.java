@@ -13,10 +13,6 @@ import com.sonymobile.sonysales.service.PopularityService;
 import com.sonymobile.sonysales.util.Base64Coder;
 import com.sonymobile.sonysales.util.Constant;
 
-/**
- * @author 28852095
- * 
- */
 public class Relation extends HttpServlet {
 
 	private static final long serialVersionUID = 3477353244980948618L;
@@ -42,10 +38,15 @@ public class Relation extends HttpServlet {
 			String toid = request.getParameter("toid");
 			String toname = request.getParameter("toname");
 			String toheadimgurl = request.getParameter("toheadimgurl");
+			String attention="1";
 
 			String fromimg = "";
 			String toimg = toheadimgurl;
 
+			if (toimg!=null) {
+				attention="0";
+			}
+			
 			response.setContentType("application/json;charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
 
@@ -88,7 +89,8 @@ public class Relation extends HttpServlet {
 					request.setAttribute("fromnickname", fromnickname == null ? "他" : fromnickname);
 					request.setAttribute("tonickname", tonickname == null ? "我" : tonickname);
 					request.setAttribute("fromimg", fromimg == null ? Constant.HOST + "/img/head1.png" : fromimg);
-					request.setAttribute("toimg", toimg == null ? Constant.HOST + "/img/head2.png" : toimg);
+					request.setAttribute("toimg", Constant.HOST + "/img/head2.png");
+					request.setAttribute("attention", attention);
 
 				}
 			} else {
