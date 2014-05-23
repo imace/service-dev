@@ -17,7 +17,7 @@
 <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
 <script
 	src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<title>您的基本信息</title>
+<title>我的基本信息</title>
 </head>
 <body>
 	<%
@@ -118,13 +118,13 @@
 		style="background: url(/img/stamp.png) right bottom no-repeat; background-size: 55%; margin: 10px;">
 		<div class="row" style="font-family: Droid Sans Fallback;">
 			<h2>我的战况</h2>
-			<h4 style="color: #22bff2;">您的优惠卷</h4>
+			<h4 style="color: #22bff2;">我的优惠卷</h4>
 			<hr style="border: 1px solid #22bff2;">
 			<a href="http://help.jd.com/help/question-60.html"
 				style="display: block; background-color: #22bff2; border-color: #22bff2;"
 				class="btn btn-primary btn-lg active" role="button">点击获取优惠卷</a> <br>
 			<div>
-				<h4 style="color: #22bff2;">您的人气</h4>
+				<h4 style="color: #22bff2;">我的人气</h4>
 				<hr style="border: 1px solid #22bff2;">
 				<%
 					if (Integer.parseInt(points) == 0) {
@@ -146,7 +146,7 @@
 
 			<br>
 
-			<h4 style="color: #22bff2;">您的拉友团</h4>
+			<h4 style="color: #22bff2;">我的拉友团</h4>
 			<hr style="border: 1px solid #22bff2;">
 			<div>
 				<%
@@ -212,7 +212,7 @@
 				src="/img/ranking_icn.png" alt=""
 				style="padding: 0px; border: none; width: 24px; height: 24px; margin: -2px 15px -3px 0px !important;" />查看排行榜信息</a>
 			<br>
-			<h4 style="color: #22bff2;">您的基本信息</h4>
+			<h4 style="color: #22bff2;">我的基本信息</h4>
 			<hr style="border: 1px solid #22bff2;">
 			请正确填写，以便我们能联系到您，及获奖资格认证。我们承诺，不对您的信息进行转发，泄露，以及其他商业用途 <br>
 			<%-- <form class="form-horizontal" role="form" action="<%=Constant.HOST%>/updateUserInfo" > --%>
