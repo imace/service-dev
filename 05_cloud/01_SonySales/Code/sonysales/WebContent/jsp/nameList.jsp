@@ -8,39 +8,39 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
-	content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
+    content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
 <script src="<%=request.getContextPath()%>/js/jquery-1.7.2.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	media="screen and (max-device-width:320px) and (-webkit-device-pixel-ratio:1)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+    media="screen and (max-device-width:320px) and (-webkit-device-pixel-ratio:1)"
+    href="<%=Constant.HOST%>/css/site_320.css">
 <link rel="stylesheet" type="text/css"
-	media="screen and (min-device-width:321px) and (max-device-width:480px) and (-webkit-device-pixel-ratio:1)"
-	href="<%=Constant.HOST%>/css/site_540.css">
+    media="screen and (min-device-width:321px) and (max-device-width:480px) and (-webkit-device-pixel-ratio:1)"
+    href="<%=Constant.HOST%>/css/site_540.css">
 <link rel="stylesheet" type="text/css"
-	media="screen and (max-device-width:640px) and (-webkit-device-pixel-ratio:1.5)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+    media="screen and (max-device-width:640px) and (-webkit-device-pixel-ratio:1.5)"
+    href="<%=Constant.HOST%>/css/site_320.css">
 <link rel="stylesheet" type="text/css"
-	media="screen and (max-device-width:720px) and (-webkit-device-pixel-ratio:2)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+    media="screen and (max-device-width:720px) and (-webkit-device-pixel-ratio:2)"
+    href="<%=Constant.HOST%>/css/site_320.css">
 
 <link rel="stylesheet" type="text/css"
-	media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
-	href="<%=Constant.HOST%>/css/site_540.css">
+    media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
+    href="<%=Constant.HOST%>/css/site_540.css">
 
 <link rel="stylesheet" type="text/css"
-	media="screen and (min-device-width:721px) and (device-width:960px) and (-webkit-device-pixel-ratio:1.5)"
-	href="<%=Constant.HOST%>/css/site_720.css">
+    media="screen and (min-device-width:721px) and (device-width:960px) and (-webkit-device-pixel-ratio:1.5)"
+    href="<%=Constant.HOST%>/css/site_720.css">
 
 <link rel="stylesheet" type="text/css"
-	media="screen and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+    media="screen and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
+    href="<%=Constant.HOST%>/css/site_320.css">
 
 <link rel="stylesheet" type="text/css"
-	media="screen and (min-device-width:721px) and (max-device-width:1280px) and (-webkit-device-pixel-ratio: 2)"
-	href="<%=Constant.HOST%>/css/site_720.css">
+    media="screen and (min-device-width:721px) and (max-device-width:1280px) and (-webkit-device-pixel-ratio: 2)"
+    href="<%=Constant.HOST%>/css/site_720.css">
 <link rel="stylesheet" type="text/css"
-	media="screen and (min-device-width:1081px) and (max-device-width:1920px) and (-webkit-device-pixel-ratio: 3)"
-	href="<%=Constant.HOST%>/css/site_720.css">  
+    media="screen and (min-device-width:1081px) and (max-device-width:1920px) and (-webkit-device-pixel-ratio: 3)"
+    href="<%=Constant.HOST%>/css/site_720.css">  
 <title></title>
 <style type="text/css">  
         table {  
@@ -76,14 +76,14 @@
 </head>
 <body>
 <!--<div id="result" style="border:2px solid red; color:red;">未触发事件！</div> -->
-	<%
+    <%
 
-	 List<User> userList = (List<User>)request.getAttribute("userList");
-	 List<SupporterCount> supporterList = (List<SupporterCount>)request.getAttribute("supporterList");
-	 String openId =(String)request.getAttribute("openId");
-	
-	%>
-	<div id="title" class="text_header" style="margin-left:10px;margin-top:10px;">索尼FIFA2014大奖榜奖金榜</div>
+     List<User> userList = (List<User>)request.getAttribute("userList");
+     List<SupporterCount> supporterList = (List<SupporterCount>)request.getAttribute("supporterList");
+     String openId =(String)request.getAttribute("openId");
+    
+    %>
+    <div id="title" class="text_header" style="margin-left:10px;margin-top:10px;">索尼FIFA2014大奖榜奖金榜</div>
     <div id="pop_div" style="padding-top:1px;margin-left:10px">
      <div id="pop_title" style="height:40px;text-align:left;float:left">
          <div class="text_subHeader" style="padding-top:12px;padding-right:30px">人气榜</div>
@@ -129,9 +129,9 @@
        <%
    }
        %>
-	</table>
-	</div>
-	    <div id = "poplist_div2" style="display:none">
+    </table>
+    </div>
+        <div id = "poplist_div2" style="display:none">
         <table id="pop_table2" cellSpacing=0 cellPadding=0 align=center border=1 style="border-top:aliceblue">
          <%  
        if(userList!=null&&userList.size()!=0) {
@@ -159,7 +159,7 @@
        </table>
     </div>
     </div>
-	    <div id="rob1" style="margin-bottom:30px;margin-left:11px;margin-top:10px;height:50px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='<%=Constant.HOST%>/activitypage?id=<%=openId%>'">
+        <div id="rob1" style="margin-bottom:30px;margin-left:11px;margin-top:10px;height:50px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='<%=Constant.HOST%>/activitypage?id=<%=openId%>'">
        <div style="font-size:larger;color:white;margin-top:12px">还不来抢大奖</div>
     </div>
     
@@ -272,11 +272,11 @@
           
           
           if(handlelist_div1.offsetHeight>handlelist_div.offsetHeight) {
-        	  document.getElementById("handlelist_div2").style.display="";
-        	  //document.getElementById("handlelist_div2").remove();
+              document.getElementById("handlelist_div2").style.display="";
+              //document.getElementById("handlelist_div2").remove();
               }
           if(poplist_div1.offsetHeight>poplist_div.offsetHeight) {
-        	  document.getElementById("poplist_div2").style.display="";
+              document.getElementById("poplist_div2").style.display="";
               //document.getElementById("poplist_div2").remove();
               }
           
@@ -293,9 +293,9 @@
               poplist_div.scrollTop++;  
          }  
           if(handlelist_div1.offsetHeight-handlelist_div.scrollTop<=0){  
-        	  handlelist_div.scrollTop=0;  
+              handlelist_div.scrollTop=0;  
           }else{  
-        	  handlelist_div.scrollTop++;  
+              handlelist_div.scrollTop++;  
          }  
          
                   poplist_div.scrollTop++;  

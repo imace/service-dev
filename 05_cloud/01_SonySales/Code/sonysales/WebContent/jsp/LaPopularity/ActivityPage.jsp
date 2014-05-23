@@ -67,10 +67,13 @@
 
 
             <div>
-                <div id="title" class="text_header common_style">超值，索尼FIFA手机等你来拿！</div>
+                <div id="title" class="text_header common_style" style="margin:8px;">超值，索尼FIFA手机等你来拿！</div>
                 <div id="banner_img_div">
                     <img src="<%=request.getContextPath()%>/img/banner_popularity.png" id="banner_img" style="margin-left:10px"/>
                 </div>
+                 <p class="text_highlight common_style" style="padding-top:10px">
+					                                     点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png" width="16px" style="margin-left:2px;margin-right:2px"/>或<img src="<%=request.getContextPath()%>/img/share.png" width="16px" style="margin-left:2px;margin-right:2px"/>发送给朋友
+					         </p>
                 <div id="intro">
                     <div class="text_subHeader common_style">
                                     大力神杯拉人气活动规则
@@ -80,21 +83,18 @@
                         官方定制精美手机一部。</br>
                         每拉一个朋友激活10000人气积分呦！
                     </div>
-                    <div class="text_guide common_style">
-                                                点击右上角-->发送给朋友
-                    </div>
                 </div>
         </div>
 
         <div id="touchBox">
                <img src="<%=request.getContextPath()%>/img/product_top_all_1.png" style="margin-top:0" id="top_img" />
-            <div  style="background-color:white;padding-bottom:10px;">
-             <div id="buy" style="margin-left:10px;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='http://m.jd.com/product/813097.html'">
+            <div  style="background-color:white;">
+             <div id="buy" style="margin-left:10px;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="draw()">
                 <div style="font-size:larger;color:white;padding-top:15px" id="buyNow" >立即购买</div>
              </div>
          	</div>
-            <div id="content" style="display:none;background-color:white">
-                <div id="bttons" style="padding-top:1px;margin-left:10px">
+            <div id="content" style="display:none;background-color:white;height:62px">
+                <div id="bttons" style="padding-top:10px;margin-left:10px">
                     <div id="pcbuy" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:left" onclick="window.location.href='<%=Constant.HOST%>/jsp/productPage.jsp'">
                         <div><img src="<%=request.getContextPath()%>/img/http_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:12px"/></div>
                         <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">PC购买</div>
@@ -104,23 +104,17 @@
                         <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">折扣券</div>
                     </div>
                 </div>
-                <!--
-                <div id="desc" style="margin-left:10px;margin-top:65px;padding-bottom:10px">
-                    <div style="font-size:small;font-weight:700">商品描述：</div>
-                    <div style="line-height:150%;margin-top:4px;word-wrap:break-word;word-break:break-all;color:rgb(117, 108, 108);font-size:small">
-                                索尼SONY公司作为FIFA2014世界杯赞助商，为了凝结住精彩的赛季回忆，特别为世界球迷定制了极具收藏价值的高端智能手机，限量版哟-不要犹豫，记住这个夏天！
-                    </div>             
-                </div>
-                  -->
             </div>
+            <div style="background-color:white;height:10px"></div>
         </div>
 
 	<script type="text/javascript">
-
+	var open = false;
 	$(document).ready(function(){
         var windowHeight = window.innerHeight;
         $("#touchBox").css({position: "absolute",'bottom':0,'z-index':2}); 
         document.getElementById("top_img").width=document.body.clientWidth;
+        document.getElementById("content").width=document.body.clientWidth;
         $("#banner_img").css("width", document.body.clientWidth-20); 
         $("#title").css("width", document.body.clientWidth-20); 
         $("#intro").css("width", document.body.clientWidth-20); 
@@ -159,6 +153,8 @@
                    $("#top_img").attr("src","<%=request.getContextPath()%>/img/product_top_all_1.png"); 
                 document.getElementById("content").style.display="none";
                 $("#touchBox").css({position: "absolute",'bottom':0,'z-index':2});
+                $("#buyNow").text("立即购买");
+                open = false;
 
                 }
             if((startY-endY)>10) {//上滑
@@ -167,23 +163,22 @@
                 //$("#desc").css("overflow-y", "auto"); 
                 document.getElementById("content").style.display="";
                 $("#touchBox").css({position: "absolute",'bottom':0,'z-index':2}); 
+                $("#buyNow").text("手机购买");
+                open = true;
                 }
         }
        
         });
     
-	var open = false;
     function draw() {
         if(!open) {
        document.getElementById("content").style.display="";
        $("#touchBox").css({position: "absolute",'bottom':0,'z-index':2}); 
        $("#top_img").attr("src","<%=request.getContextPath()%>/img/product_top_all_2.png"); 
+       $("#buyNow").text("手机购买");
        open = true;
        } else {
-           document.getElementById("content").style.display="none";
-         $("#touchBox").css({position: "absolute",'bottom':0,'z-index':2});
-         $("#top_img").attr("src","<%=request.getContextPath()%>/img/product_top_all_1.png");
-         open = false;
+    	   window.location.href='http://m.jd.com/product/813097.html';
                 }
             }
     
