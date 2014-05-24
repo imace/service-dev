@@ -4,7 +4,7 @@
 <%@page import="com.sonymobile.sonysales.util.CookieHelper"%>
 <div class="account-container">
 	<div class="account-avatar">
-		<img src="<%=Constant.HOST%>/css/weichat.jpg" alt="" class="thumbnail" />
+		<img src="<%=request.getContextPath()%>/css/weichat.jpg" alt="" class="thumbnail" />
 	</div>
 	<div class="account-details">
 		<span class="account-name">用户1</span> <span class="account-role">管理员</span>

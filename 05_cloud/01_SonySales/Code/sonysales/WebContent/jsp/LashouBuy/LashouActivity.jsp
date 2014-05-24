@@ -11,35 +11,35 @@
 <script src="<%=request.getContextPath()%>/js/jquery-1.7.2.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:320px) and (-webkit-device-pixel-ratio:1)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:321px) and (max-device-width:480px) and (-webkit-device-pixel-ratio:1)"
-	href="<%=Constant.HOST%>/css/site_540.css">
+	href="<%=request.getContextPath()%>/css/site_540.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:640px) and (-webkit-device-pixel-ratio:1.5)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:720px) and (-webkit-device-pixel-ratio:2)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
-	href="<%=Constant.HOST%>/css/site_540.css">
+	href="<%=request.getContextPath()%>/css/site_540.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:721px) and (device-width:960px) and (-webkit-device-pixel-ratio:1.5)"
-	href="<%=Constant.HOST%>/css/site_720.css">
+	href="<%=request.getContextPath()%>/css/site_720.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:721px) and (max-device-width:1280px) and (-webkit-device-pixel-ratio: 2)"
-	href="<%=Constant.HOST%>/css/site_720.css">
+	href="<%=request.getContextPath()%>/css/site_720.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:1081px) and (max-device-width:1920px) and (-webkit-device-pixel-ratio: 3)"
-	href="<%=Constant.HOST%>/css/site_720.css">  
+	href="<%=request.getContextPath()%>/css/site_720.css">  
 <title>索尼拉手买, 他实惠, 我受益!</title>
 </head>
 <body style="margin:0;background-color:#f8f7f5">
@@ -48,11 +48,11 @@
 		String nickname =(String)request.getAttribute("nickname");
 		nickname=(nickname==null?"":"("+nickname+")");
 		String message="Hi, 亲, 我"+nickname+"对索尼FIFA志在必得, 请你拉我一票!你也可以获得打折优惠券!";
-		String imgurl=Constant.HOST+"/img/entry3.png";
-		String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST + "/lashourelation");
+		String imgurl=request.getContextPath()+"/img/entry3.png";
+		String relationUrl = Base64Coder.convertStrToBase64(request.getContextPath() + "/lashourelation");
 		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
 				+ Constant.APP_ID
-				+ "&redirect_uri="+ Constant.HOST
+				+ "&redirect_uri="+ request.getContextPath()
 				+ "/wechat_authorize?fromid="+ openid
 				+ "&response_type=code&scope="+ Constant.WECHAT_OAUTH_SCOPES.BASE.getValue()
 				+ "&state="+ relationUrl + "#wechat_redirect";
@@ -94,7 +94,7 @@
          </div>
             <div id="content" style="display:none;background-color:white;height:62px">
                 <div id="bttons" style="padding-top:10px;margin-left:10px">
-                    <div id="pcbuy" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:left" onclick="window.location.href='<%=Constant.HOST%>/jsp/productPage.jsp'">
+                    <div id="pcbuy" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:left" onclick="window.location.href='<%=request.getContextPath()%>/jsp/productPage.jsp'">
                         <div><img src="<%=request.getContextPath()%>/img/http_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:12px"/></div>
                         <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">PC购买</div>
                     </div>

@@ -9,35 +9,35 @@
 <script src="<%=request.getContextPath()%>/js/jquery-1.7.2.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:320px) and (-webkit-device-pixel-ratio:1)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:321px) and (max-device-width:480px) and (-webkit-device-pixel-ratio:1)"
-	href="<%=Constant.HOST%>/css/site_540.css">
+	href="<%=request.getContextPath()%>/css/site_540.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:640px) and (-webkit-device-pixel-ratio:1.5)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:720px) and (-webkit-device-pixel-ratio:2)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
-	href="<%=Constant.HOST%>/css/site_540.css">
+	href="<%=request.getContextPath()%>/css/site_540.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:721px) and (device-width:960px) and (-webkit-device-pixel-ratio:1.5)"
-	href="<%=Constant.HOST%>/css/site_720.css">
+	href="<%=request.getContextPath()%>/css/site_720.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:721px) and (max-device-width:1280px) and (-webkit-device-pixel-ratio: 2)"
-	href="<%=Constant.HOST%>/css/site_720.css">
+	href="<%=request.getContextPath()%>/css/site_720.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:1081px) and (max-device-width:1920px) and (-webkit-device-pixel-ratio: 3)"
-	href="<%=Constant.HOST%>/css/site_720.css">
+	href="<%=request.getContextPath()%>/css/site_720.css">
 <title>Screen Info</title>
 </head>
 <body>

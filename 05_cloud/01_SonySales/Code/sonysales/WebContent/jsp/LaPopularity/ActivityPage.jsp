@@ -49,11 +49,11 @@
 		String nickname =(String)request.getAttribute("nickname");
 		nickname=(nickname==null?"":"("+nickname+")");
 		String message="Hi, 亲, 我"+nickname+"对索尼FIFA志在必得, 请你拉我一票!";
-		String imgurl=Constant.HOST+"/img/entry2.png";	
-		String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST + "/relationpage");
+		String imgurl=request.getContextPath()+"/img/entry2.png";	
+		String relationUrl = Base64Coder.convertStrToBase64(request.getContextPath() + "/relationpage");
 		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
 				+ Constant.APP_ID
-				+ "&redirect_uri="+ Constant.HOST
+				+ "&redirect_uri="+ request.getContextPath()
 				+ "/wechat_authorize?fromid="+ openid
 				+ "&response_type=code&scope="+ Constant.WECHAT_OAUTH_SCOPES.BASE.getValue()
 				+ "&state="+ relationUrl + "#wechat_redirect";
@@ -95,7 +95,7 @@
          	</div>
             <div id="content" style="display:none;background-color:white;height:62px">
                 <div id="bttons" style="padding-top:10px;margin-left:10px">
-                    <div id="pcbuy" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:left" onclick="window.location.href='<%=Constant.HOST%>/jsp/productPage.jsp'">
+                    <div id="pcbuy" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:left" onclick="window.location.href='<%=request.getContextPath()%>/jsp/productPage.jsp'">
                         <div><img src="<%=request.getContextPath()%>/img/http_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:12px"/></div>
                         <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">PC购买</div>
                     </div>

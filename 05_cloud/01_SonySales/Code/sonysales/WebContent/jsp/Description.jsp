@@ -10,35 +10,35 @@
 <script src="<%=request.getContextPath()%>/js/jquery-1.7.2.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:320px) and (-webkit-device-pixel-ratio:1)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:321px) and (max-device-width:480px) and (-webkit-device-pixel-ratio:1)"
-	href="<%=Constant.HOST%>/css/site_540.css">
+	href="<%=request.getContextPath()%>/css/site_540.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:640px) and (-webkit-device-pixel-ratio:1.5)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:720px) and (-webkit-device-pixel-ratio:2)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
-	href="<%=Constant.HOST%>/css/site_540.css">
+	href="<%=request.getContextPath()%>/css/site_540.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:721px) and (device-width:960px) and (-webkit-device-pixel-ratio:1.5)"
-	href="<%=Constant.HOST%>/css/site_720.css">
+	href="<%=request.getContextPath()%>/css/site_720.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:721px) and (max-device-width:1280px) and (-webkit-device-pixel-ratio: 2)"
-	href="<%=Constant.HOST%>/css/site_720.css">
+	href="<%=request.getContextPath()%>/css/site_720.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:1081px) and (max-device-width:1920px) and (-webkit-device-pixel-ratio: 3)"
-	href="<%=Constant.HOST%>/css/site_720.css">
+	href="<%=request.getContextPath()%>/css/site_720.css">
 <title>索尼FIFA2014世界杯狂热季</title>
 
 <style type="text/css">
@@ -82,7 +82,7 @@
 	<div>
 		<div id="title" class="text_header common_style">索尼FIFA2014世界杯狂热季</div>
 		<div id="banner_img_div" style="margin-left: 10px; margin-top: 20px;">
-			<img src="<%=Constant.HOST%>/img/banner_popularity.png"
+			<img src="<%=request.getContextPath()%>/img/banner_popularity.png"
 				id="banner_img" />
 		</div>
 		<br>
@@ -101,25 +101,25 @@
 	<br>
 	<br>
 	<div id="bgImg_div">
-		<img src="<%=Constant.HOST%>/img/main_panel_all_word.png" id="bgImg"
+		<img src="<%=request.getContextPath()%>/img/main_panel_all_word.png" id="bgImg"
 			class="bottom" />
 	</div>
 
 	<input onFocus="this.blur()" type="button" id="button1" value=""
 		class="btn"
-		onclick="window.open('<%=Constant.HOST%>/getNameList?id=<%=openId%>')" />
+		onclick="window.open('<%=request.getContextPath()%>/getNameList?id=<%=openId%>')" />
 
 	<input onFocus="this.blur()" type="button" id="button2" value=""
 		class="btn"
-		onclick="window.open('<%=Constant.HOST%>/activitypage?id=<%=openId%>')" />
+		onclick="window.open('<%=request.getContextPath()%>/activitypage?id=<%=openId%>')" />
 
 	<input onFocus="this.blur()" type="button" id="button3" value=""
 		class="btn"
-		onclick="window.open('<%=Constant.HOST%>/lashouactivity?id=<%=openId%>')" />
+		onclick="window.open('<%=request.getContextPath()%>/lashouactivity?id=<%=openId%>')" />
 
 	<input onFocus="this.blur()" type="button" id="button4" value=""
 		class="btn"
-		onclick="window.open('<%=Constant.HOST%>/myInfo?id=<%=openId%>')" />
+		onclick="window.open('<%=request.getContextPath()%>/myInfo?id=<%=openId%>')" />
 
 	<script type="text/javascript">
 		$(document).ready(

@@ -12,35 +12,35 @@
 	href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:320px) and (-webkit-device-pixel-ratio:1)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:321px) and (max-device-width:480px) and (-webkit-device-pixel-ratio:1)"
-	href="<%=Constant.HOST%>/css/site_540.css">
+	href="<%=request.getContextPath()%>/css/site_540.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:640px) and (-webkit-device-pixel-ratio:1.5)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:720px) and (-webkit-device-pixel-ratio:2)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
-	href="<%=Constant.HOST%>/css/site_540.css">
+	href="<%=request.getContextPath()%>/css/site_540.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:721px) and (device-width:960px) and (-webkit-device-pixel-ratio:1.5)"
-	href="<%=Constant.HOST%>/css/site_720.css">
+	href="<%=request.getContextPath()%>/css/site_720.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:721px) and (max-device-width:1280px) and (-webkit-device-pixel-ratio: 2)"
-	href="<%=Constant.HOST%>/css/site_720.css">
+	href="<%=request.getContextPath()%>/css/site_720.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:1081px) and (max-device-width:1920px) and (-webkit-device-pixel-ratio: 3)"
-	href="<%=Constant.HOST%>/css/site_720.css">
+	href="<%=request.getContextPath()%>/css/site_720.css">
 <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
 <script
 	src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<script src="<%=Constant.HOST%>/js/relation.js"></script>
+<script src="<%=request.getContextPath()%>/js/relation.js"></script>
 <title>拉有买!他实惠, 我收益!</title>
 </head>
 <body>
@@ -76,7 +76,7 @@
 						class="btn btn-primary btn-lg active" role="button">获取个人信息</a>
 				</div>
 				<div id="supportFriend" class="text-center">
-					<form action="<%=Constant.HOST%>/lashoufollow">
+					<form action="<%=request.getContextPath()%>/lashoufollow">
 						<hr>
 						<div class="row">
 							<div class="col-xs-4">

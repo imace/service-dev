@@ -19,35 +19,35 @@
 	src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:320px) and (-webkit-device-pixel-ratio:1)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:321px) and (max-device-width:480px) and (-webkit-device-pixel-ratio:1)"
-	href="<%=Constant.HOST%>/css/site_540.css">
+	href="<%=request.getContextPath()%>/css/site_540.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:640px) and (-webkit-device-pixel-ratio:1.5)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:720px) and (-webkit-device-pixel-ratio:2)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
-	href="<%=Constant.HOST%>/css/site_540.css">
+	href="<%=request.getContextPath()%>/css/site_540.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:721px) and (device-width:960px) and (-webkit-device-pixel-ratio:1.5)"
-	href="<%=Constant.HOST%>/css/site_720.css">
+	href="<%=request.getContextPath()%>/css/site_720.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
-	href="<%=Constant.HOST%>/css/site_320.css">
+	href="<%=request.getContextPath()%>/css/site_320.css">
 
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:721px) and (max-device-width:1280px) and (-webkit-device-pixel-ratio: 2)"
-	href="<%=Constant.HOST%>/css/site_720.css">
+	href="<%=request.getContextPath()%>/css/site_720.css">
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:1081px) and (max-device-width:1920px) and (-webkit-device-pixel-ratio: 3)"
-	href="<%=Constant.HOST%>/css/site_720.css">
+	href="<%=request.getContextPath()%>/css/site_720.css">
 <title>我的基本信息</title>
 <style type="text/css">
 .btn_decoration:hover,.btn_decoration:focus {
@@ -68,13 +68,13 @@
 		PrintWriter outwriter = response.getWriter();
 
 		String message = "索尼FIFA我的战况!";
-		String imgurl = Constant.HOST + "/img/ranking_icn.png";
-		String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST
+		String imgurl = request.getContextPath() + "/img/ranking_icn.png";
+		String relationUrl = Base64Coder.convertStrToBase64(request.getContextPath()
 				+ "/myInfo");
 		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
 				+ Constant.APP_ID
 				+ "&redirect_uri="
-				+ Constant.HOST
+				+ request.getContextPath()
 				+ "/wechat_authorize?fromid="
 				+ openId
 				+ "&response_type=code&scope="
@@ -101,7 +101,7 @@
 			$('#address').val('<%=address%>');
 			$('#jdId').val('<%=jdId%>');
 			
-			var url="<%=Constant.HOST%>"+"/updateUserInfo";
+			var url="<%=request.getContextPath()%>"+"/updateUserInfo";
 
 			$("form input").attr('disabled', 'true');
 			$('#test').click(
@@ -257,7 +257,7 @@
 			<div class="text_mainBody" style="margin-bottom: 10px;">
 				请正确填写，以便我们能联系到您，及获奖资格认证。我们承诺，不对您的信息进行转发，泄露，以及其他商业用途 <br>
 			</div>
-			<%-- <form class="form-horizontal" role="form" action="<%=Constant.HOST%>/updateUserInfo" > --%>
+			<%-- <form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/updateUserInfo" > --%>
 			<form class="form-horizontal" id="userform" role="form"
 				action="http://localhost:8888/sonysales/updateUserInfo"
 				method="post">
@@ -306,7 +306,7 @@
 			</form>
 			<br>
 			<hr style="border: 1px dashed #999999;">
-			<a href="<%=Constant.HOST%>/getNameList?id=<%=openId%>" role="button"
+			<a href="<%=request.getContextPath()%>/getNameList?id=<%=openId%>" role="button"
 				class="btn_decoration btn-lg"
 				style="display: block; border: 1px solid #999999; text-align: center; font-size: 20px; color: #3e3e3e;"><img
 				src="/img/ranking_icn.png" alt=""

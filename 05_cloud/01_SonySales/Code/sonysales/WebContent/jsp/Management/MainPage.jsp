@@ -11,14 +11,14 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport"
 	content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
-<script src="<%=Constant.HOST%>/js/jquery-1.7.2.min.js"></script>
-<script src="<%=Constant.HOST%>/js/bootstrap.js"></script>
-<link rel="stylesheet" href="<%=Constant.HOST%>/css/bootstrap.min.css" />
+<script src="<%=request.getContextPath()%>/js/jquery-1.7.2.min.js"></script>
+<script src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap.min.css" />
 <link rel="stylesheet"
-	href="<%=Constant.HOST%>/css/bootstrap-responsive.min.css" />
-<link rel="stylesheet" href="<%=Constant.HOST%>/css/adminia.css">
+	href="<%=request.getContextPath()%>/css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/adminia.css">
 <link rel="stylesheet"
-	href="<%=Constant.HOST%>/css/adminia-responsive.css">
+	href="<%=request.getContextPath()%>/css/adminia-responsive.css">
 <title>拉手团订单查询</title>
 </head>
 <body>
