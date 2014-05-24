@@ -29,14 +29,14 @@ public class Share extends HttpServlet {
 			response.setCharacterEncoding("UTF-8");
 
 			if (request.getServerName().equals("localhost")) {
-				response.sendRedirect("/jsp/LaPopularity/SharePage.jsp");
+				response.sendRedirect(request.getContextPath() + "/jsp/LaPopularity/SharePage.jsp");
 			} else {
 				String url = "";
 				if (attention.contains("0")) {
 					url = "http://mp.weixin.qq.com/s?__biz=MzA5NDAwODUxMQ==&mid=200111401&idx=1&sn=c2c817de70b14a702fe02da6997f8f64#rd";
 					
 				}else {
-					url = Constant.HOST + "/activitypage?id=" + toid;
+					url = request.getContextPath() + "/activitypage?id=" + toid;
 				}
 				response.sendRedirect(url);
 			}

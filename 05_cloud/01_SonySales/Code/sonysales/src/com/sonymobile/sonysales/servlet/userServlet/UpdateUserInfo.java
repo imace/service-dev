@@ -50,7 +50,7 @@ public class UpdateUserInfo extends HttpServlet {
 				addUser.setJdId(jdId);
 				PopularityService.addUser(addUser);
 			}
-			response.sendRedirect(Constant.HOST+"/myInfo?id="+openId);
+			response.sendRedirect(request.getContextPath()+"/myInfo?id="+openId);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

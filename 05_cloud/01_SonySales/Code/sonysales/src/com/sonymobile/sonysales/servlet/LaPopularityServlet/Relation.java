@@ -74,10 +74,10 @@ public class Relation extends HttpServlet {
 				if (fromid.equals(toid)) {
 					navurl = "/jsp/LaPopularity/SharePage.jsp";
 				} else {
-					String relationUrl = Base64Coder.convertStrToBase64(Constant.HOST + "/relationpage");
+					String relationUrl = Base64Coder.convertStrToBase64(request.getScheme() + "://" + request.getServerName() + "/relationpage");
 					request.setAttribute("fromid", fromid);
 					request.setAttribute("toid", toid);
-					String oauthtoidlink = buildGetOAuthUserInfoUrl(fromid, fromnickname, relationUrl);
+					String oauthtoidlink = buildGetOAuthUserInfoUrl(Constant.OAUTH_REDIRECT_HOST, fromid, fromnickname, relationUrl);
 					request.setAttribute("oauthtoidlink", oauthtoidlink);
 
 					// add to-user info
@@ -88,8 +88,8 @@ public class Relation extends HttpServlet {
 
 					request.setAttribute("fromnickname", fromnickname == null ? "他" : fromnickname);
 					request.setAttribute("tonickname", tonickname == null ? "我" : tonickname);
-					request.setAttribute("fromimg", fromimg == null ? Constant.HOST + "/img/head1.png" : fromimg);
-					request.setAttribute("toimg", Constant.HOST + "/img/head2.png");
+					request.setAttribute("fromimg", fromimg == null ? request.getContextPath() + "/img/head1.png" : fromimg);
+					request.setAttribute("toimg", request.getContextPath() + "/img/head2.png");
 					request.setAttribute("attention", attention);
 
 				}
@@ -99,8 +99,8 @@ public class Relation extends HttpServlet {
 				request.setAttribute("toid", toid);
 				request.setAttribute("fromnickname", "他_");
 				request.setAttribute("tonickname", "我");
-				request.setAttribute("fromimg", Constant.HOST + "/img/head1.png");
-				request.setAttribute("toimg", Constant.HOST + "/img/head2.png");
+				request.setAttribute("fromimg", request.getContextPath() + "/img/head1.png");
+				request.setAttribute("toimg", request.getContextPath() + "/img/head2.png");
 			}
 			request.getRequestDispatcher(navurl).forward(request, response);
 		} catch (JSONException e) {
@@ -109,14 +109,14 @@ public class Relation extends HttpServlet {
 		}
 	}
 
-	private String buildGetOAuthUserInfoUrl(String fromid, String fromname,
+	private String buildGetOAuthUserInfoUrl(String host, String fromid, String fromname,
 			String codedUrl) {
 		StringBuilder infourl = new StringBuilder(Constant.WECHAT_OAUTH2_AUTHORIZE_URL);
 		infourl.append('?');
 		infourl.append("appid=");
 		infourl.append(wechatInfo.getAppId());
 		infourl.append("&redirect_uri=");
-		infourl.append(Constant.HOST);
+		infourl.append(host);
 		infourl.append("/wechat_authorize?fromid=");
 		infourl.append(fromid);
 		infourl.append("&fromname=");

@@ -11,7 +11,8 @@ public final class Constant {
 	private static Properties properties = new Properties();
 	
 	// This application host
-	//public static final String HOST; 
+	public static final String HOST; 
+	public static final String OAUTH_REDIRECT_HOST; 
 	// The images host of this application 
 	public static final String SONY_FIFA_IMAGES_HOST;
 	
@@ -35,7 +36,8 @@ public final class Constant {
             e.printStackTrace();
         }
 
-        //HOST = properties.getProperty("HOST");
+        HOST = properties.getProperty("HOST");
+        OAUTH_REDIRECT_HOST = properties.getProperty("OAUTH_REDIRECT_HOST");
         SONY_FIFA_IMAGES_HOST = properties.getProperty("SONY_FIFA_IMAGES_HOST");
 		APP_ID = properties.getProperty("APP_ID");
 		APP_SECRET = properties.getProperty("APP_SECRET");

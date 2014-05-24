@@ -49,11 +49,11 @@
 		String nickname =(String)request.getAttribute("nickname");
 		nickname=(nickname==null?"":"("+nickname+")");
 		String message="Hi, 亲, 我"+nickname+"对索尼FIFA志在必得, 请你拉我一票!";
-		String imgurl=request.getContextPath()+"/img/entry2.png";	
-		String relationUrl = Base64Coder.convertStrToBase64(request.getContextPath() + "/relationpage");
+		String imgurl=request.getScheme() + "://" + request.getServerName() + "/img/entry2.png";	
+		String relationUrl = Base64Coder.convertStrToBase64(request.getScheme() + "://" + request.getServerName() + "/relationpage");
 		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
 				+ Constant.APP_ID
-				+ "&redirect_uri="+ request.getContextPath()
+				+ "&redirect_uri="+ Constant.OAUTH_REDIRECT_HOST
 				+ "/wechat_authorize?fromid="+ openid
 				+ "&response_type=code&scope="+ Constant.WECHAT_OAUTH_SCOPES.BASE.getValue()
 				+ "&state="+ relationUrl + "#wechat_redirect";

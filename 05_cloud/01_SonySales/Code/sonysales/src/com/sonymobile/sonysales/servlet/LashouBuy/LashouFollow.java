@@ -35,13 +35,13 @@ public class LashouFollow extends HttpServlet {
 			response.setCharacterEncoding("UTF-8");
 			
 			if (request.getServerName().equals("localhost")) {
-				response.sendRedirect("/jsp/LaPopularity/LashouFollow.jsp");
+				response.sendRedirect(request.getContextPath() + "/jsp/LaPopularity/LashouFollow.jsp");
 			} else {
 				String url = "";
 				if (attention.contains("0")) {
 					url = "http://mp.weixin.qq.com/s?__biz=MzA5NDAwODUxMQ==&mid=200111401&idx=1&sn=c2c817de70b14a702fe02da6997f8f64#rd";
 				}else {
-					url = Constant.HOST + "/lashouactivity?id=" + toid;
+					url = request.getContextPath() + "/lashouactivity?id=" + toid;
 				}
 				response.sendRedirect(url);
 			}

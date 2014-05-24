@@ -26,7 +26,7 @@ public class ShowUserInfoServlet extends HttpServlet {
 			fromid = request.getParameter("fromid");
 		}
 		if (fromid!=null&&toid!=null&& fromid!=toid) {
-			response.sendRedirect(Constant.HOST + "/activitypage?id=" + toid);
+			response.sendRedirect(request.getContextPath() + "/activitypage?id=" + toid);
 		} else {
 			List<?> list = MyFIFAService.getPointsOrder(fromid);
 			String userJson = JSONArray.fromObject(list).toString();
