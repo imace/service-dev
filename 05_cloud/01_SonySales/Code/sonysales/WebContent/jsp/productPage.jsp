@@ -23,7 +23,7 @@
                     </div>
                     <div id="product_div" style="text-align:center">
                     <p>
-								            <img src="../img/PC_product.png" id="PC_product_img" style="margin-left:10px"/>
+								            <img src="<%=request.getContextPath()%>/img/PC_product.png" id="PC_product_img" style="margin-left:10px"/>
 								            </p>
 								        </div>
                     <div style="text-align:center;font-size:260%;font-weight:bold;padding-top:3px;">
