@@ -89,7 +89,7 @@
          <div class="text_subHeader" style="padding-top:12px;padding-right:30px">人气榜</div>
      </div>
      <div id="pop_image" style="height:40px;text-align:right;float:right;margin-right:13px">
-         <div><img src="img/ranking1.png" style="height:40px;float:left;margin-left:10px;"/></div>
+         <div><img src="<%=request.getContextPath()%>/img/ranking1.png" style="height:40px;float:left;margin-left:10px;"/></div>
      </div>
     </div>
     <div id="poplist_div">
@@ -121,7 +121,7 @@
        <%
    } else {
        %>
-       <tr><td id="pop_img_td" style="text-align:center;border-top:medium none;"><div style="margin: 35px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="img/product_3.png" style="height:165px" id="pop_img"/></div></td></tr>
+       <tr><td id="pop_img_td" style="text-align:center;border-top:medium none;"><div style="margin: 35px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="<%=request.getContextPath()%>/img/product_3.png" style="height:165px" id="pop_img"/></div></td></tr>
        <%
    }
        %>
@@ -164,7 +164,7 @@
          <div class="text_subHeader" style="padding-top:12px;padding-right:30px">奖金榜</div>
      </div>
      <div id="pop_image" style="height:40px;text-align:right;float:right;margin-right:13px">
-         <div><img src="img/ranking2.png" style="height:40px;float:left;margin-left:10px;"/></div>
+         <div><img src="<%=request.getContextPath()%>/img/ranking2.png" style="height:40px;float:left;margin-left:10px;"/></div>
      </div>
     </div>
 <div id="handlelist_div">
@@ -200,7 +200,7 @@
        
        } else {
            %>
-           <tr><td style="text-align:center;border-top:medium none;"><div style="margin: 35px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="img/product_3.png" style="height:165px"/></div><td></tr>
+           <tr><td style="text-align:center;border-top:medium none;"><div style="margin: 35px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="<%=request.getContextPath()%>/img/product_3.png" style="height:165px"/></div><td></tr>
            <%
        }
            %>

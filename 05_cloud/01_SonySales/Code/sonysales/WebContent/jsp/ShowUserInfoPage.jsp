@@ -68,13 +68,13 @@
 		PrintWriter outwriter = response.getWriter();
 
 		String message = "索尼FIFA我的战况!";
-		String imgurl = request.getContextPath() + "/img/ranking_icn.png";
-		String relationUrl = Base64Coder.convertStrToBase64(request.getContextPath()
+		String imgurl = request.getScheme() + "://" + request.getServerName() + "/img/ranking_icn.png";
+		String relationUrl = Base64Coder.convertStrToBase64(request.getScheme() + "://" + request.getServerName()
 				+ "/myInfo");
 		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
 				+ Constant.APP_ID
 				+ "&redirect_uri="
-				+ request.getContextPath()
+				+ Constant.OAUTH_REDIRECT_HOST
 				+ "/wechat_authorize?fromid="
 				+ openId
 				+ "&response_type=code&scope="
@@ -151,7 +151,7 @@
 
 
 	<div class="container"
-		style="background: url(/img/stamp.png) right bottom no-repeat; background-size: 55%; margin: 10px;">
+		style="background: url(<%=request.getContextPath()%>/img/stamp.png) right bottom no-repeat; background-size: 55%; margin: 10px;">
 		<div class="row" style="font-family: Droid Sans Fallback;">
 			<div id="title" class="text_header" style="margin-bottom: 10px">我的战况</div>
 			<div class="text_subHeader"
@@ -309,7 +309,7 @@
 			<a href="<%=request.getContextPath()%>/getNameList?id=<%=openId%>" role="button"
 				class="btn_decoration btn-lg"
 				style="display: block; border: 1px solid #999999; text-align: center; font-size: 20px; color: #3e3e3e;"><img
-				src="/img/ranking_icn.png" alt=""
+				src="<%=request.getContextPath()%>/img/ranking_icn.png" alt=""
 				style="padding: 0px; border: none; width: 24px; height: 24px; margin: -2px 15px -3px 0px !important;" />查看排行榜信息</a>
 			<br>
 		</div>
