@@ -86,7 +86,9 @@
 </div>
 
         <div id="touchBox">
-               <img src="<%=request.getContextPath()%>/img/product_top_all_1.png" style="max-width:100%;margin-top:0" id="top_img" width="100%"/>
+               <div style="position:relative;">
+               <img src="<%=request.getContextPath()%>/img/product_top_all_1.png" style="max-width:100%;margin-top:0" id="top_img"/><div id="click_div" onclick="clickDiv()" style="position:absolute;width:20%;height:80%;right:7%;top:15%;"></div>
+               </div>
             <div  style="background-color:white;">
              <div id="buy" style="max-width:96%;margin-left:2%;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="draw()">
                 <div style="font-size:larger;color:white;padding-top:15px" id="buyNow">立即购买</div>
@@ -182,6 +184,21 @@
        open = true;
        } else {
            window.location.href='http://m.jd.com/product/813097.html';
+                }
+            }
+    function clickDiv() {
+        if(!open) {
+       document.getElementById("content").style.display="";
+       $("#touchBox").css({position: "absolute",'bottom':0,'z-index':1}); 
+       $("#top_img").attr("src","<%=request.getContextPath()%>/img/product_top_all_2.png"); 
+       $("#buyNow").text("手机购买");
+       open = true;
+       } else {
+            document.getElementById("content").style.display="none";
+        $("#touchBox").css({position: "absolute",'bottom':0,'z-index':1}); 
+        $("#top_img").attr("src","<%=request.getContextPath()%>/img/product_top_all_1.png"); 
+        $("#buyNow").text("立即购买");
+        open = false;
                 }
             }
     
