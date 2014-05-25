@@ -156,7 +156,7 @@
 			<div id="title" class="text_header" style="margin-bottom: 10px">我的战况</div>
 			<div class="text_subHeader"
 				style="margin-top: 10px; margin-bottom: 10px">我的优惠卷</div>
-			<hr style="border: 1px solid #22bff2;">
+			<hr style="border: 1px solid #22bff2; margin-top:-3px;">
 			<a href="http://help.jd.com/help/question-60.html"
 				style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
 				class="btn_decoration btn-lg" role="button">点击获取优惠卷</a> <br>
@@ -164,7 +164,7 @@
 				<div class="text_subHeader"
 					style="margin-top: 10px; margin-bottom: 10px">我的人气</div>
 				<div class="text_mainBody">
-					<hr style="border: 1px solid #22bff2;">
+					<hr style="border: 1px solid #22bff2; margin-top:-3px;">
 					<%
 						if (Integer.parseInt(points) == 0) {
 					%>
@@ -188,7 +188,7 @@
 
 			<div class="text_subHeader"
 				style="margin-top: 10px; margin-bottom: 10px">我的拉友团</div>
-			<hr style="border: 1px solid #22bff2;">
+			<hr style="border: 1px solid #22bff2; margin-top:-3px;">
 			<div class="text_mainBody">
 				<%
 					JSONArray supporterJA = JSONArray.fromObject(supporterJS);
@@ -224,7 +224,7 @@
 									createTime = sb.toString();
 					%>
 					<tr>
-						<td><%=nickname%><%=createTime%>支持了您！</td>
+						<td><%=nickname%></td><td><%=createTime%>支持了您！</td>
 					</tr>
 					<%
 						} else {
@@ -253,7 +253,7 @@
 			<br>
 			<div class="text_subHeader"
 				style="margin-top: 10px; margin-bottom: 10px">我的基本信息</div>
-			<hr style="border: 1px solid #22bff2;">
+			<hr style="border: 1px solid #22bff2; margin-top:-3px;">
 			<div class="text_mainBody" style="margin-bottom: 10px;">
 				请正确填写，以便我们能联系到您，及获奖资格认证。我们承诺，不对您的信息进行转发，泄露，以及其他商业用途 <br>
 			</div>
