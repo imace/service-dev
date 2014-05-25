@@ -56,21 +56,25 @@
             height:55px;
             padding-left:10px
         }  
-        #poplist_div {  
+       #poplist_div {  
                         overflow:hidden;
                         height: 280px;
          border-top-width:3px;
          border-top-color:#22bff2;
-         margin-left:10px;
-         border-top-style:solid
+         margin-left:2%;
+         border-top-style:solid;
+         max-width:96%;
+         width:96%
     }  
         #handlelist_div {  
                         overflow:hidden;
                         height: 280px;
          border-top-width:3px;
          border-top-color:#22bff2;
-         margin-left:10px;
-         border-top-style:solid
+         margin-left:2%;
+         border-top-style:solid;
+         max-width:96%;
+         width:96%
     }  
 </style>
 </head>
@@ -83,18 +87,18 @@
      String openId =(String)request.getAttribute("openId");
     
     %>
-    <div id="title" class="text_header" style="margin-left:10px;margin-top:10px;">索尼FIFA2014大奖榜奖金榜</div>
-    <div id="pop_div" style="padding-top:1px;margin-left:10px">
+    <div id="title" class="text_header" style="margin-left:2%;margin-top:10px;">索尼FIFA2014大奖榜奖金榜</div>
+    <div id="pop_div" style="padding-top:1px;margin-left:2%">
      <div id="pop_title" style="height:40px;text-align:left;float:left">
          <div class="text_subHeader" style="padding-top:12px;padding-right:30px">人气榜</div>
      </div>
      <div id="pop_image" style="height:40px;text-align:right;float:right;margin-right:13px">
-         <div><img src="<%=request.getContextPath()%>/img/ranking1.png" style="height:40px;float:left;margin-left:10px;"/></div>
+         <div><img src="img/ranking1.png" style="height:40px;float:left;margin-left:10px;"/></div>
      </div>
     </div>
     <div id="poplist_div">
     <div id = "poplist_div1">
-    <table id="pop_table1" cellSpacing=0 cellPadding=0 align=center border=1>
+    <table id="pop_table1" style="max-width:100%;width:100%" cellSpacing=0 cellPadding=0 align=center border=1>
        <%  
        if(userList!=null&&userList.size()!=0) {
        for(int i=0;i<userList.size();i++) {
@@ -117,18 +121,18 @@
            }
        }
            %>
-           <tr><td id ="pop_point_td" colspan=3 style="height:55px;text-align:center;border-top:medium none;"><div style="font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div></td></tr>
+           <tr><td id ="pop_point_td" colspan=3 style="height:55px;text-align:center;border-top:medium none;"><div style="font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名抢手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div></td></tr>
        <%
    } else {
        %>
-       <tr><td id="pop_img_td" style="text-align:center;border-top:medium none;"><div style="margin: 35px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="<%=request.getContextPath()%>/img/product_3.png" style="height:165px" id="pop_img"/></div></td></tr>
+       <tr><td id="pop_img_td" style="text-align:center;border-top:medium none;"><div style="margin: 35px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪抢手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="img/product_3.png" style="height:165px" id="pop_img"/></div></td></tr>
        <%
    }
        %>
     </table>
     </div>
         <div id = "poplist_div2" style="display:none">
-        <table id="pop_table2" cellSpacing=0 cellPadding=0 align=center border=1 style="border-top:aliceblue">
+        <table id="pop_table2" style="max-width:100%;width:100%" cellSpacing=0 cellPadding=0 align=center border=1 style="border-top:aliceblue">
          <%  
        if(userList!=null&&userList.size()!=0) {
        for(int i=0;i<userList.size();i++) {
@@ -155,21 +159,21 @@
        </table>
     </div>
     </div>
-        <div id="rob1" style="margin-bottom:30px;margin-left:11px;margin-top:10px;height:50px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='<%=request.getContextPath()%>/activitypage?id=<%=openId%>'">
+        <div id="rob1" style="max-width:95%;margin-bottom:30px;margin-left:2.5%;margin-top:10px;height:50px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='<%=Constant.HOST%>/activitypage?id=<%=openId%>'">
        <div style="font-size:larger;color:white;margin-top:12px">还不来抢大奖</div>
     </div>
     
-    <div id="pop_div" style="padding-top:1px;margin-left:10px">
+    <div id="pop_div" style="padding-top:1px;margin-left:2%">
      <div id="pop_title" style="height:40px;text-align:left;float:left">
          <div class="text_subHeader" style="padding-top:12px;padding-right:30px">奖金榜</div>
      </div>
      <div id="pop_image" style="height:40px;text-align:right;float:right;margin-right:13px">
-         <div><img src="<%=request.getContextPath()%>/img/ranking2.png" style="height:40px;float:left;margin-left:10px;"/></div>
+         <div><img src="img/ranking2.png" style="height:40px;float:left;margin-left:10px;"/></div>
      </div>
     </div>
 <div id="handlelist_div">
     <div id = "handlelist_div1">
-    <table id="handle_table1" cellSpacing=0 cellPadding=0 align=center border=1>
+    <table id="handle_table1" style="max-width:100%;width:100%" cellSpacing=0 cellPadding=0 align=center border=1>
        <%  
       if(supporterList!=null&&supporterList.size()!=0) {
        for(int i=0;i<supporterList.size();i++) {
@@ -195,19 +199,19 @@
        }
        }
            %>
-           <tr><td id="handle_point_td" colspan=2 style="height:55px;text-align:center;border-top:medium none;"><div style="font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div></td></tr>
+           <tr><td id="handle_point_td" colspan=2 style="height:55px;text-align:center;border-top:medium none;"><div style="font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名抢手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div></td></tr>
        <%
        
        } else {
            %>
-           <tr><td style="text-align:center;border-top:medium none;"><div style="margin: 35px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="<%=request.getContextPath()%>/img/product_3.png" style="height:165px"/></div><td></tr>
+           <tr><td style="text-align:center;border-top:medium none;"><div style="margin: 35px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名抢手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="img/product_3.png" style="height:165px"/></div><td></tr>
            <%
        }
            %>
     </table>
 </div>
 <div id = "handlelist_div2" style="display:none">
-        <table id="handle_table2" cellSpacing=0 cellPadding=0 align=center border=1 style="border-top:aliceblue">
+        <table id="handle_table2" style="max-width:100%;width:100%" cellSpacing=0 cellPadding=0 align=center border=1 style="border-top:aliceblue">
  <%  
       if(supporterList!=null&&supporterList.size()!=0) {
        for(int i=0;i<supporterList.size();i++) {
@@ -237,7 +241,7 @@
         </table>
     </div>
     </div>
-    <div id="rob2" style="margin-bottom:20px;margin-left:11px;margin-top:10px;height:50px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='<%=request.getContextPath()%>/lashouactivity?id=<%=openId%>'">
+    <div id="rob2" style="max-width:95%;margin-bottom:20px;margin-left:2.5%;margin-top:10px;height:50px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='<%=Constant.HOST%>/lashouactivity?id=<%=openId%>'">
        <div style="font-size:larger;color:white;margin-top:12px">还不来抢奖金</div>
     </div>
     
@@ -252,15 +256,16 @@
       var speed=50;//设置向上轮动的速度  
       
       $(document).ready(function(){
-          $("#pop_table1").css("width", document.body.clientWidth-20);
-          $("#pop_table2").css("width", document.body.clientWidth-20);
-          $("#poplist_div").css("width", document.body.clientWidth-20);
+          //var windowWidth = $("#body").width();
+          //$("#pop_table1").css("width", windowWidth-20);
+          //$("#pop_table2").css("width", windowWidth-20);
+          //$("#poplist_div").css("width", windowWidth-20);
           
-          $("#handle_table1").css("width", document.body.clientWidth-20);
-          $("#handle_table2").css("width", document.body.clientWidth-20);
-          $("#handlelist_div").css("width", document.body.clientWidth-20);
-          $("#rob1").css("width", document.body.clientWidth-24);
-          $("#rob2").css("width", document.body.clientWidth-24);
+          //$("#handle_table1").css("width", windowWidth-20);
+          //$("#handle_table2").css("width", windowWidth-20);
+          //$("#handlelist_div").css("width", windowWidth-20);
+          //$("#rob1").css("width", windowWidth-24);
+          //$("#rob2").css("width", windowWidth-24);
           
           if(poplist_div1.offsetHeight>poplist_div.offsetHeight) {
               document.getElementById("poplist_div2").style.display="";
@@ -273,7 +278,7 @@
           if(handlelist_div1.offsetHeight>handlelist_div.offsetHeight) {
               document.getElementById("handlelist_div2").style.display="";
               } else {
-            	  $("#handle_point_td").css("height", (handlelist_div.offsetHeight-handlelist_div1.offsetHeight+55)+"px");
+                  $("#handle_point_td").css("height", (handlelist_div.offsetHeight-handlelist_div1.offsetHeight+55)+"px");
                   }
          
           });

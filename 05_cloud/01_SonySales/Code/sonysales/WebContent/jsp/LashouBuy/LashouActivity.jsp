@@ -67,16 +67,16 @@
 
 <div>
    <div id="banner_img_div">
-             <img src="<%=request.getContextPath()%>/img/banner_popularity.jpg" id="banner_img" style="margin-left:10px;margin-top:10px"/>
+             <img src="<%=request.getContextPath()%>/img/banner_popularity.jpg" id="banner_img" style="margin-left:10px;margin-top:10px;max-width:96%;margin-left:2%"/>
          </div>
-         <p class="text_highlight common_style" style="padding-top:10px">
-                                     点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png" width="16px" style="margin-left:2px;margin-right:2px"/>或<img src="<%=request.getContextPath()%>/img/share.png" width="16px" style="margin-left:2px;margin-right:2px"/>发送给朋友
+         <p class="text_highlight common_style" style="padding-top:10px;max-width:96%;margin-left:2%">
+                                     点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>或<img src="<%=request.getContextPath()%>/img/share.png" width="16px" style="margin-left:2px;margin-right:2px"/>发送给朋友
          </p>
-         <div id="intro">
-             <div class="text_subHeader common_style">
+         <div id="intro" >
+             <div class="text_subHeader" style="max-width:96%;margin-left:2%">
                             大力神杯拉友买活动规则
             </div>
-            <div class="text_mainBody common_style" style="line-height:150%;">
+            <div class="text_mainBody" style="max-width:96%;margin-left:2%;line-height:150%;">
                 亲, 索尼FIFA 活动正在进行, 
                推送消息给你朋友, 你的朋友可获得50元优惠券,
                同时如果他购买手机, 你即可获得50元奖金.
@@ -86,19 +86,19 @@
 </div>
 
         <div id="touchBox">
-               <img src="<%=request.getContextPath()%>/img/product_top_all_1.png" style="margin-top:0" id="top_img" />
+               <img src="<%=request.getContextPath()%>/img/product_top_all_1.png" style="max-width:100%;margin-top:0" id="top_img" width="100%"/>
             <div  style="background-color:white;">
-             <div id="buy" style="margin-left:10px;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="draw()">
+             <div id="buy" style="max-width:96%;margin-left:2%;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="draw()">
                 <div style="font-size:larger;color:white;padding-top:15px" id="buyNow">立即购买</div>
              </div>
          </div>
             <div id="content" style="display:none;background-color:white;height:62px">
-                <div id="bttons" style="padding-top:10px;margin-left:10px">
-                    <div id="pcbuy" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:left" onclick="window.location.href='<%=request.getContextPath()%>/jsp/productPage.jsp'">
+                <div id="bttons" style="max-width:96%;margin-left:2%;padding-top:10px;margin-left:10px">
+                    <div id="pcbuy" style="max-width:48%;width:48%;height:50px;text-align:center;border:1px solid #bfbfbf;float:left" onclick="window.location.href='<%=Constant.HOST%>/jsp/productPage.jsp'">
                         <div><img src="<%=request.getContextPath()%>/img/http_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:12px"/></div>
                         <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">PC购买</div>
                     </div>
-                    <div id="discount" style="height:50px;text-align:center;border:1px solid #bfbfbf;float:right" onclick="window.location.href='http://passport.jd.com/new/login.aspx?ReturnUrl=http%3A%2F%2Fquan.jd.com%2Fuser_quan.action'">
+                    <div id="discount" style="max-width:48%;width:48%;height:50px;text-align:center;border:1px solid #bfbfbf;float:right" onclick="window.location.href='http://passport.jd.com/new/login.aspx?ReturnUrl=http%3A%2F%2Fquan.jd.com%2Fuser_quan.action'">
                         <div><img src="<%=request.getContextPath()%>/img/discount_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:10px"/></div>
                         <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">折扣券</div>
                     </div>
@@ -108,24 +108,25 @@
 </div>
         
 
-			
+            
 
 
 
-	<script type="text/javascript">
+    <script type="text/javascript">
   var open = false;
-	$(document).ready(function(){
-        var windowHeight = window.innerHeight;
-        $("#touchBox").css({position: "absolute",'bottom':0,'z-index':2}); 
-        document.getElementById("top_img").width=document.body.clientWidth;
-        document.getElementById("content").width=document.body.clientWidth;
-        $("#banner_img").css("width", document.body.clientWidth-20); 
-        $("#intro").css("width", document.body.clientWidth-20); 
-        $("#buy").css("width", document.body.clientWidth-22); 
-        $("#bttons").css("width", document.body.clientWidth-22); 
+    $(document).ready(function(){
+           $("#touchBox").css({position: "absolute",'bottom':0,'z-index':2}); 
+        //var windowHeight = window.innerHeight;
+        //var windowWidth = $("#top_img").width();
+        //document.getElementById("top_img").width=windowWidth;
+        //document.getElementById("content").width=windowWidth;
+        //$("#banner_img").css("width", windowWidth-20); 
+        //$("#intro").css("width", windowWidth-20); 
+        //$("#buy").css("width", windowWidth-22); 
+        //$("#bttons").css("width", windowWidth-22); 
         //$("#desc").css("width", document.body.clientWidth-20); 
-        $("#pcbuy").css("width", (document.body.clientWidth-20)/2-7); 
-        $("#discount").css("width", (document.body.clientWidth-20)/2-7); 
+        //$("#pcbuy").css("width", (windowWidth-20)/2-7); 
+        //$("#discount").css("width", (windowWidth-20)/2-7); 
         var startX,startY,endX,endY
      var scrollTopVal=0; //左右滑动请自行修改
         document.getElementById("touchBox").addEventListener("touchstart", touchStart, false);
@@ -198,8 +199,8 @@
       }, function(res){(dataForWeixin.callback)();});
    });
    WeixinJSBridge.on('menu:share:timeline', function(argv){
-	  (dataForWeixin.callback)();
-	  WeixinJSBridge.invoke('shareTimeline',{
+      (dataForWeixin.callback)();
+      WeixinJSBridge.invoke('shareTimeline',{
          "img_url":dataForWeixin.TLImg,
          "img_width":"120",
          "img_height":"120",
@@ -209,14 +210,14 @@
       }, function(res){});
    });
    WeixinJSBridge.on('menu:share:weibo', function(argv){
-	  WeixinJSBridge.invoke('shareWeibo',{
+      WeixinJSBridge.invoke('shareWeibo',{
          "content":dataForWeixin.title,
          "url":dataForWeixin.url
       }, function(res){(dataForWeixin.callback)();});
    });
    WeixinJSBridge.on('menu:share:facebook', function(argv){
-	  (dataForWeixin.callback)();
-	  WeixinJSBridge.invoke('shareFB',{
+      (dataForWeixin.callback)();
+      WeixinJSBridge.invoke('shareFB',{
          "img_url":dataForWeixin.TLImg,
          "img_width":"120",
          "img_height":"120",
@@ -234,7 +235,7 @@ if(document.addEventListener){
    document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
 }
 document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-	WeixinJSBridge.call('hideToolbar');
+    WeixinJSBridge.call('hideToolbar');
 });
 })();
 </script>
