@@ -94,7 +94,7 @@ public class LashouRelation extends HttpServlet {
 					HandleService.addHandle(fromid, toid);
 
 					if (isredriect) {
-						response.sendRedirect(Constant.HOST+"/lashoufollow?attention=0");
+						response.sendRedirect(request.getContextPath()+"/lashoufollow?attention=0");
 					}
 					
 					request.setAttribute("fromnickname", fromnickname == null ? "他" : fromnickname);
