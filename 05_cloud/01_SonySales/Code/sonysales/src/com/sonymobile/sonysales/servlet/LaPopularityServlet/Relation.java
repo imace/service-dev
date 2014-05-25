@@ -38,18 +38,18 @@ public class Relation extends HttpServlet {
 			String toid = request.getParameter("toid");
 			String toname = request.getParameter("toname");
 			String toheadimgurl = request.getParameter("toheadimgurl");
-			String attention="1";
+			String attention="0";
+			boolean isredriect=false;
+			
+			if (toheadimgurl!=null) {
+				isredriect=true;
+			}
 
 			String fromimg = "";
 			String toimg = toheadimgurl;
-
-			if (toimg!=null) {
-				attention="0";
-			}
 			
 			response.setContentType("application/json;charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
-
 			if (fromid != null && toid != null) {
 				String tonickname, fromnickname;
 
@@ -66,6 +66,10 @@ public class Relation extends HttpServlet {
 					// for get to user head image url
 					toimg = wechatInfo.getWebChatUserInfo(toid).getHeadimgurl();
 				}
+				
+				if (toimg!=null) {
+					attention="1";
+				}
 
 				// get img url on here for temporary
 				fromimg = wechatInfo.getWebChatUserInfo(fromid).getHeadimgurl();
@@ -79,11 +83,14 @@ public class Relation extends HttpServlet {
 					request.setAttribute("toid", toid);
 					String oauthtoidlink = buildGetOAuthUserInfoUrl(Constant.OAUTH_REDIRECT_HOST, fromid, fromnickname, relationUrl);
 					request.setAttribute("oauthtoidlink", oauthtoidlink);
-
 					// add to-user info
 					if (Activity.AddUser(toid, tonickname)) {
 						// add popularity
 						PopularityService.addPopularity(fromid, toid);
+					}
+					
+					if (isredriect) {
+						response.sendRedirect(Constant.HOST+"/sharepage?attention=0");
 					}
 
 					request.setAttribute("fromnickname", fromnickname == null ? "他" : fromnickname);
@@ -94,7 +101,6 @@ public class Relation extends HttpServlet {
 
 				}
 			} else {
-				// forward to error page
 				request.setAttribute("fromid", fromid);
 				request.setAttribute("toid", toid);
 				request.setAttribute("fromnickname", "他_");

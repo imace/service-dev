@@ -50,8 +50,7 @@
 		String toid = (String) request.getAttribute("toid");
 		String fromnickname = (String) request.getAttribute("fromnickname");
 		String tonickname = (String) request.getAttribute("tonickname");
-		String oauthtoidlink = (String) request
-				.getAttribute("oauthtoidlink");
+		String oauthtoidlink = (String) request.getAttribute("oauthtoidlink");
 		String fromimg = (String) request.getAttribute("fromimg");
 		String toimg = (String) request.getAttribute("toimg");
 		String attention = (String) request.getAttribute("attention");
@@ -77,7 +76,6 @@
 				</div>
 				<div id="supportFriend" class="text-center">
 					<form action="<%=request.getContextPath()%>/sharepage">
-						<hr>
 						<div class="row">
 							<div class="col-xs-4">
 								<div style="position: relative; padding: 1px;">
@@ -90,6 +88,7 @@
 								<%=fromnickname%>
 								<input type="hidden" name="fromid" value="<%=fromid%>">
 								<input type="hidden" name="attention" value="<%=attention%>">
+								<input type="hidden" name="oauthtoidlink" value="<%=oauthtoidlink%>">
 							</div>
 							<div class="col-xs-4">
 								<br> <br> <img alt="fifa" style="max-width: 100%;"
@@ -108,7 +107,6 @@
 									class="btn btn-success btn-block text_support_btn">点击支持</button>
 							</div>
 						</div>
-						<hr>
 					</form>
 				</div>
 			</div>
