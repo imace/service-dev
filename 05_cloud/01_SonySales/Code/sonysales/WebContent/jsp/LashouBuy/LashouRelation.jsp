@@ -77,7 +77,6 @@
 				</div>
 				<div id="supportFriend" class="text-center">
 					<form action="<%=request.getContextPath()%>/lashoufollow">
-						<hr>
 						<div class="row">
 							<div class="col-xs-4">
 								<div style="position: relative; padding: 1px;">
@@ -90,6 +89,7 @@
 								<%=fromnickname%>
 								<input type="hidden" name="fromid" value="<%=fromid%>">
 								<input type="hidden" name="attention" value="<%=attention%>">
+								<input type="hidden" name="oauthtoidlink" value="<%=oauthtoidlink%>">
 							</div>
 							<div class="col-xs-4">
 								<br> <br> <img alt="fifa" style="max-width: 100%;"
@@ -108,7 +108,6 @@
 								class="btn btn-success btn-block text_support_btn col-xs-10">点击支持</button>
 							<div class="col-xs-1"></div>
 						</div>
-						<hr>
 					</form>
 				</div>
 			</div>

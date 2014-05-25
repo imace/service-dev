@@ -41,14 +41,15 @@ public class LashouRelation extends HttpServlet {
 			String toid = request.getParameter("toid");
 			String toname = request.getParameter("toname");
 			String toheadimgurl = request.getParameter("toheadimgurl");
-			String attention="1";
+			String attention="0";
+			boolean isredriect=false;
 
+			if (toheadimgurl!=null) {
+				isredriect=true;
+			}
+			
 			String fromimg = "";
 			String toimg = toheadimgurl;
-
-			if (toimg!=null) {
-				attention="0";
-			}
 			
 			response.setContentType("application/json;charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
@@ -70,6 +71,10 @@ public class LashouRelation extends HttpServlet {
 					toimg = wechatInfo.getWebChatUserInfo(toid).getHeadimgurl();
 				}
 
+				if (toimg!=null) {
+					attention="1";
+				}
+				
 				// get img url on here for temporary
 				fromimg = wechatInfo.getWebChatUserInfo(fromid).getHeadimgurl();
 
@@ -88,6 +93,10 @@ public class LashouRelation extends HttpServlet {
 					// add handle
 					HandleService.addHandle(fromid, toid);
 
+					if (isredriect) {
+						response.sendRedirect(Constant.HOST+"/lashoufollow?attention=0");
+					}
+					
 					request.setAttribute("fromnickname", fromnickname == null ? "他" : fromnickname);
 					request.setAttribute("tonickname", tonickname == null ? "我" : tonickname);
 					request.setAttribute("fromimg", fromimg == null ? request.getContextPath() + "/img/head1.png" : fromimg);
