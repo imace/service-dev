@@ -80,7 +80,7 @@
 		String openId = request.getParameter("id");
 	%>
 	<div>
-		<div id="title" class="text_header common_style">索尼FIFA2014世界杯狂热季</div>
+		<div id="title" class="text_header common_style">索尼 FIFA 2014 世界杯狂热季</div>
 		<div id="banner_img_div" style="margin-left: 10px; margin-top: 20px;">
 			<img src="<%=request.getContextPath()%>/img/banner_popularity.png"
 				id="banner_img" />
