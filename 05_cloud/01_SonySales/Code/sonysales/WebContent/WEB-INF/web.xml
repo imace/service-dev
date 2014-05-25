@@ -323,7 +323,15 @@
        <servlet-mapping>
               <servlet-name>ShowUserInfoServlet</servlet-name>
               <url-pattern>/myInfo</url-pattern>
-       </servlet-mapping>       
+       </servlet-mapping> 
+       <servlet>
+              <servlet-name>ShareUserInfo</servlet-name>
+              <servlet-class>com.sonymobile.sonysales.servlet.userServlet.ShareUserInfo</servlet-class>
+       </servlet> 
+       <servlet-mapping>
+              <servlet-name>ShareUserInfo</servlet-name>
+              <url-pattern>/shareUserInfo</url-pattern>
+       </servlet-mapping>      
        <servlet>
               <description></description>
               <display-name>AddPopularity</display-name>

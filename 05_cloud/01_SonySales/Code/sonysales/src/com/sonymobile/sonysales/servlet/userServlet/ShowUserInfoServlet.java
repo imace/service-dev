@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+import com.sonymobile.sonysales.entity.DefaultWechatInfoImpl;
 import com.sonymobile.sonysales.service.MyFIFAService;
 import com.sonymobile.sonysales.util.Constant;
 
@@ -55,6 +56,8 @@ public class ShowUserInfoServlet extends HttpServlet {
 			request.setAttribute("points", points == null ? "0" : points);
 			request.setAttribute("pointsOrder", pointsOrder == null ? "0" : points);
 			request.setAttribute("supporterJS", supporterJS);
+			String nickname = DefaultWechatInfoImpl.getInstance().getWebChatUserInfo(fromid).getNickname();
+			request.setAttribute("myname", nickname);
 			request.getRequestDispatcher("/jsp/ShowUserInfoPage.jsp").forward(request, response);
 
 		}
