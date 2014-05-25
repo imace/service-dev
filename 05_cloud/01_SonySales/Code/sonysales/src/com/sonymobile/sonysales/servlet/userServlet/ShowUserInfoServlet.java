@@ -54,7 +54,7 @@ public class ShowUserInfoServlet extends HttpServlet {
 			request.setAttribute("address", address);
 			request.setAttribute("jdId", jdId);
 			request.setAttribute("points", points == null ? "0" : points);
-			request.setAttribute("pointsOrder", pointsOrder == null ? "0" : points);
+			request.setAttribute("pointsOrder", pointsOrder == null ? "0" : pointsOrder);
 			request.setAttribute("supporterJS", supporterJS);
 			String nickname = DefaultWechatInfoImpl.getInstance().getWebChatUserInfo(fromid).getNickname();
 			request.setAttribute("myname", nickname);
