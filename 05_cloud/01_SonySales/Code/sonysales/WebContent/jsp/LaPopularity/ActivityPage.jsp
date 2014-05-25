@@ -74,7 +74,7 @@
                                                          点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>或<img src="<%=request.getContextPath()%>/img/share.png" width="16px" style="margin-left:2px;margin-right:2px"/>发送给朋友
                              </p>
                 <div id="intro" >
-                    <div class="text_subHeader" style="max-width:96%;margin-left:2%">
+                    <div class="text_subHeader" style="max-width:96%;margin-left:2%;line-height:150%;">
                                     大力神杯拉人气活动规则
                     </div>
                     <div class="text_mainBody" style="max-width:96%;margin-left:2%;line-height:150%;">
