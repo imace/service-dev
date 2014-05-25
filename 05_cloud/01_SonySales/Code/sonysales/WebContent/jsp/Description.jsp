@@ -82,7 +82,7 @@
 	<div>
 		<div id="title" class="text_header common_style">索尼 FIFA 2014 世界杯狂热季</div>
 		<div id="banner_img_div" style="margin-left: 10px; margin-top: 20px;">
-			<img src="<%=request.getContextPath()%>/img/banner_popularity.png"
+			<img src="<%=request.getContextPath()%>/img/banner_popularity.jpg"
 				id="banner_img" />
 		</div>
 		<br>

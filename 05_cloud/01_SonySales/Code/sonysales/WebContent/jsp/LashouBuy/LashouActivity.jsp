@@ -67,7 +67,7 @@
 
 <div>
    <div id="banner_img_div">
-             <img src="<%=request.getContextPath()%>/img/banner_popularity.png" id="banner_img" style="margin-left:10px;margin-top:10px"/>
+             <img src="<%=request.getContextPath()%>/img/banner_popularity.jpg" id="banner_img" style="margin-left:10px;margin-top:10px"/>
          </div>
          <p class="text_highlight common_style" style="padding-top:10px">
                                      点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png" width="16px" style="margin-left:2px;margin-right:2px"/>或<img src="<%=request.getContextPath()%>/img/share.png" width="16px" style="margin-left:2px;margin-right:2px"/>发送给朋友
