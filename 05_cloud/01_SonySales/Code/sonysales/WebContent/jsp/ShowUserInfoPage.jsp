@@ -48,7 +48,7 @@
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:1081px) and (max-device-width:1920px) and (-webkit-device-pixel-ratio: 3)"
 	href="<%=request.getContextPath()%>/css/site_720.css">
-<title>我的基本信息</title>
+<title>我的战况</title>
 <style type="text/css">
 .btn_decoration:hover,.btn_decoration:focus {
 	text-decoration: none
@@ -161,19 +161,23 @@
 					<%
 						if (Integer.parseInt(points) > 0) {
 					%>
-					恭喜! 您已经获得<span class="text_highlight"><%=points%>人气点</span>，目前排名<span
+					恭喜! 您已经获得<span class="text_highlight"><%=Integer.parseInt(points) * 10000%>人气点</span>，目前排名<span
 						class="text_highlight">第<%=pointsOrder%>位
 					</span>，继续加油哦！
 					<%
 						}
 					%>
 				</div>
+				<br>
+				<a href="<%=request.getContextPath()%>/getNameList?id=<%=openId%>"
+				style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
+				class="btn_decoration btn-lg" role="button">点击查看人气榜</a>
 			</div>
 
 			<br>
 
 			<div class="text_subHeader"
-				style="margin-top: 10px; margin-bottom: 10px">我的拉友团</div>
+				style="margin-top: 10px; margin-bottom: 10px">我的奖金</div>
 			<hr style="border: 1px solid #22bff2; margin-top:-3px;">
 			<div class="text_mainBody">
 				<%
@@ -237,8 +241,12 @@
 				%>
 			</div>
 			<br>
+			<a href="<%=request.getContextPath()%>/getNameList?id=<%=openId%>"
+				style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
+				class="btn_decoration btn-lg" role="button">点击查看奖金榜</a>
+			<br>
 			<div class="text_subHeader"
-				style="margin-top: 10px; margin-bottom: 10px">我的基本信息</div>
+				style="margin-top: 10px; margin-bottom: 10px">我的信息</div>
 			<hr style="border: 1px solid #22bff2; margin-top:-3px;">
 			<div class="text_mainBody" style="margin-bottom: 10px;">
 				请正确填写，以便我们能联系到您，及获奖资格认证。我们承诺，不对您的信息进行转发，泄露，以及其他商业用途 <br>
@@ -249,22 +257,22 @@
 				method="post">
 				<input name="openId" type="hidden" id="openId">
 				<div class="form-group">
-					<label for="phoneNum" class="col-xs-3 control-label text_mainBody">电话：</label>
-					<div class="col-xs-9">
+					<label for="phoneNum" class="col-xs-4 control-label text_mainBody">电话：</label>
+					<div class="col-xs-8">
 						<input type="text" class="form-control" name="phoneNum"
 							id="phoneNum" placeholder="电话">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="email" class="col-xs-3 control-label text_mainBody">邮箱：</label>
-					<div class="col-xs-9">
+					<label for="email" class="col-xs-4 control-label text_mainBody">邮箱：</label>
+					<div class="col-xs-8">
 						<input type="text" class="form-control" name="email" id="email"
 							placeholder="邮箱">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="address" class="col-xs-3 control-label text_mainBody">地址：</label>
-					<div class="col-xs-9">
+					<label for="address" class="col-xs-4 control-label text_mainBody">地址：</label>
+					<div class="col-xs-8">
 						<input type="text" class="form-control" name="address"
 							id="address" placeholder="地址">
 					</div>
@@ -291,13 +299,13 @@
 				</div>
 			</form>
 			<br>
-			<hr style="border: 1px dashed #999999;">
+			<%-- <hr style="border: 1px dashed #999999;">
 			<a href="<%=request.getContextPath()%>/getNameList?id=<%=openId%>" role="button"
 				class="btn_decoration btn-lg"
 				style="display: block; border: 1px solid #999999; text-align: center; font-size: 20px; color: #3e3e3e;"><img
 				src="<%=request.getContextPath()%>/img/ranking_icn.png" alt=""
 				style="padding: 0px; border: none; width: 24px; height: 24px; margin: -2px 15px -3px 0px !important;" />查看排行榜信息</a>
-			<br>
+			<br> --%>
 		</div>
 	</div>
 

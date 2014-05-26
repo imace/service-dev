@@ -60,11 +60,11 @@
 			<div class="col-xs-12">
 				<div class="text_mainBody common_style">
 					Hi, 亲, 我(<%=fromnickname%>)对<span class="text_highlight">索尼FIFA手机</span>志在必得,
-					请你拉我一票, 同时你也可以获得<span class="text_highlight">打折优惠</span>, 请完成简单2步:
+					请你拉我一票, 同时你也可以获得<span class="text_highlight">打折优惠</span>.<br>只需2步即可完成:
 				</div>
 				<div class="text_highlight common_style">1.点击支持 2.完成关注</div>
 				<br> <br>
-				<div class="text_subHeader common_style">第1步: 点击支持</div>
+				<div class="text_subHeader common_style">第1步: 点击"支持"</div>
 				<hr style="border: 1px solid #22bff2;">
 				<div id="personalInfo">
 					<div class="text_mainBody common_style">为了支持您的好友,
@@ -104,7 +104,7 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<button type="submit" style="display: block;"
-									class="btn btn-success btn-block text_support_btn">点击支持</button>
+									class="btn btn-success btn-block text_support_btn">支持</button>
 							</div>
 						</div>
 					</form>

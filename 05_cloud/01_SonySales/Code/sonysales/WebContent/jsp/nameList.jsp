@@ -41,7 +41,7 @@
 <link rel="stylesheet" type="text/css"
     media="screen and (min-device-width:1081px) and (max-device-width:1920px) and (-webkit-device-pixel-ratio: 3)"
     href="<%=request.getContextPath()%>/css/site_720.css">  
-<title></title>
+<title>激情无敌!人气大奖榜</title>
 <style type="text/css">  
         table {  
             border-style: solid; 
@@ -87,11 +87,11 @@
      String openId =(String)request.getAttribute("openId");
     
     %>
-    <div id="title" class="text_header" style="margin-left:2%;margin-top:10px;">索尼FIFA2014大奖榜奖金榜</div>
+    <div id="title" class="text_header" style="margin-left:2%;margin-top:10px;">索尼FIFA2014大奖榜单</div>
     <div id="pop_div" style="padding-top:1px;margin-left:2%">
      <div id="pop_title" style="height:40px;text-align:left;float:left">
-         <div class="text_subHeader" style="padding-top:12px;padding-right:30px">人气榜</div>
-     </div>
+         <div class="text_subHeader" style="padding-top:12px;padding-right:30px">人气榜(前8名得大奖)</div>
+     </div> 
      <div id="pop_image" style="height:40px;text-align:right;float:right;margin-right:13px">
          <div><img src="img/ranking1.png" style="height:40px;float:left;margin-left:10px;"/></div>
      </div>
@@ -121,11 +121,11 @@
            }
        }
            %>
-           <tr><td id ="pop_point_td" colspan=3 style="height:55px;text-align:center;border-top:medium none;"><div style="font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名抢手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div></td></tr>
+           <tr><td id ="pop_point_td" colspan=3 style="height:55px;text-align:center;border-top:medium none;"><div style="font-size:large"><font  style="color:rgb(128, 124, 115)">人气排名获大奖，</font><font  style="color:#e82827">猛点下面按钮！</font></div></td></tr>
        <%
    } else {
        %>
-       <tr><td id="pop_img_td" style="text-align:center;border-top:medium none;"><div style="margin: 35px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名枪抢手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="img/product_3.jpg" style="height:165px" id="pop_img"/></div></td></tr>
+       <tr><td id="pop_img_td" style="text-align:center;border-top:medium none;"><div style="margin: 35px;font-size:large"><font  style="color:rgb(128, 124, 115)">人气排名获大奖，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="img/product_3.jpg" style="height:165px" id="pop_img"/></div></td></tr>
        <%
    }
        %>
@@ -160,7 +160,7 @@
     </div>
     </div>
         <div id="rob1" style="max-width:95%;margin-bottom:30px;margin-left:2.5%;margin-top:10px;height:50px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='<%=Constant.HOST%>/activitypage?id=<%=openId%>'">
-       <div style="font-size:larger;color:white;margin-top:12px">还不来抢大奖</div>
+       <div style="font-size:larger;color:white;margin-top:12px">拉人气</div>
     </div>
     
     <div id="pop_div" style="padding-top:1px;margin-left:2%">
@@ -199,12 +199,12 @@
        }
        }
            %>
-           <tr><td id="handle_point_td" colspan=2 style="height:55px;text-align:center;border-top:medium none;"><div style="font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名抢手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div></td></tr>
+           <tr><td id="handle_point_td" colspan=2 style="height:55px;text-align:center;border-top:medium none;"><div style="font-size:large"><font  style="color:rgb(128, 124, 115)">好友支持抢奖金，</font><font  style="color:#e82827">猛点下面按钮！</font></div></td></tr>
        <%
        
        } else {
            %>
-           <tr><td style="text-align:center;border-top:medium none;"><div style="margin: 35px;font-size:large"><font  style="color:rgb(128, 124, 115)">金榜提名抢手机，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="img/product_3.png" style="height:165px"/></div><td></tr>
+           <tr><td style="text-align:center;border-top:medium none;"><div style="margin: 35px;font-size:large"><font  style="color:rgb(128, 124, 115)">好友支持抢奖金，</font><font  style="color:#e82827">猛点下面按钮！</font></div><div><img src="img/product_3.png" style="height:165px"/></div><td></tr>
            <%
        }
            %>
@@ -242,7 +242,7 @@
     </div>
     </div>
     <div id="rob2" style="max-width:95%;margin-bottom:20px;margin-left:2.5%;margin-top:10px;height:50px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="window.location.href='<%=Constant.HOST%>/lashouactivity?id=<%=openId%>'">
-       <div style="font-size:larger;color:white;margin-top:12px">还不来抢奖金</div>
+       <div style="font-size:larger;color:white;margin-top:12px">抢奖金</div>
     </div>
     
       <script type="text/javascript">  

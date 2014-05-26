@@ -80,7 +80,8 @@
 		String openId = request.getParameter("id");
 	%>
 	<div>
-		<div id="title" class="text_header common_style">索尼 FIFA 2014 世界杯狂热季</div>
+		<div id="title" class="text_header common_style">索尼 FIFA 2014
+			世界杯狂热季</div>
 		<div id="banner_img_div" style="margin-left: 10px; margin-top: 20px;">
 			<img src="<%=request.getContextPath()%>/img/banner_popularity.jpg"
 				id="banner_img" />
@@ -93,7 +94,8 @@
 				<br>
 			</div>
 			<div class="text_highlight common_style">
-				参加这个活动，不仅有机会获得超值索尼FIFA手机，还可以获得关注奖金和拉手获现金。 <br> <br>
+				参加这个活动，不仅有机会获得超值索尼FIFA手机，还可以获得关注优惠券和拉友买奖金。 <br> <br>
+				<br> <br>
 			</div>
 
 		</div>
@@ -101,8 +103,8 @@
 	<br>
 	<br>
 	<div id="bgImg_div">
-		<img src="<%=request.getContextPath()%>/img/main_panel_all_word.png" id="bgImg"
-			class="bottom" />
+		<img src="<%=request.getContextPath()%>/img/main_panel_all_word.png"
+			id="bgImg" class="bottom" />
 	</div>
 
 	<input onFocus="this.blur()" type="button" id="button1" value=""
