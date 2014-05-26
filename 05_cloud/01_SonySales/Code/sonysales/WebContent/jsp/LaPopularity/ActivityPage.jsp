@@ -6,7 +6,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="Content-Type" content="text/html charset=UTF-8">
 <meta name="viewport" content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
 <script src="<%=request.getContextPath()%>/js/jquery-1.7.2.min.js"></script>
 <link rel="stylesheet" type="text/css"
@@ -68,34 +67,34 @@
 <div>
                 <div id="title" class="text_header common_style" style="margin:8px;max-width:96%;margin-left:2%">拉人气,得大奖！</div>
                 <div id="banner_img_div" style="text-align: center">
-                    <img src="<%=request.getContextPath()%>/img/banner_popularity.jpg" id="banner_img" style="max-width:96%;"/>
+                    <img src="<%=request.getContextPath()%>/img/banner_popularity.jpg" id="banner_img" style="width:96%;max-width:96%;"/>
                 </div>
-                 <p class="text_highlight common_style" style="padding-top:10px;max-width:96%;margin-left:2%">
+                 <p class="text_highlight common_style" style="padding-top:10px;width:96%;max-width:96%;margin-left:2%">
                                                          点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>或<img src="<%=request.getContextPath()%>/img/share.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>发送给朋友
                              </p>
                 <div id="intro" >
-                    <div class="text_subHeader" style="max-width:96%;margin-left:2%;line-height:150%;">
+                    <div class="text_subHeader" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">
                                     大力神杯拉人气活动规则
                     </div>
-                    <div class="text_mainBody" style="max-width:96%;margin-left:2%;line-height:150%;">
+                    <div class="text_mainBody" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">
                     1.发送此信息给朋友<br>
                     2.人气榜前8名,即可获得精美手机一部(官方定制)<br/>
                     3.每拉一个朋友激活10000人气积分呦!
                     </div>
                 </div>
         </div>
-
-        <div id="touchBox">
-        <div  style="position:relative;">
-               <img src="<%=request.getContextPath()%>/img/product_top_all_1.png" style="max-width:100%;margin-top:0" id="top_img"/><div id="click_div" onclick="clickDiv()" style="position:absolute;width:20%;height:80%;right:7%;top:15%;"></div>
+<div style="position:absolute;width:100%;max-width:100%;height:20%;"></div>
+        <div id="touchBox" style="width:100%;max-width:100%;">
+        <div  style="position:relative;" >
+               <img src="<%=request.getContextPath()%>/img/product_top_all_1.png" style="width:100%;max-width:100%;margin-top:0" id="top_img"/><div id="click_div" onclick="clickDiv()" style="position:absolute;width:20%;height:80%;right:7%;top:15%;"></div>
                </div>
             <div  style="background-color:white;">
-             <div id="buy" style="max-width:96%;margin-left:2%;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="draw()">
+             <div id="buy" style="width:96%;max-width:96%;margin-left:2%;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="draw()">
                 <div style="font-size:larger;color:white;padding-top:15px" id="buyNow" >使用优惠券立即购买</div>
              </div>
             </div>
             <div id="content" style="display:none;background-color:white;height:62px">
-                <div id="bttons" style="max-width:96%;margin-left:2%;padding-top:10px;">
+                <div id="bttons" style="max-width:96%;width:96%;margin-left:2%;padding-top:10px;">
                     <div id="pcbuy" style="max-width:48%;width:48%;height:50px;text-align:center;border:1px solid #bfbfbf;float:left" onclick="window.location.href='<%=Constant.HOST%>/jsp/productPage.jsp'">
                         <div><img src="<%=request.getContextPath()%>/img/http_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:12px"/></div>
                         <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">PC购买</div>
@@ -112,7 +111,7 @@
     <script type="text/javascript">
     var open = false;
     $(document).ready(function(){
-          $("#touchBox").css({position: "absolute",'bottom':0,'z-index':1}); 
+          $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1}); 
         //var windowHeight = window.innerHeight;
         //var windowWidth = $("#top_img").width();
         //alert("windowWidth:"+windowWidth);
@@ -157,7 +156,7 @@
             if((endY-startY)>10) {//下滑
                    $("#top_img").attr("src","<%=request.getContextPath()%>/img/product_top_all_1.png"); 
                 document.getElementById("content").style.display="none";
-                $("#touchBox").css({position: "absolute",'bottom':0,'z-index':1});
+                $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1});
                 $("#buyNow").text("使用优惠券立即购买");
                 open = false;
 
@@ -167,7 +166,7 @@
                 //$("#desc").css("height", 100); 
                 //$("#desc").css("overflow-y", "auto"); 
                 document.getElementById("content").style.display="";
-                $("#touchBox").css({position: "absolute",'bottom':0,'z-index':1}); 
+                $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1}); 
                 $("#buyNow").text("手机购买");
                 open = true;
                 }
@@ -178,7 +177,7 @@
     function draw() {
         if(!open) {
        document.getElementById("content").style.display="";
-       $("#touchBox").css({position: "absolute",'bottom':0,'z-index':1}); 
+       $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1}); 
        $("#top_img").attr("src","<%=request.getContextPath()%>/img/product_top_all_2.png"); 
        $("#buyNow").text("手机购买");
        open = true;
@@ -189,13 +188,13 @@
     function clickDiv() {
         if(!open) {
        document.getElementById("content").style.display="";
-       $("#touchBox").css({position: "absolute",'bottom':0,'z-index':1}); 
+       $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1}); 
        $("#top_img").attr("src","<%=request.getContextPath()%>/img/product_top_all_2.png"); 
        $("#buyNow").text("手机购买");
        open = true;
        } else {
     	    document.getElementById("content").style.display="none";
-        $("#touchBox").css({position: "absolute",'bottom':0,'z-index':1}); 
+        $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1}); 
         $("#top_img").attr("src","<%=request.getContextPath()%>/img/product_top_all_1.png"); 
         $("#buyNow").text("使用优惠券立即购买");
         open = false;

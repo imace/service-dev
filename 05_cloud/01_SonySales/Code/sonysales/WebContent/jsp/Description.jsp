@@ -44,9 +44,11 @@
 <style type="text/css">
 .btn {
 	border: none;
-	width: 120px;
-	height: 120px;
-	border-radius: 60px;
+	max-width:20%;
+	width: 20%;
+	max-height:14.5%;
+	height: 14.5%;
+	border-radius: 100%;
 	position: fixed;
 	bottom: 0;
 	background-color: transparent;
@@ -80,20 +82,20 @@
 		String openId = request.getParameter("id");
 	%>
 	<div>
-		<div id="title" class="text_header common_style">索尼 FIFA 2014
+		<div id="title" class="text_header common_style" style="margin:8px;max-width:96%;margin-left:2%">索尼 FIFA 2014
 			世界杯狂热季</div>
-		<div id="banner_img_div" style="margin-left: 10px; margin-top: 20px;">
+		<div id="banner_img_div" style="text-align: center">
 			<img src="<%=request.getContextPath()%>/img/banner_popularity.jpg"
-				id="banner_img" />
+				id="banner_img" style="width:96%;max-width:96%;"/>
 		</div>
 		<br>
 		<div id="intro">
-			<div class="text_subHeader common_style">索尼 FIFA 2014 活动介绍</div>
-			<div class="text_mainBody common_style">
+			<div class="text_subHeader" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">索尼 FIFA 2014 活动介绍</div>
+			<div class="text_mainBody" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">
 				FIFA , 2014 , 赛事重来 ,<br> 谁将会成为最后赢家？<br> 想不想也参与这个激动人心的活动？<br>
 				<br>
 			</div>
-			<div class="text_highlight common_style">
+			<div class="text_highlight" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">
 				参加这个活动，不仅有机会获得超值索尼FIFA手机，还可以获得关注优惠券和拉友买奖金。 <br> <br>
 				<br> <br>
 			</div>
@@ -104,32 +106,34 @@
 	<br>
 	<div id="bgImg_div">
 		<img src="<%=request.getContextPath()%>/img/main_panel_all_word.png"
-			id="bgImg" class="bottom" />
+			id="bgImg" class="bottom" style="width:100%;max-width:100%;"/>
 	</div>
 
 	<input onFocus="this.blur()" type="button" id="button1" value=""
 		class="btn"
-		onclick="window.open('<%=request.getContextPath()%>/getNameList?id=<%=openId%>')" />
+		onclick="window.open('<%=request.getContextPath()%>/getNameList?id=<%=openId%>')" style="margin-left: 3.5%"/>
 
 	<input onFocus="this.blur()" type="button" id="button2" value=""
 		class="btn"
-		onclick="window.open('<%=request.getContextPath()%>/activitypage?id=<%=openId%>')" />
+		onclick="window.open('<%=request.getContextPath()%>/activitypage?id=<%=openId%>')" style="margin-left: 27.5%"/>
 
 	<input onFocus="this.blur()" type="button" id="button3" value=""
 		class="btn"
-		onclick="window.open('<%=request.getContextPath()%>/lashouactivity?id=<%=openId%>')" />
+		onclick="window.open('<%=request.getContextPath()%>/lashouactivity?id=<%=openId%>')" style="margin-left: 51.5%"/>
 
 	<input onFocus="this.blur()" type="button" id="button4" value=""
 		class="btn"
-		onclick="window.open('<%=request.getContextPath()%>/myInfo?id=<%=openId%>')" />
+		onclick="window.open('<%=request.getContextPath()%>/myInfo?id=<%=openId%>')" style="margin-left: 75.5%"/>
 
 	<script type="text/javascript">
 		$(document).ready(
 				function() {
+					/**
 					$("#banner_img").css("width",
 							document.body.clientWidth - 20);
 					$("#bgImg").css("width", document.body.clientWidth);
 					$("#intro").css("width", document.body.clientWidth - 20);
+					
 					$("#button1").css("width",
 							(document.body.clientWidth - 50) / 4);
 					$("#button1").css("height",
@@ -153,7 +157,9 @@
 							(document.body.clientWidth - 50) / 4);
 					$("#button4").css("left",
 							(document.body.clientWidth * 3 + 10) / 4);
+					*/
 				});
+					
 	</script>
 </body>
 </html>
