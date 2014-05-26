@@ -68,10 +68,10 @@
 <div>
 <div id="title" class="text_header common_style" style="margin:8px;max-width:96%;margin-left:2%">拉友买!他得实惠,我得奖金!</div>
    <div id="banner_img_div">
-             <img src="<%=request.getContextPath()%>/img/banner_popularity.jpg" id="banner_img" style="margin-left:10px;margin-top:10px;max-width:96%;margin-left:2%"/>
+             <img src="<%=request.getContextPath()%>/img/banner_popularity.jpg" id="banner_img" style="margin-left:10px;max-width:96%;margin-left:2%"/>
          </div>
          <p class="text_highlight common_style" style="padding-top:10px;max-width:96%;margin-left:2%">
-                                     点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>或<img src="<%=request.getContextPath()%>/img/share.png" width="16px" style="margin-left:2px;margin-right:2px"/>发送给朋友
+                                     点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>或<img src="<%=request.getContextPath()%>/img/share.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>发送给朋友
          </p>
          <div id="intro" >
              <div class="text_subHeader" style="max-width:96%;margin-left:2%;line-height:150%;">

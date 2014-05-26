@@ -71,7 +71,7 @@
                     <img src="<%=request.getContextPath()%>/img/banner_popularity.jpg" id="banner_img" style="max-width:96%;"/>
                 </div>
                  <p class="text_highlight common_style" style="padding-top:10px;max-width:96%;margin-left:2%">
-                                                         点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>或<img src="<%=request.getContextPath()%>/img/share.png" width="16px" style="margin-left:2px;margin-right:2px"/>发送给朋友
+                                                         点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>或<img src="<%=request.getContextPath()%>/img/share.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>发送给朋友
                              </p>
                 <div id="intro" >
                     <div class="text_subHeader" style="max-width:96%;margin-left:2%;line-height:150%;">
