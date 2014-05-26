@@ -413,4 +413,14 @@
         <filter-name>jspFilter</filter-name>
         <url-pattern>/jsp/Management/*</url-pattern>
     </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Description</display-name>
+    <servlet-name>Description</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.DescriptionServlet.Description</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Description</servlet-name>
+    <url-pattern>/Description</url-pattern>
+  </servlet-mapping>
 </web-app>

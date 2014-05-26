@@ -79,7 +79,12 @@
 </head>
 <body style="margin: 0; background-color: #f8f7f5">
 	<%
-		String openId = request.getParameter("id");
+		String openId = (String) request.getAttribute("id");
+		String oAuth = (String) request.getAttribute("oAuth");
+		
+		if (oAuth == null && openId == null) {
+			response.sendRedirect(Constant.HOST + "/Description");
+		}
 	%>
 	<div>
 		<div id="title" class="text_header common_style" style="margin:8px;max-width:96%;margin-left:2%">索尼 FIFA 2014
