@@ -20,6 +20,7 @@ import com.sonymobile.sonysales.entity.json.WechatUserInfo;
 import com.sonymobile.sonysales.util.Base64Coder;
 import com.sonymobile.sonysales.util.Constant;
 import com.sonymobile.sonysales.util.HttpConnetcion;
+import com.sonymobile.sonysales.util.ResultMsg;
 
 @SuppressWarnings("serial")
 public class OAuthServlet extends HttpServlet {
@@ -38,12 +39,22 @@ public class OAuthServlet extends HttpServlet {
 		String oauthState = request.getParameter("state");
 		String fromOpenId = request.getParameter("fromid");
 		String fromName = request.getParameter("fromname");
+		if (oauthCode == null || oauthCode.isEmpty() || oauthCode.equals(Constant.WECHAT_OAUTH2_AUTHORIZE_DENY))  {
+			String reason = request.getParameter("reason");
+			oauthState = (reason != null && !reason.isEmpty()) ? reason : oauthState;
+			requestOAuthAgain(response, oauthState, fromOpenId, fromName);
+			return;
+		}
 
 		String tokenUrl = buildGetAccessTokenUrl(oauthCode);
 		SaeFetchUrlResult result = HttpConnetcion.saeHttpGetRequest(tokenUrl);
 
-		if (result.getErrNumber() == 0) {
+		if (result.getErrNumber() == Constant.SAE_FETCHURL_SUCCESS_CODE) {
 			JSONObject jsonObject = JSONObject.fromObject(result.getBody());
+			if (jsonObject == null) {
+				requestErrorPageInJSONObjectParseWork(request, response);
+				return;
+			}
 			AccessToken accessToken = (AccessToken) JSONObject.toBean(
 					jsonObject, AccessToken.class);
 			String oauthOpenId = accessToken.getOpenid();
@@ -166,4 +177,41 @@ public class OAuthServlet extends HttpServlet {
 		}
 	}
 
+	/**
+	 * The OAuth request the the OAuth again if user pressed "cancel" button again.
+	 * */
+	private void requestOAuthAgain(HttpServletResponse response, String state,
+			String fromId, String fromName) throws IOException {
+		StringBuilder sb = new StringBuilder(
+				Constant.WECHAT_OAUTH2_AUTHORIZE_URL);
+		sb.append('?');
+		sb.append("appid=");
+		sb.append(Constant.APP_ID);
+		sb.append("&redirect_uri=");
+		sb.append(Constant.OAUTH_REDIRECT_HOST);
+		sb.append("/wechat_authorize?fromid=");
+		sb.append(fromId);
+		sb.append("&fromname=");
+		sb.append(fromName);
+		sb.append("&response_type=code&scope=");
+		sb.append(Constant.WECHAT_OAUTH_SCOPES.USERINFO.getValue());
+		sb.append("&state=");
+		sb.append(state);
+		sb.append("#wechat_redirect");
+
+		response.sendRedirect(sb.toString());
+	}
+
+	private void requestErrorPageInJSONObjectParseWork(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		StringBuilder url = new StringBuilder(request.getContextPath());
+		url.append("/jsp/errorhandler.jsp");
+		url.append('?');
+		url.append("errnum=");
+		url.append(ResultMsg.ERROR_CODE_IN_NETWORK_CONNECTION);
+		url.append("&errmsg=");
+		url.append(ResultMsg.ERROR_MESSAGE_IN_NETWORK_CONNECTION);
+		
+		logger.info(url.toString());
+		response.sendRedirect(url.toString());
+	}
 }

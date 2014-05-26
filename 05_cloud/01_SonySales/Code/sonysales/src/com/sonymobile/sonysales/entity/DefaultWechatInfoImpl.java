@@ -8,6 +8,7 @@ import com.sonymobile.sonysales.entity.json.SaeFetchUrlResult;
 import com.sonymobile.sonysales.entity.json.WechatUserInfo;
 import com.sonymobile.sonysales.util.Constant;
 import com.sonymobile.sonysales.util.HttpConnetcion;
+import com.sonymobile.sonysales.util.JSONConverter;
 
 public class DefaultWechatInfoImpl implements IWechatInfo {
 	private static DefaultWechatInfoImpl instance = new DefaultWechatInfoImpl();
@@ -42,12 +43,14 @@ public class DefaultWechatInfoImpl implements IWechatInfo {
 		urlBuilder.append(openId);
 		SaeFetchUrlResult result = HttpConnetcion.saeHttpGetRequest(urlBuilder.toString());
 		if (result.getErrNumber() == Constant.SAE_FETCHURL_SUCCESS_CODE) {
-			JSONObject jsonObject = JSONObject.fromObject(result.getBody());
-			weChatUserInfo = (WechatUserInfo) JSONObject.toBean(jsonObject,
-					WechatUserInfo.class);
-			String nickName = weChatUserInfo.getNickname();
-			if (nickName == null || nickName.isEmpty()) {
-				logger.warn("Get User("+openId+") info error : " + result.getBody());
+			JSONObject jsonObject = JSONConverter.convertString2JSONObject(result.getBody());
+			if (jsonObject != null) {
+				weChatUserInfo = (WechatUserInfo) JSONObject.toBean(jsonObject,
+						WechatUserInfo.class);
+				String nickName = weChatUserInfo.getNickname();
+				if (nickName == null || nickName.isEmpty()) {
+					logger.warn("Get User("+openId+") info error : " + result.getBody());
+				}
 			}
 		} else {
 			logger.warn("HTTP connection error : " + result.toString());

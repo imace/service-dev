@@ -62,6 +62,7 @@ public final class Constant {
 	public static final String WECHAT_OAUTH2_ACCESSTOKEN_URL = "https://api.weixin.qq.com/sns/oauth2/access_token";
 	public static final String WECHAT_OAUTH2_USERINFO_URL = "https://api.weixin.qq.com/sns/userinfo";
 	public static final String WECHAT_OAUTH_EXTRA_STRING = "#wechat_redirect";
+	public static final String WECHAT_OAUTH2_AUTHORIZE_DENY = "authdeny";
 	// The Wechat oauth scopes
 	public enum WECHAT_OAUTH_SCOPES {
 		BASE("snsapi_base"), USERINFO("snsapi_userinfo");

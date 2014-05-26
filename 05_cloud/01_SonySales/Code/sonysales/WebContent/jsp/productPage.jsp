@@ -6,7 +6,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="Content-Type" content="text/html charset=UTF-8">
 <meta name="viewport" content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
 <script src="../js/jquery-2.1.1.min.js"></script>
 <title>活动详情</title>
