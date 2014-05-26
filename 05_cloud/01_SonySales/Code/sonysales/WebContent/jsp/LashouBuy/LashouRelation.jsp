@@ -41,7 +41,7 @@
 <script
 	src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script src="<%=request.getContextPath()%>/js/relation.js"></script>
-<title>拉有买!他实惠, 我收益!</title>
+<title>拉友买, 他得实惠, 我得奖金!</title>
 </head>
 <body>
 
@@ -60,10 +60,11 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="text_mainBody common_style">
-					Hi, 亲, 我(<%=fromnickname%>)正在参加索尼FIFA活动, 如果你支持并完成关注可以获得50元购买折扣券,
-					同时我也可以获得奖金的哦, 非常感谢咯, 仅需完成以下两步:
+					Hi, 亲, 我(<%=fromnickname%>)正在参加<span class="text_highlight">索尼FIFA</span>活动</br>
+					如果你支持并完成关注,即可获得50元购买<span class="text_highlight">折扣券</span>!<br>
+					如果你完成购买手机, 我还可获得<span class="text_highlight">奖金</span>哦!<br>非常感谢咯.<br>只需2步即可完成:
 				</div>
-				<div class="text_highlight common_style">1.点击支持 2.完成关注</div>
+				<div class="text_highlight common_style">1.点击"支持" 2.完成关注</div>
 				<br> <br>
 				<div class="text_subHeader common_style">第1步: 点击支持</div>
 				<hr style="border: 1px solid #22bff2;">
@@ -105,7 +106,7 @@
 						<div class="row">
 							<div class="col-xs-1"></div>
 							<button type="submit" style="display: block;"
-								class="btn btn-success btn-block text_support_btn col-xs-10">点击支持</button>
+								class="btn btn-success btn-block text_support_btn col-xs-10">支持</button>
 							<div class="col-xs-1"></div>
 						</div>
 					</form>

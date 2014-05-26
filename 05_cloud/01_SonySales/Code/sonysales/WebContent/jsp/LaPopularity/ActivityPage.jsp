@@ -40,7 +40,7 @@
 <link rel="stylesheet" type="text/css"
 	media="screen and (min-device-width:1081px) and (max-device-width:1920px) and (-webkit-device-pixel-ratio: 3)"
 	href="<%=request.getContextPath()%>/css/site_720.css">  
-<title>索尼拉人气，得大奖</title>
+<title>拉人气，得大奖!</title>
 </head>
 <body style="margin:0;background-color:#f8f7f5">
 
@@ -66,7 +66,7 @@
 	%>
 
 <div>
-                <div id="title" class="text_header common_style" style="margin:8px;max-width:96%;margin-left:2%">超值，索尼FIFA手机等你来拿！</div>
+                <div id="title" class="text_header common_style" style="margin:8px;max-width:96%;margin-left:2%">拉人气,得大奖！</div>
                 <div id="banner_img_div" style="text-align: center">
                     <img src="<%=request.getContextPath()%>/img/banner_popularity.jpg" id="banner_img" style="max-width:96%;"/>
                 </div>
@@ -78,9 +78,9 @@
                                     大力神杯拉人气活动规则
                     </div>
                     <div class="text_mainBody" style="max-width:96%;margin-left:2%;line-height:150%;">
-                        只要你名列人气排行榜前8<br/>
-                        官方定制精美手机一部。</br>
-                        每拉一个朋友激活10000人气积分呦！
+                    1.发送此信息给朋友<br>
+                    2.人气榜前8名,即可获得精美手机一部(官方定制)<br/>
+                    3.每拉一个朋友激活10000人气积分呦!
                     </div>
                 </div>
         </div>
@@ -91,7 +91,7 @@
                </div>
             <div  style="background-color:white;">
              <div id="buy" style="max-width:96%;margin-left:2%;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="draw()">
-                <div style="font-size:larger;color:white;padding-top:15px" id="buyNow" >立即购买</div>
+                <div style="font-size:larger;color:white;padding-top:15px" id="buyNow" >使用优惠券立即购买</div>
              </div>
             </div>
             <div id="content" style="display:none;background-color:white;height:62px">
@@ -158,7 +158,7 @@
                    $("#top_img").attr("src","<%=request.getContextPath()%>/img/product_top_all_1.png"); 
                 document.getElementById("content").style.display="none";
                 $("#touchBox").css({position: "absolute",'bottom':0,'z-index':1});
-                $("#buyNow").text("立即购买");
+                $("#buyNow").text("使用优惠券立即购买");
                 open = false;
 
                 }
@@ -197,7 +197,7 @@
     	    document.getElementById("content").style.display="none";
         $("#touchBox").css({position: "absolute",'bottom':0,'z-index':1}); 
         $("#top_img").attr("src","<%=request.getContextPath()%>/img/product_top_all_1.png"); 
-        $("#buyNow").text("立即购买");
+        $("#buyNow").text("使用优惠券立即购买");
         open = false;
                 }
             }
