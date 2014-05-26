@@ -83,7 +83,7 @@
                     </div>
                 </div>
         </div>
-<div style="position:absolute;width:100%;max-width:100%;height:20%;"></div>
+<div style="position:absolute;width:100%;max-width:100%;height:35%;"></div>
         <div id="touchBox" style="width:100%;max-width:100%;">
         <div  style="position:relative;" >
                <img src="<%=request.getContextPath()%>/img/product_top_all_1.png" style="width:100%;max-width:100%;margin-top:0" id="top_img"/><div id="click_div" onclick="clickDiv()" style="position:absolute;width:20%;height:80%;right:7%;top:15%;"></div>
@@ -101,7 +101,7 @@
                     </div>
                     <div id="discount" style="max-width:48%;width:48%;height:50px;text-align:center;border:1px solid #bfbfbf;float:right" onclick="window.location.href='http://passport.jd.com/new/login.aspx?ReturnUrl=http%3A%2F%2Fquan.jd.com%2Fuser_quan.action'">
                         <div><img src="<%=request.getContextPath()%>/img/discount_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:10px"/></div>
-                        <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">折扣券</div>
+                        <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">优惠券</div>
                     </div>
                 </div>
             </div>
