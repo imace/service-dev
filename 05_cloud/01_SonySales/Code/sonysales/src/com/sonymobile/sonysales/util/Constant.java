@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 
 public final class Constant {
 	private static Logger logger = Logger.getLogger(Constant.class);
-	private static Properties properties = new Properties();
+	public static Properties properties = new Properties();
 	
 	// This application host
 	public static final String HOST; 
