@@ -51,7 +51,7 @@
 		<div class="row" style="font-family: Droid Sans Fallback;">
 			<div class="col-xs-12">
 				<div class="text_mainBody common_style">
-					很抱歉, 出错了!!!<br> 错误代码:<%=errnum%>, 错误信息:<%=errmsg%></div>
+					很抱歉, 出错了!!!<br><br> 错误代码:<%=errnum%><br>错误信息:<%=errmsg%></div>
 				<%-- <div class="text_mainBody common_style">
 					<a href="<%=request.getContextPath()%>/Description">点击返回</a>
 				</div> --%>

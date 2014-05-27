@@ -24,6 +24,12 @@ public class GetPictextListServlet extends HttpServlet {
 
 		if (Constant.SONY_FIFA_KEY.equals(key)) {
 			String responseResult = Constant.SONY_FIFA_INDEX_NEWS;
+			final String host = request.getScheme() + "://" + request.getServerName();
+			responseResult = responseResult.replace("_HOST_", host);
+
+			final String pichost = request.getScheme() + "://" + request.getServerName() + "/img";
+			responseResult = responseResult.replace("_PICSHOST_", pichost);
+
 			if (fromId != null && !fromId.isEmpty()) {
 				responseResult = responseResult.replace("_fromUser_", fromId);
 			}
@@ -36,7 +42,7 @@ public class GetPictextListServlet extends HttpServlet {
 				
 				responseResult = responseResult.replace("_createTime_", createTime);
 			}
-			System.out.println(responseResult);
+
 
 			out.write(responseResult);
 		} else {

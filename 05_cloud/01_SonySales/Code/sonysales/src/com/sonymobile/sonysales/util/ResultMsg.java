@@ -27,8 +27,8 @@ public class ResultMsg {
 	private static final String ERROR_DES_PARAMETER_ERROR = "input parameter error.";
 	private static final String ERROR_DES_POINTSNOTENOUGH_ERROR = "points not enough error.";
 
-	public static final String ERROR_CODE_IN_NETWORK_CONNECTION = "500。";
-	public static final String ERROR_MESSAGE_IN_NETWORK_CONNECTION = "网络通信异常，返回重试。";
+	public static final String ERROR_CODE_IN_NETWORK_CONNECTION = "500";
+	public static final String ERROR_MESSAGE_IN_NETWORK_CONNECTION = "网络通信异常，返回重试!";
 	// / <summary>
 	// / success result info
 	// / </summary>

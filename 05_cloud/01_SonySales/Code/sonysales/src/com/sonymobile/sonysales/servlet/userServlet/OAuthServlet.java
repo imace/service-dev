@@ -1,6 +1,7 @@
 package com.sonymobile.sonysales.servlet.userServlet;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +21,7 @@ import com.sonymobile.sonysales.entity.json.WechatUserInfo;
 import com.sonymobile.sonysales.util.Base64Coder;
 import com.sonymobile.sonysales.util.Constant;
 import com.sonymobile.sonysales.util.HttpConnetcion;
+import com.sonymobile.sonysales.util.JSONConverter;
 import com.sonymobile.sonysales.util.ResultMsg;
 
 @SuppressWarnings("serial")
@@ -39,9 +41,11 @@ public class OAuthServlet extends HttpServlet {
 		String oauthState = request.getParameter("state");
 		String fromOpenId = request.getParameter("fromid");
 		String fromName = request.getParameter("fromname");
-		if (oauthCode == null || oauthCode.isEmpty() || oauthCode.equals(Constant.WECHAT_OAUTH2_AUTHORIZE_DENY))  {
+		if (oauthCode == null || oauthCode.isEmpty()
+				|| oauthCode.equals(Constant.WECHAT_OAUTH2_AUTHORIZE_DENY)) {
 			String reason = request.getParameter("reason");
-			oauthState = (reason != null && !reason.isEmpty()) ? reason : oauthState;
+			oauthState = (reason != null && !reason.isEmpty()) ? reason
+					: oauthState;
 			requestOAuthAgain(response, oauthState, fromOpenId, fromName);
 			return;
 		}
@@ -50,7 +54,8 @@ public class OAuthServlet extends HttpServlet {
 		SaeFetchUrlResult result = HttpConnetcion.saeHttpGetRequest(tokenUrl);
 
 		if (result.getErrNumber() == Constant.SAE_FETCHURL_SUCCESS_CODE) {
-			JSONObject jsonObject = JSONObject.fromObject(result.getBody());
+			JSONObject jsonObject = JSONConverter
+					.convertString2JSONObject(result.getBody());
 			if (jsonObject == null) {
 				requestErrorPageInJSONObjectParseWork(request, response);
 				return;
@@ -62,9 +67,14 @@ public class OAuthServlet extends HttpServlet {
 
 			if (oauthOpenId == null || oauthOpenId.isEmpty()) {
 				logger.error("Get OAuth Error : " + result.getBody());
-				JSONObject jsonErr = JSONObject.fromObject(result.getBody());
+				JSONObject jsonErr = JSONConverter
+						.convertString2JSONObject(result.getBody());
 				WechatError error = (WechatError) JSONObject.toBean(jsonErr,
 						WechatError.class);
+				if (jsonErr == null) {
+					requestErrorPageInJSONObjectParseWork(request, response);
+					return;
+				}
 				// TODO : OAuth error message
 			} else {
 				if (Constant.WECHAT_OAUTH_SCOPES.BASE.getValue().equals(scope)) {
@@ -73,7 +83,7 @@ public class OAuthServlet extends HttpServlet {
 				} else {
 					String token = accessToken.getAccess_token();
 					responseSnsapiUserinfo(oauthState, fromOpenId, fromName,
-							oauthOpenId, token, response);
+							oauthOpenId, token, request, response);
 				}
 			}
 		} else {
@@ -136,19 +146,30 @@ public class OAuthServlet extends HttpServlet {
 
 	private void responseSnsapiUserinfo(String oauthState, String fromOpenId,
 			String fromName, String oauthOpenId, String token,
-			HttpServletResponse response) throws IOException {
+			HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
 		String userInfoUrl = buildGetUserinfoUrl(token, oauthOpenId);
 		SaeFetchUrlResult result = HttpConnetcion
 				.saeHttpGetRequest(userInfoUrl);
 		if (result.getErrNumber() == 0) {
-			JSONObject jsonObject = JSONObject.fromObject(result.getBody());
+			JSONObject jsonObject = JSONConverter
+					.convertString2JSONObject(result.getBody());
+			if (jsonObject == null) {
+				requestErrorPageInJSONObjectParseWork(request, response);
+				return;
+			}
 			WechatUserInfo userInfo = (WechatUserInfo) JSONObject.toBean(
 					jsonObject, WechatUserInfo.class);
 			if (oauthOpenId == null || oauthOpenId.isEmpty()) {
 				logger.error("Get OAuth Error : " + result.getBody());
-				JSONObject jsonErr = JSONObject.fromObject(result.getBody());
+				JSONObject jsonErr = JSONConverter
+						.convertString2JSONObject(result.getBody());
 				WechatError error = (WechatError) JSONObject.toBean(jsonErr,
 						WechatError.class);
+				if (jsonErr == null) {
+					requestErrorPageInJSONObjectParseWork(request, response);
+					return;
+				}
 				// TODO : OAuth error message
 
 			} else {
@@ -178,7 +199,8 @@ public class OAuthServlet extends HttpServlet {
 	}
 
 	/**
-	 * The OAuth request the the OAuth again if user pressed "cancel" button again.
+	 * The OAuth request the the OAuth again if user pressed "cancel" button
+	 * again.
 	 * */
 	private void requestOAuthAgain(HttpServletResponse response, String state,
 			String fromId, String fromName) throws IOException {
@@ -202,15 +224,17 @@ public class OAuthServlet extends HttpServlet {
 		response.sendRedirect(sb.toString());
 	}
 
-	private void requestErrorPageInJSONObjectParseWork(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	private void requestErrorPageInJSONObjectParseWork(
+			HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
 		StringBuilder url = new StringBuilder(request.getContextPath());
 		url.append("/jsp/errorhandler.jsp");
 		url.append('?');
 		url.append("errnum=");
 		url.append(ResultMsg.ERROR_CODE_IN_NETWORK_CONNECTION);
 		url.append("&errmsg=");
-		url.append(ResultMsg.ERROR_MESSAGE_IN_NETWORK_CONNECTION);
-		
+		url.append(URLEncoder.encode(ResultMsg.ERROR_MESSAGE_IN_NETWORK_CONNECTION, "utf-8"));
+
 		logger.info(url.toString());
 		response.sendRedirect(url.toString());
 	}
