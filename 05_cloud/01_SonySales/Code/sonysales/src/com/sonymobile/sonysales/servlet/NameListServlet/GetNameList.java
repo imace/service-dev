@@ -8,14 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import net.sf.json.JSONException;
 
 import com.sonymobile.sonysales.model.User;
 import com.sonymobile.sonysales.service.NameListService;
+import com.sonymobile.sonysales.servlet.LaPopularityServlet.Activity;
 
 public class GetNameList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private static Logger logger = Logger.getLogger(GetNameList.class.getName());
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		this.doPost(request, response);
@@ -44,7 +47,8 @@ public class GetNameList extends HttpServlet {
 			request.getRequestDispatcher("/jsp/nameList.jsp").forward(request,
 					response);
 		} catch (JSONException e) { 
-			e.printStackTrace();
+			logger.error("GetNameList->doPost() in exception : " + e.getMessage());
+			response.sendRedirect(request.getContextPath()+"/jsp/errorhandler.jsp?errnum=0100&errmsg="+e.getMessage());
 		}
 	}
 

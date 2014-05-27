@@ -44,7 +44,7 @@ public class Activity extends HttpServlet {
 			request.getRequestDispatcher("/jsp/LaPopularity/ActivityPage.jsp").forward(request, response);
 		} catch (JSONException e) {
 			logger.error("Activity->doPost() in exception : " + e.getMessage());
-			e.printStackTrace();
+			response.sendRedirect(request.getContextPath()+"/jsp/errorhandler.jsp?errnum=0110&errmsg="+e.getMessage());
 		}
 	}
 
