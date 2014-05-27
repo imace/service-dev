@@ -43,8 +43,10 @@
 </head>
 <body>
 	<%
-		String errnum = new String(request.getParameter("errnum").getBytes("iso-8859-1"), "utf-8");
-		String errmsg = new String(request.getParameter("errmsg").getBytes("iso-8859-1"), "utf-8");
+		String errnum = new String(request.getParameter("errnum").getBytes(
+				"iso-8859-1"), "utf-8");
+		String errmsg = new String(request.getParameter("errmsg").getBytes(
+				"iso-8859-1"), "utf-8");
 	%>
 	<hr>
 	<div class="container page_background">
@@ -52,6 +54,9 @@
 			<div class="col-xs-12">
 				<div class="text_mainBody common_style">
 					很抱歉, 出错了!!!<br> 错误代码:<%=errnum%>, 错误信息:<%=errmsg%></div>
+				<%-- <div class="text_mainBody common_style">
+					<a href="<%=request.getContextPath()%>/Description">点击返回</a>
+				</div> --%>
 			</div>
 		</div>
 		<hr>
