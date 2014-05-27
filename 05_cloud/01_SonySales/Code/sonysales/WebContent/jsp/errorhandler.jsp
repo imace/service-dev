@@ -43,10 +43,8 @@
 </head>
 <body>
 	<%
-		String errnum = new String(request.getParameter("errnum").getBytes(
-				"iso-8859-1"), "utf-8");
-		String errmsg = new String(request.getParameter("errmsg").getBytes(
-				"iso-8859-1"), "utf-8");
+		String errnum = java.net.URLDecoder.decode(request.getParameter("errnum"), "utf-8");
+		String errmsg = java.net.URLDecoder.decode(request.getParameter("errmsg"), "utf-8");
 	%>
 	<hr>
 	<div class="container page_background">
