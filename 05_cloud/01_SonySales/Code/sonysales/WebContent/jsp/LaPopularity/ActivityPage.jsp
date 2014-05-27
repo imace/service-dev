@@ -8,39 +8,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
+<meta name="viewport" content="width=device-width">
 <script src="<%=request.getContextPath()%>/js/jquery-1.7.2.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	media="screen and (max-device-width:320px) and (-webkit-device-pixel-ratio:1)"
-	href="<%=request.getContextPath()%>/css/site_320.css">
+  media="screen and (max-device-width:480px)"
+  href="<%=request.getContextPath()%>/css/site_320.css">
+  
 <link rel="stylesheet" type="text/css"
-	media="screen and (min-device-width:321px) and (max-device-width:480px) and (-webkit-device-pixel-ratio:1)"
-	href="<%=request.getContextPath()%>/css/site_540.css">
+  media="screen and (min-device-width:481px) and (max-device-width:540px) and (-webkit-device-pixel-ratio: 1.5)"
+  href="<%=request.getContextPath()%>/css/site_360.css">
+  
 <link rel="stylesheet" type="text/css"
-	media="screen and (max-device-width:640px) and (-webkit-device-pixel-ratio:1.5)"
-	href="<%=request.getContextPath()%>/css/site_320.css">
+  media="screen and (min-device-width:541px) and (max-device-width:640px) and (-webkit-device-pixel-ratio: 2)"
+  href="<%=request.getContextPath()%>/css/site_320.css">
+  
 <link rel="stylesheet" type="text/css"
-	media="screen and (max-device-width:720px) and (-webkit-device-pixel-ratio:2)"
-	href="<%=request.getContextPath()%>/css/site_320.css">
-
+  media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
+  href="<%=request.getContextPath()%>/css/site_480.css">
+  
 <link rel="stylesheet" type="text/css"
-	media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
-	href="<%=request.getContextPath()%>/css/site_540.css">
-
-<link rel="stylesheet" type="text/css"
-	media="screen and (min-device-width:721px) and (device-width:960px) and (-webkit-device-pixel-ratio:1.5)"
-	href="<%=request.getContextPath()%>/css/site_720.css">
-
-<link rel="stylesheet" type="text/css"
-	media="screen and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
-	href="<%=request.getContextPath()%>/css/site_320.css">
-
-<link rel="stylesheet" type="text/css"
-	media="screen and (min-device-width:721px) and (max-device-width:1280px) and (-webkit-device-pixel-ratio: 2)"
-	href="<%=request.getContextPath()%>/css/site_720.css">
-<link rel="stylesheet" type="text/css"
-	media="screen and (min-device-width:1081px) and (max-device-width:1920px) and (-webkit-device-pixel-ratio: 3)"
-	href="<%=request.getContextPath()%>/css/site_720.css">  
+  media="screen and (min-device-width:721px) and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
+  href="<%=request.getContextPath()%>/css/site_360.css">
 <title>拉人气，得大奖!</title>
 </head>
 <body style="margin:0;background-color:#f8f7f5">
@@ -92,7 +80,7 @@
                     </div>
                 </div>
         </div>
-<div style="position:absolute;width:100%;max-width:100%;height:35%;"></div>
+<div class="scroll_div_height" style="position:absolute;width:100%;max-width:100%;"></div>
         <div id="touchBox" style="width:100%;max-width:100%;">
         <div  style="position:relative;" >
                <img src="<%=request.getContextPath()%>/img/product_top_all_1.png" style="width:100%;max-width:100%;margin-top:0" id="top_img"/><div id="click_div" onclick="clickDiv()" style="position:absolute;width:20%;height:80%;right:7%;top:15%;"></div>

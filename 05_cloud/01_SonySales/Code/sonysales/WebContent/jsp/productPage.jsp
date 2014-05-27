@@ -6,8 +6,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
+<meta name="viewport" content="width=device-width">
 <script src="../js/jquery-2.1.1.min.js"></script>
+<link rel="stylesheet" type="text/css"
+  media="screen and (max-device-width:480px)"
+  href="<%=request.getContextPath()%>/css/site_320.css">
+  
+<link rel="stylesheet" type="text/css"
+  media="screen and (min-device-width:481px) and (max-device-width:540px) and (-webkit-device-pixel-ratio: 1.5)"
+  href="<%=request.getContextPath()%>/css/site_360.css">
+  
+<link rel="stylesheet" type="text/css"
+  media="screen and (min-device-width:541px) and (max-device-width:640px) and (-webkit-device-pixel-ratio: 2)"
+  href="<%=request.getContextPath()%>/css/site_320.css">
+  
+<link rel="stylesheet" type="text/css"
+  media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
+  href="<%=request.getContextPath()%>/css/site_480.css">
+  
+<link rel="stylesheet" type="text/css"
+  media="screen and (min-device-width:721px) and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
+  href="<%=request.getContextPath()%>/css/site_360.css">
 <title>活动详情</title>
 </head>
 <body style="margin:0;background-color:#f8f7f5">

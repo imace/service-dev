@@ -28,7 +28,7 @@
 	background: #22bff2; 
 	border-color: #22bff2; 
 	padding: 15px;"
-	font-size:18px;
+	font-size:16px;
 }
 .common_style
 {
@@ -48,4 +48,7 @@
 .point_pic_width
 {
     width:22px;
+}
+.scroll_div_height
+{
 }
