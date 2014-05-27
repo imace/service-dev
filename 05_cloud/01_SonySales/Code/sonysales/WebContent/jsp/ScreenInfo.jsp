@@ -103,5 +103,7 @@
 			document.write(window.devicePixelRatio)
 		</script>
 	</div>
+	<p>拉友买开关: <%=com.sonymobile.sonysales.util.Constant.properties
+					.getProperty("LAYOUBUY_SWITCH")%></p>
 </body>
 </html>
