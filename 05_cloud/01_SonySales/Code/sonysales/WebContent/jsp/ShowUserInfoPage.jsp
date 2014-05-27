@@ -68,14 +68,23 @@
 		String friendname = (String) request.getAttribute("myname");
 		PrintWriter outwriter = response.getWriter();
 
-		String message = "索尼FIFA("+friendname+")的战况!";
-		String imgurl = request.getScheme() + "://" + request.getServerName() + "/img/ranking_icn.png";
-		String relationUrl = request.getScheme() + "://" + request.getServerName()+ "/shareUserInfo?id="+openId+"&friendname="+friendname;
+		String message = "索尼FIFA(" + friendname + ")的战况!";
+		String imgurl = request.getScheme() + "://"
+				+ request.getServerName() + "/img/ranking_icn.png";
+		String relationUrl = request.getScheme() + "://"
+				+ request.getServerName() + "/shareUserInfo?id=" + openId
+				+ "&friendname=" + friendname;
 		out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
-				+ "MsgImg:\""+ imgurl
-				+ "\", TLImg:\""+ imgurl
-				+ "\", url:\""+ relationUrl
-				+ "\", title:\""+message+"\", desc:\""+ message
+				+ "MsgImg:\""
+				+ imgurl
+				+ "\", TLImg:\""
+				+ imgurl
+				+ "\", url:\""
+				+ relationUrl
+				+ "\", title:\""
+				+ message
+				+ "\", desc:\""
+				+ message
 				+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
 	%>
 	<script language="javascript">
@@ -142,7 +151,7 @@
 			<div id="title" class="text_header" style="margin-bottom: 10px">我的战况</div>
 			<div class="text_subHeader"
 				style="margin-top: 10px; margin-bottom: 10px">我的优惠卷</div>
-			<hr style="border: 1px solid #22bff2; margin-top:-3px;">
+			<hr style="border: 1px solid #22bff2; margin-top: -3px;">
 			<a href="http://help.jd.com/help/question-60.html"
 				style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
 				class="btn_decoration btn-lg" role="button">点击获取优惠卷</a> <br>
@@ -150,7 +159,7 @@
 				<div class="text_subHeader"
 					style="margin-top: 10px; margin-bottom: 10px">我的人气</div>
 				<div class="text_mainBody">
-					<hr style="border: 1px solid #22bff2; margin-top:-3px;">
+					<hr style="border: 1px solid #22bff2; margin-top: -3px;">
 					<%
 						if (Integer.parseInt(points) == 0) {
 					%>
@@ -168,61 +177,67 @@
 						}
 					%>
 				</div>
-				<br>
-				<a href="<%=request.getContextPath()%>/getNameList?id=<%=openId%>"
-				style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
-				class="btn_decoration btn-lg" role="button">点击查看人气榜</a>
+				<br> <a
+					href="<%=request.getContextPath()%>/getNameList?id=<%=openId%>"
+					style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
+					class="btn_decoration btn-lg" role="button">点击查看人气榜</a>
 			</div>
 
 			<br>
 
+			<!-- ===============================Layou Buy=============================== -->
+			<%
+				if (com.sonymobile.sonysales.util.Constant.properties.getProperty(
+						"LAYOUBUY_SWITCH").contains("ON")) {
+			%>
 			<div class="text_subHeader"
 				style="margin-top: 10px; margin-bottom: 10px">我的奖金</div>
-			<hr style="border: 1px solid #22bff2; margin-top:-3px;">
+			<hr style="border: 1px solid #22bff2; margin-top: -3px;">
 			<div class="text_mainBody">
 				<%
 					JSONArray supporterJA = JSONArray.fromObject(supporterJS);
-					int supporterCount = supporterJA.size();
-					int money = supporterCount * Constant.FEEDBACK_SINGLE_MONEY;
+						int supporterCount = supporterJA.size();
+						int money = supporterCount * Constant.FEEDBACK_SINGLE_MONEY;
 
-					int emptyObjectCount = 0;
+						int emptyObjectCount = 0;
 				%>
 
 				<table class="table  table-striped">
 					<%
 						if (supporterCount > 0) {
-							for (int i = 0; i < supporterCount; i++) {
-								JSONObject jo = supporterJA.getJSONObject(i);
-								String createTime = "";
-								String nickname = "";
-								if (!jo.isNullObject()) {
-									nickname = jo.getString("nickname");
-									createTime = jo.getString("createTime");
-									StringBuilder sb = new StringBuilder();
-									if (createTime != null && !createTime.isEmpty()
-											&& createTime.length() > 8) {
-										sb.append("已于");
-										sb.append(createTime.substring(0, 4));
-										sb.append("年");
-										sb.append(createTime.substring(4, 6));
-										sb.append("月");
-										sb.append(createTime.substring(6, 8));
-										sb.append("日");
-									} else {
-										sb.append("已经");
-									}
-									createTime = sb.toString();
+								for (int i = 0; i < supporterCount; i++) {
+									JSONObject jo = supporterJA.getJSONObject(i);
+									String createTime = "";
+									String nickname = "";
+									if (!jo.isNullObject()) {
+										nickname = jo.getString("nickname");
+										createTime = jo.getString("createTime");
+										StringBuilder sb = new StringBuilder();
+										if (createTime != null && !createTime.isEmpty()
+												&& createTime.length() > 8) {
+											sb.append("已于");
+											sb.append(createTime.substring(0, 4));
+											sb.append("年");
+											sb.append(createTime.substring(4, 6));
+											sb.append("月");
+											sb.append(createTime.substring(6, 8));
+											sb.append("日");
+										} else {
+											sb.append("已经");
+										}
+										createTime = sb.toString();
 					%>
 					<tr>
-						<td><%=nickname%></td><td><%=createTime%>支持了您！</td>
+						<td><%=nickname%></td>
+						<td><%=createTime%>支持了您！</td>
 					</tr>
 					<%
 						} else {
-									emptyObjectCount++;
+										emptyObjectCount++;
+									}
 								}
 							}
-						}
-						supporterCount -= emptyObjectCount;
+							supporterCount -= emptyObjectCount;
 					%>
 				</table>
 				<%
@@ -240,14 +255,18 @@
 					}
 				%>
 			</div>
-			<br>
-			<a href="<%=request.getContextPath()%>/getNameList?id=<%=openId%>"
+			<br> <a
+				href="<%=request.getContextPath()%>/getNameList?id=<%=openId%>"
 				style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
-				class="btn_decoration btn-lg" role="button">点击查看奖金榜</a>
-			<br>
+				class="btn_decoration btn-lg" role="button">点击查看奖金榜</a> <br>
+			<%
+				}
+			%>
+			<!-- ===============================End=============================== -->
+
 			<div class="text_subHeader"
 				style="margin-top: 10px; margin-bottom: 10px">我的信息</div>
-			<hr style="border: 1px solid #22bff2; margin-top:-3px;">
+			<hr style="border: 1px solid #22bff2; margin-top: -3px;">
 			<div class="text_mainBody" style="margin-bottom: 10px;">
 				请正确填写，以便我们能联系到您，及获奖资格认证。我们承诺，不对您的信息进行转发，泄露，以及其他商业用途 <br>
 			</div>
@@ -277,26 +296,44 @@
 							id="address" placeholder="地址">
 					</div>
 				</div>
+
+				<!-- ===============================Layou Buy=============================== -->
+				<%
+					if (com.sonymobile.sonysales.util.Constant.properties.getProperty(
+							"LAYOUBUY_SWITCH").contains("ON")) {
+				%>
 				<div class="form-group">
-					<label for="jdId" class="col-xs-4 control-label text_mainBody"
-						style="padding-right: 0px;">京东账号：</label>
-					<div class="col-xs-8">
-						<input type="text" class="form-control" name="jdId" id="jdId"
-							placeholder="京东账号">
+					<%
+						}
+					%>
+					<%
+						if (com.sonymobile.sonysales.util.Constant.properties.getProperty(
+								"LAYOUBUY_SWITCH").contains("OFF")) {
+					%>
+					<div class="form-group" style="display: none;">
+						<%
+							}
+						%>
+				<!-- ===============================End=============================== -->
+						<label for="jdId" class="col-xs-4 control-label text_mainBody"
+							style="padding-right: 0px;">京东账号：</label>
+						<div class="col-xs-8">
+							<input type="text" class="form-control" name="jdId" id="jdId"
+								placeholder="京东账号">
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-xs-12">
-						<label class="text_highlight">（如果需要邮递奖品或领取奖金，请填写真实信息） </label>
+					<div class="form-group">
+						<div class="col-xs-12">
+							<label class="text_highlight">（如果需要邮递奖品或领取奖金，请填写真实信息） </label>
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-xs-12">
-						<a href="#" id="test"
-							style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
-							class="btn-lg active btn_decoration" role="button">编辑</a>
+					<div class="form-group">
+						<div class="col-xs-12">
+							<a href="#" id="test"
+								style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
+								class="btn-lg active btn_decoration" role="button">编辑</a>
+						</div>
 					</div>
-				</div>
 			</form>
 			<br>
 			<%-- <hr style="border: 1px dashed #999999;">
