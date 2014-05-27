@@ -79,10 +79,21 @@
 </head>
 <body style="margin: 0; background-color: #f8f7f5">
 	<%
+		String message = "索尼 FIFA 2014 活动介绍";
+		String url = Constant.HOST + "/Description";
+		out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
+				+ "url:\""
+				+ url
+				+ "\", title:\"索尼 FIFA 2014 世界杯狂热季\","
+				+ "desc:\""
+				+ message
+				+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
+	%>
+
+	<%
 		String openId = (String) request.getAttribute("id");
-		String oAuth = (String) request.getAttribute("oAuth");
-		
-		if (oAuth == null && openId == null) {
+
+		if (openId == null) {
 			response.sendRedirect(Constant.HOST + "/Description");
 		}
 	%>
@@ -164,7 +175,60 @@
 							(document.body.clientWidth * 3 + 10) / 4);
 					*/
 				});
-					
+
+		(function(){
+			   var onBridgeReady=function(){
+			   WeixinJSBridge.on('menu:share:appmessage', function(argv){
+			      WeixinJSBridge.invoke('sendAppMessage',{
+			         "appid":dataForWeixin.appId,
+			         "img_url":dataForWeixin.MsgImg,
+			         "img_width":"120",
+			         "img_height":"120",
+			         "link":dataForWeixin.url,
+			         "desc":dataForWeixin.desc,
+			         "title":dataForWeixin.title
+			      }, function(res){(dataForWeixin.callback)();});
+			   });
+			   WeixinJSBridge.on('menu:share:timeline', function(argv){
+			      (dataForWeixin.callback)();
+			      WeixinJSBridge.invoke('shareTimeline',{
+			         "img_url":dataForWeixin.TLImg,
+			         "img_width":"120",
+			         "img_height":"120",
+			         "link":dataForWeixin.url,
+			         "desc":dataForWeixin.desc,
+			         "title":dataForWeixin.title
+			      }, function(res){});
+			   });
+			   WeixinJSBridge.on('menu:share:weibo', function(argv){
+			      WeixinJSBridge.invoke('shareWeibo',{
+			         "content":dataForWeixin.title,
+			         "url":dataForWeixin.url
+			      }, function(res){(dataForWeixin.callback)();});
+			   });
+			   WeixinJSBridge.on('menu:share:facebook', function(argv){
+			      (dataForWeixin.callback)();
+			      WeixinJSBridge.invoke('shareFB',{
+			         "img_url":dataForWeixin.TLImg,
+			         "img_width":"120",
+			         "img_height":"120",
+			         "link":dataForWeixin.url,
+			         "desc":dataForWeixin.desc,
+			         "title":dataForWeixin.title
+			      }, function(res){});
+			   });
+			};
+
+			if(document.addEventListener){
+			   document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+			}else if(document.attachEvent){
+			   document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
+			   document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+			}
+			document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+			    WeixinJSBridge.call('hideToolbar');
+			});
+			})();
 	</script>
 </body>
 </html>

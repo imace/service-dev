@@ -35,13 +35,12 @@ public class Description extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String openId = request.getParameter("id");
+
 		if (openId == null) {
 			String toId = request.getParameter("toid");
-			String oAuth = (String) request.getAttribute("oAuth");
-			if (oAuth == null && toId == null) {
-				// get toId
-				request.setAttribute("oAuth", "oAuth");
 
+			if (toId == null) {
+				// get openId
 				StringBuilder infourl = new StringBuilder(
 						Constant.WECHAT_OAUTH2_AUTHORIZE_URL);
 				infourl.append('?');
@@ -65,6 +64,7 @@ public class Description extends HttpServlet {
 			// openId
 			request.setAttribute("id", openId);
 		}
+
 		request.getRequestDispatcher("/jsp/Description.jsp").forward(request,
 				response);
 	}
