@@ -84,7 +84,7 @@
          </div>
             <div id="content" style="display:none;background-color:white;height:62px">
                 <div id="bttons" style="max-width:96%;width:96%;margin-left:2%;padding-top:10px;">
-                    <div id="pcbuy" style="max-width:48%;width:48%;height:50px;text-align:center;border:1px solid #bfbfbf;float:left" onclick="window.location.href='<%=Constant.HOST%>/jsp/productPage.jsp'">
+                    <div id="pcbuy" style="max-width:48%;width:48%;height:50px;text-align:center;border:1px solid #bfbfbf;float:left" onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/jsp/productPage.jsp'">
                         <div><img src="<%=request.getContextPath()%>/img/http_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:12px"/></div>
                         <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">PC购买</div>
                     </div>

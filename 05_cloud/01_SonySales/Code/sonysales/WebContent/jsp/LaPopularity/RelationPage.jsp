@@ -70,7 +70,7 @@
 										style="max-width: 100%; max-height: 100%; border: 3px solid transparent; display: block; padding: 3px;"
 										src="<%=fromimg%>"> <img class="img-circle"
 										style="max-width: 100%; max-height: 100%; position: absolute; left: 0; top: 0; border: 1px solid #f0f0f0; margin: 1px;"
-										src="/img/circle.png">
+										src="<%=request.getContextPath()%>/img/circle.png">
 								</div>
 								<%=fromnickname%>
 								<input type="hidden" name="fromid" value="<%=fromid%>">
@@ -79,7 +79,7 @@
 							</div>
 							<div class="col-xs-4">
 								<br> <br> <img alt="fifa" style="max-width: 100%;"
-									src="/img/arrow.png">
+									src="<%=request.getContextPath()%>/img/arrow.png">
 							</div>
 							<div class="col-xs-4">
 								<span id="tonickname" style="display: none;"><%=tonickname%></span>

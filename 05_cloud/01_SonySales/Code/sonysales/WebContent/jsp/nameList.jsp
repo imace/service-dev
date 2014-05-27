@@ -99,7 +99,7 @@ td {
 		<div id="pop_image"
 			style="height: 40px; text-align: right; float: right; margin-right: 13px">
 			<div>
-				<img src="img/ranking1.png"
+				<img src="<%=request.getContextPath()%>/img/ranking1.png"
 					style="height: 40px; float: left; margin-left: 10px;" />
 			</div>
 		</div>
@@ -151,7 +151,7 @@ td {
 								style="color: #e82827">猛点下面按钮！</font>
 						</div>
 						<div>
-							<img src="img/product_3.jpg" style="height: 165px" id="pop_img" />
+							<img src="<%=request.getContextPath()%>/img/product_3.jpg" style="height: 165px" id="pop_img" />
 						</div></td>
 				</tr>
 				<%
@@ -193,7 +193,7 @@ td {
 	</div>
 	<div id="rob1"
 		style="max-width: 95%; margin-bottom: 30px; margin-left: 2.5%; margin-top: 10px; height: 50px; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
-		onclick="window.location.href='<%=Constant.HOST%>/activitypage?id=<%=openId%>'">
+		onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/activitypage?id=<%=openId%>'">
 		<div style="font-size: larger; color: white; margin-top: 12px">拉人气</div>
 	</div>
 
@@ -212,7 +212,7 @@ td {
 		<div id="pop_image"
 			style="height: 40px; text-align: right; float: right; margin-right: 13px">
 			<div>
-				<img src="img/ranking2.png"
+				<img src="<%=request.getContextPath()%>/img/ranking2.png"
 					style="height: 40px; float: left; margin-left: 10px;" />
 			</div>
 		</div>
@@ -267,7 +267,7 @@ td {
 								style="color: #e82827">猛点下面按钮！</font>
 						</div>
 						<div>
-							<img src="img/product_3.png" style="height: 165px" />
+							<img src="<%=request.getContextPath()%>/img/product_3.png" style="height: 165px" />
 						</div>
 					<td>
 				</tr>
@@ -314,7 +314,7 @@ td {
 	</div>
 	<div id="rob2"
 		style="max-width: 95%; margin-bottom: 20px; margin-left: 2.5%; margin-top: 10px; height: 50px; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
-		onclick="window.location.href='<%=Constant.HOST%>/lashouactivity?id=<%=openId%>'">
+		onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/lashouactivity?id=<%=openId%>'">
 		<div style="font-size: larger; color: white; margin-top: 12px">抢奖金</div>
 	</div>
 	<%

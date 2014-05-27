@@ -67,7 +67,7 @@
 <body style="margin: 0; background-color: #f8f7f5">
 	<%
 		String message = "索尼 FIFA 2014 活动介绍";
-		String url = Constant.HOST + "/Description";
+		String url = request.getScheme() + "://" + request.getServerName() + "/Description";
 		out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
 				+ "url:\""
 				+ url
@@ -81,7 +81,7 @@
 		String openId = (String) request.getAttribute("id");
 
 		if (openId == null) {
-			response.sendRedirect(Constant.HOST + "/Description");
+			response.sendRedirect(request.getContextPath()+"/Description");
 		}
 	%>
 	<div>
