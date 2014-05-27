@@ -1,5 +1,7 @@
+<%@page import="com.sonymobile.sonysales.servlet.LaPopularityServlet.Activity"%>
 <%@page import="com.sonymobile.sonysales.util.Constant"%>
 <%@page import="com.sonymobile.sonysales.util.Base64Coder"%>
+<%@page import="org.apache.log4j.Logger"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -44,6 +46,8 @@
 <body style="margin:0;background-color:#f8f7f5">
 
 	<%
+	Logger logger = Logger.getLogger(Activity.class.getName());
+	try{
 		String openid =(String)request.getAttribute("openid");
 		String nickname =(String)request.getAttribute("nickname");
 		nickname=(nickname==null?"":"("+nickname+")");
@@ -62,6 +66,11 @@
 				+ "\", url:\""+ url
 				+ "\", title:\"拉人气, 得大奖\", desc:\""+ message
 				+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
+	}
+    catch (Exception e) {
+		logger.error("ActivityPage.jsp->front-end-page in exception : " + e.getMessage());
+		response.sendRedirect(request.getContextPath()+"/jsp/errorhandler.jsp?errnum=0111&errmsg="+e.getMessage());
+	}
 	%>
 
 <div>

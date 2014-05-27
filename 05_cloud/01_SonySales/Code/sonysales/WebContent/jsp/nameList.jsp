@@ -2,6 +2,8 @@
 <%@page import="com.sonymobile.sonysales.model.User"%>
 <%@page import="com.sonymobile.sonysales.entity.SupporterCount"%>
 <%@page import="java.util.List"%>
+<%@page import="org.apache.log4j.Logger"%>
+
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -81,10 +83,23 @@
 <body>
 <!--<div id="result" style="border:2px solid red; color:red;">未触发事件！</div> -->
     <%
-
-     List<User> userList = (List<User>)request.getAttribute("userList");
-     List<SupporterCount> supporterList = (List<SupporterCount>)request.getAttribute("supporterList");
-     String openId =(String)request.getAttribute("openId");
+    Logger logger = Logger.getLogger(com.sonymobile.sonysales.servlet.NameListServlet.GetNameList.class.getName());
+    List<User> userList = null;
+    List<SupporterCount> supporterList = null;
+    String openId = null;
+    try{
+    	userList = (List<User>)request.getAttribute("userList");
+    	supporterList = (List<SupporterCount>)request.getAttribute("supporterList");
+    	openId = (String)request.getAttribute("openId");
+    	
+    	//String testString=null;
+    	//testString.substring(5);
+    }
+    catch (Exception e) {
+		logger.error("nameList.jsp->front-end-page in exception : " + e.getMessage());
+		response.sendRedirect(request.getContextPath()+"/jsp/errorhandler.jsp?errnum=0101&errmsg="+e.getMessage());
+	}
+     
     
     %>
     <div id="title" class="text_header" style="margin-left:2%;margin-top:10px;">索尼FIFA2014大奖榜单</div>
