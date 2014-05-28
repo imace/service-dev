@@ -19,9 +19,15 @@
   media="screen and (min-device-width:481px) and (max-device-width:540px) and (-webkit-device-pixel-ratio: 1.5)"
   href="<%=request.getContextPath()%>/css/site_360.css">
   
+  <!-- iphone4 & iphone4s -->
 <link rel="stylesheet" type="text/css"
-  media="screen and (min-device-width:541px) and (max-device-width:640px) and (-webkit-device-pixel-ratio: 2)"
+  media="screen and (min-device-width:541px) and (max-device-width:640px) and (max-device-height:960px) and (-webkit-device-pixel-ratio: 2)"
   href="<%=request.getContextPath()%>/css/site_320.css">
+  
+  <!-- iphone5 -->
+  <link rel="stylesheet" type="text/css"
+  media="screen and (min-device-width:541px) and (max-device-width:640px) and (min-device-height:961px) and (-webkit-device-pixel-ratio: 2)"
+  href="<%=request.getContextPath()%>/css/site_480.css">
   
 <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
