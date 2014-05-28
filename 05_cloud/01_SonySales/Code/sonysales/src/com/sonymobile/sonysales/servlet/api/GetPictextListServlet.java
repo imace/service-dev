@@ -46,7 +46,7 @@ public class GetPictextListServlet extends HttpServlet {
 
 			out.write(responseResult);
 		} else {
-			out.write("<xml><ErrorCode>0</ErrorCode><ErrorMessage>Unknow key.<ErrorMessage></xml>");
+			out.write("<xml><ErrorCode>1</ErrorCode><ErrorMessage>Unknow key.<ErrorMessage></xml>");
 		}
 	}
 
