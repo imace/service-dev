@@ -78,7 +78,11 @@
 	%>
 
 	<%
-		String openId = (String) request.getAttribute("id");
+		String openId = (String) request.getParameter("id");
+
+		if (openId == null) {
+			openId = (String) request.getAttribute("id");
+		}
 
 		if (openId == null) {
 			response.sendRedirect(request.getContextPath()+"/Description");
