@@ -30,6 +30,7 @@ public class Share extends HttpServlet {
 
 			if (attention.contains("0") && oauthtoidlink != null) {
 				response.sendRedirect(oauthtoidlink);
+				return;
 			}
 			response.setContentType("application/json;charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
@@ -37,6 +38,7 @@ public class Share extends HttpServlet {
 			if (request.getServerName().equals("localhost")) {
 				response.sendRedirect(request.getContextPath()
 						+ "/jsp/LaPopularity/SharePage.jsp");
+				return;
 			} else {
 				String url = "";
 				if (attention.contains("0")) {
@@ -46,6 +48,7 @@ public class Share extends HttpServlet {
 					url = request.getContextPath() + "/activitypage?id=" + toid;
 				}
 				response.sendRedirect(url);
+				return;
 			}
 		} catch (JSONException e) {
 			logger.error("Share->doPost() in exception : " + e.getMessage());

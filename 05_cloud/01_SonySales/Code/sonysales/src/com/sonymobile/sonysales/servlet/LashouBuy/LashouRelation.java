@@ -95,6 +95,7 @@ public class LashouRelation extends HttpServlet {
 
 					if (isredriect) {
 						response.sendRedirect(request.getContextPath()+"/lashoufollow?attention=0");
+						return;
 					}
 					
 					request.setAttribute("fromnickname", fromnickname == null ? "他" : fromnickname);
@@ -113,6 +114,7 @@ public class LashouRelation extends HttpServlet {
 				request.setAttribute("toimg", request.getContextPath() + "/img/head2.png");
 			}
 			request.getRequestDispatcher(navurl).forward(request, response);
+			return;
 		} catch (JSONException e) {
 			logger.error("LashouRelation->doPost() in exception : "
 					+ e.getMessage());
