@@ -206,8 +206,7 @@ td {
 
 	<!-- ===============================Layou Buy=============================== -->
 	<%
-		if (com.sonymobile.sonysales.util.Constant.properties.getProperty(
-					"LAYOUBUY_SWITCH").contains("ON")) {
+		if (com.sonymobile.sonysales.util.Constant.LAYOUBUY_SWITCH.contains("ON")) {
 	%>
 	<div id="pop_div" style="padding-top: 1px; margin-left: 2%">
 		<div id="pop_title"

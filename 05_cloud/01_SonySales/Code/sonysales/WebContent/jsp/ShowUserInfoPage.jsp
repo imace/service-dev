@@ -180,8 +180,7 @@
 
 			<!-- ===============================Layou Buy=============================== -->
 			<%
-				if (com.sonymobile.sonysales.util.Constant.properties.getProperty(
-						"LAYOUBUY_SWITCH").contains("ON")) {
+				if (com.sonymobile.sonysales.util.Constant.LAYOUBUY_SWITCH.contains("ON")) {
 			%>
 			<div class="text_subHeader"
 				style="margin-top: 10px; margin-bottom: 10px">我的奖金</div>
@@ -292,16 +291,14 @@
 
 				<!-- ===============================Layou Buy=============================== -->
 				<%
-					if (com.sonymobile.sonysales.util.Constant.properties.getProperty(
-							"LAYOUBUY_SWITCH").contains("ON")) {
+					if (com.sonymobile.sonysales.util.Constant.LAYOUBUY_SWITCH.contains("ON")) {
 				%>
 				<div class="form-group">
 					<%
 						}
 					%>
 					<%
-						if (com.sonymobile.sonysales.util.Constant.properties.getProperty(
-								"LAYOUBUY_SWITCH").contains("OFF")) {
+						if (com.sonymobile.sonysales.util.Constant.LAYOUBUY_SWITCH.contains("OFF")) {
 					%>
 					<div class="form-group" style="display: none;">
 						<%

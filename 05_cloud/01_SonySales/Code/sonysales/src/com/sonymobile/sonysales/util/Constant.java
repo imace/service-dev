@@ -15,6 +15,8 @@ public final class Constant {
 	public static final String OAUTH_REDIRECT_HOST; 
 	// The images host of this application 
 	public static final String SONY_FIFA_IMAGES_HOST;
+	// indicate that layou buy ON=(open function) or OFF=(close function)
+	public static final String LAYOUBUY_SWITCH;
 	
 	// The wechat account
 	public static final String APP_ID;
@@ -39,6 +41,7 @@ public final class Constant {
         HOST = properties.getProperty("HOST");
         OAUTH_REDIRECT_HOST = properties.getProperty("OAUTH_REDIRECT_HOST");
         SONY_FIFA_IMAGES_HOST = properties.getProperty("SONY_FIFA_IMAGES_HOST");
+        LAYOUBUY_SWITCH=properties.getProperty("LAYOUBUY_SWITCH");
 		APP_ID = properties.getProperty("APP_ID");
 		APP_SECRET = properties.getProperty("APP_SECRET");
 		

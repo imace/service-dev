@@ -36,7 +36,7 @@
 
 <style type="text/css">
 <%
-if (com.sonymobile.sonysales.util.Constant.properties.getProperty("LAYOUBUY_SWITCH").contains("ON")) { %> .btn {
+if (com.sonymobile.sonysales.util.Constant.LAYOUBUY_SWITCH.contains("ON")) { %> .btn {
 	border: none;
 	max-width: 20%;
 	width: 20%;
@@ -61,7 +61,7 @@ if (com.sonymobile.sonysales.util.Constant.properties.getProperty("LAYOUBUY_SWIT
 %>
 
 <%
-if (com.sonymobile.sonysales.util.Constant.properties.getProperty("LAYOUBUY_SWITCH").contains("OFF")) { %> .btn {
+if (com.sonymobile.sonysales.util.Constant.LAYOUBUY_SWITCH.contains("OFF")) { %> .btn {
 	border: none;
 	max-width: 20%;
 	width: 20%;
@@ -156,8 +156,7 @@ if (com.sonymobile.sonysales.util.Constant.properties.getProperty("LAYOUBUY_SWIT
 	
 	<!-- ===============================Layou Buy=============================== -->
 	<%
-		if (com.sonymobile.sonysales.util.Constant.properties.getProperty(
-				"LAYOUBUY_SWITCH").contains("ON")) {
+		if (com.sonymobile.sonysales.util.Constant.LAYOUBUY_SWITCH.contains("ON")) {
 	%>
 	<div id="bgImg_div">
 		<img src="<%=request.getContextPath()%>/img/main_panel_all_word.png"
@@ -189,8 +188,7 @@ if (com.sonymobile.sonysales.util.Constant.properties.getProperty("LAYOUBUY_SWIT
 	<!-- ===============================End=============================== -->
 	<!-- ===============================Layou Buy=============================== -->
 	<%
-		if (com.sonymobile.sonysales.util.Constant.properties.getProperty(
-				"LAYOUBUY_SWITCH").contains("OFF")) {
+		if (com.sonymobile.sonysales.util.Constant.LAYOUBUY_SWITCH.contains("OFF")) {
 	%>
 	<div id="bgImg_div">
 		<img src="<%=request.getContextPath()%>/img/main_panel_all_word_3.png"
@@ -214,6 +212,7 @@ if (com.sonymobile.sonysales.util.Constant.properties.getProperty("LAYOUBUY_SWIT
 	<%
 		}
 	%>
+	<!-- ===============================End=============================== -->
 	<script type="text/javascript">
 		$(document).ready(
 				function() {
