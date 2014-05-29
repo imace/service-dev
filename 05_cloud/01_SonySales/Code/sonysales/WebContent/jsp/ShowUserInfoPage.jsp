@@ -147,13 +147,13 @@
 			<div class="text_mainBody">
 				<hr style="border: 1px solid #22bff2; margin-top: -3px;">
 				多款<span class="text_highlight">限量手机</span>, 多种<span
-					class="text_highlight">满减券</span>等你来领取, 输入或者点击连接<span
-					class="text_highlight"><a href="http://t.cn/Rv5bM6T">http://t.cn/Rv5bM6T</a></span>进入活动详情,
-				多多优惠等你带回家!
+					class="text_highlight">满减券</span>等你来领取, PC端输入<span
+					class="text_highlight" style="font-size: 22px;">http://t.cn/Rv5bM6T</span>进入活动详情,
+				想要更快捷请点击<span class="text_highlight">下面按钮</span>, 多多优惠等你带回家!
 			</div>
-			<br> <a href="http://help.jd.com/help/question-60.html"
+			<br> <a href="http://t.cn/Rv5bM6T"
 				style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
-				class="btn_decoration btn-lg" role="button">点击获取优惠卷</a> <br>
+				class="btn_decoration btn-lg" role="button">手机获取优惠卷</a> <br>
 			<div>
 				<div class="text_subHeader"
 					style="margin-top: 10px; margin-bottom: 10px">我的人气</div>
@@ -179,7 +179,7 @@
 				<br> <a
 					href="<%=request.getContextPath()%>/getNameList?id=<%=openId%>"
 					style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
-					class="btn_decoration btn-lg" role="button">点击查看人气榜</a>
+					class="btn_decoration btn-lg" role="button">查看人气榜</a>
 			</div>
 
 			<br>
