@@ -149,7 +149,7 @@
 				<hr style="border: 1px solid #22bff2; margin-top: -3px;">
 				多款<span style="color: #cea14b">限量手机</span>, 多种<span
 					style="color: #cea14b">满减券</span>等你来领取, PC端输入<span
-					style="color: #cea14b">http://t.cn/Rv5bM6T</span>进入活动详情,
+					style="color: #cea14b;font-size:110%">http://t.cn/Rv5bM6T</span>进入活动详情,
 				想要更快捷请点击<span style="color: #cea14b">下面按钮</span>, 多多优惠等你带回家!
 			</div>
 			<br> <a href="http://t.cn/Rv5bM6T"
@@ -170,8 +170,8 @@
 					<%
 						if (Integer.parseInt(points) > 0) {
 					%>
-					恭喜! 您已经获得<span style="color: #cea14b"><%=Integer.parseInt(points) * 10000%>人气点</span>，目前排名<span
-						style="color: #cea14b">第<%=pointsOrder%>位
+					恭喜! 您已获得&nbsp;<span style="color: #cea14b"><%=Integer.parseInt(points)%></span>&nbsp;名好友支持，并获得&nbsp;<span style="color: #cea14b"><%=Integer.parseInt(points) * 10000%>&nbsp;人气点</span>，目前排名<span
+						style="color: #cea14b">第&nbsp;<%=pointsOrder%>&nbsp;位
 					</span>，继续加油哦！
 					<%
 						}
