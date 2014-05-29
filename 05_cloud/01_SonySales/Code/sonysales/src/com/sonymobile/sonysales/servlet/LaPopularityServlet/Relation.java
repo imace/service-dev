@@ -91,6 +91,7 @@ public class Relation extends HttpServlet {
 					
 					if (isredriect) {
 						response.sendRedirect(request.getContextPath()+"/sharepage?attention=0");
+						return;
 					}
 
 					request.setAttribute("fromnickname", fromnickname == null ? "他" : fromnickname);
@@ -109,6 +110,7 @@ public class Relation extends HttpServlet {
 				request.setAttribute("toimg", request.getContextPath() + "/img/head2.png");
 			}
 			request.getRequestDispatcher(navurl).forward(request, response);
+			return;
 		} catch (JSONException e) {
 			logger.error("Relation->doPost() in exception : " + e.getMessage());
 			e.printStackTrace();

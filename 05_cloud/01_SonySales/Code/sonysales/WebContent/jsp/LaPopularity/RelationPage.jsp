@@ -68,7 +68,7 @@
 						class="btn btn-primary btn-lg active" role="button">获取个人信息</a>
 				</div>
 				<div id="supportFriend" class="text-center">
-					<form action="<%=request.getContextPath()%>/sharepage">
+					<form action="<%=request.getContextPath()%>/sharepage" method="post">
 						<div class="row">
 							<div class="col-xs-4">
 								<div style="position: relative; padding: 1px;">
