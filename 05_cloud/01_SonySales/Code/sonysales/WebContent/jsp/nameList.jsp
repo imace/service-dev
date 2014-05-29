@@ -48,15 +48,15 @@ table {
 td {
     BORDER-RIGHT: medium none;
     BORDER-LEFT: medium none;
-    height: 55px;
-    padding-left: 10px;
-    font-size:1.5em;
+    height: 3.5em;
+    padding-left: 1em;
+    font-size:1.6em;
 }
 
 #poplist_div {
     overflow: hidden;
-    height: 280px;
-    border-top-width: 3px;
+    height: 36.5em;
+    border-top-width: 0.3em;
     border-top-color: #22bff2;
     margin-left: 2%;
     border-top-style: solid;
@@ -97,18 +97,18 @@ td {
         }
     %>
     <div id="title" class="text_header"
-        style="margin-left: 2%; margin-top: 10px;">索尼FIFA2014大奖榜单</div>
-    <div id="pop_div" style="padding-top: 1px; margin-left: 2%">
+        style="margin-left: 2%; margin-top: 0.7em;">索尼FIFA2014大奖榜单</div>
+    <div id="pop_div" style="padding-top: 0.1em; margin-left: 2%">
         <div id="pop_title"
-            style="height: 40px; text-align: left; float: left">
+            style="height: 4em; text-align: left; float: left">
             <div class="text_subHeader"
-                style="padding-top: 12px; padding-right: 30px">人气榜(前8名得大奖)</div>
+                style="padding-top: 1.2em; padding-right: 30px">人气榜(前8名得大奖)</div>
         </div>
         <div id="pop_image"
-            style="height: 40px; text-align: right; float: right; margin-right: 13px">
+            style="height: 4em; text-align: right; float: right; margin-right: 13px">
             <div>
                 <img src="<%=request.getContextPath()%>/img/ranking1.png"
-                    style="height: 40px; float: left; margin-left: 10px;" />
+                    style="height: 4em; float: left; margin-left: 10px;" />
             </div>
         </div>
     </div>
@@ -142,7 +142,7 @@ td {
                 %>
                 <tr>
                     <td id="pop_point_td" colspan=3
-                        style="height: 55px; text-align: center; border-top: medium none;"><div
+                        style="height: 3.5em; text-align: center; border-top: medium none;"><div
                             style="font-size: 1em">
                             <font style="color: rgb(128, 124, 115)">人气排名获大奖，</font><font
                                 style="color: #e82827">猛点下面按钮！</font>
@@ -154,7 +154,7 @@ td {
                 <tr>
                     <td id="pop_img_td"
                         style="text-align: center; border-top: medium none;"><div
-                            style="margin: 35px; font-size: 1em">
+                            style="margin: 3.5em; font-size: 1em">
                             <font style="color: rgb(128, 124, 115)">人气排名获大奖，</font><font
                                 style="color: #e82827">猛点下面按钮！</font>
                         </div>
@@ -200,7 +200,7 @@ td {
         </div>
     </div>
     <div id="rob1"
-        style="max-width: 95%; margin-bottom: 30px; margin-left: 2.5%; margin-top: 10px; height: 5em; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
+        style="max-width: 95%; margin-bottom: 30px; margin-left: 2.5%; margin-top: 1em; height: 5em; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
         onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/activitypage?id=<%=openId%>'">
         <div style="font-size: 1.8em; color: white; margin-top: 0.9em">拉人气</div>
     </div>
@@ -334,10 +334,16 @@ td {
       var poplist_div1=document.getElementById("poplist_div1");  
       var poplist_div2=document.getElementById("poplist_div2");
       var poplist_div=document.getElementById("poplist_div"); 
-
+      <%
+      if (com.sonymobile.sonysales.util.Constant.properties.getProperty(
+                  "LAYOUBUY_SWITCH").contains("ON")) {
+  %>
       var handlelist_div1=document.getElementById("handlelist_div1");  
       var handlelist_div2=document.getElementById("handlelist_div2");
       var handlelist_div=document.getElementById("handlelist_div"); 
+      <%
+      }
+  %>
       var speed=50;//设置向上轮动的速度  
       
       $(document).ready(function(){
@@ -359,12 +365,18 @@ td {
                   //var text = ' poplist_div1.offsetHeight:' + poplist_div1.offsetHeight + ' poplist_div.offsetHeight:' + poplist_div.offsetHeight;  
                   //document.getElementById("result").innerHTML = text; 
                   }
-         
+          <%
+          if (com.sonymobile.sonysales.util.Constant.properties.getProperty(
+                      "LAYOUBUY_SWITCH").contains("ON")) {
+      %>
           if(handlelist_div1.offsetHeight>handlelist_div.offsetHeight) {
               document.getElementById("handlelist_div2").style.display="";
               } else {
                   $("#handle_point_td").css("height", (handlelist_div.offsetHeight-handlelist_div1.offsetHeight+55)+"px");
                   }
+          <%
+          }
+      %>
          
           });
 
@@ -377,14 +389,22 @@ td {
           }else{  
               poplist_div.scrollTop++;  
          }  
+          <%
+          if (com.sonymobile.sonysales.util.Constant.properties.getProperty(
+                      "LAYOUBUY_SWITCH").contains("ON")) {
+      %>
           if(handlelist_div1.offsetHeight-handlelist_div.scrollTop<=0){  
               handlelist_div.scrollTop=0;  
           }else{  
               handlelist_div.scrollTop++;  
          }  
+          handlelist_div.scrollTop++; 
+          <%
+          }
+      %>
          
                   poplist_div.scrollTop++;  
-                  handlelist_div.scrollTop++; 
+                 
                   //var text = ' pop_table1.offsetHeight:' + pop_table1.offsetHeight + ' handlelist_div.offsetHeight:' + handlelist_div.offsetHeight + " poplist_div.scrollTop:" + poplist_div.scrollTop;  
                   //document.getElementById("result").innerHTML = text;  
 
