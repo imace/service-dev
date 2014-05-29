@@ -8,34 +8,35 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
 <script src="<%=request.getContextPath()%>/js/jquery-1.7.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css"
   media="screen and (max-device-width:480px)"
-  href="<%=request.getContextPath()%>/css/site_320.css">
+  href="<%=request.getContextPath()%>/css/320.css">
   
 <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:481px) and (max-device-width:540px) and (-webkit-device-pixel-ratio: 1.5)"
-  href="<%=request.getContextPath()%>/css/site_360.css">
+  href="<%=request.getContextPath()%>/css/360.css">
   
   <!-- iphone4 & iphone4s -->
 <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:541px) and (max-device-width:640px) and (max-device-height:960px) and (-webkit-device-pixel-ratio: 2)"
-  href="<%=request.getContextPath()%>/css/site_320.css">
+  href="<%=request.getContextPath()%>/css/320.css">
   
   <!-- iphone5 -->
   <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:541px) and (max-device-width:640px) and (min-device-height:961px) and (-webkit-device-pixel-ratio: 2)"
-  href="<%=request.getContextPath()%>/css/site_480.css">
+  href="<%=request.getContextPath()%>/css/480.css">
   
 <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
-  href="<%=request.getContextPath()%>/css/site_480.css">
+  href="<%=request.getContextPath()%>/css/480.css">
   
 <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:721px) and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
-  href="<%=request.getContextPath()%>/css/site_360.css">
+  href="<%=request.getContextPath()%>/css/360.css">
 <title>拉友买!他得实惠,我得奖金!</title>
 </head>
-<body style="margin:0;background-color:#f8f7f5">
+<body class="base_font_size" style="margin:0;background-color:#f8f7f5">
 	<%
 		String openid =(String)request.getAttribute("openid");
 		String nickname =(String)request.getAttribute("nickname");
@@ -83,23 +84,23 @@
                <div style="position:relative;">
                <img src="<%=request.getContextPath()%>/img/product_top_all_1.png" style="width:100%;max-width:100%;margin-top:0" id="top_img"/><div id="click_div" onclick="clickDiv()" style="position:absolute;width:20%;height:80%;right:7%;top:15%;"></div>
                </div>
-            <div  style="background-color:white;">
-             <div id="buy" style="width:96%;max-width:96%;margin-left:2%;margin-top:-4px;height:51px;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="draw()">
-                <div style="font-size:larger;color:white;padding-top:15px" id="buyNow">使用优惠券立即购买</div>
+             <div  style="background-color:white;">
+             <div id="buy" style="width:96%;max-width:96%;margin-left:2%;margin-top:-4px;height:5.1em;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="draw()">
+                <div style="font-size:1.8em;color:white;padding-top:0.9em" id="buyNow" >使用优惠券立即购买</div>
              </div>
-         </div>
-            <div id="content" style="display:none;background-color:white;height:62px">
-                <div id="bttons" style="max-width:96%;width:96%;margin-left:2%;padding-top:10px;">
-                    <div id="pcbuy" style="max-width:48%;width:48%;height:50px;text-align:center;border:1px solid #bfbfbf;float:left" onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/jsp/productPage.jsp'">
-                        <div><img src="<%=request.getContextPath()%>/img/http_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:12px"/></div>
-                        <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">PC购买</div>
+            </div>
+            <div id="content" style="display:none;background-color:white;height:6.2em">
+                <div id="bttons" style="max-width:96%;width:96%;margin-left:2%;padding-top:1em;">
+                    <div id="pcbuy" style="max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #bfbfbf;float:left" onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/jsp/productPage.jsp'">
+                        <div><img src="<%=request.getContextPath()%>/img/http_icn.png" style="height:3em;float:left;margin-left:10px;padding-top:1.2em"/></div>
+                        <div style="font-size:1.8em;color:rgb(116, 105, 105);padding-top:0.9em;padding-right:3em">PC购买</div>
                     </div>
-                    <div id="discount" style="max-width:48%;width:48%;height:50px;text-align:center;border:1px solid #bfbfbf;float:right" onclick="window.location.href='http://passport.jd.com/new/login.aspx?ReturnUrl=http%3A%2F%2Fquan.jd.com%2Fuser_quan.action'">
-                        <div><img src="<%=request.getContextPath()%>/img/discount_icn.png" style="height:30px;float:left;margin-left:10px;padding-top:10px"/></div>
-                        <div style="font-size:larger;color:rgb(116, 105, 105);padding-top:15px;padding-right:30px">优惠券</div>
+                    <div id="discount" style="max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #bfbfbf;float:right" onclick="window.location.href='http://passport.jd.com/new/login.aspx?ReturnUrl=http%3A%2F%2Fquan.jd.com%2Fuser_quan.action'">
+                        <div><img src="<%=request.getContextPath()%>/img/discount_icn.png" style="height:3em;float:left;margin-left:10px;padding-top:1em"/></div>
+                        <div style="font-size:1.8em;color:rgb(116, 105, 105);padding-top:0.9em;padding-right:3em">优惠券</div>
                     </div>
                 </div>
-    </div>
+            </div>
     <div style="background-color:white;height:10px"></div>
 </div>
         

@@ -13,31 +13,32 @@
 <link rel="stylesheet" href="http://lib.sinaapp.com/js/bootstrap/3.0.0/css/bootstrap-theme.min.css">
 <script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
 <script src="http://lib.sinaapp.com/js/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css"
   media="screen and (max-device-width:480px)"
-  href="<%=request.getContextPath()%>/css/site_320.css">
+  href="<%=request.getContextPath()%>/css/320.css">
   
 <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:481px) and (max-device-width:540px) and (-webkit-device-pixel-ratio: 1.5)"
-  href="<%=request.getContextPath()%>/css/site_360.css">
+  href="<%=request.getContextPath()%>/css/360.css">
   
   <!-- iphone4 & iphone4s -->
 <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:541px) and (max-device-width:640px) and (max-device-height:960px) and (-webkit-device-pixel-ratio: 2)"
-  href="<%=request.getContextPath()%>/css/site_320.css">
+  href="<%=request.getContextPath()%>/css/320.css">
   
   <!-- iphone5 -->
   <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:541px) and (max-device-width:640px) and (min-device-height:961px) and (-webkit-device-pixel-ratio: 2)"
-  href="<%=request.getContextPath()%>/css/site_480.css">
+  href="<%=request.getContextPath()%>/css/480.css">
   
 <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
-  href="<%=request.getContextPath()%>/css/site_480.css">
+  href="<%=request.getContextPath()%>/css/480.css">
   
 <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:721px) and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
-  href="<%=request.getContextPath()%>/css/site_360.css">
+  href="<%=request.getContextPath()%>/css/360.css">
 <title>基本信息</title>
 <style type="text/css">
 .btn_decoration:hover,.btn_decoration:focus {
@@ -45,7 +46,7 @@
 }
 </style>
 </head>
-<body>
+<body class="base_font_size">
 	<%
 		String openId = (String) request.getAttribute("openId");
 		String points = ((String) request.getAttribute("points")).trim();
@@ -57,7 +58,7 @@
 	
 	<div class="container"
 		style="background: url(<%=request.getContextPath()%>/img/stamp.png) right bottom no-repeat; background-size: 55%; margin: 10px;">
-		<div class="row" style="font-family: Droid Sans Fallback;">
+		<div class="row base_font_size" style="font-family: Droid Sans Fallback;">
 			<div id="title" class="text_header" style="margin-bottom: 10px">您的好友(<%=friendname%>)正在参加索尼FIFA活动</div>
 			<div>
 				<div class="text_subHeader"
@@ -74,8 +75,8 @@
 					<%
 						if (Integer.parseInt(points) > 0) {
 					%>
-					(<%=friendname%>)已经获得<span class="text_highlight"><%=points%>人气点</span>，目前排名<span
-						class="text_highlight">第<%=pointsOrder%>位
+					(<%=friendname%>)已经获得<span style="color: #cea14b"><%=points%>人气点</span>，目前排名<span
+						style="color: #cea14b">第<%=pointsOrder%>位
 					</span>，继续加油哦！
 					<%
 						}

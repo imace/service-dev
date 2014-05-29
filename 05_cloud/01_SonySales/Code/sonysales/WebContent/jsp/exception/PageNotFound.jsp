@@ -6,12 +6,12 @@
 <meta name="viewport"
 	content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
 <link rel="stylesheet"
-	href="http://lib.sinaapp.com/js/bootstrap/3.0.0/css/bootstrap.min.css">
+	href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
 <link rel="stylesheet"
-	href="http://lib.sinaapp.com/js/bootstrap/3.0.0/css/bootstrap-theme.min.css">
-<script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
+	href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
+<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
 <script
-	src="http://lib.sinaapp.com/js/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <title>页面不存在</title>
 </head>
 <body>

@@ -16,31 +16,32 @@
 <script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
 <script
 	src="http://lib.sinaapp.com/js/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css"
-	media="screen and (max-device-width:480px)"
-	href="<%=request.getContextPath()%>/css/site_320.css">
-
+  media="screen and (max-device-width:480px)"
+  href="<%=request.getContextPath()%>/css/320.css">
+  
 <link rel="stylesheet" type="text/css"
-	media="screen and (min-device-width:481px) and (max-device-width:540px) and (-webkit-device-pixel-ratio: 1.5)"
-	href="<%=request.getContextPath()%>/css/site_360.css">
-
-<!-- iphone4 & iphone4s -->
+  media="screen and (min-device-width:481px) and (max-device-width:540px) and (-webkit-device-pixel-ratio: 1.5)"
+  href="<%=request.getContextPath()%>/css/360.css">
+  
+  <!-- iphone4 & iphone4s -->
 <link rel="stylesheet" type="text/css"
-	media="screen and (min-device-width:541px) and (max-device-width:640px) and (max-device-height:960px) and (-webkit-device-pixel-ratio: 2)"
-	href="<%=request.getContextPath()%>/css/site_320.css">
-
-<!-- iphone5 -->
+  media="screen and (min-device-width:541px) and (max-device-width:640px) and (max-device-height:960px) and (-webkit-device-pixel-ratio: 2)"
+  href="<%=request.getContextPath()%>/css/320.css">
+  
+  <!-- iphone5 -->
+  <link rel="stylesheet" type="text/css"
+  media="screen and (min-device-width:541px) and (max-device-width:640px) and (min-device-height:961px) and (-webkit-device-pixel-ratio: 2)"
+  href="<%=request.getContextPath()%>/css/480.css">
+  
 <link rel="stylesheet" type="text/css"
-	media="screen and (min-device-width:541px) and (max-device-width:640px) and (min-device-height:961px) and (-webkit-device-pixel-ratio: 2)"
-	href="<%=request.getContextPath()%>/css/site_480.css">
-
+  media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
+  href="<%=request.getContextPath()%>/css/480.css">
+  
 <link rel="stylesheet" type="text/css"
-	media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
-	href="<%=request.getContextPath()%>/css/site_480.css">
-
-<link rel="stylesheet" type="text/css"
-	media="screen and (min-device-width:721px) and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
-	href="<%=request.getContextPath()%>/css/site_360.css">
+  media="screen and (min-device-width:721px) and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
+  href="<%=request.getContextPath()%>/css/360.css">
 <title>我的战况</title>
 <style type="text/css">
 .btn_decoration:hover,.btn_decoration:focus {
@@ -140,16 +141,16 @@
 
 	<div class="container"
 		style="background: url(<%=request.getContextPath()%>/img/stamp.png) right bottom no-repeat; background-size: 55%; margin: 10px;">
-		<div class="row" style="font-family: Droid Sans Fallback;">
+		<div class="row base_font_size" style="font-family: Droid Sans Fallback;">
 			<div id="title" class="text_header" style="margin-bottom: 10px">我的战况</div>
 			<div class="text_subHeader"
 				style="margin-top: 10px; margin-bottom: 10px">我的优惠卷</div>
 			<div class="text_mainBody">
 				<hr style="border: 1px solid #22bff2; margin-top: -3px;">
-				多款<span class="text_highlight">限量手机</span>, 多种<span
-					class="text_highlight">满减券</span>等你来领取, PC端输入<span
-					class="text_highlight" style="font-size: 22px;">http://t.cn/Rv5bM6T</span>进入活动详情,
-				想要更快捷请点击<span class="text_highlight">下面按钮</span>, 多多优惠等你带回家!
+				多款<span style="color: #cea14b">限量手机</span>, 多种<span
+					style="color: #cea14b">满减券</span>等你来领取, PC端输入<span
+					style="color: #cea14b">http://t.cn/Rv5bM6T</span>进入活动详情,
+				想要更快捷请点击<span style="color: #cea14b">下面按钮</span>, 多多优惠等你带回家!
 			</div>
 			<br> <a href="http://t.cn/Rv5bM6T"
 				style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
@@ -162,15 +163,15 @@
 					<%
 						if (Integer.parseInt(points) == 0) {
 					%>
-					很抱歉, 您获得<span class="text_highlight">0人气点</span>，目前尚无排名，赶快加油吧！
+					很抱歉, 您获得<span style="color: #cea14b">0人气点</span>，目前尚无排名，赶快加油吧！
 					<%
 						}
 					%>
 					<%
 						if (Integer.parseInt(points) > 0) {
 					%>
-					恭喜! 您已经获得<span class="text_highlight"><%=Integer.parseInt(points) * 10000%>人气点</span>，目前排名<span
-						class="text_highlight">第<%=pointsOrder%>位
+					恭喜! 您已经获得<span style="color: #cea14b"><%=Integer.parseInt(points) * 10000%>人气点</span>，目前排名<span
+						style="color: #cea14b">第<%=pointsOrder%>位
 					</span>，继续加油哦！
 					<%
 						}

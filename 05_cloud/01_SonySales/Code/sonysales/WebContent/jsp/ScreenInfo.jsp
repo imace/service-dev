@@ -6,34 +6,35 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
 <script src="<%=request.getContextPath()%>/js/jquery-1.7.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css"
   media="screen and (max-device-width:480px)"
-  href="<%=request.getContextPath()%>/css/site_320.css">
+  href="<%=request.getContextPath()%>/css/320.css">
   
 <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:481px) and (max-device-width:540px) and (-webkit-device-pixel-ratio: 1.5)"
-  href="<%=request.getContextPath()%>/css/site_360.css">
+  href="<%=request.getContextPath()%>/css/360.css">
   
   <!-- iphone4 & iphone4s -->
 <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:541px) and (max-device-width:640px) and (max-device-height:960px) and (-webkit-device-pixel-ratio: 2)"
-  href="<%=request.getContextPath()%>/css/site_320.css">
+  href="<%=request.getContextPath()%>/css/320.css">
   
   <!-- iphone5 -->
   <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:541px) and (max-device-width:640px) and (min-device-height:961px) and (-webkit-device-pixel-ratio: 2)"
-  href="<%=request.getContextPath()%>/css/site_480.css">
+  href="<%=request.getContextPath()%>/css/480.css">
   
 <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
-  href="<%=request.getContextPath()%>/css/site_480.css">
+  href="<%=request.getContextPath()%>/css/480.css">
   
 <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:721px) and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
-  href="<%=request.getContextPath()%>/css/site_360.css">
+  href="<%=request.getContextPath()%>/css/360.css">
 <title>Screen Info</title>
 </head>
-<body>
+<body class="base_font_size">
 	<div class="text_highlight common_style">
 		<br>网页可见区域宽：
 		<script>

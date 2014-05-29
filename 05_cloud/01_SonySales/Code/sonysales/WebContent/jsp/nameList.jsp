@@ -11,323 +11,326 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
 <script src="<%=request.getContextPath()%>/js/jquery-1.7.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css"
   media="screen and (max-device-width:480px)"
-  href="<%=request.getContextPath()%>/css/site_320.css">
+  href="<%=request.getContextPath()%>/css/320.css">
   
 <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:481px) and (max-device-width:540px) and (-webkit-device-pixel-ratio: 1.5)"
-  href="<%=request.getContextPath()%>/css/site_360.css">
+  href="<%=request.getContextPath()%>/css/360.css">
   
   <!-- iphone4 & iphone4s -->
 <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:541px) and (max-device-width:640px) and (max-device-height:960px) and (-webkit-device-pixel-ratio: 2)"
-  href="<%=request.getContextPath()%>/css/site_320.css">
+  href="<%=request.getContextPath()%>/css/320.css">
   
   <!-- iphone5 -->
   <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:541px) and (max-device-width:640px) and (min-device-height:961px) and (-webkit-device-pixel-ratio: 2)"
-  href="<%=request.getContextPath()%>/css/site_480.css">
+  href="<%=request.getContextPath()%>/css/480.css">
   
 <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:641px) and (max-device-width:720px) and (-webkit-device-pixel-ratio: 1.5)"
-  href="<%=request.getContextPath()%>/css/site_480.css">
+  href="<%=request.getContextPath()%>/css/480.css">
   
 <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:721px) and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
-  href="<%=request.getContextPath()%>/css/site_360.css">
+  href="<%=request.getContextPath()%>/css/360.css">
 <title>激情无敌!人气大奖榜</title>
 <style type="text/css">
 table {
-	border-style: solid;
-	BORDER-COLLAPSE: collapse;
-	border-Color: #D1CCC8;
+    border-style: solid;
+    BORDER-COLLAPSE: collapse;
+    border-Color: #D1CCC8;
 }
 
 td {
-	BORDER-RIGHT: medium none;
-	BORDER-LEFT: medium none;
-	height: 55px;
-	padding-left: 10px
+    BORDER-RIGHT: medium none;
+    BORDER-LEFT: medium none;
+    height: 55px;
+    padding-left: 10px;
+    font-size:1.5em;
 }
 
 #poplist_div {
-	overflow: hidden;
-	height: 280px;
-	border-top-width: 3px;
-	border-top-color: #22bff2;
-	margin-left: 2%;
-	border-top-style: solid;
-	max-width: 96%;
-	width: 96%
+    overflow: hidden;
+    height: 280px;
+    border-top-width: 3px;
+    border-top-color: #22bff2;
+    margin-left: 2%;
+    border-top-style: solid;
+    max-width: 96%;
+    width: 96%
 }
 
 #handlelist_div {
-	overflow: hidden;
-	height: 280px;
-	border-top-width: 3px;
-	border-top-color: #22bff2;
-	margin-left: 2%;
-	border-top-style: solid;
-	max-width: 96%;
-	width: 96%
+    overflow: hidden;
+    height: 280px;
+    border-top-width: 3px;
+    border-top-color: #22bff2;
+    margin-left: 2%;
+    border-top-style: solid;
+    max-width: 96%;
+    width: 96%
 }
 </style>
 </head>
-<body>
-	<!--<div id="result" style="border:2px solid red; color:red;">未触发事件！</div> -->
-	<%
-		Logger logger = Logger.getLogger(com.sonymobile.sonysales.servlet.NameListServlet.GetNameList.class.getName());
-	    List<User> userList = null;
-	    List<SupporterCount> supporterList = null;
-	    String openId = null;
-	    try{
-	    	userList = (List<User>)request.getAttribute("userList");
-	    	supporterList = (List<SupporterCount>)request.getAttribute("supporterList");
-	    	openId = (String)request.getAttribute("openId");
-	    	
-	    	//String testString=null;
-	    	//testString.substring(5);
-	    }
-	    catch (Exception e) {
-			logger.error("nameList.jsp->front-end-page in exception : " + e.getMessage());
-			response.sendRedirect(request.getContextPath()+"/jsp/errorhandler.jsp?errnum=0101&errmsg="+e.getMessage());
-		}
-	%>
-	<div id="title" class="text_header"
-		style="margin-left: 2%; margin-top: 10px;">索尼FIFA2014大奖榜单</div>
-	<div id="pop_div" style="padding-top: 1px; margin-left: 2%">
-		<div id="pop_title"
-			style="height: 40px; text-align: left; float: left">
-			<div class="text_subHeader"
-				style="padding-top: 12px; padding-right: 30px">人气榜(前8名得大奖)</div>
-		</div>
-		<div id="pop_image"
-			style="height: 40px; text-align: right; float: right; margin-right: 13px">
-			<div>
-				<img src="<%=request.getContextPath()%>/img/ranking1.png"
-					style="height: 40px; float: left; margin-left: 10px;" />
-			</div>
-		</div>
-	</div>
-	<div id="poplist_div">
-		<div id="poplist_div1">
-			<table id="pop_table1" style="max-width: 100%; width: 100%"
-				cellSpacing=0 cellPadding=0 align=center border=1>
-				<%
-					if(userList!=null&&userList.size()!=0) {
-				       for(int i=0;i<userList.size();i++) {
-				           if(i<3) {
-				%>
-				<tr>
-					<td><div style="color: #e82827"><%=i+1%></div></td>
-					<td><div style="color: #e82827"><%=userList.get(i).getNickname()%></div></td>
-					<td>已经获得<font style="color: rgb(190, 155, 43)"><%=userList.get(i).getPoints()%></font>个好友支持了！
-					</td>
-				</tr>
-				<%
-					} else {
-				%>
-				<tr>
-					<td><%=i+1%></td>
-					<td><%=userList.get(i).getNickname()%></td>
-					<td>已经获得<font style="color: rgb(190, 155, 43)"><%=userList.get(i).getPoints()%></font>个好友支持了！
-					</td>
-				</tr>
-				<%
-					}
-				       }
-				%>
-				<tr>
-					<td id="pop_point_td" colspan=3
-						style="height: 55px; text-align: center; border-top: medium none;"><div
-							style="font-size: large">
-							<font style="color: rgb(128, 124, 115)">人气排名获大奖，</font><font
-								style="color: #e82827">猛点下面按钮！</font>
-						</div></td>
-				</tr>
-				<%
-					} else {
-				%>
-				<tr>
-					<td id="pop_img_td"
-						style="text-align: center; border-top: medium none;"><div
-							style="margin: 35px; font-size: large">
-							<font style="color: rgb(128, 124, 115)">人气排名获大奖，</font><font
-								style="color: #e82827">猛点下面按钮！</font>
-						</div>
-						<div>
-							<img src="<%=request.getContextPath()%>/img/product_3.jpg" style="height: 165px" id="pop_img" />
-						</div></td>
-				</tr>
-				<%
-					}
-				%>
-			</table>
-		</div>
-		<div id="poplist_div2" style="display: none">
-			<table id="pop_table2" style="max-width: 100%; width: 100%"
-				cellSpacing=0 cellPadding=0 align=center border=1
-				style="border-top:aliceblue">
-				<%
-					if(userList!=null&&userList.size()!=0) {
-				       for(int i=0;i<userList.size();i++) {
-				           if(i<3) {
-				%>
-				<tr>
-					<td><div style="color: #e82827"><%=i+1%></div></td>
-					<td><div style="color: #e82827"><%=userList.get(i).getNickname()%></div></td>
-					<td>已经获得<font style="color: rgb(190, 155, 43)"><%=userList.get(i).getPoints()%></font>个好友支持了！
-					</td>
-				</tr>
-				<%
-					} else {
-				%>
-				<tr>
-					<td><%=i+1%></td>
-					<td><%=userList.get(i).getNickname()%></td>
-					<td>已经获得<font style="color: rgb(190, 155, 43)"><%=userList.get(i).getPoints()%></font>个好友支持了！
-					</td>
-				</tr>
-				<%
-					}
-				       }
-				   }
-				%>
-			</table>
-		</div>
-	</div>
-	<div id="rob1"
-		style="max-width: 95%; margin-bottom: 30px; margin-left: 2.5%; margin-top: 10px; height: 50px; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
-		onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/activitypage?id=<%=openId%>'">
-		<div style="font-size: larger; color: white; margin-top: 12px">拉人气</div>
-	</div>
+<body class="base_font_size">
+    <!--<div id="result" style="border:2px solid red; color:red;">未触发事件！</div> -->
+    <%
+        Logger logger = Logger.getLogger(com.sonymobile.sonysales.servlet.NameListServlet.GetNameList.class.getName());
+        List<User> userList = null;
+        List<SupporterCount> supporterList = null;
+        String openId = null;
+        try{
+            userList = (List<User>)request.getAttribute("userList");
+            supporterList = (List<SupporterCount>)request.getAttribute("supporterList");
+            openId = (String)request.getAttribute("openId");
+            
+            //String testString=null;
+            //testString.substring(5);
+        }
+        catch (Exception e) {
+            logger.error("nameList.jsp->front-end-page in exception : " + e.getMessage());
+            response.sendRedirect(request.getContextPath()+"/jsp/errorhandler.jsp?errnum=0101&errmsg="+e.getMessage());
+        }
+    %>
+    <div id="title" class="text_header"
+        style="margin-left: 2%; margin-top: 10px;">索尼FIFA2014大奖榜单</div>
+    <div id="pop_div" style="padding-top: 1px; margin-left: 2%">
+        <div id="pop_title"
+            style="height: 40px; text-align: left; float: left">
+            <div class="text_subHeader"
+                style="padding-top: 12px; padding-right: 30px">人气榜(前8名得大奖)</div>
+        </div>
+        <div id="pop_image"
+            style="height: 40px; text-align: right; float: right; margin-right: 13px">
+            <div>
+                <img src="<%=request.getContextPath()%>/img/ranking1.png"
+                    style="height: 40px; float: left; margin-left: 10px;" />
+            </div>
+        </div>
+    </div>
+    <div id="poplist_div">
+        <div id="poplist_div1">
+            <table id="pop_table1" style="max-width: 100%; width: 100%"
+                cellSpacing=0 cellPadding=0 align=center border=1>
+                <%
+                    if(userList!=null&&userList.size()!=0) {
+                       for(int i=0;i<userList.size();i++) {
+                           if(i<3) {
+                %>
+                <tr>
+                    <td><div style="color: #e82827"><%=i+1%></div></td>
+                    <td><div style="color: #e82827"><%=userList.get(i).getNickname()%></div></td>
+                    <td>已经获得<font style="color: rgb(190, 155, 43)"><%=userList.get(i).getPoints()%></font>个好友支持了！
+                    </td>
+                </tr>
+                <%
+                    } else {
+                %>
+                <tr>
+                    <td><%=i+1%></td>
+                    <td><%=userList.get(i).getNickname()%></td>
+                    <td>已经获得<font style="color: rgb(190, 155, 43)"><%=userList.get(i).getPoints()%></font>个好友支持了！
+                    </td>
+                </tr>
+                <%
+                    }
+                       }
+                %>
+                <tr>
+                    <td id="pop_point_td" colspan=3
+                        style="height: 55px; text-align: center; border-top: medium none;"><div
+                            style="font-size: 1em">
+                            <font style="color: rgb(128, 124, 115)">人气排名获大奖，</font><font
+                                style="color: #e82827">猛点下面按钮！</font>
+                        </div></td>
+                </tr>
+                <%
+                    } else {
+                %>
+                <tr>
+                    <td id="pop_img_td"
+                        style="text-align: center; border-top: medium none;"><div
+                            style="margin: 35px; font-size: 1em">
+                            <font style="color: rgb(128, 124, 115)">人气排名获大奖，</font><font
+                                style="color: #e82827">猛点下面按钮！</font>
+                        </div>
+                        <div>
+                            <img src="<%=request.getContextPath()%>/img/product_3.jpg" style="height: 165px" id="pop_img" />
+                        </div></td>
+                </tr>
+                <%
+                    }
+                %>
+            </table>
+        </div>
+        <div id="poplist_div2" style="display: none">
+            <table id="pop_table2" style="max-width: 100%; width: 100%"
+                cellSpacing=0 cellPadding=0 align=center border=1
+                style="border-top:aliceblue">
+                <%
+                    if(userList!=null&&userList.size()!=0) {
+                       for(int i=0;i<userList.size();i++) {
+                           if(i<3) {
+                %>
+                <tr>
+                    <td><div style="color: #e82827"><%=i+1%></div></td>
+                    <td><div style="color: #e82827"><%=userList.get(i).getNickname()%></div></td>
+                    <td>已经获得<font style="color: rgb(190, 155, 43)"><%=userList.get(i).getPoints()%></font>个好友支持了！
+                    </td>
+                </tr>
+                <%
+                    } else {
+                %>
+                <tr>
+                    <td><%=i+1%></td>
+                    <td><%=userList.get(i).getNickname()%></td>
+                    <td>已经获得<font style="color: rgb(190, 155, 43)"><%=userList.get(i).getPoints()%></font>个好友支持了！
+                    </td>
+                </tr>
+                <%
+                    }
+                       }
+                   }
+                %>
+            </table>
+        </div>
+    </div>
+    <div id="rob1"
+        style="max-width: 95%; margin-bottom: 30px; margin-left: 2.5%; margin-top: 10px; height: 5em; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
+        onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/activitypage?id=<%=openId%>'">
+        <div style="font-size: 1.8em; color: white; margin-top: 0.9em">拉人气</div>
+    </div>
 
 
-	<!-- ===============================Layou Buy=============================== -->
-	<%
-		if (com.sonymobile.sonysales.util.Constant.LAYOUBUY_SWITCH.contains("ON")) {
-	%>
-	<div id="pop_div" style="padding-top: 1px; margin-left: 2%">
-		<div id="pop_title"
-			style="height: 40px; text-align: left; float: left">
-			<div class="text_subHeader"
-				style="padding-top: 12px; padding-right: 30px">奖金榜</div>
-		</div>
-		<div id="pop_image"
-			style="height: 40px; text-align: right; float: right; margin-right: 13px">
-			<div>
-				<img src="<%=request.getContextPath()%>/img/ranking2.png"
-					style="height: 40px; float: left; margin-left: 10px;" />
-			</div>
-		</div>
-	</div>
-	<div id="handlelist_div">
-		<div id="handlelist_div1">
-			<table id="handle_table1" style="max-width: 100%; width: 100%"
-				cellSpacing=0 cellPadding=0 align=center border=1>
-				<%
-					if(supporterList!=null&&supporterList.size()!=0) {
-				       for(int i=0;i<supporterList.size();i++) {
-				           if(i<3) {
-				%>
+    <!-- ===============================Layou Buy=============================== -->
+    <%
+        if (com.sonymobile.sonysales.util.Constant.properties.getProperty(
+                    "LAYOUBUY_SWITCH").contains("ON")) {
+    %>
+    <div id="pop_div" style="padding-top: 1px; margin-left: 2%">
+        <div id="pop_title"
+            style="height: 40px; text-align: left; float: left">
+            <div class="text_subHeader"
+                style="padding-top: 12px; padding-right: 30px">奖金榜</div>
+        </div>
+        <div id="pop_image"
+            style="height: 40px; text-align: right; float: right; margin-right: 13px">
+            <div>
+                <img src="<%=request.getContextPath()%>/img/ranking2.png"
+                    style="height: 40px; float: left; margin-left: 10px;" />
+            </div>
+        </div>
+    </div>
+    <div id="handlelist_div">
+        <div id="handlelist_div1">
+            <table id="handle_table1" style="max-width: 100%; width: 100%"
+                cellSpacing=0 cellPadding=0 align=center border=1>
+                <%
+                    if(supporterList!=null&&supporterList.size()!=0) {
+                       for(int i=0;i<supporterList.size();i++) {
+                           if(i<3) {
+                %>
 
-				<tr>
-					<td style="height: 55px;"><div style="color: #e82827"><%=i+1%></div></td>
-					<td><div style="line-height: 150%";>
-							<font style="color: #e82827"><%=supporterList.get(i).getNickname()%></font>，已获得<font
-								style="color: rgb(190, 155, 43)"><%=supporterList.get(i).getCount()%></font>位朋友的拉友买支持，
-							最多可获得现金卷<%=supporterList.get(i).getCount()%>*50的奖金！
-						</div></td>
-				</tr>
-				<%
-					} else {
-				%>
-				<tr>
-					<td style="height: 55px"><%=i+1%></td>
-					<td><div style="line-height: 150%";><%=supporterList.get(i).getNickname()%>，已获得<font
-								style="color: rgb(190, 155, 43)"><%=supporterList.get(i).getCount()%></font>位朋友的拉友买支持，
-							最多可获得现金卷<%=supporterList.get(i).getCount()%>*50的奖金！
-						</div></td>
-				</tr>
-				<%
-					}
-				       }
-				%>
-				<tr>
-					<td id="handle_point_td" colspan=2
-						style="height: 55px; text-align: center; border-top: medium none;"><div
-							style="font-size: large">
-							<font style="color: rgb(128, 124, 115)">好友支持抢奖金，</font><font
-								style="color: #e82827">猛点下面按钮！</font>
-						</div></td>
-				</tr>
-				<%
-					} else {
-				%>
-				<tr>
-					<td style="text-align: center; border-top: medium none;"><div
-							style="margin: 35px; font-size: large">
-							<font style="color: rgb(128, 124, 115)">好友支持抢奖金，</font><font
-								style="color: #e82827">猛点下面按钮！</font>
-						</div>
-						<div>
-							<img src="<%=request.getContextPath()%>/img/product_3.png" style="height: 165px" />
-						</div>
-					<td>
-				</tr>
-				<%
-					}
-				%>
-			</table>
-		</div>
-		<div id="handlelist_div2" style="display: none">
-			<table id="handle_table2" style="max-width: 100%; width: 100%"
-				cellSpacing=0 cellPadding=0 align=center border=1
-				style="border-top:aliceblue">
-				<%
-					if(supporterList!=null&&supporterList.size()!=0) {
-				       for(int i=0;i<supporterList.size();i++) {
-				           if(i<3) {
-				%>
+                <tr>
+                    <td style="height: 55px;"><div style="color: #e82827"><%=i+1%></div></td>
+                    <td><div style="line-height: 150%";>
+                            <font style="color: #e82827"><%=supporterList.get(i).getNickname()%></font>，已获得<font
+                                style="color: rgb(190, 155, 43)"><%=supporterList.get(i).getCount()%></font>位朋友的拉友买支持，
+                            最多可获得现金卷<%=supporterList.get(i).getCount()%>*50的奖金！
+                        </div></td>
+                </tr>
+                <%
+                    } else {
+                %>
+                <tr>
+                    <td style="height: 55px"><%=i+1%></td>
+                    <td><div style="line-height: 150%";><%=supporterList.get(i).getNickname()%>，已获得<font
+                                style="color: rgb(190, 155, 43)"><%=supporterList.get(i).getCount()%></font>位朋友的拉友买支持，
+                            最多可获得现金卷<%=supporterList.get(i).getCount()%>*50的奖金！
+                        </div></td>
+                </tr>
+                <%
+                    }
+                       }
+                %>
+                <tr>
+                    <td id="handle_point_td" colspan=2
+                        style="height: 55px; text-align: center; border-top: medium none;"><div
+                            style="font-size: 1em">
+                            <font style="color: rgb(128, 124, 115)">好友支持抢奖金，</font><font
+                                style="color: #e82827">猛点下面按钮！</font>
+                        </div></td>
+                </tr>
+                <%
+                    } else {
+                %>
+                <tr>
+                    <td style="text-align: center; border-top: medium none;"><div
+                            style="margin: 35px; font-size: 1em">
+                            <font style="color: rgb(128, 124, 115)">好友支持抢奖金，</font><font
+                                style="color: #e82827">猛点下面按钮！</font>
+                        </div>
+                        <div>
+                            <img src="<%=request.getContextPath()%>/img/product_3.png" style="height: 165px" />
+                        </div>
+                    <td>
+                </tr>
+                <%
+                    }
+                %>
+            </table>
+        </div>
+        <div id="handlelist_div2" style="display: none">
+            <table id="handle_table2" style="max-width: 100%; width: 100%"
+                cellSpacing=0 cellPadding=0 align=center border=1
+                style="border-top:aliceblue">
+                <%
+                    if(supporterList!=null&&supporterList.size()!=0) {
+                       for(int i=0;i<supporterList.size();i++) {
+                           if(i<3) {
+                %>
 
-				<tr>
-					<td style="height: 55px;"><div style="color: #e82827"><%=i+1%></div></td>
-					<td><div style="line-height: 150%";>
-							<font style="color: #e82827"><%=supporterList.get(i).getNickname()%></font>，已获得<font
-								style="color: rgb(190, 155, 43)"><%=supporterList.get(i).getCount()%></font>位朋友的拉友买支持，
-							最多可获得现金卷<%=supporterList.get(i).getCount()%>*50的奖金！
-						</div></td>
-				</tr>
-				<%
-					} else {
-				%>
-				<tr>
-					<td style="height: 55px"><%=i+1%></td>
-					<td><div style="line-height: 150%";><%=supporterList.get(i).getNickname()%>，已获得<font
-								style="color: rgb(190, 155, 43)"><%=supporterList.get(i).getCount()%></font>位朋友的拉友买支持，
-							最多可获得现金卷<%=supporterList.get(i).getCount()%>*50的奖金！
-						</div></td>
-				</tr>
-				<%
-					}
-				       }
-				       }
-				%>
-			</table>
-		</div>
-	</div>
-	<div id="rob2"
-		style="max-width: 95%; margin-bottom: 20px; margin-left: 2.5%; margin-top: 10px; height: 50px; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
-		onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/lashouactivity?id=<%=openId%>'">
-		<div style="font-size: larger; color: white; margin-top: 12px">抢奖金</div>
-	</div>
-	<%
-		}
-	%>
-	<!-- ===============================End=============================== -->
+                <tr>
+                    <td style="height: 55px;"><div style="color: #e82827"><%=i+1%></div></td>
+                    <td><div style="line-height: 150%";>
+                            <font style="color: #e82827"><%=supporterList.get(i).getNickname()%></font>，已获得<font
+                                style="color: rgb(190, 155, 43)"><%=supporterList.get(i).getCount()%></font>位朋友的拉友买支持，
+                            最多可获得现金卷<%=supporterList.get(i).getCount()%>*50的奖金！
+                        </div></td>
+                </tr>
+                <%
+                    } else {
+                %>
+                <tr>
+                    <td style="height: 55px"><%=i+1%></td>
+                    <td><div style="line-height: 150%";><%=supporterList.get(i).getNickname()%>，已获得<font
+                                style="color: rgb(190, 155, 43)"><%=supporterList.get(i).getCount()%></font>位朋友的拉友买支持，
+                            最多可获得现金卷<%=supporterList.get(i).getCount()%>*50的奖金！
+                        </div></td>
+                </tr>
+                <%
+                    }
+                       }
+                       }
+                %>
+            </table>
+        </div>
+    </div>
+    <div id="rob2"
+        style="max-width: 95%; margin-bottom: 20px; margin-left: 2.5%; margin-top: 10px; height: 5em; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
+        onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/lashouactivity?id=<%=openId%>'">
+        <div style="font-size: 1.8em; color: white; margin-top: 0.9em">抢奖金</div>
+    </div>
+    <%
+        }
+    %>
+    <!-- ===============================End=============================== -->
 
-	<script type="text/javascript">  
+    <script type="text/javascript">  
       var poplist_div1=document.getElementById("poplist_div1");  
       var poplist_div2=document.getElementById("poplist_div2");
       var poplist_div=document.getElementById("poplist_div"); 
