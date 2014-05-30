@@ -48,9 +48,9 @@ table {
 td {
     BORDER-RIGHT: medium none;
     BORDER-LEFT: medium none;
-    height: 3.5em;
-    padding-left: 1em;
+    height: 2em;
     font-size:1.6em;
+    padding-left:8px;
 }
 
 #poplist_div {
@@ -77,7 +77,9 @@ td {
 </style>
 </head>
 <body class="base_font_size">
-    <!--<div id="result" style="border:2px solid red; color:red;">未触发事件！</div> -->
+    <!--  <div id="beforeresult" style="border:2px solid red; color:red;">未触发事件！</div>
+    <div id="result" style="border:2px solid red; color:red;">未触发事件！</div>
+    -->
     <%
         Logger logger = Logger.getLogger(com.sonymobile.sonysales.servlet.NameListServlet.GetNameList.class.getName());
         List<User> userList = null;
@@ -102,7 +104,7 @@ td {
         <div id="pop_title"
             style="height: 4em; text-align: left; float: left">
             <div class="text_subHeader"
-                style="padding-top: 1.2em; padding-right: 30px">人气榜(前8名得大奖)</div>
+                style="padding-top: 1.2em; padding-right: 30px">人气榜</div>
         </div>
         <div id="pop_image"
             style="height: 4em; text-align: right; float: right; margin-right: 13px">
@@ -118,38 +120,95 @@ td {
                 cellSpacing=0 cellPadding=0 align=center border=1>
                 <%
                     if(userList!=null&&userList.size()!=0) {
-                       for(int i=0;i<userList.size();i++) {
-                           if(i<3) {
-                %>
-                <tr>
-                    <td><div style="color: #e82827"><%=i+1%></div></td>
-                    <td><div style="color: #e82827"><%=userList.get(i).getNickname()%></div></td>
-                    <td>已经获得<font style="color: rgb(190, 155, 43)"><%=userList.get(i).getPoints()%></font>个好友支持了！
-                    </td>
-                </tr>
-                <%
-                    } else {
-                %>
-                <tr>
-                    <td><%=i+1%></td>
-                    <td><%=userList.get(i).getNickname()%></td>
-                    <td>已经获得<font style="color: rgb(190, 155, 43)"><%=userList.get(i).getPoints()%></font>个好友支持了！
-                    </td>
-                </tr>
-                <%
-                    }
-                       }
-                %>
-                <tr>
-                    <td id="pop_point_td" colspan=3
-                        style="height: 3.5em; text-align: center; border-top: medium none;"><div
-                            style="font-size: 1em">
-                            <font style="color: rgb(128, 124, 115)">人气排名获大奖，</font><font
-                                style="color: #e82827">猛点下面按钮！</font>
-                        </div></td>
-                </tr>
-                <%
-                    } else {
+                        if(userList.size()<=10) {
+                            %>
+                        <tr>
+                            <td colspan=3 style="padding-left:0;border-bottom:none">
+                               <div>
+                               <img src="<%=request.getContextPath()%>/img/ranking_banner_1_icn.jpg" style="max-width: 100%; width: 100%" id="pop_top_img" />
+                               </div>
+                           </td>
+                        </tr>
+                        <tr>
+                            <td style="border-top:none">1</td>
+                            <td style="border-top:none"><%=userList.get(0).getNickname().length()>4?userList.get(0).getNickname().substring(0,4)+"...":userList.get(0).getNickname()%></td>
+                            <td style="border-top:none">已经获得<font style="color: #e82827"><%=userList.get(0).getPoints()%></font>个好友支持了！
+                            </td>
+                        </tr>
+                                <% 
+                            for(int i=1;i<userList.size();i++) {
+                                %>
+					                <tr>
+					                    <td ><%=i+1%></td>
+					                    <td><%=userList.get(i).getNickname().length()>4?userList.get(i).getNickname().substring(0,4)+"...":userList.get(i).getNickname()%></td>
+					                    <td>已经获得<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持了！
+					                    </td>
+					                </tr>
+                                <% 
+                                                                     }
+                     } else {
+                         %>
+                        <tr>
+                            <td colspan=3 style="padding-left:0;border-bottom:none">
+                               <div>
+                               <img src="<%=request.getContextPath()%>/img/ranking_banner_1_icn.jpg" style="max-width: 100%; width: 100%" id="pop_top_img" />
+                               </div>
+                           </td>
+                        </tr>
+                         <tr>
+                            <td style="border-top:none">1</td>
+                            <td style="border-top:none"><%=userList.get(0).getNickname().length()>4?userList.get(0).getNickname().substring(0,4)+"...":userList.get(0).getNickname()%></td>
+                            <td style="border-top:none">已经获得<font style="color: #e82827"><%=userList.get(0).getPoints()%></font>个好友支持了！
+                            </td>
+                        </tr>
+                         <% 
+                         for(int i=1;i<10;i++) {
+                             %>
+                        <tr>
+                            <td><%=i+1%></td>
+                            <td><%=userList.get(i).getNickname().length()>4?userList.get(i).getNickname().substring(0,4)+"...":userList.get(i).getNickname()%></td>
+                            <td>已经获得<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持了！
+                            </td>
+                        </tr>
+                             <% 
+                         }
+                         %>
+                         <tr>
+                            <td colspan=3 style="padding-left:0;border-bottom:none">
+                               <div>
+                               <img src="<%=request.getContextPath()%>/img/ranking_banner_2_icn.jpg" style="max-width: 100%; width: 100%" id="pop_top_img" />
+                               </div>
+                           </td>
+                        </tr>
+                         <tr>
+                            <td style="border-top:none">1</td>
+                            <td style="border-top:none"><%=userList.get(0).getNickname().length()>4?userList.get(0).getNickname().substring(0,4)+"...":userList.get(0).getNickname()%></td>
+                            <td style="border-top:none">已经获得<font style="color: #e82827"><%=userList.get(0).getPoints()%></font>个好友支持了！
+                            </td>
+                        </tr>
+                         <%
+                            for(int i=11;i<userList.size();i++) {
+                                %>
+                        <tr>
+                            <td><%=i+1%></td>
+                            <td><%=userList.get(i).getNickname().length()>4?userList.get(i).getNickname().substring(0,4)+"...":userList.get(i).getNickname()%></td>
+                            <td>已经获得<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持了！
+                            </td>
+                        </tr>
+                                <%
+                                                                       }
+                                                         }
+                        %>
+                        <tr>
+                            <td id="pop_point_td" colspan=3
+                                style="display: none;text-align: center; border-top: medium none;"><div
+                                    style="font-size: 1em">
+                                    <font style="color: rgb(128, 124, 115)">人气排名获大奖，</font><font
+                                        style="color: #e82827">猛点下面按钮！</font>
+                                </div></td>
+                        </tr>
+                        <%  
+                 } else {
                 %>
                 <tr>
                     <td id="pop_img_td"
@@ -159,7 +218,7 @@ td {
                                 style="color: #e82827">猛点下面按钮！</font>
                         </div>
                         <div>
-                            <img src="<%=request.getContextPath()%>/img/product_3.jpg" style="height: 165px" id="pop_img" />
+                            <img src="<%=request.getContextPath()%>/img/product_3.jpg" style="height: 16.5em" id="pop_img" />
                         </div></td>
                 </tr>
                 <%
@@ -173,34 +232,92 @@ td {
                 style="border-top:aliceblue">
                 <%
                     if(userList!=null&&userList.size()!=0) {
-                       for(int i=0;i<userList.size();i++) {
-                           if(i<3) {
-                %>
-                <tr>
-                    <td><div style="color: #e82827"><%=i+1%></div></td>
-                    <td><div style="color: #e82827"><%=userList.get(i).getNickname()%></div></td>
-                    <td>已经获得<font style="color: rgb(190, 155, 43)"><%=userList.get(i).getPoints()%></font>个好友支持了！
-                    </td>
-                </tr>
-                <%
-                    } else {
-                %>
-                <tr>
-                    <td><%=i+1%></td>
-                    <td><%=userList.get(i).getNickname()%></td>
-                    <td>已经获得<font style="color: rgb(190, 155, 43)"><%=userList.get(i).getPoints()%></font>个好友支持了！
-                    </td>
-                </tr>
-                <%
-                    }
-                       }
-                   }
+                        if(userList.size()<=10) {
+                            %>
+                        <tr>
+                            <td colspan=3 style="padding-left:0;border-bottom:none">
+                               <div>
+                               <img src="<%=request.getContextPath()%>/img/ranking_banner_1_icn.jpg" style="max-width: 100%; width: 100%" id="pop_top_img" />
+                               </div>
+                           </td>
+                        </tr>
+                        <tr>
+                            <td style="border-top:none">1</td>
+                            <td style="border-top:none"><%=userList.get(0).getNickname().length()>4?userList.get(0).getNickname().substring(0,4)+"...":userList.get(0).getNickname()%></td>
+                            <td style="border-top:none">已经获得<font style="color: #e82827"><%=userList.get(0).getPoints()%></font>个好友支持了！
+                            </td>
+                        </tr>
+                                <% 
+                            for(int i=1;i<userList.size();i++) {
+                                %>
+                                    <tr>
+                                        <td><%=i+1%></td>
+                                        <td><%=userList.get(i).getNickname().length()>4?userList.get(i).getNickname().substring(0,4)+"...":userList.get(i).getNickname()%></td>
+                                        <td>已经获得<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持了！
+                                        </td>
+                                    </tr>
+                                <% 
+                                                                     }
+                     } else {
+                         %>
+                        <tr>
+                            <td colspan=3 style="padding-left:0;border-bottom:none">
+                               <div>
+                               <img src="<%=request.getContextPath()%>/img/ranking_banner_1_icn.jpg" style="max-width: 100%; width: 100%" id="pop_top_img" />
+                               </div>
+                           </td>
+                        </tr>
+                         <tr>
+                            <td style="border-top:none">1</td>
+                            <td style="border-top:none"><%=userList.get(0).getNickname().length()>4?userList.get(0).getNickname().substring(0,4)+"...":userList.get(0).getNickname()%></td>
+                            <td style="border-top:none">已经获得<font style="color: #e82827"><%=userList.get(0).getPoints()%></font>个好友支持了！
+                            </td>
+                        </tr>
+                         <% 
+                         for(int i=1;i<10;i++) {
+                             %>
+                        <tr>
+                            <td><%=i+1%></td>
+                            <td><%=userList.get(i).getNickname().length()>4?userList.get(i).getNickname().substring(0,4)+"...":userList.get(i).getNickname()%></td>
+                            <td>已经获得<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持了！
+                            </td>
+                        </tr>
+                             <% 
+                         }
+                         %>
+                         <tr>
+                            <td colspan=3 style="padding-left:0;border-bottom:none">
+                               <div>
+                               <img src="<%=request.getContextPath()%>/img/ranking_banner_2_icn.jpg" style="max-width: 100%; width: 100%" id="pop_top_img" />
+                               </div>
+                           </td>
+                        </tr>
+                         <tr>
+                            <td style="border-top:none">1</td>
+                            <td style="border-top:none"><%=userList.get(0).getNickname().length()>4?userList.get(0).getNickname().substring(0,4)+"...":userList.get(0).getNickname()%></td>
+                            <td style="border-top:none">已经获得<font style="color: #e82827"><%=userList.get(0).getPoints()%></font>个好友支持了！
+                            </td>
+                        </tr>
+                         <%
+                            for(int i=11;i<userList.size();i++) {
+                                %>
+                        <tr>
+                            <td><%=i+1%></td>
+                            <td><%=userList.get(i).getNickname().length()>4?userList.get(i).getNickname().substring(0,4)+"...":userList.get(i).getNickname()%></td>
+                            <td>已经获得<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持了！
+                            </td>
+                        </tr>
+                                <%
+                                                                       }
+                                                         }
+
+                 }
                 %>
             </table>
         </div>
     </div>
     <div id="rob1"
-        style="max-width: 95%; margin-bottom: 30px; margin-left: 2.5%; margin-top: 1em; height: 5em; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
+        style="max-width: 95%; margin-bottom: 1em; margin-left: 2.5%; margin-top: 1em; height: 5em; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
         onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/activitypage?id=<%=openId%>'">
         <div style="font-size: 1.8em; color: white; margin-top: 0.9em">拉人气</div>
     </div>
@@ -270,15 +387,15 @@ td {
                 %>
                 <tr>
                     <td style="text-align: center; border-top: medium none;"><div
-                            style="margin: 35px; font-size: 1em">
+                            style="margin: 35px; font-size: 1em;heigth:4em">
                             <font style="color: rgb(128, 124, 115)">好友支持抢奖金，</font><font
                                 style="color: #e82827">猛点下面按钮！</font>
                         </div>
                         <div>
-                            <img src="<%=request.getContextPath()%>/img/product_3.png" style="height: 165px" />
+                            <img src="<%=request.getContextPath()%>/img/product_3.png" style="height: 12em" />
                         </div>
                     <td>
-                </tr>
+                </tr> 
                 <%
                     }
                 %>
@@ -321,7 +438,7 @@ td {
         </div>
     </div>
     <div id="rob2"
-        style="max-width: 95%; margin-bottom: 20px; margin-left: 2.5%; margin-top: 10px; height: 5em; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
+        style="max-width: 95%; margin-bottom: 1.2em; margin-left: 2.5%; margin-top: 10px; height: 5em; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
         onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/lashouactivity?id=<%=openId%>'">
         <div style="font-size: 1.8em; color: white; margin-top: 0.9em">抢奖金</div>
     </div>
@@ -331,40 +448,40 @@ td {
     <!-- ===============================End=============================== -->
 
     <script type="text/javascript">  
-      var poplist_div1=document.getElementById("poplist_div1");  
-      var poplist_div2=document.getElementById("poplist_div2");
-      var poplist_div=document.getElementById("poplist_div"); 
-      <%
-      if (com.sonymobile.sonysales.util.Constant.properties.getProperty(
-                  "LAYOUBUY_SWITCH").contains("ON")) {
-  %>
-      var handlelist_div1=document.getElementById("handlelist_div1");  
-      var handlelist_div2=document.getElementById("handlelist_div2");
-      var handlelist_div=document.getElementById("handlelist_div"); 
-      <%
-      }
-  %>
-      var speed=50;//设置向上轮动的速度  
-      
+    var poplist_div1=document.getElementById("poplist_div1");  
+    var poplist_div2=document.getElementById("poplist_div2");
+    var poplist_div=document.getElementById("poplist_div"); 
+    var pop_point_td=document.getElementById("pop_point_td"); 
+    var pop_top_img=document.getElementById("pop_top_img"); 
+    
+    
+    <%
+    if (com.sonymobile.sonysales.util.Constant.properties.getProperty(
+                "LAYOUBUY_SWITCH").contains("ON")) {
+%>
+    var handlelist_div1=document.getElementById("handlelist_div1");  
+    var handlelist_div2=document.getElementById("handlelist_div2");
+    var handlelist_div=document.getElementById("handlelist_div"); 
+    <%
+    }
+%>
+//$("img").load(function() {
+	window.onload = function() {
+    if((poplist_div1.offsetHeight-poplist_div.offsetHeight)>50) {
+        document.getElementById("poplist_div2").style.display="";
+        } else {
+            //var text = 'before poplist_div1.offsetHeight:' + poplist_div1.offsetHeight + ' poplist_div.offsetHeight:' + poplist_div.offsetHeight + ' pop_point_td.offsetHeight:'+pop_point_td.offsetHeight+ ' pop_top_img.offsetHeight:'+pop_top_img.offsetHeight;  
+           // document.getElementById("beforeresult").innerHTML = text;
+            
+            $("#pop_point_td").css("height", (poplist_div.offsetHeight-poplist_div1.offsetHeight)+"px");
+            document.getElementById("pop_point_td").style.display="";
+            //var text = ' poplist_div1.offsetHeight:' + poplist_div1.offsetHeight + ' poplist_div.offsetHeight:' + poplist_div.offsetHeight + ' pop_point_td.offsetHeight:'+pop_point_td.offsetHeight+ ' pop_top_img.offsetHeight:'+pop_top_img.offsetHeight;    
+            //document.getElementById("result").innerHTML = text; 
+            }
+        }
       $(document).ready(function(){
           //var windowWidth = $("#body").width();
-          //$("#pop_table1").css("width", windowWidth-20);
-          //$("#pop_table2").css("width", windowWidth-20);
-          //$("#poplist_div").css("width", windowWidth-20);
-          
-          //$("#handle_table1").css("width", windowWidth-20);
-          //$("#handle_table2").css("width", windowWidth-20);
-          //$("#handlelist_div").css("width", windowWidth-20);
-          //$("#rob1").css("width", windowWidth-24);
-          //$("#rob2").css("width", windowWidth-24);
-          
-          if(poplist_div1.offsetHeight>poplist_div.offsetHeight) {
-              document.getElementById("poplist_div2").style.display="";
-              } else {
-                  $("#pop_point_td").css("height", (poplist_div.offsetHeight-poplist_div1.offsetHeight+55)+"px");
-                  //var text = ' poplist_div1.offsetHeight:' + poplist_div1.offsetHeight + ' poplist_div.offsetHeight:' + poplist_div.offsetHeight;  
-                  //document.getElementById("result").innerHTML = text; 
-                  }
+
           <%
           if (com.sonymobile.sonysales.util.Constant.properties.getProperty(
                       "LAYOUBUY_SWITCH").contains("ON")) {
@@ -377,12 +494,13 @@ td {
           <%
           }
       %>
-         
+      var speed=50;//设置向上轮动的速度
+      var myFunction=setInterval("moveTop()",speed); 
           });
 
       //poplist_div2.innerHTML=poplist_div1.innerHTML;//复制节点  
 
-      function moveTop(){  
+      function moveTop(){
 
           if(poplist_div1.offsetHeight-poplist_div.scrollTop<=0){  
               poplist_div.scrollTop=0;  
@@ -409,7 +527,6 @@ td {
                   //document.getElementById("result").innerHTML = text;  
 
       }  
-      var myFunction=setInterval("moveTop()",speed); 
 
       (function(){
           var onBridgeReady=function(){
