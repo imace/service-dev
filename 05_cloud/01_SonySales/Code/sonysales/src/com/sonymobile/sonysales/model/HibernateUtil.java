@@ -19,22 +19,30 @@ import org.hibernate.criterion.Restrictions;
  */
 public class HibernateUtil {
 
-	private static SessionFactory sessionFactory;
+	// define master connection to write database
+	private static SessionFactory sessionFactoryMaster;
+	// define slave connection to read database
+	private static SessionFactory sessionFactorySlave;
 	private Session session = null;
 	private Transaction tx = null;
 	private static Logger logger = Logger.getLogger(HibernateUtil.class
 			.getName());
 	static {
 		try {
-			Configuration config = new Configuration().configure();
-			sessionFactory = config.buildSessionFactory();
+			Configuration configMaster = new Configuration()
+					.configure("hbn-master.cfg.xml");
+			sessionFactoryMaster = configMaster.buildSessionFactory();
+
+			Configuration configSlave = new Configuration()
+					.configure("hbn-slave.cfg.xml");
+			sessionFactorySlave = configSlave.buildSessionFactory();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	private void openSession() {
-		session = sessionFactory.openSession();
+	private void openSession(SessionFactory sf) {
+		session = sf.openSession();
 		tx = session.beginTransaction();
 	}
 
@@ -43,7 +51,7 @@ public class HibernateUtil {
 		boolean ret = false;
 
 		try {
-			openSession();
+			openSession(sessionFactoryMaster);
 			session.save(model);
 			tx.commit();
 			ret = true;
@@ -64,7 +72,7 @@ public class HibernateUtil {
 			ArrayList<String> columnName, ArrayList<Object> columeValue) {
 		List<?> ret = null;
 		try {
-			openSession();
+			openSession(sessionFactorySlave);
 			Criteria criteria = session.createCriteria(objClass);
 			for (int i = 0; i < columnName.size(); i++) {
 				criteria.add(Restrictions.eq(columnName.get(i),
@@ -87,13 +95,13 @@ public class HibernateUtil {
 		return ret;
 	}
 
-	// get list by column name
+	// get list by Hql
 	public List<?> getListByHql(String hql, ArrayList<String> parameter,
 			int firstResult, int maxResults) {
 		List<?> ret = null;
 
 		try {
-			openSession();
+			openSession(sessionFactorySlave);
 			Query query = session.createQuery(hql);
 			if (parameter != null) {
 				for (int i = 0; i < parameter.size(); i++) {
@@ -127,7 +135,7 @@ public class HibernateUtil {
 	public boolean updateObject(Object object) {
 		boolean ret = false;
 		try {
-			openSession();
+			openSession(sessionFactoryMaster);
 			session.update(object);
 			tx.commit();
 			ret = true;
@@ -144,28 +152,27 @@ public class HibernateUtil {
 		}
 		return ret;
 	}
-	
-	public boolean excuteUpdate(String hsql)
-	{  
-	   boolean ret = false;
-       try {
-           openSession();
-           Query query = session.createQuery(hsql);
-           query.executeUpdate();
-           tx.commit();
-           ret = true;
-       } catch (Exception e) {
-           e.printStackTrace();
-           if (tx != null) {
-               tx.rollback();
-           }
-           ret = false;
-       } finally {
-           if (session != null) {
-               session.close();
-           }
-       }
-       return ret;
-	}  
-	
+
+	public boolean excuteUpdate(String hsql) {
+		boolean ret = false;
+		try {
+			openSession(sessionFactoryMaster);
+			Query query = session.createQuery(hsql);
+			query.executeUpdate();
+			tx.commit();
+			ret = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null) {
+				tx.rollback();
+			}
+			ret = false;
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		return ret;
+	}
+
 }

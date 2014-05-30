@@ -1,6 +1,8 @@
 package com.sonymobile.sonysales.dao;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.sonymobile.sonysales.model.HibernateUtil;
@@ -37,8 +39,17 @@ public class OrderHistoryDAO {
 	}
 
 	public static boolean addOrderHistory(OrderHistory orderHistory) {
+		boolean ret = false;
 		HibernateUtil hibernateUtil = new HibernateUtil();
-		return hibernateUtil.addObject(orderHistory);
+
+		if (orderHistory != null && hibernateUtil != null) {
+			Date date = new Date();
+			SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmm");
+			String now = df.format(date);
+			orderHistory.setCreateTime(now);
+			ret = hibernateUtil.addObject(orderHistory);
+		}
+		return ret;
 	}
 
 	public static boolean ValidOrderNum(String supporterOrderNum) {

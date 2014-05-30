@@ -1,6 +1,8 @@
 package com.sonymobile.sonysales.dao;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.sonymobile.sonysales.model.HibernateUtil;
@@ -33,8 +35,18 @@ public class UserDAO {
 	}
 
 	public static boolean addUser(User user) {
+		boolean ret = false;
+
 		HibernateUtil hibernateUtil = new HibernateUtil();
-		return hibernateUtil.addObject(user);
+
+		if (user != null && hibernateUtil != null) {
+			Date date = new Date();
+			SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmm");
+			String now = df.format(date);
+			user.setCreateTime(now);
+			ret = hibernateUtil.addObject(user);
+		}
+		return ret;
 	}
 
 	public static boolean updateUser(User user) {
