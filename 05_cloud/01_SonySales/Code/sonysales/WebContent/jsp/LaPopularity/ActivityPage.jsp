@@ -50,7 +50,7 @@
 		nickname=(nickname==null?"":"("+nickname+")");
 		String message="Hi, 亲, 我"+nickname+"对索尼FIFA志在必得, 请你拉我一票!";
 		String imgurl=request.getScheme() + "://" + request.getServerName() + "/img/menu_entry2.jpg";	
-		String relationUrl = Base64Coder.convertStrToBase64(request.getScheme() + "://" + request.getServerName() + "/relationpage");
+		String relationUrl = Base64Coder.convertStrToBase64(request.getScheme() + "://" + request.getServerName() + "/news");
 		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
 				+ Constant.APP_ID
 				+ "&redirect_uri="+ Constant.OAUTH_REDIRECT_HOST

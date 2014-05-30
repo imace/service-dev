@@ -278,8 +278,16 @@
       <url-pattern>/lashoufollow</url-pattern>
     </servlet-mapping>
     
-    
-    
+    <servlet>
+      <description></description>
+      <display-name>news</display-name>
+      <servlet-name>news</servlet-name>
+      <servlet-class>com.sonymobile.sonysales.sevlet.news.NewsSevlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>news</servlet-name>
+      <url-pattern>/news</url-pattern>
+    </servlet-mapping>
     
     
     

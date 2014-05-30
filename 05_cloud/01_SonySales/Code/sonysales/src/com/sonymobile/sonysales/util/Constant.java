@@ -34,8 +34,17 @@ public final class Constant {
         try {
             properties.load(is);
         } catch (IOException e) {
-        	logger.fatal("Constant load config.properties error : ");
+        	logger.fatal("Constant load config.properties error : \n");
             e.printStackTrace();
+        } finally {
+            if (is != null) {
+        		try {
+					is.close();
+				} catch (IOException e) {
+					logger.fatal("close input stream error : \n");
+					e.printStackTrace();
+				}
+            }
         }
 
         HOST = properties.getProperty("HOST");
