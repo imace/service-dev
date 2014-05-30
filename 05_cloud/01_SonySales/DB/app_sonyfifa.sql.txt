@@ -201,3 +201,21 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `openId`, `nickname`, `focusFlag`, `phoneNum`, `email`, `address`, `jdId`, `points`, `focusTime`, `createTime`) VALUES
 (1, '1', '测试', 0, '12345678901', '123@163.com', '地址', '1', 1, '20140503', '20140504');
+
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `fifaInfo`
+--
+
+CREATE TABLE IF NOT EXISTS `fifaInfo` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Primary key',
+  `info` varchar(500) NOT NULL COMMENT 'fifa信息',
+  `createTime` varchar(12) NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- 转存表中的数据 `fifaInfo`
+--

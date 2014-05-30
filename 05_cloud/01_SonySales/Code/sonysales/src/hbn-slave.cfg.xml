@@ -61,6 +61,7 @@
 		<mapping resource="com/sonymobile/sonysales/model/Match.hbm.xml" /><!--指定持久化类映射文件 -->
 		<mapping resource="com/sonymobile/sonysales/model/Administrator.hbm.xml" /><!--指定持久化类映射文件 -->
 		<mapping resource="com/sonymobile/sonysales/model/Role.hbm.xml" /><!--指定持久化类映射文件 -->
+		<mapping resource="com/sonymobile/sonysales/model/FifaInfo.hbm.xml" /><!--指定持久化类映射文件 -->
 		<class-cache class="com.sonymobile.sonysales.model.User"
 			usage="read-only" />
 		<class-cache class="com.sonymobile.sonysales.model.Popularity"
