@@ -9,11 +9,10 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport"
 	content="width=device-width, maximum-scale=1.0 minimum-scale=1.0">
-<script src="<%=request.getContextPath()%>/js/jquery-1.7.2.min.js"></script>
-<script src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="http://lib.sinaapp.com/js/bootstrap/3.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://lib.sinaapp.com/js/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+<script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
+<script src="http://lib.sinaapp.com/js/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/adminia.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/adminia-responsive.css">

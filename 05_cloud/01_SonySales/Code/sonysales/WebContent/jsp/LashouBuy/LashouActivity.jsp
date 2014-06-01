@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
-<script src="<%=request.getContextPath()%>/js/jquery-1.7.2.min.js"></script>
+<script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css"
   media="screen and (max-device-width:480px)"
@@ -42,7 +42,7 @@
 		String nickname =(String)request.getAttribute("nickname");
 		nickname=(nickname==null?"":"("+nickname+")");
 		String message="Hi, 亲, 我"+nickname+"正在参加索尼FIFA活动, 请你支持我一票!你也可以获得打折优惠券!";
-		String imgurl=request.getScheme() + "://" + request.getServerName() +"/img/entry3.png";
+		String imgurl=request.getScheme() + "://" + request.getServerName() +"/img/menu_entry3.jpg";
 		String relationUrl = Base64Coder.convertStrToBase64(request.getScheme() + "://" + request.getServerName() + "/lashourelation");
 		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
 				+ Constant.APP_ID

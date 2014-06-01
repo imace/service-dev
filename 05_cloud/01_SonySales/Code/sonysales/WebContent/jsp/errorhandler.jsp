@@ -5,10 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="http://lib.sinaapp.com/js/bootstrap/3.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://lib.sinaapp.com/js/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+<script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
+<script src="http://lib.sinaapp.com/js/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css"
   media="screen and (max-device-width:480px)"
@@ -35,8 +36,6 @@
 <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:721px) and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
   href="<%=request.getContextPath()%>/css/360.css">
-<script src="<%=request.getContextPath()%>/js/jquery-1.7.2.min.js"></script>
-<script src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
 <title>Error Page</title>
 </head>
 <body class="base_font_size">

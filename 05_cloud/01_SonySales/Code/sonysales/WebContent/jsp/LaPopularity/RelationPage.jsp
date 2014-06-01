@@ -91,7 +91,7 @@
 							</div>
 							<div class="col-xs-4">
 								<span id="tonickname" style="display: none;"><%=tonickname%></span>
-								<img alt="fifa" style="max-width: 100%;" src="<%=toimg%>"><br>
+								<img alt="fifa" style="max-width: 100%;" src="<%=request.getContextPath()%>/img/circle_phone.png"><br>
 								FIFA手机 <input type="hidden" name="toid" value="<%=toid%>">
 							</div>
 						</div>

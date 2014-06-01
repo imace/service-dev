@@ -45,7 +45,7 @@ public class ShareUserInfo extends HttpServlet {
 		String supporterJS = JSONArray.fromObject(supporters).toString();
 		request.setAttribute("openId", fromid);
 		request.setAttribute("points", points == null ? "0" : points);
-		request.setAttribute("pointsOrder", pointsOrder == null ? "0" : points);
+		request.setAttribute("pointsOrder", pointsOrder == null ? "0" : pointsOrder);
 		request.setAttribute("supporterJS", supporterJS);
 		request.setAttribute("friendname", friendname);
 		request.getRequestDispatcher("/jsp/ShareUserInfo.jsp").forward(

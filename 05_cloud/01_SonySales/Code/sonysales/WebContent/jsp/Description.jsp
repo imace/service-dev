@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
-<script src="<%=request.getContextPath()%>/js/jquery-1.7.2.min.js"></script>
+<script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css"
   media="screen and (max-device-width:480px)"
@@ -129,7 +129,7 @@ if (com.sonymobile.sonysales.util.Constant.LAYOUBUY_SWITCH.contains("OFF")) { %>
 			style="margin: 8px; max-width: 96%; margin-left: 2%">索尼 FIFA
 			2014 世界杯狂热季</div>
 		<div id="banner_img_div" style="text-align: center">
-			<img src="<%=request.getContextPath()%>/img/banner_popularity.jpg"
+			<img src="<%=request.getContextPath()%>/img/banner_main.jpg"
 				id="banner_img" style="width: 96%; max-width: 96%;" />
 		</div>
 		<br>

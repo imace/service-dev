@@ -11,13 +11,13 @@
 
 		<!-- configuration pool via c3p0 -->
 		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
-		<property name="c3p0.min_size">5</property>
-		<property name="c3p0.max_size">30</property>
-		<property name="c3p0.time_out">10</property> <!-- seconds --><!-- default: 0 -->
-		<property name="c3p0.max_statement">50</property> <!-- default: 0 -->
-		<property name="c3p0.acquire_increment">1</property> <!-- default: 1 -->
-		<property name="c3p0.idle_test_period">10</property> <!-- seconds --><!-- default: 0 -->
-		<property name="c3p0.validate">true</property>
+		<property name="hibernate.c3p0.min_size">5</property>
+		<property name="hibernate.c3p0.max_size">30</property>
+		<property name="hibernate.c3p0.timeout">10</property> <!-- seconds --><!-- default: 0 -->
+		<property name="hibernate.c3p0.max_statements">50</property> <!-- default: 0 -->
+		<property name="hibernate.c3p0.acquire_increment">1</property> <!-- default: 1 -->
+		<property name="hibernate.c3p0.idle_test_period">10</property> <!-- seconds --><!-- default: 0 -->
+		<property name="c3p0.testConnectionOnCheckin">true</property>
 		<property name="c3p0.acquireRetryAttempts">30</property>
 		<property name="c3p0.acquireRetryDelay">100</property>
 		<property name="c3p0.breakAfterAcquireFailure">false</property>
@@ -44,7 +44,7 @@
 			name="connection.password">root</property> -->
 
 		<!-- 测试服务器访问地址 -->
-		<!-- <property name="connection.url"> jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_sonysales 
+		<!-- <property name="connection.url"> jdbc:mysql://r.rdc.sae.sina.com.cn:3307/app_sonysales 
 			</property> <property name="connection.username">1kzy03n0k1</property> <property 
 			name="connection.password">y015y5jyl553wx31k045i1k3z1wl35w5mwly45xy</property> -->
 

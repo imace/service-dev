@@ -15,6 +15,7 @@ import net.sf.json.JSONException;
 import com.sonymobile.sonysales.model.User;
 import com.sonymobile.sonysales.service.NameListService;
 import com.sonymobile.sonysales.servlet.LaPopularityServlet.Activity;
+import com.sonymobile.sonysales.util.Constant;
 
 public class GetNameList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,8 +34,10 @@ public class GetNameList extends HttpServlet {
 			request.setAttribute("userList",
 					NameListService.getNameListOfPopularity("20"));
 
-			request.setAttribute("supporterList",
-					NameListService.getNameListOfHandle("20"));
+			if (Constant.LAYOUBUY_SWITCH.contains("ON")) {
+				request.setAttribute("supporterList",
+						NameListService.getNameListOfHandle("20"));
+			}
 			
 			String openId = request.getParameter("id");
 			request.setAttribute("openId", openId);
