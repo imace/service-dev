@@ -18,8 +18,9 @@
 
 	<%
 	Logger logger = Logger.getLogger(Activity.class.getName());
+	String openid = "";
 	try{
-		String openid =(String)request.getAttribute("openid");
+		openid =(String)request.getAttribute("openid");
 		String nickname =(String)request.getAttribute("nickname");
 		nickname=(nickname==null?"":"("+nickname+")");
 		String message="Hi, 亲, 我"+nickname+"对索尼FIFA志在必得, 请你拉我一票!";
@@ -49,7 +50,7 @@
                 <div id="banner_img_div" style="text-align: center">
                     <img src="<%=request.getContextPath()%>/img/banner_popularity.jpg" id="banner_img" style="width:96%;max-width:96%;"/>
                 </div>
-                 <p class="text_highlight common_style" style="padding-top:10px;width:96%;max-width:96%;margin-left:2%">
+                 <p class="text_highlight common_style" style="padding-top:0.6em;width:96%;max-width:96%;margin-left:2%">
                                                          点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>或<img src="<%=request.getContextPath()%>/img/share.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>发送给朋友
                              </p>
                 <div id="intro" >
@@ -58,11 +59,12 @@
                     </div>
                     <div class="text_mainBody" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">
                     1.分享战报给你的好友<br>
-                    2.人气榜前10名可获得SmartWatch2一个, 前20名可获得蓝牙耳机一个.<br/>
+                    2.人气榜前10名可获得SmartWatch2一个, 11至20名可获得蓝牙耳机一个.<br/>
                     3.每拉一个朋友激活10000人气积分呦!
                     </div>
                 </div>
         </div>
+        <br>
 <div class="scroll_div_height" style="position:absolute;width:100%;max-width:100%;"></div>
         <div id="touchBox" style="width:100%;max-width:100%;">
             <div  style="position:relative;" >
@@ -73,23 +75,23 @@
 			            <tr>
 			            <td><div style="position:relative;">
 			                    <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 90%; width: 90%" id="1_frame"/>
-                        <img src="<%=request.getContextPath()%>/img/1.jpg" style="max-width: 90%; width: 90%" id="1_img" onclick="selectPhone(1,'http://item.jd.com/1145235.html ')"/>
+                        <img src="<%=request.getContextPath()%>/img/1.jpg" style="max-width: 90%; width: 90%" id="1_img" onclick="selectPhone(1,'http://m.jd.com/product/1084656.html')"/>
                     </div></td>
 			            <td><div>
-			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 17.15%; width: 17.15%" id="2_frame" />
-                        <img src="<%=request.getContextPath()%>/img/2.jpg" style="max-width: 90%; width: 90%" id="2_img" onclick="selectPhone(2,'http://item.jd.com/1145235.html ')"/>
+			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.5%; width: 16.5%" id="2_frame" />
+                        <img src="<%=request.getContextPath()%>/img/2.jpg" style="max-width: 90%; width: 90%" id="2_img" onclick="selectPhone(2,'http://m.jd.com/product/1101144.html')"/>
                     </div></td>
 			            <td><div>
-			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="position:absolute;max-width: 17.15%; width: 17.15%" id="3_frame" />
-                        <img src="<%=request.getContextPath()%>/img/3.jpg" style="max-width: 90%; width: 90%" id="3_img" onclick="selectPhone(3,'http://item.jd.com/1145235.html ')"/>
+			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="position:absolute;max-width: 16.5%; width: 16.5%" id="3_frame" />
+                        <img src="<%=request.getContextPath()%>/img/3.jpg" style="max-width: 90%; width: 90%" id="3_img" onclick="selectPhone(3,'http://m.jd.com/product/929598.html')"/>
                     </div></td>
 			            <td><div>
-			                    <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 17.15%; width: 17.15%" id="4_frame" />
-                        <img src="<%=request.getContextPath()%>/img/4.jpg" style="max-width: 90%; width: 90%" id="4_img" onclick="selectPhone(4,'http://item.jd.com/1145235.html ')"/>
+			                    <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.5%; width: 16.5%" id="4_frame" />
+                        <img src="<%=request.getContextPath()%>/img/4.jpg" style="max-width: 90%; width: 90%" id="4_img" onclick="selectPhone(4,'http://m.jd.com/product/1101144.html')"/>
                     </div></td>
 			            <td><div>
-			                   <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 17.15%; width: 17.15%" id="5_frame" />
-                        <img src="<%=request.getContextPath()%>/img/5.jpg" style="max-width: 90%; width: 90%" id="5_img" onclick="selectPhone(5,'http://item.jd.com/1145235.html ')"/>
+			                   <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.5%; width: 16.5%" id="5_frame" />
+                        <img src="<%=request.getContextPath()%>/img/5.jpg" style="max-width: 90%; width: 90%" id="5_img" onclick="selectPhone(5,'http://m.jd.com/product/1084656.html')"/>
                     </div></td>
 			            </tr>
 			            </table>
@@ -105,7 +107,7 @@
                         <div><img src="<%=request.getContextPath()%>/img/http_icn.png" style="height:3em;float:left;margin-left:10px;padding-top:1.2em"/></div>
                         <div style="font-size:1.8em;color:rgb(116, 105, 105);padding-top:0.9em;padding-right:3em">PC购买</div>
                     </div>
-                    <div id="discount" style="max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #bfbfbf;float:right" onclick="window.location.href='http://passport.jd.com/new/login.aspx?ReturnUrl=http%3A%2F%2Fquan.jd.com%2Fuser_quan.action'">
+                    <div id="discount" style="max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #bfbfbf;float:right" onclick="window.location.href='<%=request.getContextPath()%>/myInfo?id=<%=openid%>'">
                         <div><img src="<%=request.getContextPath()%>/img/discount_icn.png" style="height:3em;float:left;margin-left:10px;padding-top:1em"/></div>
                         <div style="font-size:1.8em;color:rgb(116, 105, 105);padding-top:0.9em;padding-right:3em">优惠券</div>
                     </div>
@@ -181,7 +183,7 @@
         }
        
         });
-    
+    var productUrl = "";
     function draw() {
         if(!open) {
        document.getElementById("content").style.display="";
@@ -191,7 +193,7 @@
        $("#buyNow").text("手机购买");
        open = true;
        } else {
-           window.location.href='http://m.jd.com/product/813097.html';
+           window.location.href=productUrl;
                 }
             }
     function selectPhone(id, url) {
@@ -230,7 +232,7 @@
             $("#4_frame").hide();
             $("#5_frame").show();
             }
-
+        productUrl = url;
         }
     function clickDiv() {
         if(!open) {
