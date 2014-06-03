@@ -37,7 +37,7 @@
 }
 
 .page_background {
-	background: url(/img/stamp.png) right bottom no-repeat;
+	/*background: url(/img/stamp.png) right bottom no-repeat; */\r
 	background-size: 55%;
 }
 
