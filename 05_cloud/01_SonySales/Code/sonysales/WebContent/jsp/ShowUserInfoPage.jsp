@@ -42,6 +42,13 @@
 <link rel="stylesheet" type="text/css"
   media="screen and (min-device-width:721px) and (max-device-width:1080px) and (-webkit-device-pixel-ratio: 3)"
   href="<%=request.getContextPath()%>/css/360.css">
+  
+  
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/validaform.css">
+  
+<script src="<%=request.getContextPath()%>/js/Validform_v5.3.2_min.js"></script>
+  
+  
 <title>我的战况</title>
 <style type="text/css">
 .btn_decoration:hover,.btn_decoration:focus {
@@ -56,7 +63,7 @@
 		String email = ((String) request.getAttribute("email"));
 		String address = (String) request.getAttribute("address");
 		String jdId = (String) request.getAttribute("jdId");
-		String points = ((String) request.getAttribute("points")).trim();
+		String points = ((String) request.getAttribute("points"));
 		String pointsOrder = (String) request.getAttribute("pointsOrder");
 		String supporterJS = (String) request.getAttribute("supporterJS");
 		String friendname = (String) request.getAttribute("myname");
@@ -83,6 +90,19 @@
 	%>
 	<script language="javascript">
 		jQuery(function() {
+					
+			$("#userform").Validform({
+				tiptype:function(msg,o,cssctl){
+					var objtip=$("#msgdemo2");
+					cssctl(objtip,o.type);
+					objtip.text(msg);
+				},
+				datatype:{
+					"m" : /^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/,
+					"e" : /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
+					"*" : /[\w\W]+/
+				}
+			});		
 
 			$('#openId').val('<%=openId%>');
 			$('#phoneNum').val('<%=phoneNum%>');
@@ -90,14 +110,11 @@
 			$('#address').val('<%=address%>');
 			$('#jdId').val('<%=jdId%>');
 			
-			var url="<%=request.getContextPath()%>"+"/updateUserInfo";
-
+			var url="<%=Constant.HOST%>"+"/updateUserInfo";
 			$("form input").attr('disabled', 'true');
 			$('#test').click(
 					function() {
 						if ($('#test').text() == '保存') {
-							$('#test').text('编辑');
-							$("form input").attr('disabled', 'true');
 							var actionurl = url + "?openId=";
 							if (save()) {
 								actionurl += $('#openId').val() + "&phoneNum="
@@ -107,6 +124,8 @@
 										+ $('#jdId').val();
 								$("#userform").attr("action", actionurl);
 								$("#userform").submit();
+								$('#test').text('编辑');
+								$("form input").attr('disabled', 'true');
 							}
 						} else {
 							$('#test').text('保存');
@@ -117,16 +136,13 @@
 			var save = function() {
 				var mobileNum = $('#phoneNum').val();
 				if (mobileNum.length == 0) {
-					alert('请输入手机号码！');
 					return false;
 				}
 				if (mobileNum.length != 11) {
-					alert('请输入有效的手机号码！');
 					return false;
 				}
 				var myreg = /^(((1[3-9][0-9]{1}))+\d{8})$/;
 				if (!myreg.test(mobileNum)) {
-					alert('请输入有效的手机号码！');
 					return false;
 				}
 				return true;
@@ -270,30 +286,29 @@
 			<div class="text_mainBody" style="margin-bottom: 10px;">
 				请正确填写，以便我们能联系到您，及获奖资格认证。我们承诺，不对您的信息进行转发，泄露，以及其他商业用途 <br>
 			</div>
-			<%-- <form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/updateUserInfo" > --%>
 			<form class="form-horizontal" id="userform" role="form"
-				action="http://localhost:8888/sonysales/updateUserInfo"
+				action="<%=request.getContextPath()%>/sonysales/updateUserInfo"
 				method="post">
 				<input name="openId" type="hidden" id="openId">
 				<div class="form-group">
 					<label for="phoneNum" class="col-xs-4 control-label text_mainBody">电话：</label>
 					<div class="col-xs-8">
-						<input type="text" class="form-control" name="phoneNum"
-							id="phoneNum" placeholder="电话">
+						<input type="text" class="form-control" name="phoneNum" datatype="m"
+							id="phoneNum" placeholder="电话"  errormsg="请输入正确的手机号码!" >
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="email" class="col-xs-4 control-label text_mainBody">邮箱：</label>
 					<div class="col-xs-8">
-						<input type="text" class="form-control" name="email" id="email"
-							placeholder="邮箱">
+						<input type="text" class="form-control" name="email" id="email" datatype="e"
+							placeholder="邮箱" errormsg="请输入正确的邮箱!" >
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="address" class="col-xs-4 control-label text_mainBody">地址：</label>
 					<div class="col-xs-8">
-						<input type="text" class="form-control" name="address"
-							id="address" placeholder="地址">
+						<input type="text" class="form-control" name="address" datatype="*"
+							id="address" placeholder="地址" errormsg="请输入正确的地址!" >
 					</div>
 				</div>
 
@@ -325,6 +340,8 @@
 					<div class="form-group">
 						<div class="col-xs-12">
 							<label class="text_highlight">（如果需要邮递奖品或领取奖金，请填写真实信息） </label>
+							<br>
+							<span id="msgdemo2"></span>
 						</div>
 					</div>
 					<div class="form-group">

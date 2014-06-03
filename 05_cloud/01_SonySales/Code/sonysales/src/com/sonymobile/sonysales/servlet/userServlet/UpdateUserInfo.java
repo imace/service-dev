@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import net.sf.json.JSONException;
 
 import com.sonymobile.sonysales.dao.UserDAO;
@@ -20,7 +22,8 @@ import com.sonymobile.sonysales.util.Constant;
 
 public class UpdateUserInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private static Logger logger = Logger.getLogger(UpdateUserInfo.class
+			.getName());
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		this.doPost(request, response);
@@ -49,8 +52,12 @@ public class UpdateUserInfo extends HttpServlet {
 				addUser.setAddress(address);
 				addUser.setJdId(jdId);
 				PopularityService.addUser(addUser);
+				logger.error("UpdateUserInfo->phoneNum-> : "+phoneNum);
+		    	logger.error("UpdateUserInfo->email-> : "+email);
+		    	logger.error("UpdateUserInfo->address-> : "+address);
 			}
-			response.sendRedirect(request.getContextPath()+"/myInfo?id="+openId);
+			//response.sendRedirect(request.getContextPath()+"/myInfo?id="+openId);
+			response.sendRedirect(Constant.HOST+"/myInfo?id="+openId);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

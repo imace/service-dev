@@ -8,11 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import com.sonymobile.sonysales.entity.DefaultWechatInfoImpl;
 import com.sonymobile.sonysales.service.MyFIFAService;
+import com.sonymobile.sonysales.servlet.LashouBuy.LashouFollow;
 import com.sonymobile.sonysales.util.Constant;
 
 public class ShowUserInfoServlet extends HttpServlet {
@@ -20,6 +23,8 @@ public class ShowUserInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	private static Logger logger = Logger.getLogger(ShowUserInfoServlet.class
+			.getName());
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String fromid = (String) request.getParameter("id");
 		String toid = request.getParameter("toid");
@@ -33,7 +38,7 @@ public class ShowUserInfoServlet extends HttpServlet {
 			String userJson = JSONArray.fromObject(list).toString();
 			JSONArray userJA = JSONArray.fromObject(userJson);
 			String phoneNum = "", email = "", address = "", jdId = "", points = "0", pointsOrder = "0";
-
+			
 			if (userJA.size() > 0) {
 				JSONObject userJO = userJA.getJSONObject(0);
 			    if (!userJO.isNullObject()) {
@@ -43,7 +48,16 @@ public class ShowUserInfoServlet extends HttpServlet {
 					jdId = userJO.getString("jdId");
 					points = userJO.getString("points");
 					pointsOrder = userJO.getString("pointsOrder");
+					logger.error("ShowUserInfoServlet->phoneNum-> : "+phoneNum);
+			    	logger.error("ShowUserInfoServlet->email-> : "+email);
+			    	logger.error("ShowUserInfoServlet->address-> : "+address);
 			    }
+			}else {
+				phoneNum="15011518809";
+				email=list.toString();
+				logger.error("ShowUserInfoServlet->phoneNum-> : "+phoneNum);
+		    	logger.error("ShowUserInfoServlet->email-> : "+email);
+		    	logger.error("ShowUserInfoServlet->address-> : "+address);
 			}
 
 			List<?> supporters = MyFIFAService.getSupporters(fromid);
