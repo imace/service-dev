@@ -50,12 +50,6 @@ public class ShowUserInfoServlet extends HttpServlet {
 			    	logger.error("ShowUserInfoServlet->email-> : "+email);
 			    	logger.error("ShowUserInfoServlet->address-> : "+address);
 			    }
-			}else {
-				phoneNum="15011518809";
-				email=list.toString();
-				logger.error("ShowUserInfoServlet->phoneNum-> : "+phoneNum);
-		    	logger.error("ShowUserInfoServlet->email-> : "+email);
-		    	logger.error("ShowUserInfoServlet->address-> : "+address);
 			}
 
 			List<?> supporters = MyFIFAService.getSupporters(fromid);
