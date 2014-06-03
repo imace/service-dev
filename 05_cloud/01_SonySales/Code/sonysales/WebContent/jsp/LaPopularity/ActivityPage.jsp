@@ -91,9 +91,35 @@
         </div>
 <div class="scroll_div_height" style="position:absolute;width:100%;max-width:100%;"></div>
         <div id="touchBox" style="width:100%;max-width:100%;">
-        <div  style="position:relative;" >
-               <img src="<%=request.getContextPath()%>/img/buy_top_1.png" style="width:100%;max-width:100%;margin-top:0" id="top_img"/><div id="click_div" onclick="clickDiv()" style="position:absolute;width:20%;height:80%;right:7%;top:15%;"></div>
-               </div>
+            <div  style="position:relative;" >
+	               <img src="<%=request.getContextPath()%>/img/buy_top_1.png" style="width:100%;max-width:100%;margin-top:0" id="top_img"/><div id="click_div" onclick="clickDiv()" style="position:absolute;width:20%;height:80%;right:7%;top:15%;"></div>
+	          </div>
+	           <div id="product_div" style="background-color:white;display: none;">
+			            <table style="max-width: 100%; width: 100%;padding:2%;margin-left:1%">
+			            <tr>
+			            <td><div style="position:relative;">
+			                    <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 90%; width: 90%" id="1_frame"/>
+                        <img src="<%=request.getContextPath()%>/img/1.jpg" style="max-width: 90%; width: 90%" id="1_img" onclick="selectPhone(1,'http://item.jd.com/1145235.html ')"/>
+                    </div></td>
+			            <td><div>
+			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 17.15%; width: 17.15%" id="2_frame" />
+                        <img src="<%=request.getContextPath()%>/img/2.jpg" style="max-width: 90%; width: 90%" id="2_img" onclick="selectPhone(2,'http://item.jd.com/1145235.html ')"/>
+                    </div></td>
+			            <td><div>
+			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="position:absolute;max-width: 17.15%; width: 17.15%" id="3_frame" />
+                        <img src="<%=request.getContextPath()%>/img/3.jpg" style="max-width: 90%; width: 90%" id="3_img" onclick="selectPhone(3,'http://item.jd.com/1145235.html ')"/>
+                    </div></td>
+			            <td><div>
+			                    <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 17.15%; width: 17.15%" id="4_frame" />
+                        <img src="<%=request.getContextPath()%>/img/4.jpg" style="max-width: 90%; width: 90%" id="4_img" onclick="selectPhone(4,'http://item.jd.com/1145235.html ')"/>
+                    </div></td>
+			            <td><div>
+			                   <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 17.15%; width: 17.15%" id="5_frame" />
+                        <img src="<%=request.getContextPath()%>/img/5.jpg" style="max-width: 90%; width: 90%" id="5_img" onclick="selectPhone(5,'http://item.jd.com/1145235.html ')"/>
+                    </div></td>
+			            </tr>
+			            </table>
+			        </div>
             <div  style="background-color:white;">
              <div id="buy" style="width:96%;max-width:96%;margin-left:2%;margin-top:-4px;height:5.1em;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="draw()">
                 <div style="font-size:1.8em;color:white;padding-top:0.9em" id="buyNow" >使用优惠券立即购买</div>
@@ -162,6 +188,7 @@
             if((endY-startY)>10) {//下滑
                    $("#top_img").attr("src","<%=request.getContextPath()%>/img/buy_top_1.png"); 
                 document.getElementById("content").style.display="none";
+                document.getElementById("product_div").style.display="none";
                 $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1});
                 $("#buyNow").text("使用优惠券立即购买");
                 open = false;
@@ -172,6 +199,7 @@
                 //$("#desc").css("height", 100); 
                 //$("#desc").css("overflow-y", "auto"); 
                 document.getElementById("content").style.display="";
+                document.getElementById("product_div").style.display="";
                 $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1}); 
                 $("#buyNow").text("手机购买");
                 open = true;
@@ -183,6 +211,7 @@
     function draw() {
         if(!open) {
        document.getElementById("content").style.display="";
+       document.getElementById("product_div").style.display="";
        $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1}); 
        $("#top_img").attr("src","<%=request.getContextPath()%>/img/buy_top_2.png"); 
        $("#buyNow").text("手机购买");
@@ -191,15 +220,55 @@
            window.location.href='http://m.jd.com/product/813097.html';
                 }
             }
+    function selectPhone(id, url) {
+        if(id==1) {
+        	$("#1_frame").show();
+        	$("#2_frame").hide();
+        	$("#3_frame").hide();
+        	$("#4_frame").hide();
+        	$("#5_frame").hide();
+            }
+        if(id==2) {
+            $("#1_frame").hide();
+            $("#2_frame").show();
+            $("#3_frame").hide();
+            $("#4_frame").hide();
+            $("#5_frame").hide();
+            }
+        if(id==3) {
+            $("#1_frame").hide();
+            $("#2_frame").hide();
+            $("#3_frame").show();
+            $("#4_frame").hide();
+            $("#5_frame").hide();
+            }
+        if(id==4) {
+            $("#1_frame").hide();
+            $("#2_frame").hide();
+            $("#3_frame").hide();
+            $("#4_frame").show();
+            $("#5_frame").hide();
+            }
+        if(id==5) {
+            $("#1_frame").hide();
+            $("#2_frame").hide();
+            $("#3_frame").hide();
+            $("#4_frame").hide();
+            $("#5_frame").show();
+            }
+
+        }
     function clickDiv() {
         if(!open) {
        document.getElementById("content").style.display="";
+       document.getElementById("product_div").style.display="";
        $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1}); 
        $("#top_img").attr("src","<%=request.getContextPath()%>/img/buy_top_2.png"); 
        $("#buyNow").text("手机购买");
        open = true;
        } else {
     	    document.getElementById("content").style.display="none";
+    	    document.getElementById("product_div").style.display="none";
         $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1}); 
         $("#top_img").attr("src","<%=request.getContextPath()%>/img/buy_top_1.png"); 
         $("#buyNow").text("使用优惠券立即购买");

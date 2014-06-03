@@ -249,7 +249,7 @@ td {
                 <tr>
                     <td id="pop_img_td"
                         style="text-align: center; border-top: medium none;"><div
-                            style="margin: 6.5em; font-size: 1em">
+                            style="margin: 3.5em; font-size: 1em">
                             <font style="color: rgb(128, 124, 115)">人气排名获大奖，</font><font
                                 style="color: #e82827">猛点下面按钮！</font>
                         </div>
