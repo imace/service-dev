@@ -29,33 +29,35 @@
 
 		boolean isShared = toid != null && !toid.equals(fromid);
 
-		String message = "看世界杯快报额外有惊喜";
-		String imgurl = request.getScheme() + "://"
-				+ request.getServerName() + "/img/entry_bulletin.jpg";
-		String newsUrl = request.getScheme() + "://" + request.getServerName() + "/news";
-		String redirectHost = Constant.IS_USE_SELF_OAUTH ? Constant.OAUTH_REDIRECT_HOST
-				: Constant.SECOND_OAUTH_REDIRECT_HOST;
+		if (!isShared) {
+			String message = "看世界杯快报额外有惊喜";
+			String imgurl = request.getScheme() + "://"
+					+ request.getServerName() + "/img/entry_bulletin.jpg";
+			String newsUrl = request.getScheme() + "://" + request.getServerName() + "/news";
+			String redirectHost = Constant.IS_USE_SELF_OAUTH ? Constant.OAUTH_REDIRECT_HOST
+					: Constant.SECOND_OAUTH_REDIRECT_HOST;
 
-		Hashtable<String, String> parameters = new Hashtable<String, String>();
-		parameters.put("fid", fromid);
-		parameters.put("identifier", Constant.OAUTH_IDENTIFIER);
-		String codedState = Coder.generateOAuthStateFromUrl(newsUrl, parameters);
+			Hashtable<String, String> parameters = new Hashtable<String, String>();
+			parameters.put("fid", fromid);
+			parameters.put("identifier", Constant.OAUTH_IDENTIFIER);
+			String codedState = Coder.generateOAuthStateFromUrl(newsUrl, parameters);
 
-		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
-				+ Constant.APP_ID
-				+ "&redirect_uri="+ redirectHost
-				+ "&response_type=code&scope="+ Constant.WECHAT_OAUTH_SCOPES.BASE.getValue()
-				+ "&state="+ codedState + "#wechat_redirect";
-		out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
-				+ "MsgImg:\""
-				+ imgurl
-				+ "\", TLImg:\""
-				+ imgurl
-				+ "\", url:\""
-				+ url
-				+ "\", title:\"看报有惊喜\", desc:\""
-				+ message
-				+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
+			String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
+					+ Constant.APP_ID
+					+ "&redirect_uri="+ redirectHost
+					+ "&response_type=code&scope="+ Constant.WECHAT_OAUTH_SCOPES.BASE.getValue()
+					+ "&state="+ codedState + "#wechat_redirect";
+			out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
+					+ "MsgImg:\""
+					+ imgurl
+					+ "\", TLImg:\""
+					+ imgurl
+					+ "\", url:\""
+					+ url
+					+ "\", title:\"看报有惊喜\", desc:\""
+					+ message
+					+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
+		}
 	%>
 	<div class="container page_background">
 		<div class="row">
