@@ -73,8 +73,7 @@
 				},
 				datatype:{
 					"m" : /^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/,
-					"e" : /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
-					"*" : /[\w\W]+/
+					"e" : /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
 				}
 			});		
 
@@ -265,24 +264,24 @@
 				method="post">
 				<input name="openId" type="hidden" id="openId">
 				<div class="form-group">
-					<label for="phoneNum" class="col-xs-4 control-label text_mainBody">电话：</label>
-					<div class="col-xs-8">
+					<label for="phoneNum" class="col-xs-3 control-label text_mainBody">电话：</label>
+					<div class="col-xs-9">
 						<input type="text" class="form-control" name="phoneNum" datatype="m"
-							id="phoneNum" placeholder="电话"  errormsg="请输入正确的手机号码!" >
+							id="phoneNum" placeholder="电话"  errormsg="·请输入正确的手机号码!" nullmsg="请输入手机号！">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="email" class="col-xs-4 control-label text_mainBody">邮箱：</label>
-					<div class="col-xs-8">
+					<label for="email" class="col-xs-3 control-label text_mainBody">邮箱：</label>
+					<div class="col-xs-9">
 						<input type="text" class="form-control" name="email" id="email" datatype="e"
-							placeholder="邮箱" errormsg="请输入正确的邮箱!" >
+							placeholder="邮箱" errormsg="·请输入正确的邮箱!" nullmsg="请输入邮箱！">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="address" class="col-xs-4 control-label text_mainBody">地址：</label>
-					<div class="col-xs-8">
-						<input type="text" class="form-control" name="address" datatype="*"
-							id="address" placeholder="地址" errormsg="请输入正确的地址!" >
+					<label for="address" class="col-xs-3 control-label text_mainBody">地址：</label>
+					<div class="col-xs-9">
+						<input type="text" class="form-control" name="address"
+							id="address" placeholder="地址">
 					</div>
 				</div>
 
@@ -304,9 +303,9 @@
 							}
 						%>
 						<!-- ===============================End=============================== -->
-						<label for="jdId" class="col-xs-4 control-label text_mainBody"
+						<label for="jdId" class="col-xs-3 control-label text_mainBody"
 							style="padding-right: 0px;">京东账号：</label>
-						<div class="col-xs-8">
+						<div class="col-xs-9">
 							<input type="text" class="form-control" name="jdId" id="jdId"
 								placeholder="京东账号">
 						</div>
