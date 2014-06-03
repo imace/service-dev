@@ -14,6 +14,11 @@
     color: rgb(62, 62, 62);
 }
 
+.text_subHeader2 {
+    font-size: 1.4em;
+    color: rgb(62, 62, 62);
+}
+
 .text_highlight {
     font-size: 1.6em;
     color: rgb(206, 161, 75);
