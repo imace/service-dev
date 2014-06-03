@@ -1,47 +1,101 @@
 .text_header {
-    font-size: 1.8em;
-    display: block;
-    font-weight: bold;
+	font-size: 1.8em;
+	display: block;
+	font-weight: bold;
 }
 
 .text_subHeader {
-    color: rgb(34, 191, 242);
-    font-size: 1.6em;
+	color: rgb(34, 191, 242);
+	font-size: 1.6em;
 }
 
 .text_mainBody {
-    font-size: 1.6em;
-    color: rgb(62, 62, 62);
+	font-size: 1.6em;
+	color: rgb(62, 62, 62);
 }
 
 .text_subHeader2 {
-    font-size: 1.4em;
-    color: rgb(62, 62, 62);
+	font-size: 1.4em;
+	color: rgb(62, 62, 62);
 }
 
 .text_highlight {
-    font-size: 1.6em;
-    color: rgb(206, 161, 75);
+	font-size: 1.6em;
+	color: rgb(206, 161, 75);
 }
 
 .text_guide {
-    font-size: 1.6em;
-    color: rgb(148, 140, 140);
-}
-.text_support_btn
-{
-    background: #22bff2; 
-    border-color: #22bff2; 
-    padding: 1em;
-    font-size:1.6em;
+	font-size: 1.6em;
+	color: rgb(148, 140, 140);
 }
 
-.page_background
-{
-    /*background: url(/img/stamp.png) right bottom no-repeat; */
-    background-size: 55%; 
+.text_support_btn {
+	background: #22bff2;
+	border-color: #22bff2;
+	padding: 1em;
+	font-size: 1.6em;
 }
-.point_pic_width
-{
-    width:1.1em;
+
+.page_background {
+	background: url(/img/stamp.png) right bottom no-repeat;
+	background-size: 55%;
+}
+
+.point_pic_width {
+	width: 1.1em;
+}
+
+/* 320.css */
+@media screen and (max-device-width:480px) {
+	.scroll_div_height {
+		height: 35%;
+	}
+	.base_font_size {
+		font-size: 10px;
+	}
+}
+
+/* 320.css */
+/* iphone4 & iphone4s */
+@media screen and (min-device-width:541px) and (max-device-width:640px)
+	and (max-device-height:960px) and (-webkit-device-pixel-ratio: 2) {
+	.scroll_div_height {
+		height: 35%;
+	}
+	.base_font_size {
+		font-size: 10px;
+	}
+}
+
+/* 360.css */
+@media screen and (min-device-width:481px) and (max-device-width:540px)
+	and (-webkit-device-pixel-ratio: 1.5) {
+	.base_font_size {
+		font-size: 10px;
+	}
+}
+
+/* 360.css */
+@media screen and (min-device-width:721px) and (max-device-width:1080px)
+	and (-webkit-device-pixel-ratio: 3) {
+	.base_font_size {
+		font-size: 10px;
+	}
+}
+
+/* 480.css */
+/* iphone5 */
+@media screen and (min-device-width:541px) and (max-device-width:640px)
+	and (min-device-height:961px) and (-webkit-device-pixel-ratio: 2) {
+	.base_font_size {
+		font-size: 14px;
+	}
+}
+
+/* 480.css */
+@media screen and (min-device-width:641px) and (max-device-width:720px)
+	and (-webkit-device-pixel-ratio: 1.5) {
+	.base_font_size {
+		font-size: 14px;
+	}
 }
