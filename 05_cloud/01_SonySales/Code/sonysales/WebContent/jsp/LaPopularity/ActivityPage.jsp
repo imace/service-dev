@@ -83,8 +83,8 @@
                                     大力神杯拉人气活动规则
                     </div>
                     <div class="text_mainBody" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">
-                    1.发送此信息给朋友<br>
-                    2.人气榜前8名,即可获得精美手机一部(官方定制)<br/>
+                    1.分享战报给你的好友<br>
+                    2.人气榜前10名可获得SmartWatch2一个, 前20名可获得蓝牙耳机一个.<br/>
                     3.每拉一个朋友激活10000人气积分呦!
                     </div>
                 </div>
