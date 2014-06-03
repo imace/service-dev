@@ -95,7 +95,7 @@
 					}
 				%>
 				<div id="banner_img_div" style="text-align: center">
-					<img src="<%=request.getContextPath()%>/img/banner_popularity.jpg"
+					<img src="<%=request.getContextPath()%>/img/banner_popularity_zhanbao.jpg"
 						id="banner_img" style="width: 96%; max-width: 96%;" />
 				</div>
 				<br>
