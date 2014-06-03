@@ -11,8 +11,11 @@ public final class Constant {
 	public static Properties properties = new Properties();
 	
 	// This application host
-	public static final String HOST; 
-	public static final String OAUTH_REDIRECT_HOST; 
+	public static final String HOST;
+	public static final String OAUTH_REDIRECT_HOST;
+	public static final String SECOND_OAUTH_REDIRECT_HOST;
+	public static final String OAUTH_IDENTIFIER;
+
 	// The images host of this application 
 	public static final String SONY_FIFA_IMAGES_HOST;
 	// indicate that layou buy ON=(open function) or OFF=(close function)
@@ -27,6 +30,8 @@ public final class Constant {
 	public static final int FEEDBACK_SINGLE_MONEY;
 	
 	public static final String SONY_FIFA_INDEX_NEWS;
+	
+	public static final boolean IS_USE_SELF_OAUTH;
     
     static {
         InputStream is = Constant.class.getClassLoader()
@@ -49,6 +54,9 @@ public final class Constant {
 
         HOST = properties.getProperty("HOST");
         OAUTH_REDIRECT_HOST = properties.getProperty("OAUTH_REDIRECT_HOST");
+        SECOND_OAUTH_REDIRECT_HOST = properties.getProperty("SECOND_OAUTH_REDIRECT_HOST");
+        OAUTH_IDENTIFIER = properties.getProperty("OAUTH_IDENTIFIER");
+        
         SONY_FIFA_IMAGES_HOST = properties.getProperty("SONY_FIFA_IMAGES_HOST");
         LAYOUBUY_SWITCH=properties.getProperty("LAYOUBUY_SWITCH");
 		APP_ID = properties.getProperty("APP_ID");
@@ -60,6 +68,8 @@ public final class Constant {
 		FEEDBACK_SINGLE_MONEY = Integer.parseInt(properties.getProperty("FEEDBACK_SINGLE_MONEY"));
 		
 		SONY_FIFA_INDEX_NEWS = properties.getProperty("SONY_FIFA_INDEX_NEWS");
+		
+		IS_USE_SELF_OAUTH = !"OFF".equals(properties.getProperty("SELFOAUTH_SWITCH"));
 	}
 
 	public static final int SAE_FETCHURL_SUCCESS_CODE = 0;

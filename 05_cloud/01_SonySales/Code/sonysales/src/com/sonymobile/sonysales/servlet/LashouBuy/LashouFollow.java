@@ -27,8 +27,8 @@ public class LashouFollow extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
-			String fromid = request.getParameter("fromid");
-			String toid = request.getParameter("toid");
+			String fromid = request.getParameter("fid");
+			String toid = request.getParameter("tid");
 			String attention = request.getParameter("attention");
 			String oauthtoidlink = request.getParameter("oauthtoidlink");
 

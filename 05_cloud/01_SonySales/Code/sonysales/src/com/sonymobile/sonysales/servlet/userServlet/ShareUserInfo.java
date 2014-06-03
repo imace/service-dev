@@ -25,7 +25,7 @@ public class ShareUserInfo extends HttpServlet {
 		String friendname = (String) request.getParameter("friendname");
 		
 		if (fromid == null) {
-			fromid = request.getParameter("fromid");
+			fromid = request.getParameter("fid");
 		}
 
 		List<?> list = MyFIFAService.getPointsOrder(fromid);

@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.sonymobile.sonysales.entity.DefaultWechatInfoImpl;
-import com.sonymobile.sonysales.servlet.LaPopularityServlet.Activity;
-import com.sonymobile.sonysales.util.Base64Coder;
+import com.sonymobile.sonysales.util.Coder;
 import com.sonymobile.sonysales.util.Constant;
 
 /**
@@ -26,7 +25,6 @@ public class Description extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		this.doPost(request, response);
 	}
 
@@ -36,12 +34,11 @@ public class Description extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		String openId = request.getParameter("id");
 
 		if (openId == null) {
 			logger.error("Description->Log message : (1) openId == null");
-			String toId = request.getParameter("toid");
+			String toId = request.getParameter("tid");
 
 			if (toId == null) {
 				logger.error("Description->Log message : (2) toId == null");
@@ -52,12 +49,16 @@ public class Description extends HttpServlet {
 				infourl.append("appid=");
 				infourl.append(DefaultWechatInfoImpl.getInstance().getAppId());
 				infourl.append("&redirect_uri=");
-				infourl.append(Constant.HOST);
-				infourl.append("/wechat_authorize?response_type=code&scope=");
+				String redirectHost = Constant.IS_USE_SELF_OAUTH ? Constant.OAUTH_REDIRECT_HOST
+						: Constant.SECOND_OAUTH_REDIRECT_HOST;
+				infourl.append(redirectHost);
+				infourl.append("&response_type=code&scope=");
 				infourl.append(Constant.WECHAT_OAUTH_SCOPES.BASE.getValue());
+				infourl.append("&identifier=");
+				infourl.append(Constant.OAUTH_IDENTIFIER);
 				infourl.append("&state=");
-				infourl.append(Base64Coder.convertStrToBase64(Constant.HOST
-						+ "/Description"));
+				infourl.append(Coder.generateOAuthStateFromUrl(request.getScheme() + "://" + request.getServerName()
+						+ "/Description", null));
 				infourl.append("#wechat_redirect");
 
 				response.sendRedirect(infourl.toString());

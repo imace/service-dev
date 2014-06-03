@@ -1,11 +1,12 @@
 package com.sonymobile.sonysales.entity;
 
-import org.apache.log4j.Logger;
-
 import net.sf.json.JSONObject;
+
+import org.apache.log4j.Logger;
 
 import com.sonymobile.sonysales.entity.json.SaeFetchUrlResult;
 import com.sonymobile.sonysales.entity.json.WechatUserInfo;
+import com.sonymobile.sonysales.util.Coder;
 import com.sonymobile.sonysales.util.Constant;
 import com.sonymobile.sonysales.util.HttpConnetcion;
 import com.sonymobile.sonysales.util.JSONConverter;
@@ -36,12 +37,8 @@ public class DefaultWechatInfoImpl implements IWechatInfo {
 	@Override
 	public WechatUserInfo getWebChatUserInfo(String openId) {
 		WechatUserInfo weChatUserInfo = new WechatUserInfo();
-
-		StringBuilder urlBuilder = new StringBuilder(Constant.MASTER_ACCOUNT_HOST);
-		urlBuilder.append(Constant.MASTER_ACCOUNT_GETUSERINFO_PATH);
-		urlBuilder.append("?id=");
-		urlBuilder.append(openId);
-		SaeFetchUrlResult result = HttpConnetcion.saeHttpGetRequest(urlBuilder.toString());
+		String url = buildGetUserInfoUrl(openId);
+		SaeFetchUrlResult result = HttpConnetcion.saeHttpGetRequest(url);
 		if (result.getErrNumber() == Constant.SAE_FETCHURL_SUCCESS_CODE) {
 			JSONObject jsonObject = JSONConverter.convertString2JSONObject(result.getBody());
 			if (jsonObject != null) {
@@ -57,6 +54,21 @@ public class DefaultWechatInfoImpl implements IWechatInfo {
 		}
 
 		return weChatUserInfo;
+	}
+	
+	private String buildGetUserInfoUrl(String openId) {
+		StringBuilder urlBuilder = new StringBuilder(Constant.MASTER_ACCOUNT_HOST);
+		urlBuilder.append(Constant.MASTER_ACCOUNT_GETUSERINFO_PATH);
+		urlBuilder.append("?id=");
+		urlBuilder.append(openId);
+		urlBuilder.append("&t=");
+		long timestamp = System.currentTimeMillis();
+		urlBuilder.append(timestamp);
+		urlBuilder.append("&s=");
+		String signature = Coder.getMD5Signature(Long.toString(timestamp), Constant.OAUTH_IDENTIFIER, openId);
+		urlBuilder.append(signature);
+		
+		return urlBuilder.toString();
 	}
 
 }

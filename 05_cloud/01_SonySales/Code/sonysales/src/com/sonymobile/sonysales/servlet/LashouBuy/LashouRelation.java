@@ -1,6 +1,7 @@
 package com.sonymobile.sonysales.servlet.LashouBuy;
 
 import java.io.IOException;
+import java.util.Hashtable;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,8 +14,9 @@ import org.apache.log4j.Logger;
 
 import com.sonymobile.sonysales.entity.DefaultWechatInfoImpl;
 import com.sonymobile.sonysales.entity.IWechatInfo;
+import com.sonymobile.sonysales.entity.json.WechatUserInfo;
 import com.sonymobile.sonysales.service.HandleService;
-import com.sonymobile.sonysales.util.Base64Coder;
+import com.sonymobile.sonysales.util.Coder;
 import com.sonymobile.sonysales.util.Constant;
 
 public class LashouRelation extends HttpServlet {
@@ -36,11 +38,11 @@ public class LashouRelation extends HttpServlet {
 		try {
 
 			String navurl = "/jsp/LashouBuy/LashouRelation.jsp";
-			String fromid = request.getParameter("fromid");
+			String fromid = request.getParameter("fid");
 			String fromname = request.getParameter("fromname");
-			String toid = request.getParameter("toid");
-			String toname = request.getParameter("toname");
-			String toheadimgurl = request.getParameter("toheadimgurl");
+			String toid = request.getParameter("openid");
+			String toname = request.getParameter("nickname");
+			String toheadimgurl = request.getParameter("headimgurl");
 			String attention="0";
 			boolean isredriect=false;
 
@@ -56,21 +58,20 @@ public class LashouRelation extends HttpServlet {
 
 			if (fromid != null && toid != null) {
 				String tonickname, fromnickname;
+				WechatUserInfo fromUserInfo = wechatInfo.getWebChatUserInfo(fromid);
 
-				if (fromname != null) {
-					fromnickname = fromname;
-				} else {
-					fromnickname = wechatInfo.getWebChatUserInfo(fromid).getNickname();
-				}
+				// get img url on here for temporary
+				fromimg = fromUserInfo.getHeadimgurl();
+				fromnickname = fromUserInfo.getNickname();
 
 				if (toname != null) {
 					tonickname = toname;
 				} else {
-					tonickname = wechatInfo.getWebChatUserInfo(toid).getNickname();
-					// for get to user head image url
-					toimg = wechatInfo.getWebChatUserInfo(toid).getHeadimgurl();
+					WechatUserInfo toUserInfo = wechatInfo.getWebChatUserInfo(toid);
+					tonickname = toUserInfo.getNickname();
+					toimg = toUserInfo.getHeadimgurl();
 				}
-
+				
 				if (toimg!=null) {
 					attention="1";
 				}
@@ -82,10 +83,18 @@ public class LashouRelation extends HttpServlet {
 				if (fromid.equals(toid)) {
 					navurl = "/jsp/LashouBuy/LashouFollow.jsp";
 				} else {
-					String relationUrl = Base64Coder.convertStrToBase64(request.getScheme() + "://" + request.getServerName() + "/lashourelation");
-					request.setAttribute("fromid", fromid);
-					request.setAttribute("toid", toid);
-					String oauthtoidlink = buildGetOAuthUserInfoUrl(Constant.OAUTH_REDIRECT_HOST, fromid, fromnickname, relationUrl);
+					String relationUrl = request.getScheme() + "://" + request.getServerName() + "/lashourelation";
+					request.setAttribute("fid", fromid);
+					request.setAttribute("tid", toid);
+					String redirectHost = Constant.IS_USE_SELF_OAUTH ? Constant.OAUTH_REDIRECT_HOST
+							: Constant.SECOND_OAUTH_REDIRECT_HOST;
+
+					Hashtable<String, String> parameters = new Hashtable<String, String>();
+					parameters.put("fid", fromid);
+					parameters.put("identifier", Constant.OAUTH_IDENTIFIER);
+
+					String codedState = Coder.generateOAuthStateFromUrl(relationUrl, parameters);
+					String oauthtoidlink = buildGetOAuthUserInfoUrl(redirectHost, fromid, fromnickname, codedState);
 					request.setAttribute("oauthtoidlink", oauthtoidlink);
 
 					// add to-user info
@@ -106,8 +115,8 @@ public class LashouRelation extends HttpServlet {
 				}
 			} else {
 				// forward to error page
-				request.setAttribute("fromid", fromid);
-				request.setAttribute("toid", toid);
+				request.setAttribute("fid", fromid);
+				request.setAttribute("tid", toid);
 				request.setAttribute("fromnickname", "他_");
 				request.setAttribute("tonickname", "我");
 				request.setAttribute("fromimg", request.getContextPath() + "/img/head1.png");
@@ -130,10 +139,6 @@ public class LashouRelation extends HttpServlet {
 		infourl.append(wechatInfo.getAppId());
 		infourl.append("&redirect_uri=");
 		infourl.append(host);
-		infourl.append("/wechat_authorize?fromid=");
-		infourl.append(fromid);
-		infourl.append("&fromname=");
-		infourl.append(fromname);
 		infourl.append("&response_type=code&scope=");
 		infourl.append(Constant.WECHAT_OAUTH_SCOPES.USERINFO.getValue());
 		infourl.append("&state=");

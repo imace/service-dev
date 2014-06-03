@@ -16,8 +16,8 @@
 <body class="base_font_size">
 
 	<%
-		String fromid = (String) request.getAttribute("fromid");
-		String toid = (String) request.getAttribute("toid");
+		String fromid = (String) request.getAttribute("fid");
+		String toid = (String) request.getAttribute("tid");
 		String fromnickname = (String) request.getAttribute("fromnickname");
 		String tonickname = (String) request.getAttribute("tonickname");
 		String oauthtoidlink = (String) request.getAttribute("oauthtoidlink");
@@ -56,7 +56,7 @@
 										src="<%=request.getContextPath()%>/img/circle.png">
 								</div>
 								<%=fromnickname%>
-								<input type="hidden" name="fromid" value="<%=fromid%>">
+								<input type="hidden" name="fid" value="<%=fromid%>">
 								<input type="hidden" name="attention" value="<%=attention%>">
 								<input type="hidden" name="oauthtoidlink" value="<%=oauthtoidlink%>">
 							</div>
@@ -67,7 +67,7 @@
 							<div class="col-xs-4">
 								<span id="tonickname" style="display: none;"><%=tonickname%></span>
 								<img alt="fifa" style="max-width: 100%;" src="<%=request.getContextPath()%>/img/circle_phone.png"><br>
-								FIFA手机 <input type="hidden" name="toid" value="<%=toid%>">
+								FIFA手机 <input type="hidden" name="tid" value="<%=toid%>">
 							</div>
 						</div>
 						<br> <br> <br> <br>

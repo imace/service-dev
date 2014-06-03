@@ -18,7 +18,7 @@ import com.sonymobile.sonysales.entity.json.AccessToken;
 import com.sonymobile.sonysales.entity.json.SaeFetchUrlResult;
 import com.sonymobile.sonysales.entity.json.WechatError;
 import com.sonymobile.sonysales.entity.json.WechatUserInfo;
-import com.sonymobile.sonysales.util.Base64Coder;
+import com.sonymobile.sonysales.util.Coder;
 import com.sonymobile.sonysales.util.Constant;
 import com.sonymobile.sonysales.util.HttpConnetcion;
 import com.sonymobile.sonysales.util.JSONConverter;
@@ -39,14 +39,12 @@ public class OAuthServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String oauthCode = request.getParameter("code");
 		String oauthState = request.getParameter("state");
-		String fromOpenId = request.getParameter("fromid");
-		String fromName = request.getParameter("fromname");
 		if (oauthCode == null || oauthCode.isEmpty()
 				|| oauthCode.equals(Constant.WECHAT_OAUTH2_AUTHORIZE_DENY)) {
 			String reason = request.getParameter("reason");
 			oauthState = (reason != null && !reason.isEmpty()) ? reason
 					: oauthState;
-			requestOAuthAgain(response, oauthState, fromOpenId, fromName);
+			requestOAuthAgain(response, oauthState);
 			return;
 		}
 
@@ -78,12 +76,11 @@ public class OAuthServlet extends HttpServlet {
 				// TODO : OAuth error message
 			} else {
 				if (Constant.WECHAT_OAUTH_SCOPES.BASE.getValue().equals(scope)) {
-					responseSnsapibase(oauthState, fromOpenId, fromName,
-							oauthOpenId, response);
+					responseSnsapibase(oauthState, oauthOpenId, response);
 				} else {
 					String token = accessToken.getAccess_token();
-					responseSnsapiUserinfo(oauthState, fromOpenId, fromName,
-							oauthOpenId, token, request, response);
+					responseSnsapiUserinfo(oauthState, oauthOpenId, token,
+							request, response);
 				}
 			}
 		} else {
@@ -122,32 +119,26 @@ public class OAuthServlet extends HttpServlet {
 		return getUserInfoUrlStr.toString();
 	}
 
-	private void responseSnsapibase(String oauthState, String fromOpenId,
-			String fromName, String oauthOpenId, HttpServletResponse response)
-			throws IOException {
+	private void responseSnsapibase(String oauthState, String oauthOpenId,
+			HttpServletResponse response) throws IOException {
 		// build the response redirect url
-		String url = Base64Coder.convertBase64ToStr(oauthState);
+		String url = Coder.decodeOAuthStateToUrl(oauthState);
 		StringBuilder sb = new StringBuilder(url);
-		sb.append('?');
-		sb.append("toid=");
+		if (!url.contains("?")) {
+			sb.append('?');
+			sb.append("tid=");
+		} else {
+			sb.append("&tid=");
+		}
 		sb.append(oauthOpenId);
-		if (fromOpenId != null && !fromOpenId.isEmpty()) {
-			sb.append("&fromid=");
-			sb.append(fromOpenId);
-		}
-		if (fromName != null && !fromName.isEmpty()) {
-			sb.append("&fromname=");
-			sb.append(fromName);
-		}
 
 		response.sendRedirect(sb.toString());
 
 	}
 
-	private void responseSnsapiUserinfo(String oauthState, String fromOpenId,
-			String fromName, String oauthOpenId, String token,
-			HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
+	private void responseSnsapiUserinfo(String oauthState, String oauthOpenId,
+			String token, HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
 		String userInfoUrl = buildGetUserinfoUrl(token, oauthOpenId);
 		SaeFetchUrlResult result = HttpConnetcion
 				.saeHttpGetRequest(userInfoUrl);
@@ -173,23 +164,19 @@ public class OAuthServlet extends HttpServlet {
 				// TODO : OAuth error message
 
 			} else {
-				String url = Base64Coder.convertBase64ToStr(oauthState);
+				String url = Coder.decodeOAuthStateToUrl(oauthState);
 				StringBuilder sb = new StringBuilder(url);
-				sb.append('?');
-				sb.append("toid=");
+				if (!url.contains("?")) {
+					sb.append('?');
+					sb.append("tid=");
+				} else {
+					sb.append("&tid=");
+				}
 				sb.append(oauthOpenId);
 				sb.append("&toname=");
 				sb.append(userInfo.getNickname());
 				sb.append("&toheadimgurl=");
 				sb.append(userInfo.getHeadimgurl());
-				if (fromOpenId != null && !fromOpenId.isEmpty()) {
-					sb.append("&fromid=");
-					sb.append(fromOpenId);
-				}
-				if (fromName != null && !fromName.isEmpty()) {
-					sb.append("&fromname=");
-					sb.append(fromName);
-				}
 				response.sendRedirect(sb.toString());
 			}
 		} else {
@@ -202,19 +189,17 @@ public class OAuthServlet extends HttpServlet {
 	 * The OAuth request the the OAuth again if user pressed "cancel" button
 	 * again.
 	 * */
-	private void requestOAuthAgain(HttpServletResponse response, String state,
-			String fromId, String fromName) throws IOException {
+	private void requestOAuthAgain(HttpServletResponse response, String state)
+			throws IOException {
 		StringBuilder sb = new StringBuilder(
 				Constant.WECHAT_OAUTH2_AUTHORIZE_URL);
 		sb.append('?');
 		sb.append("appid=");
 		sb.append(Constant.APP_ID);
 		sb.append("&redirect_uri=");
-		sb.append(Constant.OAUTH_REDIRECT_HOST);
-		sb.append("/wechat_authorize?fromid=");
-		sb.append(fromId);
-		sb.append("&fromname=");
-		sb.append(fromName);
+		String redirectHost = Constant.IS_USE_SELF_OAUTH ? Constant.OAUTH_REDIRECT_HOST
+				: Constant.SECOND_OAUTH_REDIRECT_HOST;
+		sb.append(redirectHost);
 		sb.append("&response_type=code&scope=");
 		sb.append(Constant.WECHAT_OAUTH_SCOPES.USERINFO.getValue());
 		sb.append("&state=");
@@ -233,9 +218,14 @@ public class OAuthServlet extends HttpServlet {
 		url.append("errnum=");
 		url.append(ResultMsg.ERROR_CODE_IN_NETWORK_CONNECTION);
 		url.append("&errmsg=");
-		url.append(URLEncoder.encode(ResultMsg.ERROR_MESSAGE_IN_NETWORK_CONNECTION, "utf-8"));
+		url.append(URLEncoder.encode(
+				ResultMsg.ERROR_MESSAGE_IN_NETWORK_CONNECTION, "utf-8"));
 
 		logger.info(url.toString());
 		response.sendRedirect(url.toString());
+	}
+	
+	private void getOAuthIdentifier(String url) {
+		
 	}
 }

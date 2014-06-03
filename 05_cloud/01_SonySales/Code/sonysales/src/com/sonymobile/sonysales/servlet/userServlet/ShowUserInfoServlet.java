@@ -15,8 +15,6 @@ import net.sf.json.JSONObject;
 
 import com.sonymobile.sonysales.entity.DefaultWechatInfoImpl;
 import com.sonymobile.sonysales.service.MyFIFAService;
-import com.sonymobile.sonysales.servlet.LashouBuy.LashouFollow;
-import com.sonymobile.sonysales.util.Constant;
 
 public class ShowUserInfoServlet extends HttpServlet {
 	/**
@@ -27,9 +25,9 @@ public class ShowUserInfoServlet extends HttpServlet {
 			.getName());
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String fromid = (String) request.getParameter("id");
-		String toid = request.getParameter("toid");
+		String toid = request.getParameter("tid");
 		if (fromid == null) {
-			fromid = request.getParameter("fromid");
+			fromid = request.getParameter("fid");
 		}
 		if (fromid!=null&&toid!=null&& fromid!=toid) {
 			response.sendRedirect(request.getContextPath() + "/activitypage?id=" + toid);

@@ -1,7 +1,8 @@
 <%@page import="com.sonymobile.sonysales.servlet.LaPopularityServlet.Activity"%>
 <%@page import="com.sonymobile.sonysales.util.Constant"%>
-<%@page import="com.sonymobile.sonysales.util.Base64Coder"%>
+<%@page import="com.sonymobile.sonysales.util.Coder"%>
 <%@page import="org.apache.log4j.Logger"%>
+<%@page import="java.util.Hashtable"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -25,13 +26,21 @@
 		nickname=(nickname==null?"":"("+nickname+")");
 		String message="Hi, 亲, 我"+nickname+"对索尼FIFA志在必得, 请你拉我一票!";
 		String imgurl=request.getScheme() + "://" + request.getServerName() + "/img/menu_entry2.jpg";	
-		String relationUrl = Base64Coder.convertStrToBase64(request.getScheme() + "://" + request.getServerName() + "/news");
+		String relationUrl = request.getScheme() + "://" + request.getServerName() + "/news";
+		String redirectHost = Constant.IS_USE_SELF_OAUTH ? Constant.OAUTH_REDIRECT_HOST
+				: Constant.SECOND_OAUTH_REDIRECT_HOST;
+
+		Hashtable<String, String> parameters = new Hashtable<String, String>();
+		parameters.put("fid", openid);
+		parameters.put("identifier", Constant.OAUTH_IDENTIFIER);
+		String codedState = Coder.generateOAuthStateFromUrl(relationUrl, parameters);
+
 		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
 				+ Constant.APP_ID
-				+ "&redirect_uri="+ Constant.OAUTH_REDIRECT_HOST
-				+ "/wechat_authorize?fromid="+ openid
+				+ "&redirect_uri="+ redirectHost
 				+ "&response_type=code&scope="+ Constant.WECHAT_OAUTH_SCOPES.BASE.getValue()
-				+ "&state="+ relationUrl + "#wechat_redirect";
+				+ "&state="+ codedState + "#wechat_redirect";
+		logger.debug("--------------------" + url);
 		out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
 				+ "MsgImg:\""+ imgurl
 				+ "\", TLImg:\""+ imgurl
