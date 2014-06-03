@@ -77,11 +77,10 @@
 		</div>
 
 <%      if (isShared) {%>
-		<div id="buy"
-			style="width: 96%; max-width: 96%; margin-left: 2%; margin-top: -4px; height: 5.1em; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;">
+		<div style="width: 96%; max-width: 96%; margin-left: 2%; margin-top: 4px; height: 5.1em; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;">
 			<a
-				href="<%=request.getContextPath()%>/relationpage?fromid=<%=fromid%>&fromname=<%=fromname%>&toid=<%=toid%>&toname=<%=toheadimgurl%>&toname=<%=toheadimgurl%>"
-				style="display: block; text-align: center; color: white; border: 1px solid #d9d9d9; background-color: #e82827; text-decoration: none;">前往支持好友登上人气榜</a>
+				href="<%=request.getContextPath()%>/relationpage?fromid=<%=fromid%>&fromname=<%=fromname%>&toid=<%=toid%>&toname=<%=toname%>&toheadimgurl=<%=toheadimgurl%>"
+				style="display: block; text-align: center; color: white; border: 1px solid #d9d9d9; background-color: #e82827; text-decoration: none;">前往支持<%=fromname%>登上人气榜</a>
 		</div>
 <%      }%>
 	</div>
