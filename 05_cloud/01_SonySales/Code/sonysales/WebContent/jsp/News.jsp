@@ -68,6 +68,14 @@
 				<%
 					if (!isShared) {
 				%>
+				<%
+					}
+				%>
+				<div id="banner_img_div" style="text-align: center">
+					<img src="<%=request.getContextPath()%>/img/banner_popularity_zhanbao.jpg"
+						id="banner_img" style="width: 96%; max-width: 96%;" />
+				</div>
+				<br>
 				<div style="display: block;">
 					<p class="text_highlight common_style"
 						style="padding-top: 10px; width: 96%; max-width: 96%; margin-left: 2%">
@@ -78,13 +86,6 @@
 							class="point_pic_width"
 							style="margin-left: 2px; margin-right: 2px" />发送给朋友
 					</p>
-				</div>
-				<%
-					}
-				%>
-				<div id="banner_img_div" style="text-align: center">
-					<img src="<%=request.getContextPath()%>/img/banner_popularity_zhanbao.jpg"
-						id="banner_img" style="width: 96%; max-width: 96%;" />
 				</div>
 				<br>
 				<div class="row">
@@ -110,6 +111,19 @@
 							href="<%=relationUrl%>"
 							style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
 							class="btn_decoration btn-lg" role="button">前往支持<%=fromname%>登上人气榜
+						</a>
+					</div>
+				</div>
+				<br>
+				<%
+					}else{
+				%>
+				<div class="row">
+					<div class="col-xs-12">
+						<a
+							href="<%=request.getContextPath()%>/activitypage?id=<%=fromid%>"
+							style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
+							class="btn_decoration btn-lg" role="button">分享快报提升人气
 						</a>
 					</div>
 				</div>

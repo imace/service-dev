@@ -13,16 +13,17 @@
 <script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css"> 
-<title>拉人气，得大奖!</title>
+<title>发快报, 拉人气, 得大奖!</title>
 </head>
 <body class="base_font_size" style="margin:0;background-color:#f8f7f5">
 
 	<%
 	Logger logger = Logger.getLogger(Activity.class.getName());
 	String openid = "";
+	String nickname ="";
 	try{
 		openid =(String)request.getAttribute("openid");
-		String nickname =(String)request.getAttribute("nickname");
+		nickname =(String)request.getAttribute("nickname");
 		nickname=(nickname==null?"":"("+nickname+")");
 		String message="Hi, 亲, 我"+nickname+"对索尼FIFA志在必得, 请你拉我一票!";
 		String imgurl=request.getScheme() + "://" + request.getServerName() + "/img/menu_entry2.jpg";	
@@ -55,7 +56,7 @@
 	%>
 
 <div>
-                <div id="title" class="text_header common_style" style="margin:8px;max-width:96%;margin-left:2%">拉人气,得大奖！</div>
+                <div id="title" class="text_header common_style" style="margin:8px;max-width:96%;margin-left:2%">发快报, 拉人气, 得大奖!</div>
                 <div id="banner_img_div" style="text-align: center">
                     <img src="<%=request.getContextPath()%>/img/banner_popularity.jpg" id="banner_img" style="width:96%;max-width:96%;"/>
                 </div>
@@ -67,8 +68,8 @@
                                     大力神杯拉人气活动规则
                     </div>
                     <div class="text_mainBody" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">
-                    1.分享战报给你的好友<br>
-                    2.人气榜前10名可获得SmartWatch2一个, 11至20名可获得蓝牙耳机一个.<br/>
+                    1.分享快报给您的好友, 点击查看<a class="btn btn-default" style="background: url(<%=request.getContextPath()%>/img/trumpet.png) 8px no-repeat #ff7000;padding: 6px; text-decoration:none; overflow: hidden; padding-left: 35px;text-align: right; color:#fff;background-size: 22px 22px;" href="<%=request.getContextPath()%>/news?fid=<%=openid%>&fromname=<%=nickname%>" role="button">快报</a><br>
+                    2.人气榜前10名可获得SmartWatch2一个, 11至20名可获得蓝牙耳机SBH20一个.<br/>
                     3.每拉一个朋友激活10000人气积分呦!
                     </div>
                 </div>
