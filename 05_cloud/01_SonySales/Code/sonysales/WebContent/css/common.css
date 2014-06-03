@@ -38,7 +38,7 @@
 
 .page_background
 {
-    background: url(/img/stamp.png) right bottom no-repeat; 
+    /*background: url(/img/stamp.png) right bottom no-repeat; */
     background-size: 55%; 
 }
 .point_pic_width
