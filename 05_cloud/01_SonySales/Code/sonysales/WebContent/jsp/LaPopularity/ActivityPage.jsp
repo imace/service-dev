@@ -92,7 +92,7 @@
 <div class="scroll_div_height" style="position:absolute;width:100%;max-width:100%;"></div>
         <div id="touchBox" style="width:100%;max-width:100%;">
         <div  style="position:relative;" >
-               <img src="<%=request.getContextPath()%>/img/product_top_all_1.png" style="width:100%;max-width:100%;margin-top:0" id="top_img"/><div id="click_div" onclick="clickDiv()" style="position:absolute;width:20%;height:80%;right:7%;top:15%;"></div>
+               <img src="<%=request.getContextPath()%>/img/buy_top_1.png" style="width:100%;max-width:100%;margin-top:0" id="top_img"/><div id="click_div" onclick="clickDiv()" style="position:absolute;width:20%;height:80%;right:7%;top:15%;"></div>
                </div>
             <div  style="background-color:white;">
              <div id="buy" style="width:96%;max-width:96%;margin-left:2%;margin-top:-4px;height:5.1em;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="draw()">
@@ -160,7 +160,7 @@
 
         function touchEnd(event){
             if((endY-startY)>10) {//下滑
-                   $("#top_img").attr("src","<%=request.getContextPath()%>/img/product_top_all_1.png"); 
+                   $("#top_img").attr("src","<%=request.getContextPath()%>/img/buy_top_1.png"); 
                 document.getElementById("content").style.display="none";
                 $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1});
                 $("#buyNow").text("使用优惠券立即购买");
@@ -168,7 +168,7 @@
 
                 }
             if((startY-endY)>10) {//上滑
-                  $("#top_img").attr("src","<%=request.getContextPath()%>/img/product_top_all_2.png"); 
+                  $("#top_img").attr("src","<%=request.getContextPath()%>/img/buy_top_2.png"); 
                 //$("#desc").css("height", 100); 
                 //$("#desc").css("overflow-y", "auto"); 
                 document.getElementById("content").style.display="";
@@ -184,7 +184,7 @@
         if(!open) {
        document.getElementById("content").style.display="";
        $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1}); 
-       $("#top_img").attr("src","<%=request.getContextPath()%>/img/product_top_all_2.png"); 
+       $("#top_img").attr("src","<%=request.getContextPath()%>/img/buy_top_2.png"); 
        $("#buyNow").text("手机购买");
        open = true;
        } else {
@@ -195,13 +195,13 @@
         if(!open) {
        document.getElementById("content").style.display="";
        $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1}); 
-       $("#top_img").attr("src","<%=request.getContextPath()%>/img/product_top_all_2.png"); 
+       $("#top_img").attr("src","<%=request.getContextPath()%>/img/buy_top_2.png"); 
        $("#buyNow").text("手机购买");
        open = true;
        } else {
     	    document.getElementById("content").style.display="none";
         $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1}); 
-        $("#top_img").attr("src","<%=request.getContextPath()%>/img/product_top_all_1.png"); 
+        $("#top_img").attr("src","<%=request.getContextPath()%>/img/buy_top_1.png"); 
         $("#buyNow").text("使用优惠券立即购买");
         open = false;
                 }
