@@ -186,9 +186,9 @@ td {
                            </td>
                         </tr>
                          <tr>
-                            <td style="border-top:none">1</td>
-                            <td style="border-top:none"><%=userList.get(0).getNickname().length()>4?userList.get(0).getNickname().substring(0,4)+"...":userList.get(0).getNickname()%></td>
-                            <td style="border-top:none">已经获得<font style="color: #e82827"><%=userList.get(0).getPoints()%></font>个好友支持了！
+                            <td style="border-top:none">11</td>
+                            <td style="border-top:none"><%=userList.get(10).getNickname().length()>4?userList.get(10).getNickname().substring(0,4)+"...":userList.get(10).getNickname()%></td>
+                            <td style="border-top:none">已经获得<font style="color: #e82827"><%=userList.get(10).getPoints()%></font>个好友支持了！
                             </td>
                         </tr>
                          <%
@@ -298,9 +298,9 @@ td {
                            </td>
                         </tr>
                          <tr>
-                            <td style="border-top:none">1</td>
-                            <td style="border-top:none"><%=userList.get(0).getNickname().length()>4?userList.get(0).getNickname().substring(0,4)+"...":userList.get(0).getNickname()%></td>
-                            <td style="border-top:none">已经获得<font style="color: #e82827"><%=userList.get(0).getPoints()%></font>个好友支持了！
+                            <td style="border-top:none">11</td>
+                            <td style="border-top:none"><%=userList.get(10).getNickname().length()>4?userList.get(10).getNickname().substring(0,4)+"...":userList.get(10).getNickname()%></td>
+                            <td style="border-top:none">已经获得<font style="color: #e82827"><%=userList.get(10).getPoints()%></font>个好友支持了！
                             </td>
                         </tr>
                          <%
@@ -472,13 +472,13 @@ td {
 %>
 //$("img").load(function() {
 	window.onload = function() {
-    if((poplist_div1.offsetHeight-poplist_div.offsetHeight)>50) {
+    if((poplist_div1.offsetHeight-poplist_div.offsetHeight)>0) {
         document.getElementById("poplist_div2").style.display="";
-        } else {
+        } else if((poplist_div.offsetHeight-poplist_div1.offsetHeight)>20){
             //var text = 'before poplist_div1.offsetHeight:' + poplist_div1.offsetHeight + ' poplist_div.offsetHeight:' + poplist_div.offsetHeight + ' pop_point_td.offsetHeight:'+pop_point_td.offsetHeight+ ' pop_top_img.offsetHeight:'+pop_top_img.offsetHeight;  
            // document.getElementById("beforeresult").innerHTML = text;
             
-            $("#pop_point_td").css("height", (poplist_div.offsetHeight-poplist_div1.offsetHeight)+"px");
+            $("#pop_point_td").css("height", (poplist_div.offsetHeight-poplist_div1.offsetHeight-2)+"px");
             document.getElementById("pop_point_td").style.display="";
             //var text = ' poplist_div1.offsetHeight:' + poplist_div1.offsetHeight + ' poplist_div.offsetHeight:' + poplist_div.offsetHeight + ' pop_point_td.offsetHeight:'+pop_point_td.offsetHeight+ ' pop_top_img.offsetHeight:'+pop_top_img.offsetHeight;    
             //document.getElementById("result").innerHTML = text; 
