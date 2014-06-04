@@ -88,19 +88,19 @@
                         <img src="<%=request.getContextPath()%>/img/1.jpg" style="max-width: 90%; width: 90%" id="1_img" onclick="selectPhone(1,'http://m.jd.com/product/1084656.html')"/>
                     </div></td>
 			            <td><div>
-			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.2%; width: 16.2%" id="2_frame" />
+			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.4%; width: 16.4%" id="2_frame" />
                         <img src="<%=request.getContextPath()%>/img/2.jpg" style="max-width: 90%; width: 90%" id="2_img" onclick="selectPhone(2,'http://m.jd.com/product/1101144.html')"/>
                     </div></td>
 			            <td><div>
-			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="position:absolute;max-width: 16.2%; width: 16.2%" id="3_frame" />
+			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="position:absolute;max-width: 16.4%; width: 16.4%" id="3_frame" />
                         <img src="<%=request.getContextPath()%>/img/3.jpg" style="max-width: 90%; width: 90%" id="3_img" onclick="selectPhone(3,'http://m.jd.com/product/1145235.html')"/>
                     </div></td>
 			            <td><div>
-			                    <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.2%; width: 16.2%" id="4_frame" />
+			                    <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.4%; width: 16.4%" id="4_frame" />
                         <img src="<%=request.getContextPath()%>/img/4.jpg" style="max-width: 90%; width: 90%" id="4_img" onclick="selectPhone(4,'http://m.jd.com/product/1101144.html')"/>
                     </div></td>
 			            <td><div>
-			                   <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.2%; width: 16.2%" id="5_frame" />
+			                   <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.4%; width: 16.4%" id="5_frame" />
                         <img src="<%=request.getContextPath()%>/img/5.jpg" style="max-width: 90%; width: 90%" id="5_img" onclick="selectPhone(5,'http://m.jd.com/product/1084656.html')"/>
                     </div></td>
 			            </tr>
