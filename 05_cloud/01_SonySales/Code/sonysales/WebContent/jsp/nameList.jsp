@@ -26,17 +26,17 @@ td {
     BORDER-LEFT: medium none;
     height: 2em;
     font-size:1.6em;
-    padding-left:8px;
+    padding-left:0.2em;
 }
 
 .col1{
-    width:8%;
+    width:10%;
 }
 .col2{
-    width:32%;
+    width:22%;
 }
 .col3{
-    width:60%;
+    width:68%;
 }
 
 .overText{

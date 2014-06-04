@@ -56,13 +56,13 @@
 	%>
 
 <div>
-                <div id="title" class="text_header common_style" style="margin:8px;max-width:96%;margin-left:2%">发快报, 拉人气, 得大奖!</div>
+                <div id="title" class="text_header common_style" style="margin:0.6em;max-width:96%;margin-left:2%">发快报, 拉人气, 得大奖!</div>
                 <div id="banner_img_div" style="text-align: center">
                     <img src="<%=request.getContextPath()%>/img/banner_popularity.jpg" id="banner_img" style="width:96%;max-width:96%;"/>
                 </div>
-                 <p class="text_highlight common_style" style="padding-top:0.6em;width:96%;max-width:96%;margin-left:2%">
+                 <div class="text_highlight common_style" style="padding-top:1em;padding-bottom:0.5em;width:96%;max-width:96%;margin-left:2%">
                                                          点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>或<img src="<%=request.getContextPath()%>/img/share.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>发送给朋友
-                             </p>
+                             </div>
                 <div id="intro" >
                     <div class="text_subHeader" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">
                                     大力神杯拉人气活动规则
@@ -74,7 +74,7 @@
                     </div>
                 </div>
         </div>
-        <br> <br> <br>
+        
 <div class="scroll_div_height" style="position:absolute;width:100%;max-width:100%;"></div>
         <div id="touchBox" style="width:100%;max-width:100%;">
             <div  style="position:relative;" >
@@ -88,19 +88,19 @@
                         <img src="<%=request.getContextPath()%>/img/1.jpg" style="max-width: 90%; width: 90%" id="1_img" onclick="selectPhone(1,'http://m.jd.com/product/1084656.html')"/>
                     </div></td>
 			            <td><div>
-			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.5%; width: 16.5%" id="2_frame" />
+			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.2%; width: 16.2%" id="2_frame" />
                         <img src="<%=request.getContextPath()%>/img/2.jpg" style="max-width: 90%; width: 90%" id="2_img" onclick="selectPhone(2,'http://m.jd.com/product/1101144.html')"/>
                     </div></td>
 			            <td><div>
-			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="position:absolute;max-width: 16.5%; width: 16.5%" id="3_frame" />
+			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="position:absolute;max-width: 16.2%; width: 16.2%" id="3_frame" />
                         <img src="<%=request.getContextPath()%>/img/3.jpg" style="max-width: 90%; width: 90%" id="3_img" onclick="selectPhone(3,'http://m.jd.com/product/1145235.html')"/>
                     </div></td>
 			            <td><div>
-			                    <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.5%; width: 16.5%" id="4_frame" />
+			                    <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.2%; width: 16.2%" id="4_frame" />
                         <img src="<%=request.getContextPath()%>/img/4.jpg" style="max-width: 90%; width: 90%" id="4_img" onclick="selectPhone(4,'http://m.jd.com/product/1101144.html')"/>
                     </div></td>
 			            <td><div>
-			                   <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.5%; width: 16.5%" id="5_frame" />
+			                   <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.2%; width: 16.2%" id="5_frame" />
                         <img src="<%=request.getContextPath()%>/img/5.jpg" style="max-width: 90%; width: 90%" id="5_img" onclick="selectPhone(5,'http://m.jd.com/product/1084656.html')"/>
                     </div></td>
 			            </tr>
@@ -108,18 +108,18 @@
 			        </div>
             <div  style="background-color:white;">
              <div id="buy" style="width:96%;max-width:96%;margin-left:2%;margin-top:-4px;height:5.1em;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="draw()">
-                <div style="font-size:1.8em;color:white;padding-top:0.9em" id="buyNow" >使用优惠券立即购买</div>
+                <div style="font-size:1.65em;color:white;padding-top:0.95em" id="buyNow" >使用优惠券立即购买</div>
              </div>
             </div>
             <div id="content" style="display:none;background-color:white;height:6.2em">
                 <div id="bttons" style="max-width:96%;width:96%;margin-left:2%;padding-top:1em;">
                     <div id="pcbuy" style="max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #bfbfbf;float:left" onclick="pcBuy()">
-                        <div><img src="<%=request.getContextPath()%>/img/http_icn.png" style="height:3em;float:left;margin-left:10px;padding-top:1.2em"/></div>
-                        <div style="font-size:1.8em;color:rgb(116, 105, 105);padding-top:0.9em;padding-right:3em">PC购买</div>
+                        <div><img src="<%=request.getContextPath()%>/img/http_icn.png" style="height:3em;float:left;margin-left:1.4em;padding-top:1.1em"/></div>
+                        <div style="font-size:1.65em;color:rgb(116, 105, 105);padding-top:0.95em;padding-right:1.5em">PC购买</div>
                     </div>
                     <div id="discount" style="max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #bfbfbf;float:right" onclick="window.location.href='<%=request.getContextPath()%>/myInfo?id=<%=openid%>'">
-                        <div><img src="<%=request.getContextPath()%>/img/discount_icn.png" style="height:3em;float:left;margin-left:10px;padding-top:1em"/></div>
-                        <div style="font-size:1.8em;color:rgb(116, 105, 105);padding-top:0.9em;padding-right:3em">优惠券</div>
+                        <div><img src="<%=request.getContextPath()%>/img/discount_icn.png" style="height:3em;float:left;margin-left:1.4em;padding-top:1em"/></div>
+                        <div style="font-size:1.65em;color:rgb(116, 105, 105);padding-top:0.95em;padding-right:1.5em">优惠券</div>
                     </div>
                 </div>
             </div>
