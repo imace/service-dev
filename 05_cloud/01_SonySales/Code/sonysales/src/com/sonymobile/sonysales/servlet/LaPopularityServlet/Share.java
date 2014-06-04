@@ -11,6 +11,8 @@ import net.sf.json.JSONException;
 
 import org.apache.log4j.Logger;
 
+import com.sonymobile.sonysales.util.Constant;
+
 public class Share extends HttpServlet {
 
 	private static final long serialVersionUID = 2170271794700562161L;
@@ -43,7 +45,7 @@ public class Share extends HttpServlet {
 			} else {
 				String url = "";
 				if (attention.contains("0")) {
-					url = "http://mp.weixin.qq.com/s?__biz=MzA5NDAwODUxMQ==&mid=200111401&idx=1&sn=c2c817de70b14a702fe02da6997f8f64#rd";
+					url = Constant.ATTENTION_PAGE;
 
 				} else {
 					url = request.getContextPath() + "/activitypage?id=" + toid;

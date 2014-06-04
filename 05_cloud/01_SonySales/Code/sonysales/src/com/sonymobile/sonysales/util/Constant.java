@@ -32,6 +32,8 @@ public final class Constant {
 	public static final String SONY_FIFA_INDEX_NEWS;
 	
 	public static final boolean IS_USE_SELF_OAUTH;
+	
+	public static final String ATTENTION_PAGE;
     
     static {
         InputStream is = Constant.class.getClassLoader()
@@ -52,6 +54,7 @@ public final class Constant {
             }
         }
 
+        
         HOST = properties.getProperty("HOST");
         OAUTH_REDIRECT_HOST = properties.getProperty("OAUTH_REDIRECT_HOST");
         SECOND_OAUTH_REDIRECT_HOST = properties.getProperty("SECOND_OAUTH_REDIRECT_HOST");
@@ -70,6 +73,8 @@ public final class Constant {
 		SONY_FIFA_INDEX_NEWS = properties.getProperty("SONY_FIFA_INDEX_NEWS");
 		
 		IS_USE_SELF_OAUTH = !"OFF".equals(properties.getProperty("SELFOAUTH_SWITCH"));
+		
+		ATTENTION_PAGE=properties.getProperty("ATTENTION_PAGE");
 	}
 
 	public static final int SAE_FETCHURL_SUCCESS_CODE = 0;
