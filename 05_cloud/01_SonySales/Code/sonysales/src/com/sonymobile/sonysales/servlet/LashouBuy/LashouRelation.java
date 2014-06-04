@@ -91,7 +91,7 @@ public class LashouRelation extends HttpServlet {
 
 					Hashtable<String, String> parameters = new Hashtable<String, String>();
 					parameters.put("fid", fromid);
-					parameters.put("identifier", Constant.OAUTH_IDENTIFIER);
+					parameters.put("i", Constant.OAUTH_IDENTIFIER);
 
 					String codedState = Coder.generateOAuthStateFromUrl(relationUrl, parameters);
 					String oauthtoidlink = buildGetOAuthUserInfoUrl(redirectHost, fromid, fromnickname, codedState);

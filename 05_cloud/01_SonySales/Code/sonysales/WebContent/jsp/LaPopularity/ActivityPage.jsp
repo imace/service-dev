@@ -33,7 +33,7 @@
 
 		Hashtable<String, String> parameters = new Hashtable<String, String>();
 		parameters.put("fid", openid);
-		parameters.put("identifier", Constant.OAUTH_IDENTIFIER);
+		parameters.put("i", Constant.OAUTH_IDENTIFIER);
 		String codedState = Coder.generateOAuthStateFromUrl(relationUrl, parameters);
 
 		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
