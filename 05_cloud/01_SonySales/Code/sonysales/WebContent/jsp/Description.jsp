@@ -118,7 +118,7 @@ if (com.sonymobile.sonysales.util.Constant.LAYOUBUY_SWITCH.contains("OFF")) { %>
 			</div>
 			<div class="text_highlight"
 				style="max-width: 96%; width: 96%; margin-left: 2%; line-height: 150%;">
-				参加这个活动，不仅有机会获得超值索尼FIFA手机，还可以获得关注优惠券和拉友买奖金。 <br> <br> <br>
+				参加这个活动，不仅有机会获得索尼FIFA精美大奖，还有5款索尼FIFA特惠手机供你选择。 <br> <br> <br>
 				<br>
 			</div>
 

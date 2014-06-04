@@ -111,7 +111,7 @@
 						<a
 							href="<%=relationUrl%>"
 							style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
-							class="btn_decoration btn-lg" role="button">前往支持<%=fromname%>登上人气榜
+							class="btn_decoration btn-lg" role="button">前往支持好友登上人气榜
 						</a>
 					</div>
 				</div>

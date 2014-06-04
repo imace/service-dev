@@ -126,9 +126,9 @@ public class OAuthServlet extends HttpServlet {
 		StringBuilder sb = new StringBuilder(url);
 		if (!url.contains("?")) {
 			sb.append('?');
-			sb.append("tid=");
+			sb.append("openid=");
 		} else {
-			sb.append("&tid=");
+			sb.append("&openid=");
 		}
 		sb.append(oauthOpenId);
 
@@ -168,14 +168,14 @@ public class OAuthServlet extends HttpServlet {
 				StringBuilder sb = new StringBuilder(url);
 				if (!url.contains("?")) {
 					sb.append('?');
-					sb.append("tid=");
+					sb.append("openid=");
 				} else {
-					sb.append("&tid=");
+					sb.append("&openid=");
 				}
 				sb.append(oauthOpenId);
-				sb.append("&toname=");
+				sb.append("&nickname=");
 				sb.append(userInfo.getNickname());
-				sb.append("&toheadimgurl=");
+				sb.append("&headimgurl=");
 				sb.append(userInfo.getHeadimgurl());
 				response.sendRedirect(sb.toString());
 			}
