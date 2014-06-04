@@ -33,12 +33,20 @@
 			name="connection.password">root</property> -->
 
 		<!-- 开发服务器访问地址 -->
+        
 		<property name="connection.url">
 			jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_sonyfifa
 		</property>
 		<property name="connection.username">nzkkkjwlm0</property>
 		<property name="connection.password">3314wkhwj35i2w3yhxm54yxw5kxwlmlk3xj5x1mx</property>
-
+        
+        <!--
+    <property name="connection.url">
+        jdbc:mysql://localhost/app_sonyfifa
+    </property>
+    <property name="connection.username">root</property>
+    <property name="connection.password">root</property>
+        -->
 		<!-- 测试服务器访问地址 -->
 		<!-- <property name="connection.url">
 			jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_sonyservice

@@ -1,5 +1,4 @@
-<%@page
-	import="com.sonymobile.sonysales.servlet.LaPopularityServlet.Activity"%>
+<%@page import="com.sonymobile.sonysales.servlet.LaPopularityServlet.Activity"%>
 <%@page import="com.sonymobile.sonysales.util.Constant"%>
 <%@page import="com.sonymobile.sonysales.util.Coder"%>
 <%@page import="org.apache.log4j.Logger"%>
@@ -11,178 +10,123 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
-<script
-	src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
+<script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
 
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/common.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css"> 
 <title>发快报, 拉人气, 得大奖!</title>
 </head>
-<body class="base_font_size"
-	style="margin: 0; background-color: #f8f7f5">
+<body class="base_font_size" style="margin:0;background-color:#f8f7f5">
 
 	<%
-		Logger logger = Logger.getLogger(Activity.class.getName());
-		String openid = "";
-		String nickname ="";
-		try{
-			openid =(String)request.getAttribute("openid");
-			nickname =(String)request.getAttribute("nickname");
-			nickname=(nickname==null?"":"("+nickname+")");
-			String message="Hi, 亲, 我"+nickname+"对索尼FIFA志在必得, 请你拉我一票!";
-			String imgurl=request.getScheme() + "://" + request.getServerName() + "/img/menu_entry2.jpg";	
-			String relationUrl = request.getScheme() + "://" + request.getServerName() + "/news";
-			String redirectHost = Constant.IS_USE_SELF_OAUTH ? Constant.OAUTH_REDIRECT_HOST
-			: Constant.SECOND_OAUTH_REDIRECT_HOST;
+	Logger logger = Logger.getLogger(Activity.class.getName());
+	String openid = "";
+	String nickname ="";
+	try{
+		openid =(String)request.getAttribute("openid");
+		nickname =(String)request.getAttribute("nickname");
+		nickname=(nickname==null?"":"("+nickname+")");
+		String message="Hi, 亲, 我"+nickname+"对索尼FIFA志在必得, 请你拉我一票!";
+		String imgurl=request.getScheme() + "://" + request.getServerName() + "/img/menu_entry2.jpg";	
+		String relationUrl = request.getScheme() + "://" + request.getServerName() + "/news";
+		String redirectHost = Constant.IS_USE_SELF_OAUTH ? Constant.OAUTH_REDIRECT_HOST
+				: Constant.SECOND_OAUTH_REDIRECT_HOST;
 
-			Hashtable<String, String> parameters = new Hashtable<String, String>();
-			parameters.put("fid", openid);
-			parameters.put("i", Constant.OAUTH_IDENTIFIER);
-			String codedState = Coder.generateOAuthStateFromUrl(relationUrl, parameters);
+		Hashtable<String, String> parameters = new Hashtable<String, String>();
+		parameters.put("fid", openid);
+		parameters.put("i", Constant.OAUTH_IDENTIFIER);
+		String codedState = Coder.generateOAuthStateFromUrl(relationUrl, parameters);
 
-			String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
-			+ Constant.APP_ID
-			+ "&redirect_uri="+ redirectHost
-			+ "&response_type=code&scope="+ Constant.WECHAT_OAUTH_SCOPES.BASE.getValue()
-			+ "&state="+ codedState + "#wechat_redirect";
-			logger.debug("--------------------" + url);
-			out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
-			+ "MsgImg:\""+ imgurl
-			+ "\", TLImg:\""+ imgurl
-			+ "\", url:\""+ url
-			+ "\", title:\"发快报, 拉人气, 得大奖\", desc:\""+ message
-			+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
-		}
-	    catch (Exception e) {
-			  logger.error("ActivityPage.jsp->front-end-page in exception : " + e.getMessage());
-			  response.sendRedirect(request.getContextPath()+"/jsp/errorhandler.jsp?errnum=0111&errmsg="+e.getMessage());
-		}
+		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
+				+ Constant.APP_ID
+				+ "&redirect_uri="+ redirectHost
+				+ "&response_type=code&scope="+ Constant.WECHAT_OAUTH_SCOPES.BASE.getValue()
+				+ "&state="+ codedState + "#wechat_redirect";
+		logger.debug("--------------------" + url);
+		out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
+				+ "MsgImg:\""+ imgurl
+				+ "\", TLImg:\""+ imgurl
+				+ "\", url:\""+ url
+				+ "\", title:\"拉人气, 得大奖\", desc:\""+ message
+				+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
+	}
+    catch (Exception e) {
+		  logger.error("ActivityPage.jsp->front-end-page in exception : " + e.getMessage());
+		  response.sendRedirect(request.getContextPath()+"/jsp/errorhandler.jsp?errnum=0111&errmsg="+e.getMessage());
+	}
 	%>
 
-	<div>
-		<div id="title" class="text_header common_style"
-			style="margin: 0.6em; max-width: 96%; margin-left: 2%">发快报,
-			拉人气, 得大奖!</div>
-		<div id="banner_img_div" style="text-align: center">
-			<img src="<%=request.getContextPath()%>/img/banner_popularity.jpg"
-				id="banner_img" style="width: 96%; max-width: 96%;" />
-		</div>
-		<div class="text_highlight common_style"
-			style="padding-top: 1em; padding-bottom: 0.5em; width: 96%; max-width: 96%; margin-left: 2%">
-			点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png"
-				class="point_pic_width" style="margin-left: 2px; margin-right: 2px" />或<img
-				src="<%=request.getContextPath()%>/img/share.png"
-				class="point_pic_width" style="margin-left: 2px; margin-right: 2px" />发送快报给朋友
-		</div>
-		<div id="intro">
-			<div class="text_subHeader"
-				style="max-width: 96%; width: 96%; margin-left: 2%; line-height: 150%;">
-				大力神杯拉人气活动规则</div>
-			<div class="text_mainBody"
-				style="max-width: 96%; width: 96%; margin-left: 2%; line-height: 150%;">
-				1.分享快报给您的好友, 点击查看<a class="btn btn-default"
-					style="background: url(<%=request.getContextPath()%>/img/trumpet.png) 8px no-repeat #ff7000;padding: 6px; text-decoration:none; overflow: hidden; padding-left: 35px;text-align: right; color:#fff;background-size: 22px 22px;"
-					href="<%=request.getContextPath()%>/news?fid=<%=openid%>&fromname=<%=nickname%>"
-					role="button">快报</a><br> 2.人气榜前10名可获得SmartWatch2一个,
-				11至20名可获得蓝牙耳机SBH20一个.<br /> 3.每拉一个朋友激活10000人气积分呦!
-			</div>
-		</div>
-	</div>
+<div>
+                <div id="title" class="text_header common_style" style="margin:0.6em;max-width:96%;margin-left:2%">发快报, 拉人气, 得大奖!</div>
+                <div id="banner_img_div" style="text-align: center">
+                    <img src="<%=request.getContextPath()%>/img/banner_popularity.jpg" id="banner_img" style="width:96%;max-width:96%;"/>
+                </div>
+                 <div class="text_highlight common_style" style="padding-top:1em;padding-bottom:0.5em;width:96%;max-width:96%;margin-left:2%">
+                                                         点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>或<img src="<%=request.getContextPath()%>/img/share.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>发送给朋友
+                             </div>
+                <div id="intro" >
+                    <div class="text_subHeader" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">
+                                    大力神杯拉人气活动规则
+                    </div>
+                    <div class="text_mainBody" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">
+                    1.分享快报给您的好友, 点击<a class="btn btn-default" style="background: url(<%=request.getContextPath()%>/img/trumpet.png) 8px no-repeat #ff7000;padding: 6px; text-decoration:none; overflow: hidden; padding-left: 35px;text-align: right; color:#fff;background-size: 22px 22px;" href="<%=request.getContextPath()%>/news?fid=<%=openid%>&fromname=<%=nickname%>" role="button">快报</a>查看<br>
+                    2.人气榜前10名可获得SmartWatch2一个, 11至20名可获得蓝牙耳机SBH20一个.<br/>
+                    3.每拉一个朋友激活10000人气积分呦!
+                    </div>
+                </div>
+        </div>
+        
+<div class="scroll_div_height" style="position:absolute;width:100%;max-width:100%;"></div>
+        <div id="touchBox" style="width:100%;max-width:100%;">
+            <div  style="position:relative;" >
+	               <img src="<%=request.getContextPath()%>/img/buy_top.png" style="width:100%;max-width:100%;margin-top:0" id="top_img"/><div id="click_div" onclick="clickDiv()" style="position:absolute;width:20%;height:80%;right:7%;top:15%;"><img src="<%=request.getContextPath()%>/img/arrow_up.png" style="width:40%;max-width:40%;margin-top:2%;margin-left:28%" id="arrow_img"/></div>
+	          </div>
+	           <div id="product_div" style="background-color:white;display: none;">
+			            <table style="max-width: 100%; width: 100%;padding:2%;margin-left:1%">
+			            <tr>
+			            <td><div style="position:relative;">
+			                    <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 90%; width: 90%" id="1_frame"/>
+                        <img src="<%=request.getContextPath()%>/img/1.jpg" style="max-width: 90%; width: 90%" id="1_img" onclick="selectPhone(1,'http://m.jd.com/product/1084656.html')"/>
+                    </div></td>
+			            <td><div>
+			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.45%; width: 16.45%" id="2_frame" />
+                        <img src="<%=request.getContextPath()%>/img/2.jpg" style="max-width: 90%; width: 90%" id="2_img" onclick="selectPhone(2,'http://m.jd.com/product/1101144.html')"/>
+                    </div></td>
+			            <td><div>
+			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="position:absolute;max-width: 16.45%; width: 16.45%" id="3_frame" />
+                        <img src="<%=request.getContextPath()%>/img/3.jpg" style="max-width: 90%; width: 90%" id="3_img" onclick="selectPhone(3,'http://m.jd.com/product/1145235.html')"/>
+                    </div></td>
+			            <td><div>
+			                    <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.45%; width: 16.45%" id="4_frame" />
+                        <img src="<%=request.getContextPath()%>/img/4.jpg" style="max-width: 90%; width: 90%" id="4_img" onclick="selectPhone(4,'http://m.jd.com/product/1101144.html')"/>
+                    </div></td>
+			            <td><div>
+			                   <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.45%; width: 16.45%" id="5_frame" />
+                        <img src="<%=request.getContextPath()%>/img/5.jpg" style="max-width: 90%; width: 90%" id="5_img" onclick="selectPhone(5,'http://m.jd.com/product/1084656.html')"/>
+                    </div></td>
+			            </tr>
+			            </table>
+			        </div>
+            <div  style="background-color:white;">
+             <div id="buy" style="width:96%;max-width:96%;margin-left:2%;margin-top:-4px;height:5.1em;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="draw()">
+                <div style="font-size:1.65em;color:white;padding-top:0.95em" id="buyNow" >使用优惠券立即购买</div>
+             </div>
+            </div>
+            <div id="content" style="display:none;background-color:white;height:6.2em">
+                <div id="bttons" style="max-width:96%;width:96%;margin-left:2%;padding-top:1em;">
+                    <div id="pcbuy" style="max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #bfbfbf;float:left" onclick="pcBuy()">
+                        <div><img src="<%=request.getContextPath()%>/img/http_icn.png" style="height:3em;float:left;margin-left:1.4em;padding-top:1.1em"/></div>
+                        <div style="font-size:1.65em;color:rgb(116, 105, 105);padding-top:0.95em;padding-right:1.5em">PC购买</div>
+                    </div>
+                    <div id="discount" style="max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #bfbfbf;float:right" onclick="window.location.href='<%=request.getContextPath()%>/myInfo?id=<%=openid%>'">
+                        <div><img src="<%=request.getContextPath()%>/img/discount_icn.png" style="height:3em;float:left;margin-left:1.4em;padding-top:1em"/></div>
+                        <div style="font-size:1.65em;color:rgb(116, 105, 105);padding-top:0.95em;padding-right:1.5em">优惠券</div>
+                    </div>
+                </div>
+            </div>
+            <div style="background-color:white;height:10px"></div>
+        </div>
 
-	<div class="scroll_div_height"
-		style="position: absolute; width: 100%; max-width: 100%;"></div>
-	<div id="touchBox" style="width: 100%; max-width: 100%;">
-		<div style="position: relative;">
-			<img src="<%=request.getContextPath()%>/img/buy_top_1.png"
-				style="width: 100%; max-width: 100%; margin-top: 0" id="top_img" />
-			<div id="click_div" onclick="clickDiv()"
-				style="position: absolute; width: 20%; height: 80%; right: 7%; top: 15%;"></div>
-		</div>
-		<div id="product_div" style="background-color: white; display: none;">
-			<table
-				style="max-width: 100%; width: 100%; padding: 2%; margin-left: 1%">
-				<tr>
-					<td><div style="position: relative;">
-							<img src="<%=request.getContextPath()%>/img/frame.png"
-								style="display: none; position: absolute; max-width: 90%; width: 90%"
-								id="1_frame" /> <img
-								src="<%=request.getContextPath()%>/img/1.jpg"
-								style="max-width: 90%; width: 90%" id="1_img"
-								onclick="selectPhone(1,'http://m.jd.com/product/1084656.html')" />
-						</div></td>
-					<td><div>
-							<img src="<%=request.getContextPath()%>/img/frame.png"
-								style="display: none; position: absolute; max-width: 16.4%; width: 16.4%"
-								id="2_frame" /> <img
-								src="<%=request.getContextPath()%>/img/2.jpg"
-								style="max-width: 90%; width: 90%" id="2_img"
-								onclick="selectPhone(2,'http://m.jd.com/product/1101144.html')" />
-						</div></td>
-					<td><div>
-							<img src="<%=request.getContextPath()%>/img/frame.png"
-								style="position: absolute; max-width: 16.4%; width: 16.4%"
-								id="3_frame" /> <img
-								src="<%=request.getContextPath()%>/img/3.jpg"
-								style="max-width: 90%; width: 90%" id="3_img"
-								onclick="selectPhone(3,'http://m.jd.com/product/1145235.html')" />
-						</div></td>
-					<td><div>
-							<img src="<%=request.getContextPath()%>/img/frame.png"
-								style="display: none; position: absolute; max-width: 16.4%; width: 16.4%"
-								id="4_frame" /> <img
-								src="<%=request.getContextPath()%>/img/4.jpg"
-								style="max-width: 90%; width: 90%" id="4_img"
-								onclick="selectPhone(4,'http://m.jd.com/product/1101144.html')" />
-						</div></td>
-					<td><div>
-							<img src="<%=request.getContextPath()%>/img/frame.png"
-								style="display: none; position: absolute; max-width: 16.4%; width: 16.4%"
-								id="5_frame" /> <img
-								src="<%=request.getContextPath()%>/img/5.jpg"
-								style="max-width: 90%; width: 90%" id="5_img"
-								onclick="selectPhone(5,'http://m.jd.com/product/1084656.html')" />
-						</div></td>
-				</tr>
-			</table>
-		</div>
-		<div style="background-color: white;">
-			<div id="buy"
-				style="width: 96%; max-width: 96%; margin-left: 2%; margin-top: -4px; height: 5.1em; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
-				onclick="draw()">
-				<div style="font-size: 1.65em; color: white; padding-top: 0.95em"
-					id="buyNow">使用优惠券立即购买</div>
-			</div>
-		</div>
-		<div id="content"
-			style="display: none; background-color: white; height: 6.2em">
-			<div id="bttons"
-				style="max-width: 96%; width: 96%; margin-left: 2%; padding-top: 1em;">
-				<div id="pcbuy"
-					style="max-width: 48%; width: 48%; height: 5em; text-align: center; border: 1px solid #bfbfbf; float: left"
-					onclick="pcBuy()">
-					<div>
-						<img src="<%=request.getContextPath()%>/img/http_icn.png"
-							style="height: 3em; float: left; margin-left: 1.4em; padding-top: 1.1em" />
-					</div>
-					<div
-						style="font-size: 1.65em; color: rgb(116, 105, 105); padding-top: 0.95em; padding-right: 1.5em">PC购买</div>
-				</div>
-				<div id="discount"
-					style="max-width: 48%; width: 48%; height: 5em; text-align: center; border: 1px solid #bfbfbf; float: right"
-					onclick="window.location.href='<%=request.getContextPath()%>/myInfo?id=<%=openid%>'">
-					<div>
-						<img src="<%=request.getContextPath()%>/img/discount_icn.png"
-							style="height: 3em; float: left; margin-left: 1.4em; padding-top: 1em" />
-					</div>
-					<div
-						style="font-size: 1.65em; color: rgb(116, 105, 105); padding-top: 0.95em; padding-right: 1.5em">优惠券</div>
-				</div>
-			</div>
-		</div>
-		<div style="background-color: white; height: 10px"></div>
-	</div>
-
-	<script type="text/javascript">
+    <script type="text/javascript">
     var open = false;
     $(document).ready(function(){
           $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1}); 
@@ -228,7 +172,7 @@
 
         function touchEnd(event){
             if((endY-startY)>10) {//下滑
-                   $("#top_img").attr("src","<%=request.getContextPath()%>/img/buy_top_1.png"); 
+                   $("#arrow_img").attr("src","<%=request.getContextPath()%>/img/arrow_up.png"); 
                 document.getElementById("content").style.display="none";
                 document.getElementById("product_div").style.display="none";
                 $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1});
@@ -237,7 +181,7 @@
 
                 }
             if((startY-endY)>10) {//上滑
-                  $("#top_img").attr("src","<%=request.getContextPath()%>/img/buy_top_2.png"); 
+                  $("#arrow_img").attr("src","<%=request.getContextPath()%>/img/arrow_down.png"); 
                 //$("#desc").css("height", 100); 
                 //$("#desc").css("overflow-y", "auto"); 
                 document.getElementById("content").style.display="";
@@ -255,7 +199,7 @@
        document.getElementById("content").style.display="";
        document.getElementById("product_div").style.display="";
        $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1}); 
-       $("#top_img").attr("src","<%=request.getContextPath()%>/img/buy_top_2.png"); 
+       $("#arrow_img").attr("src","<%=request.getContextPath()%>/img/arrow_down.png"); 
        $("#buyNow").text("手机购买");
        open = true;
        } else {
@@ -308,14 +252,14 @@
        document.getElementById("content").style.display="";
        document.getElementById("product_div").style.display="";
        $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1}); 
-       $("#top_img").attr("src","<%=request.getContextPath()%>/img/buy_top_2.png"); 
+       $("#arrow_img").attr("src","<%=request.getContextPath()%>/img/arrow_down.png"); 
        $("#buyNow").text("手机购买");
        open = true;
        } else {
     	    document.getElementById("content").style.display="none";
     	    document.getElementById("product_div").style.display="none";
         $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1}); 
-        $("#top_img").attr("src","<%=request.getContextPath()%>/img/buy_top_1.png"); 
+        $("#arrow_img").attr("src","<%=request.getContextPath()%>/img/arrow_up.png"); 
         $("#buyNow").text("使用优惠券立即购买");
         open = false;
                 }

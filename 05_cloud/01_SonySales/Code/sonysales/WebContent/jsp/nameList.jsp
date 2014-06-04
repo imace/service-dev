@@ -30,13 +30,13 @@ td {
 }
 
 .col1{
-    width:10%;
+    width:9%;
 }
 .col2{
-    width:22%;
+    width:36%;
 }
 .col3{
-    width:68%;
+    width:55%;
 }
 
 .overText{
@@ -136,7 +136,7 @@ td {
                         <tr>
                             <td class="col1" style="border-top:none;">1</td>
                             <td class="overText col2" style="border-top:none;"><%=userList.get(0).getNickname()%></td>
-                            <td class="col3" style="border-top:none;">已经获得<font style="color: #e82827"><%=userList.get(0).getPoints()%></font>个好友支持了！
+                            <td class="overText col3" style="border-top:none;">已获<font style="color: #e82827"><%=userList.get(0).getPoints()%></font>个好友支持！
                             </td>
                         </tr>
                                 <% 
@@ -145,7 +145,7 @@ td {
 					                <tr>
 					                    <td class="col1"><%=i+1%></td>
 					                    <td class="overText col2"><%=userList.get(i).getNickname()%></td>
-					                    <td class="col3">已经获得<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持了！
+					                    <td class="overText col3">已获<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持！
 					                    </td>
 					                </tr>
                                 <% 
@@ -166,7 +166,7 @@ td {
                          <tr>
                             <td class="col1" style="border-top:none;">1</td>
                             <td class="overText col2" style="border-top:none;"><%=userList.get(0).getNickname()%></td>
-                            <td class="col3" style="border-top:none;">已经获得<font style="color: #e82827"><%=userList.get(0).getPoints()%></font>个好友支持了！
+                            <td class="overText col3" style="border-top:none;">已获<font style="color: #e82827"><%=userList.get(0).getPoints()%></font>个好友支持！
                             </td>
                         </tr>
                          <% 
@@ -175,7 +175,7 @@ td {
                         <tr>
                             <td class="col1"><%=i+1%></td>
                             <td class="overText col2"><%=userList.get(i).getNickname()%></td>
-                            <td class="col3">已经获得<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持了！
+                            <td class="overText col3">已获<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持！
                             </td>
                         </tr>
                        
@@ -198,7 +198,7 @@ td {
                          <tr>
                             <td class="col1" style="border-top:none;">11</td>
                             <td class="overText col2" style="border-top:none;"><%=userList.get(10).getNickname()%></td>
-                            <td class="col3" style="border-top:none;">已经获得<font style="color: #e82827"><%=userList.get(10).getPoints()%></font>个好友支持了！
+                            <td class="overText col3" style="border-top:none;">已获<font style="color: #e82827"><%=userList.get(10).getPoints()%></font>个好友支持！
                             </td>
                         </tr>
                          <%
@@ -207,7 +207,7 @@ td {
                         <tr>
                             <td class="col1"><%=i+1%></td>
                             <td class="overText col2"><%=userList.get(i).getNickname()%></td>
-                            <td class="col3">已经获得<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持了！
+                            <td class="overText col3">已获<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持！
                             </td>
                         </tr>
                         
@@ -264,7 +264,7 @@ td {
                         <tr>
                             <td class="col1" style="border-top:none;">1</td>
                             <td class="overText col2" style="border-top:none;"><%=userList.get(0).getNickname()%></td>
-                            <td class="col3" style="border-top:none;">已经获得<font style="color: #e82827"><%=userList.get(0).getPoints()%></font>个好友支持了！
+                            <td class="overText col3" style="border-top:none;">已获<font style="color: #e82827"><%=userList.get(0).getPoints()%></font>个好友支持！
                             </td>
                         </tr>
                                 <% 
@@ -273,7 +273,7 @@ td {
                                     <tr>
                                         <td class="col1"><%=i+1%></td>
                                         <td class="overText col2"><%=userList.get(i).getNickname()%></td>
-                                        <td class="col3">已经获得<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持了！
+                                        <td class="overText col3">已获<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持！
                                         </td>
                                     </tr>
                                 <% 
@@ -286,7 +286,7 @@ td {
                          <tr>
                             <td class="col1" style="border-top:none;">1</td>
                             <td class="overText col2" style="border-top:none;"><%=userList.get(0).getNickname()%></td>
-                            <td class="col3" style="border-top:none;">已经获得<font style="color: #e82827"><%=userList.get(0).getPoints()%></font>个好友支持了！
+                            <td class="overText col3" style="border-top:none;">已获<font style="color: #e82827"><%=userList.get(0).getPoints()%></font>个好友支持！
                             </td>
                         </tr>
                          <% 
@@ -295,7 +295,7 @@ td {
                         <tr>
                             <td class="col1"><%=i+1%></td>
                             <td class="overText col2"><%=userList.get(i).getNickname()%></td>
-                            <td class="col3">已经获得<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持了！
+                            <td class="overText col3">已获<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持！
                             </td>
                         </tr>
                        
@@ -318,7 +318,7 @@ td {
                          <tr>
                             <td class="col1" style="border-top:none;">11</td>
                             <td class="overText col2" style="border-top:none;"><%=userList.get(10).getNickname()%></td>
-                            <td class="col3" style="border-top:none;">已经获得<font style="color: #e82827"><%=userList.get(10).getPoints()%></font>个好友支持了！
+                            <td class="overText col3" style="border-top:none;">已获<font style="color: #e82827"><%=userList.get(10).getPoints()%></font>个好友支持！
                             </td>
                         </tr>
                          <%
@@ -327,7 +327,7 @@ td {
                         <tr>
                             <td class="col1"><%=i+1%></td>
                             <td class="overText col2"><%=userList.get(i).getNickname()%></td>
-                            <td class="col3">已经获得<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持了！
+                            <td class="overText col3">已获<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持！
                             </td>
                         </tr>
                         
