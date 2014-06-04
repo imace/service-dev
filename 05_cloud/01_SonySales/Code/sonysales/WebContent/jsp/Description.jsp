@@ -113,12 +113,15 @@ if (com.sonymobile.sonysales.util.Constant.LAYOUBUY_SWITCH.contains("OFF")) { %>
 				FIFA 2014 活动介绍</div>
 			<div class="text_mainBody"
 				style="max-width: 96%; width: 96%; margin-left: 2%; line-height: 150%;">
-				FIFA , 2014 , 赛事重来 ,<br> 谁将会成为最后赢家？<br> 想不想也参与这个激动人心的活动？<br>
+				2014世界杯,赛事重燃, <br>
+				索尼Xperia与您激情盛夏,<br>
+				谁将会成为最后赢家？<br> 
+				快来参与这个激动人心的活动吧!<br>
 				<br>
 			</div>
 			<div class="text_highlight"
 				style="max-width: 96%; width: 96%; margin-left: 2%; line-height: 150%;">
-				参加这个活动，不仅有机会获得索尼FIFA精美大奖，还有5款索尼FIFA特惠手机供你选择。 <br> <br> <br>
+				参加这个活动，不仅有机会获得索尼FIFA精美大奖，还有多款FIFA世界杯特惠索尼手机供您选择。  <br> <br> <br>
 				<br>
 			</div>
 

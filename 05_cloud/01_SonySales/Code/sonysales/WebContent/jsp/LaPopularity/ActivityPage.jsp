@@ -25,10 +25,10 @@
 		openid =(String)request.getAttribute("openid");
 		nickname =(String)request.getAttribute("nickname");
 		nickname=(nickname==null?"":"("+nickname+")");
-		//String message="Hi, 亲, 我"+nickname+"对索尼FIFA大奖志在必得, 请你拉我一票!";
+		//String message="Hi, 亲, 我"+nickname+"对索尼FIFA大奖志在必得, 请您拉我一票!";
 		String message="看世界杯快报额外有惊喜";
 		
-		String imgurl=request.getScheme() + "://" + request.getServerName() + "/img/menu_entry2.jpg";	
+		String imgurl=request.getScheme() + "://" + request.getServerName() + "img/entry_bulletin.jpg";	
 		String relationUrl = request.getScheme() + "://" + request.getServerName() + "/news";
 		String redirectHost = Constant.IS_USE_SELF_OAUTH ? Constant.OAUTH_REDIRECT_HOST
 				: Constant.SECOND_OAUTH_REDIRECT_HOST;
@@ -63,7 +63,7 @@
                     <img src="<%=request.getContextPath()%>/img/banner_popularity.jpg" id="banner_img" style="width:96%;max-width:96%;"/>
                 </div>
                  <div class="text_highlight common_style" style="padding-top:1em;padding-bottom:0.5em;width:96%;max-width:96%;margin-left:2%">
-                                                         点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>或<img src="<%=request.getContextPath()%>/img/share.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>发送快报给朋友
+                                                         点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>并<img src="<%=request.getContextPath()%>/img/share.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>发送快报给朋友
                              </div>
                 <div id="intro" >
                     <div class="text_subHeader" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">

@@ -20,44 +20,44 @@
 <title>索尼FIFA2014 快报</title>
 </head>
 <body class="base_font_size">
-<%
+	<%
 		String fromid = (String)request.getAttribute("fid");
-		String fromname = (String)request.getAttribute("fromname");
-		String toid = (String)request.getAttribute("tid");
-		String info = (String)request.getAttribute("info");
-		String createTime = (String)request.getAttribute("createTime");
+			String fromname = (String)request.getAttribute("fromname");
+			String toid = (String)request.getAttribute("tid");
+			String info = (String)request.getAttribute("info");
+			String createTime = (String)request.getAttribute("createTime");
 
-		boolean isShared = toid != null && !toid.equals(fromid);
+			boolean isShared = toid != null && !toid.equals(fromid);
 
-		if (!isShared) {
-			String message = "看世界杯快报额外有惊喜";
-			String imgurl = request.getScheme() + "://"
-					+ request.getServerName() + "/img/entry_bulletin.jpg";
-			String newsUrl = request.getScheme() + "://" + request.getServerName() + "/news";
-			String redirectHost = Constant.IS_USE_SELF_OAUTH ? Constant.OAUTH_REDIRECT_HOST
-					: Constant.SECOND_OAUTH_REDIRECT_HOST;
+			if (!isShared) {
+		String message = "看世界杯快报额外有惊喜";
+		String imgurl = request.getScheme() + "://"
+				+ request.getServerName() + "/img/entry_bulletin.jpg";
+		String newsUrl = request.getScheme() + "://" + request.getServerName() + "/news";
+		String redirectHost = Constant.IS_USE_SELF_OAUTH ? Constant.OAUTH_REDIRECT_HOST
+				: Constant.SECOND_OAUTH_REDIRECT_HOST;
 
-			Hashtable<String, String> parameters = new Hashtable<String, String>();
-			parameters.put("fid", fromid);
-			parameters.put("i", Constant.OAUTH_IDENTIFIER);
-			String codedState = Coder.generateOAuthStateFromUrl(newsUrl, parameters);
+		Hashtable<String, String> parameters = new Hashtable<String, String>();
+		parameters.put("fid", fromid);
+		parameters.put("i", Constant.OAUTH_IDENTIFIER);
+		String codedState = Coder.generateOAuthStateFromUrl(newsUrl, parameters);
 
-			String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
-					+ Constant.APP_ID
-					+ "&redirect_uri="+ redirectHost
-					+ "&response_type=code&scope="+ Constant.WECHAT_OAUTH_SCOPES.BASE.getValue()
-					+ "&state="+ codedState + "#wechat_redirect";
-			out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
-					+ "MsgImg:\""
-					+ imgurl
-					+ "\", TLImg:\""
-					+ imgurl
-					+ "\", url:\""
-					+ url
-					+ "\", title:\"看报有惊喜\", desc:\""
-					+ message
-					+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
-		}
+		String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
+				+ Constant.APP_ID
+				+ "&redirect_uri="+ redirectHost
+				+ "&response_type=code&scope="+ Constant.WECHAT_OAUTH_SCOPES.BASE.getValue()
+				+ "&state="+ codedState + "#wechat_redirect";
+		out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
+				+ "MsgImg:\""
+				+ imgurl
+				+ "\", TLImg:\""
+				+ imgurl
+				+ "\", url:\""
+				+ url
+				+ "\", title:\"看报有惊喜\", desc:\""
+				+ message
+				+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
+			}
 	%>
 	<div class="container page_background">
 		<div class="row">
@@ -67,7 +67,8 @@
 					快报</div>
 
 				<div id="banner_img_div" style="text-align: center">
-					<img src="<%=request.getContextPath()%>/img/banner_popularity_zhanbao.jpg"
+					<img
+						src="<%=request.getContextPath()%>/img/banner_popularity_zhanbao.jpg"
 						id="banner_img" style="width: 96%; max-width: 96%;" />
 				</div>
 				<br>
@@ -79,7 +80,7 @@
 						style="padding-top: 10px; width: 96%; max-width: 96%; margin-left: 2%">
 						点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png"
 							class="point_pic_width"
-							style="margin-left: 2px; margin-right: 2px" />或<img
+							style="margin-left: 2px; margin-right: 2px" />并<img
 							src="<%=request.getContextPath()%>/img/share.png"
 							class="point_pic_width"
 							style="margin-left: 2px; margin-right: 2px" />发送给朋友
@@ -97,40 +98,35 @@
 						</div>
 					</div>
 				</div>
-				<%-- <div>
-					索尼Xperia发布于 :<%=createTime%>
+				<%-- <div class="row">
+					<div class="col-xs-12" style="color: gray; text-aglin: right;">
+						索尼Xperia发布于 :<%=createTime%>
+					</div>
 				</div> --%>
 				<br>
 				<%
 					if (isShared) {
-						String relationUrl = request.getContextPath()+"/relationpage?fid="+fromid+"&openid="+toid;
+								String relationUrl = request.getContextPath()+"/relationpage?fid="+fromid+"&openid="+toid;
 				%>
-				<br>
-				<br>
-				<br>
+				<br> <br> <br>
 				<div class="row">
 					<div class="col-xs-12">
-						<a
-							href="<%=relationUrl%>"
+						<a href="<%=relationUrl%>"
 							style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
-							class="btn_decoration btn-lg" role="button">前往支持好友登上人气榜
-						</a>
+							class="btn_decoration btn-lg" role="button">前往支持好友登上人气榜 </a>
 					</div>
 				</div>
 				<br>
 				<%
 					}else{
 				%>
-				<br>
-				<br>
-				<br>
+				<br> <br> <br>
 				<div class="row">
 					<div class="col-xs-12">
 						<a
 							href="<%=request.getContextPath()%>/activitypage?id=<%=fromid%>"
 							style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
-							class="btn_decoration btn-lg" role="button">分享快报提升人气
-						</a>
+							class="btn_decoration btn-lg" role="button">分享快报提升人气 </a>
 					</div>
 				</div>
 				<br>

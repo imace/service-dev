@@ -30,7 +30,7 @@
 			<div class="col-xs-12">
 				<div class="text_mainBody">
 					Hi, 亲, 我(<%=fromnickname%>)对<span style="color: #cea14b">索尼FIFA大奖</span>志在必得,
-					请你拉我一票, 同时你也可以获得<span style="color: #cea14b">打折优惠</span>.<br>只需2步即可完成:
+					请您拉我一票, 同时您也可以获得<span style="color: #cea14b">打折优惠</span>.<br>只需2步即可完成:
 				</div>
 				<div class="text_highlight">1.点击支持 2.完成关注</div>
 				<br> <br> <br>

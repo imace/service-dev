@@ -137,11 +137,11 @@
 			<div class="text_mainBody">
 				<hr style="border: 1px solid #22bff2; margin-top: -3px;">
 				多款<span style="color: #cea14b">限量手机</span>, 多种<span
-					style="color: #cea14b">满减券</span>等你来领取, PC端输入<span
-					style="color: #cea14b;font-size:110%">http://t.cn/Rv5bM6T</span>进入活动详情,
-				想要更快捷请点击<span style="color: #cea14b">下面按钮</span>, 多多优惠等你带回家!
+					style="color: #cea14b">满减券</span>等您来领取, PC端输入<span
+					style="color: #cea14b;font-size:110%"><%=Constant.JD_COUPON_LINK %></span>进入活动详情,
+				想要更快捷请点击<span style="color: #cea14b">下面按钮</span>, 多多优惠等您带回家!
 			</div>
-			<br> <a href="http://t.cn/Rv5bM6T"
+			<br> <a href="<%=Constant.JD_COUPON_LINK %>"
 				style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
 				class="btn_decoration btn-lg" role="button">手机获取优惠卷</a> <br>
 			<div>
@@ -233,7 +233,7 @@
 					if (supporterCount < 1) {
 				%>
 				<tr>
-					<td>还没有人支持你， 赶紧去拉好友吧！</td>
+					<td>还没有人支持您， 赶紧去拉好友吧！</td>
 				</tr>
 				<%
 					} else {

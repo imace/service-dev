@@ -34,6 +34,9 @@ public final class Constant {
 	public static final boolean IS_USE_SELF_OAUTH;
 	
 	public static final String ATTENTION_PAGE;
+	
+	public static final String JD_COUPON_LINK;
+	
     
     static {
         InputStream is = Constant.class.getClassLoader()
@@ -75,6 +78,8 @@ public final class Constant {
 		IS_USE_SELF_OAUTH = !"OFF".equals(properties.getProperty("SELFOAUTH_SWITCH"));
 		
 		ATTENTION_PAGE=properties.getProperty("ATTENTION_PAGE");
+		
+		JD_COUPON_LINK=properties.getProperty("JD_COUPON_LINK");
 	}
 
 	public static final int SAE_FETCHURL_SUCCESS_CODE = 0;
