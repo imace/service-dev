@@ -108,6 +108,7 @@
 					});
 			var save = function() {
 				var mobileNum = $('#phoneNum').val();
+				var mail = $('#email').val();
 				if (mobileNum.length == 0) {
 					return false;
 				}
@@ -118,6 +119,10 @@
 				if (!myreg.test(mobileNum)) {
 					return false;
 				}
+				var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+				if (!reg.test(mail)) {
+	                return false;
+	            }
 				return true;
 			};
 
