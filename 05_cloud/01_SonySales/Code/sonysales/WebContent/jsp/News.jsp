@@ -65,17 +65,15 @@
 				<div id="title" class="text_header common_style"
 					style="margin: 8px; max-width: 96%; margin-left: 2%">索尼FIFA2014
 					快报</div>
-				<%
-					if (!isShared) {
-				%>
-				<%
-					}
-				%>
+
 				<div id="banner_img_div" style="text-align: center">
 					<img src="<%=request.getContextPath()%>/img/banner_popularity_zhanbao.jpg"
 						id="banner_img" style="width: 96%; max-width: 96%;" />
 				</div>
 				<br>
+				<%
+					if (!isShared) {
+				%>
 				<div style="display: block;">
 					<p class="text_highlight common_style"
 						style="padding-top: 10px; width: 96%; max-width: 96%; margin-left: 2%">
@@ -87,6 +85,9 @@
 							style="margin-left: 2px; margin-right: 2px" />发送给朋友
 					</p>
 				</div>
+				<%
+					}
+				%>
 				<br>
 				<div class="row">
 					<div class="col-xs-12">
