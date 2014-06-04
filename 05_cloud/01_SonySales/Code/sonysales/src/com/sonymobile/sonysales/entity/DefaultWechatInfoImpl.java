@@ -56,7 +56,7 @@ public class DefaultWechatInfoImpl implements IWechatInfo {
 		return weChatUserInfo;
 	}
 	
-	private String buildGetUserInfoUrl(String openId) {
+	private static String buildGetUserInfoUrl(String openId) {
 		StringBuilder urlBuilder = new StringBuilder(Constant.MASTER_ACCOUNT_HOST);
 		urlBuilder.append(Constant.MASTER_ACCOUNT_GETUSERINFO_PATH);
 		urlBuilder.append("?id=");
@@ -65,10 +65,18 @@ public class DefaultWechatInfoImpl implements IWechatInfo {
 		long timestamp = System.currentTimeMillis();
 		urlBuilder.append(timestamp);
 		urlBuilder.append("&s=");
-		String signature = Coder.getMD5Signature(Long.toString(timestamp), Constant.OAUTH_IDENTIFIER, openId);
+		String signature = Coder.getMD5Signature(Long.toString(timestamp), GET_USERINFO_IDENTIFIER, openId);
 		urlBuilder.append(signature);
 		
 		return urlBuilder.toString();
 	}
 
+	/**
+	 * Test for get userinfo links
+	 * */
+	public static void main(String[] args) {
+		// Openid on LICHENGKONGJIAN
+		String id = "omX94t-Yl0_GJikv-kLuQzUcm3OE";
+		System.out.println(buildGetUserInfoUrl(id));
+	}
 }

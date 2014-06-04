@@ -3,6 +3,7 @@ package com.sonymobile.sonysales.entity;
 import com.sonymobile.sonysales.entity.json.WechatUserInfo;
 
 public interface IWechatInfo {
+	static final String GET_USERINFO_IDENTIFIER = "sonysales";
 	/**
 	 * Get the appid of the public Wechat account
 	 * */
