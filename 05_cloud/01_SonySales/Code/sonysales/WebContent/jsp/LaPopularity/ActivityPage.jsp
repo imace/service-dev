@@ -68,7 +68,7 @@
                                     大力神杯拉人气活动规则
                     </div>
                     <div class="text_mainBody" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">
-                    1.分享快报给您的好友, 点击<a class="btn btn-default" style="background: url(<%=request.getContextPath()%>/img/trumpet.png) 8px no-repeat #ff7000;padding: 6px; text-decoration:none; overflow: hidden; padding-left: 35px;text-align: right; color:#fff;background-size: 22px 22px;" href="<%=request.getContextPath()%>/news?fid=<%=openid%>&fromname=<%=nickname%>" role="button">快报</a>查看<br>
+                    1.分享快报给您的好友, 点击<a class="btn btn-default" style="background: url(<%=request.getContextPath()%>/img/trumpet.png) 8px no-repeat #ff7000;padding: 6px; text-decoration:none; overflow: hidden; padding-left: 35px;text-align: right; color:#fff;background-size: 22px 22px;border-radius:0.2em" href="<%=request.getContextPath()%>/news?fid=<%=openid%>&fromname=<%=nickname%>" role="button">快报</a>查看<br>
                     2.人气榜前10名可获得SmartWatch2一个, 11至20名可获得蓝牙耳机SBH20一个.<br/>
                     3.每拉一个朋友激活10000人气积分呦!
                     </div>
@@ -107,17 +107,17 @@
 			            </table>
 			        </div>
             <div  style="background-color:white;">
-             <div id="buy" style="width:96%;max-width:96%;margin-left:2%;margin-top:-4px;height:5.1em;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="draw()">
+             <div id="buy" style="border-radius:0.5em;width:96%;max-width:96%;margin-left:2%;margin-top:0;height:5.1em;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="draw()">
                 <div style="font-size:1.65em;color:white;padding-top:0.95em" id="buyNow" >使用优惠券立即购买</div>
              </div>
             </div>
             <div id="content" style="display:none;background-color:white;height:6.2em">
                 <div id="bttons" style="max-width:96%;width:96%;margin-left:2%;padding-top:1em;">
-                    <div id="pcbuy" style="max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #bfbfbf;float:left" onclick="pcBuy()">
+                    <div id="pcbuy" style="border-radius:0.5em;max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #bfbfbf;float:left" onclick="pcBuy()">
                         <div><img src="<%=request.getContextPath()%>/img/http_icn.png" style="height:3em;float:left;margin-left:1.4em;padding-top:1.1em"/></div>
                         <div style="font-size:1.65em;color:rgb(116, 105, 105);padding-top:0.95em;padding-right:1.5em">PC购买</div>
                     </div>
-                    <div id="discount" style="max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #bfbfbf;float:right" onclick="window.location.href='<%=request.getContextPath()%>/myInfo?id=<%=openid%>'">
+                    <div id="discount" style="border-radius:0.5em;max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #bfbfbf;float:right" onclick="window.location.href='<%=request.getContextPath()%>/myInfo?id=<%=openid%>'">
                         <div><img src="<%=request.getContextPath()%>/img/discount_icn.png" style="height:3em;float:left;margin-left:1.4em;padding-top:1em"/></div>
                         <div style="font-size:1.65em;color:rgb(116, 105, 105);padding-top:0.95em;padding-right:1.5em">优惠券</div>
                     </div>
