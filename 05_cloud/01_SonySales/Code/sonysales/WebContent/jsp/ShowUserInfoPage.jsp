@@ -49,7 +49,7 @@
 		String relationUrl = request.getScheme() + "://"
 				+ request.getServerName() + "/shareUserInfo?id=" + openId
 				+ "&friendname=" + friendname;
-		out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
+		/* out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
 				+ "MsgImg:\""
 				+ imgurl
 				+ "\", TLImg:\""
@@ -60,7 +60,7 @@
 				+ message
 				+ "\", desc:\""
 				+ message
-				+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
+				+ "\", fakeid:\"\",callback:function(){}};</script>"); */
 	%>
 	<script language="javascript">
 		jQuery(function() {
@@ -83,7 +83,7 @@
 			$('#address').val('<%=address%>');
 			$('#jdId').val('<%=jdId%>');
 			
-			var url="<%=Constant.HOST%>"+"/updateUserInfo";
+			var url="<%=request.getContextPath()%>"+"/updateUserInfo";
 			$("form input").attr('disabled', 'true');
 			$('#test').click(
 					function() {
