@@ -219,20 +219,24 @@ td {
                                                          }
                  } else {
                 %>
-              <table  style="max-width: 100%; width: 100%;"
+
+             <table style="max-width: 100%; width: 100%;"
                 cellSpacing=0 cellPadding=0 align=center border=1>
                 <tr>
-                    <td id="pop_img_td"
-                        style="text-align: center; border-top: medium none;"><div
-                            style="margin: 3.5em; font-size: 1em">
+                <td style="padding-left:0;border-bottom:none">
+                            <div>
+                                <img src="<%=request.getContextPath()%>/img/ranking_banner_1_icn.jpg" style="max-width: 100%; width: 100%" id="pop_top_img" />
+                            </div>
+                </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; border-top: medium none;border-top:none;height:14em"><div
+                            style="font-size: 1em;">
                             <font style="color: rgb(128, 124, 115)">人气排名获大奖，</font><font
                                 style="color: #e82827">猛点下面按钮！</font>
-                        </div>
-                        <div>
-                            <img src="<%=request.getContextPath()%>/img/product_3.jpg" style="height: 12em" id="pop_img" />
                         </div></td>
                 </tr>
-                </table>
+            </table>
                 <%
                     }
                 %>

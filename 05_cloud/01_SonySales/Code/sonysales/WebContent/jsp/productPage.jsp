@@ -13,10 +13,12 @@
 </head>
 <body class="base_font_size" style="margin:0;background-color:#f8f7f5">
 
-
+<%
+  String productUrl = request.getParameter("productUrl");
+%>
             <div>
                 <div id="intro" style="text-align:center;word-wrap:break-word;word-break:break-all;">
-                    <div style="font-size:larger;">
+                    <div class="text_mainBody">
                     <p>
                         请在pc端浏览器输入下面链接进行后续购买。
                         </p>
@@ -26,8 +28,8 @@
 								            <img src="<%=request.getContextPath()%>/img/PC_product.png" id="PC_product_img" style="margin-left:10px"/>
 								            </p>
 								        </div>
-                    <div style="text-align:center;font-size:260%;font-weight:bold;padding-top:3px;">
-                                                http://item.jd.com/1107153627
+                    <div style="text-align:center;font-size:260%;font-weight:bold;padding-top:1em;">
+                                                <%=productUrl%>
                     </div> 
                 </div>
             </div>
