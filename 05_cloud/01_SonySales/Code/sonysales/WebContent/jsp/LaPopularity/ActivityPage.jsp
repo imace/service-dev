@@ -62,7 +62,7 @@
                 <div id="banner_img_div" style="text-align: center">
                     <img src="<%=request.getContextPath()%>/img/banner_popularity.jpg" id="banner_img" style="width:96%;max-width:96%;"/>
                 </div>
-                 <div class="text_highlight common_style" style="padding-top:1em;padding-bottom:0.5em;width:96%;max-width:96%;margin-left:2%">
+                 <div class="text_highlight common_style" style="padding-top:0.85em;padding-bottom:0.3em;width:96%;max-width:96%;margin-left:2%">
                                                          点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>并<img src="<%=request.getContextPath()%>/img/share.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>发送快报给朋友
                              </div>
                 <div id="intro" >
