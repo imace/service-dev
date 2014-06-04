@@ -37,8 +37,8 @@
 }
 
 .page_background {
-	/*background: url(/img/stamp.png) right bottom no-repeat; */\r
-	background-size: 55%;
+	/*background: url(/img/stamp.png) right bottom no-repeat; */
+	\r background-size: 55%;
 }
 
 .point_pic_width {
@@ -98,4 +98,24 @@
 	.base_font_size {
 		font-size: 14px;
 	}
+}
+
+a {
+	text-decoration: none;
+}
+
+a:link {
+	text-decoration: none
+}
+
+a:visited {
+	text-decoration: none
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:active {
+	text-decoration: none;
 }

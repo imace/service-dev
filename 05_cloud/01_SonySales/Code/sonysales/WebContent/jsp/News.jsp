@@ -105,7 +105,9 @@
 					if (isShared) {
 						String relationUrl = request.getContextPath()+"/relationpage?fid="+fromid+"&openid="+toid;
 				%>
-				
+				<br>
+				<br>
+				<br>
 				<div class="row">
 					<div class="col-xs-12">
 						<a
@@ -119,6 +121,9 @@
 				<%
 					}else{
 				%>
+				<br>
+				<br>
+				<br>
 				<div class="row">
 					<div class="col-xs-12">
 						<a
