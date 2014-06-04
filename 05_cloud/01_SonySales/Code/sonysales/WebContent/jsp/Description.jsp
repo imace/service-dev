@@ -78,13 +78,13 @@ if (com.sonymobile.sonysales.util.Constant.LAYOUBUY_SWITCH.contains("OFF")) { %>
 	<%
 		String message = "索尼 FIFA 2014 活动介绍";
 		String url = request.getScheme() + "://" + request.getServerName() + "/Description";
-		out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
+		/* out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
 				+ "url:\""
 				+ url
 				+ "\", title:\"索尼 FIFA 2014 世界杯狂热季\","
 				+ "desc:\""
 				+ message
-				+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
+				+ "\", fakeid:\"\",callback:function(){}};</script>"); */
 	%>
 
 	<%
@@ -192,89 +192,7 @@ if (com.sonymobile.sonysales.util.Constant.LAYOUBUY_SWITCH.contains("OFF")) { %>
 	%>
 	<!-- ===============================End=============================== -->
 	<script type="text/javascript">
-		$(document).ready(
-				function() {
-					/**
-					$("#banner_img").css("width",
-							document.body.clientWidth - 20);
-					$("#bgImg").css("width", document.body.clientWidth);
-					$("#intro").css("width", document.body.clientWidth - 20);
-					
-					$("#button1").css("width",
-							(document.body.clientWidth - 50) / 4);
-					$("#button1").css("height",
-							(document.body.clientWidth - 50) / 4);
-					$("#button1").css("left", 10);
-					$("#button2").css("width",
-							(document.body.clientWidth - 50) / 4);
-					$("#button2").css("height",
-							(document.body.clientWidth - 50) / 4);
-					$("#button2").css("left",
-							(document.body.clientWidth + 30) / 4);
-					$("#button3").css("width",
-							(document.body.clientWidth - 50) / 4);
-					$("#button3").css("height",
-							(document.body.clientWidth - 50) / 4);
-					$("#button3").css("left",
-							(document.body.clientWidth + 10) / 2);
-					$("#button4").css("width",
-							(document.body.clientWidth - 50) / 4);
-					$("#button4").css("height",
-							(document.body.clientWidth - 50) / 4);
-					$("#button4").css("left",
-							(document.body.clientWidth * 3 + 10) / 4);
-					*/
-				});
-
 		(function(){
-			   var onBridgeReady=function(){
-			   WeixinJSBridge.on('menu:share:appmessage', function(argv){
-			      WeixinJSBridge.invoke('sendAppMessage',{
-			         "appid":dataForWeixin.appId,
-			         "img_url":dataForWeixin.MsgImg,
-			         "img_width":"120",
-			         "img_height":"120",
-			         "link":dataForWeixin.url,
-			         "desc":dataForWeixin.desc,
-			         "title":dataForWeixin.title
-			      }, function(res){(dataForWeixin.callback)();});
-			   });
-			   WeixinJSBridge.on('menu:share:timeline', function(argv){
-			      (dataForWeixin.callback)();
-			      WeixinJSBridge.invoke('shareTimeline',{
-			         "img_url":dataForWeixin.TLImg,
-			         "img_width":"120",
-			         "img_height":"120",
-			         "link":dataForWeixin.url,
-			         "desc":dataForWeixin.desc,
-			         "title":dataForWeixin.title
-			      }, function(res){});
-			   });
-			   WeixinJSBridge.on('menu:share:weibo', function(argv){
-			      WeixinJSBridge.invoke('shareWeibo',{
-			         "content":dataForWeixin.title,
-			         "url":dataForWeixin.url
-			      }, function(res){(dataForWeixin.callback)();});
-			   });
-			   WeixinJSBridge.on('menu:share:facebook', function(argv){
-			      (dataForWeixin.callback)();
-			      WeixinJSBridge.invoke('shareFB',{
-			         "img_url":dataForWeixin.TLImg,
-			         "img_width":"120",
-			         "img_height":"120",
-			         "link":dataForWeixin.url,
-			         "desc":dataForWeixin.desc,
-			         "title":dataForWeixin.title
-			      }, function(res){});
-			   });
-			};
-
-			if(document.addEventListener){
-			   document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-			}else if(document.attachEvent){
-			   document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
-			   document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
-			}
 			document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
 			    WeixinJSBridge.call('hideToolbar');
 			});

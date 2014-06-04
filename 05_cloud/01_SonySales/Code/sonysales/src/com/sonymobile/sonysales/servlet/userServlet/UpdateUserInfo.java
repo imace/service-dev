@@ -56,8 +56,7 @@ public class UpdateUserInfo extends HttpServlet {
 		    	logger.error("UpdateUserInfo->email-> : "+email);
 		    	logger.error("UpdateUserInfo->address-> : "+address);
 			}
-			//response.sendRedirect(request.getContextPath()+"/myInfo?id="+openId);
-			response.sendRedirect(Constant.HOST+"/myInfo?id="+openId);
+			response.sendRedirect(request.getContextPath()+"/myInfo?id="+openId);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
