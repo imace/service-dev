@@ -77,7 +77,7 @@ public class LashouRelation extends HttpServlet {
 				}
 				
 				// get img url on here for temporary
-				fromimg = wechatInfo.getWebChatUserInfo(fromid).getHeadimgurl();
+				fromimg = fromUserInfo.getHeadimgurl();
 
 				// if current user is yourself then nav to other page
 				if (fromid.equals(toid)) {
