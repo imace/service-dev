@@ -22,8 +22,6 @@ $(function() {
 		supportFriend.show();
 	}
 	
-	var posturl="<%=request.getContextPath()%>/sharepage";
-	
     $('.loghandler').click(function () {
     	var openId = $(this).attr('data-openId');
     	var pageName = $(this).attr('data-pageName');
@@ -35,7 +33,7 @@ $(function() {
     });
     
     function LogHandler(url){
-    	QAjax(url);
+    	QAjax(url, {});
     }
 		
 	
