@@ -99,7 +99,7 @@ td {
     <div id="title" class="text_header"
         style="margin-left: 2%; margin-top: 0.7em;">索尼FIFA2014大奖榜单</div>
     <div  class="text_subHeader2"
-        style="margin-left: 2%; margin-top: 0.3em;">前10就送<font style="color: #e82827">smart watch2</font>,11至20就送<font style="color: #e82827">蓝牙耳机SBH20</font></div>
+        style="margin-left: 2%; margin-top: 0.3em;">前10就送<font style="color: #e82827">Smart Watch2</font>,11至20就送<font style="color: #e82827">蓝牙耳机SBH20</font></div>
     <div id="pop_div" style="padding-top: 0.1em; margin-left: 2%">
         <div id="pop_title"
             style="height: 4em; text-align: left; float: left">
