@@ -11,7 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
 <script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
-<script src="http://lib.sinaapp.com/js/jquery-mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+<script src="http://lib.sinaapp.com/js/jquery-mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css"> 
 <title>发快报, 拉人气, 得大奖!</title>
@@ -53,8 +53,8 @@
 				+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
 	}
     catch (Exception e) {
-		  logger.error("ActivityPage.jsp->front-end-page in exception : " + e.getMessage());
-		  response.sendRedirect(request.getContextPath()+"/jsp/errorhandler.jsp?errnum=0111&errmsg="+e.getMessage());
+		    logger.error("ActivityPage.jsp->front-end-page in exception : " + e.getMessage());
+		    response.sendRedirect(request.getContextPath()+"/jsp/errorhandler.jsp?errnum=0111&errmsg="+e.getMessage());
 	}
 	%>
 
@@ -156,7 +156,7 @@
                   });
         */
 				    $("#buy").on("vmousedown",function() {
-	            $(this).css("background-color","#8BB0FD");
+	            $(this).css("background-color","#910202");
 				          });
           $("#buy").on("vmouseup",function() {
         	  $("#buy").css("background-color","#e82827");
@@ -167,7 +167,7 @@
               */
 				          });
           $("#pcbuy").on("vmousedown",function() {
-              $(this).css("background-color","#8BB0FD");
+              $(this).css("background-color","#cdcdcd");
 	                        });
 	        $("#pcbuy").on("vmouseup",function() {
 	        	$("#pcbuy").css("background-color","white");
@@ -178,7 +178,7 @@
                 */
 	                        });
 	        $("#discount").on("vmousedown",function() {
-	            $(this).css("background-color","#8BB0FD");
+	            $(this).css("background-color","#cdcdcd");
 	                      });
 			      $("#discount").on("vmouseup",function() {
 			    	  $("#discount").css("background-color","white");
