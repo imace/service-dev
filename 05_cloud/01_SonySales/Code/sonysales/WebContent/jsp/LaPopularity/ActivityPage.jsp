@@ -11,6 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
 <script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
+<script src="http://lib.sinaapp.com/js/jquery-mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css"> 
 <title>发快报, 拉人气, 得大奖!</title>
@@ -109,19 +110,19 @@
 			            </table>
 			        </div>
             <div  style="background-color:white;">
-             <div id="buy" style="border-radius:4px;width:96%;max-width:96%;margin-left:2%;margin-top:0;height:5.1em;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="draw()">
-                <div style="font-size:1.65em;color:white;padding-top:0.95em" id="buyNow" >使用优惠券立即购买</div>
+             <div id="buy" style="border-radius:4px;width:96%;max-width:96%;margin-left:2%;margin-top:0;height:5em;text-align:center;border:1px solid #d9d9d9;background-color:#e82827;" onclick="draw()">
+                <div style="font-size:1.8em;color:white;padding-top:0.85em" id="buyNow" >使用优惠券立即购买</div>
              </div>
             </div>
             <div id="content" style="display:none;background-color:white;height:6.2em">
                 <div id="bttons" style="max-width:96%;width:96%;margin-left:2%;padding-top:1em;">
                     <div id="pcbuy" style="border-radius:4px;max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #bfbfbf;float:left" onclick="pcBuy()">
                         <div><img src="<%=request.getContextPath()%>/img/http_icn.png" style="height:3em;float:left;margin-left:1.4em;padding-top:1.1em"/></div>
-                        <div style="font-size:1.65em;color:rgb(116, 105, 105);padding-top:0.95em;padding-right:1.5em">PC购买</div>
+                        <div style="font-size:1.8em;color:rgb(116, 105, 105);padding-top:0.85em;padding-right:1.5em">PC购买</div>
                     </div>
-                    <div id="discount" style="border-radius:4px;max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #bfbfbf;float:right" onclick="window.location.href='<%=request.getContextPath()%>/myInfo?id=<%=openid%>'">
+                    <div id="discount" style="border-radius:4px;max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #bfbfbf;float:right" onclick="toMyInfo()">
                         <div><img src="<%=request.getContextPath()%>/img/discount_icn.png" style="height:3em;float:left;margin-left:1.4em;padding-top:1em"/></div>
-                        <div style="font-size:1.65em;color:rgb(116, 105, 105);padding-top:0.95em;padding-right:1.5em">优惠券</div>
+                        <div style="font-size:1.8em;color:rgb(116, 105, 105);padding-top:0.85em;padding-right:1.5em">优惠券</div>
                     </div>
                 </div>
             </div>
@@ -131,6 +132,62 @@
     <script type="text/javascript">
     var open = false;
     $(document).ready(function(){
+    	/*
+        $("#buy").hover(
+                function(){
+                  $(this).css("background-color","#0ACC22");
+                  },
+                function(){
+                   $(this).css("background-color","#e82827");
+                  });
+        $("#pcbuy").hover(
+                function(){
+                  $(this).css("background-color","#0ACC22");
+                  },
+                function(){
+                   $(this).css("background-color","white");
+                  });
+        $("#discount").hover(
+                function(){
+                  $(this).css("background-color","#0ACC22");
+                  },
+                function(){
+                   $(this).css("background-color","#white");
+                  });
+        */
+				    $("#buy").on("vmousedown",function() {
+	            $(this).css("background-color","#8BB0FD");
+				          });
+          $("#buy").on("vmouseup",function() {
+        	  $("#buy").css("background-color","#e82827");
+        	  /*
+        	  setTimeout(function(){
+                  $("#buy").css("background-color","#e82827");
+                                },600);
+              */
+				          });
+          $("#pcbuy").on("vmousedown",function() {
+              $(this).css("background-color","#8BB0FD");
+	                        });
+	        $("#pcbuy").on("vmouseup",function() {
+	        	$("#pcbuy").css("background-color","white");
+	        	/*
+	        	setTimeout(function(){
+	                $("#pcbuy").css("background-color","white");
+	                              },600);
+                */
+	                        });
+	        $("#discount").on("vmousedown",function() {
+	            $(this).css("background-color","#8BB0FD");
+	                      });
+			      $("#discount").on("vmouseup",function() {
+			    	  $("#discount").css("background-color","white");
+			    	  /*
+			    	   setTimeout(function(){
+		                    $("#discount").css("background-color","white");
+		                                  },600);
+                      */
+		                     });
           $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1}); 
         //var windowHeight = window.innerHeight;
         //var windowWidth = $("#top_img").width();
@@ -250,6 +307,9 @@
         }
     function pcBuy() {
     	window.location.href='<%=request.getContextPath()%>/jsp/productPage.jsp?productUrl='+pcUrl;
+        }
+    function toMyInfo() {
+    	window.location.href='<%=request.getContextPath()%>/myInfo?id=<%=openid%>';
         }
     function clickDiv() {
         if(!open) {

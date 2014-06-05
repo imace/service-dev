@@ -11,6 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
 <script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
+<script src="http://lib.sinaapp.com/js/jquery-mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <title>激情无敌!人气大奖榜</title>
 <style type="text/css">
@@ -345,7 +346,7 @@ td {
     <div id="rob1"
         style="border-radius:4px; max-width: 95%; margin-bottom: 1em; margin-left: 2.5%; margin-top: 1em; height: 5em; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
         onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/activitypage?id=<%=openId%>'">
-        <div style="font-size: 1.8em; color: white; margin-top: 0.9em">拉人气</div>
+        <div style="font-size: 1.8em; color: white; margin-top: 0.85em">拉人气</div>
     </div>
 
 
@@ -466,7 +467,7 @@ td {
     <div id="rob2"
         style="max-width: 95%; margin-bottom: 1.2em; margin-left: 2.5%; margin-top: 10px; height: 5em; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
         onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/lashouactivity?id=<%=openId%>'">
-        <div style="font-size: 1.8em; color: white; margin-top: 0.9em">抢奖金</div>
+        <div style="font-size: 1.8em; color: white; margin-top: 0.85em">抢奖金</div>
     </div>
     <%
         }
@@ -507,6 +508,28 @@ td {
         }
       $(document).ready(function(){
           //var windowWidth = $("#body").width();
+        /* 
+          $("#rob1").hover(
+            function(){
+              $(this).css("background-color","#0ACC22");
+              },
+            function(){
+               $(this).css("background-color","#e82827");
+              });
+              */
+              
+          $("#rob1").on("vmousedown",function() {
+        	  $(this).css("background-color","#8BB0FD");
+                          });
+          $("#rob1").on("vmouseup",function() {
+        	  $("#rob1").css("background-color","#e82827");
+        	  /*
+        	  setTimeout(function(){
+                $("#rob1").css("background-color","#e82827");
+			                  },600);
+              */
+                          });
+          
 
           <%
           if (com.sonymobile.sonysales.util.Constant.properties.getProperty(
