@@ -17,7 +17,7 @@
 		String openid =(String)request.getAttribute("openid");
 		String nickname =(String)request.getAttribute("nickname");
 		nickname=(nickname==null?"":"("+nickname+")");
-		String message="Hi, 亲, 我"+nickname+"正在参加索尼FIFA活动, 请你支持我一票!你也可以获得打折优惠券!";
+		String message="Hi, 亲, 我"+nickname+"正在参加索尼世界杯惊喜购机活动, 请你支持我一票!你也可以获得打折优惠券!";
 		String imgurl=request.getScheme() + "://" + request.getServerName() +"/img/menu_entry3.jpg";
 		String relationUrl = request.getScheme() + "://" + request.getServerName() + "/lashourelation";
 		String redirectHost = Constant.IS_USE_SELF_OAUTH ? Constant.OAUTH_REDIRECT_HOST

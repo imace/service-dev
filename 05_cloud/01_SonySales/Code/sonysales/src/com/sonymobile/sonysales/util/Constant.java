@@ -37,6 +37,9 @@ public final class Constant {
 	
 	public static final String JD_COUPON_LINK;
 	
+	public static final String SW2_LINK;
+	
+	public static final String SBH20_LINK;
     
     static {
         InputStream is = Constant.class.getClassLoader()
@@ -80,6 +83,10 @@ public final class Constant {
 		ATTENTION_PAGE=properties.getProperty("ATTENTION_PAGE");
 		
 		JD_COUPON_LINK=properties.getProperty("JD_COUPON_LINK");
+		
+		SW2_LINK=properties.getProperty("SW2_LINK");
+		
+		SBH20_LINK=properties.getProperty("SBH20_LINK");
 	}
 
 	public static final int SAE_FETCHURL_SUCCESS_CODE = 0;

@@ -26,7 +26,7 @@
 		openid =(String)request.getAttribute("openid");
 		nickname =(String)request.getAttribute("nickname");
 		nickname=(nickname==null?"":"("+nickname+")");
-		//String message="Hi, 亲, 我"+nickname+"对索尼FIFA大奖志在必得, 请您拉我一票!";
+		//String message="Hi, 亲, 我"+nickname+"对索尼世界杯惊喜购机大奖志在必得, 请您拉我一票!";
 		String message="看世界杯快报额外有惊喜";
 		
 		String imgurl=request.getScheme() + "://" + request.getServerName() + "/img/entry_bulletin.jpg";	

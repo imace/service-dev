@@ -34,7 +34,7 @@
 	<div class="container"
 		style="background: url(<%=request.getContextPath()%>/img/stamp.png) right bottom no-repeat; background-size: 55%; margin: 10px;">
 		<div class="row base_font_size" style="font-family: Droid Sans Fallback;">
-			<div id="title" class="text_header" style="margin-bottom: 10px">您的好友(<%=friendname%>)正在参加索尼FIFA活动</div>
+			<div id="title" class="text_header" style="margin-bottom: 10px">您的好友(<%=friendname%>)正在参加索尼世界杯惊喜购机活动</div>
 			<div>
 				<div class="text_subHeader"
 					style="margin-top: 10px; margin-bottom: 10px">(<%=friendname%>)的人气</div>

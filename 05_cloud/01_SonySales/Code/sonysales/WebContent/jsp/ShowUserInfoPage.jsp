@@ -43,13 +43,13 @@
 		String friendname = (String) request.getAttribute("myname");
 		PrintWriter outwriter = response.getWriter();
 
-		String message = "索尼FIFA(" + friendname + ")的战况!";
+		String message = "索尼世界杯人气大奖中(" + friendname + ")的战况!";
 		String imgurl = request.getScheme() + "://"
 				+ request.getServerName() + "/img/ranking_icn.png";
 		String relationUrl = request.getScheme() + "://"
 				+ request.getServerName() + "/shareUserInfo?id=" + openId
 				+ "&friendname=" + friendname;
-		/* out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
+		out.print("<script type=\"text/javascript\">var dataForWeixin={appId:\"\","
 				+ "MsgImg:\""
 				+ imgurl
 				+ "\", TLImg:\""
@@ -60,7 +60,7 @@
 				+ message
 				+ "\", desc:\""
 				+ message
-				+ "\", fakeid:\"\",callback:function(){}};</script>"); */
+				+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
 	%>
 	<script language="javascript">
 		jQuery(function() {
@@ -83,7 +83,7 @@
 			$('#address').val('<%=address%>');
 			$('#jdId').val('<%=jdId%>');
 			
-			var url="<%=request.getContextPath()%>"+"/updateUserInfo";
+			var url="<%=Constant.HOST%>"+"/updateUserInfo";
 			$("form input").attr('disabled', 'true');
 			$('#test').click(
 					function() {
@@ -142,9 +142,8 @@
 			<div class="text_mainBody">
 				<hr style="border: 1px solid #22bff2; margin-top: -3px;">
 				多款<span style="color: #cea14b">限量手机</span>, 多种<span
-					style="color: #cea14b">满减券</span>等您来领取, PC端输入<span
-					style="color: #cea14b;font-size:110%"><%=Constant.JD_COUPON_LINK %></span>进入活动详情,
-				想要更快捷请点击<span style="color: #cea14b">下面按钮</span>, 多多优惠等您带回家!
+					style="color: #cea14b">优惠券</span>等您来取, PC端领取输入<span
+					style="color: #cea14b;font-size:110%"><%=Constant.JD_COUPON_LINK %></span>,手机端领取请点击<span style="color: #cea14b">下面按钮</span>。
 			</div>
 			<br> <a href="<%=Constant.JD_COUPON_LINK %>"
 				style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
@@ -317,7 +316,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-xs-12">
-							<label class="text_highlight">（如果需要邮递奖品或领取奖金，请填写真实信息） </label>
+							<label class="text_highlight">（如果需要邮递奖品，请填写真实信息） </label>
 							<br>
 							<span id="msgdemo2"></span>
 						</div>

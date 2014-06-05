@@ -29,7 +29,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="text_mainBody">
-					Hi, 亲, 我(<%=fromnickname%>)对<span style="color: #cea14b">索尼FIFA大奖</span>志在必得,
+					Hi, 亲, 我(<%=fromnickname%>)对<span style="color: #cea14b">索尼世界杯人气大奖</span>志在必得,
 					请您拉我一票, 同时您也可以获得<span style="color: #cea14b">打折优惠</span>.<br>只需2步即可完成:
 				</div>
 				<div class="text_highlight">1.点击支持 2.完成关注</div>
@@ -67,7 +67,7 @@
 							<div class="col-xs-4">
 								<span id="tonickname" style="display: none;"><%=tonickname%></span>
 								<img alt="fifa" style="max-width: 100%;" src="<%=request.getContextPath()%>/img/circle_phone.png"><br>
-								FIFA大奖 <input type="hidden" name="tid" value="<%=toid%>">
+								人气大奖 <input type="hidden" name="tid" value="<%=toid%>">
 							</div>
 						</div>
 						<br> <br> <br> <br>

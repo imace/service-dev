@@ -17,7 +17,7 @@
 	src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
 <script
 	src="http://lib.sinaapp.com/js/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<title>索尼FIFA2014 快报</title>
+<title>世界杯活动快报</title>
 </head>
 <body class="base_font_size">
 	<%
@@ -63,8 +63,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div id="title" class="text_header common_style"
-					style="margin: 8px; max-width: 96%; margin-left: 2%">索尼FIFA2014
-					快报</div>
+					style="margin: 8px; max-width: 96%; margin-left: 2%">世界杯活动快报</div>
 
 				<div id="banner_img_div" style="text-align: center">
 					<img

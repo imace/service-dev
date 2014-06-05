@@ -32,7 +32,7 @@ public class NewsSevlet extends HttpServlet {
 		String createTime = Common.formatDateString(news.getCreateTime());
 
 		if (info == null || info.isEmpty()) {
-			info = "2014年世界杯将于6月12日-7月13日举办，届时索尼Xperia将与您共度激情盛夏。在此期间，您可以分享索尼FIFA快讯给您的朋友，参与拉人气大赛，赢取丰厚奖品。";
+			info = "2014年世界杯将于6月12日-7月13日举办，届时索尼Xperia将与您共度激情盛夏。在此期间，您可以分享世界杯活动快报给您的朋友，参与拉人气大赛，赢取丰厚奖品。";
 			createTime = "2014-06-01 00:00:03";
 		}
 		if (fromname == null || fromname.isEmpty()) {

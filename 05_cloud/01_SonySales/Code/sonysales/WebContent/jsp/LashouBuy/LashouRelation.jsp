@@ -31,7 +31,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="text_mainBody common_style">
-					Hi, 亲, 我(<%=fromnickname%>)正在参加<span class="text_highlight">索尼FIFA</span>活动</br>
+					Hi, 亲, 我(<%=fromnickname%>)正在参加<span class="text_highlight">索尼世界杯惊喜购机</span>活动</br>
 					如果你支持并完成关注,即可获得50元购买<span class="text_highlight">折扣券</span>!<br>
 					如果你完成购买手机, 我还可获得<span class="text_highlight">奖金</span>哦!<br>非常感谢咯.<br>只需2步即可完成:
 				</div>
@@ -70,7 +70,7 @@
 							<div class="col-xs-4" id="tonickname">
 								<span id="tonickname" style="display: none;"><%=tonickname%></span>
 								<img alt="fifa" style="max-width: 100%;" src="<%=toimg%>"><br>
-								FIFA手机 <input type="hidden" name="tid" value="<%=toid%>">
+								世界杯手机 <input type="hidden" name="tid" value="<%=toid%>">
 							</div>
 						</div>
 						<br> <br>
