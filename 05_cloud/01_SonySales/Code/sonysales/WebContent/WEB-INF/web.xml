@@ -87,6 +87,10 @@
     <servlet-name>toAddAdministrator</servlet-name>
     <servlet-class>com.sonymobile.sonysales.servlet.UserAdminServlet.ToAddAdministrator</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>addNews</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.sevlet.news.AddNews</servlet-class>
+  </servlet>
     <servlet>
         <servlet-name>OAuthServlet</servlet-name>
         <servlet-class>com.sonymobile.sonysales.servlet.userServlet.OAuthServlet</servlet-class>
@@ -173,6 +177,10 @@
   <servlet-mapping>
     <servlet-name>toAddAdministrator</servlet-name>
     <url-pattern>/Management/toAddAdministrator</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>addNews</servlet-name>
+    <url-pattern>/Management/addNews</url-pattern>
   </servlet-mapping>
   
     <servlet>

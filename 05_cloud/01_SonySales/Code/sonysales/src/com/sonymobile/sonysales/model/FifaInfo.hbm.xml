@@ -10,7 +10,7 @@
 		</id>
 
 		<property name="info" type="java.lang.String">
-			<column name="info" length="500" not-null="true">
+			<column name="info" length="2000" not-null="true">
 				<comment>fifa info</comment>
 			</column>
 		</property>

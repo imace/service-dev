@@ -12,8 +12,15 @@
 	</div>
 </div>
 <hr />
-    <% String code = CookieHelper.getValueFromCookieByName(request, "roleCode");%>
+   
 <ul id="main-nav" class="nav nav-tabs nav-stacked">
+	 <li class="active"><a href="#"> <i class="icon-home"></i>战报录入
+	 </a></li>
+   <li><a href="<%=request.getContextPath()%>/jsp/Management/addNews.jsp">
+           <i class="icon-home"></i> 战报录入
+   </a></li>
+    
+ <% String code = CookieHelper.getValueFromCookieByName(request, "roleCode");%>
 	<li class="active"><a href="#"> <i class="icon-home"></i>订单管理
 	</a></li>
 	      <% if(code!=null&&(code.equals("excute")||code.equals("admin"))) {
