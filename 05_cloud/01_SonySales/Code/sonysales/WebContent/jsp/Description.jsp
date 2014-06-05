@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/common.css">
+<script src="<%=request.getContextPath()%>/js/relation.js"></script>
 <title>索尼2014世界杯狂热季</title>
 
 <style type="text/css">
@@ -112,9 +113,9 @@
 				<span class="text_mainBody">6月12日 到 6月30日 <br></span>
 				<span class="text_subHeader" style="line-height: 150%;">活动规则：</span>
 				<span class="text_mainBody">分享世界杯快报，邀请好友获得人气支持。 人气王前10名可获得</span>
-				<a href="<%=Constant.SW2_LINK%>" class="text_highlight" style="line-height: 150%;text-decoration:underline;">索尼智能手表Smart Watch 2</a>
+				<a id="smartwatch2" href="<%=Constant.SW2_LINK%>" class="text_highlight" style="line-height: 150%;text-decoration:underline;">索尼智能手表Smart Watch 2</a>
 				<span class="text_mainBody" style="line-height: 150%;">一块，11至20名可获得</span>
-				<a href="<%=Constant.SW2_LINK%>" class="text_highlight" style="line-height: 150%;text-decoration:underline;">蓝牙耳机SBH20</a>
+				<a id="sbh20" href="<%=Constant.SW2_LINK%>" class="text_highlight" style="line-height: 150%;text-decoration:underline;">蓝牙耳机SBH20</a>
 				<span class="text_mainBody" style="line-height: 150%;">一个，得奖情况请点击“查看大奖榜单”，具体参与点击“拉人气得大奖”按钮。支持您的好友可获得索尼2014世界杯惊喜购机折扣优惠，具体点击“我的战况->我的优惠券”。<br></span>
 				<span class="text_subHeader" style="line-height: 150%;">奖品发放：</span>
 				<span class="text_mainBody" style="line-height: 150%;">请您在“我的战况->我的信息”里面留下您的手机号码等联系方式，索尼工作人员会与您联系。<br></span>

@@ -40,7 +40,7 @@
 					<div class="text_mainBody">为了支持您的好友,
 						需要首先点击下面按钮获取您的个人信息。</div>
 					<hr>
-					<a href="<%=oauthtoidlink%>"
+					<a id="oauthlink" href="<%=oauthtoidlink%>"
 						style="display: block; background-color: #7adb81; border-color: #7adb81;"
 						class="btn btn-primary btn-lg active" role="button">获取个人信息</a>
 				</div>

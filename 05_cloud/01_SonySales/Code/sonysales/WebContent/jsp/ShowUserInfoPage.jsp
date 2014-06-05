@@ -21,7 +21,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/validaform.css">
   
 <script src="<%=request.getContextPath()%>/js/Validform_v5.3.2_min.js"></script>
-  
+<script src="<%=request.getContextPath()%>/js/relation.js"></script>
   
 <title>我的战况</title>
 <style type="text/css">
@@ -145,7 +145,7 @@
 					style="color: #cea14b">优惠券</span>等您来取, PC端领取输入<span
 					style="color: #cea14b;font-size:110%"><%=Constant.JD_COUPON_LINK %></span>,手机端领取请点击<span style="color: #cea14b">下面按钮</span>。
 			</div>
-			<br> <a href="<%=Constant.JD_COUPON_LINK %>"
+			<br> <a id="getcoupon" href="<%=Constant.JD_COUPON_LINK %>"
 				style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
 				class="btn_decoration btn-lg" role="button">手机获取优惠卷</a> <br>
 			<div>

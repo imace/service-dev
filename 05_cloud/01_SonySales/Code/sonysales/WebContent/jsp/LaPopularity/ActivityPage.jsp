@@ -13,7 +13,7 @@
 <script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
 <!-- <script src="http://lib.sinaapp.com/js/jquery-mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script> -->
 <script src="http://lib.sinaapp.com/js/jquery-mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
-
+<script src="<%=request.getContextPath()%>/js/relation.js"></script>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css"> 
 <title>发快报, 拉人气, 得大奖!</title>
 </head>
