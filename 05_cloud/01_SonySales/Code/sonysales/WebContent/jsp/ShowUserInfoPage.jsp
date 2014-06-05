@@ -145,9 +145,9 @@
 					style="color: #cea14b">优惠券</span>等您来取, PC端领取输入<span
 					style="color: #cea14b;font-size:110%"><%=Constant.JD_COUPON_LINK %></span>,手机端领取请点击<span style="color: #cea14b">下面按钮</span>。
 			</div>
-			<br> <a id="getcoupon" data-openId="<%=openId %>" data-pageName="我的战况" data-operation="优惠卷页（京东）" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" href="<%=Constant.JD_COUPON_LINK %>"
+			<br> <a data-openId="<%=openId %>" data-pageName="我的战况" data-operation="优惠卷页（京东）" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" href="<%=Constant.JD_COUPON_LINK %>"
 				style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
-				class="btn_decoration btn-lg" role="button">手机获取优惠卷</a> <br>
+				class="btn_decoration btn-lg loghandler" role="button">手机获取优惠卷</a> <br>
 			<div>
 				<div class="text_subHeader"
 					style="margin-top: 10px; margin-bottom: 10px">我的人气</div>

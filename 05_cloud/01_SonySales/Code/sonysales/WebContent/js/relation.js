@@ -24,7 +24,7 @@ $(function() {
 	
 	var posturl="<%=request.getContextPath()%>/sharepage";
 	
-    $('#getcoupon, #smartwatch2, #sbh20, #oauthlink').click(function () {
+    $('.loghandler').click(function () {
     	var openId = $(this).attr('data-openId');
     	var pageName = $(this).attr('data-pageName');
     	var operation = $(this).attr('data-operation');
