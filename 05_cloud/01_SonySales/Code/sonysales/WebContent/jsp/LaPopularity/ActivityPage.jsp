@@ -69,7 +69,7 @@
                              </div>
                 <div id="intro" >
                     <div class="text_subHeader" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">
-                                    大力神杯拉人气活动规则
+                                    索尼世界杯拉人气活动规则
                     </div>
                     <div class="text_mainBody" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">
                     1.分享快报给您的好友, 点击<a class="btn btn-default" style="background: url(<%=request.getContextPath()%>/img/trumpet.png) 8px no-repeat #ff7000;padding: 6px; text-decoration:none; overflow: hidden; padding-left: 35px;text-align: right; color:#fff;background-size: 22px 22px;border-radius:0.2em" href="<%=request.getContextPath()%>/news?fid=<%=openid%>&fromname=<%=nickname%>" role="button">快报</a>查看<br>
