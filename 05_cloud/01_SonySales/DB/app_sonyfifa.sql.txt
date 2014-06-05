@@ -136,7 +136,8 @@ CREATE TABLE IF NOT EXISTS `popularity` (
   `ownerUserId` bigint(20) NOT NULL COMMENT '发起人或者叫推荐者的用户Id(外键，User表主键)',
   `supporterUserId` bigint(20) NOT NULL COMMENT '支持者，被推荐者或者叫接收者用户Id(外键，User表主键)',
   `createTime` varchar(12) NOT NULL COMMENT '人气关联创建时间Eg：201404101535',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ownerUserId` (`ownerUserId`,`supporterUserId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -192,8 +193,9 @@ CREATE TABLE IF NOT EXISTS `user` (
   `points` bigint(11) DEFAULT NULL COMMENT '人气值',
   `focusTime` varchar(12) DEFAULT NULL COMMENT '关注时间Eg：201404101535',
   `createTime` varchar(12) DEFAULT NULL COMMENT '注册时间Eg：201404101535',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `openId` (`openId`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `user`
