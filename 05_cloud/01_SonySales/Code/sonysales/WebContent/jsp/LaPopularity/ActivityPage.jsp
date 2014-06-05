@@ -236,6 +236,9 @@
                 document.getElementById("product_div").style.display="none";
                 $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1});
                 $("#buyNow").text("使用优惠券立即购买");
+                $("#buy").css("background-color","#e82827");
+                $("#pcbuy").css("background-color","white");
+                $("#discount").css("background-color","white");
                 open = false;
 
                 }
@@ -247,6 +250,9 @@
                 document.getElementById("product_div").style.display="";
                 $("#touchBox").css({position: "fixed",'bottom':0,'z-index':1}); 
                 $("#buyNow").text("手机购买");
+                $("#buy").css("background-color","#e82827");
+                $("#pcbuy").css("background-color","white");
+                $("#discount").css("background-color","white");
                 open = true;
                 }
         }
