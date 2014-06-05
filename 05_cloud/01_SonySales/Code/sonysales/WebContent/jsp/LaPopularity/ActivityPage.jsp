@@ -87,23 +87,23 @@
 			            <tr>
 			            <td><div style="position:relative;">
 			                    <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 90%; width: 90%" id="1_frame"/>
-                        <img src="<%=request.getContextPath()%>/img/1.jpg" style="max-width: 90%; width: 90%" id="1_img" onclick="selectPhone(1,'http://m.jd.com/product/1084656.html')"/>
+                        <img src="<%=request.getContextPath()%>/img/1.jpg" style="max-width: 90%; width: 90%" id="1_img" onclick="selectPhone(1,'1073266')"/>
                     </div></td>
 			            <td><div>
 			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.45%; width: 16.45%" id="2_frame" />
-                        <img src="<%=request.getContextPath()%>/img/2.jpg" style="max-width: 90%; width: 90%" id="2_img" onclick="selectPhone(2,'http://m.jd.com/product/1101144.html')"/>
+                        <img src="<%=request.getContextPath()%>/img/2.jpg" style="max-width: 90%; width: 90%" id="2_img" onclick="selectPhone(2,'1128217')"/>
                     </div></td>
 			            <td><div>
 			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="position:absolute;max-width: 16.45%; width: 16.45%" id="3_frame" />
-                        <img src="<%=request.getContextPath()%>/img/3.jpg" style="max-width: 90%; width: 90%" id="3_img" onclick="selectPhone(3,'http://m.jd.com/product/1145235.html')"/>
+                        <img src="<%=request.getContextPath()%>/img/3.jpg" style="max-width: 90%; width: 90%" id="3_img" onclick="selectPhone(3,'1145234')"/>
                     </div></td>
 			            <td><div>
 			                    <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.45%; width: 16.45%" id="4_frame" />
-                        <img src="<%=request.getContextPath()%>/img/4.jpg" style="max-width: 90%; width: 90%" id="4_img" onclick="selectPhone(4,'http://m.jd.com/product/1101144.html')"/>
+                        <img src="<%=request.getContextPath()%>/img/4.jpg" style="max-width: 90%; width: 90%" id="4_img" onclick="selectPhone(4,'1101135')"/>
                     </div></td>
 			            <td><div>
 			                   <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.45%; width: 16.45%" id="5_frame" />
-                        <img src="<%=request.getContextPath()%>/img/5.jpg" style="max-width: 90%; width: 90%" id="5_img" onclick="selectPhone(5,'http://m.jd.com/product/1084656.html')"/>
+                        <img src="<%=request.getContextPath()%>/img/5.jpg" style="max-width: 90%; width: 90%" id="5_img" onclick="selectPhone(5,'1084649')"/>
                     </div></td>
 			            </tr>
 			            </table>
@@ -195,7 +195,8 @@
         }
        
         });
-    var productUrl = "http://m.jd.com/product/1145235.html";
+    var pcUrl = "http://item.jd.com/1145234.html";
+    var phoneUrl = "http://m.jd.com/product/1145234.html";
     function draw() {
         if(!open) {
        document.getElementById("content").style.display="";
@@ -205,10 +206,10 @@
        $("#buyNow").text("手机购买");
        open = true;
        } else {
-           window.location.href=productUrl;
+           window.location.href=phoneUrl;
                 }
             }
-    function selectPhone(id, url) {
+    function selectPhone(id, productNo) {
         if(id==1) {
         	$("#1_frame").show();
         	$("#2_frame").hide();
@@ -244,10 +245,11 @@
             $("#4_frame").hide();
             $("#5_frame").show();
             }
-        productUrl = url;
+        pcUrl = "http://item.jd.com/"+productNo+".html";
+        phoneUrl = "http://m.jd.com/product/"+productNo+".html";
         }
     function pcBuy() {
-    	window.location.href='<%=request.getContextPath()%>/jsp/productPage.jsp?productUrl='+productUrl;
+    	window.location.href='<%=request.getContextPath()%>/jsp/productPage.jsp?productUrl='+pcUrl;
         }
     function clickDiv() {
         if(!open) {
