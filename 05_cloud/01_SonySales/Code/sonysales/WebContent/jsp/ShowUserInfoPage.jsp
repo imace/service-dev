@@ -83,7 +83,7 @@
 			$('#address').val('<%=address%>');
 			$('#jdId').val('<%=jdId%>');
 			
-			var url="<%=Constant.HOST%>"+"/updateUserInfo";
+			var url="<%=request.getContextPath()%>"+"/updateUserInfo";
 			$("form input").attr('disabled', 'true');
 			$('#test').click(
 					function() {
