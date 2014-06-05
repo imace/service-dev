@@ -8,7 +8,7 @@
 		WeixinJSBridge.call('hideToolbar');
 	});
 })();
-jQuery(function() {
+$(function() {
 	var tonickname = $('#tonickname');
 	var personalInfo = $('#personalInfo');
 	var supportFriend = $('#supportFriend');
@@ -22,17 +22,21 @@ jQuery(function() {
 		supportFriend.show();
 	}
 	
+	var posturl="<%=request.getContextPath()%>/sharepage";
+	
     $('#getcoupon, #smartwatch2, #sbh20, #oauthlink').click(function () {
-    	alert('test only for click a link');
-    	var requrl='';
-        QAjax(requrl, { groupname: groupname }, function (data) {
-            if (data.ReturnCode == 1) {
-                //successfully
-            } else {
-                //failed
-            }
-        });
+    	var openId = $(this).attr('data-openId');
+    	var pageName = $(this).attr('data-pageName');
+    	var operation = $(this).attr('data-operation');
+    	var host = $(this).attr('data-host');
+    	var requrl=host+'/AddLog?openId='+openId+'&pageName='+pageName+'&operation='+operation;
+    	alert(requrl);
+    	LogHandler(requrl);
     });
+    
+    function LogHandler(url){
+    	QAjax(url);
+    }
 		
 	
 	function QAjax(url, para, successHandler, errorHandler) {

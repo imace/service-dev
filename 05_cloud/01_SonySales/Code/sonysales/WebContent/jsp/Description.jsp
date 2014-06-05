@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/common.css">
+<script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
 <script src="<%=request.getContextPath()%>/js/relation.js"></script>
 <title>索尼2014世界杯狂热季</title>
 
