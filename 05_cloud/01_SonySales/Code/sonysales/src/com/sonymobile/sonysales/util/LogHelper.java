@@ -157,39 +157,39 @@ public class LogHelper {
 		PAGE_NAME_MAP = new HashMap<Integer, String>();
 		OPERATION_MAP = new HashMap<Integer, String>();
 
-		PAGE_NAME_MAP.put(1, "����ҳ");
-		PAGE_NAME_MAP.put(2, "�󽱰�");
-		PAGE_NAME_MAP.put(3, "����������ҳ");
-		PAGE_NAME_MAP.put(4, "����������ҳ");
-		PAGE_NAME_MAP.put(5, "�ҵ�ս��");
-		PAGE_NAME_MAP.put(6, "�챨ҳ");
+		PAGE_NAME_MAP.put(1, "描述页");
+		PAGE_NAME_MAP.put(2, "大奖榜");
+		PAGE_NAME_MAP.put(3, "拉人气宣传页");
+		PAGE_NAME_MAP.put(4, "拉人气接收页");
+		PAGE_NAME_MAP.put(5, "我的战况");
+		PAGE_NAME_MAP.put(6, "快报页");
 
-		OPERATION_MAP.put(1, "�󽱰�");
-		OPERATION_MAP.put(2, "����������ҳ");
-		OPERATION_MAP.put(3, "�ҵ�ս��");
-		OPERATION_MAP.put(4, "����������ҳ");
-		OPERATION_MAP.put(5, "�챨ҳ");
-		OPERATION_MAP.put(6, "�ֻ�����ҳ��������");
-		OPERATION_MAP.put(7, "ѡ��Sony�ֻ�");
-		OPERATION_MAP.put(8, "PC����ҳ");
-		OPERATION_MAP.put(9, "�Ż�ȯҳ��������");
-		OPERATION_MAP.put(10, "֧��");
+		OPERATION_MAP.put(1, "大奖榜");
+		OPERATION_MAP.put(2, "拉人气宣传页");
+		OPERATION_MAP.put(3, "我的战况");
+		OPERATION_MAP.put(4, "拉人气宣传页");
+		OPERATION_MAP.put(5, "快报页");
+		OPERATION_MAP.put(6, "手机购买页（京东）");
+		OPERATION_MAP.put(7, "选择Sony手机");
+		OPERATION_MAP.put(8, "PC购买页");
+		OPERATION_MAP.put(9, "优惠券页（京东）");
+		OPERATION_MAP.put(10, "支持");
 
-		OPERATION_MAP.put(12, "�Żݾ�ҳ��������");
-		OPERATION_MAP.put(13, "�󽱰�");
-		OPERATION_MAP.put(14, "�༭�û���Ϣ");
-		OPERATION_MAP.put(15, "�����û���Ϣ");
-		OPERATION_MAP.put(16, "ǰ��֧�ֺ���");
-		OPERATION_MAP.put(17, "�����챨��������");
+		OPERATION_MAP.put(12, "优惠卷页（京东）");
+		OPERATION_MAP.put(13, "大奖榜");
+		OPERATION_MAP.put(14, "编辑用户信息");
+		OPERATION_MAP.put(15, "保存用户信息");
+		OPERATION_MAP.put(16, "前往支持好友");
+		OPERATION_MAP.put(17, "分享快报提升人气");
 
-		OPERATION_MAP.put(18, "���������ֱ�Smart Watch 2");
-		OPERATION_MAP.put(19, "��������SBH20");
+		OPERATION_MAP.put(18, "索尼智能手表Smart Watch 2");
+		OPERATION_MAP.put(19, "蓝牙耳机SBH20");
 
-		OPERATION_MAP.put(100, "������");
-		OPERATION_MAP.put(101, "�ֻ�1��");
-		OPERATION_MAP.put(102, "�ֻ�2��");
-		OPERATION_MAP.put(103, "�ֻ�3��");
-		OPERATION_MAP.put(104, "�ֻ�4��");
-		OPERATION_MAP.put(105, "�ֻ�5��");
+		OPERATION_MAP.put(100, "拉友买");
+		OPERATION_MAP.put(101, "手机1款");
+		OPERATION_MAP.put(102, "手机2款");
+		OPERATION_MAP.put(103, "手机3款");
+		OPERATION_MAP.put(104, "手机4款");
+		OPERATION_MAP.put(105, "手机5款");
 	}
 }
