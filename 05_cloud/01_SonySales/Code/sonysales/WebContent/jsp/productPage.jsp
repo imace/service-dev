@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
 <script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
+<script src="<%=request.getContextPath()%>/js/relation.js"></script>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <title>活动详情</title>
 </head>

@@ -11,6 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
 <script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
+<script src="<%=request.getContextPath()%>/js/relation.js"></script>
 <!-- <script src="http://lib.sinaapp.com/js/jquery-mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script> -->
 <script src="http://lib.sinaapp.com/js/jquery-mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
@@ -344,7 +345,7 @@ td {
             
         </div>
     </div>
-    <div id="rob1"
+    <div id="rob1"  data-openId="<%=openId %>" data-pageName="2" data-operation="1" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler"
         style="border-radius:4px; max-width: 95%; margin-bottom: 1em; margin-left: 2.5%; margin-top: 1em; height: 5em; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
         onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/activitypage?id=<%=openId%>'">
         <div style="font-size: 1.8em; color: white; margin-top: 0.85em">拉人气</div>
