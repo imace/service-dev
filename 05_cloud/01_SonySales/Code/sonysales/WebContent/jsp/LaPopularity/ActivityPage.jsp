@@ -73,7 +73,7 @@
                     </div>
                     <div class="text_mainBody" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">
                     1.分享快报给您的好友, 点击<a  data-openId="<%=openid %>" data-pageName="3" data-operation="5" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="btn btn-default loghandler" style="background: url(<%=request.getContextPath()%>/img/trumpet.png) 8px no-repeat #ff7000;padding: 6px; text-decoration:none; overflow: hidden; padding-left: 35px;text-align: right; color:#fff;background-size: 22px 22px;border-radius:0.2em" href="<%=request.getContextPath()%>/news?fid=<%=openid%>&fromname=<%=nickname%>" role="button">快报</a>查看<br>
-                    2.人气榜前10名可获得SmartWatch2一个, 11至20名可获得蓝牙耳机SBH20一个.<br/>
+                    2.人气榜前10名可获得第二代智能手表SW2一个, 11至20名可获得立体声蓝牙耳机SBH20一个.<br/>
                     3.每拉一个朋友激活10000人气积分呦!
                     </div>
                 </div>
