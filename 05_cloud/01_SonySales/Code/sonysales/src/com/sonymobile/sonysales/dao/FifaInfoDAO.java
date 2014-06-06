@@ -28,7 +28,7 @@ public class FifaInfoDAO {
 
 		String hql = "from FifaInfo p order by p.createTime desc";
 
-		List<?> lst = hibernateUtil.getListByHql(hql, null, 0, 0);
+		List<?> lst = hibernateUtil.getListByHql(hql, null, 0, 1);
 
 		if (lst == null || lst.size() == 0) {
 			return null;
