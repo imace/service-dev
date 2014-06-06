@@ -146,8 +146,8 @@
 					style="color: #cea14b;font-size:110%"><%=Constant.JD_COUPON_LINK %></span>,手机端领取请点击<span style="color: #cea14b">下面按钮</span>。
 			</div>
 			<br> <a data-openId="<%=openId %>" data-pageName="5" data-operation="12" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" href="<%=Constant.JD_COUPON_LINK %>"
-				style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
-				class="btn_decoration btn-lg loghandler" role="button">手机获取优惠卷</a> <br>
+				style="display: block;padding:0.85em;font-size:1.8em"
+				class="btn btn-success btn-block text_support_btn loghandler" role="button">手机获取优惠卷</a> <br>
 			<div>
 				<div class="text_subHeader"
 					style="margin-top: 10px; margin-bottom: 10px">我的人气</div>
@@ -172,8 +172,8 @@
 				</div>
 				<br> <a  data-openId="<%=openId %>" data-pageName="5" data-operation="13" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
 					href="<%=request.getContextPath()%>/getNameList?id=<%=openId%>"
-					style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
-					class="btn_decoration btn-lg loghandler" role="button">查看人气榜</a>
+					style="display: block;padding:0.85em;font-size:1.8em"
+					class="btn btn-success btn-block text_support_btn loghandler" role="button">查看人气榜</a>
 			</div>
 
 			<br>
@@ -324,8 +324,8 @@
 					<div class="form-group">
 						<div class="col-xs-12">
 							<a href="#" id="test"  data-openId="<%=openId %>" data-pageName="5" data-operation="14" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
-								style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
-								class="btn-lg active btn_decoration loghandler" role="button">编辑</a>
+								style="display: block;padding:0.85em;font-size:1.8em"
+								class="btn btn-success btn-block text_support_btn loghandler" role="button">编辑</a>
 						</div>
 					</div>
 			</form>
