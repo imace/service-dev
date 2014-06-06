@@ -11,6 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
 <script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
+<script src="<%=request.getContextPath()%>/js/relation.js"></script>
 <!-- <script src="http://lib.sinaapp.com/js/jquery-mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script> -->
 <script src="http://lib.sinaapp.com/js/jquery-mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
@@ -82,9 +83,9 @@ td {
         try{
             userList = (List<User>)request.getAttribute("userList");
             if (userList != null) {
-            	logger.debug("nameList.jsp->userList size is "+ userList.size());
+                logger.debug("nameList.jsp->userList size is "+ userList.size());
             } else {
-            	logger.debug("nameList.jsp->userList is null");
+                logger.debug("nameList.jsp->userList is null");
             }
             supporterList = (List<SupporterCount>)request.getAttribute("supporterList");
             openId = (String)request.getAttribute("openId");
@@ -100,7 +101,7 @@ td {
     <div id="title" class="text_header"
         style="margin-left: 2%; margin-top: 0.7em;">索尼世界杯人气大奖榜单</div>
     <div  class="text_subHeader2"
-        style="margin-left: 2%; margin-top: 0.3em;">前10名就送<font style="color: #e82827">Smart Watch2</font>,11至20名就送<font style="color: #e82827">蓝牙耳机SBH20</font></div>
+        style="margin-left: 2%; margin-top: 0.3em;">前10名就送<font style="color: #e82827">第二代智能手表SW2</font>，11至20名就送<font style="color: #e82827">立体声蓝牙耳机SBH20</font></div>
     <div id="pop_div" style="padding-top: 0.1em; margin-left: 2%">
         <div id="pop_title"
             style="height: 4em; text-align: left; float: left">
@@ -124,11 +125,11 @@ td {
                 cellSpacing=0 cellPadding=0 align=center border=1>
                 <tr>
                 <td style="padding-left:0;border-bottom:none">
-					            <div>
-					                <img src="<%=request.getContextPath()%>/img/ranking_banner_1_icn.jpg" style="max-width: 100%; width: 100%" id="pop_top_img" />
-					            </div>
-		            </td>
-		            </tr>
+                                <div>
+                                    <img src="<%=request.getContextPath()%>/img/ranking_banner_1_icn.jpg" style="max-width: 100%; width: 100%" id="pop_top_img" />
+                                </div>
+                    </td>
+                    </tr>
             </table>
             <table id="pop_table1" style="max-width: 100%; width: 100%;border-top:none"
                 cellSpacing=0 cellPadding=0 align=center border=1>
@@ -144,12 +145,12 @@ td {
                                 <% 
                             for(int i=1;i<userList.size();i++) {
                                 %>
-					                <tr>
-					                    <td class="col1"><%=i+1%></td>
-					                    <td class="overText col2"><%=userList.get(i).getNickname()%></td>
-					                    <td class="overText col3">已获<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持！
-					                    </td>
-					                </tr>
+                                    <tr>
+                                        <td class="col1"><%=i+1%></td>
+                                        <td class="overText col2"><%=userList.get(i).getNickname()%></td>
+                                        <td class="overText col3">已获<font style="color: #e82827"><%=userList.get(i).getPoints()%></font>个好友支持！
+                                        </td>
+                                    </tr>
                                 <% 
                                                                      }
                                 %>
@@ -186,17 +187,17 @@ td {
                          %>
                          </table>
                          <table style="max-width: 100%; width: 100%;border-bottom:none"
-						                cellSpacing=0 cellPadding=0 align=center border=1>
-						                <tr>
-							                <td style="padding-left:0;border-bottom:none">
-				                       <div>
-				                             <img src="<%=request.getContextPath()%>/img/ranking_banner_2_icn.jpg" style="max-width: 100%; width: 100%" id="pop_top_img" />
-				                       </div>
-			                       </td>
-		                       </tr>
-	                       </table>
-							            <table style="max-width: 100%; width: 100%;border-top:none"
-							                cellSpacing=0 cellPadding=0 align=center border=1>
+                                        cellSpacing=0 cellPadding=0 align=center border=1>
+                                        <tr>
+                                            <td style="padding-left:0;border-bottom:none">
+                                       <div>
+                                             <img src="<%=request.getContextPath()%>/img/ranking_banner_2_icn.jpg" style="max-width: 100%; width: 100%" id="pop_top_img" />
+                                       </div>
+                                   </td>
+                               </tr>
+                           </table>
+                                        <table style="max-width: 100%; width: 100%;border-top:none"
+                                            cellSpacing=0 cellPadding=0 align=center border=1>
                          <tr>
                             <td class="col1" style="border-top:none;">11</td>
                             <td class="overText col2" style="border-top:none;"><%=userList.get(10).getNickname()%></td>
@@ -344,7 +345,7 @@ td {
             
         </div>
     </div>
-    <div id="rob1"
+    <div id="rob1"  data-openId="<%=openId %>" data-pageName="2" data-operation="4" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler"
         style="border-radius:4px; max-width: 95%; margin-bottom: 1em; margin-left: 2.5%; margin-top: 1em; height: 5em; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
         onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/activitypage?id=<%=openId%>'">
         <div style="font-size: 1.8em; color: white; margin-top: 0.85em">拉人气</div>
@@ -494,7 +495,7 @@ td {
     }
 %>
 //$("img").load(function() {
-	window.onload = function() {
+    window.onload = function() {
     if((poplist_div1.offsetHeight-poplist_div.offsetHeight)>0) {
         document.getElementById("poplist_div2").style.display="";
         } else if((poplist_div.offsetHeight-poplist_div1.offsetHeight)>30){
@@ -520,14 +521,14 @@ td {
               */
               
           $("#rob1").on("vmousedown",function() {
-        	  $(this).css("background-color","#910202");
+              $(this).css("background-color","#910202");
                           });
           $("#rob1").on("vmouseup",function() {
-        	  $("#rob1").css("background-color","#e82827");
-        	  /*
-        	  setTimeout(function(){
+              $("#rob1").css("background-color","#e82827");
+              /*
+              setTimeout(function(){
                 $("#rob1").css("background-color","#e82827");
-			                  },600);
+                              },600);
               */
                           });
           
