@@ -439,4 +439,24 @@
     <servlet-name>Description</servlet-name>
     <url-pattern>/Description</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddLog</display-name>
+    <servlet-name>AddLog</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.AddLogServlet.AddLog</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddLog</servlet-name>
+    <url-pattern>/AddLog</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetLog</display-name>
+    <servlet-name>GetLog</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.AddLogServlet.GetLog</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetLog</servlet-name>
+    <url-pattern>/GetLog</url-pattern>
+  </servlet-mapping>
 </web-app>
