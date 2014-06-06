@@ -110,9 +110,9 @@
 				<br> <br> <br>
 				<div class="row">
 					<div class="col-xs-12">
-						<a href="<%=relationUrl%>"
+						<a href="<%=relationUrl%>"  data-openId="<%=toid %>" data-pageName="6" data-operation="16" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
 							style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
-							class="btn_decoration btn-lg" role="button">前往支持好友登上人气榜 </a>
+							class="btn_decoration btn-lg loghandler" role="button">前往支持好友登上人气榜 </a>
 					</div>
 				</div>
 				<br>
@@ -122,10 +122,10 @@
 				<br> <br> <br>
 				<div class="row">
 					<div class="col-xs-12">
-						<a
+						<a data-openId="<%=toid %>" data-pageName="6" data-operation="17" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
 							href="<%=request.getContextPath()%>/activitypage?id=<%=fromid%>"
 							style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
-							class="btn_decoration btn-lg" role="button">分享快报提升人气 </a>
+							class="btn_decoration btn-lg loghandler" role="button">分享快报提升人气 </a>
 					</div>
 				</div>
 				<br>

@@ -73,8 +73,8 @@
 						<br> <br> <br> <br>
 						<div class="row">
 							<div class="col-xs-12">
-								<button type="submit" style="display: block;"
-									class="btn btn-success btn-block text_support_btn">支持</button>
+								<button type="submit" style="display: block;"  data-openId="<%=toid %>" data-pageName="1" data-operation="1" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
+									class="btn btn-success btn-block text_support_btn loghandler">支持</button>
 							</div>
 						</div>
 					</form>

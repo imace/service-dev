@@ -145,7 +145,7 @@
 					style="color: #cea14b">优惠券</span>等您来取, PC端领取输入<span
 					style="color: #cea14b;font-size:110%"><%=Constant.JD_COUPON_LINK %></span>,手机端领取请点击<span style="color: #cea14b">下面按钮</span>。
 			</div>
-			<br> <a data-openId="<%=openId %>" data-pageName="我的战况" data-operation="优惠卷页（京东）" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" href="<%=Constant.JD_COUPON_LINK %>"
+			<br> <a data-openId="<%=openId %>" data-pageName="5" data-operation="12" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" href="<%=Constant.JD_COUPON_LINK %>"
 				style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
 				class="btn_decoration btn-lg loghandler" role="button">手机获取优惠卷</a> <br>
 			<div>
@@ -170,10 +170,10 @@
 						}
 					%>
 				</div>
-				<br> <a
+				<br> <a  data-openId="<%=openId %>" data-pageName="5" data-operation="13" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
 					href="<%=request.getContextPath()%>/getNameList?id=<%=openId%>"
 					style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
-					class="btn_decoration btn-lg" role="button">查看人气榜</a>
+					class="btn_decoration btn-lg loghandler" role="button">查看人气榜</a>
 			</div>
 
 			<br>
@@ -323,9 +323,9 @@
 					</div>
 					<div class="form-group">
 						<div class="col-xs-12">
-							<a href="#" id="test"
+							<a href="#" id="test"  data-openId="<%=openId %>" data-pageName="5" data-operation="14" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
 								style="display: block; background-color: #22bff2; text-align: center; color: white; border-color: #22bff2;"
-								class="btn-lg active btn_decoration" role="button">编辑</a>
+								class="btn-lg active btn_decoration loghandler" role="button">编辑</a>
 						</div>
 					</div>
 			</form>
