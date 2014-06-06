@@ -459,4 +459,22 @@
     <servlet-name>GetLog</servlet-name>
     <url-pattern>/GetLog</url-pattern>
   </servlet-mapping>
+  
+  
+  <error-page>
+ 	 <error-code>404</error-code>
+	 <location>/jsp/exception/PageNotFound.jsp</location>
+  </error-page>
+  <error-page>
+ 	 <error-code>500</error-code>
+	 <location>/jsp/exception/ServerInternalError.jsp</location>
+  </error-page>
+  <error-page>
+ 	 <error-code>502</error-code>
+	 <location>/jsp/exception/ServerInternalError.jsp</location>
+  </error-page>
+  
+  <welcome-file-list>
+    <welcome-file>/jsp/exception/PageNotFound.jsp</welcome-file>
+  </welcome-file-list>
 </web-app>

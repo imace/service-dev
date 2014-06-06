@@ -142,8 +142,8 @@
 			<div class="text_mainBody">
 				<hr style="border: 1px solid #22bff2; margin-top: -3px;">
 				多款<span style="color: #cea14b">限量手机</span>, 多种<span
-					style="color: #cea14b">优惠券</span>等您来取, PC端领取输入<span
-					style="color: #cea14b;font-size:110%"><%=Constant.JD_COUPON_LINK %></span>,手机端领取请点击<span style="color: #cea14b">下面按钮</span>。
+					style="color: #cea14b">优惠券</span>等您来取, <!--PC端领取输入<span
+					style="color: #cea14b;font-size:110%"><%=Constant.JD_COUPON_LINK %></span>,手机端-->领取请点击<span style="color: #cea14b">下面按钮</span>。
 			</div>
 			<br> <a data-openId="<%=openId %>" data-pageName="5" data-operation="12" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" href="<%=Constant.JD_COUPON_LINK %>"
 				style="display: block;padding:0.85em;font-size:1.8em"

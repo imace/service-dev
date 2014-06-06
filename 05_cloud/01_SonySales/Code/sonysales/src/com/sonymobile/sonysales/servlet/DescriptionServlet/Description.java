@@ -1,6 +1,7 @@
 package com.sonymobile.sonysales.servlet.DescriptionServlet;
 
 import java.io.IOException;
+import java.util.Hashtable;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +39,7 @@ public class Description extends HttpServlet {
 
 		if (openId == null) {
 			logger.error("Description->Log message : (1) openId == null");
-			String toId = request.getParameter("tid");
+			String toId = request.getParameter("openid");
 
 			if (toId == null) {
 				logger.error("Description->Log message : (2) toId == null");
@@ -54,11 +55,13 @@ public class Description extends HttpServlet {
 				infourl.append(redirectHost);
 				infourl.append("&response_type=code&scope=");
 				infourl.append(Constant.WECHAT_OAUTH_SCOPES.BASE.getValue());
-				infourl.append("&identifier=");
-				infourl.append(Constant.OAUTH_IDENTIFIER);
+				Hashtable<String, String> parameters = new Hashtable<String, String>();
+				parameters.put("i", Constant.OAUTH_IDENTIFIER);
+				String url = request.getScheme() + "://" + request.getServerName()
+						+ "/Description";
+				String codedState = Coder.generateOAuthStateFromUrl(url, parameters);
 				infourl.append("&state=");
-				infourl.append(Coder.generateOAuthStateFromUrl(request.getScheme() + "://" + request.getServerName()
-						+ "/Description", null));
+				infourl.append(codedState);
 				infourl.append("#wechat_redirect");
 
 				response.sendRedirect(infourl.toString());
