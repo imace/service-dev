@@ -89,23 +89,28 @@
 			            <tr>
 			            <td><div style="position:relative;">
 			                    <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 90%; width: 90%" id="1_frame"/>
-                        <img src="<%=request.getContextPath()%>/img/1.jpg" style="max-width: 90%; width: 90%" id="1_img" onclick="selectPhone(1,'1073266')"/>
+                        <img src="<%=request.getContextPath()%>/img/1.jpg" style="max-width: 90%; width: 90%" id="1_img" onclick="selectPhone(1,'1073266')" 
+                         data-openId="<%=openid %>" data-pageName="3" data-operation="101" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler"/>
                     </div></td>
 			            <td><div>
 			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.45%; width: 16.45%" id="2_frame" />
-                        <img src="<%=request.getContextPath()%>/img/2.jpg" style="max-width: 90%; width: 90%" id="2_img" onclick="selectPhone(2,'1128217')"/>
+                        <img src="<%=request.getContextPath()%>/img/2.jpg" style="max-width: 90%; width: 90%" id="2_img" onclick="selectPhone(2,'1128217')" 
+                        data-openId="<%=openid %>" data-pageName="3" data-operation="102" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler"/>
                     </div></td>
 			            <td><div>
 			                     <img src="<%=request.getContextPath()%>/img/frame.png" style="position:absolute;max-width: 16.45%; width: 16.45%" id="3_frame" />
-                        <img src="<%=request.getContextPath()%>/img/3.jpg" style="max-width: 90%; width: 90%" id="3_img" onclick="selectPhone(3,'1145234')"/>
+                        <img src="<%=request.getContextPath()%>/img/3.jpg" style="max-width: 90%; width: 90%" id="3_img" onclick="selectPhone(3,'1145234')" 
+                        data-openId="<%=openid %>" data-pageName="3" data-operation="103" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler"/>
                     </div></td>
 			            <td><div>
 			                    <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.45%; width: 16.45%" id="4_frame" />
-                        <img src="<%=request.getContextPath()%>/img/4.jpg" style="max-width: 90%; width: 90%" id="4_img" onclick="selectPhone(4,'1101135')"/>
+                        <img src="<%=request.getContextPath()%>/img/4.jpg" style="max-width: 90%; width: 90%" id="4_img" onclick="selectPhone(4,'1101135')" 
+                        data-openId="<%=openid %>" data-pageName="3" data-operation="104" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler"/>
                     </div></td>
 			            <td><div>
 			                   <img src="<%=request.getContextPath()%>/img/frame.png" style="display: none;position:absolute;max-width: 16.45%; width: 16.45%" id="5_frame" />
-                        <img src="<%=request.getContextPath()%>/img/5.jpg" style="max-width: 90%; width: 90%" id="5_img" onclick="selectPhone(5,'1084649')"/>
+                        <img src="<%=request.getContextPath()%>/img/5.jpg" style="max-width: 90%; width: 90%" id="5_img" onclick="selectPhone(5,'1084649')" 
+                        data-openId="<%=openid %>" data-pageName="3" data-operation="105" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler"/>
                     </div></td>
 			            </tr>
 			            </table>

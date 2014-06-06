@@ -345,7 +345,7 @@ td {
             
         </div>
     </div>
-    <div id="rob1"  data-openId="<%=openId %>" data-pageName="2" data-operation="1" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler"
+    <div id="rob1"  data-openId="<%=openId %>" data-pageName="2" data-operation="4" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler"
         style="border-radius:4px; max-width: 95%; margin-bottom: 1em; margin-left: 2.5%; margin-top: 1em; height: 5em; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
         onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/activitypage?id=<%=openId%>'">
         <div style="font-size: 1.8em; color: white; margin-top: 0.85em">拉人气</div>
