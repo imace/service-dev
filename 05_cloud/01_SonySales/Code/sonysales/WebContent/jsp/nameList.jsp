@@ -11,7 +11,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
 <script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
-<script src="<%=request.getContextPath()%>/js/relation.js"></script>
 <!-- <script src="http://lib.sinaapp.com/js/jquery-mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script> -->
 <script src="http://lib.sinaapp.com/js/jquery-mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
@@ -49,7 +48,7 @@ td {
 }
 #poplist_div {
     overflow: hidden;
-    height: 34.5em;
+    height: 33em;
     border-top-width: 0.3em;
     border-top-color: #22bff2;
     margin-left: 2%;
@@ -101,7 +100,7 @@ td {
     <div id="title" class="text_header"
         style="margin-left: 2%; margin-top: 0.7em;">索尼世界杯人气大奖榜单</div>
     <div  class="text_subHeader2"
-        style="margin-left: 2%; margin-top: 0.3em;">前10就送<font style="color: #e82827">第二代智能手表SW2</font>,11至20就送<font style="color: #e82827">立体声蓝牙耳机SBH20</font></div>
+        style="margin-left: 2%; margin-top: 0.3em;">前10名就送<font style="color: #e82827">Smart Watch2</font>,11至20名就送<font style="color: #e82827">蓝牙耳机SBH20</font></div>
     <div id="pop_div" style="padding-top: 0.1em; margin-left: 2%">
         <div id="pop_title"
             style="height: 4em; text-align: left; float: left">
@@ -345,7 +344,7 @@ td {
             
         </div>
     </div>
-    <div id="rob1"  data-openId="<%=openId %>" data-pageName="2" data-operation="4" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler"
+    <div id="rob1"
         style="border-radius:4px; max-width: 95%; margin-bottom: 1em; margin-left: 2.5%; margin-top: 1em; height: 5em; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
         onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/activitypage?id=<%=openId%>'">
         <div style="font-size: 1.8em; color: white; margin-top: 0.85em">拉人气</div>
