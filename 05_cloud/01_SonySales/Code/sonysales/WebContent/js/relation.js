@@ -22,25 +22,21 @@ $(function() {
 		supportFriend.show();
 	}
 	
+	//the entrance for log handler
     $('.loghandler').click(function () {
     	var openId = $(this).attr('data-openId');
     	var pageName = $(this).attr('data-pageName');
     	var operation = $(this).attr('data-operation');
     	var host = $(this).attr('data-host');
     	var requrl=host+'/AddLog?openId='+openId+'&pageName='+pageName+'&operation='+operation;
-    	alert(requrl);
-    	LogHandler(requrl);
+    	alert(requrl);//test url
+    	LogAjax(requrl, {});
     });
-    
-    function LogHandler(url){
-    	QAjax(url, {});
-    }
-		
 	
-	function QAjax(url, para, successHandler, errorHandler) {
+    //warp ajax method for other invoke
+	function LogAjax(url, para, successHandler, errorHandler) {
         if (typeof (para) === "object")
             para = JSON.stringify(para);
-
         $.ajax({
             type: "POST",
             contentType: "application/json; charset=utf-8",
