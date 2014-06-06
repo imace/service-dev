@@ -114,9 +114,9 @@
 				<span class="text_mainBody">6月12日 到 6月30日 <br></span>
 				<span class="text_subHeader" style="line-height: 150%;">活动规则：</span>
 				<span class="text_mainBody">分享世界杯快报，邀请好友获得人气支持。 人气王前10名可获得</span>
-				<a id="smartwatch2" href="<%=Constant.SW2_LINK%>" class="text_highlight" style="line-height: 150%;text-decoration:underline;">索尼智能手表Smart Watch 2</a>
+				<a  data-openId="<%=openId %>" data-pageName="1" data-operation="18" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" href="<%=Constant.SW2_LINK%>" class="text_highlight loghandler" style="line-height: 150%;text-decoration:underline;">索尼智能手表Smart Watch 2</a>
 				<span class="text_mainBody" style="line-height: 150%;">一块，11至20名可获得</span>
-				<a id="sbh20" href="<%=Constant.SBH20_LINK%>" class="text_highlight" style="line-height: 150%;text-decoration:underline;">蓝牙耳机SBH20</a>
+				<a  data-openId="<%=openId %>" data-pageName="1" data-operation="19" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" href="<%=Constant.SBH20_LINK%>" class="text_highlight loghandler" style="line-height: 150%;text-decoration:underline;">蓝牙耳机SBH20</a>
 				<span class="text_mainBody" style="line-height: 150%;">一个，得奖情况请点击“查看大奖榜单”，具体参与点击“拉人气得大奖”按钮。支持您的好友可获得索尼2014世界杯惊喜购机折扣优惠，具体点击“我的战况->我的优惠券”。<br></span>
 				<span class="text_subHeader" style="line-height: 150%;">奖品发放：</span>
 				<span class="text_mainBody" style="line-height: 150%;">请您在“我的战况->我的信息”里面留下您的手机号码等联系方式，索尼工作人员会与您联系。<br></span>
@@ -141,22 +141,22 @@
 	</div>
 
 	<input onFocus="this.blur()" type="button" id="button1" value=""
-		class="btn"
+		class="btn loghandler"  data-openId="<%=openId %>" data-pageName="1" data-operation="1" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>"
 		onclick="window.open('<%=request.getContextPath()%>/getNameList?id=<%=openId%>')"
 		style="margin-left: 3.5%" />
 
 	<input onFocus="this.blur()" type="button" id="button2" value=""
-		class="btn"
+		class="btn loghandler"  data-openId="<%=openId %>" data-pageName="1" data-operation="2" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>"
 		onclick="window.open('<%=request.getContextPath()%>/activitypage?id=<%=openId%>')"
 		style="margin-left: 27.5%" />
 
 	<input onFocus="this.blur()" type="button" id="button3" value=""
-		class="btn"
+		class="btn loghandler"  data-openId="<%=openId %>" data-pageName="1" data-operation="100" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>"
 		onclick="window.open('<%=request.getContextPath()%>/lashouactivity?id=<%=openId%>')"
 		style="margin-left: 51.5%" />
 
 	<input onFocus="this.blur()" type="button" id="button4" value=""
-		class="btn"
+		class="btn loghandler"  data-openId="<%=openId %>" data-pageName="1" data-operation="3" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>"
 		onclick="window.open('<%=request.getContextPath()%>/myInfo?id=<%=openId%>')"
 		style="margin-left: 75.5%" />
 	<%
@@ -174,17 +174,17 @@
 	</div>
 
 	<input onFocus="this.blur()" type="button" id="button1" value=""
-		class="btn"
+		class="btn loghandler"  data-openId="<%=openId %>" data-pageName="1" data-operation="1" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>"
 		onclick="window.open('<%=request.getContextPath()%>/getNameList?id=<%=openId%>')"
 		style="margin-left: 10%" />
 
 	<input onFocus="this.blur()" type="button" id="button2" value=""
-		class="btn"
+		class="btn loghandler"  data-openId="<%=openId %>" data-pageName="1" data-operation="2" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>"
 		onclick="window.open('<%=request.getContextPath()%>/activitypage?id=<%=openId%>')"
 		style="margin-left: 40%" />
 
 	<input onFocus="this.blur()" type="button" id="button4" value=""
-		class="btn"
+		class="btn loghandler"  data-openId="<%=openId %>" data-pageName="1" data-operation="3" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>"
 		onclick="window.open('<%=request.getContextPath()%>/myInfo?id=<%=openId%>')"
 		style="margin-left: 70%" />
 	<%
