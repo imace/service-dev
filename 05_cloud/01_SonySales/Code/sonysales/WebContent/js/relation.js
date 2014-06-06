@@ -29,7 +29,7 @@ $(function() {
     	var operation = $(this).attr('data-operation');
     	var host = $(this).attr('data-host');
     	var requrl=host+'/AddLog?openId='+openId+'&pageName='+pageName+'&operation='+operation;
-    	alert(requrl);//test url
+    	//alert(requrl);//test url
     	LogAjax(requrl, {});
     });
 	
