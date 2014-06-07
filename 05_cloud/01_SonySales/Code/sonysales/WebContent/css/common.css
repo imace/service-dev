@@ -9,6 +9,10 @@
 	font-size: 1.6em;
 }
 
+.text_subHeader_color {
+	color: rgb(34, 191, 242);
+}
+
 .text_mainBody {
 	font-size: 1.6em;
 	color: rgb(62, 62, 62);
