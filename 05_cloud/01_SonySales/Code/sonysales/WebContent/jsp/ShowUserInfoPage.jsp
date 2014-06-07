@@ -72,8 +72,7 @@
 					objtip.text(msg);
 				},
 				datatype:{
-					"m" : /^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/,
-					"e" : /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+					"m" : /^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/
 				}
 			});		
 
@@ -103,12 +102,13 @@
 						} else {
 							$('#test').text('保存');
 							$('form input').removeAttr("disabled");
+							$('#phoneNum').focus();
 						}
 						return false;
 					});
 			var save = function() {
 				var mobileNum = $('#phoneNum').val();
-				var mail = $('#email').val();
+				/* var mail = $('#email').val(); */
 				if (mobileNum.length == 0) {
 					return false;
 				}
@@ -119,10 +119,10 @@
 				if (!myreg.test(mobileNum)) {
 					return false;
 				}
-				var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+				/* var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
 				if (!reg.test(mail)) {
 	                return false;
-	            }
+	            } */
 				return true;
 			};
 
@@ -277,8 +277,8 @@
 				<div class="form-group">
 					<label for="email" class="col-xs-3 control-label text_mainBody">邮箱：</label>
 					<div class="col-xs-9">
-						<input type="text" class="form-control" name="email" id="email" datatype="e"
-							placeholder="邮箱" errormsg="·请输入正确的邮箱!" nullmsg="请输入邮箱！">
+						<input type="text" class="form-control" name="email" id="email" 
+							placeholder="邮箱">
 					</div>
 				</div>
 				<div class="form-group">
