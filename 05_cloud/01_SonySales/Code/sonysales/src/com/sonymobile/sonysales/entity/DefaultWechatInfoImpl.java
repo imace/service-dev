@@ -44,9 +44,11 @@ public class DefaultWechatInfoImpl implements IWechatInfo {
 			if (jsonObject != null) {
 				weChatUserInfo = (WechatUserInfo) JSONObject.toBean(jsonObject,
 						WechatUserInfo.class);
-				String nickName = weChatUserInfo.getNickname();
-				if (nickName == null || nickName.isEmpty()) {
-					logger.warn("Get User("+openId+") info error : " + result.getBody());
+				if (weChatUserInfo !=  null) {
+					String nickName = weChatUserInfo.getNickname();
+					if (nickName == null || nickName.isEmpty()) {
+						logger.warn("Get User("+openId+") info error : " + result.getBody());
+					}
 				}
 			}
 		} else {
