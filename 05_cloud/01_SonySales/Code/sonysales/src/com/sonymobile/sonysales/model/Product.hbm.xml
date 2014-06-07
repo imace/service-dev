@@ -6,7 +6,7 @@
 	<class name="com.sonymobile.sonysales.model.Product" table="product">
 
 		<id name="id" column="id" type="long">
-			<generator class="increment" />	<!-- 设置ID字段自动增值 -->
+			<generator class="identity" />	<!-- 设置ID字段自动增值 -->
 		</id>
 
 		<property name="name" type="java.lang.String">
