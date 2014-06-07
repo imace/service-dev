@@ -57,7 +57,7 @@
 
 /* 320.css */
 /* iphone4 & iphone4s */
-@media screen and (min-device-width:541px) and (max-device-width:640px)
+@media screen and (min-device-width:541px) and (max-device-width:720px)
 	and (max-device-height:960px) and (-webkit-device-pixel-ratio: 2) {
 	.scroll_div_height {
 		height: 32%;
