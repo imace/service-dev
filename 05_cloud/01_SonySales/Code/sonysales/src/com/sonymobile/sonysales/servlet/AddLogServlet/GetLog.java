@@ -1,7 +1,6 @@
 package com.sonymobile.sonysales.servlet.AddLogServlet;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -9,10 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import com.sonymobile.sonysales.service.ProductService;
 import com.sonymobile.sonysales.util.LogHelper;
 
 /**
@@ -39,7 +36,8 @@ public class GetLog extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
-			Map<String, String> ret = LogHelper.getMultiLogs();
+			String time = request.getParameter("time");
+			Map<String, String> ret = LogHelper.getMultiLogs(time);
 
 			response = initHeader(response);
 			response.getWriter().write(JSONObject.fromObject(ret).toString());

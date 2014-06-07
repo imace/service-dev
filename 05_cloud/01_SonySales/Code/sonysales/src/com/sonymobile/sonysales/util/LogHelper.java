@@ -20,7 +20,7 @@ import com.sonymobile.sonysales.entity.UserOperation;
 public class LogHelper {
 
 	private static int increment = 1;
-	private static String ccurrentKey = "1";
+	private static final String KEY_FILLING = "000000000000000000000000";
 	private static Logger logger = Logger.getLogger(LogHelper.class.getName());
 
 	public static boolean addPVLog(String openId, String pageName, String ip) {
@@ -59,17 +59,21 @@ public class LogHelper {
 		return ret;
 	}
 
-	public static Map<String, String> getMultiLogs() {
+	public static Map<String, String> getMultiLogs(String prefixKey) {
 		Map<String, String> ret = new HashMap<String, String>();
 		String key = null;
 		try {
-			Date date = new Date();
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-			String now = sdf.format(date);
+			if (prefixKey == null || prefixKey.length() > 24) {
+				Date date = new Date();
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+				prefixKey = sdf.format(date);
+			}
+			String compareKey = prefixKey
+					+ KEY_FILLING.substring(prefixKey.length());
 			SaeKV kv = new SaeKV();
 			kv.init();
-			Map<String, Object> retObject = kv.pkrget(now, 100, now
-					+ "0000000000000000");
+			Map<String, Object> retObject = kv.pkrget(prefixKey, 100,
+					compareKey);
 
 			Set<String> keys = retObject.keySet();
 			for (Iterator<String> it = keys.iterator(); it.hasNext();) {
@@ -86,10 +90,6 @@ public class LogHelper {
 		return ret;
 	}
 
-	public static String get() {
-		return get(ccurrentKey);
-	}
-
 	private static boolean set(String k, String v) {
 		boolean ret = false;
 		if (k != null && v != null) {
@@ -103,23 +103,6 @@ public class LogHelper {
 				logger.error("Exception in set k:" + k + " v:" + v
 						+ ", ToString: " + e.toString() + " message: "
 						+ e.getMessage());
-			}
-		}
-		return ret;
-	}
-
-	private static String get(String k) {
-		String ret = null;
-		if (k != null) {
-			try {
-				SaeKV kv = new SaeKV();
-				kv.init();
-				byte[] buf = (byte[]) kv.get(k);
-				ret = SaeKVUtil.byteToString(buf);
-			} catch (Exception e) {
-				e.printStackTrace();
-				logger.error("Exception in get k:" + k + ", ToString: "
-						+ e.toString() + " message: " + e.getMessage());
 			}
 		}
 		return ret;
@@ -146,8 +129,8 @@ public class LogHelper {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		String now = sdf.format(date);
 		DecimalFormat df = new DecimalFormat("0000000000");
-		ccurrentKey = now + df.format(increment++);
-		return ccurrentKey;
+
+		return now + df.format(increment++);
 	}
 
 	private static final HashMap<Integer, String> PAGE_NAME_MAP;
