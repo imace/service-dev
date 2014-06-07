@@ -57,7 +57,7 @@
 
 /* 320.css */
 /* iphone4 & iphone4s */
-@media screen and (min-device-width:541px) and (max-device-width:720px)
+@media screen and (min-device-width:541px) and (max-device-width:640px)
 	and (max-device-height:960px) and (-webkit-device-pixel-ratio: 2) {
 	.scroll_div_height {
 		height: 32%;
@@ -76,12 +76,21 @@
 }
 
 /* 360.css */
+@media screen and (min-device-width:541px) and (max-device-width:720px)
+  and (min-device-height:961px) and (-webkit-device-pixel-ratio: 2) {
+    .base_font_size {
+        font-size: 10px;
+    }
+}
+
+/* 360.css */
 @media screen and (min-device-width:721px) and (max-device-width:1080px)
 	and (-webkit-device-pixel-ratio: 3) {
 	.base_font_size {
 		font-size: 10px;
 	}
 }
+
 
 /* 480.css */
 /* iphone5 */
