@@ -80,7 +80,9 @@ public class CharacterEncodingFilter implements Filter {
 			}
 		}
 		// 把请求和响应对象传给过滤链中的下一个要调用的过滤器或Servlet
-		chain.doFilter(request, response);
+		if (chain != null) {
+			chain.doFilter(request, response);
+		}
 	}
 
     //Filter初始化是的回调方法

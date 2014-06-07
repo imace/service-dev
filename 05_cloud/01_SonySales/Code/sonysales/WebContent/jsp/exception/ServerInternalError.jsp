@@ -18,7 +18,7 @@
 		style="background: url(/img/stamp.png) right bottom no-repeat; background-size: 55%; margin: 10px;">
 		<div class="row" style="font-family: Droid Sans Fallback;">
 			<div class="col-xs-12">
-				<h3>系统发生错误，请联系系统管理员解决!!!</h3>
+				<h3>抱歉，服务器繁忙，请稍后重试!!!</h3>
 			</div>
 		</div>
 		<hr>

@@ -36,8 +36,10 @@ public class NewsSevlet extends HttpServlet {
 			createTime = "2014-06-01 00:00:03";
 		}
 		if (fromname == null || fromname.isEmpty()) {
-			WechatUserInfo user = DefaultWechatInfoImpl.getInstance().getWebChatUserInfo(fromid); 
-			fromname = user.getNickname();
+			WechatUserInfo user = DefaultWechatInfoImpl.getInstance().getWebChatUserInfo(fromid);
+			if (user != null) {
+				fromname = user.getNickname();
+			}
 		}
 		
 		request.setAttribute("fid", fromid);

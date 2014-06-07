@@ -31,7 +31,7 @@
 			boolean isShared = toid != null && !toid.equals(fromid);
 
 			if (!isShared) {
-		String message = "看世界杯快报额外有惊喜";
+		String message = "看世界杯活动快报，额外有惊喜。";
 		String imgurl = request.getScheme() + "://"
 				+ request.getServerName() + "/img/entry_bulletin.jpg";
 		String newsUrl = request.getScheme() + "://" + request.getServerName() + "/news";
@@ -55,7 +55,7 @@
 				+ imgurl
 				+ "\", url:\""
 				+ url
-				+ "\", title:\"看报有惊喜\", desc:\""
+				+ "\", title:\"世界杯活动快报\", desc:\""
 				+ message
 				+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
 			}

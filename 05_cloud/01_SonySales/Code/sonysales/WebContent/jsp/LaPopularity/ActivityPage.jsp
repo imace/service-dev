@@ -28,7 +28,7 @@
 		nickname =(String)request.getAttribute("nickname");
 		nickname=(nickname==null?"":"("+nickname+")");
 		//String message="Hi, 亲, 我"+nickname+"对索尼世界杯惊喜购机大奖志在必得, 请您拉我一票!";
-		String message="看世界杯快报额外有惊喜";
+		String message="看世界杯活动快报，额外有惊喜。";
 		
 		String imgurl=request.getScheme() + "://" + request.getServerName() + "/img/entry_bulletin.jpg";	
 		String relationUrl = request.getScheme() + "://" + request.getServerName() + "/news";
@@ -50,7 +50,7 @@
 				+ "MsgImg:\""+ imgurl
 				+ "\", TLImg:\""+ imgurl
 				+ "\", url:\""+ url
-				+ "\", title:\"看报有惊喜\", desc:\""+ message
+				+ "\", title:\"世界杯活动快报\", desc:\""+ message
 				+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
 	}
     catch (Exception e) {
