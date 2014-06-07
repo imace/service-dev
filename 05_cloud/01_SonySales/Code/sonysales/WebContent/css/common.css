@@ -91,16 +91,6 @@
 	}
 }
 
-
-/* 480.css */
-/* iphone5 */
-@media screen and (min-device-width:541px) and (max-device-width:640px)
-	and (min-device-height:961px) and (-webkit-device-pixel-ratio: 2) {
-	.base_font_size {
-		font-size: 14px;
-	}
-}
-
 /* 480.css */
 @media screen and (min-device-width:641px) and (max-device-width:720px)
 	and (-webkit-device-pixel-ratio: 1.5) {
