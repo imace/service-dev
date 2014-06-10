@@ -36,7 +36,7 @@ public class DefaultWechatInfoImpl implements IWechatInfo {
 
 	@Override
 	public WechatUserInfo getWebChatUserInfo(String openId) {
-		WechatUserInfo weChatUserInfo = new WechatUserInfo();
+		WechatUserInfo weChatUserInfo = null;
 		String url = buildGetUserInfoUrl(openId);
 		SaeFetchUrlResult result = HttpConnetcion.saeHttpGetRequest(url);
 		if (result.getErrNumber() == Constant.SAE_FETCHURL_SUCCESS_CODE) {
@@ -53,6 +53,10 @@ public class DefaultWechatInfoImpl implements IWechatInfo {
 			}
 		} else {
 			logger.warn("HTTP connection error : " + result.toString());
+		}
+		if (weChatUserInfo == null) {
+			logger.fatal("Error in get User("+openId+") info.");
+			throw new NullPointerException();
 		}
 
 		return weChatUserInfo;
@@ -78,7 +82,7 @@ public class DefaultWechatInfoImpl implements IWechatInfo {
 	 * */
 	public static void main(String[] args) {
 		// Openid on LICHENGKONGJIAN
-		String id = "omX94t-Yl0_GJikv-kLuQzUcm3OE";
+		String id = "oHBvQjh0I7EHOLbAgn5Sdg7omKGk";
 		System.out.println(buildGetUserInfoUrl(id));
 	}
 }

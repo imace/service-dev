@@ -251,8 +251,6 @@
       <url-pattern>/Management/orderquery</url-pattern>
     </servlet-mapping>
     
-    
-    
     <servlet>
       <description></description>
       <display-name></display-name>
@@ -297,19 +295,6 @@
       <url-pattern>/news</url-pattern>
     </servlet-mapping>
     
-    
-    
-    
-       <servlet>
-              <description>add a user</description>
-              <display-name>add a user</display-name>
-              <servlet-name>addUser</servlet-name>
-              <servlet-class>com.sonymobile.sonysales.servlet.userServlet.AddUser</servlet-class>
-       </servlet>
-       <servlet-mapping>
-              <servlet-name>addUser</servlet-name>
-              <url-pattern>/addUser</url-pattern>
-       </servlet-mapping>
        <servlet>
               <description>get a user</description>
               <display-name>get a user</display-name>
@@ -347,16 +332,6 @@
        <servlet-mapping>
               <servlet-name>ShareUserInfo</servlet-name>
               <url-pattern>/shareUserInfo</url-pattern>
-       </servlet-mapping>      
-       <servlet>
-              <description></description>
-              <display-name>AddPopularity</display-name>
-              <servlet-name>AddPopularity</servlet-name>
-              <servlet-class>com.sonymobile.sonysales.servlet.popularityServlet.AddPopularity</servlet-class>
-       </servlet>
-       <servlet-mapping>
-              <servlet-name>AddPopularity</servlet-name>
-              <url-pattern>/addPopularity</url-pattern>
        </servlet-mapping>
        <servlet>
               <description></description>
@@ -389,16 +364,6 @@
        <servlet-mapping>
               <servlet-name>GetPictextListServlet</servlet-name>
               <url-pattern>/getSonySalesNews</url-pattern>
-       </servlet-mapping>
-       <servlet>
-              <description></description>
-              <display-name>HeaderServlet</display-name>
-              <servlet-name>HeaderServlet</servlet-name>
-              <servlet-class>com.sonymobile.sonysales.servlet.api.HeaderServlet</servlet-class>
-       </servlet>
-       <servlet-mapping>
-              <servlet-name>HeaderServlet</servlet-name>
-              <url-pattern>/head</url-pattern>
        </servlet-mapping>
     <filter>
         <filter-name>characterEncodingFilter</filter-name>
@@ -460,7 +425,53 @@
     <url-pattern>/GetLog</url-pattern>
   </servlet-mapping>
   
+  <!-- Status Debug Servlet -->
+  <!-- 
+       <servlet>
+              <description></description>
+              <display-name>HeaderServlet</display-name>
+              <servlet-name>HeaderServlet</servlet-name>
+              <servlet-class>com.sonymobile.sonysales.servlet.api.HeaderServlet</servlet-class>
+       </servlet>
+       <servlet-mapping>
+              <servlet-name>HeaderServlet</servlet-name>
+              <url-pattern>/head</url-pattern>
+       </servlet-mapping>
+       <servlet>
+              <description></description>
+              <display-name>HttpTestServlet</display-name>
+              <servlet-name>HttpTestServlet</servlet-name>
+              <servlet-class>com.sonymobile.sonysales.servlet.api.HttpTestServlet</servlet-class>
+       </servlet>
+       <servlet-mapping>
+              <servlet-name>HttpTestServlet</servlet-name>
+              <url-pattern>connect</url-pattern>
+       </servlet-mapping>
+
+       <servlet>
+              <description>add a user</description>
+              <display-name>add a user</display-name>
+              <servlet-name>addUser</servlet-name>
+              <servlet-class>com.sonymobile.sonysales.servlet.userServlet.AddUser</servlet-class>
+       </servlet>
+       <servlet-mapping>
+              <servlet-name>addUser</servlet-name>
+              <url-pattern>/addUser</url-pattern>
+       </servlet-mapping>
+
+       <servlet>
+              <description></description>
+              <display-name>AddPopularity</display-name>
+              <servlet-name>AddPopularity</servlet-name>
+              <servlet-class>com.sonymobile.sonysales.servlet.popularityServlet.AddPopularity</servlet-class>
+       </servlet>
+       <servlet-mapping>
+              <servlet-name>AddPopularity</servlet-name>
+              <url-pattern>/addPopularity</url-pattern>
+       </servlet-mapping>
+  -->
   
+  <!-- Status Code configration -->
   <error-page>
  	 <error-code>404</error-code>
 	 <location>/jsp/exception/PageNotFound.jsp</location>

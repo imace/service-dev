@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
-
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -17,12 +15,7 @@ import com.sonymobile.sonysales.entity.DefaultWechatInfoImpl;
 import com.sonymobile.sonysales.service.MyFIFAService;
 
 public class ShowUserInfoServlet extends HttpServlet {
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	private static Logger logger = Logger.getLogger(ShowUserInfoServlet.class
-			.getName());
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String fromid = (String) request.getParameter("id");
 		String toid = request.getParameter("tid");
@@ -46,9 +39,6 @@ public class ShowUserInfoServlet extends HttpServlet {
 					jdId = userJO.getString("jdId");
 					points = userJO.getString("points");
 					pointsOrder = userJO.getString("pointsOrder");
-					logger.error("ShowUserInfoServlet->phoneNum-> : "+phoneNum);
-			    	logger.error("ShowUserInfoServlet->email-> : "+email);
-			    	logger.error("ShowUserInfoServlet->address-> : "+address);
 			    }
 			}
 

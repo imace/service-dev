@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.sonymobile.sonysales.util.Common;
 import com.sonymobile.sonysales.util.LogHelper;
@@ -76,6 +77,8 @@ public class CharacterEncodingFilter implements Filter {
 					}
 					String ip = Common.getIpAddr(req);
 					LogHelper.addPVLog(openid, "快报页", ip);
+				} else if (url.endsWith("/") && response instanceof HttpServletResponse) {
+					((HttpServletResponse)response).sendRedirect("/jsp/exception/PageNotFound.jsp");
 				}
 			}
 		}
