@@ -122,7 +122,7 @@
           <div class="col-xs-12">
              <div class="text_mainBody"
                  style="max-width: 96%; width: 96%; margin-left: 2%; line-height: 150%;margin-bottom:0.8em">
-                 *点击下面按钮，支持好友登上人气榜
+                 *点击“支持好友”，帮TA登上人气榜
              </div>
           </div>
       </div>
@@ -130,7 +130,7 @@
 					<div class="col-xs-12">
 						<a href="<%=relationUrl%>"  data-openId="<%=toid %>" data-pageName="6" data-operation="16" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
 							style="display: block;padding:0.8em;font-size:1.8em"
-							class="btn btn-success btn-block text_support_btn loghandler" role="button">前往 </a>
+							class="btn btn-success btn-block text_support_btn loghandler" role="button">支持好友</a>
 					</div>
 				</div>
 				<br>

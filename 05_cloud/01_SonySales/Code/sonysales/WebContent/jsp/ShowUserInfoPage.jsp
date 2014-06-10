@@ -141,15 +141,16 @@
 				style="margin-top: 10px; margin-bottom: 10px">我的优惠券</div>
 			<div class="text_mainBody">
 				<hr style="border: 1px solid #22bff2; margin-top: -3px;">
-				1.多款<span style="color: #cea14b">限量手机优惠券</span>等你拿，<span style="color: #cea14b">只有手机端才能领取。</span> <!--PC端领取输入<span
+				1.多款<span style="color: #cea14b">限量手机优惠券</span>等你拿，<span style="color: #e82827">只有手机端才能领取。</span> <!--PC端领取输入<span
 					style="color: #cea14b;font-size:110%"><%=Constant.JD_COUPON_LINK %></span>,手机端-->点击<span style="color: #cea14b">下面按钮</span>
 			</div>
 			<br> <a data-openId="<%=openId %>" data-pageName="5" data-operation="12" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" href="<%=Constant.JD_COUPON_LINK %>"
 				style="display: block;padding:0.8em;font-size:1.8em"
 				class="btn btn-success btn-block text_support_btn loghandler" role="button">手机获取优惠券</a> <br>
 				<div class="text_mainBody">
-				2.再有京券，竞手机等你拿。在网页输入&nbsp;<span
-                    style="color: #cea14b;font-size:110%">http://t.cn/RvJ51KN</span>
+				2.再有京券，竞猜手机等你拿。在网页输入&nbsp;<span
+                    style="color: #cea14b;font-size:140%">http://t.cn/RvJ51KN</span>
+                    &nbsp;请输入正确的大小写哦！
       </div>
 			<div>
 				<div class="text_subHeader"

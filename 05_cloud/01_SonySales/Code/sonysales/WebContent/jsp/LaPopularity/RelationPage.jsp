@@ -32,9 +32,9 @@
 					Hi, 亲, 我(<%=fromnickname%>)对<span style="color: #cea14b">索尼世界杯人气大奖</span>志在必得,
 					请您拉我一票, 同时您也可以获得<span style="color: #cea14b">打折优惠</span>.<br>只需2步即可完成:
 				</div>
-				<div class="text_highlight">1.点击支持 2.完成关注</div>
+				<div class="text_highlight">1.点击支持TA 2.完成关注</div>
 				<br> <br> <br>
-				<div class="text_subHeader">第1步: 点击"支持"</div>
+				<div class="text_subHeader">第1步: 点击"支持TA"</div>
 				<hr style="border: 1px solid #22bff2;">
 				<div id="personalInfo">
 					<div class="text_mainBody">为了支持您的好友,
@@ -74,7 +74,7 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<button type="submit" style="display: block;padding:0.8em;font-size:1.8em"  data-openId="<%=toid %>" data-pageName="4" data-operation="10" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
-									class="btn btn-success btn-block text_support_btn loghandler">支持</button>
+									class="btn btn-success btn-block text_support_btn loghandler">支持TA</button>
 							</div>
 						</div>
 					</form>
