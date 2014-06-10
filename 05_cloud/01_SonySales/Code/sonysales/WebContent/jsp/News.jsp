@@ -31,7 +31,7 @@
 			boolean isShared = toid != null && !toid.equals(fromid);
 
 			if (!isShared) {
-		String message = "看世界杯活动快报，额外有惊喜。";
+		String message = "打开链接，点击支持您的朋友，并额外有惊喜！";
 		String imgurl = request.getScheme() + "://"
 				+ request.getServerName() + "/img/entry_bulletin.jpg";
 		String newsUrl = request.getScheme() + "://" + request.getServerName() + "/news";
@@ -55,11 +55,20 @@
 				+ imgurl
 				+ "\", url:\""
 				+ url
-				+ "\", title:\"世界杯活动快报\", desc:\""
+				+ "\", title:\"打开世界杯快报链接，点击支持好友，多谢！\", desc:\""
 				+ message
 				+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
 			}
 	%>
+    <%
+        if (!isShared) {
+    %>
+ <div id="tips_div">
+ <img src="<%=request.getContextPath()%>/img/tips.png" style="z-index:2;position:fixed;height:18%;max-height:18%;top:0;right:0" id="tips_img"/><div id="close_tips" onclick="closeTips()" style="z-index:2;position:fixed;width:8%;height:6%;right:0;top:12%;"></div>
+ </div>
+     <%
+         }
+     %>
 	<div class="container page_background">
 		<div class="row">
 			<div class="col-xs-12">
@@ -108,25 +117,41 @@
 					if (isShared) {
 								String relationUrl = request.getContextPath()+"/relationpage?fid="+fromid+"&openid="+toid;
 				%>
-				<br> <br> <br>
+				<br>
+       <div class="row">
+          <div class="col-xs-12">
+             <div class="text_mainBody"
+                 style="max-width: 96%; width: 96%; margin-left: 2%; line-height: 150%;margin-bottom:0.8em">
+                 *点击下面按钮，支持好友登上人气榜
+             </div>
+          </div>
+      </div>
 				<div class="row">
 					<div class="col-xs-12">
 						<a href="<%=relationUrl%>"  data-openId="<%=toid %>" data-pageName="6" data-operation="16" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
-							style="display: block;padding:0.85em;font-size:1.8em"
-							class="btn btn-success btn-block text_support_btn loghandler" role="button">前往支持好友登上人气榜 </a>
+							style="display: block;padding:0.8em;font-size:1.8em"
+							class="btn btn-success btn-block text_support_btn loghandler" role="button">前往 </a>
 					</div>
 				</div>
 				<br>
 				<%
 					}else{
 				%>
-				<br> <br> <br>
+				<br>
+				<div class="row">
+          <div class="col-xs-12">
+             <div class="text_mainBody"
+                 style="max-width: 96%; width: 96%; margin-left: 2%; line-height: 150%;margin-bottom:0.8em">
+                 *点击下面按钮，查看活动详情
+             </div>
+          </div>
+      </div>
 				<div class="row">
 					<div class="col-xs-12">
 						<a data-openId="<%=toid %>" data-pageName="6" data-operation="17" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
 							href="<%=request.getContextPath()%>/activitypage?id=<%=fromid%>"
-							style="display: block;padding:0.85em;font-size:1.8em"
-							class="btn btn-success btn-block text_support_btn loghandler" role="button">分享快报提升人气 </a>
+							style="display: block;padding:0.8em;font-size:1.8em"
+							class="btn btn-success btn-block text_support_btn loghandler" role="button">发快报，拉人气，得大奖 </a>
 					</div>
 				</div>
 				<br>
@@ -143,6 +168,9 @@
 
 
 	<script type="text/javascript">
+ function closeTips() {
+     $("#tips_div").hide();
+     }
 (function(){
    var onBridgeReady=function(){
    WeixinJSBridge.on('menu:share:appmessage', function(argv){

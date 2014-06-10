@@ -28,7 +28,7 @@
 		nickname =(String)request.getAttribute("nickname");
 		nickname=(nickname==null?"":"("+nickname+")");
 		//String message="Hi, 亲, 我"+nickname+"对索尼世界杯惊喜购机大奖志在必得, 请您拉我一票!";
-		String message="看世界杯活动快报，额外有惊喜。";
+		String message="打开链接，点击支持您的朋友，并额外有惊喜！";
 		
 		String imgurl=request.getScheme() + "://" + request.getServerName() + "/img/entry_bulletin.jpg";	
 		String relationUrl = request.getScheme() + "://" + request.getServerName() + "/news";
@@ -50,7 +50,7 @@
 				+ "MsgImg:\""+ imgurl
 				+ "\", TLImg:\""+ imgurl
 				+ "\", url:\""+ url
-				+ "\", title:\"世界杯活动快报\", desc:\""+ message
+				+ "\", title:\"打开世界杯快报链接，点击支持好友，多谢！\", desc:\""+ message
 				+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
 	}
     catch (Exception e) {
@@ -58,13 +58,15 @@
 		    response.sendRedirect(request.getContextPath()+"/jsp/errorhandler.jsp?errnum=0111&errmsg="+e.getMessage());
 	}
 	%>
-
+	<div id="tips_div">
+	<img src="<%=request.getContextPath()%>/img/tips.png" style="position:fixed;height:18%;max-height:18%;top:0;right:0" id="tips_img"/><div id="close_tips" onclick="closeTips()" style="position:fixed;width:8%;height:6%;right:0;top:12%;"></div>
+	</div>
 <div>
-                <div id="title" class="text_header common_style" style="margin:0.6em;max-width:96%;margin-left:2%">发快报, 拉人气, 得大奖!</div>
+                <div id="title" class="text_header common_style" style="padding:0.6em;max-width:96%;margin-left:2%">发快报, 拉人气, 得大奖!</div>
                 <div id="banner_img_div" style="text-align: center">
                     <img src="<%=request.getContextPath()%>/img/banner_popularity.jpg" id="banner_img" style="width:96%;max-width:96%;"/>
                 </div>
-                 <div class="text_highlight common_style" style="padding-top:0.85em;padding-bottom:0.3em;width:96%;max-width:96%;margin-left:2%">
+                 <div class="text_highlight common_style" style="padding-top:1em;padding-bottom:0.7em;width:96%;max-width:96%;margin-left:2%">
                                                          点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>并<img src="<%=request.getContextPath()%>/img/share.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>发送快报给朋友
                              </div>
                 <div id="intro" >
@@ -73,12 +75,12 @@
                     </div>
                     <div class="text_mainBody" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">
                     1.分享快报给您的好友, 点击<a  data-openId="<%=openid %>" data-pageName="3" data-operation="5" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="btn btn-default loghandler" style="background: url(<%=request.getContextPath()%>/img/trumpet.png) 8px no-repeat #ff7000;padding: 6px; text-decoration:none; overflow: hidden; padding-left: 35px;text-align: right; color:#fff;background-size: 22px 22px;border-radius:0.2em" href="<%=request.getContextPath()%>/news?fid=<%=openid%>&fromname=<%=nickname%>" role="button">快报</a>查看<br>
-                    2.人气榜前10名可获得第二代智能手表SW2一个, 11至20名可获得立体声蓝牙耳机SBH20一个.<br/>
-                    3.每拉一个朋友激活10000人气积分呦!
+                    2.人气榜前10名可获得官方价值RMB 1,499的第二代智能手表SW2一个, 11至20名可获得官方价值RMB 299的立体声蓝牙耳机SBH20一个<br/>
+                    3.每拉一个朋友激活10000人气积分
                     </div>
                 </div>
+                <br>
         </div>
-        
 <div class="scroll_div_height" style="position:absolute;width:100%;max-width:100%;"></div>
         <div id="touchBox" style="width:100%;max-width:100%;">
             <div  style="position:relative;" >
@@ -340,7 +342,9 @@
         open = false;
                 }
             }
-    
+    function closeTips() {
+    	$("#tips_div").hide();
+        }
 (function(){
    var onBridgeReady=function(){
    WeixinJSBridge.on('menu:share:appmessage', function(argv){

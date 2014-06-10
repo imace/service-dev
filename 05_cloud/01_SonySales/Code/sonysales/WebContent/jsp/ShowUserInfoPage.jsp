@@ -138,16 +138,19 @@
 		<div class="row base_font_size" style="font-family: Droid Sans Fallback;">
 			<div id="title" class="text_header" style="margin-bottom: 10px">我的战况</div>
 			<div class="text_subHeader"
-				style="margin-top: 10px; margin-bottom: 10px">我的优惠卷</div>
+				style="margin-top: 10px; margin-bottom: 10px">我的优惠券</div>
 			<div class="text_mainBody">
 				<hr style="border: 1px solid #22bff2; margin-top: -3px;">
-				多款<span style="color: #cea14b">限量手机</span>, 多种<span
-					style="color: #cea14b">优惠券</span>等您来取, <!--PC端领取输入<span
-					style="color: #cea14b;font-size:110%"><%=Constant.JD_COUPON_LINK %></span>,手机端-->领取请点击<span style="color: #cea14b">下面按钮</span>。
+				1.多款<span style="color: #cea14b">限量手机优惠券</span>等你拿，<span style="color: #cea14b">只有手机端才能领取。</span> <!--PC端领取输入<span
+					style="color: #cea14b;font-size:110%"><%=Constant.JD_COUPON_LINK %></span>,手机端-->点击<span style="color: #cea14b">下面按钮</span>
 			</div>
 			<br> <a data-openId="<%=openId %>" data-pageName="5" data-operation="12" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" href="<%=Constant.JD_COUPON_LINK %>"
-				style="display: block;padding:0.85em;font-size:1.8em"
-				class="btn btn-success btn-block text_support_btn loghandler" role="button">手机获取优惠卷</a> <br>
+				style="display: block;padding:0.8em;font-size:1.8em"
+				class="btn btn-success btn-block text_support_btn loghandler" role="button">手机获取优惠券</a> <br>
+				<div class="text_mainBody">
+				2.再有京券，竞手机等你拿。在网页输入&nbsp;<span
+                    style="color: #cea14b;font-size:110%">http://t.cn/RvJ51KN</span>
+      </div>
 			<div>
 				<div class="text_subHeader"
 					style="margin-top: 10px; margin-bottom: 10px">我的人气</div>
@@ -172,7 +175,7 @@
 				</div>
 				<br> <a  data-openId="<%=openId %>" data-pageName="5" data-operation="13" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
 					href="<%=request.getContextPath()%>/getNameList?id=<%=openId%>"
-					style="display: block;padding:0.85em;font-size:1.8em"
+					style="display: block;padding:0.8em;font-size:1.8em"
 					class="btn btn-success btn-block text_support_btn loghandler" role="button">查看人气榜</a>
 			</div>
 
@@ -324,7 +327,7 @@
 					<div class="form-group">
 						<div class="col-xs-12">
 							<a href="#" id="test"  data-openId="<%=openId %>" data-pageName="5" data-operation="14" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
-								style="display: block;padding:0.85em;font-size:1.8em"
+								style="display: block;padding:0.8em;font-size:1.8em"
 								class="btn btn-success btn-block text_support_btn loghandler" role="button">编辑</a>
 						</div>
 					</div>
