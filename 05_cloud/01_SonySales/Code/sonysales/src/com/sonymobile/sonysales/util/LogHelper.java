@@ -146,6 +146,7 @@ public class LogHelper {
 		PAGE_NAME_MAP.put(4, "拉人气接收页");
 		PAGE_NAME_MAP.put(5, "我的战况");
 		PAGE_NAME_MAP.put(6, "快报页");
+		PAGE_NAME_MAP.put(7, "支持好友列表");
 
 		OPERATION_MAP.put(1, "大奖榜");
 		OPERATION_MAP.put(2, "拉人气宣传页");
@@ -158,6 +159,7 @@ public class LogHelper {
 		OPERATION_MAP.put(9, "优惠券页（京东）");
 		OPERATION_MAP.put(10, "支持");
 
+		OPERATION_MAP.put(11, "谁支持了我");
 		OPERATION_MAP.put(12, "优惠卷页（京东）");
 		OPERATION_MAP.put(13, "大奖榜");
 		OPERATION_MAP.put(14, "编辑用户信息");
@@ -167,7 +169,8 @@ public class LogHelper {
 
 		OPERATION_MAP.put(18, "索尼智能手表Smart Watch 2");
 		OPERATION_MAP.put(19, "蓝牙耳机SBH20");
-
+		OPERATION_MAP.put(20, "支持好友列表页拉人气");
+		
 		OPERATION_MAP.put(100, "拉友买");
 		OPERATION_MAP.put(101, "手机1款");
 		OPERATION_MAP.put(102, "手机2款");

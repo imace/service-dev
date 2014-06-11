@@ -125,8 +125,6 @@
 	            } */
 				return true;
 			};
-
-		});
 	</script>
 
 
@@ -145,14 +143,13 @@
 					style="color: #cea14b;font-size:110%"><%=Constant.JD_COUPON_LINK %></span>,手机端-->点击<span style="color: #cea14b">下面按钮</span>
 			</div>
 			<br> <a data-openId="<%=openId %>" data-pageName="5" data-operation="12" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" href="<%=Constant.JD_COUPON_LINK %>"
-				style="display: block;padding:0.8em;font-size:1.8em"
+				style="display: block;padding:0.7em;font-size:1.8em"
 				class="btn btn-success btn-block text_support_btn loghandler" role="button">手机获取优惠券</a> <br>
 				<div class="text_mainBody">
 				2.再有京券，竞猜手机等你拿。在网页输入&nbsp;<span
                     style="color: #cea14b;font-size:140%">http://t.cn/RvJ51KN</span>
                     &nbsp;请输入正确的大小写哦！
       </div>
-			<div>
 				<div class="text_subHeader"
 					style="margin-top: 10px; margin-bottom: 10px">我的人气</div>
 				<div class="text_mainBody">
@@ -174,13 +171,20 @@
 						}
 					%>
 				</div>
-				<br> <a  data-openId="<%=openId %>" data-pageName="5" data-operation="13" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
+				<br> 
+				<div class="col-xs-6" style="padding-left:0;padding-right:0.5em">
+				<a  data-openId="<%=openId%>" data-pageName="5" data-operation="13" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
 					href="<%=request.getContextPath()%>/getNameList?id=<%=openId%>"
-					style="display: block;padding:0.8em;font-size:1.8em"
+					style="display: block;padding:0.7em;font-size:1.8em"
 					class="btn btn-success btn-block text_support_btn loghandler" role="button">查看人气榜</a>
-			</div>
-
-			<br>
+				</div>
+      <div class="col-xs-6" style="padding-right:0;padding-left:0.5em">
+      <a  data-openId="<%=openId%>" data-pageName="5" data-operation="11" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>"
+          href="<%=request.getContextPath()%>/getMySupporters?openId=<%=openId%>"
+          style="display: block;padding:0.7em;font-size:1.8em;margin-bottom:1.2em"
+          class="btn btn-success btn-block text_support_btn loghandler" role="button">谁支持了我？</a>
+      </div>
+      <br>
 
 			<!-- ===============================Layou Buy=============================== -->
 			<%
@@ -328,7 +332,7 @@
 					<div class="form-group">
 						<div class="col-xs-12">
 							<a href="#" id="test"  data-openId="<%=openId %>" data-pageName="5" data-operation="14" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
-								style="display: block;padding:0.8em;font-size:1.8em"
+								style="display: block;padding:0.7em;font-size:1.8em"
 								class="btn btn-success btn-block text_support_btn loghandler" role="button">编辑</a>
 						</div>
 					</div>

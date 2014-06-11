@@ -11,7 +11,7 @@ import com.sonymobile.sonysales.entity.DefaultWechatInfoImpl;
 import com.sonymobile.sonysales.entity.json.WechatUserInfo;
 import com.sonymobile.sonysales.model.FifaInfo;
 import com.sonymobile.sonysales.service.FifaInfoService;
-import com.sonymobile.sonysales.util.Common;
+import com.sonymobile.sonysales.util.DateUtil;
 
 public class NewsSevlet extends HttpServlet {
 	/**
@@ -29,7 +29,7 @@ public class NewsSevlet extends HttpServlet {
 			news = new FifaInfo();
 		}
 		String info = news.getInfo();
-		String createTime = Common.formatDateString(news.getCreateTime());
+		String createTime = DateUtil.toFormalDateStr(news.getCreateTime());
 
 		if (info == null || info.isEmpty()) {
 			info = "2014年世界杯将于6月12日-7月13日举办，届时索尼Xperia将与您共度激情盛夏。在此期间，您可以分享世界杯活动快报给您的朋友，参与拉人气大赛，赢取丰厚奖品。";

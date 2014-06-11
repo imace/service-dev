@@ -77,7 +77,12 @@ public class CharacterEncodingFilter implements Filter {
 					}
 					String ip = Common.getIpAddr(req);
 					LogHelper.addPVLog(openid, "快报页", ip);
-				} else if (url.endsWith("/") && response instanceof HttpServletResponse) {
+				} else if (url.contains("/jsp/mySupporters.jsp")
+            || url.contains("/getMySupporters")) {
+        String openId = (String) request.getParameter("openId");
+        String ip = Common.getIpAddr(req);
+        LogHelper.addPVLog(openId, "支持好友列表页", ip);
+        }else if (url.endsWith("/") && response instanceof HttpServletResponse) {
 					((HttpServletResponse)response).sendRedirect("/jsp/exception/PageNotFound.jsp");
 				}
 			}

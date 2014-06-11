@@ -34,6 +34,10 @@
     <servlet-name>getNameListOfPopularity</servlet-name>
     <servlet-class>com.sonymobile.sonysales.servlet.NameListServlet.GetNameListOfPopularity</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>getMySupporters</servlet-name>
+    <servlet-class>com.sonymobile.sonysales.servlet.popularityServlet.GetMySupporters</servlet-class>
+  </servlet>
   
   <servlet>
     <servlet-name>addAdministrator</servlet-name>
@@ -112,6 +116,10 @@
   <servlet-mapping>
     <servlet-name>updateUser</servlet-name>
     <url-pattern>/updateUser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getMySupporters</servlet-name>
+    <url-pattern>/getMySupporters</url-pattern>
   </servlet-mapping>
   
   <servlet-mapping>

@@ -129,7 +129,7 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<a href="<%=relationUrl%>"  data-openId="<%=toid %>" data-pageName="6" data-operation="16" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
-							style="display: block;padding:0.8em;font-size:1.8em"
+							style="display: block;padding:0.7em;font-size:1.8em"
 							class="btn btn-success btn-block text_support_btn loghandler" role="button">支持好友</a>
 					</div>
 				</div>
@@ -150,7 +150,7 @@
 					<div class="col-xs-12">
 						<a data-openId="<%=toid %>" data-pageName="6" data-operation="17" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
 							href="<%=request.getContextPath()%>/activitypage?id=<%=fromid%>"
-							style="display: block;padding:0.8em;font-size:1.8em"
+							style="display: block;padding:0.7em;font-size:1.8em"
 							class="btn btn-success btn-block text_support_btn loghandler" role="button">发快报，拉人气，得大奖 </a>
 					</div>
 				</div>

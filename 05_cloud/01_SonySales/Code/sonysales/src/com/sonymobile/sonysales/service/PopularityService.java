@@ -2,6 +2,7 @@ package com.sonymobile.sonysales.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import com.sonymobile.sonysales.dao.PopularityDAO;
@@ -80,4 +81,9 @@ public class PopularityService {
 		return retMsg;
 	}
 
+	   // 获取我的人气好友列表
+    public static List<?> getMySupporters(String openId) {
+        return PopularityDAO.getMySupporters(openId);
+    }
+    
 }
