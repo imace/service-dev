@@ -34,13 +34,13 @@ td {
 }
 
 .col1{
-    width:15%;
+    width:14%;
 }
 .col2{
-    width:40%;
+    width:38%;
 }
 .col3{
-    width:45%;
+    width:48%;
 }
 
 .overText{
