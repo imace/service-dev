@@ -125,6 +125,7 @@
 	            } */
 				return true;
 			};
+		}); 
 	</script>
 
 
