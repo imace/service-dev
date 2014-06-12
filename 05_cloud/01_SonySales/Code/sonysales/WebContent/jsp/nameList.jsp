@@ -519,6 +519,8 @@ td {
                $(this).css("background-color","#e82827");
               });
               */
+          var speed=50;//设置向上轮动的速度
+          var myFunction=setInterval("moveTop()",speed); 
               
           $("#rob1").on("vmousedown",function() {
               $(this).css("background-color","#910202");
@@ -531,7 +533,12 @@ td {
                               },600);
               */
                           });
-          
+          $("#poplist_div").on("vmousedown",function() {
+        	   clearInterval(myFunction);
+                          });
+          $("#poplist_div").on("vmouseup",function() {
+        	   myFunction=setInterval("moveTop()",speed);
+                          });
 
           <%
           if (com.sonymobile.sonysales.util.Constant.properties.getProperty(
@@ -545,8 +552,7 @@ td {
           <%
           }
       %>
-      var speed=50;//设置向上轮动的速度
-      var myFunction=setInterval("moveTop()",speed); 
+
           });
 
       //poplist_div2.innerHTML=poplist_div1.innerHTML;//复制节点  
