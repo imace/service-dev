@@ -6,9 +6,6 @@
 <hibernate-configuration>
 
 	<session-factory>
-		<property name="hibernate.cache.use_second_level_cache">true</property>
-		<property name="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</property>
-
 		<!-- configuration pool via c3p0 -->
 		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
 		<property name="hibernate.c3p0.min_size">16</property>
@@ -73,16 +70,6 @@
 		<mapping resource="com/sonymobile/sonysales/model/Administrator.hbm.xml" /><!--指定持久化类映射文件 -->
 		<mapping resource="com/sonymobile/sonysales/model/Role.hbm.xml" /><!--指定持久化类映射文件 -->
 		<mapping resource="com/sonymobile/sonysales/model/FifaInfo.hbm.xml" /><!--指定持久化类映射文件 -->
-		<class-cache class="com.sonymobile.sonysales.model.User"
-			usage="read-only" />
-		<class-cache class="com.sonymobile.sonysales.model.Popularity"
-			usage="read-only" />
-		<class-cache class="com.sonymobile.sonysales.model.Handle"
-			usage="read-only" />
-		<class-cache class="com.sonymobile.sonysales.model.Product"
-			usage="read-only" />
-		<class-cache class="com.sonymobile.sonysales.model.OrderHistory"
-			usage="read-only" />
 	</session-factory>
 
 </hibernate-configuration>

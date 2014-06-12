@@ -110,12 +110,8 @@ public class Relation extends HttpServlet {
 
 				}
 			} else {
-				request.setAttribute("fid", fromid);
-				request.setAttribute("tid", toid);
-				request.setAttribute("fromnickname", "他_");
-				request.setAttribute("tonickname", "我");
-				request.setAttribute("fromimg", request.getContextPath() + "/img/head1.png");
-				request.setAttribute("toimg", request.getContextPath() + "/img/head2.png");
+				logger.error("Relation->doPost() emplty openId : fromid = " + fromid + ", toid = " + toid);
+				response.sendRedirect(request.getContextPath()+"/exception/ServerInternalError.jsp");
 			}
 			request.getRequestDispatcher(navurl).forward(request, response);
 			return;

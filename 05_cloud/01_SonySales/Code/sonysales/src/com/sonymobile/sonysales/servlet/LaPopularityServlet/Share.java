@@ -25,37 +25,32 @@ public class Share extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		try {
-			String fromid = request.getParameter("fid");
-			String toid = request.getParameter("tid");
-			String attention = request.getParameter("attention");
-			String oauthtoidlink = request.getParameter("oauthtoidlink");
+		String fromid = request.getParameter("fid");
+		String toid = request.getParameter("tid");
+		String attention = request.getParameter("attention");
+		String oauthtoidlink = request.getParameter("oauthtoidlink");
 
-			if (attention.contains("0") && oauthtoidlink != null) {
-				response.sendRedirect(oauthtoidlink);
-				return;
-			}
-			response.setContentType("application/json;charset=UTF-8");
-			response.setCharacterEncoding("UTF-8");
+		if (attention.contains("0") && oauthtoidlink != null) {
+			response.sendRedirect(oauthtoidlink);
+			return;
+		}
+		response.setContentType("application/json;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
 
-			if (request.getServerName().equals("localhost")) {
-				response.sendRedirect(request.getContextPath()
-						+ "/jsp/LaPopularity/SharePage.jsp");
-				return;
+		if (request.getServerName().equals("localhost")) {
+			response.sendRedirect(request.getContextPath()
+					+ "/jsp/LaPopularity/SharePage.jsp");
+			return;
+		} else {
+			String url = "";
+			if (attention.contains("0")) {
+				url = Constant.ATTENTION_PAGE;
+
 			} else {
-				String url = "";
-				if (attention.contains("0")) {
-					url = Constant.ATTENTION_PAGE;
-
-				} else {
-					url = request.getContextPath() + "/activitypage?id=" + toid;
-				}
-				response.sendRedirect(url);
-				return;
+				url = request.getContextPath() + "/activitypage?id=" + toid;
 			}
-		} catch (JSONException e) {
-			logger.error("Share->doPost() in exception : " + e.getMessage());
-			e.printStackTrace();
+			response.sendRedirect(url);
+			return;
 		}
 	}
 }
