@@ -80,9 +80,19 @@ public class Relation extends HttpServlet {
 				if (fromid.equals(toid)) {
 					navurl = "/jsp/LaPopularity/SharePage.jsp";
 				} else {
-					String relationUrl = request.getScheme() + "://" + request.getServerName() + "/relationpage";
+					// add to-user info
+					if (tonickname != null && Activity.AddUser(toid, tonickname)) {
+						// add popularity
+						PopularityService.addPopularity(fromid, toid);
+					}
+					
+					if (isredriect) {
+						request.getRequestDispatcher("/sharepage?attention=0&tid="+toid).forward(request, response);
+						return;
+					}
 					request.setAttribute("fid", fromid);
 					request.setAttribute("tid", toid);
+					String relationUrl = request.getScheme() + "://" + request.getServerName() + "/relationpage";
 					String redirectHost = Constant.IS_USE_SELF_OAUTH ? Constant.OAUTH_REDIRECT_HOST
 							: Constant.SECOND_OAUTH_REDIRECT_HOST;
 					Hashtable<String, String> parameters = new Hashtable<String, String>();
@@ -91,16 +101,6 @@ public class Relation extends HttpServlet {
 					String codedState = Coder.generateOAuthStateFromUrl(relationUrl, parameters);
 					String oauthtoidlink = buildGetOAuthUserInfoUrl(redirectHost, codedState);
 					request.setAttribute("oauthtoidlink", oauthtoidlink);
-					// add to-user info
-					if (Activity.AddUser(toid, tonickname)) {
-						// add popularity
-						PopularityService.addPopularity(fromid, toid);
-					}
-					
-					if (isredriect) {
-						response.sendRedirect(request.getContextPath()+"/sharepage?attention=0");
-						return;
-					}
 
 					request.setAttribute("fromnickname", fromnickname == null ? "他" : fromnickname);
 					request.setAttribute("tonickname", tonickname == null ? "我" : tonickname);
@@ -111,7 +111,7 @@ public class Relation extends HttpServlet {
 				}
 			} else {
 				logger.error("Relation->doPost() emplty openId : fromid = " + fromid + ", toid = " + toid);
-				response.sendRedirect(request.getContextPath()+"/exception/ServerInternalError.jsp");
+				navurl = "/jsp/exception/ServerInternalError.jsp";
 			}
 			request.getRequestDispatcher(navurl).forward(request, response);
 			return;

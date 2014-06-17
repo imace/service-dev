@@ -23,7 +23,6 @@
 <body class="base_font_size">
 	<%
 		String fromid = (String)request.getAttribute("fid");
-			String fromname = (String)request.getAttribute("fromname");
 			String toid = (String)request.getAttribute("tid");
 			String info = (String)request.getAttribute("info");
 			String createTime = (String)request.getAttribute("createTime");

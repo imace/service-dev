@@ -7,16 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONException;
-
-import org.apache.log4j.Logger;
-
 import com.sonymobile.sonysales.util.Constant;
 
 public class Share extends HttpServlet {
 
 	private static final long serialVersionUID = 2170271794700562161L;
-	private static Logger logger = Logger.getLogger(Share.class.getName());
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -25,12 +20,11 @@ public class Share extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		String fromid = request.getParameter("fid");
 		String toid = request.getParameter("tid");
 		String attention = request.getParameter("attention");
 		String oauthtoidlink = request.getParameter("oauthtoidlink");
 
-		if (attention.contains("0") && oauthtoidlink != null) {
+		if ("0".equals(attention) && oauthtoidlink != null) {
 			response.sendRedirect(oauthtoidlink);
 			return;
 		}
@@ -43,7 +37,7 @@ public class Share extends HttpServlet {
 			return;
 		} else {
 			String url = "";
-			if (attention.contains("0")) {
+			if ("0".equals(attention)) {
 				url = Constant.ATTENTION_PAGE;
 
 			} else {
