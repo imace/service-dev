@@ -18,6 +18,7 @@ import com.sonymobile.sonysales.entity.IWechatInfo;
 import com.sonymobile.sonysales.entity.json.WechatUserInfo;
 import com.sonymobile.sonysales.service.PopularityService;
 import com.sonymobile.sonysales.util.Coder;
+import com.sonymobile.sonysales.util.Common;
 import com.sonymobile.sonysales.util.Constant;
 import com.sonymobile.sonysales.util.DateUtil;
 import com.sonymobile.sonysales.util.ResultMsg;
@@ -44,8 +45,10 @@ public class Relation extends HttpServlet {
 			String navurl = "/jsp/LaPopularity/RelationPage.jsp";
 			String fromid = request.getParameter("fid");
 			String toid = request.getParameter("openid");
-			String toname = request.getParameter("nickname");
+			String tonickname = request.getParameter("nickname");
 			String toheadimgurl = request.getParameter("headimgurl");
+			String toSubscribeTime = request.getParameter("subscribe_time");
+			String subscribe = request.getParameter("subscribe");
 			String attention="0";
 			boolean isredriect=false;
 			
@@ -54,27 +57,34 @@ public class Relation extends HttpServlet {
 			}
 
 			String fromimg = "";
-			String toimg = toheadimgurl;
 			
 			response.setContentType("application/json;charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
 			if (fromid != null && toid != null) {
-				String tonickname, fromnickname;
+				String fromnickname;
 				WechatUserInfo fromUserInfo = wechatInfo.getWebChatUserInfo(fromid);
 
 				// get img url on here for temporary
 				fromimg = fromUserInfo.getHeadimgurl();
 				fromnickname = fromUserInfo.getNickname();
 
-				if (toname != null) {
-					tonickname = toname;
+				WechatUserInfo toUserInfo = null;
+				if (tonickname != null) {
+					toUserInfo = new WechatUserInfo();
+					toUserInfo.setOpenid(toid);
+					toUserInfo.setHeadimgurl(toheadimgurl);
+					toUserInfo.setNickname(tonickname);
+					if (toSubscribeTime!= null && !toSubscribeTime.isEmpty()) {
+						toUserInfo.setSubscribe_time(Long.parseLong(toSubscribeTime));
+					}
+					toUserInfo.setSubscribe(Integer.parseInt(subscribe));
 				} else {
-					WechatUserInfo toUserInfo = wechatInfo.getWebChatUserInfo(toid);
+					toUserInfo = wechatInfo.getWebChatUserInfo(toid);
 					tonickname = toUserInfo.getNickname();
-					toimg = toUserInfo.getHeadimgurl();
+					toheadimgurl = toUserInfo.getHeadimgurl();
 				}
 				
-				if (toimg!=null) {
+				if (toheadimgurl!=null) {
 					attention="1";
 				}
 
@@ -84,7 +94,7 @@ public class Relation extends HttpServlet {
 					navurl = "/jsp/LaPopularity/SharePage.jsp";
 				} else {
 					// add to-user info
-					if (tonickname != null && Activity.AddUser(toid, tonickname)) {
+					if (tonickname != null && Common.addUser(toUserInfo)) {
 						// add popularity
 						if(!DateUtil.isEnd()) {
 							PopularityService.addPopularity(fromid, toid);

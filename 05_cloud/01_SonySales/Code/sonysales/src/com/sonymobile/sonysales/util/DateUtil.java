@@ -6,12 +6,12 @@ import java.util.Date;
 
 public class DateUtil {
 	public static String getStrFromDate(SimpleDateFormat sdf, Date date) {
-	    if(date==null) {
-	        return "";
-	    }
+		if (date == null) {
+			return "";
+		}
 		return sdf.format(date);
 	}
-	
+
 	public static Date getDateFromStr(SimpleDateFormat sdf, String date) {
 		Date d = null;
 		try {
@@ -20,18 +20,34 @@ public class DateUtil {
 			e.printStackTrace();
 		}
 		return d;
-	}	
-	
+	}
+
 	public static String toFormalDateStr(String createTime) {
-	    
-	    if(createTime!=null) {
-        SimpleDateFormat dateformat1=new SimpleDateFormat("yyyyMMddHHmm");
-        SimpleDateFormat dateformat2=new SimpleDateFormat("yyyy-MM-dd  HH:mm");
-        String formalDate = getStrFromDate(dateformat2, getDateFromStr(dateformat1,createTime));
-        return formalDate;
-	    }
-	    return "";
-	    }
+
+		if (createTime != null) {
+			SimpleDateFormat dateformat1 = new SimpleDateFormat("yyyyMMddHHmm");
+			SimpleDateFormat dateformat2 = new SimpleDateFormat(
+					"yyyy-MM-dd  HH:mm");
+			String formalDate = getStrFromDate(dateformat2,
+					getDateFromStr(dateformat1, createTime));
+			return formalDate;
+		}
+		return "";
+	}
+	
+	/**
+	 * Get current date time in "yyyyMMddHHmm" format. This format is used in database.
+	 * */
+	public static String getCurrentDateTime() {
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmm");//设置日期格式
+		return df.format(new Date());
+	}
+	
+	public static String convertLongToString(long longDate) {
+		Date date = new Date(longDate * 1000);
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmm");
+		return df.format(date);
+	}
 	
 	public static boolean isEnd() {
 		 Date currentDate = new Date();
@@ -42,5 +58,4 @@ public class DateUtil {
         return false;
            }
 	}
-	
 }

@@ -177,6 +177,10 @@ public class OAuthServlet extends HttpServlet {
 				sb.append(userInfo.getNickname());
 				sb.append("&headimgurl=");
 				sb.append(userInfo.getHeadimgurl());
+				sb.append("&subscribe=");
+				sb.append(userInfo.getSubscribe());
+				sb.append("&subscribe_time=");
+				sb.append(userInfo.getSubscribe_time());
 				response.sendRedirect(sb.toString());
 			}
 		} else {

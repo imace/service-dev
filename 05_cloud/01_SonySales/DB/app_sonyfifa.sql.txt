@@ -30,7 +30,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 DROP TABLE IF EXISTS `bet`;
 CREATE TABLE IF NOT EXISTS `bet` (
-  `id` bigint(20) NOT NULL COMMENT 'Primary key',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Primary key',
   `userId` bigint(20) NOT NULL COMMENT '外键，User表主键',
   `matchId` bigint(20) NOT NULL COMMENT '外键，比赛表主键',
   `betPointsOne` int(2) NOT NULL COMMENT '下注国家一的进球数',
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `bet` (
 
 DROP TABLE IF EXISTS `handle`;
 CREATE TABLE IF NOT EXISTS `handle` (
-  `id` bigint(20) NOT NULL COMMENT 'Primary key',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Primary key',
   `ownerUserId` bigint(20) NOT NULL COMMENT '发起人或者叫推荐者的用户Id(外键，User表主键)',
   `supporterUserId` bigint(20) NOT NULL COMMENT '支持者，被推荐者或者叫接收者用户Id(外键，User表主键)',
   `createTime` varchar(12) NOT NULL COMMENT '拉手创建时间Eg：201404101535',
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `handle` (
 
 DROP TABLE IF EXISTS `fifaMatch`;
 CREATE TABLE IF NOT EXISTS `fifaMatch` (
-  `id` bigint(20) NOT NULL COMMENT 'Primary key',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Primary key',
   `countryOne` varchar(64) NOT NULL COMMENT '国家一',
   `countryTwo` varchar(64) NOT NULL COMMENT '国家二',
   `pointsOne` int(2) NOT NULL COMMENT '国家一的进球数',
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `fifaMatch` (
 
 DROP TABLE IF EXISTS `orderHistory`;
 CREATE TABLE IF NOT EXISTS `orderHistory` (
-  `id` bigint(20) NOT NULL COMMENT 'Primary key',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Primary key',
   `jdId` varchar(255) NOT NULL COMMENT '京东账户',
   `parentOrderNum` varchar(255) NOT NULL COMMENT '父订单号',
   `orderNum` varchar(255) NOT NULL COMMENT '订单号',
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `orderHistory` (
 
 DROP TABLE IF EXISTS `popularity`;
 CREATE TABLE IF NOT EXISTS `popularity` (
-  `id` bigint(20) NOT NULL COMMENT 'Primary key',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Primary key',
   `ownerUserId` bigint(20) NOT NULL COMMENT '发起人或者叫推荐者的用户Id(外键，User表主键)',
   `supporterUserId` bigint(20) NOT NULL COMMENT '支持者，被推荐者或者叫接收者用户Id(外键，User表主键)',
   `createTime` varchar(12) NOT NULL COMMENT '人气关联创建时间Eg：201404101535',
@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `popularity` (
 
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
-  `id` bigint(20) NOT NULL COMMENT 'Primary key',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Primary key',
   `name` varchar(255) NOT NULL COMMENT '产品名称',
   `description` varchar(255) NOT NULL COMMENT '产品描述',
   `iconLink` varchar(255) NOT NULL COMMENT '产品图标链接',
@@ -193,6 +193,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `points` bigint(11) DEFAULT NULL COMMENT '人气值',
   `focusTime` varchar(12) DEFAULT NULL COMMENT '关注时间Eg：201404101535',
   `createTime` varchar(12) DEFAULT NULL COMMENT '注册时间Eg：201404101535',
+  `updateTime` varchar(12) DEFAULT NULL COMMENT '最后访问时间Eg：201404101535',
   PRIMARY KEY (`id`),
   UNIQUE KEY `openId` (`openId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;

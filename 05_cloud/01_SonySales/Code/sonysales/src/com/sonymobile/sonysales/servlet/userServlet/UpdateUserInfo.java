@@ -10,15 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import net.sf.json.JSONException;
-
-import com.sonymobile.sonysales.dao.UserDAO;
 import com.sonymobile.sonysales.entity.DefaultWechatInfoImpl;
 import com.sonymobile.sonysales.entity.json.WechatUserInfo;
 import com.sonymobile.sonysales.model.User;
 import com.sonymobile.sonysales.service.MyFIFAService;
 import com.sonymobile.sonysales.service.PopularityService;
-import com.sonymobile.sonysales.util.Constant;
+import com.sonymobile.sonysales.util.DateUtil;
 
 public class UpdateUserInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -31,35 +28,37 @@ public class UpdateUserInfo extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		try {
 			String openId = request.getParameter("openId");
 			String phoneNum = request.getParameter("phoneNum");
 			String email = request.getParameter("email");
 			String address = request.getParameter("address");
 			String jdId = request.getParameter("jdId");
 			response = initHeader(response);
-			User user = UserDAO.getUserByOpenId(openId);
+			User user = PopularityService.getUserByOpenId(openId);
 			if (user != null) {
 				Map<?, ?> retMsg = MyFIFAService.updateUser(openId, phoneNum,email, address, jdId);
 			}else {
 				WechatUserInfo wechatuserinfo=DefaultWechatInfoImpl.getInstance().getWebChatUserInfo(openId);
-				String nickname = wechatuserinfo.getNickname();
 				User addUser = new User();
 				addUser.setOpenId(openId);
-				addUser.setNickname(nickname);
+				String nickName = wechatuserinfo.getNickname();
+				if (nickName != null && !nickName.isEmpty()) {
+					addUser.setNickname(nickName);
+				}
+				addUser.setFocusFlag(wechatuserinfo.getSubscribe());
+				addUser.setUpdateTime(DateUtil.getCurrentDateTime());
+				long subscribeTime = wechatuserinfo.getSubscribe_time();
+				if (subscribeTime != 0) {
+					String focusTime = DateUtil.convertLongToString(subscribeTime);
+					addUser.setFocusTime(focusTime);
+				}
 				addUser.setPhoneNum(phoneNum);
 				addUser.setEmail(email);
 				addUser.setAddress(address);
 				addUser.setJdId(jdId);
 				PopularityService.addUser(addUser);
-				logger.error("UpdateUserInfo->phoneNum-> : "+phoneNum);
-		    	logger.error("UpdateUserInfo->email-> : "+email);
-		    	logger.error("UpdateUserInfo->address-> : "+address);
 			}
 			response.sendRedirect(request.getContextPath()+"/myInfo?id="+openId);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
 	}
 
 	private static HttpServletResponse initHeader(HttpServletResponse response) {

@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.sonymobile.sonysales.entity.DefaultWechatInfoImpl;
+import com.sonymobile.sonysales.entity.json.WechatUserInfo;
 import com.sonymobile.sonysales.util.Coder;
+import com.sonymobile.sonysales.util.Common;
 import com.sonymobile.sonysales.util.Constant;
 
 /**
@@ -38,11 +40,11 @@ public class Description extends HttpServlet {
 		String openId = request.getParameter("id");
 
 		if (openId == null) {
-			logger.error("Description->Log message : (1) openId == null");
+			logger.debug("Description->Log message : (1) openId == null");
 			String toId = request.getParameter("openid");
 
 			if (toId == null) {
-				logger.error("Description->Log message : (2) toId == null");
+				logger.debug("Description->Log message : (2) toId == null");
 				// get openId
 				StringBuilder infourl = new StringBuilder(
 						Constant.WECHAT_OAUTH2_AUTHORIZE_URL);
@@ -66,15 +68,17 @@ public class Description extends HttpServlet {
 
 				response.sendRedirect(infourl.toString());
 				return;
-			} else if (toId != null) {
+			} else {
 				// toId
 				request.setAttribute("id", toId);
-				logger.error("Description->Log message : (3) toId != null; toId="+toId);
+				Common.updateUserLoginTime(toId);
+				logger.debug("Description->Log message : (3) toId != null; toId="+toId);
 			}
 		} else {
 			// openId
 			request.setAttribute("id", openId);
-			logger.error("Description->Log message : (4) openId != null; openId="+openId);
+			Common.updateUserLoginTime(openId);
+			logger.debug("Description->Log message : (4) openId != null; openId="+openId);
 		}
 
 		request.getRequestDispatcher("/jsp/Description.jsp").forward(request,

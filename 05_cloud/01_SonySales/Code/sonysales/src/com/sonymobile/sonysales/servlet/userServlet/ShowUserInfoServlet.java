@@ -13,33 +13,29 @@ import net.sf.json.JSONObject;
 
 import com.sonymobile.sonysales.entity.DefaultWechatInfoImpl;
 import com.sonymobile.sonysales.service.MyFIFAService;
+import com.sonymobile.sonysales.util.Common;
 
 public class ShowUserInfoServlet extends HttpServlet {
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		String fromid = (String) request.getParameter("id");
-		String toid = request.getParameter("tid");
-		if (fromid == null) {
-			fromid = request.getParameter("fid");
-		}
-		if (fromid!=null&&toid!=null&& fromid!=toid) {
-			response.sendRedirect(request.getContextPath() + "/activitypage?id=" + toid);
-		} else {
+		if (fromid != null) {
 			List<?> list = MyFIFAService.getPointsOrder(fromid);
 			String userJson = JSONArray.fromObject(list).toString();
 			JSONArray userJA = JSONArray.fromObject(userJson);
 			String phoneNum = "", email = "", address = "", jdId = "", points = "0", pointsOrder = "0";
-			
+
 			if (userJA.size() > 0) {
 				JSONObject userJO = userJA.getJSONObject(0);
-			    if (!userJO.isNullObject()) {
+				if (!userJO.isNullObject()) {
 					phoneNum = userJO.getString("phoneNum");
 					email = userJO.getString("email");
 					address = userJO.getString("address");
 					jdId = userJO.getString("jdId");
 					points = userJO.getString("points");
 					pointsOrder = userJO.getString("pointsOrder");
-			    }
+				}
 			}
 
 			List<?> supporters = MyFIFAService.getSupporters(fromid);
@@ -50,12 +46,18 @@ public class ShowUserInfoServlet extends HttpServlet {
 			request.setAttribute("address", address);
 			request.setAttribute("jdId", jdId);
 			request.setAttribute("points", points == null ? "0" : points);
-			request.setAttribute("pointsOrder", pointsOrder == null ? "0" : pointsOrder);
+			request.setAttribute("pointsOrder", pointsOrder == null ? "0"
+					: pointsOrder);
 			request.setAttribute("supporterJS", supporterJS);
-			String nickname = DefaultWechatInfoImpl.getInstance().getWebChatUserInfo(fromid).getNickname();
+			String nickname = DefaultWechatInfoImpl.getInstance()
+					.getWebChatUserInfo(fromid).getNickname();
 			request.setAttribute("myname", nickname);
-			request.getRequestDispatcher("/jsp/ShowUserInfoPage.jsp").forward(request, response);
-
+			Common.updateUserLoginTime(fromid);
+			request.getRequestDispatcher("/jsp/ShowUserInfoPage.jsp").forward(
+					request, response);
+		} else {
+			request.getRequestDispatcher("/jsp/exception/PageNotFound.jsp")
+					.forward(request, response);
 		}
 	}
 

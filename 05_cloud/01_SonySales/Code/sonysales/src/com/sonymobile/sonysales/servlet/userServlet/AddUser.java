@@ -1,8 +1,6 @@
 package com.sonymobile.sonysales.servlet.userServlet;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -14,6 +12,7 @@ import net.sf.json.JSONObject;
 
 import com.sonymobile.sonysales.model.User;
 import com.sonymobile.sonysales.service.PopularityService;
+import com.sonymobile.sonysales.util.DateUtil;
 
 /**
  * Servlet implementation class AddUser
@@ -42,10 +41,9 @@ public class AddUser extends HttpServlet {
 		try {
 			User user = getUserInfo(request);
 
-			Date date = new Date();
-			SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmm");
-			String now = df.format(date);
+			String now = DateUtil.getCurrentDateTime();
 			user.setCreateTime(now);
+			user.setUpdateTime(now);
 			Map<?, ?> retMsg = PopularityService.addUser(user);
 
 			response = initHeader(response);

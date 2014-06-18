@@ -34,6 +34,9 @@ public class User {
 	
 	//注册时间Eg：201404101535
 	private String createTime;
+	
+	//更新时间Eg：201404101535
+	private String updateTime;
 
 	public User(){
 		setAddress("");
@@ -42,6 +45,7 @@ public class User {
 		//默认未关注
 		setFocusFlag(0);
 		setFocusTime("");
+		setUpdateTime("");
 		setJdId("");
 		setNickname("");
 		setOpenId("");
@@ -49,7 +53,7 @@ public class User {
 		//默认人气为0
 		setPoints(0);
 	}
-	
+
 	public long getId() {
 		return id;
 	}
@@ -136,5 +140,13 @@ public class User {
 
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
+	}
+	
+	public String getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(String updateTime) {
+		this.updateTime = updateTime;
 	}
 }

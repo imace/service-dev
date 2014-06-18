@@ -10,7 +10,7 @@ public final class WechatUserInfo {
 	private String province;
 	private String country;
 	private String headimgurl;
-	private double subscribe_time;
+	private long subscribe_time;
 	private String[] privilege;
 
 	public int getSubscribe() {
@@ -85,11 +85,11 @@ public final class WechatUserInfo {
 		this.headimgurl = headimgurl;
 	}
 
-	public double getSubscribe_time() {
+	public long getSubscribe_time() {
 		return subscribe_time;
 	}
 
-	public void setSubscribe_time(double subscribe_time) {
+	public void setSubscribe_time(long subscribe_time) {
 		this.subscribe_time = subscribe_time;
 	}
 

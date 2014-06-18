@@ -15,7 +15,7 @@ import com.sonymobile.sonysales.entity.DefaultWechatInfoImpl;
 import com.sonymobile.sonysales.entity.json.WechatUserInfo;
 import com.sonymobile.sonysales.model.User;
 import com.sonymobile.sonysales.service.MyFIFAService;
-import com.sonymobile.sonysales.service.PopularityService;
+import com.sonymobile.sonysales.util.Common;
 
 public class LashouActivity extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -43,8 +43,7 @@ public class LashouActivity extends HttpServlet {
 				WechatUserInfo userInfo = DefaultWechatInfoImpl.getInstance()
 						.getWebChatUserInfo(openId);
 				if (userInfo != null) {
-					nickname = userInfo.getNickname();
-					AddUser(openId, nickname);
+					Common.addUser(userInfo);
 				}
 			}
 			response.setContentType("application/json;charset=UTF-8");
@@ -60,17 +59,4 @@ public class LashouActivity extends HttpServlet {
 		}
 	}
 
-	public static boolean AddUser(String openid, String nickname) {
-		try {
-			User user = new User();
-			user.setOpenId(openid);
-			user.setNickname(nickname);
-			PopularityService.addUser(user);
-			return true;
-		} catch (Exception e) {
-			logger.error("LashouActivity->AddUser() in exception : "
-					+ e.getMessage());
-			return false;
-		}
-	}
 }

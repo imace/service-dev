@@ -13,7 +13,8 @@ public class ResultMsg {
 	private static final String RESULT_DES_SUCESS = "success.";
 
 	private static final String ERROR_DES_OPENID_ISNULL = "open id is null.";
-	private static final String ERROR_DES_OPENID_EXISTS = "open id exists already.";
+	private static final String ERROR_DES_UPDATE_USER_INFO = "open id exists already, update user info error.";
+	private static final String SUCCESS_DES_UPDATE_USER_INFO = "open id exists already, update user info success.";
 	private static final String ERROR_DES_JDID_EXISTS = "jd id exists already.";
 	private static final String ERROR_DES_SAMEROW_EXISTS = "the same record exists already in ";
 	private static final String ERROR_DES_OPERAION_DB_FAIL = "database operation fail in ";
@@ -49,8 +50,15 @@ public class ResultMsg {
 	// / openId already exist
 	// / </summary>
 	// / <returns></returns>
-	public static Map<?, ?> OpenIDExistsError() {
-		return GetResultMsg(RESULT_CODE_ERROR, ERROR_DES_OPENID_EXISTS);
+	public static Map<?, ?> UpdateUserInfoError() {
+		return GetResultMsg(RESULT_CODE_ERROR, ERROR_DES_UPDATE_USER_INFO);
+	}
+	// / <summary>
+	// / update user info success
+	// / </summary>
+	// / <returns></returns>
+	public static Map<?, ?> UpdateUserInfoSuccess() {
+		return GetResultMsg(RESULT_CODE_SUCESS, SUCCESS_DES_UPDATE_USER_INFO);
 	}
 
 	// / <summary>
