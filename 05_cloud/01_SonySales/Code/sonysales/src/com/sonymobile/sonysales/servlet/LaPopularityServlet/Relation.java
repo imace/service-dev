@@ -2,6 +2,7 @@ package com.sonymobile.sonysales.servlet.LaPopularityServlet;
 
 import java.io.IOException;
 import java.util.Hashtable;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +19,8 @@ import com.sonymobile.sonysales.entity.json.WechatUserInfo;
 import com.sonymobile.sonysales.service.PopularityService;
 import com.sonymobile.sonysales.util.Coder;
 import com.sonymobile.sonysales.util.Constant;
+import com.sonymobile.sonysales.util.DateUtil;
+import com.sonymobile.sonysales.util.ResultMsg;
 
 public class Relation extends HttpServlet {
 
@@ -83,6 +86,9 @@ public class Relation extends HttpServlet {
 					// add to-user info
 					if (tonickname != null && Activity.AddUser(toid, tonickname)) {
 						// add popularity
+						if(!DateUtil.isEnd()) {
+							PopularityService.addPopularity(fromid, toid);
+						}
 						PopularityService.addPopularity(fromid, toid);
 					}
 					

@@ -84,8 +84,19 @@ td {
             response.sendRedirect(request.getContextPath()+"/jsp/errorhandler.jsp?errnum=0101&errmsg="+e.getMessage());
         }
     %>
+                <%
+                if (DateUtil.isEnd()) {
+                %>
     <div id="title" class="text_header"
+        style="margin-left: 2%; margin-top: 0.7em;">索尼世界杯好友支持列表(<font style="color: #e82827">活动已结束</font>)</div>
+                  <%
+                    } else {
+                %>
+                    <div id="title" class="text_header"
         style="margin-left: 2%; margin-top: 0.7em;">索尼世界杯好友支持列表</div>
+                <%
+                    }
+                %>
     <div id="pop_div" style="padding-top: 0.1em; margin-left: 2%">
         <div id="pop_title"
             style="height: 4em; text-align: left; float: left">

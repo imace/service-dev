@@ -1,5 +1,6 @@
 <%@page import="com.sonymobile.sonysales.util.Constant"%>
 <%@page import="com.sonymobile.sonysales.model.User"%>
+<%@page import="com.sonymobile.sonysales.util.DateUtil"%>
 <%@page import="com.sonymobile.sonysales.entity.SupporterCount"%>
 <%@page import="java.util.List"%>
 <%@page import="org.apache.log4j.Logger"%>
@@ -98,8 +99,19 @@ td {
             response.sendRedirect(request.getContextPath()+"/jsp/errorhandler.jsp?errnum=0101&errmsg="+e.getMessage());
         }
     %>
+                <%
+                if (DateUtil.isEnd()) {
+                %>
     <div id="title" class="text_header"
+        style="margin-left: 2%; margin-top: 0.7em;">索尼世界杯人气大奖榜单(<font style="color: #e82827">活动已结束</font>)</div>
+                  <%
+                    } else {
+                %>
+                    <div id="title" class="text_header"
         style="margin-left: 2%; margin-top: 0.7em;">索尼世界杯人气大奖榜单</div>
+                <%
+                    }
+                %>
     <div  class="text_subHeader2"
         style="margin-left: 2%; margin-top: 0.3em;">前10名就送<font style="color: #e82827">第二代智能手表SW2</font>，11至20名就送<font style="color: #e82827">立体声蓝牙耳机SBH20</font></div>
     <div id="pop_div" style="padding-top: 0.1em; margin-left: 2%">

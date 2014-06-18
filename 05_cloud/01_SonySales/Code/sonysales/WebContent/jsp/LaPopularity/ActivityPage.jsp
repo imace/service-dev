@@ -1,6 +1,7 @@
 <%@page import="com.sonymobile.sonysales.servlet.LaPopularityServlet.Activity"%>
 <%@page import="com.sonymobile.sonysales.util.Constant"%>
 <%@page import="com.sonymobile.sonysales.util.Coder"%>
+<%@ page import="com.sonymobile.sonysales.util.DateUtil"%>
 <%@page import="org.apache.log4j.Logger"%>
 <%@page import="java.util.Hashtable"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
@@ -29,7 +30,11 @@
 		nickname=(nickname==null?"":"("+nickname+")");
 		//String message="Hi, 亲, 我"+nickname+"对索尼世界杯惊喜购机大奖志在必得, 请您拉我一票!";
 		String message="打开链接，点击支持您的朋友，并额外有惊喜！";
-		
+   String title = "打开世界杯快报链接，点击支持好友，多谢！(一个月内有效)";
+   if (DateUtil.isEnd()) {
+       message = "打开链接，点击支持您的朋友，并额外有惊喜！";
+       title = "打开世界杯快报链接，点击支持好友，多谢！(活动已结束)";
+        }
 		String imgurl=request.getScheme() + "://" + request.getServerName() + "/img/entry_bulletin.jpg";	
 		String relationUrl = request.getScheme() + "://" + request.getServerName() + "/news";
 		String redirectHost = Constant.IS_USE_SELF_OAUTH ? Constant.OAUTH_REDIRECT_HOST
@@ -50,7 +55,7 @@
 				+ "MsgImg:\""+ imgurl
 				+ "\", TLImg:\""+ imgurl
 				+ "\", url:\""+ url
-				+ "\", title:\"打开世界杯快报链接，点击支持好友，多谢！\", desc:\""+ message
+				+ "\", title:\""+ title + "\", desc:\""+ message
 				+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
 	}
     catch (Exception e) {
@@ -58,21 +63,36 @@
 		    response.sendRedirect(request.getContextPath()+"/jsp/errorhandler.jsp?errnum=0111&errmsg="+e.getMessage());
 	}
 	%>
+
 	<div id="tips_div">
 	<img src="<%=request.getContextPath()%>/img/tips.png" style="position:fixed;height:18%;max-height:18%;top:0;right:0" id="tips_img"/><div id="close_tips" onclick="closeTips()" style="position:fixed;width:8%;height:6%;right:0;top:12%;"></div>
 	</div>
+
 <div>
                 <div id="title" class="text_header common_style" style="padding:0.6em;max-width:96%;margin-left:2%">发快报, 拉人气, 得大奖!</div>
                 <div id="banner_img_div" style="text-align: center">
                     <img src="<%=request.getContextPath()%>/img/banner_popularity.jpg" id="banner_img" style="width:96%;max-width:96%;"/>
                 </div>
-                 <div class="text_highlight common_style" style="padding-top:1em;padding-bottom:0.7em;width:96%;max-width:96%;margin-left:2%">
+	            <div class="text_highlight common_style" style="padding-top:1em;padding-bottom:0.7em;width:96%;max-width:96%;margin-left:2%">
                                                          点击右上角<img src="<%=request.getContextPath()%>/img/overflow.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>并<img src="<%=request.getContextPath()%>/img/share.png" class="point_pic_width" style="margin-left:2px;margin-right:2px"/>发送快报给朋友
                              </div>
                 <div id="intro" >
-                    <div class="text_subHeader" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">
+                    <%
+	                if (DateUtil.isEnd()) {
+	                %>
+	                <div class="text_subHeader" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">
+                                    索尼世界杯拉人气活动规则(<font style="color: #e82827">活动已结束</font>)
+                    </div>
+	                <%
+	                    } else {
+	                %>
+	                <div class="text_subHeader" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">
                                     索尼世界杯拉人气活动规则
                     </div>
+	                <%
+	                    }
+	                %>
+                    
                     <div class="text_mainBody" style="max-width:96%;width:96%;margin-left:2%;line-height:150%;">
                     1.分享快报给您的好友, 点击<a  data-openId="<%=openid %>" data-pageName="3" data-operation="5" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="btn btn-default loghandler" style="background: url(<%=request.getContextPath()%>/img/trumpet.png) 8px no-repeat #ff7000;padding: 6px; text-decoration:none; overflow: hidden; padding-left: 35px;text-align: right; color:#fff;background-size: 22px 22px;border-radius:0.2em" href="<%=request.getContextPath()%>/news?fid=<%=openid%>&fromname=<%=nickname%>" role="button">快报</a>查看<br>
                     2.人气榜前10名可获得官方价值RMB 1,499的第二代智能手表SW2一个, 11至20名可获得官方价值RMB 299的立体声蓝牙耳机SBH20一个<br/>
@@ -81,6 +101,7 @@
                 </div>
                 <br>
         </div>
+
 <div class="scroll_div_height" style="position:absolute;width:100%;max-width:100%;"></div>
         <div id="touchBox" style="width:100%;max-width:100%;">
             <div  style="position:relative;" >

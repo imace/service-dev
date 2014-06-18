@@ -32,4 +32,15 @@ public class DateUtil {
 	    }
 	    return "";
 	    }
+	
+	public static boolean isEnd() {
+		 Date currentDate = new Date();
+    String currentDateStr = getStrFromDate(new SimpleDateFormat("yyyyMMdd"),currentDate);
+    if(Constant.END_DATE!=null && currentDateStr.compareTo(Constant.END_DATE)>0) {
+        return true;
+    } else {
+        return false;
+           }
+	}
+	
 }

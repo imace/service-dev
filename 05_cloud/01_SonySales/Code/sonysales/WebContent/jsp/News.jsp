@@ -1,5 +1,6 @@
 <%@ page import="com.sonymobile.sonysales.util.Constant"%>
 <%@ page import="com.sonymobile.sonysales.util.Coder"%>
+<%@ page import="com.sonymobile.sonysales.util.DateUtil"%>
 <%@ page import="java.util.Hashtable"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -30,7 +31,12 @@
 			boolean isShared = toid != null && !toid.equals(fromid);
 
 			if (!isShared) {
-		String message = "打开链接，点击支持您的朋友，并额外有惊喜！";
+			    String message = "打开链接，点击支持您的朋友，并额外有惊喜！";
+			    String title = "打开世界杯快报链接，点击支持好友，多谢！(一个月内有效)";
+			    if (DateUtil.isEnd()) {
+			        message = "打开链接，点击支持您的朋友，并额外有惊喜！";
+			        title = "打开世界杯快报链接，点击支持好友，多谢！(活动已结束)";
+			    }
 		String imgurl = request.getScheme() + "://"
 				+ request.getServerName() + "/img/entry_bulletin.jpg";
 		String newsUrl = request.getScheme() + "://" + request.getServerName() + "/news";
@@ -54,7 +60,9 @@
 				+ imgurl
 				+ "\", url:\""
 				+ url
-				+ "\", title:\"打开世界杯快报链接，点击支持好友，多谢！\", desc:\""
+				+ "\", title:\""
+				+ title
+		   + "\", desc:\""
 				+ message
 				+ "\", fakeid:\"\",callback:function(){/*alert('感谢分享, 更多惊喜请继续关注!-SonyXpria');*/}};</script>");
 			}
@@ -155,7 +163,7 @@
 				</div>
 				<br>
 				<%
-					}
+					} 
 				%>
 			</div>
 		</div>

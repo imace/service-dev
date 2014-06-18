@@ -2,6 +2,7 @@
 <%@page import="net.sf.json.JSONObject"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="com.sonymobile.sonysales.util.Constant"%>
+<%@page import="com.sonymobile.sonysales.util.DateUtil"%>
 <%@page import="com.sonymobile.sonysales.util.Base64Coder"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -135,7 +136,18 @@
 	<div class="container"
 		style="background: url(<%=request.getContextPath()%>/img/stamp.png) right bottom no-repeat; background-size: 55%; margin: 10px;">
 		<div class="row base_font_size" style="font-family: Droid Sans Fallback;">
-			<div id="title" class="text_header" style="margin-bottom: 10px">我的战况</div>
+		                <%
+                if (DateUtil.isEnd()) {
+                %>
+    <div id="title" class="text_header" style="margin-bottom: 10px">我的战况(<font style="color: #e82827">活动已结束</font>)</div>
+                  <%
+                    } else {
+                %>
+    <div id="title" class="text_header" style="margin-bottom: 10px">我的战况</div>
+                <%
+                    }
+                %>
+			
 			<div class="text_subHeader"
 				style="margin-top: 10px; margin-bottom: 10px">我的优惠券</div>
 			<div class="text_mainBody">

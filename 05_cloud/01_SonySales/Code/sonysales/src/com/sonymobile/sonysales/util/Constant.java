@@ -40,6 +40,8 @@ public final class Constant {
 	public static final String SW2_LINK;
 	
 	public static final String SBH20_LINK;
+	
+	public static final String END_DATE;
     
     static {
         InputStream is = Constant.class.getClassLoader()
@@ -87,6 +89,8 @@ public final class Constant {
 		SW2_LINK=properties.getProperty("SW2_LINK");
 		
 		SBH20_LINK=properties.getProperty("SBH20_LINK");
+		
+		END_DATE=properties.getProperty("END_DATE");
 	}
 
 	public static final int SAE_FETCHURL_SUCCESS_CODE = 0;
