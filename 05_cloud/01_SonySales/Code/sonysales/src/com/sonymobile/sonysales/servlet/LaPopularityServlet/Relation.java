@@ -99,7 +99,6 @@ public class Relation extends HttpServlet {
 						if(!DateUtil.isEnd()) {
 							PopularityService.addPopularity(fromid, toid);
 						}
-						PopularityService.addPopularity(fromid, toid);
 					}
 					
 					if (isredriect) {

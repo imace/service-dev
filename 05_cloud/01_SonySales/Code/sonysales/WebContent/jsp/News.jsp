@@ -155,7 +155,7 @@
       </div>
 				<div class="row">
 					<div class="col-xs-12">
-						<a data-openId="<%=toid %>" data-pageName="6" data-operation="17" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
+						<a data-openId="<%=fromid %>" data-pageName="6" data-operation="17" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" 
 							href="<%=request.getContextPath()%>/activitypage?id=<%=fromid%>"
 							style="display: block;padding:0.7em;font-size:1.8em"
 							class="btn btn-success btn-block text_support_btn loghandler" role="button">发快报，拉人气，得大奖 </a>
