@@ -77,7 +77,11 @@ public class Relation extends HttpServlet {
 					if (toSubscribeTime!= null && !toSubscribeTime.isEmpty()) {
 						toUserInfo.setSubscribe_time(Long.parseLong(toSubscribeTime));
 					}
-					toUserInfo.setSubscribe(Integer.parseInt(subscribe));
+					if (!"1".equals(subscribe)) {
+						toUserInfo.setSubscribe(0);
+					} else {
+						toUserInfo.setSubscribe(1);
+					}
 				} else {
 					toUserInfo = wechatInfo.getWebChatUserInfo(toid);
 					tonickname = toUserInfo.getNickname();
