@@ -360,7 +360,7 @@ td {
     </div>
     <div id="content" style="background-color:white;height:7em">
         <div id="bttons" style="max-width:96%;width:96%;margin-left:2%;padding-top:1em;">
-            <div id="pcbuy" style="border-radius:4px;max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #d9d9d9;background-color: #e82827;float:left" data-openId="<%=openId %>" data-pageName="2" data-operation="4" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler" onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/activitypage?id=<%=openId%>'">
+            <div id="lapop" style="border-radius:4px;max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #d9d9d9;background-color: #e82827;float:left" data-openId="<%=openId %>" data-pageName="2" data-operation="4" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler" onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/activitypage?id=<%=openId%>'">
                 <div style="font-size:1.8em;color:white;padding-top:0.85em;">拉人气</div>
             </div>
             <div id="discount" style="border-radius:4px;max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #d9d9d9;background-color: #e82827;float:right" data-openId="<%=openId %>" data-pageName="2" data-operation="12" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler" onclick="window.location.href='<%=Constant.JD_COUPON_LINK%>'">
@@ -539,11 +539,11 @@ td {
           var speed=50;//设置向上轮动的速度
           var myFunction=setInterval("moveTop()",speed); 
               
-          $("#pcbuy").on("vmousedown",function() {
+          $("#lapop").on("vmousedown",function() {
               $(this).css("background-color","#910202");
                           });
-          $("#pcbuy").on("vmouseup",function() {
-              $("#pcbuy").css("background-color","#e82827");
+          $("#lapop").on("vmouseup",function() {
+              $("#lapop").css("background-color","#e82827");
               /*
               setTimeout(function(){
                 $("#rob1").css("background-color","#e82827");
