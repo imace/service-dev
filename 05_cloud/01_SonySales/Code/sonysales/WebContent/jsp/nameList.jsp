@@ -2,6 +2,7 @@
 <%@page import="com.sonymobile.sonysales.model.User"%>
 <%@page import="com.sonymobile.sonysales.util.DateUtil"%>
 <%@page import="com.sonymobile.sonysales.entity.SupporterCount"%>
+<%@page import="com.sonymobile.sonysales.util.Constant"%>
 <%@page import="java.util.List"%>
 <%@page import="org.apache.log4j.Logger"%>
 
@@ -357,12 +358,16 @@ td {
             
         </div>
     </div>
-    <div id="rob1"  data-openId="<%=openId %>" data-pageName="2" data-operation="4" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler"
-        style="border-radius:4px; max-width: 95%; margin-bottom: 1em; margin-left: 2.5%; margin-top: 1em; height: 5em; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
-        onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/activitypage?id=<%=openId%>'">
-        <div style="font-size: 1.8em; color: white; margin-top: 0.85em">拉人气</div>
+    <div id="content" style="background-color:white;height:7em">
+        <div id="bttons" style="max-width:96%;width:96%;margin-left:2%;padding-top:1em;">
+            <div id="pcbuy" style="border-radius:4px;max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #d9d9d9;background-color: #e82827;float:left" data-openId="<%=openId %>" data-pageName="2" data-operation="4" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler" onclick="window.location.href='<%=request.getScheme() + "://" + request.getServerName()%>/activitypage?id=<%=openId%>'">
+                <div style="font-size:1.8em;color:white;padding-top:0.85em;">拉人气</div>
+            </div>
+            <div id="discount" style="border-radius:4px;max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #d9d9d9;background-color: #e82827;float:right" data-openId="<%=openId %>" data-pageName="2" data-operation="12" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler" onclick="window.location.href='<%=Constant.JD_COUPON_LINK%>'">
+                <div style="font-size:1.8em;color:white;padding-top:0.85em;">优惠券快来抢</div>
+            </div>
+        </div>
     </div>
-
 
     <!-- ===============================Layou Buy=============================== -->
     <%
@@ -534,11 +539,22 @@ td {
           var speed=50;//设置向上轮动的速度
           var myFunction=setInterval("moveTop()",speed); 
               
-          $("#rob1").on("vmousedown",function() {
+          $("#pcbuy").on("vmousedown",function() {
               $(this).css("background-color","#910202");
                           });
-          $("#rob1").on("vmouseup",function() {
-              $("#rob1").css("background-color","#e82827");
+          $("#pcbuy").on("vmouseup",function() {
+              $("#pcbuy").css("background-color","#e82827");
+              /*
+              setTimeout(function(){
+                $("#rob1").css("background-color","#e82827");
+                              },600);
+              */
+                          });
+          $("#discount").on("vmousedown",function() {
+              $(this).css("background-color","#910202");
+                          });
+          $("#discount").on("vmouseup",function() {
+              $("#discount").css("background-color","#e82827");
               /*
               setTimeout(function(){
                 $("#rob1").css("background-color","#e82827");
