@@ -77,6 +77,8 @@
 									class="btn btn-success btn-block text_support_btn loghandler">支持TA</button>
 							</div>
 						</div>
+						<br>
+                        <div><a  data-openId="<%=toid%>" data-pageName="6" data-operation="12" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" href="<%=Constant.JD_COUPON_LINK%>" class="text_highlight loghandler" style="line-height: 150%;text-decoration:underline;">世界杯限量手机</a></div>
 					</form>
 				</div>
 			</div>

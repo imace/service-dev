@@ -145,13 +145,13 @@
             </div>
             <div id="content" style="display:none;background-color:white;height:6.2em">
                 <div id="bttons" style="max-width:96%;width:96%;margin-left:2%;padding-top:1em;">
-                    <div id="pcbuy" style="border-radius:4px;max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #bfbfbf;float:left" onclick="pcBuy()">
+                    <div id="pcbuy" style="border-radius:4px;max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #bfbfbf;float:left"  data-openId="<%=openid %>" data-pageName="3" data-operation="8" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler" onclick="pcBuy()">
                         <div><img src="<%=request.getContextPath()%>/img/http_icn.png" style="height:3em;float:left;margin-left:1.4em;padding-top:1.1em"/></div>
-                        <div style="font-size:1.8em;color:rgb(116, 105, 105);padding-top:0.85em;padding-right:1.5em"  data-openId="<%=openid %>" data-pageName="3" data-operation="8" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler">PC购买</div>
+                        <div style="font-size:1.8em;color:rgb(116, 105, 105);padding-top:0.85em;padding-right:1.5em" >PC购买</div>
                     </div>
-                    <div id="discount" style="border-radius:4px;max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #bfbfbf;float:right" onclick="toMyInfo()">
+                    <div id="discount" style="border-radius:4px;max-width:48%;width:48%;height:5em;text-align:center;border:1px solid #bfbfbf;float:right" data-openId="<%=openid %>" data-pageName="3" data-operation="12" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler" onclick="toMyInfo()">
                         <div><img src="<%=request.getContextPath()%>/img/discount_icn.png" style="height:3em;float:left;margin-left:1.4em;padding-top:1em"/></div>
-                        <div style="font-size:1.8em;color:rgb(116, 105, 105);padding-top:0.85em;padding-right:1.5em"  data-openId="<%=openid %>" data-pageName="3" data-operation="9" data-host="<%=request.getScheme()%>://<%=request.getServerName()%>" class="loghandler">优惠券</div>
+                        <div style="font-size:1.8em;color:rgb(116, 105, 105);padding-top:0.85em;padding-right:1.5em">优惠券</div>
                     </div>
                 </div>
             </div>
@@ -344,7 +344,7 @@
     	window.location.href='<%=request.getContextPath()%>/jsp/productPage.jsp?productUrl='+pcUrl;
         }
     function toMyInfo() {
-    	window.location.href='<%=request.getContextPath()%>/myInfo?id=<%=openid%>';
+    	window.location.href='<%=Constant.JD_COUPON_LINK %>';
         }
     function clickDiv() {
         if(!open) {
