@@ -42,6 +42,7 @@
 		String pointsOrder = (String) request.getAttribute("pointsOrder");
 		String supporterJS = (String) request.getAttribute("supporterJS");
 		String friendname = (String) request.getAttribute("myname");
+		Boolean isInBlacklist = (Boolean)request.getAttribute("isInBlacklist");
 		PrintWriter outwriter = response.getWriter();
 
 		String message = "索尼世界杯人气大奖中(" + friendname + ")的战况!";
@@ -168,6 +169,11 @@
 				<div class="text_mainBody">
 					<hr style="border: 1px solid #22bff2; margin-top: -3px;">
 					<%
+					if(isInBlacklist.booleanValue()) { 
+					%>
+					您的拉人气操作被系统识别为违规操作，不能继续参加拉人气活动，谢谢关注！
+					<%
+					} else {
 						if (Integer.parseInt(points) == 0) {
 					%>
 					很抱歉, 您获得<span style="color: #cea14b">0人气点</span>，目前尚无排名，赶快加油吧！
@@ -182,6 +188,7 @@
 					</span>，继续加油哦！
 					<%
 						}
+					}
 					%>
 				</div>
 				<br> 

@@ -21,11 +21,15 @@ public class ShowUserInfoServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		String fromid = (String) request.getParameter("id");
 		if (fromid != null) {
+			boolean isInBlacklist = false;
+			if(MyFIFAService.isInBlacklist(fromid)) {
+				isInBlacklist = true;
+			}
 			List<?> list = MyFIFAService.getPointsOrder(fromid);
 			String userJson = JSONArray.fromObject(list).toString();
 			JSONArray userJA = JSONArray.fromObject(userJson);
 			String phoneNum = "", email = "", address = "", jdId = "", points = "0", pointsOrder = "0";
-
+			
 			if (userJA.size() > 0) {
 				JSONObject userJO = userJA.getJSONObject(0);
 				if (!userJO.isNullObject()) {
@@ -49,6 +53,7 @@ public class ShowUserInfoServlet extends HttpServlet {
 			request.setAttribute("pointsOrder", pointsOrder == null ? "0"
 					: pointsOrder);
 			request.setAttribute("supporterJS", supporterJS);
+			request.setAttribute("isInBlacklist", new Boolean(isInBlacklist));
 			String nickname = DefaultWechatInfoImpl.getInstance()
 					.getWebChatUserInfo(fromid).getNickname();
 			request.setAttribute("myname", nickname);

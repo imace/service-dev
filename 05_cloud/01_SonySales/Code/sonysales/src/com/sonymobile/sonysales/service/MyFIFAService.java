@@ -3,6 +3,7 @@ package com.sonymobile.sonysales.service;
 import java.util.List;
 import java.util.Map;
 
+import com.sonymobile.sonysales.dao.BlacklistDAO;
 import com.sonymobile.sonysales.dao.HandleDAO;
 import com.sonymobile.sonysales.dao.UserDAO;
 import com.sonymobile.sonysales.model.User;
@@ -57,5 +58,16 @@ public class MyFIFAService {
 
 	public static User getUserByOpenId(String openId) {
 		return UserDAO.getUserByOpenId(openId);
+	}
+	
+	public static boolean isInBlacklist(String openId) {
+		if(openId==null) {
+			return false;
+		}
+		User user = getUserByOpenId(openId);
+		if(user==null) {
+			return false;
+		}
+		return BlacklistDAO.isInBlacklist(user.getId());
 	}
 }

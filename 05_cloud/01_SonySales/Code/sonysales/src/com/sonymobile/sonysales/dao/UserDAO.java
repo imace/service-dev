@@ -13,7 +13,7 @@ public class UserDAO {
 	public static List<?> getUserList(String limit, String orderby) {
 		HibernateUtil hibernateUtil = new HibernateUtil();
 
-		String hql = "from User u where u.points>0 order by u." + orderby
+		String hql = "from User u where u.points>0 and not exists (select b.id from Blacklist b where u.id=b.userId) order by u." + orderby
 				+ " desc, u.createTime, u.openId ";
 
 		int maxResults = 0;
@@ -28,7 +28,7 @@ public class UserDAO {
 	public static List<?> getPointsOrder(String openId) {
 		HibernateUtil hibernateUtil = new HibernateUtil();
 
-		String hql = "select new com.sonymobile.sonysales.entity.PointsOrder(u2.nickname,u2.focusFlag,u2.phoneNum,u2.email,u2.address,u2.jdId,u2.points,u2.focusTime,u2.createTime, (select count(*) from User u1 where u1.points>u2.points or (u1.points=u2.points and u1.createTime < u2.createTime) or (u1.points=u2.points and u1.createTime = u2.createTime and u1.openId <= u2.openId))) from User u2 where u2.openId='"
+		String hql = "select new com.sonymobile.sonysales.entity.PointsOrder(u2.nickname,u2.focusFlag,u2.phoneNum,u2.email,u2.address,u2.jdId,u2.points,u2.focusTime,u2.createTime, (select count(*) from User u1 where not exists (select b.id from Blacklist b where u2.id=b.userId) and not exists (select b.id from Blacklist b where u1.id=b.userId) and (u1.points>u2.points or (u1.points=u2.points and u1.createTime < u2.createTime) or (u1.points=u2.points and u1.createTime = u2.createTime and u1.openId <= u2.openId)))) from User u2 where u2.openId='"
 				+ openId + "'";
 
 		return hibernateUtil.getListByHql(hql, null, 0, 0);
