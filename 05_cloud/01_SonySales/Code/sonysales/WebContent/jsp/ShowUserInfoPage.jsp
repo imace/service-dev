@@ -160,9 +160,9 @@
 				style="display: block;padding:0.7em;font-size:1.8em"
 				class="btn btn-success btn-block text_support_btn loghandler" role="button">手机获取优惠券</a> <br>
 				<div class="text_mainBody">
-				2.再有京券，竞猜手机等你拿。在网页输入&nbsp;<span
-                    style="color: #cea14b;font-size:140%">http://t.cn/RvJ51KN</span>
-                    &nbsp;请输入正确的大小写哦！
+				2.再有京东满赠体验卡，加价购活动等你来。在网页输入&nbsp;<span
+                    style="color: #cea14b;font-size:140%">http://item.jd.com/1145230.html</span>
+                    &nbsp;来挑你中意的手机吧！
       </div>
 				<div class="text_subHeader"
 					style="margin-top: 10px; margin-bottom: 10px">我的人气</div>
