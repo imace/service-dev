@@ -1,0 +1,40 @@
+table {
+    border-style: solid;
+    BORDER-COLLAPSE: collapse;
+    border-Color: #D1CCC8;
+    table-layout: fixed;
+}
+
+td {
+    BORDER-RIGHT: medium none;
+    BORDER-LEFT: medium none;
+    height: 2em;
+    font-size:1.6em;
+    padding-left:0.2em;
+}
+
+.col1{
+    width:14%;
+}
+.col2{
+    width:38%;
+}
+.col3{
+    width:48%;
+}
+
+.overText{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#poplist_div {
+    overflow: auto;
+    height: 36em;
+    border-top-width: 0.3em;
+    border-top-color: #22bff2;
+    margin-left: 2%;
+    border-top-style: solid;
+    max-width: 96%;
+    width: 96%
+}

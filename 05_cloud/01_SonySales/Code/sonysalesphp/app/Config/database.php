@@ -67,7 +67,7 @@ class DATABASE_CONFIG {
 		'login' => SAE_MYSQL_USER,
 		'password' => SAE_MYSQL_PASS,
 		'database' => SAE_MYSQL_DB,
-		'prefix' => 'cake_',
+		'prefix' => '',
 		'encoding' => 'utf8',
 	);
 
@@ -79,7 +79,7 @@ class DATABASE_CONFIG {
 		'login' => SAE_MYSQL_USER,
 		'password' => SAE_MYSQL_PASS,
 		'database' => SAE_MYSQL_DB,
-		'prefix' => 'cake_',
+		'prefix' => '',
 		'encoding' => 'utf8',
 	);
 }
