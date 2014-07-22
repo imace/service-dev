@@ -27,12 +27,9 @@
                 cellSpacing=0 cellPadding=0 align=center border=1>
                        <?php foreach ($mySupporters as $mySupporter): ?>
 					    <tr>
-					        <td class="col1"><?php echo $mySupporter['User']['id']; ?></td>
+					        <td class="col1"><?php echo $mySupporter['Supporter']['nickname']; ?></td>
 					        <td class="overText col2">
-					            <?php echo $mySupporter['User']['openId'];?>
-					        </td>
-					        <td class="overText col3">
-					         	<?php echo $mySupporter['User']['nickname'];?>
+					            <?php echo $mySupporter['Popularity']['createTime'];?>
 					        </td>
 					    </tr>
 					    <?php endforeach; ?>
