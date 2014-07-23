@@ -102,23 +102,15 @@ class PopularitiesController extends AppController {
 		return $this->redirect(array('action' => 'index'));
 	}
 /**
- * delete method
+ * Get my supporters method
  *
- * @throws NotFoundException
- * @param string $ownerId
+ * @param string $openId
  * @return array
  */   
-        public function getSupporters($ownerId = null) {
-            $this->Popularity->User->id = $ownerId;
-	    if (!$this->Popularity->User->exists()) {
-		    throw new NotFoundException(__('Invalid user'));
-	    }
-            
+    public function getMySupporters($openId = null) {            
             $conditions = array(
-                'Popularity.ownerUserId' => $ownerId
+                'User.openId' => $openId
             );
-            
-            $contain = array('User', 'Popularity');
             
             $fields = array(
                 'Supporter.nickname',
@@ -131,13 +123,13 @@ class PopularitiesController extends AppController {
             
             $options = array(
                     'conditions' => $conditions,
-                    'contain' => $contain,
                     'fields' => $fields,
                     'order' => $order
             );
             
             $supporters = $this->Popularity->find('all', $options);
-            debug($supporters);
-            return $supporters;
-        }
+            //debug($supporters);
+            $this->set('mySupporters', $supporters);
+            $this->set('openId', $openId);
+    }
 }

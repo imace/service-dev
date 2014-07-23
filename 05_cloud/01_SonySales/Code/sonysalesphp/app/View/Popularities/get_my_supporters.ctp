@@ -15,7 +15,7 @@
         <div id="pop_image"
             style="height: 4em; text-align: right; float: right; margin-right: 13px">
             <div>
-                <img src="../img/ranking1.png"
+                <img src="../../img/ranking1.png"
                     style="height: 4em; float: left; margin-left: 10px;" />
             </div>
         </div>
@@ -25,15 +25,16 @@
         <div id="poplist_div1">
             <table id="pop_table1" style="max-width: 100%; width: 100%;"
                 cellSpacing=0 cellPadding=0 align=center border=1>
-                       <?php foreach ($mySupporters as $mySupporter): ?>
+                <?php if( $mySupporters != null && count($mySupporters) != 0 ): ?>
+                <?php $i = 1;?>
+                      <?php foreach ($mySupporters as $mySupporter): ?>
 					    <tr>
-					        <td class="col1"><?php echo $mySupporter['Supporter']['nickname']; ?></td>
-					        <td class="overText col2">
-					            <?php echo $mySupporter['Popularity']['createTime'];?>
-					        </td>
+					         <td class="col1"> <?php echo $i++ ?></td>
+		                     <td class="overText col2"><?php echo $mySupporter['Supporter']['nickname'];?></td>
+		                     <td class="overText col3"><?php echo $mySupporter['Popularity']['createTime'];?></td>
 					    </tr>
 					    <?php endforeach; ?>
-                        <tr>
+					    <tr>
                             <td id="pop_point_td" colspan=3
                                 style="display: none;text-align: center; border-top: medium none;"><div
                                     style="font-size: 1em">
@@ -42,10 +43,25 @@
                                 </div></td>
                         </tr>
                         </table>
-            
+                <?php else: ?>
+                <table style="max-width: 100%; width: 100%;"
+	                cellSpacing=0 cellPadding=0 align=center border=1>
+	                <tr>
+	                    <td style="text-align: center; border-top: medium none;border-top:none;height:22em"><div
+	                            style="font-size: 1em;">
+	                            <font style="color: rgb(128, 124, 115)">人气排名获大奖，</font><font
+	                                style="color: #e82827">猛点下面按钮！</font>
+	                        </div></td>
+	                </tr>
+	            </table>
+                <?php endif; ?>
         </div>
     </div>
-
+    <div id="rob1"  data-openId="<?php echo $openId ?>" data-pageName="7" data-operation="20" data-host="/" class="loghandler"
+        style="border-radius:4px; max-width: 95%; margin-bottom: 1em; margin-left: 2.5%; margin-top: 1em; height: 5em; text-align: center; border: 1px solid #d9d9d9; background-color: #e82827;"
+        onclick="window.location.href='../../activitypage?id=<?php echo $openId ?>'">
+        <div style="font-size: 1.8em; color: white; margin-top: 0.85em">拉人气</div>
+    </div>
 
    
 
