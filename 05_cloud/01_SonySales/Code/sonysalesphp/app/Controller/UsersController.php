@@ -112,7 +112,6 @@ class UsersController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
-}
 
 /**
  * get my infomations method
@@ -166,3 +165,5 @@ class UsersController extends AppController {
             $InlegalUsers = $this->User->InlegalUser->find('list', array('fields'=>array('userId')));
             return $InlegalUsers;
         }
+
+}
