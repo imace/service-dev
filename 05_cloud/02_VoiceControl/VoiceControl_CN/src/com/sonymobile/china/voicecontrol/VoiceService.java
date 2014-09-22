@@ -34,7 +34,8 @@ public class VoiceService extends Service implements ISpeaker, ISpeecherStateLis
 
 	@Override
 	public void onCreate() {
-		
+		mSpeecherInstance = SpeecherSingleton.getInstance();
+		mSpeecherInstance.init();
 	}
 	
 	@Override

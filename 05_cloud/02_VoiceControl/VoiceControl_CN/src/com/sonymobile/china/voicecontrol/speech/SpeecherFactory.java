@@ -2,7 +2,7 @@ package com.sonymobile.china.voicecontrol.speech;
 
 public final class SpeecherFactory {
 
-	public static ISpeecher createSpeecher(SpeecherVendors vendor, ISpeecherStateListener listener) {
+	public static ISpeecher createSpeecher(SpeecherVendors vendor) {
 		ISpeecher speecher = null;
 		switch (vendor) {
 		// TODO : Add specify vendor 
@@ -14,9 +14,6 @@ public final class SpeecherFactory {
 		default:
 			break;
 		
-		}
-		if (speecher != null) {
-			speecher.setSpeecherStateListener(listener);
 		}
 		return speecher;
 	}

@@ -1,7 +1,9 @@
 package com.sonymobile.china.voicecontrol.speech;
 
 public final class SpeecherSingleton {
-	private SpeecherSingleton mInstance;
+	private static SpeecherSingleton mInstance;
+	
+	private static final SpeecherVendors VENDOR = SpeecherVendors.IFLYTEK;
 	
 	private ISpeecher mSpeecher;
 	
@@ -9,17 +11,21 @@ public final class SpeecherSingleton {
 		
 	}
 	
-	public synchronized SpeecherSingleton getInstance() {
+	public static synchronized SpeecherSingleton getInstance() {
 		if (mInstance == null) {
 			mInstance = new SpeecherSingleton();
 		}
 		return mInstance;
 	}
 	
-	public void init(SpeecherVendors vendor, ISpeecherStateListener listener) {
+	public void init() {
 		if (mSpeecher == null) {
-			mSpeecher = SpeecherFactory.createSpeecher(vendor, listener);
+			mSpeecher = SpeecherFactory.createSpeecher(VENDOR);
 		}
+	}
+	
+	public void setStateListener(ISpeecherStateListener listener) {
+		mSpeecher.setSpeecherStateListener(listener);
 	}
 	 
 	public void playTTS(String text) {

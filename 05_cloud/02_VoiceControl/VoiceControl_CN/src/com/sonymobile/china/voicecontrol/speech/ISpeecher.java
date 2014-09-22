@@ -6,7 +6,7 @@ public interface ISpeecher {
 	
 	public void startRecognize();
 	
-	public boolean setSpeecherStateListener(ISpeecherStateListener listener);
+	public void setSpeecherStateListener(ISpeecherStateListener listener);
 	
 	public void playTTS(String text);
 	
